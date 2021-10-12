@@ -1,0 +1,14 @@
+{% extends 'indexprueba.html' %}
+{% block titulo %} Formulario de registro nuevo usuario {% endblock titulo %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>El usuario no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+{% endif %}
+<h3>Registrar Nuevo Usuario</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="registrar">
+</form>
+{% endblock cuerpo %}

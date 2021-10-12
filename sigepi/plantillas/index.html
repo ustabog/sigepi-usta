@@ -1,0 +1,26 @@
+{% extends 'front/base.html' %}
+{% load static %}
+
+{% block cabeza %}
+{% endblock cabeza%}
+
+{% block titulo %}
+            SIGEPI - Bienvenidos(as)
+{% endblock titulo%}
+
+{% block encabezado %}
+    {% include 'front/cabeceras/menu.html'%}
+{% endblock encabezado%}
+
+{% block lado %}
+    {% include 'front/lado/lado.html' %}
+{% endblock lado%}
+
+{% block cuerpo %}
+    {% include 'front/cuerpos/cuerpo.html'%}
+{% endblock cuerpo %}
+
+
+{% block pie %}
+    {% include 'front/pies/menu_inf.html'%}
+{% endblock pie%}

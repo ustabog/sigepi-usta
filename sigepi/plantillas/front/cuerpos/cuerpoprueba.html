@@ -1,0 +1,10 @@
+{% extends 'indexprueba' %}
+{% load static %}
+
+{% block cuerpo%}
+<div class="article" id="art_ppal">
+    {% block articulo %}
+        {% include 'registro_usuario/crearusu.html' %}
+    {% endblock articulo %}
+</div>
+{% endblock %}

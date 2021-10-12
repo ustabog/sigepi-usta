@@ -1,0 +1,23 @@
+{% extends 'index_adm_prb.html' %}
+{% block titulo %} Listado de usuario {% endblock titulo %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>La lista de usuario no se ha logrado consultar.</p>
+{% endif %}
+
+
+<form method="POST">
+    {{form.as_ul}}
+
+    <div>
+        {% for User in  object_list %}
+        <label> {{ User.username }} </label>
+        <label> {{ User.first_name}} </label>
+        <label> {{ User.last_name}} </label><br>
+            {% block modf_consl %}
+
+            {% endblock modf_consl  %}
+        {% endfor %}
+
+</form>
+{% endblock cuerpo %}

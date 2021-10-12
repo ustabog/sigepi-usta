@@ -1,0 +1,40 @@
+{% load static %}
+{% block cabeza_lado %}
+{% endblock cabeza_lado%}
+
+{% block lado %}
+    <div class="">
+        <ul>
+            <li><a href="" target="#cuerpo_ppal">administrar Usuarios</a></li>
+                <ul>
+                    <li><a href="{% url 'consulta_usuarios' %}" target="#cuerpo_ppal">consultar usuarios</li>
+                    <li><a href="{% url 'crea_usuprb' %}" target="#cuerpo_ppal">registrar usuarios</li>
+                    <li><a href="{% url 'ls_mod_usu' %}" target="#cuerpo_ppal">Modificar usuarios</li>
+                </ul>
+            <li><a href="" target="#cuerpo_ppal">administrar Grupos</a></li>
+            <ul>
+                <li><a href="{% url 'cons_usugr' %}" target="#cuerpo_ppal">Consultar grupos</li>
+                <li><a href="{% url 'crear_usugr' %}" target="#cuerpo_ppal">registrar grupos</li>
+                <li><a href="{% url 'ls_mod_usugr' %}" target="#cuerpo_ppal">Modificar grupos</li>
+            </ul>
+            <li><a href="" target="#cuerpo_ppal">administrar Instituciones</a></li>
+            <ul>
+                <li><a href="{% url 'cons_usui' %}" target="#cuerpo_ppal">Consultar Institucion</li>
+                <li><a href="{% url 'crea_usuiprb' %}" target="#cuerpo_ppal">registrar Institucion</li>
+                <li><a href="{% url 'consu_usui_mod' %} " target="#cuerpo_ppal">Modificar Intitucion</li>
+            </ul>
+            <li><a href="" target="#cuerpo_ppal">administrar Módulos y aplicaciones</a></li>
+            <ul>
+                <li><a href="{% url 'cons_mod' %}" target="#cuerpo_ppal">Consultar Modulos</li>
+                <li><a href="{% url 'reg_mod' %}" target="#cuerpo_ppal">registrar Modulos</li>
+                <li><a href="" target="#cuerpo_ppal">Modificar Modulos</li>
+                <li><a href="" target="#cuerpo_ppal">Consultar Aplicaicones</li>
+                <li><a href="" target="#cuerpo_ppal">registrar Aplicaciones</li>
+                <li><a href="" target="#cuerpo_ppal">Modificar Aplicaciones</li>
+            </ul>
+        </ul>
+        <ul>
+            <li><a href="cerrar" target="#cuerpo_ppal">Cerrar</a></li>
+        </ul>
+    </div>
+{% endblock lado %}

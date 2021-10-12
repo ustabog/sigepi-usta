@@ -1,0 +1,11 @@
+{% extends 'adminer/rl_mod_adm/mod_rol/mod_rol.html' %}
+
+{% block titulo %} Formulario de modulos con roles {% endblock titulo %}
+{% block cuerpo %}
+<form class="" action="" method="post">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <button type="submit" >crear</button>
+</form>
+
+ {% endblock cuerpo %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de Permisos {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado aplicativos</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Activo</th>
+            <th>opcion</th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for listado_aplicativo in  object_list %}
+        <tr>
+          <td>{{ listado_aplicativo.id_aplicativo }}</td>
+          <td>{{ listado_aplicativo.nom_aplicativo }}</td>
+          <td>{{ listado_aplicativo.activoaplicativo }}</td>
+          <td><a href="{% url 'editaraplicativo' listado_aplicativo.id_aplicativo %}"> Editar </a> <a href="{% url 'eliminaraplicativo' listado_aplicativo.id_aplicativo %} "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+      {% endblock cuerpo %}
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de usuarios {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado usuarios</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>ind_nal</th>
+            <th>cel</th>
+            <th>wa</th>
+            <th>email</th>
+            <th>cod_post</th>
+            <th>fch_naci</th>
+            <th>ls_ha</th>
+            <th>web</th>
+            <th>dir_offi</th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for usu_inf_contac in  object_list %}
+        <tr>
+          <td>{{ usu_inf_contac.ind_nal }}</td>
+          <td>{{ usu_inf_contac.cel }}</td>
+          <td>{{ usu_inf_contac.wa }}</td>
+          <td>{{ usu_inf_contac.email }}</td>
+          <td>{{ usu_inf_contac.cod_post }}</td>
+          <td>{{ usu_inf_contac.fch_naci }}</td>
+          <td>{{ usu_inf_contac.ls_ha }}</td>
+          <td>{{ usu_inf_contac.web }}</td>
+          <td>{{ usu_inf_contac.dir_offi }}</td>
+          <td><a href="{% url 'editarinfocont' usu_inf_contac.id  %}"> Editar </a> <a href="{% url 'eliminarinfocont' usu_inf_contac.id  %} "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+      {% endblock cuerpo %}
+  </body>
+</html>

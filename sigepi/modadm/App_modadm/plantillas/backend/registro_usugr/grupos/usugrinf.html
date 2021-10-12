@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de roles {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado informacion de grupo</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>id_gr</th>
+            <th>grupo</th>
+            <th>código único de identificación</th>
+            <th>tipo de grupo </th>
+            <th>Identificador de etapa vigente</th>
+            <th>País principal</th>
+            <th>direccion de correspondencia.</th>
+            <th>Estado de desarrollo del Grupo.</th>
+            <th>url de la imagen</th>
+            <th>Zona Horaria internacional</th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for usugr_inf_gr in  object_list %}
+        <tr>
+          <td>{{ usugr_inf_gr.id_usugr }}</td>
+          <td>{{ usugr_inf_gr.id_grupo }}</td>
+          <td>{{ usugr_inf_gr.cod_gr }}</td>
+          <td>{{ usugr_inf_gr.tipo_gr }}</td>
+          <td>{{ usugr_inf_gr.id_etp_gr }}</td>
+          <td>{{ usugr_inf_gr.nal }}</td>
+          <td>{{ usugr_inf_gr.dir }}</td>
+          <td>{{ usugr_inf_gr.estado }}</td>
+          <td>{{ usugr_inf_gr.url_imag }}</td>
+          <td>{{ usugr_inf_gr.zona_hor }}</td>
+          <td>{{ usugr_inf_gr.id_gr_padre }}</td>
+          <td><a href="{% url 'editarusugr_inf_gr' usugr_inf_gr.id_usugr %}"> Editar </a> <a href="{% url 'eliminarusugr_inf_gr' usugr_inf_gr.id_usugr %} "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endblock cuerpo %}
+  </body>
+</html>

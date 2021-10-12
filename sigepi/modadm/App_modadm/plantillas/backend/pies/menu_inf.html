@@ -1,0 +1,53 @@
+{% load static %}
+{# block cabeza #}
+<head>
+  <link rel="stylesheet" href="{% static 'css/pie.css' %}">
+</head>
+{# endblock cabeza #}
+
+{% block pie %}
+ <div class="pie">
+    <ul class="pie-ul">
+        <li class="pie-li">
+            <a class="pie-a" href="#proyectos">
+                <div class="icon">
+                    <i class="	fa fa-list-alt" aria-hidden="false"></i>
+                </div>
+                <div class="text-icon" data-text="Proyectos">Proyectos</div>
+            </a>
+        </li>
+        <li class="pie-li">
+            <a class="pie-a" href="#noticias">
+                <div class="icon">
+                    <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                </div>
+                <div class="text-icon" data-text="Noticias">Noticias</div>
+            </a>
+        </li>
+        <li class="pie-li">
+            <a class="pie-a" href="#agenda">
+                <div class="icon">
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                </div>
+                <div class="text-icon" data-text="Agenda">Agenda</div>
+            </a>
+        </li>
+        <li class="pie-li">
+            <a class="pie-a" href="#seguimiento">
+                <div class="icon">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+                <div class="text-icon" data-text="Seguimiento">Seguim.</div>
+            </a>
+        </li>
+        <li class="pie-li">
+            <a class="pie-a" href="#menu">
+            <div class="icon">
+                <i class="fa fa-navicon" aria-hidden="true"></i>
+            </div>
+            <div class="text-icon" data-text="Menú">Menú</div>
+            </a>
+        </li>
+    </ul>
+  </div>
+{% endblock %}

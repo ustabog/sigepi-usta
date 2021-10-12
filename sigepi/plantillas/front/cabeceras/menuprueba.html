@@ -1,0 +1,38 @@
+{% load static %}
+
+{% block cabeza_cabecera %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+{% endblock cabeza_cabecera%}
+
+{% block encabezado %}
+    <div>
+        <nav>
+            <div>
+                <a  href="{% url 'iniciop' %}" >
+                    <img  src="{% static 'img/buho01.png' %}" alt="Logo" style="height:50px;"></img>
+                </a >
+                <button type="button" data-toggle="collapse" data-target="#lado_ppal">
+                    <span></span>
+                </button>
+            </div>
+            <div>
+                <div id="primer">
+                    <ul>
+                        <li>
+                            <a href="{% url 'iniciop' %}" target="#cuerpo_ppal">Inicio</a>
+                        </li>
+                        {% block menuppal %}
+
+                        {% endblock menuppal %}
+                        <form>
+                            <input type="text"  placeholder="Buscar">
+                            <button type="button" >
+                            Buscar
+                            </button>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+{% endblock encabezado%}

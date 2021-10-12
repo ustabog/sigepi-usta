@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de usuarios {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado usuarios</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>usuario</th>
+            <th>institucion</th>
+            <th>cargo </th>
+            <th>fecha de inicio</th>
+            <th>fecha ed fin</th>
+            <th>certificado</th>
+            <th>nacionalidad</th>
+            <th>ciudad</th>
+            <th>tipo de contrato</th>
+            <th>titulo</th>
+            <th>mencion</th>
+            <th>token</th>
+            <th>motivo de retiro</th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for empleos in  object_list %}
+        <tr>
+          <td>{{ empleos.id_usu }}</td>
+          <td>{{ empleos.instit }}</td>
+          <td>{{ empleos.nom_cargo }}</td>
+          <td>{{ empleos.fch_ini }}</td>
+          <td>{{ empleos.fch_fin }}</td>
+          <td>{{ empleos.certif }}</td>
+          <td>{{ empleos.nal }}</td>
+          <td>{{ empleos.ciudad }}</td>
+          <td>{{ empleos.tipo_contr }}</td>
+          <td>{{ empleos.tit }}</td>
+          <td>{{ empleos.menc }}</td>
+          <td>{{ empleos.token }}</td>
+          <td>{{ empleos.ret }}</td>
+          <td><a href="{% url 'editarempleos' empleos.id_empl  %}"> Editar </a> <a href="{% url 'eliminarempleos'  empleos.id_empl %} "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+      {% endblock cuerpo %}
+  </body>
+</html>

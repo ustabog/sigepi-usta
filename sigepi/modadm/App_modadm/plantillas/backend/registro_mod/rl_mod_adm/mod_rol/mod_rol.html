@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de relacion entre mod y rol {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado permisos</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>id rol</th>
+            <th>id mod</th>
+            <th>opcion</th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for rl_mod_rol in   object_list %}
+        <tr>
+          <td>{{ rl_mod_rol.id }}</td>
+          <td>{{ rl_mod_rol.id_mod }}</td>
+          <td>{{ rl_mod_rol.ls_rol }}</td>
+          <td><a href="{% url 'editarmodrol' rl_mod_rol.id  %}">  Editar </a> <a href="{% url 'eliminarmodrol' rl_mod_rol.id  %} "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+      {% endblock cuerpo %}
+  </body>
+</html>

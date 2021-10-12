@@ -1,0 +1,29 @@
+{% extends 'backend/base_adm.html' %}
+{% block encabezado %}
+{% include 'backend/cabeceras/menu1.html' %}
+{% endblock %}
+{% block lado %}
+
+{% endblock lado%}
+{% block cuerpo %}
+    <div id='main'>
+
+        <article id="principal">
+        {% block contenido %}
+        <form class="" action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type="submit" >crear</button>
+        </form>
+        {% endblock %}
+        </article>
+     <script language="JavaScript" type="text/javascript">
+       $(document).ready(function () {
+         $('.dropdown-toggle').dropdown();
+       });
+     </script>
+ </div>
+ {% endblock %}
+ {% block pie %}
+ {% include 'front/pies/menu_inf.html' %}
+ {% endblock %}

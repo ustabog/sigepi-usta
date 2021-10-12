@@ -1,0 +1,21 @@
+{% extends 'backend/base_adm.html' %}
+{% block encabezado %}
+{% include 'backend/cabeceras/menu1.html' %}
+{% endblock %}
+{% block cuerpo %}
+  <div id='main'>
+    {% include 'backend/widgest/side_adm.html' %}
+    <article id="principal">
+      {% block contenido %}
+      <form class="" action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" >crear</button>
+      </form>
+      {% endblock %}
+    </article>
+  </div>
+{% endblock %}
+{% block pie %}
+{% include 'front/pies/menu_inf.html' %}
+{% endblock %}

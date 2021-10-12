@@ -1,0 +1,48 @@
+{% load static %}
+<html lang="es" dir="ltr">
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/simple-sidebar.css' %}" >
+    {% block cabeza_index %}{% endblock cabeza_index%}
+    {% block cabeza_cuerpo %}{% endblock cabeza_cuerpo%}
+    {% block cabeza_lado %}{% endblock cabeza_lado%}
+    {% block cabeza_cabecera %}{% endblock cabeza_cabecera%}
+    {% block cabeza_pie %}{% endblock cabeza_pie%}
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+<header>
+    {% block encabezado %}
+    {% endblock encabezado%}
+</header>
+
+<body>
+    <div class="d-flex" id="lado_ppal">
+        {% block lado %}
+        {% endblock lado%}
+    </div>
+    <div id='cuerpo_ppal'>
+        {% block cuerpo %}
+        <div class="article" id="art_ppal">
+            {% block articulo %}
+            {% endblock articulo %}
+        </div>
+        {% endblock cuerpo %}
+    </div>
+    <script language="JavaScript" type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script language="JavaScript" type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% block script_index%}{% endblock script_index%}
+    {% block script_cuerpo%}{% endblock script_cuerpo%}
+    {% block script_lado%}{% endblock script_lado%}
+    {% block script_cabecera%}{% endblock script_cabecera%}
+    {% block script_pie%}{% endblock script_pie%}
+</body>
+<footer>
+    <div class="footer" id="pie_ppal">
+        {% block pie %}
+        {% endblock pie%}
+    </div>
+</footer>
+
+</html>

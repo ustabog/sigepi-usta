@@ -1,0 +1,25 @@
+{% extends 'index_adm_prb.html' %}
+{% block titulo %} Listado de usuario {% endblock titulo %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>La lista de usuario no se ha logrado consultar.</p>
+{% endif %}
+<h3>Lista de grupos</h3>
+
+<form method="POST">
+    {{form.as_ul}}
+
+    <div>
+        {% for usugr in  object_list %}
+        <label> {{ usugr.id_gr }} </label>
+        <label> {{ usugr.passgr}} </label>
+        <label> {{ usugr.id_usu_admin}} </label>
+        <label> {{ usugr.id_rol_app}} </label>
+        <label> {{ usugr.activo}} </label><br>
+            {% block modf_consl %}
+                <li><a href="{% url 'editar_usugr' usugr.id_gr %}" >seleccionar</a></li><br>
+            {% endblock modf_consl  %}
+        {% endfor %}
+
+</form>
+{% endblock cuerpo %}

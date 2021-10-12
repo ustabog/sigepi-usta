@@ -1,0 +1,65 @@
+{% load static %}
+{% block cabecera %}
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+  </head>
+{% endblock %}
+{% block encabezado %}
+  <div class="menu">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="col-sm">
+            <a href="" class="navbar-brand"  target="/index.html">
+                <img src="{% static 'img/buho03.png' %}" alt="Logo" style="height:60px;"></img>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#primer">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="column">
+            <div class="collapse navbar-collapse" id="primer">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="" class="nav-link" target="#principal">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" target="#principal">Institucional</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" target="#principal">Servicios</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" target="#principal">
+                            Proyectos
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="/oppmg.html" class="dropdown-item" target="#principal">OPPMG</a>
+                            <a href="" class="dropdown-item">DPP</a>
+                            <a href="" class="dropdown-item">Con-Ciencia Política</a>
+                            <a href="" class="dropdown-item">Sororidades</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" target="#principal">Publicaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" target="#principal">Social</a>
+                    </li>
+                    <form class="form-inline">
+                        <input type="text" class="form-control-sm" placeholder="Buscar">
+                        <button type="button" class="btn btn-outline-secondary">
+                            Buscar
+                        </button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+  </div>
+{% endblock %}

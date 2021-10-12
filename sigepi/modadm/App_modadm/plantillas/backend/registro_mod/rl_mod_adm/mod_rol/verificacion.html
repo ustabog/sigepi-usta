@@ -1,0 +1,6 @@
+<form method="post">
+  {% csrf_token %}
+  <h1> Desea eliminar relacion entre modulo y rol {{ object }} ?</h1>
+  <button type="submit" name="button"> COnfirmar</button>
+  <a href="{% url  'permisos' %}"> cancelar</a>
+</form>

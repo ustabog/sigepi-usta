@@ -1,0 +1,25 @@
+{% extends 'index_adm_prb.html' %}
+{% block titulo %} Listado de usuario Institucion {% endblock titulo %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>La lista de usuario no se ha logrado consultar.</p>
+{% endif %}
+
+<form method="POST">
+    {{form.as_ul}}
+
+    <div>
+        {% for usui in  object_list %}
+        <label> {{ usui.id_usuinst }} </label>
+        <label> {{ usui.passinst}} </label>
+        <label> {{ usui.id_usu_admin}} </label>
+        <label> {{ usui.id_rol_app }} </label>
+        <label> {{ usui.fch_regi}} </label>
+        <label> {{ usui.activo}} </label>
+            {% block modf_consl %}
+                <li><a href="{% url 'editar_usui' usui.id_usuinst %}" >seleccionar</a></li><br>
+            {% endblock modf_consl  %}
+        {% endfor %}
+
+</form>
+{% endblock cuerpo %}
