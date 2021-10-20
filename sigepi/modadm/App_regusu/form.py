@@ -18,42 +18,60 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
-
-class frm_reg_usu_pers(forms.ModelForm):
-    #clase para la creación de un formulario de registro de información personal de usuario SIGEPI.
+#clase ubicado inicialmente en el modulo de consulta y App_cons
+class frm_con_usu(forms.ModelForm):
+    #Clase que automatiza la creación de formularios de consulta de Usuario en Django.
     class Meta:
-        #Metadatos de la clase
-        model =  usu_inf_pers
-        fields = [
-            'nuip',
-            'tipo_nuip',
-            'nombres',
-            'apelllidos',
-            'nal',
-            'fch_naci',
-            'gene',
-            'ocup',
-            'dir',
-            'discap',
-            'tipo_discap',
-            'url_imag',
-            'zona_hor'
-        ]
+        model = User
+        fields = ['username',
+                  'first_name',
+                  'last_name',
+                  'email',
+                 ]
+        labels ={
+                'username' : 'username',
+                'first_name' : 'nombre',
+                'last_name' : 'apellido',
+                'email' : 'correo',
+                }
 
-        labels = {
-            'nuip' : 'NUIP',
-            'tipo_nuip': 'Tipo',
-            'nombres': 'Nombres',
-            'apelllidos':'Apellidos',
-            'nal' : 'Nacionalidad',
-            'fch_naci' : 'Fecha de nacimiento',
-            'gene' : 'Género',
-            'ocup':'Ocupación',
-            'dir' : 'Dirección',
-            'discap' : 'Discapacidad',
-            'tipo_discap':'Tipo de Disc.',
-            'url_imag' : 'URL Imagen',
-            'zona_hor' : 'Zona Horaria',
-        }
-        verbose_name = "DatosPersonales"
-        verbose_name_plural = 'DatosPersonales'
+
+
+# class frm_reg_usu_pers(forms.ModelForm):
+#     #clase para la creación de un formulario de registro de información personal de usuario SIGEPI.
+#     class Meta:
+#         #Metadatos de la clase
+#         model =  usu_inf_pers
+#         fields = [
+#             'nuip',
+#             'tipo_nuip',
+#             'nombres',
+#             'apelllidos',
+#             'nal',
+#             'fch_naci',
+#             'gene',
+#             'ocup',
+#             'dir',
+#             'discap',
+#             'tipo_discap',
+#             'url_imag',
+#             'zona_hor'
+#         ]
+
+#         labels = {
+#             'nuip' : 'NUIP',
+#             'tipo_nuip': 'Tipo',
+#             'nombres': 'Nombres',
+#             'apelllidos':'Apellidos',
+#             'nal' : 'Nacionalidad',
+#             'fch_naci' : 'Fecha de nacimiento',
+#             'gene' : 'Género',
+#             'ocup':'Ocupación',
+#             'dir' : 'Dirección',
+#             'discap' : 'Discapacidad',
+#             'tipo_discap':'Tipo de Disc.',
+#             'url_imag' : 'URL Imagen',
+#             'zona_hor' : 'Zona Horaria',
+#         }
+#         verbose_name = "DatosPersonales"
+#         verbose_name_plural = 'DatosPersonales'
