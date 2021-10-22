@@ -4,6 +4,7 @@ from django.contrib.auth import views as auth_views
 #from rest_framework.routers import DefaultRouter
 from modadm.App_regusu.views import *
 from modadm.App_regusu.class_view import *
+from .models import *
 
 
 urlpatterns = [
@@ -23,8 +24,8 @@ urlpatterns = [
     
     path('sel_usu_cons/', vst_selc_usu_cons.as_view(), name='seleccion_usuario_consulta'),
     
-#     path('infopers/',infoperslList.as_view(), name = 'infopers'),
-#     path('crearinf/',infopersCreate.as_view(), name = 'crearinf'),
+    path('infopers/',infoperslList.as_view(), name = 'infopers'),
+    path('crearinf/',infopersCreate.as_view(), name = 'crearinf'),
 #     path('editarinf/<int:pk>/',infopersUpdate.as_view(), name='editarinf'),
 #     path('eliminarinf/<int:pk>/',infopersDelete.as_view(), name='eliminarinf')
 # #funciones

@@ -5,7 +5,7 @@ from .models import *
 # admin.site.register(usu_inf_apps)
 # admin.site.register(rl_usu_inf_apps_rol)
 # admin.site.register(discapacidad)
-# admin.site.register(usu_inf_pers)
+admin.site.register(usu_inf_pers)
 # admin.site.register(usu_inf_contac)
 # admin.site.register(red_soc)
 # admin.site.register(rl_usu_inf_red_social)

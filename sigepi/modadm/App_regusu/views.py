@@ -15,16 +15,17 @@ from django.views.generic.base import View
 from .serializers import *
 from .models import *
 from .form import *
-
-#from SIGEPI_PRO.plantillas import *
 from plantillas import *
 
+from modadm.App_regusu.models import *
 #from modcons.App_cons.form import frm_con_usu
 #from modcons.App_cons.views import vts_ls_usu
 
+#vista de prueba
 def prueba (request):
     return HttpResponse("Bienvenido")
 
+#vista registro de usuario
 class vts_reg_usu_su(CreateView):
     #Clase que devuelve un formulario para registro de usuario
     form_class = frm_con_usu
@@ -35,6 +36,7 @@ class vts_reg_usu_su(CreateView):
 
 class func_usu():
     #clase que me almacena las vistas de la aplicacion registro de usuario
+    #vista para listar usuarios
     def vst_ls_mod_usu(self, solicitud):
         #vista para istar los usuarios
         plt = loader.get_template('sl_usu.html')
@@ -70,22 +72,27 @@ class vts_reg_usu_su(CreateView):
     success_url = reverse_lazy('consulta_usuarios')
     success_message = "El usuario fue creado correctamente"
 
-# class infoperslList(ListView): #hereda de listwview
-#     model = usu_inf_pers
-#     template_name = 'moduloAdm/usuarios/infopers.html'
+class infoperslList(ListView): #hereda de listwview
+    model = usu_inf_pers
+    #MODIFICADO
+    template_name = 'infopers.html'
+    #ORIGINAL
+    #template_name = 'moduloAdm/usuarios/infopers.html'
 
 # class infopersCree(CreateView):
-#     model = usu_inf_pers
+#     model = usu_inf_pers  
 #     form_class = frm_reg_usu_pers
 #     template_name = 'moduloAdm/usuarios/crearinfopers.html'
 #     success_url = reverse_lazy('infopers')
 
 
-# class infopersCreate(CreateView):
-#     model = usu_inf_pers
-#     form_class = frm_reg_usu_pers
-#     template_name = 'backend/registro_usuario/crearinfopers.html'
-#     success_url = reverse_lazy('infopers')
+class infopersCreate(CreateView):
+    model = usu_inf_pers
+    form_class = frm_reg_usu_pers
+    #### Original
+    #template_name = 'backend/registro_usuario/crearinfopers.html'
+    template_name = 'registro_usuario/crearinfopers.html'
+    success_url = reverse_lazy('infopers')
 
 #     def form_valid(self, form):
 #         self.object = form.save(commit=False)
