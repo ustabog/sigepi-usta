@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from modadm.App_modadm.models import *
+from .models import *
+#from modadm.App_modadm.models import *
 
 #Tipo de rol dentro de la plataforma
 TIPO_ROL = [
@@ -174,25 +175,25 @@ HORARIO = [
     (2,'8am 12pm - 2pm 6pm')
     ]
 
-class usu_inf_apps(models.Model):
+# class usu_inf_apps(models.Model):
 
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) #id único de Usuario de sistema
-    ls_roles =[[0,0]] #Listado de roles en aplicaciones y módulos autorizados por administradores de paltaforma
-        # [0,] id_rol; [,0] id_usu quien autoriza. clave foranea a roles .. muchos
-    rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador de rol de sistema.
-#    app_act = models.ForeignKey(listado_aplicativo,on_delete=models.CASCADE, null=False, blank =False) # identificador de funcionalidad actual (Sistema, módulo, aplicacion, extensión, app_mod
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) #id único de Usuario de sistema
+#     ls_roles =[[0,0]] #Listado de roles en aplicaciones y módulos autorizados por administradores de paltaforma
+#         # [0,] id_rol; [,0] id_usu quien autoriza. clave foranea a roles .. muchos
+#     #rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador de rol de sistema.
+# #    app_act = models.ForeignKey(listado_aplicativo,on_delete=models.CASCADE, null=False, blank =False) # identificador de funcionalidad actual (Sistema, módulo, aplicacion, extensión, app_mod
 
-    class Meta:
-        verbose_name = 'usu_inf_apps'
-        verbose_name_plural = 'usu_inf_appss'
+#     class Meta:
+#         verbose_name = 'usu_inf_apps'
+#         verbose_name_plural = 'usu_inf_appss'
 
-class rl_usu_inf_apps_rol(models.Model): #identificar el rol actual del usuario
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
-    rol_act = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)
+# class rl_usu_inf_apps_rol(models.Model): #identificar el rol actual del usuario
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
+#     #rol_act = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)
 
-    class Meta:
-        verbose_name = 'rl_usu_inf_apps_rol'
-        verbose_name_plural = 'rl_usu_inf_apps_rols'
+#     class Meta:
+#         verbose_name = 'rl_usu_inf_apps_rol'
+#         verbose_name_plural = 'rl_usu_inf_apps_rols'
 
 class discapacidad(models.Model):
     id_disc = models.AutoField(primary_key = True) # identificador de usuario
@@ -227,181 +228,181 @@ class usu_inf_pers(models.Model):
         verbose_name = 'usu_inf_pers'
         verbose_name_plural = 'usu_inf_perss'
 
-class usu_inf_contac(models.Model):
+# class usu_inf_contac(models.Model):
 
-    id_usu = models.OneToOneField(User, on_delete=models.CASCADE)  # identificador de usuario
-    ind_nal = models.PositiveSmallIntegerField('Indicativo telefónico de país') #Indicativo telefónico de país
-    cel = models.CharField('Número de telefono móvil del usuario',  max_length=30, null=False, blank = False) #Número de telefono móvil del usuario
-    wa = models.CharField('Número de WhatsApp',  max_length=30, null=False, blank = False) # Número de WhatsApp
-    email = models.EmailField('Correo electrocico',  max_length=30, null=False, blank = False)  # dirección de correo electrónico
-    cod_post = models.PositiveSmallIntegerField('Número de código postal', null=False, blank =False)  # Número de código postal
-    ls_ha =  models.IntegerField(choices = HORARIO,default = 0, null=False, blank = False) #Listado de Horario de atención [día,hora ini, hora fin]
-    web = models.URLField('dirección de página web o blog personal', null=False, blank=False) # dirección de página web o blog personal
-    dir_offi = models.CharField('Dirección de Ofiina (país, ciudad, dir) ', max_length=100, null=False, blank = False) # Dirección de Oficina (país, ciudad, dir)
+#     id_usu = models.OneToOneField(User, on_delete=models.CASCADE)  # identificador de usuario
+#     ind_nal = models.PositiveSmallIntegerField('Indicativo telefónico de país') #Indicativo telefónico de país
+#     cel = models.CharField('Número de telefono móvil del usuario',  max_length=30, null=False, blank = False) #Número de telefono móvil del usuario
+#     wa = models.CharField('Número de WhatsApp',  max_length=30, null=False, blank = False) # Número de WhatsApp
+#     email = models.EmailField('Correo electrocico',  max_length=30, null=False, blank = False)  # dirección de correo electrónico
+#     cod_post = models.PositiveSmallIntegerField('Número de código postal', null=False, blank =False)  # Número de código postal
+#     ls_ha =  models.IntegerField(choices = HORARIO,default = 0, null=False, blank = False) #Listado de Horario de atención [día,hora ini, hora fin]
+#     web = models.URLField('dirección de página web o blog personal', null=False, blank=False) # dirección de página web o blog personal
+#     dir_offi = models.CharField('Dirección de Ofiina (país, ciudad, dir) ', max_length=100, null=False, blank = False) # Dirección de Oficina (país, ciudad, dir)
 
-    class Meta:
-        verbose_name = 'usu_inf_contac'
-        verbose_name_plural = 'usu_inf_contacs'
+#     class Meta:
+#         verbose_name = 'usu_inf_contac'
+#         verbose_name_plural = 'usu_inf_contacs'
 
-class red_soc(models.Model):
+# class red_soc(models.Model):
 
-    id_red = models.AutoField(primary_key = True)
-    nombre_red = models.CharField('Dirección de Oficina (país, ciudad, dir) ', max_length=30, null=False, blank = False)
-    usuario =  models.CharField('Direcció n de Oficina (país, ciudad, dir) ', max_length=20, null=False, blank = False)  #nick o dirección de usuario
-    url = models.URLField('Url de página principal dentro de la red.', null=False, blank=False) #Url de página principal dentro de la red.
-    uso = models.CharField('Uso de la red (frecuente:0; moderado:1; poco frecuente:2; inactivo:3) ', max_length=20, null=False, blank = False)  #Uso de la red (frecuente:0; moderado:1; poco frecuente:2; inactivo:3)
-    pub = models.BooleanField('acceso público de información de red', default=False)  #Acceso público de información de red
+#     id_red = models.AutoField(primary_key = True)
+#     nombre_red = models.CharField('Dirección de Oficina (país, ciudad, dir) ', max_length=30, null=False, blank = False)
+#     usuario =  models.CharField('Direcció n de Oficina (país, ciudad, dir) ', max_length=20, null=False, blank = False)  #nick o dirección de usuario
+#     url = models.URLField('Url de página principal dentro de la red.', null=False, blank=False) #Url de página principal dentro de la red.
+#     uso = models.CharField('Uso de la red (frecuente:0; moderado:1; poco frecuente:2; inactivo:3) ', max_length=20, null=False, blank = False)  #Uso de la red (frecuente:0; moderado:1; poco frecuente:2; inactivo:3)
+#     pub = models.BooleanField('acceso público de información de red', default=False)  #Acceso público de información de red
 
-    class Meta:
-        verbose_name = 'red_soc'
-        verbose_name_plural = 'red_socs'
+#     class Meta:
+#         verbose_name = 'red_soc'
+#         verbose_name_plural = 'red_socs'
 
-class rl_usu_inf_red_social(models.Model): # relacion Listado de objetos de redes sociales
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
-    ls_red = models.ForeignKey(red_soc, on_delete=models.CASCADE, null=False, blank =False)   # Listado de objetos de redes sociales
+# class rl_usu_inf_red_social(models.Model): # relacion Listado de objetos de redes sociales
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
+#     ls_red = models.ForeignKey(red_soc, on_delete=models.CASCADE, null=False, blank =False)   # Listado de objetos de redes sociales
 
-    class Meta:
-        verbose_name = 'rl_usu_inf_red_social'
-        verbose_name_plural = 'rl_usu_inf_red_socials'
-
-
-class form_acad(models.Model):
-
-    id_fa =  models.AutoField(primary_key = True) #Id de formación académica
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE)  # identificador de usuario
-    instit = models.CharField('Nombre de la institucion ', max_length=25, null=False, blank = False) # Nombre de la institucion académica donde curso la formación
-    tipo_form =  models.IntegerField(choices = TIPO_FORM_CO, default = 0, null=False, blank = False) #tipo de formación ver diccionario TIPO_FORM
-    fch_ini = models.DateField('fecha de Inicio', auto_now = False)
-    fch_fin = models.DateField('fecha de Fin', auto_now = False)
-    certif = models.BooleanField('Posees Certificado', default=False)
-    nal = models.CharField('Pais ', max_length=20, null=False, blank = False) #país
-    ciudad = models.CharField('Ciudad ', max_length=20, null=False, blank = False)
-    mod =  models.IntegerField(choices = MODALIDAD, default = 0, null=False, blank = False) # modalidad
-    tit = models.CharField('Titulo obtenido ', max_length=20, null=False, blank = False) # Título obtenido
-    menc =  models.CharField('Mensión ', max_length=20, null=False, blank = False)  # Mensión de honor
-    token = models.CharField('token de validación ', max_length=20, null=False, blank = False)  #Token de validación electrónica de certificación de la formación
-
-    class Meta:
-        verbose_name = 'form_acad'
-        verbose_name_plural = 'form_acads'
-
-class usu_inf_acad(models.Model):
-#ESTA NO ME PARECE YA
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)  # identificador unico
-    nivelform =  models.IntegerField(choices = TIPO_FORM_CO, default = 0, null=False, blank = False) # me indica la formacion qu tiene la usuario
-
-    class Meta:
-        verbose_name = 'usu_inf_acad'
-        verbose_name_plural = 'usu_inf_acads'
-
-class rl_usu_inf_form_acad(models.Model): # relacion de listado de id procesos de formación realizados
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
-    ls_form = models.ForeignKey(form_acad, on_delete=models.CASCADE, null=False, blank =False)   #listado de procesos de formación realizados
-
-    class Meta:
-        verbose_name = 'rl_usu_inf_form_acad'
-        verbose_name_plural = 'rl_usu_inf_form_acads'
-
-class curs_dict(models.Model):
-    #clase que almacena la información de cursos dictados a cargo de un usuario
-    id_cd = models.AutoField(primary_key = True)    #Id de formación académica
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
-    instit =  models.CharField('Nombre de la institucion académica donde dictó el curso. ', max_length=20, null=False, blank = False) # Nombre de la institucion académica donde dictó el curso.
-    tipo_form = models.IntegerField(choices = TIPO_FORM_CO, null=False, blank = False, default=0)  #tipo de formación ver diccionario TIPO_FORM
-    fch_ini = models.DateField('fecha de inicio', auto_now = False)
-    fch_fin = models.DateField('fecha de fin', auto_now = False)
-    certif = models.BooleanField('Posees Certificado', default=True)
-    nal =  models.CharField('Pais ', max_length=30, null=False, blank = False) #país
-    ciudad = models.CharField('Ciudad ', max_length=30, null=False, blank = False)
-    mod = models.IntegerField('Modalidad', choices = MODALIDAD, null=False, blank = False, default=0)  # modalidad
-    num_est = models.IntegerField('Cantidad de estudiantes')  #Cantidad de Estudiantes
-    dur = models.IntegerField('Número total de horas académicas del curso')  #Número total de horas académicas del curso
-    nom_curs = models.CharField('Nombre del curso', max_length = 60, null=False, blank = False)  # modalidad #Nombre del Curso
-    mun_ciclos = models.IntegerField('cuántas veces se dictó el curso')  #Número de ciclos del curso "cuántas veces se dictó el curso"
-    url_prog =  models.URLField('Url del documento o sitio web ', null=False, blank=False) #Url del documento o sitio web donde se puede localizar el programa del curso
-
-    class Meta:
-        verbose_name = 'curs_dict'
-        verbose_name_plural = 'curs_dicts'
-
-class rl_usu_inf_contac_curs_dict(models.Model):  # relacion de LIstado de id Cursos a cargo dictadospor al persona.
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
-    ls_cursdict = models.ForeignKey(curs_dict, on_delete=models.CASCADE, null=False, blank =False) #LIstado de id Cursos a cargo dictadospor al persona.
+#     class Meta:
+#         verbose_name = 'rl_usu_inf_red_social'
+#         verbose_name_plural = 'rl_usu_inf_red_socials'
 
 
-class usu_inf_prof(models.Model):
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador unico de usuario
-    prof = models.CharField('Titulo obtenido ', max_length=20, null=False, blank = False)  # Profesión Actual
+# class form_acad(models.Model):
 
-    class Meta:
-        verbose_name = 'usu_inf_prof'
-        verbose_name_plural = 'usu_inf_profs'
+#     id_fa =  models.AutoField(primary_key = True) #Id de formación académica
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE)  # identificador de usuario
+#     instit = models.CharField('Nombre de la institucion ', max_length=25, null=False, blank = False) # Nombre de la institucion académica donde curso la formación
+#     tipo_form =  models.IntegerField(choices = TIPO_FORM_CO, default = 0, null=False, blank = False) #tipo de formación ver diccionario TIPO_FORM
+#     fch_ini = models.DateField('fecha de Inicio', auto_now = False)
+#     fch_fin = models.DateField('fecha de Fin', auto_now = False)
+#     certif = models.BooleanField('Posees Certificado', default=False)
+#     nal = models.CharField('Pais ', max_length=20, null=False, blank = False) #país
+#     ciudad = models.CharField('Ciudad ', max_length=20, null=False, blank = False)
+#     mod =  models.IntegerField(choices = MODALIDAD, default = 0, null=False, blank = False) # modalidad
+#     tit = models.CharField('Titulo obtenido ', max_length=20, null=False, blank = False) # Título obtenido
+#     menc =  models.CharField('Mensión ', max_length=20, null=False, blank = False)  # Mensión de honor
+#     token = models.CharField('token de validación ', max_length=20, null=False, blank = False)  #Token de validación electrónica de certificación de la formación
 
-class rl_usu_inf_prof_empleos(models.Model):  # relacion listado de procesos de formación realizados
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
-    ls_curs = models.ForeignKey(curs_dict, on_delete=models.CASCADE, null=False, blank =False)
+#     class Meta:
+#         verbose_name = 'form_acad'
+#         verbose_name_plural = 'form_acads'
 
-class empleos(models.Model):
+# class usu_inf_acad(models.Model):
+# #ESTA NO ME PARECE YA
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)  # identificador unico
+#     nivelform =  models.IntegerField(choices = TIPO_FORM_CO, default = 0, null=False, blank = False) # me indica la formacion qu tiene la usuario
 
-    id_empl = models.AutoField(primary_key = True)
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
-    instit = models.CharField('Nombre de la institucion ', max_length=20, null=False, blank = False) # Nombre de la institucion académica donde curso la formación
-    nom_cargo = models.CharField('Nombre del Cargo ', max_length=20, null=False, blank = False)  #Nombre del Cargo
-    fch_ini = models.DateField('fecha de inicio', auto_now = False)
-    fch_fin = models.DateField('fecha de Fin', auto_now = False)
-    certif = models.BooleanField('Posees certificado', default=False)
-    nal = models.CharField('Pais ', max_length=20, null=False, blank = False)  #país
-    ciudad = models.CharField('Ciudad ', max_length=20, null=False, blank = False)
-    tipo_contr =  models.IntegerField(choices = TIPO_CONTR_CO, null=False, blank = False, default = 0)
-    tit = models.CharField('Titulo obtenido ', max_length=20, null=False, blank = False)  # Título obtenido
-    menc = models.CharField('Mensión de honor ', max_length=20, null=False, blank = False)  # Mensión de honor
-    token = models.CharField('Token de validación electrónica  ', max_length=20, null=False, blank = False)  #Token de validación electrónica de certificación de la formación
-    ret = models.CharField(' Motivo del retiro ', max_length=20, null=False, blank = False)  # Motivo del retiro
+#     class Meta:
+#         verbose_name = 'usu_inf_acad'
+#         verbose_name_plural = 'usu_inf_acads'
 
-    class Meta:
-        verbose_name = 'empleos'
-        verbose_name_plural = 'empleoss'
+# class rl_usu_inf_form_acad(models.Model): # relacion de listado de id procesos de formación realizados
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
+#     ls_form = models.ForeignKey(form_acad, on_delete=models.CASCADE, null=False, blank =False)   #listado de procesos de formación realizados
 
-class habilidades(models.Model):
-    #clase que almacena la información de tipos de habilidad
-    id_hab = models.AutoField(primary_key = True)
-    nom_hab = models.CharField('Nombre de la habilidad', max_length=20, null=False, blank = False)  #Nombre de la habilidad
-    desc = models.CharField('Descripción de la Habilidad', max_length=20, null=False, blank = False)  #Descripción de la Habilidad
+#     class Meta:
+#         verbose_name = 'rl_usu_inf_form_acad'
+#         verbose_name_plural = 'rl_usu_inf_form_acads'
 
-    class Meta:
-        verbose_name = 'habilidades'
-        verbose_name_plural = 'habilidadess'
+# class curs_dict(models.Model):
+#     #clase que almacena la información de cursos dictados a cargo de un usuario
+#     id_cd = models.AutoField(primary_key = True)    #Id de formación académica
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
+#     instit =  models.CharField('Nombre de la institucion académica donde dictó el curso. ', max_length=20, null=False, blank = False) # Nombre de la institucion académica donde dictó el curso.
+#     tipo_form = models.IntegerField(choices = TIPO_FORM_CO, null=False, blank = False, default=0)  #tipo de formación ver diccionario TIPO_FORM
+#     fch_ini = models.DateField('fecha de inicio', auto_now = False)
+#     fch_fin = models.DateField('fecha de fin', auto_now = False)
+#     certif = models.BooleanField('Posees Certificado', default=True)
+#     nal =  models.CharField('Pais ', max_length=30, null=False, blank = False) #país
+#     ciudad = models.CharField('Ciudad ', max_length=30, null=False, blank = False)
+#     mod = models.IntegerField('Modalidad', choices = MODALIDAD, null=False, blank = False, default=0)  # modalidad
+#     num_est = models.IntegerField('Cantidad de estudiantes')  #Cantidad de Estudiantes
+#     dur = models.IntegerField('Número total de horas académicas del curso')  #Número total de horas académicas del curso
+#     nom_curs = models.CharField('Nombre del curso', max_length = 60, null=False, blank = False)  # modalidad #Nombre del Curso
+#     mun_ciclos = models.IntegerField('cuántas veces se dictó el curso')  #Número de ciclos del curso "cuántas veces se dictó el curso"
+#     url_prog =  models.URLField('Url del documento o sitio web ', null=False, blank=False) #Url del documento o sitio web donde se puede localizar el programa del curso
 
-class rl_usu_inf_hab(models.Model): # relacion de listado de id de habilidades registradas por le usuario
-    # Clase que almacena la información de las habilidades o conocimientos adquiridos y certificados por el usuario
-    id_usu=  models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador unico de usuario
-    ls_habs =  models.ForeignKey(habilidades, on_delete=models.CASCADE, null=False, blank =False)  # listado de id de habilidades registradas por le usuario
-    descripcion = models.CharField('Descripción ', max_length=20, null=False, blank = False)  # descripcion del conocimiento o habilidad investigador
+#     class Meta:
+#         verbose_name = 'curs_dict'
+#         verbose_name_plural = 'curs_dicts'
 
-    class Meta:
-        verbose_name = 'rl_usu_inf_hab'
-        verbose_name_plural = 'rl_usu_inf_habs'
+# class rl_usu_inf_contac_curs_dict(models.Model):  # relacion de LIstado de id Cursos a cargo dictadospor al persona.
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
+#     ls_cursdict = models.ForeignKey(curs_dict, on_delete=models.CASCADE, null=False, blank =False) #LIstado de id Cursos a cargo dictadospor al persona.
 
-class valid_hab(models.Model): # verificar esta
-    #clase que procesa la información de validación social de habilidades
-#    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # Identificador del Usuario que registra la habilidad
-    id_hab = models.ForeignKey(habilidades, on_delete=models.CASCADE, null=False, blank =False) #Identificador de la habilidad que se va a validar
-    id_usu_val = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)  #Identificador del Usuario que valida la habilidad
-    id_esc = models.CharField('IDENTIFICADOR ', max_length=20, null=False, blank = False) #Identificador de la escala de validación
-    val = models.CharField('RANGO ', max_length=20, null=False, blank = False) #Valor dentro del rango de la escala de validación
 
-    #nota como realizp el dato val, id esc, id:usu_val
-    class Meta:
-        verbose_name = 'valid_hab'
-        verbose_name_plural = 'valid_habs'
+# class usu_inf_prof(models.Model):
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador unico de usuario
+#     prof = models.CharField('Titulo obtenido ', max_length=20, null=False, blank = False)  # Profesión Actual
 
-class app_reg_usu(models.Model):
+#     class Meta:
+#         verbose_name = 'usu_inf_prof'
+#         verbose_name_plural = 'usu_inf_profs'
 
-    app_mod = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False)  # identificador de app
-    nombre = models.CharField('Nombre de la app ', max_length=20, null=False, blank = False) # nombre del objeto
-    descripcion = models.CharField('Descripcion ', max_length=20, null=False, blank = False) # descripcion del objeto
-    activo = models.BooleanField('Activo ', default=False) # activo o no
+# class rl_usu_inf_prof_empleos(models.Model):  # relacion listado de procesos de formación realizados
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
+#     ls_curs = models.ForeignKey(curs_dict, on_delete=models.CASCADE, null=False, blank =False)
 
-    class Meta:
-        verbose_name = 'app_reg_usu'
-        verbose_name_plural = 'app_reg_usus'
+# class empleos(models.Model):
+
+#     id_empl = models.AutoField(primary_key = True)
+#     id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
+#     instit = models.CharField('Nombre de la institucion ', max_length=20, null=False, blank = False) # Nombre de la institucion académica donde curso la formación
+#     nom_cargo = models.CharField('Nombre del Cargo ', max_length=20, null=False, blank = False)  #Nombre del Cargo
+#     fch_ini = models.DateField('fecha de inicio', auto_now = False)
+#     fch_fin = models.DateField('fecha de Fin', auto_now = False)
+#     certif = models.BooleanField('Posees certificado', default=False)
+#     nal = models.CharField('Pais ', max_length=20, null=False, blank = False)  #país
+#     ciudad = models.CharField('Ciudad ', max_length=20, null=False, blank = False)
+#     tipo_contr =  models.IntegerField(choices = TIPO_CONTR_CO, null=False, blank = False, default = 0)
+#     tit = models.CharField('Titulo obtenido ', max_length=20, null=False, blank = False)  # Título obtenido
+#     menc = models.CharField('Mensión de honor ', max_length=20, null=False, blank = False)  # Mensión de honor
+#     token = models.CharField('Token de validación electrónica  ', max_length=20, null=False, blank = False)  #Token de validación electrónica de certificación de la formación
+#     ret = models.CharField(' Motivo del retiro ', max_length=20, null=False, blank = False)  # Motivo del retiro
+
+#     class Meta:
+#         verbose_name = 'empleos'
+#         verbose_name_plural = 'empleoss'
+
+# class habilidades(models.Model):
+#     #clase que almacena la información de tipos de habilidad
+#     id_hab = models.AutoField(primary_key = True)
+#     nom_hab = models.CharField('Nombre de la habilidad', max_length=20, null=False, blank = False)  #Nombre de la habilidad
+#     desc = models.CharField('Descripción de la Habilidad', max_length=20, null=False, blank = False)  #Descripción de la Habilidad
+
+#     class Meta:
+#         verbose_name = 'habilidades'
+#         verbose_name_plural = 'habilidadess'
+
+# class rl_usu_inf_hab(models.Model): # relacion de listado de id de habilidades registradas por le usuario
+#     # Clase que almacena la información de las habilidades o conocimientos adquiridos y certificados por el usuario
+#     id_usu=  models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador unico de usuario
+#     ls_habs =  models.ForeignKey(habilidades, on_delete=models.CASCADE, null=False, blank =False)  # listado de id de habilidades registradas por le usuario
+#     descripcion = models.CharField('Descripción ', max_length=20, null=False, blank = False)  # descripcion del conocimiento o habilidad investigador
+
+#     class Meta:
+#         verbose_name = 'rl_usu_inf_hab'
+#         verbose_name_plural = 'rl_usu_inf_habs'
+
+# class valid_hab(models.Model): # verificar esta
+#     #clase que procesa la información de validación social de habilidades
+# #    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # Identificador del Usuario que registra la habilidad
+#     id_hab = models.ForeignKey(habilidades, on_delete=models.CASCADE, null=False, blank =False) #Identificador de la habilidad que se va a validar
+#     id_usu_val = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)  #Identificador del Usuario que valida la habilidad
+#     id_esc = models.CharField('IDENTIFICADOR ', max_length=20, null=False, blank = False) #Identificador de la escala de validación
+#     val = models.CharField('RANGO ', max_length=20, null=False, blank = False) #Valor dentro del rango de la escala de validación
+
+#     #nota como realizp el dato val, id esc, id:usu_val
+#     class Meta:
+#         verbose_name = 'valid_hab'
+#         verbose_name_plural = 'valid_habs'
+
+# class app_reg_usu(models.Model):
+
+#     #app_mod = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False)  # identificador de app
+#     nombre = models.CharField('Nombre de la app ', max_length=20, null=False, blank = False) # nombre del objeto
+#     descripcion = models.CharField('Descripcion ', max_length=20, null=False, blank = False) # descripcion del objeto
+#     activo = models.BooleanField('Activo ', default=False) # activo o no
+
+#     class Meta:
+#         verbose_name = 'app_reg_usu'
+#         verbose_name_plural = 'app_reg_usus'

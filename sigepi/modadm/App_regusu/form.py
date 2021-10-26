@@ -18,6 +18,24 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
+#clase ubicado inicialmente en el modulo de consulta y App_cons
+class frm_con_usu(forms.ModelForm):
+    #Clase que automatiza la creación de formularios de consulta de Usuario en Django.
+    class Meta:
+        model = User
+        fields = ['username',
+                  'first_name',
+                  'last_name',
+                  'email',
+                 ]
+        labels ={
+                'username' : 'username',
+                'first_name' : 'nombre',
+                'last_name' : 'apellido',
+                'email' : 'correo',
+                }
+
+
 
 class frm_reg_usu_pers(forms.ModelForm):
     #clase para la creación de un formulario de registro de información personal de usuario SIGEPI.
