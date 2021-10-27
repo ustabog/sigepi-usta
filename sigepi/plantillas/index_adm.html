@@ -1,13 +1,13 @@
-{% extends 'moduloAdm/base_adm.html' %}
+{% extends 'admSigepi/base_adm.html' %}
   {% block encabezado %}
-    {% include 'moduloAdm/cabeceras/menu1.html' %}
+    {% include 'admSigepi/cabeceras/menu_adm.html' %}
   {% endblock %}
   {% block cuerpo %}
     <div id='main'>
-      {% include 'moduloAdm/widgest/side.html' %}
+      {% include 'admSigepi/widgest/side.html' %}
       <article id="principal">
         {% block contenido %}
-            {% include 'front/cuerpos/login.html' %}
+            {% include 'front/articulos/login.html' %}
         {% endblock %}
       </article>
       <script language="JavaScript" type="text/javascript">

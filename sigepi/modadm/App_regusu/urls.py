@@ -22,10 +22,10 @@ urlpatterns = [
     #from urls modAdm
     #path('editar_usu/<int:pk>/',UsuUpdate.as_view(), name='editarusu'),
     
-    path('sel_usu_cons/', vst_selc_usu_cons.as_view(), name='seleccion_usuario_consulta'),
+    #path('sel_usu_cons/', vst_selc_usu_cons.as_view(), name='seleccion_usuario_consulta'),
     
-    path('infopers/',infoperslList.as_view(), name = 'infopers'),
-    path('crearinf/',infopersCreate.as_view(), name = 'crearinf'),
+    #path('infopers/',infoperslList.as_view(), name = 'infopers'),
+    #path('crearinf/',infopersCreate.as_view(), name = 'crearinf'),
 #     path('editarinf/<int:pk>/',infopersUpdate.as_view(), name='editarinf'),
 #     path('eliminarinf/<int:pk>/',infopersDelete.as_view(), name='eliminarinf')
 # #funciones
