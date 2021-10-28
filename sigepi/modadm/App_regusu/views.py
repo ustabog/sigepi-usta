@@ -70,44 +70,45 @@ class vts_reg_usu_su(CreateView):
     success_url = reverse_lazy('consulta_usuarios')
     success_message = "El usuario fue creado correctamente"
 
-# class infoperslList(ListView): #hereda de listwview
-#     model = usu_inf_pers
-#     #MODIFICADO
-#     template_name = 'infopers.html'
-#     #ORIGINAL
-#     #template_name = 'moduloAdm/usuarios/infopers.html'
+class infoperslList(ListView): #hereda de listwview
+    #información de las personas
+    model = usu_inf_pers
+    #MODIFICADO
+    template_name = 'App_regusu_ls_infopers.html'
+    #ORIGINAL
+    #template_name = 'moduloAdm/usuarios/infopers.html'
 
-# class infopersCree(CreateView):
-#     model = usu_inf_pers  
-#     form_class = frm_reg_usu_pers
-#     template_name = 'moduloAdm/usuarios/crearinfopers.html'
-#     success_url = reverse_lazy('infopers')
+class infopersCree(CreateView):
+    model = usu_inf_pers  
+    form_class = frm_reg_usu_pers
+    template_name = 'App_regusu_frm_crearinfopers.html'
+    success_url = reverse_lazy('infopers')
 
 
-# class infopersCreate(CreateView):
-#     model = usu_inf_pers
-#     form_class = frm_reg_usu_pers
-#     #### Original
-#     #template_name = 'backend/registro_usuario/crearinfopers.html'
-#     template_name = 'registro_usuario/crearinfopers.html'
-#     success_url = reverse_lazy('infopers')
+class infopersCreate(CreateView):
+    model = usu_inf_pers
+    form_class = frm_reg_usu_pers
+    #### Original
+    #template_name = 'backend/registro_usuario/crearinfopers.html'
+    template_name = 'App_regusu_frm_crearinfopers.html'
+    success_url = reverse_lazy('infopers')
 
-#     def form_valid(self, form):
-#         self.object = form.save(commit=False)
-#         self.object.user = self.request.user
-#         self.object.save()
-#         return super(infopersCreate, self).form_valid(form)
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super(infopersCreate, self).form_valid(form)
 
-# class infopersUpdate(UpdateView):
-#     model = usu_inf_pers
-#     form_class = frm_reg_usu_pers
-#     template_name = 'moduloAdm/usuarios/crearinfopers.html'
-#     success_url = reverse_lazy('infopers')
+class infopersUpdate(UpdateView):
+    model = usu_inf_pers
+    form_class = frm_reg_usu_pers
+    template_name = 'App_regusu_frm_crearinfopers.html'
+    success_url = reverse_lazy('infopers')
 
-# class infopersDelete(DeleteView):
-#     model = usu_inf_pers
-#     template_name = 'moduloAdm/usuarios/verificacion.html'
-#     success_url = reverse_lazy('infopers')
+class infopersDelete(DeleteView):
+    model = usu_inf_pers
+    template_name = 'App_regusu_verificacion.html'
+    success_url = reverse_lazy('infopers')
 
 # class Torneo_ListView(ListView):
 #    template_name = 'torneos/torneo_listar.html'
