@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'index_adm.html' %}
 {% block titulo %} Formulario de registro nuevo usuario {% endblock titulo %}
 {% block cuerpo %}
 {% if form.errors %}
@@ -9,6 +9,6 @@
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="registrar">
+    <input type="submit" value="Registrar">
 </form>
 {% endblock cuerpo %}

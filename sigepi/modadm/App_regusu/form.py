@@ -29,10 +29,10 @@ class frm_con_usu(forms.ModelForm):
                   'email',
                  ]
         labels ={
-                'username' : 'username',
-                'first_name' : 'nombre',
-                'last_name' : 'apellido',
-                'email' : 'correo',
+                'username' : 'Username',
+                'first_name' : 'Nombre',
+                'last_name' : 'Apellido',
+                'email' : 'Correo',
                 }
 
 

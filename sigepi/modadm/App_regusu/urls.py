@@ -11,7 +11,7 @@ urlpatterns = [
     #Prueba para el registo de urls
     path('prueba/', prueba ),
     #crear usuario del modulo adm
-    path('creausu/',vts_reg_usu_su.as_view(), name = 'crea_usu'),
+    path('creausu/',vts_reg_usu_su.as_view(), name = 'crea_nvo_usu'),
     path('cons_usus/', vts_ls_usu.as_view(), name='consulta_usuarios'),
 
     #Lista de usuarios
@@ -28,6 +28,11 @@ urlpatterns = [
     path('crearinf/',infopersCreate.as_view(), name = 'crearinf'),
     path('editarinf/<int:pk>/',infopersUpdate.as_view(), name='editarinf'),
 #     path('eliminarinf/<int:pk>/',infopersDelete.as_view(), name='eliminarinf')
+
+    #Direccionar al backend del aplicativo
+    # path('adminSigepi', vst_base_adm, name = 'inicio_admin'),
+
+
 # #funciones
 
 ]

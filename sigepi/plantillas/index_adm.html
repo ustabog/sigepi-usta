@@ -1,13 +1,14 @@
-{% extends 'admSigepi/base_adm.html' %}
+{% extends 'base_adm.html' %}
   {% block encabezado %}
-    {% include 'admSigepi/cabeceras/menu_adm.html' %}
+    {% include 'menu_adm.html' %}
+    
   {% endblock %}
   {% block cuerpo %}
     <div id='main'>
-      {% include 'admSigepi/widgest/side.html' %}
+      {% include 'lado.html' %} 
       <article id="principal">
         {% block contenido %}
-            {% include 'front/articulos/login.html' %}
+          {% include 'login.html' %}
         {% endblock %}
       </article>
       <script language="JavaScript" type="text/javascript">
@@ -18,5 +19,5 @@
     </div>
   {% endblock %}
   {% block pie %}
-    {% include 'front/pies/menu_inf.html' %}
+    {% include 'menu_inf.html' %}
   {% endblock %}
