@@ -196,8 +196,8 @@ class rl_usu_inf_apps_rol(models.Model): #identificar el rol actual del usuario
 
 class discapacidad(models.Model):
     id_disc = models.AutoField(primary_key = True) # identificador de usuario
-    tipo_disca = models.CharField('tipo de discapacidad ', max_length=30, null=False, blank = False)  # número único de identificación personal sin puntos
-    desc_disca = models.CharField('Descripcioroln', max_length=30, null=False, blank = False)  # tipo de Número de identificación personal
+    tipo_disca = models.CharField('Tipo de discapacidad ', max_length=30, null=False, blank = False)  # número único de identificación personal sin puntos
+    desc_disca = models.CharField('Descripción', max_length=30, null=False, blank = False)  # tipo de Número de identificación personal
 
     class Meta:
         verbose_name = 'discapacidad'
@@ -207,7 +207,7 @@ class discapacidad(models.Model):
         return '{}'.format(self.tipo_disca)
 
 class usu_inf_pers(models.Model):
-
+    
     id_usu = models.OneToOneField(User, on_delete=models.CASCADE) # identificador de usuario
     nuip = models.CharField('número único de identificación personal ', max_length=30, null=False, blank = False)  # número único de identificación personal sin puntos
     tipo_nuip = models.IntegerField( choices = TIPO_NUIP_CO, default = 0, null=False, blank = False) # tipo de Número de identificación personal

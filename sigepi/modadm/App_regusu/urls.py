@@ -8,31 +8,25 @@ from .models import *
 
 
 urlpatterns = [
-    #Prueba para el registo de urls
-    path('prueba/', prueba ),
     #crear usuario del modulo adm
     path('creausu/',vts_reg_usu_su.as_view(), name = 'crea_nvo_usu'),
+    #Consulta de usuarios
     path('cons_usus/', vts_ls_usu.as_view(), name='consulta_usuarios'),
-
-    #Lista de usuarios
-    path('ls_mod_usu/',vst_selc_usu_cons.as_view(), name='ls_mod_usu'),
- 
+    #Seleccionar usuario de consulta
+    path('sel_usu_cons/', vst_selc_usu_cons.as_view(), name='seleccion_usuario_consulta'),
 #   #editar usuario de consulta
     path('edi_usu/<int:pk>/',vst_mod_reg_usu.as_view(), name = 'editar_usu'),
     #from urls modAdm
     #path('editar_usu/<int:pk>/',UsuUpdate.as_view(), name='editarusu'),
     
-    #path('sel_usu_cons/', vst_selc_usu_cons.as_view(), name='seleccion_usuario_consulta'),
-    
+    #Lista de información de usuarios
     path('infopers/',infoperslList.as_view(), name = 'infopers'),
+    #Crear información adicional de usuarios
     path('crearinf/',infopersCreate.as_view(), name = 'crearinf'),
+    #Modificar la información de usuarios
     path('editarinf/<int:pk>/',infopersUpdate.as_view(), name='editarinf'),
-#     path('eliminarinf/<int:pk>/',infopersDelete.as_view(), name='eliminarinf')
-
-    #Direccionar al backend del aplicativo
-    # path('adminSigepi', vst_base_adm, name = 'inicio_admin'),
-
-
+    #Eliminar información de usuarios
+    path('eliminarinf/<int:pk>/',infopersDelete.as_view(), name='eliminarinf')
 # #funciones
 
 ]
