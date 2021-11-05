@@ -1,0 +1,30 @@
+{% extends 'backend/base_adm.html' %}
+{% block encabezado %}
+{% include 'backend/cabeceras/menu1.html' %}
+{% endblock %}
+{% block lado %}
+    {% include 'backend/widgest/side_adm.html' %}
+{% endblock lado%}
+{% block cuerpo %}
+    <div id='main'>
+    {% include 'backend/widgest/side_adm.html' %}
+        <article id="principal">
+            {% block contenido %}
+            <form method="post">
+                {% csrf_token %}
+                <h1> Desea eliminar al usuario {{ object }} ?</h1>
+                <button type="submit" name="button"> Confirmar</button>
+                <a href="{% url  'usuarios' %}"> cancelar</a>
+            </form>
+            {% endblock %}
+        </article>
+        <script language="JavaScript" type="text/javascript">
+            $(document).ready(function () {
+                $('.dropdown-toggle').dropdown();
+            });
+        </script>
+    </div>
+{% endblock %}
+{% block pie %}
+{% include 'front/pies/menu_inf.html' %}
+{% endblock %}
