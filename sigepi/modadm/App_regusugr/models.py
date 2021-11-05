@@ -155,11 +155,11 @@ class form_acad_gr(models.Model):
         verbose_name_plural = 'form_acad_gr'
 
 
-#class usugr_inf_acad(models.Model): #ojo dejar o quitar, y pry y prod no las inclui porque no la tengo en modelos
-    # Clase que almacena y procesa la información de actividades académicas y oferta formativa del usuario grupo
+# class usugr_inf_acad(models.Model): #ojo dejar o quitar, y pry y prod no las inclui porque no la tengo en modelos
+#     #Clase que almacena y procesa la información de actividades académicas y oferta formativa del usuario grupo
 #    id_usugr = models.ForeignKey(usugr_inf_gr, on_delete=models.CASCADE, null=False, blank =False)  # identificador único de grupo
-    #prod = [] #Listado de id de productos de investigación vinculados al id usugr
-    #pry_inv = [] #Listado de id de proyectos de investigación vinculados al id usugr
+#     prod = [] #Listado de id de productos de investigación vinculados al id usugr
+#     pry_inv = [] #Listado de id de proyectos de investigación vinculados al id usugr
 
 #    class Meta:
 #        verbose_name = 'usugr_inf_acad'
