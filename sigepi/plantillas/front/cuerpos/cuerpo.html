@@ -1,0 +1,9 @@
+{% load static %}
+
+{% block contenido%}
+<div class="article" id="art_ppal">
+    {% block articulo %}
+        {% include '../articulos/login.html' %}
+    {% endblock articulo %}
+</div>
+{% endblock %}

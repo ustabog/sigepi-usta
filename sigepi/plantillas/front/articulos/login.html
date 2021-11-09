@@ -1,0 +1,29 @@
+{% load static %}
+
+{% block articulo %}
+    {% if form.errors %}
+      <p>Tu usuario y/o contraseña son incorrectos. por favor intenta de nuevo.</p>
+    {% endif %}
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Tu ceunta no tiene acceso a esta página. Para continuar,
+            por favor ingresar con una cuenta con estos privilegios.</p>
+            {% else %}
+            <p>Por favor ingresa o regístrate para poder ver esta página.</p>
+            {% endif %}
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div>
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+        </div>
+        <div>
+            <td>{{ form.password.label_tag }}</td>
+            <td>{{ form.password }}</td>
+        </div>
+        <div>
+           <input type="submit" value="Ingresar" />
+           <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+{% endblock articulo %}

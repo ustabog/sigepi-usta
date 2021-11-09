@@ -1,0 +1,22 @@
+{% extends 'base_adm.html' %}
+  {% block encabezado %}
+    {% include 'menu_adm.html' %}
+  {% endblock %}
+  {% block cuerpo %}
+    <div id='main'>
+      {% include 'lado.html' %} 
+      <article id="principal">
+        {% block contenido %}
+          {% include 'login.html' %}
+        {% endblock %}
+      </article>
+      <script language="JavaScript" type="text/javascript">
+        $(document).ready(function () {
+          $('.dropdown-toggle').dropdown();
+        });
+      </script>
+    </div>
+  {% endblock %}
+  {% block pie %}
+    {% include 'menu_inf.html' %}
+  {% endblock %}

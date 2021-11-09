@@ -1,0 +1,55 @@
+{% load static %}
+{% csrf_token %}
+
+{# block cabeza #}
+<head>
+    <link rel="stylesheet" href="{% static 'css/pie.css' %}">
+</head>
+{# endblock cabeza #}
+
+{% block pie %}
+<div >
+    <ul>
+        <li >
+            <a  href="#proyectos">
+                <div>
+                    <i aria-hidden="false"></i>
+                </div>
+                <div  data-text="Proyectos">Proyectos</div>
+            </a>
+        </li>
+        <li>
+            <a  href="#noticias">
+                <div>
+                    <i aria-hidden="true"></i>
+                </div>
+                <div data-text="Noticias">Noticias</div>
+            </a>
+        </li>
+        <li>
+            <a href="#agenda">
+                <div>
+                    <i aria-hidden="true"></i>
+                </div>
+                <div data-text="Agenda">Agenda</div>
+            </a>
+        </li>
+        <li>
+            <a href="#seguimiento">
+                <div>
+                    <i aria-hidden="true"></i>
+                </div>
+                <div data-text="Seguimiento">Seguim.</div>
+            </a>
+        </li>
+        <li >
+            <a href="#lado_ppal" id="menu-toggle">
+                <div >
+                    <i  aria-hidden="true"></i>
+                </div>
+                <div  data-text="Menú">Menú</div>
+            </a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

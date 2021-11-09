@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de usuarios {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado usuarios</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>nuip</th>
+            <th>tipo</th>
+            <th>nombres</th>
+            <th>apellidos</th>
+            <th>nal</th>
+            <th>fecha nacimiento</th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for usu_inf_pers in  object_list %}
+        <tr>
+          <td>{{ usu_inf_pers.nuip }}</td>
+          <td>{{ usu_inf_pers.tipo_nuip }}</td>
+          <td>{{ usu_inf_pers.nombres }}</td>
+          <td>{{ usu_inf_pers.apelllidos }}</td>
+          <td>{{ usu_inf_pers.nal }}</td>
+          <td>{{ usu_inf_pers.fch_naci }}</td>
+          <td>{{ usu_inf_pers.gene }}</td>
+          <td>{{ usu_inf_pers.ocup }}</td>
+          <td>{{ usu_inf_pers.discap }}</td>
+          <td><a href="{% url 'editarinfopers' usu_inf_pers.id  %}"> Editar </a> <a href="{% url 'eliminarinfopers' usu_inf_pers.id  %} "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+      {% endblock cuerpo %}
+  </body>
+</html>

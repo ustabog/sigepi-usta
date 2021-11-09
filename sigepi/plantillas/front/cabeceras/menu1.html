@@ -1,0 +1,27 @@
+{% extends 'front/base.html' %}
+{% load static %}
+{% block menuppal %}
+<li class="nav-item">
+    <a href="temp" class="nav-link" target="#cuerpo_ppal">Institucional</a>
+</li>
+<li class="nav-item">
+    <a href="" class="nav-link" target="#cuerpo_ppal">Servicios</a>
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" target="cuerpo_ppal">
+        Proyectos
+    </a>
+    <div class="dropdown-menu">
+        <a href="/oppmg.html" class="dropdown-item" target="cuerpo_ppal">OPPMG</a>
+        <a href="" class="dropdown-item">DPP</a>
+        <a href="" class="dropdown-item">Con-Ciencia Política</a>
+        <a href="" class="dropdown-item">Sororidades</a>
+    </div>
+</li>
+<li class="nav-item">
+    <a href="" class="nav-link" target="cuerpo_ppal">Publicaciones</a>
+</li>
+<li class="nav-item">
+    <a href="" class="nav-link" target="cuerpo_ppal">Social</a>
+</li>
+{% endblock menuppal%}

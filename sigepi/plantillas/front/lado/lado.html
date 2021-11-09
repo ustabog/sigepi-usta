@@ -1,0 +1,43 @@
+{% load static %}
+{% block cabeza_lado %}
+    <link rel="stylesheet" href="{% static 'css/lado.css' %}">
+{% endblock cabeza_lado%}
+
+{% block lado %}
+<div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">Menú Principal</div>
+    <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">Usuario</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Proyectos</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Grupos</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Instituciones</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">herramientas</a>
+        <a href="serv" class="list-group-item list-group-item-action bg-light">Ingresar</a>
+        <a href="registro" class="list-group-item list-group-item-action bg-light">Registro</a>
+        <a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
+            <span class="card"></span>
+            <a href="Registro" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
+    </div>
+    <div class="card">
+        <div class="card-header">Tablero de Control</div>
+        <div class="card-body">
+            <div class="alert alert-success" role="alert">
+                <a class="btn btn-outline-info" href="cerrar" id="contenido">Cerrar</a>
+                {% if user.is_authenticated %}
+                <p> Bienvenido {{ request.user.username }} !!!</p>
+                <div class="alert alert-success" role="alert">
+                    <ul>
+                        <li><a href="#">Diseñar Proyecto</a></li>
+                        <li><a href="#">Registrar Proyectos</a></li>
+                        <li><a href="#">Crear Grupo</a></li>
+                        <li><a href="#">Crear Producto de Inv.</a></li>
+                        <li><a href="#">Crear Proceso de Inv.</a></li>
+                        <li><a href="#">Administrar Actividades</a></li>
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock lado %}

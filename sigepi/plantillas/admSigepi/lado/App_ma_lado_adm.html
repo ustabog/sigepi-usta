@@ -1,0 +1,49 @@
+{% load static %}
+{% block lado %}
+  <head>
+    <link rel="stylesheet" href="{% static 'css/lado.css' %}">
+  </head>
+  <div id="wrapper" class="activo">
+    <div id="sidebar-wrapper">
+        <ul id="sidebar-nav">
+            <li id="sidebar-brand">
+                <a href="serv">Ingresar</a>
+            </li>
+            <li id="sidebar-brand" class="sidebar-brand">
+                <a href="registro">Registro</a>
+            </li>
+            <li id="sidebar-brand">
+                <a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
+                  <span class="card"></span>
+                </a>
+            </li>
+            <li id="sidebar-brand">
+                <a href="Registro" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
+            </li>
+                <div class="card">
+                <div class="card-header">Tablero de Control</div>
+                <div class="card-body">
+
+                    <div class="alert alert-success" role="alert">
+                        <a class="btn btn-outline-info" href="regis" id="contenido">Login</a>
+                        <a class="btn btn-outline-info" href="cerrar" id="contenido">Cerrar</a>
+                        <a class="btn btn-outline-info" href="{% url 'crear_usu' %}">Register</a>
+                        {% if user.is_authenticated %}
+                          <p> Bienvenido {{ request.user.username }} !!!</p>
+                            <div class="alert alert-success" role="alert">
+                              <ul>
+                                  <li><a href="usuarios">Administrar Usuarios</a></li>
+                                  <li><a href="">Administrar Grupos</a></li>
+                                  <li><a href="">Administrar Institución</a></li>
+                                  <li><a href="">Administrar Patrocinadores</a></li>
+                                  <li><a href="">Administrar Beneficiarios</a></li>
+                              </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+              </div>
+            </ul>
+        </div>
+      </div>
+{% endblock %}

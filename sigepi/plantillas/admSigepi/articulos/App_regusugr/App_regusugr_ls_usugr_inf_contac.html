@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de roles {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado informacion de grupo</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>grupo</th>
+            <th>identificativo telefónico de país</th>
+            <th>Número de telefono</th>
+            <th>Número celular  </th>
+            <th>dirección de correo</th>
+            <th>Número de código postal </th>
+            <th>Listado de Horario</th>
+            <th>dirección de página web</th>
+            <th>url de la imagen</th>
+            <th> Dirección de Oficina</th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for usugr_inf_contac in  object_list %}
+        <tr>
+          <td>{{ usugr_inf_contac.id_usugr }}</td>
+          <td>{{ usugr_inf_contac.ind_nal }}</td>
+          <td>{{ usugr_inf_contac.tel }}</td>
+          <td>{{ usugr_inf_contac.cel }}</td>
+          <td>{{ usugr_inf_contac.email }}</td>
+          <td>{{ usugr_inf_contac.cod_post }}</td>
+          <td>{{ usugr_inf_contac.ls_hr }}</td>
+          <td>{{ usugr_inf_contac.web }}</td>
+          <td>{{ usugr_inf_contac.dir_offi }}</td>
+          <td><a href="{% url 'editarusugr_inf_contac' usugr_inf_contac.id %}"> Editar </a> <a href="{% url 'eliminarusugr_inf_contac' usugr_inf_contac.id %} "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endblock cuerpo %}
+  </body>
+</html>

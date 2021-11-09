@@ -1,0 +1,49 @@
+{% load static %}
+
+{% block cabeza_cabecera %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+{% endblock cabeza_cabecera%}
+
+{% block encabezado %}
+        <div class="menu">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="col-sm">
+                    <a href="inicio" class="navbar-brand" >
+                        <img src="{% static 'img/buho01.png' %}" alt="Logo" style="height:50px;"></img>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#inicio">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="column">
+                    <div class="collapse navbar-collapse" id="primer">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a href="inicio" class="nav-link" target="#cuerpo_ppal">Inicio</a>
+                            </li>
+                            {% block menuppal %}
+
+                            {% endblock menuppal %}
+                            <form class="form-inline">
+                                <input type="text" class="form-control-sm" placeholder="Buscar">
+                                <button type="button" class="btn btn-outline-secondary">
+                                Buscar
+                                </button>
+                            </form>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+{% endblock encabezado%}
+
+
+{% block script %}
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                $('.dropdown-toggle').dropdown();
+            });
+        </script>
+{% endblock script %}
