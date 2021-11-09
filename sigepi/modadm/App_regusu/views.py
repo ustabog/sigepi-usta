@@ -23,7 +23,7 @@ from modadm.App_regusu.models import *
 class vts_reg_usu_su(CreateView):
     #Clase que devuelve un formulario para registro de usuario
     form_class = frm_con_usu
-    template_name = 'frm_nvo_usu.html'
+    template_name = 'App_regusu_frm_nvo_usu.html'
     success_url = reverse_lazy('consulta_usuarios')
     success_message = "El usuario fue creado correctamente"
 
@@ -62,7 +62,7 @@ class vst_mod_reg_usu(UpdateView):
 class vts_reg_usu_su(CreateView):
     #Clase que devuelve un formulario para registro de usuario
     form_class = frm_con_usu
-    template_name = 'frm_nvo_usu.html'
+    template_name = 'App_regusu_frm_nvo_usu.html'
     success_url = reverse_lazy('consulta_usuarios')
     success_message = "El usuario fue creado correctamente"
 

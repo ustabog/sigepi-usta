@@ -3,22 +3,32 @@ from django.contrib.auth.models import User
 from modadm.App_modadm.models import *
 from modadm.App_regusu.models import *
 from modadm.App_regusugr.models import *
+
 #Clases de la Aplicación Registro de Instituciones
 ###############################################################
+
+ROL_APP = [
+    (0,'Administrador de aplicación'),
+    (1,'Invitado Instución'),
+    (2,'Administrador de grupo'),
+    (3,'Otro'),
+    ]
+
 
 class usui(models.Model):
     # Clase que almacena y procesa la información de un usuario institucional
     id_usuinst = models.AutoField(primary_key = True) # Identificador único del usuario institucionnal
     passinst  = models.CharField('Contraseña ', null = False, blank = False, max_length = 15) # contraseña para el usuario institucional (diferente a la del usuario del sistema)
     id_usu_admin = models.ForeignKey(User, on_delete=models.CASCADE, null= False, blank = False) #Identificador del usuario administrador (debe estar registrado y se le asignan permisos de administración de app_reg_ins)
-    id_rol_app = models.ForeignKey(rol, on_delete = models.CASCADE, null= False, blank = False) # Identificador del Rol de Usuario Institucional dentro de la app_reg_ins
+    id_rol_app = models.ForeignKey(rol, on_delete = models.CASCADE, null= False, blank = False)
+    #id_rol_app = models.ForeignKey(rol, on_delete = models.CASCADE, null= False, blank = False)
+    #  # Identificador del Rol de Usuario Institucional dentro de la app_reg_ins
     fch_regi = models.DateField('fecha de registro de usurio: ', auto_now = False) # fecha de registro de usurio
     activo = models.BooleanField(' estatus del usuario activo', default = True) # estatus del usuario activo (True) inactivo (False)
 
     class Meta:
         verbose_name = 'usui'
         verbose_name_plural = 'usuis'
-
 
 class usui_inf_apps(models.Model):
     # Clase que almacena y procesa la información de la aplicaciones de usuario institucional y sus respectivos roles

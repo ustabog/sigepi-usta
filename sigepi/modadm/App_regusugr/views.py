@@ -12,7 +12,7 @@ class vts_reg_usugr(CreateView):
     #Clase que devuelve un formulario para registro de usuario grupo
     form_class = frm_con_usugr
     template_name = 'App_regusugr_frm_creargrupo.html' 
-    success_url = reverse_lazy('cons_usugr')
+    success_url = reverse_lazy('ls_mod_usugr')
     success_message = "El usuario fue creado correctamente"
 
 ###############Vista modulo de consulta##################
@@ -34,5 +34,5 @@ class vts_modf_usugr(UpdateView):
     #clase para modificar grupos
     model = usugr
     form_class = frm_con_usugr
-    template_name = 'nvo_usugr_prb.html'
+    template_name = 'App_regusugr_nvo_usugr.html'
     success_url = reverse_lazy('cons_usugr')

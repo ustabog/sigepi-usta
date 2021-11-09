@@ -1,7 +1,7 @@
 from django.urls import path, include
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import views as auth_views
-from rest_framework.routers import DefaultRouter
+#from rest_framework.routers import DefaultRouter
 from modadm.App_modadm.views import *
 from modadm.App_modadm.class_view import *
 

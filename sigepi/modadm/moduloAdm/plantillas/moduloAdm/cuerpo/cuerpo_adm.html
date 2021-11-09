@@ -1,0 +1,27 @@
+{% extends 'moduloAdm/base_adm.html' %}
+{% block cuerpo %}
+  <body>
+       <div class="content" id="contenido">
+          <p>ya estoy logeado </p>
+          <h1> listado Roles</h1>
+          <table border="2">
+              <thead>
+                <tr>
+                  <th>titulo</th>
+                  <th>descripcion</th>
+                  <th>opcion</th>
+                </tr>
+              </thead>
+            <tbody>
+              {% for rl_usu_inf_apps_rol in rolesusu %}
+              <tr>
+                <td>{{ rl_usu_inf_apps_rol.id_usu }}</td>
+                <td>{{ rl_usu_inf_apps_rol.rol_act }}</td>
+                <td><a href=""> elegir </a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+       </div>
+  </body>
+{% endblock %}
