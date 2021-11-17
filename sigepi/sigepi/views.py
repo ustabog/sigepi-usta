@@ -33,7 +33,7 @@ class front():
     #Clase que procesa las vistas del front para usuarios sin registrar
     def vst_inicio(self, solicitud):
         #función para plantilla de inicio
-        plt=loader.get_template('index.html')
+        plt=loader.get_template('index_front.html')
         ctx=Context()
         respuesta=plt.render()
         return HttpResponse(respuesta)
@@ -45,7 +45,7 @@ class front():
 
     def vst_raiz(self, solicitud):
         #función para plantilla de inicio sin extensión
-        plt=loader.get_template('index.html')
+        plt=loader.get_template('index_front.html')
         ctx=Context()
         respuesta=plt.render()
         return HttpResponse(respuesta)
@@ -60,11 +60,11 @@ class front():
                 if usuario is not None:
                     login(solicitud, usuario)
                     messages.success(solicitud,F"bienvenido {nombreusu}")
-                    return render(solicitud,'indexprueba.html')
+                    return render(solicitud,'index_front.html')
                 else:
                     messages.success(solicitud,F"los datos son incorrectos")
-        form = AuthenticationForm()
-        return render(solicitud,'registro/ingreso.html', {"form": form} )
+        form = AuthenticationForm('frm_ingreso.html')
+        return render(solicitud,'frm_ingreso.html', {"form": form} )
 
 
     def vst_indexprueba(self, solicitud):

@@ -4,10 +4,12 @@
   {% endblock %}
   {% block cuerpo %}
     <div id='main'>
-      {% include 'lado.html' %} 
+      {% block lado %}
+        {% include 'lado.html' %} 
+      {% endblock %}
       <article id="principal">
         {% block contenido %}
-          {% include 'login.html' %}
+          {% include 'login_adm.html' %}
         {% endblock %}
       </article>
       <script language="JavaScript" type="text/javascript">

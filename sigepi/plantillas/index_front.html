@@ -1,4 +1,4 @@
-{% extends 'base_adm.html' %}
+{% extends 'base_front.html' %}
 {% load static %}
 
 {% block cabeza %}
@@ -18,10 +18,9 @@
 {% endblock lado%}
 
 {% block cuerpo %}
-    {% include 'cuerpo.html'%}
+    {% include 'cuerpo_front.html'%}
 {% endblock cuerpo %}
 
-
 {% block pie %}
-    {% include 'front/pies/menu_inf.html'%}
+    {% include 'menu_inf.html'%}
 {% endblock pie%}

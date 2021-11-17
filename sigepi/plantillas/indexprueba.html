@@ -1,4 +1,4 @@
-{% extends 'front/base.html' %}
+{% extends 'base_front.html' %}
 {% load static %}
 
 {% block cabeza %}
@@ -10,11 +10,11 @@
 {% endblock titulo%}
 
 {% block encabezado %}
-    {% include 'front/cabeceras/menuprueba.html'%}
+    {% include 'menu.html'%}
 {% endblock encabezado%}
 
 {% block lado %}
-    {% include 'front/lado/ladoprueba.html' %}
+    {% include 'lado.html' %}
 {% endblock lado%}
 
 {% block cuerpo %}
@@ -22,5 +22,5 @@
 {% endblock cuerpo %}
 
 {% block pie %}
-    {% include 'front/pies/menu_infprueba.html'%}
+    {% include 'menu_inf.html'%}
 {% endblock pie%}

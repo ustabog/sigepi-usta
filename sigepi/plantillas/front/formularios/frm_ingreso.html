@@ -1,4 +1,4 @@
-{% extends 'indexprueba.html' %}
+{% extends 'index_front.html' %}
 {% block titulo %} Formulario de Ingreso {% endblock titulo %}
 {% block cuerpo %}
 {% if form.errors %}
@@ -16,9 +16,8 @@
             </div>
         <div>
             <input type="submit" value="ingresar" />
-
         </div>
     </form>
-{# Assumes you setup the password_reset view in your URLconf #}
-    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+{# Assumes you setup the password_reset view in your URLconf #} 
+     {#<!--    <p><a href="{% url 'password_reset' %}">Lost password?</a></p> -->#}    
 {% endblock cuerpo %}
