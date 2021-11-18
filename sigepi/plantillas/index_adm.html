@@ -2,15 +2,18 @@
   {% block encabezado %}
     {% include 'menu_adm.html' %}
   {% endblock %}
+
+  {% block lado %}
+    {% include 'lado_adm.html' %} 
+  {% endblock %}
+
+  {% block contenido %}
+    {% include 'login_adm.html' %}
+  {% endblock %}  
+
   {% block cuerpo %}
     <div id='main'>
-      {% block lado %}
-        {% include 'lado.html' %} 
-      {% endblock %}
       <article id="principal">
-        {% block contenido %}
-          {% include 'login_adm.html' %}
-        {% endblock %}
       </article>
       <script language="JavaScript" type="text/javascript">
         $(document).ready(function () {

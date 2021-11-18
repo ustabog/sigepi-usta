@@ -45,7 +45,7 @@ class ls_rol_usu(ListView):
     # clase para listar roles de usuarios del sistema
     model = usu_inf_apps
     form_class = frm_rol_usu
-    template_name = 'front/herramientas/listarrol.html'
+    template_name = 'listarrol.html'
     success_url = reverse_lazy('cn_usu')
     success_message = 'listado cargado correctamente'
 
@@ -53,5 +53,5 @@ class mod_usu(UpdateView):
     model = User
     form_class = frm_con_usu
     template_name = 'sl_usu.html'
-    success_url = reverse_lazy('mod_usu_prb.html')
+    success_url = reverse_lazy('mod_usu.html')
     success_message = 'modificado correctamente'

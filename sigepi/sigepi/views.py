@@ -77,7 +77,7 @@ class front():
     def vst_cerrar(self, solicitud):
         logout(solicitud)
         messages.success(solicitud,"tu sesión ha cerrado ")
-        return render(solicitud,'indexprueba.html')
+        return render(solicitud,'index_front.html')
 
 class front_prb():
     #Clase que procesa las vistas del front para usuarios sin registrar

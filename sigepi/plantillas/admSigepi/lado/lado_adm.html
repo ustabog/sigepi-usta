@@ -27,7 +27,7 @@
                     <div class="alert alert-success" role="alert">
                         <a class="btn btn-outline-info" href="regis" id="contenido">Login</a>
                         <a class="btn btn-outline-info" href="cerrar" id="contenido">Cerrar</a>
-                        <a class="btn btn-outline-info" href="{% url 'crear_usu' %}">Register</a>
+                        <a class="btn btn-outline-info" href="{% url 'crea_nvo_usu' %}">Register</a>
                         {% if user.is_authenticated %}
                           <p> Bienvenido {{ request.user.username }} !!!</p>
                             <div class="alert alert-success" role="alert">

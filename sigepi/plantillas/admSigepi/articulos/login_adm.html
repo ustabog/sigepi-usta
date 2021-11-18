@@ -12,7 +12,7 @@
             <p>Por favor ingresa o regístrate para poder ver esta página.</p>
             {% endif %}
         {% endif %}
-        <form method="post" action="{% url 'login' %}">
+        <form method="post" action="{% url 'login_adm' %}">
         {% csrf_token %}
         <div>
             <td>{{ form.username.label_tag }}</td>
