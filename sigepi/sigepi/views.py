@@ -26,9 +26,6 @@ from django.contrib import messages
 from .form import *
 from modadm.App_regusu.models import usu_inf_apps
 
-#Librerías de aplicaciones
-#from .acceso import *
-
 class front():
     #Clase que procesa las vistas del front para usuarios sin registrar
     def vst_inicio(self, solicitud):
@@ -51,6 +48,7 @@ class front():
         return HttpResponse(respuesta)
 
     def vst_ingreso(self, solicitud):
+        #Función que redirige al usuario si puede ingresar
         if solicitud.method == "POST":
             form = AuthenticationForm(solicitud, data=solicitud.POST)
             if form.is_valid():
@@ -63,9 +61,8 @@ class front():
                     return render(solicitud,'index_front.html')
                 else:
                     messages.success(solicitud,F"los datos son incorrectos")
-        form = AuthenticationForm('frm_ingreso.html')
-        return render(solicitud,'frm_ingreso.html', {"form": form} )
-
+        form = AuthenticationForm()
+        return render(solicitud,'ingreso.html', {"form": form} )
 
     def vst_indexprueba(self, solicitud):
         #función para plantilla de inicio
@@ -83,7 +80,7 @@ class front_prb():
     #Clase que procesa las vistas del front para usuarios sin registrar
     def vst_inicio(self, solicitud):
         #función para plantilla de inicio
-        plt=loader.get_template('index.html')
+        plt=loader.get_template('index_front.html')
         ctx=Context()
         respuesta=plt.render()
         return HttpResponse(respuesta)
@@ -95,7 +92,7 @@ class front_prb():
 
     def vst_raiz(self, solicitud):
         #función para plantilla de inicio sin extensión
-        plt=loader.get_template('index.html')
+        plt=loader.get_template('index_front.html')
         ctx=Context()
         respuesta=plt.render()
         return HttpResponse(respuesta)
@@ -111,16 +108,16 @@ class front_prb():
                 if usuario is not None:
                     login(solicitud, usuario)
                     messages.success(solicitud,F"bienvenido {nombreusu}")
-                    return render(solicitud,'indexprueba.html')
+                    return render(solicitud,'index_front.html')
                 else:
                     messages.success(solicitud,F"los datos son incorrectos")
         form = AuthenticationForm()
-        return render(solicitud,'registro/ingreso.html', {"form": form} )
+        return render(solicitud,'ingreso.html', {"form": form} )
 
 
     def vst_indexprueba(self, solicitud):
         #función para plantilla de inicio
-        plt=loader.get_template('indexprueba.html')
+        plt=loader.get_template('index_front.html')
         #ctx=Context()
         respuesta=plt.render()
         return HttpResponse(respuesta)
@@ -128,7 +125,7 @@ class front_prb():
     def vst_cerrar(self, solicitud):
         logout(solicitud)
         messages.success(solicitud,"tu sesión ha cerrado ")
-        return render(solicitud,'indexprueba.html')
+        return render(solicitud,'index_front.html')
 
 
 class ls_rolusu():

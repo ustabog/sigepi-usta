@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+#Librerías de sistema
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -31,8 +32,8 @@ from modadm.App_modadm.class_view import *
 from modcons.App_cons.views import *
 from modadm.App_regusu.urls import *
 from modadm.App_regusugr.urls import *
-from .views import *
 
+from .views import *
 
 if settings.DEBUG:
     urlpatterns += [
@@ -54,14 +55,17 @@ urlpatterns = [
     
     #direcciones del front (finales en producción)
     path('',front().vst_raiz),
-    path('inicio',front().vst_inicio),
+    path('inicio',front().vst_inicio, name = 'inicio'),
+    path('ingreso',front().vst_ingreso, name = 'ingreso'),
     path('cerrar', front().vst_cerrar, name = 'cerrar'),
     path('doc', front().vst_doc, name ='doc'),
-    path('ingreso', front().vst_ingreso, name ='ingreso'),
 
     #consultas globales
     #path('conusus', vts_ls_usu.as_view(), name='consulta_usuarios'),
 
+    #Direcciones del backend Django
+    path('serv/', admin.site.urls),
+    path('accounts', include('django.contrib.auth.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

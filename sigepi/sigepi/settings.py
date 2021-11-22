@@ -120,8 +120,8 @@ TEMPLATES = [
             BASE_DIR / 'plantillas/front/formularios',
             BASE_DIR / 'plantillas/front/herramientas',
             BASE_DIR / 'plantillas/front/lado',
-            BASE_DIR / 'plantillas/fron/pies',
-            BASE_DIR / 'plantillas/fron/widgets',
+            BASE_DIR / 'plantillas/front/pies',
+            BASE_DIR / 'plantillas/front/widgets',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

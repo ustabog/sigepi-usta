@@ -6,13 +6,13 @@
     {% endif %}
     {% if next %}
         {% if user.is_authenticated %}
-            <p>Tu cuenta no tiene acceso a esta página. Para continuar,
+            <p>Tu ceunta no tiene acceso a esta página. Para continuar,
             por favor ingresar con una cuenta con estos privilegios.</p>
             {% else %}
-            <p>Por favor ingresa o regístrate para poder visitar esta página.</p>
+            <p>Por favor ingresa o regístrate para poder ver esta página.</p>
             {% endif %}
         {% endif %}
-        
+        <form method="post" action="{% url 'login_front' %}">
         {% csrf_token %}
         <div>
             <td>{{ form.username.label_tag }}</td>
