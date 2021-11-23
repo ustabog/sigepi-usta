@@ -61,8 +61,10 @@ class front():
                     return render(solicitud,'index_front.html')
                 else:
                     messages.success(solicitud,F"los datos son incorrectos")
+            else: 
+                return HttpResponse("Los datos son incorrectos")
         form = AuthenticationForm()
-        return render(solicitud,'ingreso.html', {"form": form} )
+        return render(solicitud,'frm_ingreso.html', {"form": form} )
 
     def vst_indexprueba(self, solicitud):
         #función para plantilla de inicio
