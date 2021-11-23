@@ -13,18 +13,27 @@
         <a href="#" class="list-group-item list-group-item-action bg-light">Grupos</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Instituciones</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">herramientas</a>
-        <a href="ingreso" class="list-group-item list-group-item-action bg-light">Ingresar</a>
-        <a href="registro" class="list-group-item list-group-item-action bg-light">Registro</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Ingresar</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Registro</a>
         <a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
             <span class="card"></span>
             <a href="Registro" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
     </div>
     <div class="card">
         <div class="card-header">Tablero de Control</div>
+        {% if not user.is_authenticated %}
+        <div class="card-body">
+            <div class="alert alert-success" role="alert">
+                <a class="btn btn-outline-info" href="ingreso" id="contenido">Ingresar</a>
+                <a class="btn btn-outline-info" href="registro" id="contenido">Registrarse</a>        
+            </div>
+        </div>
+        {% endif %}
+        {% if user.is_authenticated %}
         <div class="card-body">
             <div class="alert alert-success" role="alert">
                 <a class="btn btn-outline-info" href="cerrar" id="contenido">Cerrar</a>
-                {% if user.is_authenticated %}
+                
                 <p> Bienvenido {{ request.user.username }} !!!</p>
                 <div class="alert alert-success" role="alert">
                     <ul>
@@ -36,9 +45,10 @@
                         <li><a href="#">Administrar Actividades</a></li>
                     </ul>
                 </div>
-                {% endif %}
+                
             </div>
         </div>
+        {% endif %}
     </div>
 </div>
 {% endblock lado %}

@@ -62,64 +62,13 @@ class front():
                 else:
                     messages.success(solicitud,F"los datos son incorrectos")
             else: 
-                return HttpResponse("Los datos son incorrectos")
+                messages.success(solicitud,F"los datos son incorrectos")
         form = AuthenticationForm()
         return render(solicitud,'frm_ingreso.html', {"form": form} )
 
     def vst_indexprueba(self, solicitud):
         #función para plantilla de inicio
         plt=loader.get_template('indexprueba.html')
-        #ctx=Context()
-        respuesta=plt.render()
-        return HttpResponse(respuesta)
-
-    def vst_cerrar(self, solicitud):
-        logout(solicitud)
-        messages.success(solicitud,"tu sesión ha cerrado ")
-        return render(solicitud,'index_front.html')
-
-class front_prb():
-    #Clase que procesa las vistas del front para usuarios sin registrar
-    def vst_inicio(self, solicitud):
-        #función para plantilla de inicio
-        plt=loader.get_template('index_front.html')
-        ctx=Context()
-        respuesta=plt.render()
-        return HttpResponse(respuesta)
-
-    def vst_doc(self, solicitud):
-        #función para plantilla de inicio de al documentación del sistema
-        respuesta='Documentación del sistema'
-        return HttpResponse(respuesta)
-
-    def vst_raiz(self, solicitud):
-        #función para plantilla de inicio sin extensión
-        plt=loader.get_template('index_front.html')
-        ctx=Context()
-        respuesta=plt.render()
-        return HttpResponse(respuesta)
-
-    def vst_ingreso(self, solicitud):
-        #Función que redirige al usuario si puede ingresar
-        if solicitud.method == "POST":
-            form = AuthenticationForm(solicitud, data=solicitud.POST)
-            if form.is_valid():
-                nombreusu = form.cleaned_data.get("username")
-                password = form.cleaned_data.get("password")
-                usuario = authenticate(solicitud, username = nombreusu, password = password)
-                if usuario is not None:
-                    login(solicitud, usuario)
-                    messages.success(solicitud,F"bienvenido {nombreusu}")
-                    return render(solicitud,'index_front.html')
-                else:
-                    messages.success(solicitud,F"los datos son incorrectos")
-        form = AuthenticationForm()
-        return render(solicitud,'ingreso.html', {"form": form} )
-
-
-    def vst_indexprueba(self, solicitud):
-        #función para plantilla de inicio
-        plt=loader.get_template('index_front.html')
         #ctx=Context()
         respuesta=plt.render()
         return HttpResponse(respuesta)
