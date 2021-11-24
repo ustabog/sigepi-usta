@@ -57,12 +57,12 @@ class front():
                 usuario = authenticate(solicitud, username = nombreusu, password = password)
                 if usuario is not None:
                     login(solicitud, usuario)
-                    messages.success(solicitud,F"bienvenido {nombreusu}")
+                    messages.success(solicitud,F"Bienvenido {nombreusu}")
                     return render(solicitud,'index_front.html')
                 else:
-                    messages.success(solicitud,F"los datos son incorrectos")
+                    messages.success(solicitud,F"Los datos son incorrectos")
             else: 
-                messages.success(solicitud,F"los datos son incorrectos")
+                messages.success(solicitud,F"Los datos son incorrectos")
         form = AuthenticationForm()
         return render(solicitud,'frm_ingreso.html', {"form": form} )
 

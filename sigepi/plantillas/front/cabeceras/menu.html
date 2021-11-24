@@ -15,22 +15,40 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
-                <div class="column">
-                    <div class="collapse navbar-collapse" id="primer">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a href="inicio" class="nav-link" target="#cuerpo_ppal">Inicio</a>
-                            </li>
-                            {% block menuppal %}
-
-                            {% endblock menuppal %}
-                            <form class="form-inline">
-                                <input type="text" class="form-control-sm" placeholder="Buscar">
-                                <button type="button" class="btn btn-outline-secondary">
-                                Buscar
-                                </button>
-                            </form>
-                        </ul>
+                <div class="menu">
+                    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+                        <div class="collapse navbar-collapse" id="primer">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a href="#" class="nav-link " target="#cuerpo_ppal">Inicio</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a href="inicio" class="nav-link " target="#cuerpo_ppal">Usuario</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a href="#" class="nav-link " target="#cuerpo_ppal">Proyectos</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a href="#" class="nav-link " target="#cuerpo_ppal">Grupos</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a href="#" class="nav-link " target="#cuerpo_ppal">Instituciones</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a href="#" class="nav-link " target="#cuerpo_ppal">Herramientas</a>
+                                </li>
+                                
+                                {% block menuppal %}
+    
+                                {% endblock menuppal %}
+                                <form class="form-inline">
+                                    <input type="text" class="form-control-sm" placeholder="Buscar">
+                                    <button type="button" class="btn btn-outline-secondary">
+                                    Buscar
+                                    </button>
+                                </form>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </nav>
