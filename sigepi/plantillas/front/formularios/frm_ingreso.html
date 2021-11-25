@@ -7,25 +7,20 @@
     <div class="container">
         <div class=" m-4 d-flex justify-content-center">
             <form method="post" action="">
-                {% csrf_token %}
-                <div class="col-md-8">
-                    <div class="">
-                        <td>{{ form.username.label_tag }}</td>
-                        <td>{{ form.username }}</td>
+                {% if user.is_authenticated %}
+                
+                {% else %} 
+                    <div class="col-md-8">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" name="submit"> 
+                        {# Assumes you setup the password_reset view in your URLconf #} 
+                        {% if form.errors %}
+                            <p>El usuario no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+                        {% endif %}
+                        <p><a href="{% url 'password_reset' %}">Lost password?</a></p> 
                     </div>
-                    <div>
-                        <td>{{ form.password.label_tag }}</td>
-                        <td>{{ form.password }}</td>
-                    </div>
-                    <div>
-                        <input type="submit" value="Ingresar" />
-                    </div>
-                    {# Assumes you setup the password_reset view in your URLconf #} 
-                    {% if form.errors %}
-                        <p>El usuario no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
-                    {% endif %}
-                    <p><a href="{% url 'password_reset' %}">Lost password?</a></p> 
-                </div> 
+                {% endif %}
             </form>  
         </div>        
     </div>
