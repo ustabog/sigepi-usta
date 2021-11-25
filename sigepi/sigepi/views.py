@@ -66,12 +66,21 @@ class front():
         form = AuthenticationForm()
         return render(solicitud,'frm_ingreso.html', {"form": form} )
 
-    def vst_indexprueba(self, solicitud):
-        #función para plantilla de inicio
-        plt=loader.get_template('indexprueba.html')
-        #ctx=Context()
-        respuesta=plt.render()
-        return HttpResponse(respuesta)
+    def vst_registro(self, solicitud):
+        data = {
+            'form': frm_reg_usu()
+        }
+        if solicitud.method == "POST":
+            formulario = frm_reg_usu(data=solicitud.POST)
+            if formulario.is_valid():
+                formulario.save()
+                usuario = formulario.cleaned_data.get('username')
+                password = formulario.cleaned_data.get('password1')
+                usuario = authenticate(username=usuario, password=password)
+                login(self.request, usuario)
+                return redirect('/')
+            data["form"] = formulario
+        return render(solicitud,'frm_registro.html', data )
 
     def vst_cerrar(self, solicitud):
         logout(solicitud)

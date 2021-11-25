@@ -1,0 +1,17 @@
+{% extends 'index_front.html' %}
+
+{% block titulo %} Formulario de Ingreso {% endblock titulo %}
+{% block cuerpo %}
+
+    
+    <div class="container">
+        <div class=" m-4 d-flex justify-content-center">
+            <form method="post" action="">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" name="submit"> 
+            </form>  
+        </div>        
+    </div>
+        
+{% endblock cuerpo %}

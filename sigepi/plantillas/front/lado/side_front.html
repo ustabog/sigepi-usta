@@ -7,12 +7,7 @@
     <div id="wrapper" class="activo">
         <div id="sidebar-wrapper">
             <ul id="sidebar-nav">
-                <li id="sidebar-brand">
-                    <a href="{% url 'ingreso' %}">Ingresar</a>
-                </li>
-                <li id="sidebar-brand" class="sidebar-brand">
-                    <a href="">Registro</a>
-                </li>
+               
                 <li id="sidebar-brand">
                     <a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
                         <span class="card"></span>
@@ -23,25 +18,33 @@
                 </li>
                 <div class="card">
                     <div class="card-header">Tablero de Control</div>
+                    {% if not user.is_authenticated %}
                     <div class="card-body">
                         <div class="alert alert-success" role="alert">
-                            <a class="btn btn-outline-info" href="ingreso">Ingresar</a>
-                            <a class="btn btn-outline-info" href="#">Registrarse</a>
-                                {% if user.is_authenticated %}
-                                <p> Bienvenido {{ request.user.username }} !!!</p>
-                                <div class="alert alert-success" role="alert">
-                                    <ul>
-                                        <li><a href="#">Diseñar Proyecto</a></li>
-                                        <li><a href="#">Registrar Proyectos</a></li>
-                                        <li><a href="#">Crear Grupo</a></li>
-                                        <li><a href="#">Crear Producto de Inv.</a></li>
-                                        <li><a href="#">Crear Proceso de Inv.</a></li>
-                                        <li><a href="#">Administrar Actividades</a></li>
-                                    </ul>
-                                </div>
-                                {% endif %}
+                            <a class="btn btn-outline-info" href="ingreso" id="contenido">Ingresar</a>
+                            <a class="btn btn-outline-info" href="registro" id="contenido">Registrarse</a>        
                         </div>
                     </div>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <div class="card-body">
+                        <div class="alert alert-success" role="alert">
+                            <a class="btn btn-outline-info" href="cerrar" id="contenido">Cerrar</a>
+                            
+                            <p> Bienvenido {{ request.user.username }} !!!</p>
+                            <div class="alert alert-success" role="alert">
+                                <ul>
+                                    <li><a href="#">Diseñar Proyecto</a></li>
+                                    <li><a href="#">Registrar Proyectos</a></li>
+                                    <li><a href="#">Crear Grupo</a></li>
+                                    <li><a href="#">Crear Producto de Inv.</a></li>
+                                    <li><a href="#">Crear Proceso de Inv.</a></li>
+                                    <li><a href="#">Administrar Actividades</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </ul>
         </div>

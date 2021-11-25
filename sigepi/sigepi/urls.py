@@ -59,6 +59,8 @@ urlpatterns = [
     path('ingreso',front().vst_ingreso, name = 'ingreso'),
     path('cerrar', front().vst_cerrar, name = 'cerrar'),
     path('doc', front().vst_doc, name ='doc'),
+    path('registro', front().vst_registro, name ='registro'),
+
 
     #consultas globales
     #path('conusus', vts_ls_usu.as_view(), name='consulta_usuarios'),
