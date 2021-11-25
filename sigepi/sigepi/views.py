@@ -64,23 +64,23 @@ class front():
             else: 
                 messages.success(solicitud,F"Los datos son incorrectos")
         form = AuthenticationForm()
-        return render(solicitud,'frm_ingreso.html', {"form": form} )
+        return render(solicitud,'frm_ingreso.html', {"form": form} )    
 
-    def vst_registro(self, solicitud):
+    def vst_registro(self, request):
         data = {
             'form': frm_reg_usu()
         }
-        if solicitud.method == "POST":
-            formulario = frm_reg_usu(data=solicitud.POST)
+        if request.method == "POST":
+            formulario = frm_reg_usu(data=request.POST)
             if formulario.is_valid():
                 formulario.save()
                 usuario = formulario.cleaned_data.get('username')
                 password = formulario.cleaned_data.get('password1')
                 usuario = authenticate(username=usuario, password=password)
-                login(self.request, usuario)
-                return redirect('/')
+                login(request, usuario)
+                return redirect(to='inicio')
             data["form"] = formulario
-        return render(solicitud,'frm_registro.html', data )
+        return render(request,'frm_registro.html', data )
 
     def vst_cerrar(self, solicitud):
         logout(solicitud)
