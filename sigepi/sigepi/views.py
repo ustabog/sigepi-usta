@@ -31,7 +31,6 @@ class front():
     def vst_inicio(self, solicitud):
         #función para plantilla de inicio
         plt=loader.get_template('index_front.html')
-        ctx=Context()
         respuesta=plt.render()
         return HttpResponse(respuesta)
 

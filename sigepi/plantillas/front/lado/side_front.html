@@ -22,12 +22,14 @@
                             <p> Bienvenido {{ request.user.username }} !!!</p>
                             <div class="alert alert-success" role="alert">
                                 <ul>
+                                    {% if perms.sigepi.change_usugr %}
                                     <li><a href="#">Diseñar Proyecto</a></li>
                                     <li><a href="#">Registrar Proyectos</a></li>
                                     <li><a href="#">Crear Grupo</a></li>
                                     <li><a href="#">Crear Producto de Inv.</a></li>
                                     <li><a href="#">Crear Proceso de Inv.</a></li>
                                     <li><a href="#">Administrar Actividades</a></li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
