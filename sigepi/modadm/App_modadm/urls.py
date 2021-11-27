@@ -11,8 +11,6 @@ urlpatterns = [
 # direcciones del modulo admin
     path('inicioadmin', backend.modadm, name="inicioadmin"),
 
-# direcciones del modulo admin de prueba
-    path('inic_adm_prb', backend_prb.modadmprv, name="inic_adm_prb"),
 # registrar modulos
     path('reg_modu', vts_reg_mod.as_view(), name ='reg_mod'),
 

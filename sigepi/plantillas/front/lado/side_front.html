@@ -22,14 +22,25 @@
                             <p> Bienvenido {{ request.user.username }} !!!</p>
                             <div class="alert alert-success" role="alert">
                                 <ul>
+                                    {% if perms.sigepi.create_usugr %}
+                                        <li><a href="#">Crear Grupos</a></li>
+                                    {% endif %}
                                     {% if perms.sigepi.change_usugr %}
+                                        <li><a href="#">Editar Grupos</a></li>
+                                    {% endif %}
+                                    {% if perms.sigepi.delete_usugr %}
+                                        <li><a href="#">Eliminar Grupos</a></li>
+                                    {% endif %}
+                                    {% if perms.sigepi.view_usugr %}
+                                        <li><a href="#">Ver Grupos</a></li>
+                                    {% endif %}
                                     <li><a href="#">Diseñar Proyecto</a></li>
                                     <li><a href="#">Registrar Proyectos</a></li>
-                                    <li><a href="#">Crear Grupo</a></li>
+                                    
                                     <li><a href="#">Crear Producto de Inv.</a></li>
                                     <li><a href="#">Crear Proceso de Inv.</a></li>
                                     <li><a href="#">Administrar Actividades</a></li>
-                                    {% endif %}
+                                    
                                 </ul>
                             </div>
                         </div>

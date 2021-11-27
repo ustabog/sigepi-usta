@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group 
 
 #Tipo de rol dentro de la plataforma
 TIPO_ROL = [
@@ -200,7 +200,7 @@ class app_mod(models.Model):
     #Clase que almacena los datos del objeto aplicación, las aplicaciones son unidades de
     id_app = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
     titulo = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False) # Título de la aplicacion ej. "Editor de Texto SABER"
-    desc  = models.CharField('descricion de la aplicacion: ', max_length=80, null=False, blank = False) # descripcion de la Aplicación.
+    desc  = models.CharField('Descripcion de la aplicacion: ', max_length=80, null=False, blank = False) # descripcion de la Aplicación.
     url_doc = models.URLField('Direción local a la documentación o manual de la aplicación', null=False, blank=False)  # direción local a la documentación o manual de la aplicación.
     version = models.DecimalField('Versión de desarrollo de la aplicación: ', max_digits=4, decimal_places=2, null=False, blank = False)  # Versión de desarrollo de la aplicación. "0.01.04"
     mod_prin = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)# Id del módulo principal con el cual se integra.
@@ -218,7 +218,6 @@ class app_mod(models.Model):
         return '{}'.format(self.titulo)
 
 class rol(models.Model):
-
     id_rol = models.AutoField(primary_key = True) # Identificador único del Rol
     etq_rol = models.CharField('Etiqueta: ', max_length=30, null=False, blank = False) # Etiqueta del Rol
     desc = models.CharField('Descripcion del Rol: ', max_length=30, null=False, blank = False) # Descripcion del Rol

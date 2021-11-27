@@ -23,12 +23,6 @@ class backend():
     def modadm(request):
         return render(request,'index_adm.html')
 
-
-class backend_prb():
-     # inicio del index prueba
-    def modadmprv(request):
-        return render(request,'index_adm.html')
-
 class vts_reg_mod(CreateView):
     #clase que almacena los modulos generales del sistema
     form_class = frm_con_mod

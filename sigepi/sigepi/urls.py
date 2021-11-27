@@ -64,9 +64,6 @@ urlpatterns = [
 
     #consultas globales
     #path('conusus', vts_ls_usu.as_view(), name='consulta_usuarios'),
-
-    #Direcciones del backend Django
-    path('serv/', admin.site.urls),
     path('accounts', include('django.contrib.auth.urls')),
 ]
 

@@ -15,6 +15,7 @@ ROL_APP = [
     ]
 
 
+
 class usui(models.Model):
     # Clase que almacena y procesa la información de un usuario institucional
     id_usuinst = models.AutoField(primary_key = True) # Identificador único del usuario institucionnal
