@@ -14,16 +14,29 @@
                     </a>
                 </li>   
                 <div class="card">
+                    <div class="card-header"style="width: 18.75rem;">Tablero de Control</div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> <a href="#"><ion-icon name="people-outline"></ion-icon>   Usuario</a></li>
+                        <li class="list-group-item"> <a href="#"><ion-icon name="people-outline"></ion-icon>   Grupos</a></li>
+                        <li class="list-group-item"> <a href="#"><ion-icon name="school-outline"></ion-icon>   Instituciones</a></li>
+                        <li class="list-group-item"> <a href="#"><ion-icon name="build-outline"></ion-icon>   Proyectos</a></li>
+                        </ul>
+                    </div>
+                  </div>
+                <div class="card">
                     <div class="card-header">Tablero de Control</div>
                     {% if user.is_authenticated %}
                     <div class="card-body">
                         <div class="alert alert-success" role="alert">
-                            <a class="btn btn-outline-info" href="cerrar" id="contenido">Cerrar</a>
                             <p> Bienvenido {{ request.user.username }} !!!</p>
+                            
                             <div class="alert alert-success" role="alert">
-                                <ul>
+                                <ul class="list-group list-group-flush">
                                     {% if perms.sigepi.create_usugr %}
-                                        <li><a href="#">Crear Grupos</a></li>
+                                        <li class="list-group-item">
+                                        <a href="#" >Crear Grupos</a>
+                                        </li>
                                     {% endif %}
                                     {% if perms.sigepi.change_usugr %}
                                         <li><a href="#">Editar Grupos</a></li>
@@ -43,6 +56,7 @@
                                     
                                 </ul>
                             </div>
+                            <a class="btn btn-outline-info" href="cerrar" id="contenido">Cerrar</a>
                         </div>
                     </div>
                     {% else %}

@@ -200,7 +200,7 @@ class app_mod(models.Model):
     #Clase que almacena los datos del objeto aplicación, las aplicaciones son unidades de
     id_app = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
     titulo = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False) # Título de la aplicacion ej. "Editor de Texto SABER"
-    desc  = models.CharField('Descripcion de la aplicacion: ', max_length=80, null=False, blank = False) # descripcion de la Aplicación.
+    desc  = models.CharField('descricion de la aplicacion: ', max_length=80, null=False, blank = False) # descripcion de la Aplicación.
     url_doc = models.URLField('Direción local a la documentación o manual de la aplicación', null=False, blank=False)  # direción local a la documentación o manual de la aplicación.
     version = models.DecimalField('Versión de desarrollo de la aplicación: ', max_digits=4, decimal_places=2, null=False, blank = False)  # Versión de desarrollo de la aplicación. "0.01.04"
     mod_prin = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)# Id del módulo principal con el cual se integra.

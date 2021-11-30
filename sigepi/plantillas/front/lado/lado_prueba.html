@@ -1,12 +1,11 @@
+{% extends 'base_front.html'%}
 {% load static %}
-
-{% block cabecera %}
-<link rel="stylesheet"   href="{% static 'css/lado.css' %}">
-{% endblock cabecera %}
-
+{% block cabeza_lado %}
+    <link rel="stylesheet" href="{% static 'css/lado.css' %}">
+{% endblock cabeza_lado %}
 {% block lado %}
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Tablero de control</div>
+    <div class="sidebar-heading">Menú Principal</div>
     <div class="list-group list-group-flush">
         <a href="#" class="list-group-item list-group-item-action bg-light">Usuario</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Proyectos</a>
@@ -37,6 +36,7 @@
                 <p> Bienvenido {{ request.user.username }} !!!</p>
                 <div class="alert alert-success" role="alert">
                     <ul>
+                        <li><a href="#" class="list-group-item list-group-item-action bg-light">Usuario</a></li>
                         <li><a href="#">Diseñar Proyecto</a></li>
                         <li><a href="#">Registrar Proyectos</a></li>
                         <li><a href="#">Crear Grupo</a></li>
@@ -51,4 +51,4 @@
         {% endif %}
     </div>
 </div>
-{% endblock lado %}
+{% endblock %}
