@@ -1,54 +1,71 @@
-{% extends 'base_front.html'%}
 {% load static %}
-{% block cabeza_lado %}
-    <link rel="stylesheet" href="{% static 'css/lado.css' %}">
-{% endblock cabeza_lado %}
+
+{% block cabecera %}
+<link rel="stylesheet"   href="{% static 'css/lado.css' %}">
+{% endblock cabecera %}
+
 {% block lado %}
-<div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Menú Principal</div>
-    <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Usuario</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Proyectos</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Grupos</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Instituciones</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">herramientas</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Ingresar</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Registro</a>
-        <a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
-            <span class="card"></span>
-            <a href="Registro" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
-    </div>
-    <div class="card">
-        <div class="card-header">Tablero de Control</div>
-        {% if not user.is_authenticated %}
-        <div class="card-body">
-            <div class="alert alert-success" role="alert">
-                <a class="btn btn-outline-info" href="ingreso" id="contenido">Ingresar</a>
-                <a class="btn btn-outline-info" href="registro" id="contenido">Registrarse</a>        
-            </div>
-        </div>
-        {% endif %}
-        {% if user.is_authenticated %}
-        <div class="card-body">
-            <div class="alert alert-success" role="alert">
-                <a class="btn btn-outline-info" href="cerrar" id="contenido">Cerrar</a>
-                
-                <p> Bienvenido {{ request.user.username }} !!!</p>
+<div class="sidebar-heading">Tablero de control</div>
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="card align-item-center">
+            <div class="card-header">Tablero de Control</div>
+            {% if not user.is_authenticated %}
+            <div class="card-body">
                 <div class="alert alert-success" role="alert">
-                    <ul>
-                        <li><a href="#" class="list-group-item list-group-item-action bg-light">Usuario</a></li>
-                        <li><a href="#">Diseñar Proyecto</a></li>
-                        <li><a href="#">Registrar Proyectos</a></li>
-                        <li><a href="#">Crear Grupo</a></li>
-                        <li><a href="#">Crear Producto de Inv.</a></li>
-                        <li><a href="#">Crear Proceso de Inv.</a></li>
-                        <li><a href="#">Administrar Actividades</a></li>
-                    </ul>
+                    <a class="btn btn-outline-info" href="ingreso" id="contenido">Ingresar</a>
+                    <a class="btn btn-outline-info" href="registro" id="contenido">Registrarse</a>        
                 </div>
-                
             </div>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <div class="list-group list-group-flush">          
+                <a class="list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><ion-icon name="person-outline"></ion-icon>
+                    Usuarios
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Ver Usuarios</a></li>
+                    <li><a class="dropdown-item" href="#">Registrar Usuarios</a></li>
+                    <li><a class="dropdown-item" href="#">Modificar Usuarios</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Eliminar Usuarios</a></li>
+                </ul>
+                <a class="list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><ion-icon name="people-outline"></ion-icon>
+                    Grupos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Ver Grupos</a></li>
+                    <li><a class="dropdown-item" href="#">Registrar Grupos</a></li>
+                    <li><a class="dropdown-item" href="#">Modificar Grupos</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Eliminar Grupos</a></li>
+                </ul>
+                <a class="list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><ion-icon name="school-outline"></ion-icon>
+                    Instituciones
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Ver Instituciones</a></li>
+                    <li><a class="dropdown-item" href="#">Registrar Instituciones</a></li>
+                    <li><a class="dropdown-item" href="#">Modificar Instituciones</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Eliminar Instituciones</a></li>
+                </ul>
+                <a class="list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><ion-icon name="bug-outline"></ion-icon>
+                    Proyectos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Ver Proyectos</a></li>
+                    <li><a class="dropdown-item" href="#">Registrar Proyectos</a></li>
+                    <li><a class="dropdown-item" href="#">Modificar Proyectos</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Eliminar Proyectos</a></li>
+                </ul>
+                <a href="#" class="list-group-item list-group-item-action bg-light"><ion-icon name="build-outline"></ion-icon>Herramientas</a>
+                <a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
+                <span class="card"></span>
+                <a class="btn btn-outline-info" href="cerrar" id="contenido">Cerrar</a>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
     </div>
 </div>
-{% endblock %}
+{% endblock lado %}
