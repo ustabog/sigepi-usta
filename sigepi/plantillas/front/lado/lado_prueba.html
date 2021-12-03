@@ -18,37 +18,61 @@
             </div>
             {% endif %}
             {% if user.is_authenticated %}
-            <div class="list-group list-group-flush">          
+            <div class="list-group list-group-flush"> 
+                {% if perms.sigepi.view_usu %}         
                 <a class="list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><ion-icon name="person-outline"></ion-icon>
                     Usuarios
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Ver Usuarios</a></li>
-                    <li><a class="dropdown-item" href="#">Registrar Usuarios</a></li>
-                    <li><a class="dropdown-item" href="#">Modificar Usuarios</a></li>
+                    <li><a class="dropdown-item" href="{% url 'consulta_usuarios' %}">Ver Usuarios</a></li>
+                    {% if perms.sigepi.add_usu %} 
+                    <li><a class="dropdown-item" href="{% url 'crea_nvo_usu' %}">Registrar Usuarios</a></li>
+                    {% endif %}
+                    {% if perms.sigepi.change_usu %} 
+                    <li><a class="dropdown-item" href="{% url 'seleccion_usuario_consulta' %}">Modificar Usuarios</a></li>
+                    {% endif %}
+                    {% if perms.sigepi.delete_usu %} 
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Eliminar Usuarios</a></li>
+                    <li><a class="dropdown-item" href="{% url 'seleccion_usuario_consulta' %}">Eliminar Usuarios</a></li>
+                    {% endif %}
                 </ul>
+                {% endif %}
+                {% if perms.sigepi.view_usugr %}
                 <a class="list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><ion-icon name="people-outline"></ion-icon>
                     Grupos
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Ver Grupos</a></li>
-                    <li><a class="dropdown-item" href="#">Registrar Grupos</a></li>
-                    <li><a class="dropdown-item" href="#">Modificar Grupos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'cons_usugr' %}">Ver Grupos</a></li>
+                    {% if perms.sigepi.add_usugr %}
+                        <li><a class="dropdown-item" href="{% url 'crear_usugr' %}">Registrar Grupos</a></li>
+                    {% endif %}
+                    {% if perms.sigepi.change_usugr %}
+                    <li><a class="dropdown-item" href="{% url 'cons_usugr' %}">Modificar Grupos</a></li>
+                    {% endif %}
+                    {% if perms.sigepi.delete_usugr %}
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Eliminar Grupos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'cons_usugr' %}">Eliminar Grupos</a></li>
+                    {% endif %}
                 </ul>
+                {% endif %}
+                {% if perms.sigepi.view_usui %}
                 <a class="list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><ion-icon name="school-outline"></ion-icon>
                     Instituciones
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#">Ver Instituciones</a></li>
+                    {% if perms.sigepi.add_usui %}
                     <li><a class="dropdown-item" href="#">Registrar Instituciones</a></li>
+                    {% endif %}
+                    {% if perms.sigepi.change_usui %}
                     <li><a class="dropdown-item" href="#">Modificar Instituciones</a></li>
+                    {% endif %}
+                    {% if perms.sigepi.delete_usui %}
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Eliminar Instituciones</a></li>
+                    {% endif %}
                 </ul>
+                {% endif %}
                 <a class="list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><ion-icon name="bug-outline"></ion-icon>
                     Proyectos
                 </a>

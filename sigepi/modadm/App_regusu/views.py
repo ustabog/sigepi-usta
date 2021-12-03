@@ -56,7 +56,7 @@ class vst_mod_reg_usu(UpdateView):
     #clase que me modifca los usuarios para registro de usuario
     model = User
     form_class = frm_con_usu
-    template_name = 'frm_nvo_usu.html'
+    template_name = 'App_regusu_frm_nvo_usu.html'
     success_url = reverse_lazy('consulta_usuarios')
 
 class vts_reg_usu_su(CreateView):
