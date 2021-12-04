@@ -5,12 +5,11 @@
 {% endblock cabecera %}
 
 {% block lado %}
-<div class="sidebar-heading">Tablero de control</div>
     <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="card align-item-center">
-            <div class="card-header">Tablero de Control</div>
+        <div class="container">
+            <h5 class="text-center">Tablero de Control</h5>
             {% if not user.is_authenticated %}
-            <div class="card-body">
+            <div class="list-group-item list-group-item-action bg-light">
                 <div class="alert alert-success" role="alert">
                     <a class="btn btn-outline-info" href="ingreso" id="contenido">Ingresar</a>
                     <a class="btn btn-outline-info" href="registro" id="contenido">Registrarse</a>        
@@ -18,7 +17,6 @@
             </div>
             {% endif %}
             {% if user.is_authenticated %}
-            <div class="list-group list-group-flush"> 
                 {% if perms.sigepi.view_usu %}         
                 <a class="list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><ion-icon name="person-outline"></ion-icon>
                     Usuarios
@@ -86,10 +84,8 @@
                 <a href="#" class="list-group-item list-group-item-action bg-light"><ion-icon name="build-outline"></ion-icon>Herramientas</a>
                 <a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
                 <span class="card"></span>
-                <a class="btn btn-outline-info" href="cerrar" id="contenido">Cerrar</a>
-            </div>
+                <a class="btn btn-primary text-center list-group-item-action" href="cerrar" id="contenido">Cerrar</a>
             {% endif %}
         </div>
     </div>
-</div>
 {% endblock lado %}

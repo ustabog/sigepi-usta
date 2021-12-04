@@ -33,7 +33,7 @@ class func_usu():
     #vista para listar usuarios
     def vst_ls_mod_usu(self, solicitud):
         #vista para istar los usuarios
-        plt = loader.get_template('sl_usu.html')
+        plt = loader.get_template('App_regusu_ls_usu.html')
         respuesta = plt.render()
         return HttpResponse(respuesta)
 
