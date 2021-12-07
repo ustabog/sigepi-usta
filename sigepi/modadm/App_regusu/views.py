@@ -52,6 +52,11 @@ class vst_selc_usu_cons(vts_ls_usu):
     template_name = 'sl_usu.html'
     success_url = reverse_lazy('sl_usu.html')
 
+def vts_eli_usu(request, id):
+    usuario = User.objects.get(id = id)
+    usuario.delete()
+    return redirect('..+cons_usus/')
+
 class vst_mod_reg_usu(UpdateView):
     #clase que me modifca los usuarios para registro de usuario
     model = User

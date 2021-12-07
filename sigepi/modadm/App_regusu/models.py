@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from .models import *
-#from modadm.App_modadm.models import *
+from modadm.App_modadm.models import *
 
 #Tipo de rol dentro de la plataforma
 TIPO_ROL = [
@@ -12,6 +12,13 @@ TIPO_ROL = [
     (4,'Otro')
     ]
 
+ROL_APP = {
+    (0, 'Adm_App'),
+    (1, 'Adm_Usu'),
+    (1, 'Docente'), #externo, invitado, investigador
+    (1, 'Estudiante'), #egresado, investigador
+    (1, 'Invitado')
+}
 #Tipos de números de identificación personal
 TIPO_NUIP_CO = [
     (0,'Cédula de Ciudadanía'),
