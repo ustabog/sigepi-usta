@@ -3,8 +3,8 @@ from django.views.generic import CreateView, DeleteView,ListView,UpdateView
 from django.urls import reverse_lazy
 from .form import *
 from modadm.App_regusugr.models import usugr
-#from modcons.App_cons.form import frm_con_usugr
-#from modcons.App_cons.views import vts_ls_usugr 
+from modcons.App_cons.form import frm_con_usugr
+from modcons.App_cons.views import vts_ls_usugr 
 from django.http import HttpResponse
 
 
@@ -15,7 +15,7 @@ class vts_reg_usugr(CreateView):
     success_url = reverse_lazy('ls_mod_usugr')
     success_message = "El usuario fue creado correctamente"
 
-###############Vista modulo de consulta##################
+# ###############Vista modulo de consulta##################
 class vts_ls_usugr(ListView):
     # clase que me lsta todos los grupos
     model = usugr

@@ -28,7 +28,6 @@ from django.contrib.auth import views as auth_views
 #Librerías de aplicaciones
 from modadm.App_modadm.views import *
 from modadm.App_modadm.urls import *
-from modadm.App_modadm.class_view import *
 from modcons.App_cons.views import *
 from modadm.App_regusu.urls import *
 from modadm.App_regusugr.urls import *

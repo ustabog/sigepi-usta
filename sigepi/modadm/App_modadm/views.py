@@ -11,7 +11,6 @@ from django.contrib.auth import login, logout
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
 #from rest_framework import viewsets
-from .serializers import *
 from .models import *
 from .form import *
 from modcons.App_cons.form import frm_con_mod

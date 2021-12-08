@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.views.generic import CreateView, DeleteView,ListView,UpdateView
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -7,7 +7,7 @@ from .form import *
 from modadm.App_regusu.models import usu_inf_apps
 from modadm.App_regusugr.models import usugr
 from modadm.App_regusui.models import usui
-from modadm.App_modadm.models import mod
+from modadm.App_modadm.models import *
 
 class vts_ls_usu(ListView):
     # clase para listar usuarios del sistema

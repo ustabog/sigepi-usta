@@ -24,7 +24,7 @@ from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
 from .form import *
-from modadm.App_regusu.models import usu_inf_apps
+# from modadm.App_regusu.models import usu_inf_apps
 
 class front():
     #Clase que procesa las vistas del front para usuarios sin registrar

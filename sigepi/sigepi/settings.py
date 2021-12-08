@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from django.urls import reverse_lazy
-import os.path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +45,7 @@ SIGEPI_APPS = [
     'modadm.App_modadm', #Aplicación principal del módulo
     'modadm.App_regusu', #Aplicación de registro de usuario
     'modadm.App_regusui', #Aplicación de registro de usuario grupo
-    '#modadm.App_regusugr', #Aplicación de registro de usuario institucional
+    'modadm.App_regusugr', #Aplicación de registro de usuario institucional
 #    'modadm.App_regpat', #Aplicación de registro de Patrocinadores
 #    'modadm.App_regben', #Aplicación de registro de Beneficiarios
     #'modpry.App_modpry', #Aplicación principal del módulo
@@ -96,8 +95,6 @@ ROOT_URLCONF = 'sigepi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        #'DIRS': [BASE_DIR / 'plantillas','plantillas/registro', 'modadm/App_regusu/plantillas'],
-        #Soluciona el problema de index_adm.html
         'DIRS': [BASE_DIR / 'plantillas', 
             BASE_DIR / 'plantillas/admSigepi',
             BASE_DIR / 'plantillas/admSigepi/articulos',
@@ -167,6 +164,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'App_modadm.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

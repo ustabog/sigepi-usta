@@ -3,7 +3,6 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import views as auth_views
 #from rest_framework.routers import DefaultRouter
 from modadm.App_regusu.views import *
-from modadm.App_regusu.class_view import *
 from .models import *
 
 

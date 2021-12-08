@@ -1,5 +1,7 @@
+from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
-from django.contrib.auth.models import User, Group 
+from django.contrib.auth.models import PermissionsMixin, User, Group 
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
 #Tipo de rol dentro de la plataforma
 TIPO_ROL = [
@@ -218,45 +220,45 @@ class app_mod(models.Model):
         return '{}'.format(self.titulo)
 
 
-# class listado_aplicativo(models.Model): #identifica si es app, android, web etc
-#     id_aplicativo =  models.AutoField(primary_key = True)
-#     nom_aplicativo= models.CharField('aplicativo nombre: ', max_length=30, null=False, blank = False)
-#     activoaplicativo = models.BooleanField('¿Activo o desactivo.?', default=False)
+class listado_aplicativo(models.Model): #identifica si es app, android, web etc
+    id_aplicativo =  models.AutoField(primary_key = True)
+    nom_aplicativo= models.CharField('aplicativo nombre: ', max_length=30, null=False, blank = False)
+    activoaplicativo = models.BooleanField('¿Activo o desactivo.?', default=False)
 
-#     class Meta:
-#         verbose_name = 'listado_aplicativo'
-#         verbose_name_plural = 'listado_aplicativo'
+    class Meta:
+        verbose_name = 'listado_aplicativo'
+        verbose_name_plural = 'listado_aplicativo'
 
-#     def __str__(self):
-#         return '{}'.format(self.nom_aplicativo)
+    def __str__(self):
+        return '{}'.format(self.nom_aplicativo)
 
-# class ext_mod(models.Model):
-#     #Clase que almacena los datos de las Extensiones.
-#     id_mod_ext = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
-#     titulo_ext = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False)
-#     mod_prin_ext = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)
-# #    ls_mods_ext = models.ManyToManyField(mod, help_text="Listado de id de módulos a los que está vinculada la aplicación")
+class ext_mod(models.Model):
+    #Clase que almacena los datos de las Extensiones.
+    id_mod_ext = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
+    titulo_ext = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False)
+    mod_prin_ext = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)
+#    ls_mods_ext = models.ManyToManyField(mod, help_text="Listado de id de módulos a los que está vinculada la aplicación")
 
-#     class Meta:
-#         verbose_name = 'ext_mod'
-#         verbose_name_plural = 'ext_mods'
+    class Meta:
+        verbose_name = 'ext_mod'
+        verbose_name_plural = 'ext_mods'
 
-#     def __str__(self):
-#         return '{}'.format(self.titulo_ext)
+    def __str__(self):
+        return '{}'.format(self.titulo_ext)
 
-# class ext_app(models.Model):
-#     #Clase que almacena los datos de las Aplicaciones Externas o Plugins.
-#     id_app_ext = models.AutoField(primary_key = True)
-#     titulo_app_ext = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False)
-#     mod_prin_app_ext = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False)
-# #    ls_mods_app_ext = models.ManyToManyField(app_mod, help_text="Listado de id de módulos a los que está vinculada la aplicación")
+class ext_app(models.Model):
+    #Clase que almacena los datos de las Aplicaciones Externas o Plugins.
+    id_app_ext = models.AutoField(primary_key = True)
+    titulo_app_ext = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False)
+    mod_prin_app_ext = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False)
+#    ls_mods_app_ext = models.ManyToManyField(app_mod, help_text="Listado de id de módulos a los que está vinculada la aplicación")
 
-#     class Meta:
-#         verbose_name = 'ext_app'
-#         verbose_name_plural = 'ext_apps'
+    class Meta:
+        verbose_name = 'ext_app'
+        verbose_name_plural = 'ext_apps'
 
-#     def __str__(self):
-#         return '{}'.format(self.titulo_app_ext)
+    def __str__(self):
+        return '{}'.format(self.titulo_app_ext)
 
 
 class rol(models.Model):
@@ -351,20 +353,43 @@ class rl_app_mod_func(models.Model): # relacion Listado de funciones propias del
         verbose_name_plural = 'rl_app_mod_funcs'
 
 #este usuario no se esta utilizando ojo...
-class usu(models.Model):
+class User(AbstractBaseUser, PermissionsMixin):
 
-    id_usu = models.AutoField(primary_key = True) # Identificador único
-    id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
-    fch_regi = models.DateField('fecha de registro', auto_now = False) # fecha de registro de usurio
-    activo = models.BooleanField('¿Activo o desactivado.?', default=False) # estatus del usuario activo (True) inactivo (False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False, default=0)
+    username = models.CharField('Nombres', max_length=100)
+    first_name = models.CharField('Nombres', max_length=100)
+    last_name = models.CharField('Nombres', max_length=100)
+    email = models.EmailField(unique=True)
+    full_name = models.CharField('Nombres', max_length=100)
+    genero = models.CharField(max_length=1, choices=GENERO, blank=True)
+    date_birth = models.DateField('Fecha de nacimiento', blank=True,null=True)
+    #
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
 
-    class Meta:
-        verbose_name = 'usu'
-        verbose_name_plural = 'usus'
+    USERNAME_FIELD = 'email'
 
-    def __str__(self):
-        return '{}'.format(self.usu)
+    REQUIRED_FIELDS = ['full_name']
+
+    def get_short_name(self):
+        return self.email
+    
+    def get_full_name(self):
+        return self.full_name
+
+# class usu(models.Model):
+    
+#     id_usu = models.AutoField(primary_key = True) # Identificador único
+#     id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
+#     fch_regi = models.DateField('fecha de registro', auto_now = False) # fecha de registro de usurio
+#     activo = models.BooleanField('¿Activo o desactivado.?', default=False) # estatus del usuario activo (True) inactivo (False)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False, default=0)
+
+#     class Meta:
+#         verbose_name = 'usu'
+#         verbose_name_plural = 'usus'
+
+#     def __str__(self):
+#         return '{}'.format(self.usu)
 
 class mod_adm(models.Model):
 # verificar inicio de sesion de django ojo, django todo

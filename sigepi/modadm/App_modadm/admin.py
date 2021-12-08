@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from .models import *
 
 admin.site.register(mod)
@@ -19,7 +19,7 @@ admin.site.register(rl_mod_func)
 admin.site.register(rl_app_mod_rol)
 #admin.site.register(rl_app_mod_param_cnf)
 admin.site.register(rl_app_mod_func)
-admin.site.register(usu)
+admin.site.register(User)
 admin.site.register(mod_adm)
 #admin.site.register(adm_install)
 #admin.site.register(log_mod_rol)

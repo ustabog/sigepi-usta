@@ -12,7 +12,6 @@ from django.contrib.auth import views as auth_views
 from django.contrib import messages
 from django.views.generic.base import View
 #from rest_framework import viewsets
-from .serializers import *
 from .models import *
 from .form import *
 from modadm.App_regusu.models import *
