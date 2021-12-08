@@ -1,7 +1,10 @@
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
-from django.contrib.auth.models import PermissionsMixin, User, Group 
+import datetime
+from django.contrib.auth.signals import user_logged_in
+from django.contrib.auth.models import PermissionsMixin, User, Group ,update_last_login
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from .managers import UserManager
 
 #Tipo de rol dentro de la plataforma
 TIPO_ROL = [
@@ -355,17 +358,29 @@ class rl_app_mod_func(models.Model): # relacion Listado de funciones propias del
 #este usuario no se esta utilizando ojo...
 class User(AbstractBaseUser, PermissionsMixin):
 
+    id_usu = models.AutoField(primary_key = True) # Identificador único
     username = models.CharField('Nombres', max_length=100)
     first_name = models.CharField('Nombres', max_length=100)
     last_name = models.CharField('Nombres', max_length=100)
     email = models.EmailField(unique=True)
+    password = models.CharField(max_length=50)
     full_name = models.CharField('Nombres', max_length=100)
     genero = models.CharField(max_length=1, choices=GENERO, blank=True)
     date_birth = models.DateField('Fecha de nacimiento', blank=True,null=True)
+    def update_last_login(sender, user, **kwargs):
+        """
+        A signal receiver which updates the last_login date for
+        the user logging in.
+        """
+        User.last_login = datetime.timezone.now()
+        User.save(update_fields=['last_login'])
+        user_logged_in.connect(update_last_login)
     #
+    last_login = models.DateTimeField(update_last_login)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
 
+    objects = UserManager() 
     USERNAME_FIELD = 'email'
 
     REQUIRED_FIELDS = ['full_name']
