@@ -3,6 +3,7 @@ from django.db import models
 import datetime
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import PermissionsMixin, User, Group ,update_last_login
+from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from .managers import UserManager
 
@@ -295,7 +296,7 @@ class func_app(models.Model):
     context = models.CharField('Contexto: ', max_length=20, null=False, blank = False) # Nombre de Función para menús contextuales o emergentes y panel de inf.
     activa = models.BooleanField('¿Activa o desactiva.?', default=False)  # La función está activa o desactiva.
     indice = models.IntegerField() #Índice de selección, para navegar con el tabulador.
-    # realizar una tabla de ralcion con rol y pwermisos
+    # realizar una tabla de ralcion con rol y permisos
     #[[0,False,True,False,False]]
     #listado de los diferentes id_rol de aplicación para los cuales la función estará activa.
     #[,False,,,]¿genera registro en base de datos?;[,,True,,] Permiso de lectura en BD
@@ -355,18 +356,44 @@ class rl_app_mod_func(models.Model): # relacion Listado de funciones propias del
         verbose_name = 'rl_app_mod_func'
         verbose_name_plural = 'rl_app_mod_funcs'
 
-#este usuario no se esta utilizando ojo...
-class User(AbstractBaseUser, PermissionsMixin):
+# #este usuario no se esta utilizando ojo...
+class User(AbstractBaseUser):
 
     id_usu = models.AutoField(primary_key = True) # Identificador único
-    username = models.CharField('Nombres', max_length=100)
-    first_name = models.CharField('Nombres', max_length=100)
-    last_name = models.CharField('Nombres', max_length=100)
-    email = models.EmailField(unique=True)
+    username = models.CharField('Nombres', max_length=100, unique=True)
+    email = models.EmailField('Email address', unique=True)
+    first_name = models.CharField(max_length=45)
+    last_name = models.CharField(max_length=80)
+    phoneNumber = models.CharField('Numero de telefono', max_length=9, unique=True)
     password = models.CharField(max_length=50)
-    full_name = models.CharField('Nombres', max_length=100)
-    genero = models.CharField(max_length=1, choices=GENERO, blank=True)
-    date_birth = models.DateField('Fecha de nacimiento', blank=True,null=True)
+    #THIS IS THE LIST OF GENDERS
+    MoW = [('Hombre', "Hombre"), ("Mujer","Mujer"), ("Ninguno","Ninguno")]
+    gender = models.CharField(max_length=7 ,choices=MoW, null=False)
+
+    #THE PROFILE PHOTO
+    #userPhoto = models.ImageField()
+   
+   #IS NORMAL USER OR PARTNER OF THE APP
+    Is_Partner = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+
+    #THIS FIELDS JUST MAKESURE THE USER IS NOT ADMIN-PAGE
+    is_superuser = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    
+    date_joined = models.DateField(auto_now=True)
+    # username = None
+   
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['first_name','last_name', 'phoneNumber', 'gender']
+#     username = models.CharField('Nombres', max_length=100)
+#     first_name = models.CharField('Nombres', max_length=100)
+#     last_name = models.CharField('Nombres', max_length=100)
+#     email = models.EmailField(unique=True)
+#     password = models.CharField(max_length=50)
+#     full_name = models.CharField('Nombres', max_length=100)
+#     genero = models.CharField(max_length=1, choices=GENERO, blank=True)
+#     date_birth = models.DateField('Fecha de nacimiento', blank=True,null=True)
     def update_last_login(sender, user, **kwargs):
         """
         A signal receiver which updates the last_login date for
@@ -377,34 +404,34 @@ class User(AbstractBaseUser, PermissionsMixin):
         user_logged_in.connect(update_last_login)
     #
     last_login = models.DateTimeField(update_last_login)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    # is_staff = models.BooleanField(default=False)
+    # is_active = models.BooleanField(default=False)
 
     objects = UserManager() 
-    USERNAME_FIELD = 'email'
+#     USERNAME_FIELD = 'email'
 
-    REQUIRED_FIELDS = ['full_name']
+#     REQUIRED_FIELDS = ['full_name']
 
-    def get_short_name(self):
-        return self.email
+#     def get_short_name(self):
+#         return self.email
     
-    def get_full_name(self):
-        return self.full_name
+#     def get_full_name(self):
+#         return self.full_name
 
-# class usu(models.Model):
+class usu(models.Model):
     
-#     id_usu = models.AutoField(primary_key = True) # Identificador único
-#     id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
-#     fch_regi = models.DateField('fecha de registro', auto_now = False) # fecha de registro de usurio
-#     activo = models.BooleanField('¿Activo o desactivado.?', default=False) # estatus del usuario activo (True) inactivo (False)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False, default=0)
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False, default=0)
+    id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
+    fch_regi = models.DateField('fecha de registro', auto_now = False) # fecha de registro de usurio
+    activo = models.BooleanField('¿Activo o desactivado.?', default=False) # estatus del usuario activo (True) inactivo (False)
+    
+    class Meta:
+        verbose_name = 'usu'
+        verbose_name_plural = 'usus'
 
-#     class Meta:
-#         verbose_name = 'usu'
-#         verbose_name_plural = 'usus'
-
-#     def __str__(self):
-#         return '{}'.format(self.usu)
+    def __str__(self):
+        return '{}'.format(self.usu)
 
 class mod_adm(models.Model):
 # verificar inicio de sesion de django ojo, django todo

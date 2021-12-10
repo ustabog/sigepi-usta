@@ -46,6 +46,7 @@ SIGEPI_APPS = [
     'modadm.App_regusu', #Aplicación de registro de usuario
     'modadm.App_regusui', #Aplicación de registro de usuario grupo
     'modadm.App_regusugr', #Aplicación de registro de usuario institucional
+    'modcons.App_cons', #Aplicación de consultas general sigepi
 #    'modadm.App_regpat', #Aplicación de registro de Patrocinadores
 #    'modadm.App_regben', #Aplicación de registro de Beneficiarios
     #'modpry.App_modpry', #Aplicación principal del módulo
@@ -57,7 +58,6 @@ SIGEPI_APPS = [
     #'modpry.App_gespry', #Aplicación de gestión de proyectos de investigación
     #'modpry.App_evapry', #Aplicación de evaluación de proyectos de investigación
 #    'modpry.App_disinv' #Aplicación de d
-    'modcons.App_cons' #Aplicación de consultas general sigepi
 ]
 
 # Aplicaciones de terceros, exernas
