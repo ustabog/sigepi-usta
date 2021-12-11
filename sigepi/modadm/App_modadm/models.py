@@ -356,26 +356,26 @@ class rl_app_mod_func(models.Model): # relacion Listado de funciones propias del
         verbose_name = 'rl_app_mod_func'
         verbose_name_plural = 'rl_app_mod_funcs'
 
-# #este usuario no se esta utilizando ojo...
-class User(AbstractBaseUser):
+# Usuario personalizado
+class User(AbstractBaseUser, PermissionsMixin):
 
     id_usu = models.AutoField(primary_key = True) # Identificador único
     username = models.CharField('Nombres', max_length=100, unique=True)
     email = models.EmailField('Email address', unique=True)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=80)
-    phoneNumber = models.CharField('Numero de telefono', max_length=9, unique=True)
+    #phoneNumber = models.CharField('Numero de telefono', max_length=9, unique=True)
     password = models.CharField(max_length=50)
     #THIS IS THE LIST OF GENDERS
-    MoW = [('Hombre', "Hombre"), ("Mujer","Mujer"), ("Ninguno","Ninguno")]
-    gender = models.CharField(max_length=7 ,choices=MoW, null=False)
+    #MoW = [('Hombre', "Hombre"), ("Mujer","Mujer"), ("Ninguno","Ninguno")]
+    #gender = models.CharField(max_length=7 ,choices=MoW, null=False)
 
     #THE PROFILE PHOTO
     #userPhoto = models.ImageField()
    
    #IS NORMAL USER OR PARTNER OF THE APP
-    Is_Partner = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
+    # Is_Partner = models.BooleanField(default=False)
+    # is_active = models.BooleanField(default=True)
 
     #THIS FIELDS JUST MAKESURE THE USER IS NOT ADMIN-PAGE
     is_superuser = models.BooleanField(default=False)
@@ -385,7 +385,7 @@ class User(AbstractBaseUser):
     # username = None
    
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['first_name','last_name', 'phoneNumber', 'gender']
+    REQUIRED_FIELDS = ['first_name','last_name', 'email']
 #     username = models.CharField('Nombres', max_length=100)
 #     first_name = models.CharField('Nombres', max_length=100)
 #     last_name = models.CharField('Nombres', max_length=100)
@@ -403,25 +403,33 @@ class User(AbstractBaseUser):
         User.save(update_fields=['last_login'])
         user_logged_in.connect(update_last_login)
     #
-    last_login = models.DateTimeField(update_last_login)
-    # is_staff = models.BooleanField(default=False)
-    # is_active = models.BooleanField(default=False)
+    def has_perm(self, perm, obj=None):
+        return self.is_superuser
+
+    def has_module_perms(self, app_label):
+        return self.is_superuser
+    #last_login = models.DateTimeField(update_last_login)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
 
     objects = UserManager() 
-#     USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email'
 
-#     REQUIRED_FIELDS = ['full_name']
+    REQUIRED_FIELDS = ['full_name']
 
-#     def get_short_name(self):
-#         return self.email
+    def get_short_name(self):
+        return self.email
     
-#     def get_full_name(self):
-#         return self.full_name
+    def get_full_name(self):
+        return self.full_name
 
+#este usuario no se esta utilizando ojo...
 class usu(models.Model):
     
-    
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False, default=0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.CharField('Nombres', max_length=100, unique=True)
+    first_name = models.CharField(max_length=45)
+    last_name = models.CharField(max_length=80)
     id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
     fch_regi = models.DateField('fecha de registro', auto_now = False) # fecha de registro de usurio
     activo = models.BooleanField('¿Activo o desactivado.?', default=False) # estatus del usuario activo (True) inactivo (False)
