@@ -15,27 +15,25 @@ Módulo administrativo SIGEPI
 
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+#from App_modadm.models import usu
 from .models import *
 
 #clase ubicado inicialmente en el modulo de consulta y App_cons
 class frm_con_usu(forms.ModelForm):
     #Clase que automatiza la creación de formularios de consulta de Usuario en Django.
     class Meta:
-        model = User
+        model = usu
         fields = ['username',
                   'first_name',
                   'last_name',
                   'email',
                  ]
-        labels ={
+        labels = {
                 'username' : 'Username',
                 'first_name' : 'Nombre',
                 'last_name' : 'Apellido',
                 'email' : 'Correo',
-                }
-
-
+                 }
 
 class frm_reg_usu_pers(forms.ModelForm):
     #clase para la creación de un formulario de registro de información personal de usuario SIGEPI.

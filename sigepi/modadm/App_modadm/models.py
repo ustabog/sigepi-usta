@@ -1,13 +1,12 @@
-from django.contrib.auth.base_user import AbstractBaseUser
+import email
 from django.db import models
 import datetime
 from django.contrib.auth.signals import user_logged_in
-from django.contrib.auth.models import PermissionsMixin, User, Group ,update_last_login
-from django.contrib.auth.models import PermissionsMixin
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import PermissionsMixin, User, Group, update_last_login
 from .managers import UserManager
 
 #Tipo de rol dentro de la plataforma
+
 TIPO_ROL = [
     (0,'Sistema'),
     (1,'Módulo'),
@@ -148,7 +147,6 @@ TIPO_INS = [
     (3,'zzzz'),
     ]
 
-
 #Sector Económico
 SECTOR_ECO = [
     (0,'Privado'),
@@ -181,8 +179,7 @@ HORARIO = [
     ]
 
 
- #Modulo Adminitrativo
-
+#Modulo Adminitrativo
 class mod(models.Model):
     # clase que almacena todos los modelos del sistema
     id_mod = models.AutoField(primary_key = True) # Identificador único del módulo
@@ -202,8 +199,8 @@ class mod(models.Model):
     def __str__(self):
         return '{}'.format(self.titulo)
 
+#Clase que almacena los datos del objeto aplicación, las aplicaciones son unidades de
 class app_mod(models.Model):
-    #Clase que almacena los datos del objeto aplicación, las aplicaciones son unidades de
     id_app = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
     titulo = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False) # Título de la aplicacion ej. "Editor de Texto SABER"
     desc  = models.CharField('descricion de la aplicacion: ', max_length=80, null=False, blank = False) # descripcion de la Aplicación.
@@ -223,8 +220,8 @@ class app_mod(models.Model):
     def __str__(self):
         return '{}'.format(self.titulo)
 
-
-class listado_aplicativo(models.Model): #identifica si es app, android, web etc
+#identifica si es app, android, web etc
+class listado_aplicativo(models.Model): 
     id_aplicativo =  models.AutoField(primary_key = True)
     nom_aplicativo= models.CharField('aplicativo nombre: ', max_length=30, null=False, blank = False)
     activoaplicativo = models.BooleanField('¿Activo o desactivo.?', default=False)
@@ -236,8 +233,8 @@ class listado_aplicativo(models.Model): #identifica si es app, android, web etc
     def __str__(self):
         return '{}'.format(self.nom_aplicativo)
 
+#Clase que almacena los datos de las Extensiones.
 class ext_mod(models.Model):
-    #Clase que almacena los datos de las Extensiones.
     id_mod_ext = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
     titulo_ext = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False)
     mod_prin_ext = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)
@@ -250,8 +247,8 @@ class ext_mod(models.Model):
     def __str__(self):
         return '{}'.format(self.titulo_ext)
 
+#Clase que almacena los datos de las Aplicaciones Externas o Plugins.
 class ext_app(models.Model):
-    #Clase que almacena los datos de las Aplicaciones Externas o Plugins.
     id_app_ext = models.AutoField(primary_key = True)
     titulo_app_ext = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False)
     mod_prin_app_ext = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False)
@@ -286,7 +283,6 @@ class rol(models.Model):
 
 
 class func_app(models.Model):
-
     id_func = models.AutoField(primary_key = True) # identificador único de función
     nom_func = models.CharField('Nombre de la función: ', max_length=30, null=False, blank = False) # Nombre de la función
     lib_func = models.CharField('Librería que contiene la función: ', max_length=30, null=False, blank = False) # Librería que contiene la función
@@ -356,83 +352,16 @@ class rl_app_mod_func(models.Model): # relacion Listado de funciones propias del
         verbose_name = 'rl_app_mod_func'
         verbose_name_plural = 'rl_app_mod_funcs'
 
-# Usuario personalizado
-class User(AbstractBaseUser, PermissionsMixin):
-
-    id_usu = models.AutoField(primary_key = True) # Identificador único
-    username = models.CharField('Nombres', max_length=100, unique=True)
-    email = models.EmailField('Email address', unique=True)
-    first_name = models.CharField(max_length=45)
-    last_name = models.CharField(max_length=80)
-    #phoneNumber = models.CharField('Numero de telefono', max_length=9, unique=True)
-    password = models.CharField(max_length=50)
-    #THIS IS THE LIST OF GENDERS
-    #MoW = [('Hombre', "Hombre"), ("Mujer","Mujer"), ("Ninguno","Ninguno")]
-    #gender = models.CharField(max_length=7 ,choices=MoW, null=False)
-
-    #THE PROFILE PHOTO
-    #userPhoto = models.ImageField()
-   
-   #IS NORMAL USER OR PARTNER OF THE APP
-    # Is_Partner = models.BooleanField(default=False)
-    # is_active = models.BooleanField(default=True)
-
-    #THIS FIELDS JUST MAKESURE THE USER IS NOT ADMIN-PAGE
-    is_superuser = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    
-    date_joined = models.DateField(auto_now=True)
-    # username = None
-   
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['first_name','last_name', 'email']
-#     username = models.CharField('Nombres', max_length=100)
-#     first_name = models.CharField('Nombres', max_length=100)
-#     last_name = models.CharField('Nombres', max_length=100)
-#     email = models.EmailField(unique=True)
-#     password = models.CharField(max_length=50)
-#     full_name = models.CharField('Nombres', max_length=100)
-#     genero = models.CharField(max_length=1, choices=GENERO, blank=True)
-#     date_birth = models.DateField('Fecha de nacimiento', blank=True,null=True)
-    def update_last_login(sender, user, **kwargs):
-        """
-        A signal receiver which updates the last_login date for
-        the user logging in.
-        """
-        User.last_login = datetime.timezone.now()
-        User.save(update_fields=['last_login'])
-        user_logged_in.connect(update_last_login)
-    #
-    def has_perm(self, perm, obj=None):
-        return self.is_superuser
-
-    def has_module_perms(self, app_label):
-        return self.is_superuser
-    #last_login = models.DateTimeField(update_last_login)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
-
-    objects = UserManager() 
-    USERNAME_FIELD = 'email'
-
-    REQUIRED_FIELDS = ['full_name']
-
-    def get_short_name(self):
-        return self.email
-    
-    def get_full_name(self):
-        return self.full_name
-
 #este usuario no se esta utilizando ojo...
 class usu(models.Model):
-    
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     username = models.CharField('Nombres', max_length=100, unique=True)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=80)
-    id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
-    fch_regi = models.DateField('fecha de registro', auto_now = False) # fecha de registro de usurio
-    activo = models.BooleanField('¿Activo o desactivado.?', default=False) # estatus del usuario activo (True) inactivo (False)
+    email = models.EmailField(max_length = 254)
+    #id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
+    fch_regi = models.DateField('fecha de registro', auto_now = True) # fecha de registro de usuario
+    activo = models.BooleanField('¿Activo o desactivado.?', default=True) # estatus del usuario activo (True) inactivo (False)
     
     class Meta:
         verbose_name = 'usu'

@@ -1,7 +1,7 @@
 from django.db import models
-#from django.contrib.auth.models import User
-from .models import *
+from django.contrib.auth.models import User
 from modadm.App_modadm.models import *
+from .models import *
 
 #Tipo de rol dentro de la plataforma
 TIPO_ROL = [
@@ -183,7 +183,7 @@ HORARIO = [
     ]
 
 class usu_inf_apps(models.Model):
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) #id único de Usuario de sistema
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) #id único de Usuario de sistema
     ls_roles =[[0,0]] #Listado de roles en aplicaciones y módulos autorizados por administradores de paltaforma
         # [0,] id_rol; [,0] id_usu quien autoriza. clave foranea a roles .. muchos
     #rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador de rol de sistema.
@@ -194,7 +194,7 @@ class usu_inf_apps(models.Model):
         verbose_name_plural = 'usu_inf_appss'
 
 class rl_usu_inf_apps_rol(models.Model): #identificar el rol actual del usuario
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)
     #rol_act = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)
 
     class Meta:
@@ -215,7 +215,7 @@ class discapacidad(models.Model):
 
 class usu_inf_pers(models.Model):
     
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE) # identificador de usuario
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE) # identificador de usuario
     nuip = models.CharField('número único de identificación personal ', max_length=30, null=False, blank = False)  # número único de identificación personal sin puntos
     tipo_nuip = models.IntegerField( choices = TIPO_NUIP_CO, default = 0, null=False, blank = False) # tipo de Número de identificación personal
     nombres = models.CharField('Nombres ', max_length=60, null=False, blank = False) # nombres de usuario
@@ -236,7 +236,7 @@ class usu_inf_pers(models.Model):
 
 class usu_inf_contac(models.Model):
 
-    id_usu = models.OneToOneField(User, on_delete=models.CASCADE)  # identificador de usuario
+    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE)  # identificador de usuario
     ind_nal = models.PositiveSmallIntegerField('Indicativo telefónico de país') #Indicativo telefónico de país
     cel = models.CharField('Número de telefono móvil del usuario',  max_length=30, null=False, blank = False) #Número de telefono móvil del usuario
     wa = models.CharField('Número de WhatsApp',  max_length=30, null=False, blank = False) # Número de WhatsApp
@@ -264,7 +264,7 @@ class red_soc(models.Model):
         verbose_name_plural = 'red_socs'
 
 class rl_usu_inf_red_social(models.Model): # relacion Listado de objetos de redes sociales
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
     ls_red = models.ForeignKey(red_soc, on_delete=models.CASCADE, null=False, blank =False)   # Listado de objetos de redes sociales
 
     class Meta:
@@ -275,7 +275,7 @@ class rl_usu_inf_red_social(models.Model): # relacion Listado de objetos de rede
 class form_acad(models.Model):
 
     id_fa =  models.AutoField(primary_key = True) #Id de formación académica
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE)  # identificador de usuario
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE)  # identificador de usuario
     instit = models.CharField('Nombre de la institucion ', max_length=25, null=False, blank = False) # Nombre de la institucion académica donde curso la formación
     tipo_form =  models.IntegerField(choices = TIPO_FORM_CO, default = 0, null=False, blank = False) #tipo de formación ver diccionario TIPO_FORM
     fch_ini = models.DateField('fecha de Inicio', auto_now = False)
@@ -294,7 +294,7 @@ class form_acad(models.Model):
 
 class usu_inf_acad(models.Model):
 #ESTA NO ME PARECE YA
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)  # identificador unico
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)  # identificador unico
     nivelform =  models.IntegerField(choices = TIPO_FORM_CO, default = 0, null=False, blank = False) # me indica la formacion qu tiene la usuario
 
     class Meta:
@@ -302,7 +302,7 @@ class usu_inf_acad(models.Model):
         verbose_name_plural = 'usu_inf_acads'
 
 class rl_usu_inf_form_acad(models.Model): # relacion de listado de id procesos de formación realizados
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
     ls_form = models.ForeignKey(form_acad, on_delete=models.CASCADE, null=False, blank =False)   #listado de procesos de formación realizados
 
     class Meta:
@@ -312,7 +312,7 @@ class rl_usu_inf_form_acad(models.Model): # relacion de listado de id procesos d
 class curs_dict(models.Model):
     #clase que almacena la información de cursos dictados a cargo de un usuario
     id_cd = models.AutoField(primary_key = True)    #Id de formación académica
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)
     instit =  models.CharField('Nombre de la institucion académica donde dictó el curso. ', max_length=20, null=False, blank = False) # Nombre de la institucion académica donde dictó el curso.
     tipo_form = models.IntegerField(choices = TIPO_FORM_CO, null=False, blank = False, default=0)  #tipo de formación ver diccionario TIPO_FORM
     fch_ini = models.DateField('fecha de inicio', auto_now = False)
@@ -332,12 +332,12 @@ class curs_dict(models.Model):
         verbose_name_plural = 'curs_dicts'
 
 class rl_usu_inf_contac_curs_dict(models.Model):  # relacion de LIstado de id Cursos a cargo dictadospor al persona.
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
     ls_cursdict = models.ForeignKey(curs_dict, on_delete=models.CASCADE, null=False, blank =False) #LIstado de id Cursos a cargo dictadospor al persona.
 
 
 class usu_inf_prof(models.Model):
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador unico de usuario
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # identificador unico de usuario
     prof = models.CharField('Titulo obtenido ', max_length=20, null=False, blank = False)  # Profesión Actual
 
     class Meta:
@@ -345,13 +345,13 @@ class usu_inf_prof(models.Model):
         verbose_name_plural = 'usu_inf_profs'
 
 class rl_usu_inf_prof_empleos(models.Model):  # relacion listado de procesos de formación realizados
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
     ls_curs = models.ForeignKey(curs_dict, on_delete=models.CASCADE, null=False, blank =False)
 
 class empleos(models.Model):
 
     id_empl = models.AutoField(primary_key = True)
-    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)
     instit = models.CharField('Nombre de la institucion ', max_length=20, null=False, blank = False) # Nombre de la institucion académica donde curso la formación
     nom_cargo = models.CharField('Nombre del Cargo ', max_length=20, null=False, blank = False)  #Nombre del Cargo
     fch_ini = models.DateField('fecha de inicio', auto_now = False)
@@ -381,7 +381,7 @@ class habilidades(models.Model):
 
 class rl_usu_inf_hab(models.Model): # relacion de listado de id de habilidades registradas por le usuario
     # Clase que almacena la información de las habilidades o conocimientos adquiridos y certificados por el usuario
-    id_usu=  models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # identificador unico de usuario
+    id_usu=  models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # identificador unico de usuario
     ls_habs =  models.ForeignKey(habilidades, on_delete=models.CASCADE, null=False, blank =False)  # listado de id de habilidades registradas por le usuario
     descripcion = models.CharField('Descripción ', max_length=20, null=False, blank = False)  # descripcion del conocimiento o habilidad investigador
 
@@ -393,7 +393,7 @@ class valid_hab(models.Model): # verificar esta
     #clase que procesa la información de validación social de habilidades
 #    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # Identificador del Usuario que registra la habilidad
     id_hab = models.ForeignKey(habilidades, on_delete=models.CASCADE, null=False, blank =False) #Identificador de la habilidad que se va a validar
-    id_usu_val = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)  #Identificador del Usuario que valida la habilidad
+    id_usu_val = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)  #Identificador del Usuario que valida la habilidad
     id_esc = models.CharField('IDENTIFICADOR ', max_length=20, null=False, blank = False) #Identificador de la escala de validación
     val = models.CharField('RANGO ', max_length=20, null=False, blank = False) #Valor dentro del rango de la escala de validación
 

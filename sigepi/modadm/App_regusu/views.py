@@ -18,7 +18,7 @@ from modadm.App_regusu.models import *
 #from modcons.App_cons.form import frm_con_usu
 #from modcons.App_cons.views import vts_ls_usu
 
-#vista registro de usuario
+############Registro como invitado##########################
 class vts_reg_usu_su(CreateView):
     #Clase que devuelve un formulario para registro de usuario
     form_class = frm_con_usu
@@ -26,6 +26,27 @@ class vts_reg_usu_su(CreateView):
     success_url = reverse_lazy('consulta_usuarios')
     success_message = "El usuario fue creado correctamente"
 
+class vts_ls_usu(ListView):
+    # clase para listar usuarios del sistema
+    model = usu
+    form_class = frm_con_usu
+    template_name = 'cn_usu.html'
+    success_url = reverse_lazy('cn_usu.html')
+    success_message = 'listado cargado correctamente'
+
+class vst_mod_reg_usu(UpdateView):
+    #clase que me modifca los usuarios para registro de usuario
+    model = usu
+    form_class = frm_con_usu
+    template_name = 'App_regusu_frm_nvo_usu.html'
+    success_url = reverse_lazy('consulta_usuarios')
+
+class infopersDelete(DeleteView):
+    #eliminar usuarios
+    model = usu
+    template_name = 'App_regusu_verificacion.html'
+    success_url = reverse_lazy('infopers')
+############FIN - Registro como invitado################
 
 class func_usu():
     #clase que me almacena las vistas de la aplicacion registro de usuario
@@ -37,13 +58,7 @@ class func_usu():
         return HttpResponse(respuesta)
 
 ##################Clase traida del modulo de consulta######################
-class vts_ls_usu(ListView):
-    # clase para listar usuarios del sistema
-    model = User
-    form_class = frm_con_usu
-    template_name = 'cn_usu.html'
-    success_url = reverse_lazy('cn_usu.html')
-    success_message = 'listado cargado correctamente'
+
 ###########################################################################
 
 class vst_selc_usu_cons(vts_ls_usu):
@@ -56,19 +71,9 @@ def vts_eli_usu(request, id):
     usuario.delete()
     return redirect('..+cons_usus/')
 
-class vst_mod_reg_usu(UpdateView):
-    #clase que me modifca los usuarios para registro de usuario
-    model = User
-    form_class = frm_con_usu
-    template_name = 'App_regusu_frm_nvo_usu.html'
-    success_url = reverse_lazy('consulta_usuarios')
 
-class vts_reg_usu_su(CreateView):
-    #Clase que devuelve un formulario para registro de usuario
-    form_class = frm_con_usu
-    template_name = 'App_regusu_frm_nvo_usu.html'
-    success_url = reverse_lazy('consulta_usuarios')
-    success_message = "El usuario fue creado correctamente"
+
+
 
 class infoperslList(ListView): #hereda de listwview
     #información de las personas
