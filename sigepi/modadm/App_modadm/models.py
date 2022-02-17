@@ -3,7 +3,6 @@ from django.db import models
 import datetime
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import PermissionsMixin, User, Group, update_last_login
-from .managers import UserManager
 
 #Tipo de rol dentro de la plataforma
 
@@ -358,7 +357,7 @@ class usu(models.Model):
     username = models.CharField('Nombres', max_length=100, unique=True)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=80)
-    email = models.EmailField(max_length = 254)
+    emailo = models.EmailField(max_length = 254)
     #id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
     fch_regi = models.DateField('fecha de registro', auto_now = True) # fecha de registro de usuario
     activo = models.BooleanField('¿Activo o desactivado.?', default=True) # estatus del usuario activo (True) inactivo (False)

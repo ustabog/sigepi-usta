@@ -19,6 +19,22 @@ from modadm.App_regusu.models import *
 #from modcons.App_cons.views import vts_ls_usu
 
 ############Registro como invitado##########################
+# def vst_registro(self, request):
+#         data = {
+#             'form': frm_reg_usu()
+#         }
+#         if request.method == "POST":
+#             formulario = frm_reg_usu(data=request.POST)
+#             if formulario.is_valid():
+#                 formulario.save()
+#                 usuario = formulario.cleaned_data.get('username')
+#                 password = formulario.cleaned_data.get('password1')
+#                 usuario = authenticate(username=usuario, password=password)
+#                 login(request, usuario)
+#                 return redirect(to='inicio')
+#             data["form"] = formulario
+#         return render(request,'frm_registro.html', data )
+
 class vts_reg_usu_su(CreateView):
     #Clase que devuelve un formulario para registro de usuario
     form_class = frm_con_usu
@@ -71,21 +87,23 @@ def vts_eli_usu(request, id):
     usuario.delete()
     return redirect('..+cons_usus/')
 
+###################CREAR USUARIO DESDE ADMIN#########################
 
+class infopersCreate(CreateView):
+    #información de los usuarios creados
+    model = usu_inf_pers  
+    form_class = frm_reg_usu_pers
+    template_name = 'App_regusu_frm_crearinfopers.html'
+    #success_url = reverse_lazy('infopers')
 
-
+    # def form_valid(self, form):
+    #     form.instance.user = self.request.user
+    #     return redirect('/infopers')
 
 class infoperslList(ListView): #hereda de listwview
     #información de las personas
     model = usu_inf_pers
     template_name = 'App_regusu_ls_infopers.html'
-
-class infopersCree(CreateView):
-    #información de los usuarios creados
-    model = usu_inf_pers  
-    form_class = frm_reg_usu_pers
-    template_name = 'App_regusu_frm_crearinfopers.html'
-    success_url = reverse_lazy('infopers')
 
 class infopersCreate(CreateView):
     #crear información de las personas
@@ -112,6 +130,10 @@ class infopersDelete(DeleteView):
     model = usu_inf_pers
     template_name = 'App_regusu_verificacion.html'
     success_url = reverse_lazy('infopers')
+
+###################FIN CREAR USUARIO DESDE ADMIN#####################
+
+
 
 # class Torneo_ListView(ListView):
 #    template_name = 'torneos/torneo_listar.html'

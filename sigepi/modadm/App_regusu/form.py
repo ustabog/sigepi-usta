@@ -14,8 +14,7 @@ Módulo administrativo SIGEPI
 """
 
 from django import forms
-from django.contrib.auth.models import User
-#from App_modadm.models import usu
+from modadm.App_modadm.models import *
 from .models import *
 
 #clase ubicado inicialmente en el modulo de consulta y App_cons
@@ -26,13 +25,13 @@ class frm_con_usu(forms.ModelForm):
         fields = ['username',
                   'first_name',
                   'last_name',
-                  'email',
+                  'emailo',
                  ]
         labels = {
                 'username' : 'Username',
                 'first_name' : 'Nombre',
                 'last_name' : 'Apellido',
-                'email' : 'Correo',
+                'emailo' : 'Correo',
                  }
 
 class frm_reg_usu_pers(forms.ModelForm):
@@ -41,35 +40,41 @@ class frm_reg_usu_pers(forms.ModelForm):
         #Metadatos de la clase
         model =  usu_inf_pers
         fields = [
-            'nuip',
+            'id_usu',
             'tipo_nuip',
-            'nombres',
-            'apelllidos',
+            'nuip',
+            # 'nombres',
+            # 'apelllidos',
+            'mail',
+            'telefono',
             'nal',
             'fch_naci',
             'gene',
             'ocup',
             'dir',
-            'discap',
-            'tipo_discap',
-            'url_imag',
-            'zona_hor'
+            # 'discap',
+            # 'tipo_discap',
+            # 'url_imag',
+            # 'zona_hor'
         ]
 
         labels = {
-            'nuip' : 'NUIP',
-            'tipo_nuip': 'Tipo',
-            'nombres': 'Nombres',
-            'apelllidos':'Apellidos',
+            'id_usu' : 'Id',
+            'tipo_nuip': 'Tipo de identificación',
+            'nuip' : 'Número de identificación',
+            # 'nombres': 'Nombres',
+            # 'apelllidos':'Apellidos',
+            'mail' : 'Email',
+            'telefono' : 'Telefono',
             'nal' : 'Nacionalidad',
             'fch_naci' : 'Fecha de nacimiento',
             'gene' : 'Género',
             'ocup':'Ocupación',
             'dir' : 'Dirección',
-            'discap' : 'Discapacidad',
-            'tipo_discap':'Tipo de Disc.',
-            'url_imag' : 'URL Imagen',
-            'zona_hor' : 'Zona Horaria',
+            # 'discap' : 'Discapacidad',
+            # 'tipo_discap':'Tipo de Disc.',
+            # 'url_imag' : 'URL Imagen',
+            # 'zona_hor' : 'Zona Horaria',
         }
         verbose_name = "DatosPersonales"
         verbose_name_plural = 'DatosPersonales'

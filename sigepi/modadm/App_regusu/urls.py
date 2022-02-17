@@ -18,10 +18,10 @@ urlpatterns = [
     #from urls modAdm
     path('eliminar_usu/<int:id>',vts_eli_usu, name = 'eliminar_usu'),
     
-    #Lista de información de usuarios
-    path('infopers/',infoperslList.as_view(), name = 'infopers'),
     #Crear información adicional de usuarios
     path('crearinf/',infopersCreate.as_view(), name = 'crearinf'),
+    #Lista de información de usuarios
+    path('infopers/',infoperslList.as_view(), name = 'infopers'),
     #Modificar la información de usuarios
     path('editarinf/<int:pk>/',infopersUpdate.as_view(), name='editarinf'),
     #Eliminar información de usuarios
