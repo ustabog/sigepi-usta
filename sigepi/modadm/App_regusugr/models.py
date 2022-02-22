@@ -1,5 +1,4 @@
 from django.db import models
-#from django.contrib.auth.models import User, Group
 from modadm.App_modadm.models import *
 from modadm.App_regusu.models import *
 
@@ -26,7 +25,7 @@ class usugr(models.Model): #ojo falta listado de productos y protyectos vinculad
 
     id_gr = models.AutoField(primary_key = True) #Identificador único del grupo de investigacion.
     passgr  = models.CharField('Descripcion ', max_length=20, null=False, blank = False)  # contraseña para el usuario grupo (diferente a la del usuario del sistema)
-    id_usu_admin = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)  #Identificador del usuario administrador (debe estar registrado y se le asignan permisos de administración de app_reg_gr)
+    id_usu_admin = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)  #Identificador del usuario administrador (debe estar registrado y se le asignan permisos de administración de app_reg_gr)
     id_rol_app = models.ForeignKey(rol, on_delete=models.CASCADE, null=True, blank =False)  # Identificador del Rol de Usuario grupo dentro de la app_reg_gr
 #    ls_pry =  models.ManyToManyField(pry) #Listado de id de proyectos vinculados al grupo de investigación.
 #    ls_prod = models.ManyToManyField(pro) #Listado de id de productos de investigación vinculados al grupo.
@@ -65,7 +64,7 @@ class rel_usugr_ls_etp(models.Model): #relacion de Listado histórico de etapas 
 
 class rel_usugr_ls_usu(models.Model):#Listado de id_usu integrantes del grupo registrados en el sistema.
     id_gr = models.ForeignKey(usugr, on_delete=models.CASCADE, null=False, blank =False)
-    ls_int_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
+    ls_int_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)
 
     class Meta:
         verbose_name = 'rel_usugr_ls_usu'

@@ -20,7 +20,7 @@ class usui(models.Model):
     # Clase que almacena y procesa la información de un usuario institucional
     id_usuinst = models.AutoField(primary_key = True) # Identificador único del usuario institucionnal
     passinst  = models.CharField('Contraseña ', null = False, blank = False, max_length = 15) # contraseña para el usuario institucional (diferente a la del usuario del sistema)
-    id_usu_admin = models.ForeignKey(User, on_delete=models.CASCADE, null= False, blank = False) #Identificador del usuario administrador (debe estar registrado y se le asignan permisos de administración de app_reg_ins)
+    id_usu_admin = models.ForeignKey(usu, on_delete=models.CASCADE, null= False, blank = False) #Identificador del usuario administrador (debe estar registrado y se le asignan permisos de administración de app_reg_ins)
     id_rol_app = models.ForeignKey(rol, on_delete = models.CASCADE, null= False, blank = False)
     #id_rol_app = models.ForeignKey(rol, on_delete = models.CASCADE, null= False, blank = False)
     #  # Identificador del Rol de Usuario Institucional dentro de la app_reg_ins
@@ -170,7 +170,7 @@ class rl_usui_usugr(models.Model): # relacion de Listado de id de grupos de inv.
 
 class rl_usui_usu(models.Model): #Listado de id de usuarios vinculados a la entidad o Institución.
     id_usui = models.ForeignKey(usui, on_delete=models.CASCADE, null=False, blank=False) # identificador unico
-    ls_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
+    ls_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank=False)
 
 class rl_usui_conv_inv(models.Model):  #relacion Listado de id de convocatorias de investigación vinculados a la entidad o Institución.
     id_usui = models.ForeignKey(usui, on_delete=models.CASCADE, null=False, blank=False) # identificador unico

@@ -8,15 +8,15 @@ from .models import *
 
 urlpatterns = [
     #crear usuario del modulo adm
-    path('creausu/',vts_reg_usu_su.as_view(), name = 'crea_nvo_usu'),
+    path('creausu/',vts_reg_usu.as_view(), name = 'crea_nvo_usu'),
     #Consulta de usuarios
     path('cons_usus/', vts_ls_usu.as_view(), name='consulta_usuarios'),
     #Seleccionar usuario de consulta
     path('sel_usu_cons/', vst_selc_usu_cons.as_view(), name='seleccion_usuario_consulta'),
 #   #editar usuario de consulta
-    path('edi_usu/<int:pk>/',vst_mod_reg_usu.as_view(), name = 'editar_usu'),
+    path('edi_usu/<int:pk>/',vst_mod_usu.as_view(), name = 'editar_usu'),
     #from urls modAdm
-    path('eliminar_usu/<int:id>',vts_eli_usu, name = 'eliminar_usu'),
+    path('eli_usu/<int:pk>',vts_eli_usu, name = 'eliminar_usu'),
     
     #Crear información adicional de usuarios
     path('crearinf/',infopersCreate.as_view(), name = 'crearinf'),

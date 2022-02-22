@@ -18,27 +18,11 @@ from modadm.App_regusu.models import *
 #from modcons.App_cons.form import frm_con_usu
 #from modcons.App_cons.views import vts_ls_usu
 
-############Registro como invitado##########################
-# def vst_registro(self, request):
-#         data = {
-#             'form': frm_reg_usu()
-#         }
-#         if request.method == "POST":
-#             formulario = frm_reg_usu(data=request.POST)
-#             if formulario.is_valid():
-#                 formulario.save()
-#                 usuario = formulario.cleaned_data.get('username')
-#                 password = formulario.cleaned_data.get('password1')
-#                 usuario = authenticate(username=usuario, password=password)
-#                 login(request, usuario)
-#                 return redirect(to='inicio')
-#             data["form"] = formulario
-#         return render(request,'frm_registro.html', data )
-
-class vts_reg_usu_su(CreateView):
+class vts_reg_usu(CreateView):
     #Clase que devuelve un formulario para registro de usuario
-    form_class = frm_con_usu
+    model = usu 
     template_name = 'App_regusu_frm_nvo_usu.html'
+    form_class = frm_con_usu
     success_url = reverse_lazy('consulta_usuarios')
     success_message = "El usuario fue creado correctamente"
 
@@ -50,12 +34,17 @@ class vts_ls_usu(ListView):
     success_url = reverse_lazy('cn_usu.html')
     success_message = 'listado cargado correctamente'
 
-class vst_mod_reg_usu(UpdateView):
+class vst_mod_usu(UpdateView):
     #clase que me modifca los usuarios para registro de usuario
     model = usu
     form_class = frm_con_usu
     template_name = 'App_regusu_frm_nvo_usu.html'
     success_url = reverse_lazy('consulta_usuarios')
+
+def vts_eli_usu(request, id):
+    usuario = usu.objects.get(id = id)
+    usuario.delete()
+    return redirect('..cons_usus/')
 
 class infopersDelete(DeleteView):
     #eliminar usuarios
@@ -94,11 +83,11 @@ class infopersCreate(CreateView):
     model = usu_inf_pers  
     form_class = frm_reg_usu_pers
     template_name = 'App_regusu_frm_crearinfopers.html'
-    #success_url = reverse_lazy('infopers')
+    success_url = reverse_lazy('infopers')
 
-    # def form_valid(self, form):
-    #     form.instance.user = self.request.user
-    #     return redirect('/infopers')
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return redirect('/infopers')
 
 class infoperslList(ListView): #hereda de listwview
     #información de las personas

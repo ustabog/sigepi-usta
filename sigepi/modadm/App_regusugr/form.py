@@ -1,7 +1,7 @@
 # Este codigo se trae de el modulo de consulta
 from django import forms
-from django.contrib.auth.models import User
-from modadm.App_regusu.models import usu_inf_apps
+from modadm.App_modadm.models import usu
+from modadm.App_regusu.models import *
 from modadm.App_regusugr.models import usugr
 from modadm.App_regusui.models import usui
 from modadm.App_modadm.models import mod
@@ -9,7 +9,7 @@ from modadm.App_modadm.models import mod
 class frm_con_usu(forms.ModelForm):
     #Calse que automatiza la creación de formularios de consulta de Usuario en Django.
     class Meta:
-        model = User
+        model = usu
         fields = ['username',
                   'first_name',
                   'last_name',

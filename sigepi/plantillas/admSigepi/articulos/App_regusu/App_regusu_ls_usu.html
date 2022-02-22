@@ -15,14 +15,14 @@
                 </tr>
               </thead>
             <tbody>
-              {% for use in  object_list %}
+              {% for usu in  object_list %}
               <tr>
                 <td>{{ usu.last_name }}</td>
                 <td>{{ usu.last_login }}</td>
                 <td>{{ usu.username }}</td>
                 <td>{{ usu.first_name }}</td>
                 <td>{{ usu.email }}</td>
-                <td><a href="{% url 'edi_usu/usu.id'  %}"> Editar </a> <a href="{% url 'eliminarusu' usu.id  %} "> Eliminar </a></td>
+                <td><a href="{% url 'edi_usu/usu.user'  %}"> Editar </a> <a href="{% url 'eliminarusu' usu.user  %} "> Eliminar </a></td>
               </tr>
               {% endfor %}
             </tbody>

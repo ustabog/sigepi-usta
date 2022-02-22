@@ -22,17 +22,20 @@ class frm_con_usu(forms.ModelForm):
     #Clase que automatiza la creación de formularios de consulta de Usuario en Django.
     class Meta:
         model = usu
-        fields = ['username',
-                  'first_name',
-                  'last_name',
-                  'emailo',
+        fields = [
+                    'username',
+                    'first_name',
+                    'last_name',
+                    'email',
+                    'password',
                  ]
         labels = {
-                'username' : 'Username',
-                'first_name' : 'Nombre',
-                'last_name' : 'Apellido',
-                'emailo' : 'Correo',
-                 }
+                    'username' : 'Username',
+                    'first_name' : 'Nombre',
+                    'last_name' : 'Apellido',
+                    'email' : 'Correo',
+                    'password' : 'Contraseña',
+                }
 
 class frm_reg_usu_pers(forms.ModelForm):
     #clase para la creación de un formulario de registro de información personal de usuario SIGEPI.
