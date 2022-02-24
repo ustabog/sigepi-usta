@@ -216,7 +216,7 @@ class discapacidad(models.Model):
 
 class usu_inf_pers(models.Model):
     
-    id_usu = models.ForeignKey(usu, on_delete=models.SET_NULL, null=True, blank=True) # identificador de usuario
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=True, blank=True) # identificador de usuario
     nuip = models.CharField('Número único de identificación personal ', max_length=30, null=False, blank = False)  # número único de identificación personal sin puntos
     tipo_nuip = models.CharField( max_length=30, choices = TIPO_NUIP_CO, default =0, null=False, blank = False) # tipo de Número de identificación personal
     #nombres = models.CharField(usu.first_name, max_length=30, null=False, blank = False)

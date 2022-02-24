@@ -8,19 +8,20 @@
     <h3>Registrar Nuevo Usuario</h3>
     <form method="post" class="">
         {% csrf_token %}
-        <div class="row">
+        {{ form.as_p}}
+        <!-- <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Nombre de Usuario</span>
-                    <input type="text" class="form-control" name="form.username">
+                    <input type="text" class="form-control" name="id.username">
                 </div>
             </div>
-        </div>
-        <div class="row">
+        </div> -->
+        <!-- <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Nombre</span>
-                    <input type="text" class="form-control" name="form.first_name>
+                    <input type="text" class="form-control" name="id.first_name">
                 </div>
             </div>
         </div>
@@ -28,7 +29,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Apellido</span>
-                    <input type="text" class="form-control" name="form.last_name>
+                    <input type="text" class="form-control" name="id.last_name">
                 </div>
             </div>
         </div>
@@ -36,7 +37,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Correo</span>
-                    <input type="email" class="form-control" name="form.email>
+                    <input type="email" class="form-control" name="id.email">
                 </div>
             </div>
         </div>
@@ -44,10 +45,10 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Contraseña</span>
-                    <input type="password" class="form-control" name="form.password">
+                    <input type="password" class="form-control" name="password2">
                 </div>
             </div>
-        </div>
+        </div> -->
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 </div>
