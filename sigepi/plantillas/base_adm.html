@@ -15,15 +15,21 @@
     {% endblock %}
   </header>
   <body>
-    <div class="d-flex" id="lado_ppal">
-     
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-sm-3 p-3 bg-primary text-white">
+          <!-- {% block lado %}
+          {% endblock %} -->
+        </div>
+        <div class="col-sm-9 p-3 bg-dark text-white">
+          {% block cuerpo %}
+          {% block articulo %}
+      
+          {% endblock %}
+          {% endblock %}
+        </div>
+      </div>
     </div>
-
-    {% block cuerpo %}
-    {% block articulo %}
-
-    {% endblock %}
-    {% endblock %}
     <script language="JavaScript" type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script language="JavaScript" type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
   </body>
