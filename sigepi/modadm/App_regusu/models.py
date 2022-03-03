@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 from modadm.App_modadm.models import *
 from .models import *
 

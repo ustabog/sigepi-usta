@@ -11,7 +11,7 @@ from modadm.App_modadm.models import *
 
 class vts_ls_usu(ListView):
     # clase para listar usuarios del sistema
-    model = User
+    model = usu
     form_class = frm_con_usu
     template_name = 'cn_usu.html'
     success_url = reverse_lazy('cn_usu.html')
@@ -50,7 +50,7 @@ class ls_rol_usu(ListView):
     success_message = 'listado cargado correctamente'
 
 class mod_usu(UpdateView):
-    model = User
+    model = usu
     form_class = frm_con_usu
     template_name = 'sl_usu.html'
     success_url = reverse_lazy('mod_usu.html')

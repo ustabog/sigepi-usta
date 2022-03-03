@@ -266,9 +266,9 @@ class rol(models.Model):
     etq_rol = models.CharField('Etiqueta: ', max_length=30, null=False, blank = False) # Etiqueta del Rol
     desc = models.CharField('Descripcion del Rol: ', max_length=30, null=False, blank = False) # Descripcion del Rol
     tipo = models.IntegerField(null = False, blank = False, choices = TIPO_ROL, default = 0) # Ver diccionario TIPO_ROL
-    #id_sis = models.ForeignKey(listado_aplicativo, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de sistema
     id_mod = models.ForeignKey(mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Módulo
     id_app = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Aplicación
+    id_sis = models.ForeignKey(listado_aplicativo, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de sistema
 #    id_ext_mod = models.ForeignKey(ext_mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de módulo
 #    id_ext_app = models.ForeignKey(ext_app, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de aplicación
     req_reg = models.BooleanField('¿Activa o desactiva.?', default=False) # Variable que indica si require registro en aplicativo o plataforma o no.

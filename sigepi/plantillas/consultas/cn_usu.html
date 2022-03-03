@@ -1,7 +1,17 @@
-{% extends 'index_front.html' %}
+{% extends 'index_adm.html' %}
 {% block titulo %} Listado de usuario {% endblock titulo %}
 {% block cuerpo %}
-
+{% block js %}
+    {% if messages %}
+    {% for m in messages %}
+        <script type="text/javascript">
+            function eliminarUsu (id) {
+                console.log(id);
+            } 
+        </script>
+    {% endfor %}
+    {% endif %} 
+{% endblock %}
 {% if form.errors %}
     <p>La lista de usuario no se ha logrado consultar.</p>
 {% endif %}
@@ -30,8 +40,9 @@
                                 <td> {{ usu.username }} </td>
                                 <td> {{ usu.first_name}} </td>
                                 <td> {{ usu.last_name}} </td>
-                                <td> <a href="#" class="btn btn-block btn-sm btn-info">Editar</a> <br></td>
-                                <td> <a href="eliminar_usu/{{usu.username}}" class="btn btn-block btn-sm btn-danger">Eliminar</a> <br></td>
+                                <td> <a href="../edi_usu/{{usu.id}}" class="btn btn-block btn-sm btn-info">Editar</a> <br></td>
+                                <td> <a href="../eli_usu/{{usu.id}}" class="btn btn-block btn-sm btn-danger">Eliminar</a> <br></td> 
+                                <!-- <td> <a href="../eli_usu/{{usu.id}}" onclick="eliminarUsu({{ usu.id }})" class="btn btn-block btn-sm btn-danger">Eliminar</a> <br></td>  -->
                             </tr>
                         </tbody>
                         {% endfor %}
@@ -43,5 +54,4 @@
             {% endblock modf_consl  %}
     </div>
 </form>
-
 {% endblock cuerpo %}

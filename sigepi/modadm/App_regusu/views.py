@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse, request
 from django.template import Template,Context,loader
@@ -38,19 +38,21 @@ class vst_mod_usu(UpdateView):
     #clase que me modifca los usuarios para registro de usuario
     model = usu
     form_class = frm_con_usu
-    template_name = 'App_regusu_frm_crearinfopers.html'
+    template_name = 'App_regusu_ls_infopers.html'
+  
     success_url = reverse_lazy('consulta_usuarios')
 
-def vts_eli_usu(request, id):
-    usuario = usu.objects.get(id = id)
+def eli_usu(request, id):
+    usuario = get_object_or_404(usu, id=id)
     usuario.delete()
-    return redirect('..cons_usus/')
+    messages.success(request, "Eliminado correctamente")
+    return redirect(to="../cons_usus")
 
-class infopersDelete(DeleteView):
-    #eliminar usuarios
-    model = usu
-    template_name = 'App_regusu_verificacion.html'
-    success_url = reverse_lazy('infopers')
+# class vts_eli_usu(DeleteView):
+#     #eliminar usuarios
+#     model = usu
+#     template_name = 'App_regusu_verificacion.html'
+#     success_url = reverse_lazy('cn_usu.html')
 ############FIN - Registro como invitado################
 
 class func_usu():
