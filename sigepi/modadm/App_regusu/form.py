@@ -81,3 +81,125 @@ class frm_reg_usu_pers(forms.ModelForm):
         }
         verbose_name = "DatosPersonales"
         verbose_name_plural = 'DatosPersonales'
+
+class frm_con_info_contact(forms.ModelForm):
+    #Información de contacto
+    class Meta:
+        model = usu_inf_contac
+        fields = [
+                    'id_usu',
+                    'ind_nal',
+                    'cel',
+                    'wa',
+                    'email',
+                    'cod_post',
+                    'ls_ha',
+                    'web',
+                    'dir_offi',
+                 ]
+        labels = {
+                    'id_usu' : 'ID',
+                    'ind_nal' : 'Indicador Nacional',
+                    'cel' : 'Celular',
+                    'wa' : 'WhatsApp',
+                    'email' : 'Correo',
+                    'cod_post' : 'Código Postal',
+                    'ls_ha' : 'Horario Atención',
+                    'web' : 'Página Web',
+                    'dir_offi' : 'Dirección Oficina',
+                }
+
+class frm_con_red_social(forms.ModelForm):
+    #Red Social
+    class Meta:
+        model = red_soc
+        fields = [
+                    'id_red',
+                    'nombre_red',
+                    'usuario',
+                    'url',
+                    'uso',
+                    'pub',
+                 ]
+        labels = {
+                    'id_red' : 'ID',
+                    'nombre_red' : 'Nombre Red',
+                    'usuario' : 'Usuario',
+                    'url' : 'URL',
+                    'uso' : 'Uso',
+                    'pub' : 'Acceso público',
+                }
+
+class frm_form_academica(forms.ModelForm):
+    #Formación académica
+    class Meta:
+        model = form_acad
+        fields = [
+                    'id_fa',
+                    'id_usu',
+                    'instit',
+                    'tipo_form',
+                    'fch_ini',
+                    'fch_fin',
+                    'certif',
+                    'nal',
+                    'ciudad',
+                    'mod',
+                    'tit',
+                    'menc',
+                    'token',
+                 ]
+        labels = {
+                    'id_fa' : 'Id',
+                    'id_usu' : 'Id usuario',
+                    'instit' : 'Institución',
+                    'tipo_form' : 'Tipo de formación',
+                    'fch_ini' : 'Fecha inicio',
+                    'fch_fin' : 'Fecha finalización',
+                    'certif' : 'Certificado',
+                    'nal' : 'Pais',
+                    'ciudad' : 'Ciudad',
+                    'mod' : 'Modalidad',
+                    'tit' : 'Título',
+                    'menc' : 'Mención',
+                    'token' : 'Validación',
+                }
+
+# class frm_curs_dict(forms.ModelForm):
+#     #Formación académica
+#     class Meta:
+#         model = form_acad
+#         fields = [
+#                     'id_cd',
+#                     'id_usu',
+#                     'instit',
+#                     'tipo_form',
+#                     'fch_ini',
+#                     'fch_fin',
+#                     'certif',
+#                     'nal',
+#                     'ciudad',
+#                     'mod',
+#                     'num_est',
+#                     'dur',
+#                     'nom_curs',
+#                     'mun_ciclos',
+#                     'url_prog',
+#                  ]
+#         labels = {
+#                     'id_cd' : 'ID',
+#                     'id_usu' : 'ID usu',
+#                     'instit' : 'Nombre Institución',
+#                     'tipo_form' : 'Tipo de formación',
+#                     'fch_ini' : 'Fecha inicio',
+#                     'fch_fin' : 'Fecha finalización',
+#                     'certif' : 'Certificado',
+#                     'nal' : 'Pais',
+#                     'ciudad' : 'Ciudad',
+#                     'mod' : 'Modalidad',
+#                     'num_est' : 'Número de estudiantes',
+#                     'dur' : 'Duración',
+#                     'nom_curs' : 'Nombre curso',
+#                     'mun_ciclos' : 'Número de ciclos',
+#                     'url_prog' : 'URL Programa',
+#                 }

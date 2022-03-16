@@ -280,15 +280,15 @@ class form_acad(models.Model):
     id_usu = models.ForeignKey(usu, on_delete=models.CASCADE)  # identificador de usuario
     instit = models.CharField('Nombre de la institucion ', max_length=25, null=False, blank = False) # Nombre de la institucion académica donde curso la formación
     tipo_form =  models.IntegerField(choices = TIPO_FORM_CO, default = 0, null=False, blank = False) #tipo de formación ver diccionario TIPO_FORM
-    fch_ini = models.DateField('fecha de Inicio', auto_now = False)
-    fch_fin = models.DateField('fecha de Fin', auto_now = False)
+    fch_ini = models.DateField('Fecha de Inicio', auto_now = False)
+    fch_fin = models.DateField('Fecha de Fin', auto_now = False)
     certif = models.BooleanField('Posees Certificado', default=False)
     nal = models.CharField('Pais ', max_length=20, null=False, blank = False) #país
     ciudad = models.CharField('Ciudad ', max_length=20, null=False, blank = False)
     mod =  models.IntegerField(choices = MODALIDAD, default = 0, null=False, blank = False) # modalidad
     tit = models.CharField('Titulo obtenido ', max_length=20, null=False, blank = False) # Título obtenido
-    menc =  models.CharField('Mensión ', max_length=20, null=False, blank = False)  # Mensión de honor
-    token = models.CharField('token de validación ', max_length=20, null=False, blank = False)  #Token de validación electrónica de certificación de la formación
+    menc =  models.CharField('Mención ', max_length=20, null=False, blank = False)  # Mensión de honor
+    token = models.CharField('Token de validación ', max_length=20, null=False, blank = False)  #Token de validación electrónica de certificación de la formación
 
     class Meta:
         verbose_name = 'form_acad'
