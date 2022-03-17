@@ -6,9 +6,9 @@ from modadm.App_regusu.views import *
 from .models import *
 
 
-urlpatterns = [
+urlpatterns = [ 
     #crear usuario del modulo adm
-    path('creausu/',vts_reg_usu.as_view(), name = 'crea_nvo_usu'),
+    path('creausu/',vts_reg_usu().vst_registro, name = 'crea_nvo_usu'),
     #Consulta de usuarios
     path('cons_usus/', vts_ls_usu.as_view(), name='consulta_usuarios'),
     #Seleccionar usuario de consulta

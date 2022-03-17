@@ -11,6 +11,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
 from django.views.generic.base import View
+from django.contrib.auth import authenticate
 #from rest_framework import viewsets
 from .models import *
 from .form import *
@@ -18,13 +19,24 @@ from modadm.App_regusu.models import *
 #from modcons.App_cons.form import frm_con_usu
 #from modcons.App_cons.views import vts_ls_usu
 
+
 class vts_reg_usu(CreateView):
     #Clase que devuelve un formulario para registro de usuario
-    model = usu 
-    template_name = 'App_regusu_frm_nvo_usu.html'
-    form_class = frm_con_usu
-    success_url = reverse_lazy('consulta_usuarios')
-    success_message = "El usuario fue creado correctamente"
+    def vst_registro(self, request):
+        data = {
+            'form': frm_reg_usu()
+        }
+        if request.method == "POST":
+            formulario = frm_reg_usu(data=request.POST)
+            if formulario.is_valid():
+                formulario.save()
+                usuario = formulario.cleaned_data.get('username')
+                password = formulario.cleaned_data.get('password1')
+                usuario = authenticate(username=usuario, password=password)
+                login(request, usuario)
+                return redirect(to='consulta_usuarios')
+            data["form"] = formulario
+        return render(request,'App_regusu_frm_nvo_usu.html', data )
 
 class vts_ls_usu(ListView):
     # clase para listar usuarios del sistema

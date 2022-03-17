@@ -14,9 +14,26 @@ Módulo administrativo SIGEPI
 """
 
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from modadm.App_modadm.models import *
 from .models import *
 
+class frm_reg_usu(UserCreationForm):
+    #Calse que automatiza la creación de formularios de Registro de Usuario en Django.
+    first_name = forms.CharField(max_length=140, required=True)
+    last_name = forms.CharField(max_length=140, required=False)
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = usu
+        fields = (
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'password1',
+            'password2',
+        )
 #clase ubicado inicialmente en el modulo de consulta y App_cons
 class frm_con_usu(forms.ModelForm):
     #Clase que automatiza la creación de formularios de consulta de Usuario en Django.
