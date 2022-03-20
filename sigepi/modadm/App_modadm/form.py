@@ -7,3 +7,9 @@ class funcionForm(forms.ModelForm):
     class Meta:
         model =  func_app
         fields = '__all__'
+
+class frm_con_mod(forms.ModelForm):
+    #Red Social
+    class Meta:
+        model = mod
+        fields = '__all__'

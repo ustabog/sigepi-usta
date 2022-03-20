@@ -51,7 +51,6 @@ class vst_mod_usu(UpdateView):
     model = usu
     form_class = frm_con_usu
     template_name = 'App_regusu_frm_edt_usu.html'
-  
     success_url = reverse_lazy('consulta_usuarios')
 
 def eli_usu(request, id):

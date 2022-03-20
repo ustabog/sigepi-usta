@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.template import Template,Context,loader
@@ -28,6 +28,28 @@ class vts_reg_mod(CreateView):
     template_name = 'App_ma_nvo_mod.html'
     success_url = reverse_lazy('consulta_usuarios')
     success_message = 'el modelo creado satisfactoriamente'
+
+class vts_ls_mod(ListView):
+    #clase que almacena los modulos generales del sistema
+    model = mod
+    form_class = frm_con_mod
+    template_name = 'cn_mod.html'
+    success_url = reverse_lazy('cn_mod.html')
+    success_message = 'Listado cargado correctamente'
+
+class vts_edt_mod(UpdateView):
+    #clase que almacena los modulos generales del sistema
+    model = mod
+    form_class = frm_con_mod
+    template_name = 'App_regusu_frm_edt_usu.html'
+  
+    success_url = reverse_lazy('consulta_usuarios')
+    
+def vts_eli_mod(request, id):
+    usuario = get_object_or_404(mod, id=id)
+    usuario.delete()
+    messages.success(request, "Eliminado correctamente")
+    return redirect(to="vts_ls_mod")
 
 class funcionList(ListView):
     model = func_app

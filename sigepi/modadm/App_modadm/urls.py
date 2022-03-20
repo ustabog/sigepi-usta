@@ -12,7 +12,10 @@ urlpatterns = [
     path('inicioadmin', backend.modadm, name="inicioadmin"),
 
 # registrar modulos
-    path('reg_modu', vts_reg_mod.as_view(), name ='reg_mod'),
+    path('vts_reg_modu', vts_reg_mod.as_view(), name ='reg_mod'),
+    path('vts_ls_modu', vts_ls_mod.as_view(), name ='reg_mod'),
+    path('vts_edt_modu', vts_edt_mod.as_view(), name ='reg_mod'),
+    path('vts_eli_modu', vts_eli_mod, name ='reg_mod'),
 
 #funciones
     path('funciones/',funcionList.as_view(), name = 'funciones'),

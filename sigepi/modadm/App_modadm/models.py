@@ -180,14 +180,14 @@ HORARIO = [
 
 #Modulo Adminitrativo
 class mod(models.Model):
-    # clase que almacena todos los modelos del sistema
+    # clase que almacena todos los modulos del sistema
     id_mod = models.AutoField(primary_key = True) # Identificador único del módulo
     titulo = models.CharField('Título del módulo', max_length=40, null=False, blank = False) # Título del módulo ej. "Administración Plataforma"
-    desc  = models.CharField('descripcion del Módulo', max_length=50, null=False, blank = False) # descripcion del Módulo
-    url_doc = models.URLField('url Documentación', null=False, blank=False) # sitio url # direción local a la documentación o manual del módulo.
+    desc  = models.CharField('Descripcion del Módulo', max_length=50, null=False, blank = False) # descripcion del Módulo
+    url_doc = models.URLField('URL Documentación', null=False, blank=False) # sitio url # direción local a la documentación o manual del módulo.
     version = models.DecimalField('Versión de desarrollo ', max_digits=4, decimal_places=2, null=False, blank = False) # Versión de desarrollo del Módulo ej. "0.01.04"
     activo = models.BooleanField('Activo', default=False) # estatus de la aplicacion para indicar  el modulo de Administración
-    instalado = models.BooleanField('¿el módulo se encuentra instalado?', default=False) # ¿el módulo se encuentra instalado? sí =True; no= False.
+    instalado = models.BooleanField('¿El módulo se encuentra instalado?', default=False) # ¿el módulo se encuentra instalado? sí =True; no= False.
     visible = models.BooleanField('¿Activa o desactiva la visibilidad de la aplicacion.?', default=False)  # Activa o desactiva la visibilidad de la aplicacion.
     ls_param_cnf = models.CharField('Listado de parámetro de configuración', max_length=100, null=False, blank = False, default='0')
 
