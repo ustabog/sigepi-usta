@@ -1,4 +1,4 @@
-''{% extends 'index_adm.html' %}
+{% extends 'index_adm.html' %}
 {% block titulo %} Listado de Modulos {% endblock titulo %}
 {% block cuerpo %}
 {% if form.errors %}
@@ -7,9 +7,6 @@
 
 
 <form method="POST">
-    {{form.as_ul}
-
-    <div>
         {% for mod in  object_list %}
         <label> {{ mod.id_mod }} </label>
         <label> {{ mod.titulo}} </label>
@@ -21,10 +18,6 @@
         <label> {{ mod.visible }} </label>
         <label> {{ mod.activo}} </label>
         <label> {{ mod.ls_param_cnf}} </label><br>
-            {% block modf_consl %}
-
-            {% endblock modf_consl  %}
         {% endfor %}
-
 </form>
 {% endblock cuerpo %}

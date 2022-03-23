@@ -90,23 +90,6 @@ def vts_eli_usu(request, id):
     return redirect('..+cons_usus/')
 
 ###################CREAR USUARIO DESDE ADMIN#########################
-
-class infopersCreate(CreateView):
-    #información de los usuarios creados
-    model = usu_inf_pers  
-    form_class = frm_reg_usu_pers
-    template_name = 'App_regusu_frm_crearinfopers.html'
-    success_url = reverse_lazy('infopers')
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return redirect('/infopers')
-
-class infoperslList(ListView): #hereda de listwview
-    #información de las personas
-    model = usu_inf_pers
-    template_name = 'App_regusu_ls_infopers.html'
-
 class infopersCreate(CreateView):
     #crear información de las personas
     model = usu_inf_pers
@@ -120,6 +103,11 @@ class infopersCreate(CreateView):
         self.object.save()
         return super(infopersCreate, self).form_valid(form)
 
+class infoperslList(ListView): #hereda de listwview
+    #información de las personas
+    model = usu_inf_pers
+    template_name = 'App_regusu_ls_infopers.html'
+    
 class infopersUpdate(UpdateView):
     #modificar la información de los usuarios
     model = usu_inf_pers

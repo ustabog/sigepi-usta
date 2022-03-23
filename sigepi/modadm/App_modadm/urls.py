@@ -1,21 +1,18 @@
-from django.urls import path, include
-from django.contrib.auth.views import LoginView
+from django.urls import path
+from django.contrib.auth.views import *
 from django.contrib.auth import views as auth_views
+from django.conf.urls import url
 #from rest_framework.routers import DefaultRouter
 from modadm.App_modadm.views import *
-
-
+from .models import *
 
 urlpatterns = [
-
 # direcciones del modulo admin
-    path('inicioadmin', backend.modadm, name="inicioadmin"),
-
 # registrar modulos
-    path('vts_reg_modu', vts_reg_mod.as_view(), name ='reg_mod'),
-    path('vts_ls_modu', vts_ls_mod.as_view(), name ='reg_mod'),
-    path('vts_edt_modu', vts_edt_mod.as_view(), name ='reg_mod'),
-    path('vts_eli_modu', vts_eli_mod, name ='reg_mod'),
+    path('reg_mod/', vts_reg_mod.as_view(), name ='reg_mod'),
+    path('cons_mod/', vts_ls_mod.as_view(), name ='consulta_modulos'),
+    path('edt_mod/', vts_edt_mod.as_view(), name ='edt_mod'),
+    path('eli_mod/', vts_eli_mod, name ='eli_mod'),
 
 #funciones
     path('funciones/',funcionList.as_view(), name = 'funciones'),

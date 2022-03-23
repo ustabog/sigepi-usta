@@ -1,10 +1,9 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.template import Template,Context,loader
 from django.core import serializers
-from django.views.generic import CreateView, DeleteView,ListView,UpdateView
-from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
@@ -15,22 +14,16 @@ from .models import *
 from .form import *
 from modcons.App_cons.form import frm_con_mod
 
-app_name = "adm"
-
-class backend():
-     # inicio del index
-    def modadm(request):
-        return render(request,'index_adm.html')
-
 class vts_reg_mod(CreateView):
-    #clase que almacena los modulos generales del sistema
-    form_class = frm_con_mod
+    #crear información de las personas
+    model = mod
+    form_class = frm_reg_mod
     template_name = 'App_ma_nvo_mod.html'
-    success_url = reverse_lazy('consulta_usuarios')
-    success_message = 'el modelo creado satisfactoriamente'
+    success_url = reverse_lazy('consulta_modulos')
+    success_message = 'El modelo fue creado satisfactoriamente'
 
-class vts_ls_mod(ListView):
-    #clase que almacena los modulos generales del sistema
+class vts_ls_mod(ListView): #hereda de listwview
+    #información de las personas
     model = mod
     form_class = frm_con_mod
     template_name = 'cn_mod.html'
