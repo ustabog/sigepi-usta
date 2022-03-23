@@ -18,6 +18,8 @@
         <label> {{ mod.visible }} </label>
         <label> {{ mod.activo}} </label>
         <label> {{ mod.ls_param_cnf}} </label><br>
+        <label> <a href="../edt_mod/{{mod.id_mod}}" class="btn btn-block btn-sm btn-info">Editar</a></label>
+        <label> <a href="../eli_mod/{{mod.id_mod}}" class="btn btn-block btn-sm btn-danger">Eliminar</a><br></label>
         {% endfor %}
 </form>
 {% endblock cuerpo %}

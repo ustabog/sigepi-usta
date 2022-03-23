@@ -34,15 +34,14 @@ class vts_edt_mod(UpdateView):
     #clase que almacena los modulos generales del sistema
     model = mod
     form_class = frm_con_mod
-    template_name = 'App_regusu_frm_edt_usu.html'
-  
+    template_name = 'App_regusu_frm_edt_mod.html'
     success_url = reverse_lazy('consulta_usuarios')
     
-def vts_eli_mod(request, id):
-    usuario = get_object_or_404(mod, id=id)
-    usuario.delete()
+def vts_eli_mod(request, id_mod):
+    modulo = get_object_or_404(mod, id_mod=id)
+    modulo.delete()
     messages.success(request, "Eliminado correctamente")
-    return redirect(to="vts_ls_mod")
+    return redirect(to="../cons_mod")
 
 class funcionList(ListView):
     model = func_app
