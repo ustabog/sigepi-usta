@@ -23,6 +23,12 @@ urlpatterns = [
     path('cons_grp/', vts_ls_group.as_view(), name ='consulta_grupos'),
     path('edt_grp/<int:pk>', vts_edt_group.as_view(), name ='edt_grp'),
     path('eli_grp/<int:pk>', vts_del_group.as_view(), name ='eli_grp'),
+
+# Roles
+    path('reg_rol/', vts_reg_rol.as_view(), name ='reg_rol'),
+    path('cons_rol/', vts_ls_rol.as_view(), name ='consulta_rol'),
+    path('edt_rol/<int:pk>', vts_edt_rol.as_view(), name ='edt_rol'),
+    path('eli_rol/<int:pk>', vts_del_rol.as_view(), name ='eli_rol'),
 #funciones
     path('funciones/',funcionList.as_view(), name = 'funciones'),
     path('crearfun/',funcionCreate.as_view(), name = 'crearfun'),

@@ -35,3 +35,8 @@ class frm_con_group(forms.ModelForm):
     class Meta:
         model =  Group
         fields = '__all__'
+
+class frm_con_rol(forms.ModelForm):
+    class Meta:
+        model =  rol
+        fields = '__all__'

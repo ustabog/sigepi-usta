@@ -105,8 +105,33 @@ class vts_del_group(DeleteView):
     template_name = 'App_ma_del_grupo.html'
     success_url = reverse_lazy('consulta_grupos')
 
+###### CRUD ROLES #############################################
+class vts_reg_rol(CreateView):
+    #crear información de las personas
+    model = rol
+    form_class = frm_con_rol
+    template_name = 'App_ma_frm_crearrol.html'
+    success_url = reverse_lazy('consulta_rol')
+    success_message = 'El rol fue creado satisfactoriamente'
 
+class vts_ls_rol(ListView): 
+    model = rol
+    form_class = frm_con_rol
+    template_name = 'cn_rol.html'
+    success_url = reverse_lazy('cn_rol.html')
+    success_message = 'Listado cargado correctamente'
 
+class vts_edt_rol(UpdateView):
+    model = rol
+    form_class = frm_con_rol
+    template_name = 'App_ma_frm_crearrol.html'
+    success_url = reverse_lazy('consulta_rol')
+    
+class vts_del_rol(DeleteView):
+    model = rol
+    form_class = frm_con_rol
+    template_name = 'App_ma_del_rol.html'
+    success_url = reverse_lazy('consulta_rol')
 
 
 
