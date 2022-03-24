@@ -13,6 +13,11 @@ urlpatterns = [
     path('cons_mod/', vts_ls_mod.as_view(), name ='consulta_modulos'),
     path('edt_mod/<int:pk>', vts_edt_mod.as_view(), name ='edt_mod'),
     path('eli_mod/<int:pk>', vts_del_mod.as_view(), name ='eli_mod'),
+# Aplicaciones de módulo
+    path('reg_app_mod/', vts_reg_app_mod.as_view(), name ='reg_app_mod'),
+    path('cons_app_mod/', vts_ls_app_mod.as_view(), name ='consulta_aplicaciones_modulos'),
+    path('edt_app_mod/<int:pk>', vts_edt_app_mod.as_view(), name ='edt_app_mod'),
+    path('eli_app_mod/<int:pk>', vts_del_app_mod.as_view(), name ='eli_app_mod'),
 
 #funciones
     path('funciones/',funcionList.as_view(), name = 'funciones'),

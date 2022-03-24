@@ -19,3 +19,13 @@ class frm_con_mod(forms.ModelForm):
     class Meta:
         model =  mod
         fields = '__all__'
+
+class frm_reg_app_mod(forms.ModelForm):
+    class Meta:
+        model =  app_mod
+        fields = '__all__'
+
+class frm_con_app_mod(forms.ModelForm):
+    class Meta:
+        model =  app_mod
+        fields = '__all__'

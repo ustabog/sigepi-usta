@@ -14,6 +14,7 @@ from .models import *
 from .form import *
 from modcons.App_cons.form import frm_con_mod
 
+######   CRUD MODULO    ################################
 class vts_reg_mod(CreateView):
     #crear información de las personas
     model = mod
@@ -40,14 +41,40 @@ class vts_edt_mod(UpdateView):
 class vts_del_mod(DeleteView):
     model = mod
     form_class = frm_con_mod
-    template_name = 'delete.html'
+    template_name = 'App_ma_del_mod.html'
     success_url = reverse_lazy('consulta_modulos')
 
-# def vts_eli_mod(request, id):
-#     modulo = get_object_or_404(mod, id=id)
-#     modulo.delete()
-#     messages.success(request, "Eliminado correctamente")
-#     return redirect(to="../cons_mod")
+######   CRUD APP MODULO    ################################
+class vts_reg_app_mod(CreateView):
+    #crear información de las personas
+    model = app_mod
+    form_class = frm_reg_app_mod
+    template_name = 'App_ma_frm_crearapp.html'
+    success_url = reverse_lazy('consulta_aplicaciones_modulos')
+    success_message = 'El modelo fue creado satisfactoriamente'
+
+class vts_ls_app_mod(ListView): #hereda de listwview
+    #información de las personas
+    model = app_mod
+    form_class = frm_con_app_mod
+    template_name = 'cn_app_mod.html'
+    success_url = reverse_lazy('cn_app_mod.html')
+    success_message = 'Listado cargado correctamente'
+
+class vts_edt_app_mod(UpdateView):
+    #clase que almacena los modulos generales del sistema
+    model = app_mod
+    form_class = frm_con_app_mod
+    template_name = 'App_ma_frm_crearapp.html'
+    success_url = reverse_lazy('consulta_aplicaciones_modulos')
+    
+class vts_del_app_mod(DeleteView):
+    model = app_mod
+    form_class = frm_con_app_mod
+    template_name = 'App_ma_del_app_mod.html'
+    success_url = reverse_lazy('consulta_aplicaciones_modulos')
+
+
 
 class funcionList(ListView):
     model = func_app
