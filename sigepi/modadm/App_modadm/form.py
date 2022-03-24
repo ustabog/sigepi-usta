@@ -1,5 +1,6 @@
+from tokenize import group
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
@@ -28,4 +29,9 @@ class frm_reg_app_mod(forms.ModelForm):
 class frm_con_app_mod(forms.ModelForm):
     class Meta:
         model =  app_mod
+        fields = '__all__'
+
+class frm_con_group(forms.ModelForm):
+    class Meta:
+        model =  Group
         fields = '__all__'

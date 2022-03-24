@@ -33,10 +33,10 @@
                                 <th colspan="2">Opciones</th>
                             </tr>
                         </thead>
-                        {% for usu in  object_list %}
+                        {% for usu in object_list %}
                         <tbody>
                             <tr>
-                                <td>{{forloop.counter}}</td>
+                                <td> {{ usu.id }} </td>
                                 <td> {{ usu.username }} </td>
                                 <td> {{ usu.first_name}} </td>
                                 <td> {{ usu.last_name}} </td>

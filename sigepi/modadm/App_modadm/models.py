@@ -1,5 +1,7 @@
 import email
+from nntplib import GroupInfo
 from django.db import models
+from django.contrib.auth.models import Group
 import datetime
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import AbstractUser
@@ -259,17 +261,17 @@ class ext_app(models.Model):
     def __str__(self):
         return '{}'.format(self.titulo_app_ext)
 
-
 class rol(models.Model):
     id_rol = models.AutoField(primary_key = True) # Identificador único del Rol
+    grupo = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank =True)
     etq_rol = models.CharField('Etiqueta: ', max_length=30, null=False, blank = False) # Etiqueta del Rol
     desc = models.CharField('Descripcion del Rol: ', max_length=30, null=False, blank = False) # Descripcion del Rol
     tipo = models.IntegerField(null = False, blank = False, choices = TIPO_ROL, default = 0) # Ver diccionario TIPO_ROL
     id_mod = models.ForeignKey(mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Módulo
     id_app = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Aplicación
     id_sis = models.ForeignKey(listado_aplicativo, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de sistema
-#    id_ext_mod = models.ForeignKey(ext_mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de módulo
-#    id_ext_app = models.ForeignKey(ext_app, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de aplicación
+    id_ext_mod = models.ForeignKey(ext_mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de módulo
+    id_ext_app = models.ForeignKey(ext_app, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de aplicación
     req_reg = models.BooleanField('¿Activa o desactiva.?', default=False) # Variable que indica si require registro en aplicativo o plataforma o no.
 
     class Meta:

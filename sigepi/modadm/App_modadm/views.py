@@ -74,6 +74,42 @@ class vts_del_app_mod(DeleteView):
     template_name = 'App_ma_del_app_mod.html'
     success_url = reverse_lazy('consulta_aplicaciones_modulos')
 
+###### CRUD GROUPS #############################################
+
+class vts_reg_group(CreateView):
+    #crear información de las personas
+    model = Group
+    form_class = frm_con_group
+    template_name = 'App_ma_frm_creargrupo.html'
+    success_url = reverse_lazy('consulta_grupos')
+    success_message = 'El grupo fue creado satisfactoriamente'
+
+class vts_ls_group(ListView): #hereda de listwview
+    #información de las personas
+    model = Group
+    form_class = frm_con_group
+    template_name = 'cn_grupo.html'
+    success_url = reverse_lazy('cn_grupo.html')
+    success_message = 'Listado cargado correctamente'
+
+class vts_edt_group(UpdateView):
+    #clase que almacena los modulos generales del sistema
+    model = Group
+    form_class = frm_con_group
+    template_name = 'App_ma_frm_creargrupo.html'
+    success_url = reverse_lazy('consulta_grupos')
+    
+class vts_del_group(DeleteView):
+    model = Group
+    form_class = frm_con_app_mod
+    template_name = 'App_ma_del_grupo.html'
+    success_url = reverse_lazy('consulta_grupos')
+
+
+
+
+
+
 
 
 class funcionList(ListView):
