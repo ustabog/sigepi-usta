@@ -12,7 +12,7 @@ urlpatterns = [
     path('reg_mod/', vts_reg_mod.as_view(), name ='reg_mod'),
     path('cons_mod/', vts_ls_mod.as_view(), name ='consulta_modulos'),
     path('edt_mod/<int:pk>', vts_edt_mod.as_view(), name ='edt_mod'),
-    path('eli_mod/<id_mod>', vts_eli_mod, name ='eli_mod'),
+    path('eli_mod/<int:pk>', vts_del_mod.as_view(), name ='eli_mod'),
 
 #funciones
     path('funciones/',funcionList.as_view(), name = 'funciones'),

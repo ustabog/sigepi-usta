@@ -7,7 +7,41 @@
 
 
 <form method="POST">
-        {% for mod in  object_list %}
+    <div class="table-responsive">
+        <table class="table">
+            <h2>Listado de modulos</h2>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Titulo</th>
+                    <th>Descripción</th>
+                    <th>URL</th>
+                    <th>Versión</th>
+                    <th>Activo</th>
+                    <th>Instalado</th>
+                    <th>Visible</th>
+                    <th colspan="2">Opciones</th>
+                </tr>
+            </thead>
+            {% for mod in  object_list %}
+                <tbody>
+                    <tr>
+                        <td> {{ mod.id_mod }} </td>
+                        <td> {{ mod.titulo}} </td>
+                        <td> {{ mod.desc}} </td>
+                        <td> {{ mod.url_doc}} </td>
+                        <td> {{ mod.version }} </td>
+                        <td> {{ mod.activo}} </td>
+                        <td> {{ mod.instalado}} </td>
+                        <td> {{ mod.visible }}  </td>
+                        <td> <a href="../edt_mod/{{mod.id_mod}}" class="btn btn-block btn-sm btn-info">Editar</a><br></td>
+                        <td> <a href="../eli_mod/{{mod.id_mod}}" class="btn btn-block btn-sm btn-danger">Eliminar</a><br><br></td> 
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table> 
+    </div>
+        <!-- {% for mod in  object_list %}
         <label> {{ mod.id_mod }} </label>
         <label> {{ mod.titulo}} </label>
         <label> {{ mod.desc}} </label>
@@ -20,6 +54,6 @@
         <label> {{ mod.ls_param_cnf}} </label><br>
         <label> <a href="../edt_mod/{{mod.id_mod}}" class="btn btn-block btn-sm btn-info">Editar</a></label>
         <label> <a href="../eli_mod/{{mod.id_mod}}" class="btn btn-block btn-sm btn-danger">Eliminar</a><br></label>
-        {% endfor %}
+        {% endfor %} -->
 </form>
 {% endblock cuerpo %}

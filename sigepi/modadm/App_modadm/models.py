@@ -5,7 +5,6 @@ from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import AbstractUser
 
 #Tipo de rol dentro de la plataforma
-
 TIPO_ROL = [
     (0,'Sistema'),
     (1,'Módulo'),

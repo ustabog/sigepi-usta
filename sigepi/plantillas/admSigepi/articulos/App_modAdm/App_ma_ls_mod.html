@@ -1,7 +1,7 @@
 {% extends 'index_adm.html' %}
   <body>
     {% block cuerpo %}
-    <h1> listado modulos</h1>
+    <h2> listado modulos</h1>
     <table border="2">
         <thead>
           <tr>
@@ -22,10 +22,6 @@
         {% endfor %}
       </tbody>
     </table>
-    
-    {% endblock cuerpo %}
-    {% block pie %}
-    {% include 'menu_inf.html' %}
-  {% endblock %}
+    {% endblock %}
   </body>
 
