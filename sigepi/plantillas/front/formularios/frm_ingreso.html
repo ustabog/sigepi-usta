@@ -1,0 +1,25 @@
+{% extends 'index_front.html' %}
+{% block titulo %} Formulario de Ingreso {% endblock titulo %}
+{% block cuerpo %}
+    <div class="container">
+        <div class=" m-4 d-flex justify-content-center">
+            <form method="post" action="">
+                {% if Users.is_authenticated %}
+                
+                {% else %} 
+                    <div class="col-md-8">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" name="submit"> 
+                        {# Assumes you setup the password_reset view in your URLconf #} 
+                        {% if form.errors %}
+                            <p>El usuario no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+                        {% endif %}
+                        <p><a href="{% url 'password_reset' %}">¿ Olvidaste tu contraseña ?</a></p> 
+                    </div>
+                {% endif %}
+            </form>  
+        </div>        
+    </div>
+        
+{% endblock cuerpo %}

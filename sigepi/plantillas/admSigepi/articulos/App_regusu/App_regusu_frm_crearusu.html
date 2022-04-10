@@ -1,9 +1,18 @@
-{% extends 'moduloAdm/usuarios/usu.html' %}
-{% block titulo %} Formulario de usuarios {% endblock titulo %}
+{% extends 'index_adm.html' %}
+{% block titulo %} Formulario de registro nuevo usuario {% endblock titulo %}
 {% block cuerpo %}
-<form class="" action="" method="post">
-  {% csrf_token %}
-  {{ form.as_p}}
-  <button type="submit" >crear</button>
-</form>
- {% endblock cuerpo %}
+  {% if form.errors %}
+      <p>El usuario no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+  {% endif %}
+  <div class="container">
+      <div class="column form-group text-center">
+          <h3>Registrar Nuevo Usuario</h3>
+          <form method="POST" class="">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <input class="btn btn-primary" type="submit" value="Registrar">
+          </form>
+      </div>
+  </div>
+
+{% endblock cuerpo %}

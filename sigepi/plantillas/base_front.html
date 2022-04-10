@@ -1,25 +1,53 @@
 {% load static %}
 <html lang="es" dir="ltr">
-  <head>
+
+<head>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-    {% block cabecera %}
-    {% endblock %}
-    <title>SIGEPI - Modulo administrativo</title>
-  </head>
-  <header>
+    <link rel="stylesheet" href="{% static 'css/simple-sidebar.css' %}" >
+    {% block cabeza_index %}{% endblock cabeza_index%}
+    {% block cabeza_cuerpo %}{% endblock cabeza_cuerpo%}
+    {% block cabeza_lado %}{% endblock cabeza_lado%}
+    {% block cabeza_cabecera %}{% endblock cabeza_cabecera%}
+    {% block cabeza_pie %}{% endblock cabeza_pie%}
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+<header>
     {% block encabezado %}
-    {% endblock %}
-  </header>
-  <body>
-    {% block cuerpo %}
+    {% endblock encabezado%}
+</header>
 
-    {% endblock %}
+<body>
+    <div class="container-fluid mt-3">
+        <div class="row">
+          <div class="col-sm-3 p-3">
+            {% block lado %}
+            {% endblock %} 
+          </div>
+          <div class="col-sm-9 p-3">
+            {% block cuerpo %}
+            {% block articulo %}
+        
+            {% endblock %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
     <script language="JavaScript" type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script language="JavaScript" type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-  </body>
-  <footer>
-    {% block pie %}
-    {% endblock %}
-  </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    {% block script_index%}{% endblock script_index%}
+    {% block script_cuerpo%}{% endblock script_cuerpo%}
+    {% block script_lado%}{% endblock script_lado%}
+    {% block script_cabecera%}{% endblock script_cabecera%}
+    {% block script_pie%}{% endblock script_pie%}
+</body>
+<footer>
+    <div class="footer" id="pie_ppal">
+        {% block pie %}
+        {% endblock pie%}
+    </div>
+</footer>
+
 </html>

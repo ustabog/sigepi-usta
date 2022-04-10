@@ -1,23 +1,52 @@
-{% extends 'index_adm_prb.html' %}
+{% extends 'index_front.html' %}
 {% block titulo %} Listado de usuario {% endblock titulo %}
 {% block cuerpo %}
 {% if form.errors %}
     <p>La lista de usuario no se ha logrado consultar.</p>
 {% endif %}
-<h3>Lista de Usuarios</h3>
-
-<form method="POST">
-    {{form.as_ul}}
-
-    <div>
-        {% for User in  object_list %}
-        <label> {{ User.username }} </label>
-        <label> {{ User.first_name}} </label>
-        <label> {{ User.last_name}} </label>
-            {% block modf_consl %}
-                <li><a href="{% url 'editar_usu' User.id %}" >seleccionar</a></li><br>
-            {% endblock modf_consl  %}
-        {% endfor %}
-
-</form>
+<div class="container">
+    <div class="column form-group text-center">
+        <h3>Lista de Usuarios</h3>
+        <form method="POST">
+            {{form.as_ul}}
+    
+            <div>
+                {% for User in  object_list %}
+                <label> {{ User.username }} </label>
+                <label> {{ User.first_name}} </label>
+                <label> {{ User.last_name}} </label>
+                    {% block modf_consl %}
+                        <li><a href="{% url 'editar_usu' User.id %}" >Seleccionar</a></li><br>
+                    {% endblock modf_consl  %}
+                {% endfor %}
+            </div>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="col">1</th>
+                    {% for User in  object_list %}
+                    <td>{{ User.username }}</td>
+                    {% endfor %}
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>{{ User.first_name}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>{{ User.last_name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </form>
+    </div>
+</div>
 {% endblock cuerpo %}

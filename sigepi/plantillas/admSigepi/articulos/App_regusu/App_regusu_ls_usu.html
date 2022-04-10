@@ -1,10 +1,6 @@
-{% extends 'moduloAdm/base_adm.html' %}
-{% block encabezado %}
-{% include 'moduloAdm/cabeceras/menu1.html' %}
-{% endblock %}
+{% extends 'index_front.html' %}
 {% block cuerpo %}
   <div id='main'>
-    {% include 'moduloAdm/widgest/side_adm.html' %}
     <article id="principal">
       {% block contenido %}
           <h1> listado usuarios</h1>
@@ -19,14 +15,14 @@
                 </tr>
               </thead>
             <tbody>
-              {% for User in  object_list %}
+              {% for usu in  object_list %}
               <tr>
-                <td>{{ User.last_name }}</td>
-                <td>{{ User.last_login }}</td>
-                <td>{{ User.username }}</td>
-                <td>{{ User.first_name }}</td>
-                <td>{{ User.email }}</td>
-                <td><a href="{% url 'editarusu' User.id  %}"> Editar </a> <a href="{% url 'eliminarusu' User.id  %} "> Eliminar </a></td>
+                <td>{{ usu.last_name }}</td>
+                <td>{{ usu.last_login }}</td>
+                <td>{{ usu.username }}</td>
+                <td>{{ usu.first_name }}</td>
+                <td>{{ usu.email }}</td>
+                <td><a href="{% url 'edi_usu/usu.user'  %}"> Editar </a> <a href="{% url 'eliminarusu' usu.user  %} "> Eliminar </a></td>
               </tr>
               {% endfor %}
             </tbody>
@@ -41,5 +37,5 @@
   </div>
 {% endblock %}
 {% block pie %}
-{% include 'front/pies/menu_inf.html' %}
+{% include 'menu_inf.html' %}
 {% endblock %}

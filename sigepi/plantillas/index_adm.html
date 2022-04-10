@@ -1,22 +1,27 @@
-{% extends 'moduloAdm/base_adm.html' %}
+{% extends 'base_adm.html' %}
   {% block encabezado %}
-    {% include 'moduloAdm/cabeceras/menu1.html' %}
+    {% include 'menuprueba.html' %}
   {% endblock %}
+
+  {% block lado %}
+    {% include 'lado_adm.html' %} 
+  {% endblock %}
+
+  {% block contenido %}
+    {% include 'login_adm.html' %}
+  {% endblock %}  
+
   {% block cuerpo %}
-    <div id='main'>
-      {% include 'moduloAdm/widgest/side.html' %}
-      <article id="principal">
-        {% block contenido %}
-            {% include 'front/cuerpos/login.html' %}
-        {% endblock %}
-      </article>
-      <script language="JavaScript" type="text/javascript">
-        $(document).ready(function () {
-          $('.dropdown-toggle').dropdown();
-        });
-      </script>
+    <div class="container" id='main'>
+        <article id="principal">
+        </article>
+        <script language="JavaScript" type="text/javascript">
+          $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+          });
+        </script>
     </div>
   {% endblock %}
   {% block pie %}
-    {% include 'front/pies/menu_inf.html' %}
+    
   {% endblock %}

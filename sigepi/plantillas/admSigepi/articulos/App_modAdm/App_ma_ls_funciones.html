@@ -1,0 +1,55 @@
+{% extends 'backend/base_adm.html' %}
+{% block encabezado %}
+{% include 'backend/cabeceras/menu1.html' %}
+{% endblock %}
+{% block lado %}
+    {% include 'backend/widgest/side_adm.html' %}
+{% endblock lado%}
+{% block cuerpo %}
+  <div id='main'>
+    {% include 'backend/widgest/side_adm.html' %}
+    <article id="principal">
+      {% block contenido %}
+          <h1> listado usuarios</h1>
+          <table border="2">
+              <thead>
+                <tr>
+                  <th>nombre</th>
+                  <th>libreria</th>
+                  <th>Direción local a la documentación </th>
+                  <th>Comando de Ejecución</th>
+                  <th>nombre de la funcion para menus</th>
+                  <th>Contexto</th>
+                  <th>¿Activa o desactiva.?</th>
+                  <th>Índice</th>
+                  <th>opciones</th>
+                </tr>
+              </thead>
+            <tbody>
+              {% for func_app in  object_list %}
+              <tr>
+                <td>{{ func_app.nom_func }}</td>
+                <td>{{ func_app.lib_func }}</td>
+                <td>{{ func_app.url_loc }}</td>
+                <td>{{ func_app.com_exc }}</td>
+                <td>{{ func_app.text }}</td>
+                <td>{{ func_app.context }}</td>
+                <td>{{ func_app.activa }}</td>
+                <td>{{ func_app.indice }}</td>
+                <td><a href="{% url 'editarfun' func_app.id_func %}"> Editar </a> <a href="{% url 'eliminarfun' func_app.id_func %}"> Eliminar </a> <a href="{% url 'crearfun' %}"> crear </a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      {% endblock %}
+    </article>
+    <script language="JavaScript" type="text/javascript">
+      $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+      });
+    </script>
+  </div>
+{% endblock %}
+{% block pie %}
+{% include 'front/pies/menu_inf.html' %}
+{% endblock %}
