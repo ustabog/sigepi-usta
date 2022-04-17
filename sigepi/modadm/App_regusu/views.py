@@ -1,3 +1,4 @@
+from email.headerregistry import ContentTypeHeader
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse, request
@@ -12,20 +13,29 @@ from django.contrib.auth import views as auth_views
 from django.contrib import messages
 from django.views.generic.base import View
 from django.contrib.auth import authenticate
+from django.contrib.contenttypes.models import ContentType
 #from rest_framework import viewsets
 from .models import *
 from .form import *
 from modadm.App_regusu.models import *
+from modadm.App_modadm.models import *
 #from modcons.App_cons.form import frm_con_usu
 #from modcons.App_cons.views import vts_ls_usu
 
 
 class vts_reg_usu(CreateView):
     #Clase que devuelve un formulario para registro de usuario
-    def vst_registro(self, request):
+    def vst_registro(self, request ):
         data = {
             'form': frm_reg_usu()
         }
+        # content_type = ContentType.objects.get_for_model(mod)
+        # permission = Permission.objects.get(
+        #     codename = 'view_mod',
+        #     content_type = content_type,
+        # )   
+        # usu.user_permissions(permission)
+
         if request.method == "POST":
             formulario = frm_reg_usu(data=request.POST)
             if formulario.is_valid():

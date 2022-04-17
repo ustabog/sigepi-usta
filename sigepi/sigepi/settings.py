@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [ '*' ]
 
-
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 # Application definition
 
 DJANGO_APPS = [
@@ -164,8 +164,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'App_modadm.User'
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -188,6 +186,8 @@ LOGOUT_REDIRECT_URL = '/'
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+AUTH_USER_MODEL = 'App_modadm.usu'
 
 # LOGIN_REDIRECT_URL=[]
 #

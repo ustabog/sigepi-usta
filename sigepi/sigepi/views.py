@@ -40,6 +40,7 @@ class front():
         return HttpResponse(respuesta)
 
     def vst_raiz(self, solicitud):
+        
         #función para plantilla de inicio sin extensión
         plt=loader.get_template('index_front.html')
         ctx=Context()

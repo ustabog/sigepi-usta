@@ -1,18 +1,25 @@
 import email
 from nntplib import GroupInfo
+from tokenize import group
 from django.db import models
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, Permission
+from django.contrib.contenttypes.models import ContentType
 import datetime
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import AbstractUser
+from django.http import HttpResponse
+
 
 #Tipo de rol dentro de la plataforma
 TIPO_ROL = [
     (0,'Sistema'),
-    (1,'Módulo'),
-    (2,'Aplicación'),
-    (3,'Extensión'),
-    (4,'Otro')
+    (1,'Admin Módulo Administración'),
+    (2,'Admin App Usuarios'),
+    (3,'Admin App Grupos'),
+    (4,'Admin App Instituciones'),
+    (5,'Admin Aplicaciones'),
+    (6,'Admin Extensión'),
+    (7,'Invitado')
     ]
 
 #Tipos de números de identificación personal
@@ -261,10 +268,11 @@ class ext_app(models.Model):
     def __str__(self):
         return '{}'.format(self.titulo_app_ext)
 
-class rol(models.Model):
-    id_rol = models.AutoField(primary_key = True) # Identificador único del Rol
-    grupo = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank =True)
-    etq_rol = models.CharField('Etiqueta: ', max_length=30, null=False, blank = False) # Etiqueta del Rol
+class rol(Group):
+    #id_rol = models.AutoField(primary_key = True) # Identificador único del Rol
+    # grupo = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank =True)
+    #permisos = Permission['add_logentry']
+    etq_rol = models.CharField('Etiqueta:   ', max_length=30, null=False, blank = False) # Etiqueta del Rol
     desc = models.CharField('Descripcion del Rol: ', max_length=30, null=False, blank = False) # Descripcion del Rol
     tipo = models.IntegerField(null = False, blank = False, choices = TIPO_ROL, default = 0) # Ver diccionario TIPO_ROL
     id_mod = models.ForeignKey(mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Módulo
@@ -272,15 +280,21 @@ class rol(models.Model):
     id_sis = models.ForeignKey(listado_aplicativo, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de sistema
     id_ext_mod = models.ForeignKey(ext_mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de módulo
     id_ext_app = models.ForeignKey(ext_app, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de aplicación
-    req_reg = models.BooleanField('¿Activa o desactiva.?', default=False) # Variable que indica si require registro en aplicativo o plataforma o no.
-
+    # req_reg = models.BooleanField('¿Activa o desactiva.?', default=False) # Variable que indica si require registro en aplicativo o plataforma o no.
+    
+    #g_sis.permissions.add(perm_sis)
     class Meta:
         verbose_name = 'rol'
         verbose_name_plural = 'rols'
 
     def __str__(self):
         return '{}'.format(self.etq_rol)
+# Asignar permisos al grupo
+    # Asignar permisos al grupo
 
+# group = Group(name="Author")
+# group.save() # Create a sample group.
+    
 
 class func_app(models.Model):
     id_func = models.AutoField(primary_key = True) # identificador único de función

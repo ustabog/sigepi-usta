@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from django.template import Template,Context,loader
@@ -74,37 +75,6 @@ class vts_del_app_mod(DeleteView):
     template_name = 'App_ma_del_app_mod.html'
     success_url = reverse_lazy('consulta_aplicaciones_modulos')
 
-###### CRUD GROUPS #############################################
-
-class vts_reg_group(CreateView):
-    #crear información de las personas
-    model = Group
-    form_class = frm_con_group
-    template_name = 'App_ma_frm_creargrupo.html'
-    success_url = reverse_lazy('consulta_grupos')
-    success_message = 'El grupo fue creado satisfactoriamente'
-
-class vts_ls_group(ListView): #hereda de listwview
-    #información de las personas
-    model = Group
-    form_class = frm_con_group
-    template_name = 'cn_grupo.html'
-    success_url = reverse_lazy('cn_grupo.html')
-    success_message = 'Listado cargado correctamente'
-
-class vts_edt_group(UpdateView):
-    #clase que almacena los modulos generales del sistema
-    model = Group
-    form_class = frm_con_group
-    template_name = 'App_ma_frm_creargrupo.html'
-    success_url = reverse_lazy('consulta_grupos')
-    
-class vts_del_group(DeleteView):
-    model = Group
-    form_class = frm_con_app_mod
-    template_name = 'App_ma_del_grupo.html'
-    success_url = reverse_lazy('consulta_grupos')
-
 ###### CRUD ROLES #############################################
 class vts_reg_rol(CreateView):
     #crear información de las personas
@@ -114,12 +84,32 @@ class vts_reg_rol(CreateView):
     success_url = reverse_lazy('consulta_rol')
     success_message = 'El rol fue creado satisfactoriamente'
 
+    g_sis, created = Group.objects.get_or_create(name = 'Sistema')
+    g_admsis, created = Group.objects.get_or_create(name = 'Admin Módulo Administración')
+    g_appusu, created = Group.objects.get_or_create(name = 'Admin App Usuarios')
+    g_appgrp, created = Group.objects.get_or_create(name = 'Admin App Grupos')
+    g_appins, created = Group.objects.get_or_create(name = 'Admin App Instituciones')
+    g_admapps = Group.objects.get_or_create(name = 'Admin Aplicaciones')
+    g_ext, created = Group.objects.get_or_create(name = 'Admin Extensión')
+    g_inv, created = Group.objects.get_or_create(name = 'Invitado')
+
+    perm_sis = Permission.objects.get(codename='add_rol')
+    g_sis.permissions.add(perm_sis)
+    g_sis.save()
+    # permission = Permission.objects.create(codename='add_rol',
+    #                                    name='Can add rol',
+    #                                    content_type=content_type)   
+    # group = Group.objects.get(name='wizard')
+    # group.permissions.add(permission)
+    
+
 class vts_ls_rol(ListView): 
     model = rol
     form_class = frm_con_rol
     template_name = 'cn_rol.html'
     success_url = reverse_lazy('cn_rol.html')
     success_message = 'Listado cargado correctamente'
+    
 
 class vts_edt_rol(UpdateView):
     model = rol
@@ -132,10 +122,6 @@ class vts_del_rol(DeleteView):
     form_class = frm_con_rol
     template_name = 'App_ma_del_rol.html'
     success_url = reverse_lazy('consulta_rol')
-
-
-
-
 
 class funcionList(ListView):
     model = func_app

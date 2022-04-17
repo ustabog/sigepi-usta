@@ -27,8 +27,9 @@
             {% for rol in  object_list %}
                 <tbody>
                     <tr>
-                        <td> {{ rol.id_rol }} </td>
-                        <td> {{ rol.grupo}} </td>
+                        <!-- <td> {{ rol.id_rol }} </td> -->
+                        <td> {{ rol.group_ptr_id}} </td>
+                        <td> {{ rol.permissions }}  </td>
                         <td> {{ rol.etq_rol}} </td>
                         <td> {{ rol.desc}} </td>
                         <td> {{ rol.tipo}} </td>
