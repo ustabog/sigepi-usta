@@ -2,6 +2,13 @@ from django.db import models
 from modadm.App_modadm.models import *
 from modadm.App_regusu.models import *
 
+TIPO_ROL_GR = [
+    (0,'Admin_Grupo'),
+    (1,'Integrante_Grupo'),
+    (2,'Investigador_Grupo'),
+    (3,'Invitado'),
+    (4,'Docente')
+]
 class etapa_gr(models.Model):
     #Clase que registra las etapas de los grupos de investigación en el sistema.
     id_etp_gr = models.AutoField(primary_key = True) #Identificador único de la etapa del grupo de investigacion.
