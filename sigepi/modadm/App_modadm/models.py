@@ -380,6 +380,7 @@ class usu(AbstractUser):
     class Meta:
         verbose_name = 'usu'
         verbose_name_plural = 'usus'
+        orderin = ['username']
 
     # def __str__(self):
     #     return '{}'.format(self.usu)
