@@ -1,4 +1,4 @@
-"""SIGEPI_PRO URL Configuration
+"""SIGEPI URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -42,7 +42,7 @@ if settings.DEBUG:
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admdjg/', admin.site.urls),
     #Direcciones de la Aplicación App_regusu
     path('modadm/',include("modadm.App_regusu.urls")),
     #Direcciones de la Aplicación App_regusui
@@ -51,10 +51,11 @@ urlpatterns = [
     path('modadm/',include("modadm.App_regusugr.urls")),
     #Direcciones de la aplicación App_modadm
     path('modadm/',include("modadm.App_modadm.urls")),
-    
+
     #direcciones del front (finales en producción)
     path('',front().vst_raiz),
     path('inicio',front().vst_inicio, name = 'inicio'),
+    path('vue',front().vst_vue, name = 'vue'),
     path('ingreso',front().vst_ingreso, name = 'ingreso'),
     path('cerrar', front().vst_cerrar, name = 'cerrar'),
     path('doc', front().vst_doc, name ='doc'),
@@ -63,9 +64,7 @@ urlpatterns = [
 
     #consultas globales
     #path('conusus', vts_ls_usu.as_view(), name='consulta_usuarios'),
-    path('accounts', include('django.contrib.auth.urls')),
+    path('modcons/', include('modcons.App_cons.urls'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()
-
-

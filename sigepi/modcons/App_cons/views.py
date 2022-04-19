@@ -9,6 +9,14 @@ from modadm.App_regusugr.models import usugr
 from modadm.App_regusui.models import usui
 from modadm.App_modadm.models import *
 
+class consulta():
+    #Clase que permite una consulta genérica desde la página principal sin estar registrado en el sistema.
+    def vst_cons_inv(self,solicitud):
+    #función para plantilla de consultas genérica
+        return render(solicitud,"consulta.html")
+
+
+
 class vts_ls_usu(ListView):
     # clase para listar usuarios del sistema
     model = usu

@@ -4,7 +4,7 @@
 Creado: 21-04-2021
 Última Modificación: 21-04-2021 08:02
 Autor: Milton castro
-colaboración: María Fernanza Zambrano
+colaboración: María Fernanza Zambrano; Juan Seabastian;
 Hora:04:24
 
 Vistas (views.py) aplicación principal SIGEPI
@@ -17,6 +17,7 @@ from django.http import HttpResponse
 from django.template import Template,Context,loader
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView,ListView,UpdateView
+from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
@@ -24,15 +25,16 @@ from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
 from .form import *
+from modadm.App_conf.stlapp import estilo
 # from modadm.App_regusu.models import usu_inf_apps
 
 class front():
-    #Clase que procesa las vistas del front para usuarios sin registrar
-    def vst_inicio(self, solicitud):
-        #función para plantilla de inicio
-        plt=loader.get_template('index_front.html')
-        respuesta=plt.render()
-        return HttpResponse(respuesta)
+#Clase que procesa las vistas del front de SIGEPI-USTA
+    def vst_inicio(self,solicitud):
+    #función para plantilla de inicio
+        stl=estilo()
+        ctx=stl.DevolverDict()
+        return render(solicitud,"inicio.html",ctx)
 
     def vst_doc(self, solicitud):
         #función para plantilla de inicio de al documentación del sistema
@@ -41,7 +43,7 @@ class front():
 
     def vst_raiz(self, solicitud):
         #función para plantilla de inicio sin extensión
-        plt=loader.get_template('index_front.html')
+        plt=loader.get_template('inicio.html')
         ctx=Context()
         respuesta=plt.render()
         return HttpResponse(respuesta)
@@ -60,10 +62,10 @@ class front():
                     return render(solicitud,'index_front.html')
                 else:
                     messages.success(solicitud,F"Los datos son incorrectos")
-            else: 
+            else:
                 messages.success(solicitud,F"Los datos son incorrectos")
         form = AuthenticationForm()
-        return render(solicitud,'frm_ingreso.html', {"form": form} )    
+        return render(solicitud,'frm_ingreso.html', {"form": form} )
 
     def vst_registro(self, request):
         data = {
@@ -85,6 +87,11 @@ class front():
         logout(solicitud)
         messages.success(solicitud,"tu sesión ha cerrado ")
         return render(solicitud,'index_front.html')
+
+    def vst_vue(self, solicitud):
+        stl=estilo()
+        ctx=stl.DevolverDict()
+        return render(solicitud,"apivue.html",ctx)
 
 
 class ls_rolusu():

@@ -9,40 +9,45 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
+from django.contrib.auth.mixins import PermissionRequiredMixin
 #from rest_framework import viewsets
 from .models import *
 from .form import *
 from modcons.App_cons.form import frm_con_mod
 
 ######   CRUD MODULO    ################################
-class vts_reg_mod(CreateView):
+class vts_reg_mod(CreateView, PermissionRequiredMixin):
     #crear información de las personas
     model = mod
     form_class = frm_reg_mod
     template_name = 'App_ma_nvo_mod.html'
     success_url = reverse_lazy('consulta_modulos')
     success_message = 'El modelo fue creado satisfactoriamente'
+    permission_required = 'mod.can_add_mod'   
 
-class vts_ls_mod(ListView): #hereda de listwview
+class vts_ls_mod(ListView, PermissionRequiredMixin): #hereda de listwview
     #información de las personas
     model = mod
     form_class = frm_con_mod
     template_name = 'cn_mod.html'
     success_url = reverse_lazy('cn_mod.html')
     success_message = 'Listado cargado correctamente'
+    permission_required = 'mod.can_view_mod' 
 
-class vts_edt_mod(UpdateView):
+class vts_edt_mod(UpdateView, PermissionRequiredMixin):
     #clase que almacena los modulos generales del sistema
     model = mod
     form_class = frm_con_mod
     template_name = 'App_ma_nvo_mod.html'
     success_url = reverse_lazy('consulta_modulos')
+    permission_required = 'mod.can_change_mod' 
     
-class vts_del_mod(DeleteView):
+class vts_del_mod(DeleteView, PermissionRequiredMixin):
     model = mod
     form_class = frm_con_mod
     template_name = 'App_ma_del_mod.html'
     success_url = reverse_lazy('consulta_modulos')
+    permission_required = 'mod.can_delete_mod'
 
 ######   CRUD APP MODULO    ################################
 class vts_reg_app_mod(CreateView):
@@ -132,10 +137,6 @@ class vts_del_rol(DeleteView):
     form_class = frm_con_rol
     template_name = 'App_ma_del_rol.html'
     success_url = reverse_lazy('consulta_rol')
-
-
-
-
 
 class funcionList(ListView):
     model = func_app
