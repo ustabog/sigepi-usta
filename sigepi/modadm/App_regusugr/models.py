@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 from modadm.App_modadm.models import *
 from modadm.App_regusu.models import *
 
@@ -26,8 +25,8 @@ class usugr(models.Model): #ojo falta listado de productos y protyectos vinculad
 
     id_gr = models.AutoField(primary_key = True) #Identificador único del grupo de investigacion.
     passgr  = models.CharField('Descripcion ', max_length=20, null=False, blank = False)  # contraseña para el usuario grupo (diferente a la del usuario del sistema)
-    id_usu_admin = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)  #Identificador del usuario administrador (debe estar registrado y se le asignan permisos de administración de app_reg_gr)
-    id_rol_app = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del Rol de Usuario grupo dentro de la app_reg_gr
+    id_usu_admin = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)  #Identificador del usuario administrador (debe estar registrado y se le asignan permisos de administración de app_reg_gr)
+    id_rol_app = models.ForeignKey(rol, on_delete=models.CASCADE, null=True, blank =False)  # Identificador del Rol de Usuario grupo dentro de la app_reg_gr
 #    ls_pry =  models.ManyToManyField(pry) #Listado de id de proyectos vinculados al grupo de investigación.
 #    ls_prod = models.ManyToManyField(pro) #Listado de id de productos de investigación vinculados al grupo.
     activo = models.BooleanField('Activo ', default=True)  #El grupo se encuentra activo.
@@ -41,7 +40,7 @@ class usu_nr(models.Model):
     id_usu_nr = models.AutoField(primary_key = True)  # identificador unico
     nombres = models.CharField('Nombres del integrante no registrado(a).', max_length=40, null=False, blank = False) # Nombres del integrante no registrado(a).
     apellidos = models.CharField('Apellidos del integrante no registrado(a).', max_length=40, null=False, blank = False)  # Apellidos del integrante no registrado(a).
-    rol =  models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)   #Rol de investigación que se desempeña actualmente
+    #rol =  models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)   #Rol de investigación que se desempeña actualmente
     cvlac =  models.URLField('URL del CVlac del investigador(a).', null=False, blank=False)  #URL del CVlac del investigador(a).
     orcid = models.CharField('ID de ORCID del investigador(a).', max_length=20, null=False, blank = False)  #ID de ORCID del investigador(a).
     ggl = models.URLField('URL Google académico del investigador(a)', null=False, blank=False)  #URL Google académico del investigador(a).
@@ -65,7 +64,7 @@ class rel_usugr_ls_etp(models.Model): #relacion de Listado histórico de etapas 
 
 class rel_usugr_ls_usu(models.Model):#Listado de id_usu integrantes del grupo registrados en el sistema.
     id_gr = models.ForeignKey(usugr, on_delete=models.CASCADE, null=False, blank =False)
-    ls_int_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False)
+    ls_int_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)
 
     class Meta:
         verbose_name = 'rel_usugr_ls_usu'
@@ -86,7 +85,7 @@ class usugr_inf_apps(models.Model):
     id_usugr =  models.ForeignKey(usugr, on_delete=models.CASCADE, null=False, blank =False) #id único de Usuario de grupo
     ls_roles =[[0,0]] #Listado de roles en aplicaciones y módulos autorizados por administradores de paltaforma
     # [0,] id_rol; [,0] id_usu quien autoriza.
-    rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)   # Identificador de rol de sistema.
+    #rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)   # Identificador de rol de sistema.
     #app_act = models.ForeignKey(listado_aplicativo, on_delete=models.CASCADE, null=False, blank =False)  # identificador de funcionalidad actual (Sistema, módulo, aplicacion, extensión)
 
     class Meta:
@@ -95,7 +94,7 @@ class usugr_inf_apps(models.Model):
 
 class rl_usugr_inf_rol_Actual(models.Model): # identificador del rol actual.
     id_usugr =  models.ForeignKey(usugr, on_delete=models.CASCADE, null=False, blank =False) #id único de Usuario de grupo
-    rol_act = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # identificador del rol actual.
+    #rol_act = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # identificador del rol actual.
 
 class usugr_inf_gr(models.Model):
     #clase de información de usuario grupo.
@@ -155,11 +154,11 @@ class form_acad_gr(models.Model):
         verbose_name_plural = 'form_acad_gr'
 
 
-#class usugr_inf_acad(models.Model): #ojo dejar o quitar, y pry y prod no las inclui porque no la tengo en modelos
-    # Clase que almacena y procesa la información de actividades académicas y oferta formativa del usuario grupo
+# class usugr_inf_acad(models.Model): #ojo dejar o quitar, y pry y prod no las inclui porque no la tengo en modelos
+#     #Clase que almacena y procesa la información de actividades académicas y oferta formativa del usuario grupo
 #    id_usugr = models.ForeignKey(usugr_inf_gr, on_delete=models.CASCADE, null=False, blank =False)  # identificador único de grupo
-    #prod = [] #Listado de id de productos de investigación vinculados al id usugr
-    #pry_inv = [] #Listado de id de proyectos de investigación vinculados al id usugr
+#     prod = [] #Listado de id de productos de investigación vinculados al id usugr
+#     pry_inv = [] #Listado de id de proyectos de investigación vinculados al id usugr
 
 #    class Meta:
 #        verbose_name = 'usugr_inf_acad'
@@ -200,7 +199,7 @@ class app_reg_gr(models.Model):
     #Clase que contiene los objetos de la App Registro de Grupos
     id_app_reg_gr = models.AutoField(primary_key = True)
     nombres = models.CharField('Descripcion.', max_length=40, null=False, blank = False)
-    id_app = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False) # Identificador único de aplicacion por modulo _administrador
+    #id_app = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False) # Identificador único de aplicacion por modulo _administrador
 
     class Meta:
         verbose_name = 'app_reg_gr'

@@ -1,0 +1,49 @@
+{% extends 'index_adm.html' %}
+{% block titulo %} Listado de Aplicación de Modulos {% endblock titulo %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>La lista de usuario no se ha logrado consultar.</p>
+{% endif %}
+
+
+<form method="POST">
+    <div class="table-responsive">
+        <table class="table">
+            <h2>Listado de aplicación de módulos</h2>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Titulo</th>
+                    <th>Descripción</th>
+                    <th>URL</th>
+                    <th>Versión</th>
+                    <th>Módulo Principal</th>
+                    <th>Versión de desarrollo</th>
+                    <th>Activo</th>
+                    <th>Instalado</th>
+                    <th>Visible</th>
+                    <th colspan="2">Opciones</th>
+                </tr>
+            </thead>
+            {% for app_mod in  object_list %}
+                <tbody>
+                    <tr>
+                        <td> {{ app_mod.id_app }} </td>
+                        <td> {{ app_mod.titulo}} </td>
+                        <td> {{ app_mod.desc }} </td>
+                        <td> {{ app_mod.url_doc }} </td>
+                        <td> {{ app_mod.version }} </td>
+                        <td> {{ app_mod.mod_prin }} </td>
+                        <td> {{ app_mod.ver_mod }} </td>
+                        <td> {{ app_mod.activo }}  </td>
+                        <td> {{ app_mod.instalada }}  </td>
+                        <td> {{ app_mod.visible }}  </td>
+                        <td> <a href="../edt_app_mod/{{app_mod.id_app}}" class="btn btn-block btn-sm btn-info">Editar</a><br></td>
+                        <td> <a href="../eli_app_mod/{{app_mod.id_app}}" class="btn btn-block btn-sm btn-danger">Eliminar</a><br><br></td> 
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table> 
+    </div>
+</form>
+{% endblock cuerpo %}

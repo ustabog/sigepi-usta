@@ -1,14 +1,17 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Creado: 21-04-2021
-Última Modificación: 21-04-2021 08:02
-Autor: Milton castro
-colaboración: María Fernanza Zambrano
-Hora:04:24
+"""SIGEPI URL Configuration
 
-Urls aplicación principal SIGEPI
-
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 #Librerías de sistema
 from django.conf import settings
@@ -20,19 +23,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import views as auth_views
-from rest_framework.routers import DefaultRouter
+#from rest_framework.routers import DefaultRouter
 
 #Librerías de aplicaciones
 from modadm.App_modadm.views import *
 from modadm.App_modadm.urls import *
-from modadm.App_modadm.class_view import *
 from modcons.App_cons.views import *
 from modadm.App_regusu.urls import *
 from modadm.App_regusugr.urls import *
 
 from .views import *
-#from administr.views import inicio, inicio2, inicioapp, crearrol, crearmod, editarRol, crearapp, editarMod,editarApp, eliminarMod,eliminarApp
-#inicio nombre de la f<input type="hidden" name="next" value="{{ next }}" />uncion importada e viw de adminityr
 
 if settings.DEBUG:
     urlpatterns += [
@@ -40,41 +40,31 @@ if settings.DEBUG:
     ]
     urlpatterns += staticfiles_urlpatterns()
 
+
 urlpatterns = [
-    #direcciones del front (finales en producción)
-    path('',front().vst_raiz),
-    path('inicio',front().vst_inicio),
-    path('cerrar', front().vst_cerrar, name = 'cerrar'),
-    path('doc', front().vst_doc, name ='doc'),
-    #Direcciones del backend Django
-    path('serv/', admin.site.urls),
-    path('accounts', include('django.contrib.auth.urls')),
-    #Direcciones de administración SIGEPI
-    path('modadm/',include("modadm.App_modadm.urls")),
+    path('admdjg/', admin.site.urls),
     #Direcciones de la Aplicación App_regusu
     path('modadm/',include("modadm.App_regusu.urls")),
     #Direcciones de la Aplicación App_regusui
     path('modadm/',include("modadm.App_regusui.urls")),
     #Direcciones de la Aplicación App_reguusgr
     path('modadm/',include("modadm.App_regusugr.urls")),
-    #Direcciones de prueba (se deben eliminar en producción)
-    path('inicioprb',front_prb().vst_indexprueba, name = 'iniciop'),
-    path('ingresoprb',front_prb().vst_ingreso, name = 'ingresop'),
-    path('registro_suprb',vst_frm_reg_usu_su.as_view(), name = 'registro_su_p'),
-    path('registro_admprb',vst_frm_reg_usu_adm.as_view(), name = 'registro_adm_p'),
-    path('registroprb',vst_frm_reg_usu.as_view(), name = 'registrop'),
-    path('rolesusuprb',front_prb().vst_indexprueba, name = 'rolesusup'),
+    #Direcciones de la aplicación App_modadm
+    path('modadm/',include("modadm.App_modadm.urls")),
+
+    #direcciones del front (finales en producción)
+    path('',front().vst_raiz),
+    path('inicio',front().vst_inicio, name = 'inicio'),
+    path('vue',front().vst_vue, name = 'vue'),
+    path('ingreso',front().vst_ingreso, name = 'ingreso'),
+    path('cerrar', front().vst_cerrar, name = 'cerrar'),
+    path('doc', front().vst_doc, name ='doc'),
+    path('registro', front().vst_registro, name ='registro'),
+
 
     #consultas globales
-    path('conusus', vts_ls_usu.as_view(), name='consulta_usuarios'),
-    path('con_usui', vts_ls_usui.as_view(), name='cons_usui'),
-    path('conusugr', vts_ls_usugr.as_view(), name = 'cons_usugr'),
-    path('conmod', vts_ls_mod.as_view(), name = 'cons_mod'),
-    path('conrol', ls_rol_usu.as_view(), name = 'cons_usu_roles'),
+    #path('conusus', vts_ls_usu.as_view(), name='consulta_usuarios'),
+    path('modcons/', include('modcons.App_cons.urls'))
+]
 
-
-    #prueba de roles
-    #path('listarrol',rolusuList.as_view(), name = 'listarrol'),
-
-    ]
 urlpatterns += staticfiles_urlpatterns()

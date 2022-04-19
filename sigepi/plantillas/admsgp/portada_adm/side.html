@@ -1,0 +1,36 @@
+{% extends 'base_adm.html'%}
+
+{% load static %}
+{% block cabecera %}
+{% endblock %}
+{% block lado %}
+    <div id="wrapper" class="activo">
+        <div id="sidebar-wrapper">
+            <ul id="sidebar-nav">
+                <li id="sidebar-brand">
+                    <a href="">Ingresar</a>
+                </li>
+                <li id="sidebar-brand" class="sidebar-brand">
+                    <a href="">Registro</a>
+                </li>
+                <li id="sidebar-brand">
+                    <a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
+                      <span class="card"></span>
+                    </a>
+                </li>
+                <li id="sidebar-brand">
+                    <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
+                </li>
+                <div class="card">
+                    <div class="card-header">Tablero de Control</div>
+                    <div class="card-body">
+                        <div class="alert alert-success" role="alert">
+                            <a class="btn btn-outline-info" href="">Ingresar</a>
+                            <a class="btn btn-outline-info" href="">Registrarse</a>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

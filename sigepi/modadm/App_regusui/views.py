@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from modcons.App_cons.form import frm_con_usui
 from modcons.App_cons.views import vts_ls_usui
 from modadm.App_regusui.models import usui
-# Create your views here.
+#Create your views here.
 
 
 

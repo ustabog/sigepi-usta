@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.views.generic import CreateView, DeleteView,ListView,UpdateView
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -7,11 +7,19 @@ from .form import *
 from modadm.App_regusu.models import usu_inf_apps
 from modadm.App_regusugr.models import usugr
 from modadm.App_regusui.models import usui
-from modadm.App_modadm.models import mod
+from modadm.App_modadm.models import *
+
+class consulta():
+    #Clase que permite una consulta genérica desde la página principal sin estar registrado en el sistema.
+    def vst_cons_inv(self,solicitud):
+    #función para plantilla de consultas genérica
+        return render(solicitud,"consulta.html")
+
+
 
 class vts_ls_usu(ListView):
     # clase para listar usuarios del sistema
-    model = User
+    model = usu
     form_class = frm_con_usu
     template_name = 'cn_usu.html'
     success_url = reverse_lazy('cn_usu.html')
@@ -45,13 +53,13 @@ class ls_rol_usu(ListView):
     # clase para listar roles de usuarios del sistema
     model = usu_inf_apps
     form_class = frm_rol_usu
-    template_name = 'front/herramientas/listarrol.html'
+    template_name = 'listarrol.html'
     success_url = reverse_lazy('cn_usu')
     success_message = 'listado cargado correctamente'
 
 class mod_usu(UpdateView):
-    model = User
+    model = usu
     form_class = frm_con_usu
     template_name = 'sl_usu.html'
-    success_url = reverse_lazy('mod_usu_prb.html')
+    success_url = reverse_lazy('mod_usu.html')
     success_message = 'modificado correctamente'

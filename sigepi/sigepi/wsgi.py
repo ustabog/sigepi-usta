@@ -1,5 +1,5 @@
 """
-WSGI config for sigepi project.
+WSGI config for SIGEPI_PRO project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

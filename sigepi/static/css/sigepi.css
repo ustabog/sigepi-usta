@@ -1,0 +1,193 @@
+/*!
+ * Biblioteca de estilos propia
+ * Los estilos que se desarrollan de forma personalizada se circulan desde la licencia GPL V3
+ * autor:Milton O. Castro Ch.
+ */
+
+/* Colores basados en la paleta de colores del manual de imagen institucional
+ de la Universidad Santo Tomás del 2022 */
+
+/* variables globales*/
+.root {
+  --azul:#00336a;
+  --azul-1:#004f9f;
+  --azul-2:#008FE3;
+  --fondo-az-cl:rgba(#BBD6FF,1);
+  --amarillo:#ffe000;
+  --naranja:#fdc300;
+  --verde:#13a538;
+  --vinotinto:#800000;
+  --blanco:#ffffff;
+  --gris:#606060;
+  --gris-oscuro:#202020;
+  --primario:#00608F;
+  --secundario:#E09F2F;
+  --exitoso:#00E8FF;
+  --info:#34C38F);
+  --cuidado:#F96161;
+  --peligro:#FF4646;
+  --luminoso:#FBF6C8;
+  --oscuro:#000B3B;
+  --pntcorte-xs: 0;
+  --pntcorte-sm: 576px;
+  --pntcorte-md: 768px;
+  --pntcorte-lg: 992px;
+  --pntcorte-xl: 1200px;
+  --fuente-familia-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --fuente-familia-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* características generales de cada caja */
+* {
+    box-sizing: border-box
+}
+
+*+* {
+    margin: .5em 0
+}
+/* clases base de etiquetas*/
+pre {
+    overflow: auto
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 20px;
+  line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
+}
+
+header {
+  background-color: #00336a;
+  color: var(--blanco);
+  width: 100%;
+  height: 10%;
+  text-align: right;
+}
+
+header a:link, a:visited {
+  background-color: transparent;
+  color:white;
+  text-align: center;
+  text-decoration: none;
+
+}
+
+header a:hover, a:active {
+  background-color:var(--verde);
+  color:var(--blanco);
+}
+
+
+body {
+  background-color: var(--fondo-az-cl);
+  width: 100%;
+  color:var(--fondo-az-cl);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-size: .8rem;
+  overflow-x: hidden;
+}
+
+footer{
+  background: var(--azul);
+  width: 100%;
+  height: 10%;
+}
+
+nav{
+background: var(--azul);
+width: auto;
+display: inline;
+vertical-align: middle;
+}
+
+nav i.material-icons  {
+  display: inline;
+  color: var(--azul-2);
+  font-size: 42px;
+  text-align:right;
+  height: 56px;
+  line-height: 56px;
+}
+
+ul.nav-items{
+clear:both;
+height: 0;
+overflow: hidden;
+transition:height 0.4s ease-in-out 0s, background-color 2s ease 0s;
+}
+
+i.material-icons  {
+  display: inline;
+  color: var(--azul-2);
+  font-size: 36 px;
+  height: 56px;
+  line-height: 56px;
+}
+
+a:link, a:visited {
+  background-color: var(--azul);
+  color:var(--azul);
+  text-align: left;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  background-color:var(--gris);
+  color:var(--azul-2);
+  text-align: left;
+  text-decoration: none;
+}
+
+.cerrar{
+display: none;
+}
+
+#panel_der_nav:target .abrir{
+display: none;
+}
+
+#panel_der_nav:target .cerrar{
+display: block;
+}
+#panel_der_nav:target .nav-items{
+background: #f0f0f0 none repeat scroll 0 0;
+height: 100%;
+transition: height 0.4s ease-in-out 1s, background-color 0.9 ease 0s;
+}
+
+
+@media (min-width: 30em) {
+    .fila { width: 100%; display: table; table-layout: fixed; }
+    .col { display: table-cell; }
+}
+
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fuentes/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2);
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+ /* This is needed for some mobile phones to display the Google Icon font properly */
+ text-rendering: optimizeLegibility;
+ -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga';
+         font-feature-settings: 'liga';
+
+}
