@@ -185,8 +185,17 @@ HORARIO = [
     (2,'8am 12pm - 2pm 6pm')
     ]
 
+g_sis, created = Group.objects.get_or_create(name = 'Sistema')
+g_admsis, created = Group.objects.get_or_create(name = 'Admin Módulo Administración')
+g_appusu, created = Group.objects.get_or_create(name = 'Admin App Usuarios')
+g_appgrp, created = Group.objects.get_or_create(name = 'Admin App Grupos')
+g_appins, created = Group.objects.get_or_create(name = 'Admin App Instituciones')
+g_admapps, created = Group.objects.get_or_create(name = 'Admin Aplicaciones')
+g_ext, created = Group.objects.get_or_create(name = 'Admin Extensión')
+g_inv, created = Group.objects.get_or_create(name = 'Invitado')
+g_admcons, created = Group.objects.get_or_create(name = 'Admin Módulo Consultas')
 
-#Modulo Adminitrativo
+#Modulo Administrativo
 class mod(models.Model):
     # clase que almacena todos los modulos del sistema
     id_mod = models.AutoField(primary_key = True) # Identificador único del módulo
@@ -198,7 +207,18 @@ class mod(models.Model):
     instalado = models.BooleanField('¿El módulo se encuentra instalado?', default=False) # ¿el módulo se encuentra instalado? sí =True; no= False.
     visible = models.BooleanField('¿Activa o desactiva la visibilidad de la aplicacion.?', default=False)  # Activa o desactiva la visibilidad de la aplicacion.
     ls_param_cnf = models.CharField('Listado de parámetro de configuración', max_length=100, null=False, blank = False, default='0')
-
+    v_mod = Permission.objects.get(codename='view_mod')
+    a_mod = Permission.objects.get(codename='add_mod')
+    c_mod = Permission.objects.get(codename='change_mod')
+    d_mod = Permission.objects.get(codename='delete_mod')
+    g_admsis.permissions.add(v_mod,a_mod,c_mod,d_mod)
+    g_sis.permissions.add(v_mod,a_mod,c_mod,d_mod)
+    g_appusu.permissions.add(v_mod)
+    g_appgrp.permissions.add(v_mod)
+    g_appins.permissions.add(v_mod)
+    g_admapps.permissions.add(v_mod)
+    g_ext.permissions.add(v_mod)
+    g_admcons.permissions.add(v_mod)
     class Meta:
         verbose_name = 'mod'
         verbose_name_plural = 'mods'
@@ -218,6 +238,18 @@ class app_mod(models.Model):
     activo = models.BooleanField('estatus de la aplicacion ', default=False)# estatus de la aplicacion para indicar  el modulo de Administración
     instalada = models.BooleanField('¿La aplicación se encuentra instalada? ', default=False) # ¿La aplicación se encuentra instalada? sí =True; no= False.
     visible = models.BooleanField('¿Activa o desactiva la visibilidad de la aplicacion.?', default=False)  # Activa o desactiva la visibilidad de la aplicacion.
+    v_app_mod = Permission.objects.get(codename='view_app_mod')
+    a_app_mod = Permission.objects.get(codename='add_app_mod')
+    c_app_mod = Permission.objects.get(codename='change_app_mod')
+    d_app_mod = Permission.objects.get(codename='delete_app_mod')
+    g_admsis.permissions.add(v_app_mod,a_app_mod,c_app_mod,d_app_mod)
+    g_sis.permissions.add(v_app_mod,a_app_mod,c_app_mod,d_app_mod)
+    g_appusu.permissions.add(v_app_mod)
+    g_appgrp.permissions.add(v_app_mod)
+    g_appins.permissions.add(v_app_mod)
+    g_admapps.permissions.add(v_app_mod)
+    g_ext.permissions.add(v_app_mod)
+    g_admcons.permissions.add(v_app_mod)
 
 #NOTA: #nota ls_func foranea, rol
     class Meta:
@@ -233,6 +265,19 @@ class listado_aplicativo(models.Model):
     nom_aplicativo= models.CharField('aplicativo nombre: ', max_length=30, null=False, blank = False)
     activoaplicativo = models.BooleanField('¿Activo o desactivo.?', default=False)
 
+    v_listado_aplicativo = Permission.objects.get(codename='view_listado_aplicativo')
+    a_listado_aplicativo = Permission.objects.get(codename='add_listado_aplicativo')
+    c_listado_aplicativo = Permission.objects.get(codename='change_listado_aplicativo')
+    d_listado_aplicativo = Permission.objects.get(codename='delete_listado_aplicativo')
+    g_admsis.permissions.add(v_listado_aplicativo,a_listado_aplicativo,c_listado_aplicativo,d_listado_aplicativo)
+    g_sis.permissions.add(v_listado_aplicativo,a_listado_aplicativo,c_listado_aplicativo,d_listado_aplicativo)
+    g_appusu.permissions.add(v_listado_aplicativo)
+    g_appgrp.permissions.add(v_listado_aplicativo)
+    g_appins.permissions.add(v_listado_aplicativo)
+    g_admapps.permissions.add(v_listado_aplicativo)
+    g_ext.permissions.add(v_listado_aplicativo)
+    g_admcons.permissions.add(v_listado_aplicativo)
+
     class Meta:
         verbose_name = 'listado_aplicativo'
         verbose_name_plural = 'listado_aplicativo'
@@ -246,6 +291,19 @@ class ext_mod(models.Model):
     titulo_ext = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False)
     mod_prin_ext = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)
 #    ls_mods_ext = models.ManyToManyField(mod, help_text="Listado de id de módulos a los que está vinculada la aplicación")
+    
+    v_ext_mod = Permission.objects.get(codename='view_ext_mod')
+    a_ext_mod = Permission.objects.get(codename='add_ext_mod')
+    c_ext_mod = Permission.objects.get(codename='change_ext_mod')
+    d_ext_mod = Permission.objects.get(codename='delete_ext_mod')
+    g_admsis.permissions.add(v_ext_mod,a_ext_mod,c_ext_mod,d_ext_mod)
+    g_sis.permissions.add(v_ext_mod,a_ext_mod,c_ext_mod,d_ext_mod)
+    g_appusu.permissions.add(v_ext_mod)
+    g_appgrp.permissions.add(v_ext_mod)
+    g_appins.permissions.add(v_ext_mod)
+    g_admapps.permissions.add(v_ext_mod)
+    g_ext.permissions.add(v_ext_mod)
+    g_admcons.permissions.add(v_ext_mod)
 
     class Meta:
         verbose_name = 'ext_mod'
@@ -261,6 +319,19 @@ class ext_app(models.Model):
     mod_prin_app_ext = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False)
 #    ls_mods_app_ext = models.ManyToManyField(app_mod, help_text="Listado de id de módulos a los que está vinculada la aplicación")
 
+    v_ext_app = Permission.objects.get(codename='view_ext_app')
+    a_ext_app = Permission.objects.get(codename='add_ext_app')
+    c_ext_app = Permission.objects.get(codename='change_ext_app')
+    d_ext_app = Permission.objects.get(codename='delete_ext_app')
+    g_admsis.permissions.add(v_ext_app,a_ext_app,c_ext_app,d_ext_app)
+    g_sis.permissions.add(v_ext_app,a_ext_app,c_ext_app,d_ext_app)
+    g_appusu.permissions.add(v_ext_app)
+    g_appgrp.permissions.add(v_ext_app)
+    g_appins.permissions.add(v_ext_app)
+    g_admapps.permissions.add(v_ext_app)
+    g_ext.permissions.add(v_ext_app)
+    g_admcons.permissions.add(v_ext_app)
+
     class Meta:
         verbose_name = 'ext_app'
         verbose_name_plural = 'ext_apps'
@@ -268,10 +339,9 @@ class ext_app(models.Model):
     def __str__(self):
         return '{}'.format(self.titulo_app_ext)
 
-class rol(Group):
-    #id_rol = models.AutoField(primary_key = True) # Identificador único del Rol
-    # grupo = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank =True)
-    #permisos = Permission['add_logentry']
+class rol(models.Model):
+    id_rol = models.AutoField(primary_key = True, null=False, blank =False)
+    grupo = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank =True)
     etq_rol = models.CharField('Etiqueta:   ', max_length=30, null=False, blank = False) # Etiqueta del Rol
     desc = models.CharField('Descripcion del Rol: ', max_length=30, null=False, blank = False) # Descripcion del Rol
     tipo = models.IntegerField(null = False, blank = False, choices = TIPO_ROL, default = 0) # Ver diccionario TIPO_ROL
@@ -281,8 +351,23 @@ class rol(Group):
     id_ext_mod = models.ForeignKey(ext_mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de módulo
     id_ext_app = models.ForeignKey(ext_app, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de aplicación
     # req_reg = models.BooleanField('¿Activa o desactiva.?', default=False) # Variable que indica si require registro en aplicativo o plataforma o no.
-    
-    #g_sis.permissions.add(perm_sis)
+
+    v_rol = Permission.objects.get(codename='view_rol')
+    a_rol = Permission.objects.get(codename='add_rol')
+    c_rol = Permission.objects.get(codename='change_rol')
+    d_rol = Permission.objects.get(codename='delete_rol')
+    v_grp = Permission.objects.get(codename='view_group')
+    a_grp = Permission.objects.get(codename='add_group')
+    c_grp = Permission.objects.get(codename='change_group')
+    d_grp = Permission.objects.get(codename='delete_group')
+    g_admsis.permissions.add(v_rol,a_rol,c_rol,d_rol,v_grp,a_grp,c_grp,d_grp)
+    g_sis.permissions.add(v_rol,a_rol,c_rol,d_rol,v_grp,a_grp,c_grp,d_grp)
+    g_appusu.permissions.add(v_rol,v_grp)
+    g_appgrp.permissions.add(v_rol,v_grp)
+    g_appins.permissions.add(v_rol,v_grp)
+    g_admapps.permissions.add(v_rol,v_grp)
+    g_ext.permissions.add(v_rol,v_grp)
+    g_admcons.permissions.add(v_rol,v_grp)
     class Meta:
         verbose_name = 'rol'
         verbose_name_plural = 'rols'
@@ -312,6 +397,18 @@ class func_app(models.Model):
     #[,False,,,]¿genera registro en base de datos?;[,,True,,] Permiso de lectura en BD
     #[,,,False,]Permiso de excritura en BD.[,,,,False]Permiso de Ejecución.
 
+    v_func_app = Permission.objects.get(codename='view_func_app')
+    a_func_app = Permission.objects.get(codename='add_func_app')
+    c_func_app = Permission.objects.get(codename='change_func_app')
+    d_func_app = Permission.objects.get(codename='delete_func_app')
+    g_admsis.permissions.add(v_func_app,a_func_app,c_func_app,d_func_app)
+    g_sis.permissions.add(v_func_app,a_func_app,c_func_app,d_func_app)
+    g_appusu.permissions.add(v_func_app)
+    g_appgrp.permissions.add(v_func_app)
+    g_appins.permissions.add(v_func_app)
+    g_admapps.permissions.add(v_func_app)
+    g_ext.permissions.add(v_func_app)
+    g_admcons.permissions.add(v_func_app)
     class Meta:
         verbose_name = 'func_app'
         verbose_name_plural = 'func_apps'
@@ -377,6 +474,19 @@ class usu(AbstractUser):
     fch_regi = models.DateField('fecha de registro', auto_now = True) # fecha de registro de usuario
     activo = models.BooleanField('¿Activo o desactivado.?', default=True) # estatus del usuario activo (True) inactivo (False)
     
+    v_usu = Permission.objects.get(codename='view_usu')
+    a_usu = Permission.objects.get(codename='add_usu')
+    c_usu = Permission.objects.get(codename='change_usu')
+    d_usu = Permission.objects.get(codename='delete_usu')
+    g_admsis.permissions.add(v_usu,a_usu,c_usu,d_usu)
+    g_sis.permissions.add(v_usu,a_usu,c_usu,d_usu)
+    g_appusu.permissions.add(v_usu)
+    g_appgrp.permissions.add(v_usu)
+    g_appins.permissions.add(v_usu)
+    g_admapps.permissions.add(v_usu)
+    g_ext.permissions.add(v_usu)
+    g_admcons.permissions.add(v_usu)
+
     class Meta:
         verbose_name = 'usu'
         verbose_name_plural = 'usus'
@@ -392,6 +502,20 @@ class mod_adm(models.Model):
     id_usu_adm = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # Id del usuario Super Administrador de la plataforma
     id_mod = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)
     # nota preguntar mod.__init__(self), donde tomo las sesiones activas etc
+
+    v_mod_adm = Permission.objects.get(codename='view_mod_adm')
+    a_mod_adm = Permission.objects.get(codename='add_mod_adm')
+    c_mod_adm = Permission.objects.get(codename='change_mod_adm')
+    d_mod_adm = Permission.objects.get(codename='delete_mod_adm')
+    g_admsis.permissions.add(v_mod_adm,a_mod_adm,c_mod_adm,d_mod_adm)
+    g_sis.permissions.add(v_mod_adm,a_mod_adm,c_mod_adm,d_mod_adm)
+    g_appusu.permissions.add(v_mod_adm)
+    g_appgrp.permissions.add(v_mod_adm)
+    g_appins.permissions.add(v_mod_adm)
+    g_admapps.permissions.add(v_mod_adm)
+    g_ext.permissions.add(v_mod_adm)
+    g_admcons.permissions.add(v_mod_adm)
+
     class Meta:
         verbose_name = 'mod_adm'
         verbose_name_plural = 'mod_adms'
@@ -406,6 +530,19 @@ class log_acc_mod(models.Model):
     fch_ini = models.DateField('fecha de inicio', auto_now = False)  # fecha de inicio formato AAAA-MM-DD-HH:MM
     fch_fin = models.DateField('fecha de fin', auto_now = False)  # fecha de finalización formato AAAA-MM-DD-HH:MM
 
+    v_log_acc_mod = Permission.objects.get(codename='view_log_acc_mod')
+    a_log_acc_mod = Permission.objects.get(codename='add_log_acc_mod')
+    c_log_acc_mod = Permission.objects.get(codename='change_log_acc_mod')
+    d_log_acc_mod = Permission.objects.get(codename='delete_log_acc_mod')
+    g_admsis.permissions.add(v_log_acc_mod,a_log_acc_mod,c_log_acc_mod,d_log_acc_mod)
+    g_sis.permissions.add(v_log_acc_mod,a_log_acc_mod,c_log_acc_mod,d_log_acc_mod)
+    g_appusu.permissions.add(v_log_acc_mod)
+    g_appgrp.permissions.add(v_log_acc_mod)
+    g_appins.permissions.add(v_log_acc_mod)
+    g_admapps.permissions.add(v_log_acc_mod)
+    g_ext.permissions.add(v_log_acc_mod)
+    g_admcons.permissions.add(v_log_acc_mod)
+
     class Meta:
         verbose_name = 'log_acc_mod'
         verbose_name_plural = 'log_acc_mods'
@@ -416,6 +553,19 @@ class log_acc_pltf(models.Model):
     id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # Identificador único de usuario
     fch_ini = models.DateField('fecha de inicio', auto_now = False) # fecha de inicio formato AAAA-MM-DD-HH:MM
     fch_fin = models.DateField('fecha de fin', auto_now = False) # fecha de finalización formato AAAA-MM-DD-HH:MM
+
+    v_log_acc_pltf = Permission.objects.get(codename='view_log_acc_pltf')
+    a_log_acc_pltf = Permission.objects.get(codename='add_log_acc_pltf')
+    c_log_acc_pltf = Permission.objects.get(codename='change_log_acc_pltf')
+    d_log_acc_pltf = Permission.objects.get(codename='delete_log_acc_pltf')
+    g_admsis.permissions.add(v_log_acc_pltf,a_log_acc_pltf,c_log_acc_pltf,d_log_acc_pltf)
+    g_sis.permissions.add(v_log_acc_pltf,a_log_acc_pltf,c_log_acc_pltf,d_log_acc_pltf)
+    g_appusu.permissions.add(v_log_acc_pltf)
+    g_appgrp.permissions.add(v_log_acc_pltf)
+    g_appins.permissions.add(v_log_acc_pltf)
+    g_admapps.permissions.add(v_log_acc_pltf)
+    g_ext.permissions.add(v_log_acc_pltf)
+    g_admcons.permissions.add(v_log_acc_pltf)
 
     class Meta:
         verbose_name = 'log_acc_pltf'

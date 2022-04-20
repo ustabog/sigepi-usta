@@ -9,6 +9,17 @@ TIPO_ROL_GR = [
     (3,'Invitado'),
     (4,'Docente')
 ]
+
+g_sis = Group.objects.get(name = 'Sistema')
+g_admsis = Group.objects.get(name = 'Admin Módulo Administración')
+g_appusu = Group.objects.get(name = 'Admin App Usuarios')
+g_appgrp = Group.objects.get(name = 'Admin App Grupos')
+g_appins = Group.objects.get(name = 'Admin App Instituciones')
+g_admapps = Group.objects.get(name = 'Admin Aplicaciones')
+g_ext =  Group.objects.get(name = 'Admin Extensión')
+g_inv = Group.objects.get(name = 'Invitado')
+g_admcons = Group.objects.get(name = 'Admin Módulo Consultas')
+
 class etapa_gr(models.Model):
     #Clase que registra las etapas de los grupos de investigación en el sistema.
     id_etp_gr = models.AutoField(primary_key = True) #Identificador único de la etapa del grupo de investigacion.
@@ -19,6 +30,22 @@ class etapa_gr(models.Model):
     sigla = models.CharField('Sigla con la que se identificó(a) el grupo ', max_length=20, null=False, blank = False)  #Sigla con la que se identificó(a) el grupo en esta etapa.
     url_arch = models.URLField('URL del sitio web ', null= False, blank=False) #Url de sitio web o repositorio virtual donde repose el archivo(memoria o sitio web) del grupo.
     gruplac = models.URLField('Url del GrupLac del grupo de Investigación con ese nombre si se está registrado en esa plataforma.', null = 'False', blank = 'False') #Url del GrupLac del grupo de Investigación con ese nombre si se está registrado en esa plataforma.
+
+    v_etapa_gr = Permission.objects.get(codename='view_etapa_gr')
+    a_etapa_gr = Permission.objects.get(codename='add_etapa_gr')
+    c_etapa_gr = Permission.objects.get(codename='change_etapa_gr')
+    d_etapa_gr = Permission.objects.get(codename='delete_etapa_gr')
+
+    g_sis.permissions.add(v_etapa_gr ,a_etapa_gr ,c_etapa_gr ,d_etapa_gr)
+    g_admsis.permissions.add(v_etapa_gr ,a_etapa_gr ,c_etapa_gr ,d_etapa_gr)
+    g_appgrp.permissions.add(v_etapa_gr ,a_etapa_gr ,c_etapa_gr ,d_etapa_gr)
+
+    g_appusu.permissions.add(v_etapa_gr ,a_etapa_gr ,c_etapa_gr)
+    g_appins.permissions.add(v_etapa_gr ,a_etapa_gr ,c_etapa_gr)
+    g_admapps.permissions.add(v_etapa_gr ,a_etapa_gr ,c_etapa_gr)
+    g_ext.permissions.add(v_etapa_gr ,a_etapa_gr ,c_etapa_gr)
+    g_inv.permissions.add(v_etapa_gr ,a_etapa_gr ,c_etapa_gr)
+    g_admcons.permissions.add(v_etapa_gr ,a_etapa_gr ,c_etapa_gr)
 
     class Meta:
         verbose_name = 'etapa_gr'
@@ -38,6 +65,21 @@ class usugr(models.Model): #ojo falta listado de productos y protyectos vinculad
 #    ls_prod = models.ManyToManyField(pro) #Listado de id de productos de investigación vinculados al grupo.
     activo = models.BooleanField('Activo ', default=True)  #El grupo se encuentra activo.
 
+    v_usugr = Permission.objects.get(codename='view_usugr')
+    a_usugr = Permission.objects.get(codename='add_usugr')
+    c_usugr = Permission.objects.get(codename='change_usugr')
+    d_usugr = Permission.objects.get(codename='delete_usugr')
+    g_sis.permissions.add(v_usugr, a_usugr ,c_usugr ,d_usugr)
+    g_admsis.permissions.add(v_usugr, a_usugr ,c_usugr ,d_usugr)
+    g_appgrp.permissions.add(v_usugr, a_usugr ,c_usugr ,d_usugr)
+
+    g_appusu.permissions.add(v_usugr ,a_usugr ,c_usugr)
+    g_appins.permissions.add(v_usugr ,a_usugr ,c_usugr)
+    g_admapps.permissions.add(v_usugr ,a_usugr ,c_usugr)
+    g_ext.permissions.add(v_usugr ,a_usugr ,c_usugr)
+    g_inv.permissions.add(v_usugr ,a_usugr ,c_usugr)
+    g_admcons.permissions.add(v_usugr ,a_usugr ,c_usugr)
+
     class Meta:
         verbose_name = 'usugr'
         verbose_name_plural = 'usugr'
@@ -51,6 +93,21 @@ class usu_nr(models.Model):
     cvlac =  models.URLField('URL del CVlac del investigador(a).', null=False, blank=False)  #URL del CVlac del investigador(a).
     orcid = models.CharField('ID de ORCID del investigador(a).', max_length=20, null=False, blank = False)  #ID de ORCID del investigador(a).
     ggl = models.URLField('URL Google académico del investigador(a)', null=False, blank=False)  #URL Google académico del investigador(a).
+
+    v_usu_nr = Permission.objects.get(codename='view_usu_nr')
+    a_usu_nr = Permission.objects.get(codename='add_usu_nr')
+    c_usu_nr = Permission.objects.get(codename='change_usu_nr')
+    d_usu_nr = Permission.objects.get(codename='delete_usu_nr')
+    g_sis.permissions.add(v_usu_nr, a_usu_nr ,c_usu_nr ,d_usu_nr)
+    g_admsis.permissions.add(v_usu_nr, a_usu_nr ,c_usu_nr ,d_usu_nr)
+    g_appgrp.permissions.add(v_usu_nr, a_usu_nr ,c_usu_nr ,d_usu_nr)
+
+    g_appusu.permissions.add(v_usu_nr, a_usu_nr ,c_usu_nr)
+    g_appins.permissions.add(v_usu_nr, a_usu_nr ,c_usu_nr)
+    g_admapps.permissions.add(v_usu_nr, a_usu_nr ,c_usu_nr)
+    g_ext.permissions.add(v_usu_nr, a_usu_nr ,c_usu_nr)
+    g_inv.permissions.add(v_usu_nr, a_usu_nr ,c_usu_nr)
+    g_admcons.permissions.add(v_usu_nr, a_usu_nr ,c_usu_nr)
 
     class Meta:
         verbose_name = 'usu_nr'
@@ -95,6 +152,21 @@ class usugr_inf_apps(models.Model):
     #rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)   # Identificador de rol de sistema.
     #app_act = models.ForeignKey(listado_aplicativo, on_delete=models.CASCADE, null=False, blank =False)  # identificador de funcionalidad actual (Sistema, módulo, aplicacion, extensión)
 
+    v_usugr_inf_apps = Permission.objects.get(codename='view_usugr_inf_apps')
+    a_usugr_inf_apps = Permission.objects.get(codename='add_usugr_inf_apps')
+    c_usugr_inf_apps = Permission.objects.get(codename='change_usugr_inf_apps')
+    d_usugr_inf_apps = Permission.objects.get(codename='delete_usugr_inf_apps')
+    g_sis.permissions.add(v_usugr_inf_apps, a_usugr_inf_apps ,c_usugr_inf_apps  ,d_usugr_inf_apps )
+    g_admsis.permissions.add(v_usugr_inf_apps, a_usugr_inf_apps ,c_usugr_inf_apps  ,d_usugr_inf_apps )
+    g_appgrp.permissions.add(v_usugr_inf_apps, a_usugr_inf_apps ,c_usugr_inf_apps  ,d_usugr_inf_apps )
+
+    g_appusu.permissions.add(v_usugr_inf_apps, a_usugr_inf_apps ,c_usugr_inf_apps)
+    g_appins.permissions.add(v_usugr_inf_apps, a_usugr_inf_apps ,c_usugr_inf_apps)
+    g_admapps.permissions.add(v_usugr_inf_apps, a_usugr_inf_apps ,c_usugr_inf_apps)
+    g_ext.permissions.add(v_usugr_inf_apps, a_usugr_inf_apps ,c_usugr_inf_apps)
+    g_inv.permissions.add(v_usugr_inf_apps, a_usugr_inf_apps ,c_usugr_inf_apps)
+    g_admcons.permissions.add(v_usugr_inf_apps, a_usugr_inf_apps ,c_usugr_inf_apps)
+
     class Meta:
         verbose_name = 'usugr_inf_apps'
         verbose_name_plural = 'usugr_inf_appss'
@@ -117,6 +189,21 @@ class usugr_inf_gr(models.Model):
     zona_hor =  models.CharField('Zona Horaria', max_length=40, null=False, blank = False) #Zona Horaria internacional
     id_gr_padre =  models.CharField('grupo padre', max_length=40, null=False, blank = False, default = 0) #Identificador del grupo padre si lo tiene, de lo contrario es el valor es cero
 
+    v_usugr_inf_gr = Permission.objects.get(codename='view_usugr_inf_gr')
+    a_usugr_inf_gr = Permission.objects.get(codename='add_usugr_inf_gr')
+    c_usugr_inf_gr = Permission.objects.get(codename='change_usugr_inf_gr')
+    d_usugr_inf_gr = Permission.objects.get(codename='delete_usugr_inf_gr')
+    g_sis.permissions.add(v_usugr_inf_gr, a_usugr_inf_gr ,c_usugr_inf_gr  ,d_usugr_inf_gr )
+    g_admsis.permissions.add(v_usugr_inf_gr, a_usugr_inf_gr ,c_usugr_inf_gr  ,d_usugr_inf_gr )
+    g_appgrp.permissions.add(v_usugr_inf_gr, a_usugr_inf_gr ,c_usugr_inf_gr  ,d_usugr_inf_gr )
+
+    g_appusu.permissions.add(v_usugr_inf_gr, a_usugr_inf_gr ,c_usugr_inf_gr)
+    g_appins.permissions.add(v_usugr_inf_gr, a_usugr_inf_gr ,c_usugr_inf_gr)
+    g_admapps.permissions.add(v_usugr_inf_gr, a_usugr_inf_gr ,c_usugr_inf_gr)
+    g_ext.permissions.add(v_usugr_inf_gr, a_usugr_inf_gr ,c_usugr_inf_gr)
+    g_inv.permissions.add(v_usugr_inf_gr, a_usugr_inf_gr ,c_usugr_inf_gr)
+    g_admcons.permissions.add(v_usugr_inf_gr, a_usugr_inf_gr ,c_usugr_inf_gr)
+
     class Meta:
         verbose_name = 'usugr_inf_gr'
         verbose_name_plural = 'usugr_inf_grs'
@@ -133,6 +220,21 @@ class usugr_inf_contac(models.Model):
     web =  models.URLField('página web o blog del grupo ', null=False, blank=False)  # dirección de página web o blog del grupo
     dir_offi = models.TextField('Direccion e oficina', null=False, blank = False) # Dirección de Oficina (país, ciudad, dir)
 
+    v_usugr_inf_contac = Permission.objects.get(codename='view_usugr_inf_contac')
+    a_usugr_inf_contac = Permission.objects.get(codename='add_usugr_inf_contac')
+    c_usugr_inf_contac= Permission.objects.get(codename='change_usugr_inf_contac')
+    d_usugr_inf_contac = Permission.objects.get(codename='delete_usugr_inf_contac')
+    g_sis.permissions.add(v_usugr_inf_contac, a_usugr_inf_contac ,c_usugr_inf_contac  ,d_usugr_inf_contac )
+    g_admsis.permissions.add(v_usugr_inf_contac, a_usugr_inf_contac ,c_usugr_inf_contac  ,d_usugr_inf_contac )
+    g_appgrp.permissions.add(v_usugr_inf_contac, a_usugr_inf_contac ,c_usugr_inf_contac  ,d_usugr_inf_contac )
+
+    g_appusu.permissions.add(v_usugr_inf_contac, a_usugr_inf_contac ,c_usugr_inf_contac)
+    g_appins.permissions.add(v_usugr_inf_contac, a_usugr_inf_contac ,c_usugr_inf_contac)
+    g_admapps.permissions.add(v_usugr_inf_contac, a_usugr_inf_contac ,c_usugr_inf_contac)
+    g_ext.permissions.add(v_usugr_inf_contac, a_usugr_inf_contac ,c_usugr_inf_contac)
+    g_inv.permissions.add(v_usugr_inf_contac, a_usugr_inf_contac ,c_usugr_inf_contac)
+    g_admcons.permissions.add(v_usugr_inf_contac, a_usugr_inf_contac ,c_usugr_inf_contac)
+
     class Meta:
         verbose_name = 'usugr_inf_contac'
         verbose_name_plural = 'usugr_inf_contacs'
@@ -140,6 +242,25 @@ class usugr_inf_contac(models.Model):
 class usugr_inf_red_social(models.Model):  # Listado de objetos de redes sociales
     id_usugr = models.ForeignKey(usugr_inf_gr, on_delete=models.CASCADE, null=False, blank =False)
     ls_red = models.ForeignKey(red_soc, on_delete=models.CASCADE, null=False, blank =False)
+
+    v_usugr_inf_red_social = Permission.objects.get(codename='view_usugr_inf_red_social')
+    a_usugr_inf_red_social = Permission.objects.get(codename='add_usugr_inf_red_social')
+    c_usugr_inf_red_social = Permission.objects.get(codename='change_usugr_inf_red_social')
+    d_usugr_inf_red_social = Permission.objects.get(codename='delete_usugr_inf_red_social')
+    g_sis.permissions.add(v_usugr_inf_red_social, a_usugr_inf_red_social ,c_usugr_inf_red_social  ,d_usugr_inf_red_social )
+    g_admsis.permissions.add(v_usugr_inf_red_social, a_usugr_inf_red_social ,c_usugr_inf_red_social  ,d_usugr_inf_red_social )
+    g_appgrp.permissions.add(v_usugr_inf_red_social, a_usugr_inf_red_social ,c_usugr_inf_red_social  ,d_usugr_inf_red_social )
+
+    g_appusu.permissions.add(v_usugr_inf_red_social, a_usugr_inf_red_social ,c_usugr_inf_red_social)
+    g_appins.permissions.add(v_usugr_inf_red_social, a_usugr_inf_red_social ,c_usugr_inf_red_social)
+    g_admapps.permissions.add(v_usugr_inf_red_social, a_usugr_inf_red_social ,c_usugr_inf_red_social)
+    g_ext.permissions.add(v_usugr_inf_red_social, a_usugr_inf_red_social ,c_usugr_inf_red_social)
+    g_inv.permissions.add(v_usugr_inf_red_social, a_usugr_inf_red_social ,c_usugr_inf_red_social)
+    g_admcons.permissions.add(v_usugr_inf_red_social, a_usugr_inf_red_social ,c_usugr_inf_red_social)
+
+    class Meta:
+        verbose_name = 'usugr_inf_red_social'
+        verbose_name_plural = 'usugr_inf_red_socials'
 
 class form_acad_gr(models.Model):
     #clase que almacena la información de formación académica de un usuario grupo //verificar si es academica en general o solo del grupo
@@ -155,6 +276,21 @@ class form_acad_gr(models.Model):
     hora = models.PositiveSmallIntegerField(' Número de horas académicas', default = 5) # Número de horas académicas
     mem = models.URLField('url de las memorias del tipo de formación', null = False, blank = False) #url de las memorias del tipo de formación.
     token = models.CharField('Token de validación electrónica', null = False, blank=False, max_length= 30) #Token de validación electrónica de certificación de la formación
+
+    v_form_acad_gr = Permission.objects.get(codename='view_form_acad_gr')
+    a_form_acad_gr = Permission.objects.get(codename='add_form_acad_gr')
+    c_form_acad_gr = Permission.objects.get(codename='change_form_acad_gr')
+    d_form_acad_gr = Permission.objects.get(codename='delete_form_acad_gr')
+    g_sis.permissions.add(v_form_acad_gr, a_form_acad_gr ,c_form_acad_gr  ,d_form_acad_gr )
+    g_admsis.permissions.add(v_form_acad_gr, a_form_acad_gr ,c_form_acad_gr  ,d_form_acad_gr )
+    g_appgrp.permissions.add(v_form_acad_gr, a_form_acad_gr ,c_form_acad_gr  ,d_form_acad_gr )
+
+    g_appusu.permissions.add(v_form_acad_gr, a_form_acad_gr ,c_form_acad_gr)
+    g_appins.permissions.add(v_form_acad_gr, a_form_acad_gr ,c_form_acad_gr)
+    g_admapps.permissions.add(v_form_acad_gr, a_form_acad_gr ,c_form_acad_gr)
+    g_ext.permissions.add(v_form_acad_gr, a_form_acad_gr ,c_form_acad_gr)
+    g_inv.permissions.add(v_form_acad_gr, a_form_acad_gr ,c_form_acad_gr)
+    g_admcons.permissions.add(v_form_acad_gr, a_form_acad_gr ,c_form_acad_gr)
 
     class Meta:
         verbose_name = 'form_acad_gr'
@@ -189,6 +325,21 @@ class curs_ofer(models.Model):
     url_prog = models.URLField('página web o blog del grupo ', null=False, blank=False) #Url del documento o sitio web donde se puede localizar el programa del curso o el evento académico.
     inscr = models.URLField('Url del formulario de inscripción.', null = 'False', blank = False) #Url del formulario de inscripción.
 
+    v_curs_ofer = Permission.objects.get(codename='view_curs_ofer')
+    a_curs_ofer = Permission.objects.get(codename='add_curs_ofer')
+    c_curs_ofer = Permission.objects.get(codename='change_curs_ofer')
+    d_curs_ofer = Permission.objects.get(codename='delete_curs_ofer')
+    g_sis.permissions.add(v_curs_ofer , a_curs_ofer ,c_curs_ofer ,d_curs_ofer )
+    g_admsis.permissions.add(v_curs_ofer , a_curs_ofer ,c_curs_ofer ,d_curs_ofer )
+    g_appgrp.permissions.add(v_curs_ofer , a_curs_ofer ,c_curs_ofer ,d_curs_ofer )
+
+    g_appusu.permissions.add(v_curs_ofer , a_curs_ofer ,c_curs_ofer)
+    g_appins.permissions.add(v_curs_ofer , a_curs_ofer ,c_curs_ofer)
+    g_admapps.permissions.add(v_curs_ofer , a_curs_ofer ,c_curs_ofer)
+    g_ext.permissions.add(v_curs_ofer , a_curs_ofer ,c_curs_ofer)
+    g_inv.permissions.add(v_curs_ofer , a_curs_ofer ,c_curs_ofer)
+    g_admcons.permissions.add(v_curs_ofer , a_curs_ofer ,c_curs_ofer)
+
     class Meta:
         verbose_name = 'curs_ofer'
         verbose_name_plural = 'curs_ofers'
@@ -207,6 +358,20 @@ class app_reg_gr(models.Model):
     id_app_reg_gr = models.AutoField(primary_key = True)
     nombres = models.CharField('Descripcion.', max_length=40, null=False, blank = False)
     #id_app = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False) # Identificador único de aplicacion por modulo _administrador
+
+    v_app_reg_gr = Permission.objects.get(codename='view_app_reg_gr')
+    a_app_reg_gr = Permission.objects.get(codename='add_app_reg_gr')
+    c_app_reg_gr = Permission.objects.get(codename='change_app_reg_gr')
+    d_app_reg_gr = Permission.objects.get(codename='delete_app_reg_gr')
+    g_sis.permissions.add(v_app_reg_gr , a_app_reg_gr ,c_app_reg_gr ,d_app_reg_gr )
+    g_admsis.permissions.add(v_app_reg_gr , a_app_reg_gr ,c_app_reg_gr ,d_app_reg_gr )
+    g_appgrp.permissions.add(v_app_reg_gr , a_app_reg_gr ,c_app_reg_gr ,d_app_reg_gr )
+    g_appusu.permissions.add(v_app_reg_gr , a_app_reg_gr ,c_app_reg_gr)
+    g_appins.permissions.add(v_app_reg_gr , a_app_reg_gr ,c_app_reg_gr)
+    g_admapps.permissions.add(v_app_reg_gr , a_app_reg_gr ,c_app_reg_gr)
+    g_ext.permissions.add(v_app_reg_gr , a_app_reg_gr ,c_app_reg_gr)
+    g_inv.permissions.add(v_app_reg_gr , a_app_reg_gr ,c_app_reg_gr)
+    g_admcons.permissions.add(v_app_reg_gr , a_app_reg_gr ,c_app_reg_gr)
 
     class Meta:
         verbose_name = 'app_reg_gr'

@@ -182,6 +182,17 @@ HORARIO = [
     (2,'8am 12pm - 2pm 6pm')
     ]
 
+
+g_sis = Group.objects.get(name = 'Sistema')
+g_admsis = Group.objects.get(name = 'Admin Módulo Administración')
+g_appusu = Group.objects.get(name = 'Admin App Usuarios')
+g_appgrp = Group.objects.get(name = 'Admin App Grupos')
+g_appins = Group.objects.get(name = 'Admin App Instituciones')
+g_admapps = Group.objects.get(name = 'Admin Aplicaciones')
+g_ext =  Group.objects.get(name = 'Admin Extensión')
+g_inv = Group.objects.get(name = 'Invitado')
+g_admcons = Group.objects.get(name = 'Admin Módulo Consultas')
+
 class usu_inf_apps(models.Model):
     id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) #id único de Usuario de sistema
     ls_roles =[[0,0]] #Listado de roles en aplicaciones y módulos autorizados por administradores de paltaforma
@@ -206,6 +217,18 @@ class discapacidad(models.Model):
     tipo_disca = models.CharField('Tipo de discapacidad ', max_length=30, null=False, blank = False)  # número único de identificación personal sin puntos
     desc_disca = models.CharField('Descripción', max_length=30, null=False, blank = False)  # tipo de Número de identificación personal
 
+    v_disc = Permission.objects.get(codename='view_discapacidad')
+    a_disc = Permission.objects.get(codename='add_discapacidad')
+    c_disc = Permission.objects.get(codename='change_discapacidad')
+    d_disc = Permission.objects.get(codename='delete_discapacidad')
+    g_sis.permissions.add(v_disc,a_disc,c_disc,d_disc)
+    g_admsis.permissions.add(v_disc,a_disc,c_disc,d_disc)
+    g_appusu.permissions.add(v_disc,a_disc,c_disc,d_disc)
+    g_appgrp.permissions.add(v_disc,a_disc,c_disc)
+    g_appins.permissions.add(v_disc,a_disc,c_disc)
+    g_admapps.permissions.add(v_disc,a_disc,c_disc)
+    g_ext.permissions.add(v_disc,a_disc,c_disc)
+    g_admcons.permissions.add(v_disc,a_disc,c_disc)
     class Meta:
         verbose_name = 'discapacidad'
         verbose_name_plural = 'discapacidads'
@@ -232,6 +255,19 @@ class usu_inf_pers(models.Model):
     # url_imag = models.URLField('url de la imagen personal.', null=True, blank=True)  # url de la imagen personal.
     # zona_hor = models.CharField('Zona Horaria ', max_length=100, null=True, blank = True) #Zona Horario internacional
 
+    v_usu_inf_pers = Permission.objects.get(codename='view_usu_inf_pers')
+    a_usu_inf_pers = Permission.objects.get(codename='add_usu_inf_pers')
+    c_usu_inf_pers = Permission.objects.get(codename='change_usu_inf_pers')
+    d_usu_inf_pers = Permission.objects.get(codename='delete_usu_inf_pers')
+    g_sis.permissions.add(v_usu_inf_pers,a_usu_inf_pers,c_usu_inf_pers,d_usu_inf_pers)
+    g_admsis.permissions.add(v_usu_inf_pers,a_usu_inf_pers,c_usu_inf_pers,d_usu_inf_pers)
+    g_appusu.permissions.add(v_usu_inf_pers,a_usu_inf_pers,c_usu_inf_pers,d_usu_inf_pers)
+    g_appgrp.permissions.add(v_usu_inf_pers,a_usu_inf_pers,c_usu_inf_pers)
+    g_appins.permissions.add(v_usu_inf_pers,a_usu_inf_pers,c_usu_inf_pers)
+    g_admapps.permissions.add(v_usu_inf_pers,a_usu_inf_pers,c_usu_inf_pers)
+    g_ext.permissions.add(v_usu_inf_pers,a_usu_inf_pers,c_usu_inf_pers)
+    g_admcons.permissions.add(v_usu_inf_pers,a_usu_inf_pers,c_usu_inf_pers)
+
     class Meta:
         verbose_name = 'usu_inf_pers'
         verbose_name_plural = 'usu_inf_perss'
@@ -248,6 +284,19 @@ class usu_inf_contac(models.Model):
     web = models.URLField('dirección de página web o blog personal', null=False, blank=False) # dirección de página web o blog personal
     dir_offi = models.CharField('Dirección de Ofiina (país, ciudad, dir) ', max_length=100, null=False, blank = False) # Dirección de Oficina (país, ciudad, dir)
 
+    v_usu_inf_contac = Permission.objects.get(codename='view_usu_inf_contac')
+    a_usu_inf_contac = Permission.objects.get(codename='add_usu_inf_contac')
+    c_usu_inf_contac = Permission.objects.get(codename='change_usu_inf_contac')
+    d_usu_inf_contac = Permission.objects.get(codename='delete_usu_inf_contac')
+    g_sis.permissions.add(v_usu_inf_contac,a_usu_inf_contac,c_usu_inf_contac,d_usu_inf_contac)
+    g_admsis.permissions.add(v_usu_inf_contac,a_usu_inf_contac,c_usu_inf_contac,d_usu_inf_contac)
+    g_appusu.permissions.add(v_usu_inf_contac,a_usu_inf_contac,c_usu_inf_contac,d_usu_inf_contac)
+    g_appgrp.permissions.add(v_usu_inf_contac,a_usu_inf_contac,c_usu_inf_contac)
+    g_appins.permissions.add(v_usu_inf_contac,a_usu_inf_contac,c_usu_inf_contac)
+    g_admapps.permissions.add(v_usu_inf_contac,a_usu_inf_contac,c_usu_inf_contac)
+    g_ext.permissions.add(v_usu_inf_contac,a_usu_inf_contac,c_usu_inf_contac)
+    g_admcons.permissions.add(v_usu_inf_contac,a_usu_inf_contac,c_usu_inf_contac)
+
     class Meta:
         verbose_name = 'usu_inf_contac'
         verbose_name_plural = 'usu_inf_contacs'
@@ -260,6 +309,19 @@ class red_soc(models.Model):
     url = models.URLField('Url de página principal dentro de la red.', null=False, blank=False) #Url de página principal dentro de la red.
     uso = models.CharField('Uso de la red (frecuente:0; moderado:1; poco frecuente:2; inactivo:3) ', max_length=20, null=False, blank = False)  #Uso de la red (frecuente:0; moderado:1; poco frecuente:2; inactivo:3)
     pub = models.BooleanField('acceso público de información de red', default=False)  #Acceso público de información de red
+
+    v_red_soc = Permission.objects.get(codename='view_red_soc')
+    a_red_soc = Permission.objects.get(codename='add_red_soc')
+    c_red_soc = Permission.objects.get(codename='change_red_soc')
+    d_red_soc = Permission.objects.get(codename='delete_red_soc')
+    g_sis.permissions.add(v_red_soc,a_red_soc,c_red_soc,d_red_soc)
+    g_admsis.permissions.add(v_red_soc,a_red_soc,c_red_soc,d_red_soc)
+    g_appusu.permissions.add(v_red_soc,a_red_soc,c_red_soc,d_red_soc)
+    g_appgrp.permissions.add(v_red_soc,a_red_soc,c_red_soc)
+    g_appins.permissions.add(v_red_soc,a_red_soc,c_red_soc)
+    g_admapps.permissions.add(v_red_soc,a_red_soc,c_red_soc)
+    g_ext.permissions.add(v_red_soc,a_red_soc,c_red_soc)
+    g_admcons.permissions.add(v_red_soc,a_red_soc,c_red_soc)
 
     class Meta:
         verbose_name = 'red_soc'
@@ -289,6 +351,19 @@ class form_acad(models.Model):
     tit = models.CharField('Titulo obtenido ', max_length=20, null=False, blank = False) # Título obtenido
     menc =  models.CharField('Mención ', max_length=20, null=False, blank = False)  # Mensión de honor
     token = models.CharField('Token de validación ', max_length=20, null=False, blank = False)  #Token de validación electrónica de certificación de la formación
+
+    v_form_acad = Permission.objects.get(codename='view_form_acad')
+    a_form_acad = Permission.objects.get(codename='add_form_acad')
+    c_form_acad = Permission.objects.get(codename='change_form_acad')
+    d_form_acad = Permission.objects.get(codename='delete_form_acad')
+    g_sis.permissions.add(v_form_acad,a_form_acad,c_form_acad,d_form_acad)
+    g_admsis.permissions.add(v_form_acad,a_form_acad,c_form_acad,d_form_acad)
+    g_appusu.permissions.add(v_form_acad,a_form_acad,c_form_acad,d_form_acad)
+    g_appgrp.permissions.add(v_form_acad,a_form_acad,c_form_acad)
+    g_appins.permissions.add(v_form_acad,a_form_acad,c_form_acad)
+    g_admapps.permissions.add(v_form_acad,a_form_acad,c_form_acad)
+    g_ext.permissions.add(v_form_acad,a_form_acad,c_form_acad)
+    g_admcons.permissions.add(v_form_acad,a_form_acad,c_form_acad)
 
     class Meta:
         verbose_name = 'form_acad'
@@ -329,6 +404,19 @@ class curs_dict(models.Model):
     mun_ciclos = models.IntegerField('cuántas veces se dictó el curso')  #Número de ciclos del curso "cuántas veces se dictó el curso"
     url_prog =  models.URLField('Url del documento o sitio web ', null=False, blank=False) #Url del documento o sitio web donde se puede localizar el programa del curso
 
+    v_curs_dict = Permission.objects.get(codename='view_curs_dict')
+    a_curs_dict = Permission.objects.get(codename='add_curs_dict')
+    c_curs_dict = Permission.objects.get(codename='change_curs_dict')
+    d_curs_dict = Permission.objects.get(codename='delete_curs_dict')
+    g_sis.permissions.add(v_curs_dict,a_curs_dict,c_curs_dict,d_curs_dict)
+    g_admsis.permissions.add(v_curs_dict,a_curs_dict,c_curs_dict,d_curs_dict)
+    g_appusu.permissions.add(v_curs_dict,a_curs_dict,c_curs_dict,d_curs_dict)
+    g_appgrp.permissions.add(v_curs_dict,a_curs_dict,c_curs_dict)
+    g_appins.permissions.add(v_curs_dict,a_curs_dict,c_curs_dict)
+    g_admapps.permissions.add(v_curs_dict,a_curs_dict,c_curs_dict)
+    g_ext.permissions.add(v_curs_dict,a_curs_dict,c_curs_dict)
+    g_admcons.permissions.add(v_curs_dict,a_curs_dict,c_curs_dict)
+
     class Meta:
         verbose_name = 'curs_dict'
         verbose_name_plural = 'curs_dicts'
@@ -341,6 +429,19 @@ class rl_usu_inf_contac_curs_dict(models.Model):  # relacion de LIstado de id Cu
 class usu_inf_prof(models.Model):
     id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # identificador unico de usuario
     prof = models.CharField('Titulo obtenido ', max_length=20, null=False, blank = False)  # Profesión Actual
+
+    v_usu_inf_prof = Permission.objects.get(codename='view_usu_inf_prof')
+    a_usu_inf_prof = Permission.objects.get(codename='add_usu_inf_prof')
+    c_usu_inf_prof = Permission.objects.get(codename='change_usu_inf_prof')
+    d_usu_inf_prof = Permission.objects.get(codename='delete_usu_inf_prof')
+    g_sis.permissions.add(v_usu_inf_prof,a_usu_inf_prof,c_usu_inf_prof,d_usu_inf_prof)
+    g_admsis.permissions.add(v_usu_inf_prof,a_usu_inf_prof,c_usu_inf_prof,d_usu_inf_prof)
+    g_appusu.permissions.add(v_usu_inf_prof,a_usu_inf_prof,c_usu_inf_prof,d_usu_inf_prof)
+    g_appgrp.permissions.add(v_usu_inf_prof,a_usu_inf_prof,c_usu_inf_prof)
+    g_appins.permissions.add(v_usu_inf_prof,a_usu_inf_prof,c_usu_inf_prof)
+    g_admapps.permissions.add(v_usu_inf_prof,a_usu_inf_prof,c_usu_inf_prof)
+    g_ext.permissions.add(v_usu_inf_prof,a_usu_inf_prof,c_usu_inf_prof)
+    g_admcons.permissions.add(v_usu_inf_prof,a_usu_inf_prof,c_usu_inf_prof)
 
     class Meta:
         verbose_name = 'usu_inf_prof'
@@ -367,6 +468,19 @@ class empleos(models.Model):
     token = models.CharField('Token de validación electrónica  ', max_length=20, null=False, blank = False)  #Token de validación electrónica de certificación de la formación
     ret = models.CharField(' Motivo del retiro ', max_length=20, null=False, blank = False)  # Motivo del retiro
 
+    v_empleos = Permission.objects.get(codename='view_empleos')
+    a_empleos = Permission.objects.get(codename='add_empleos')
+    c_empleos = Permission.objects.get(codename='change_empleos')
+    d_empleos = Permission.objects.get(codename='delete_empleos')
+    g_sis.permissions.add(v_empleos,a_empleos,c_empleos,d_empleos)
+    g_admsis.permissions.add(v_empleos,a_empleos,c_empleos,d_empleos)
+    g_appusu.permissions.add(v_empleos,a_empleos,c_empleos,d_empleos)
+    g_appgrp.permissions.add(v_empleos,a_empleos,c_empleos)
+    g_appins.permissions.add(v_empleos,a_empleos,c_empleos)
+    g_admapps.permissions.add(v_empleos,a_empleos,c_empleos)
+    g_ext.permissions.add(v_empleos,a_empleos,c_empleos)
+    g_admcons.permissions.add(v_empleos,a_empleos,c_empleos)
+
     class Meta:
         verbose_name = 'empleos'
         verbose_name_plural = 'empleoss'
@@ -376,6 +490,19 @@ class habilidades(models.Model):
     id_hab = models.AutoField(primary_key = True)
     nom_hab = models.CharField('Nombre de la habilidad', max_length=20, null=False, blank = False)  #Nombre de la habilidad
     desc = models.CharField('Descripción de la Habilidad', max_length=20, null=False, blank = False)  #Descripción de la Habilidad
+
+    v_habilidades = Permission.objects.get(codename='view_habilidades')
+    a_habilidades = Permission.objects.get(codename='add_habilidades')
+    c_habilidades = Permission.objects.get(codename='change_habilidades')
+    d_habilidades = Permission.objects.get(codename='delete_habilidades')
+    g_sis.permissions.add(v_habilidades,a_habilidades,c_habilidades,d_habilidades)
+    g_admsis.permissions.add(v_habilidades,a_habilidades,c_habilidades,d_habilidades)
+    g_appusu.permissions.add(v_habilidades,a_habilidades,c_habilidades,d_habilidades)
+    g_appgrp.permissions.add(v_habilidades,a_habilidades,c_habilidades)
+    g_appins.permissions.add(v_habilidades,a_habilidades,c_habilidades)
+    g_admapps.permissions.add(v_habilidades,a_habilidades,c_habilidades)
+    g_ext.permissions.add(v_habilidades,a_habilidades,c_habilidades)
+    g_admcons.permissions.add(v_habilidades,a_habilidades,c_habilidades)
 
     class Meta:
         verbose_name = 'habilidades'
@@ -399,6 +526,19 @@ class valid_hab(models.Model): # verificar esta
     id_esc = models.CharField('IDENTIFICADOR ', max_length=20, null=False, blank = False) #Identificador de la escala de validación
     val = models.CharField('RANGO ', max_length=20, null=False, blank = False) #Valor dentro del rango de la escala de validación
 
+    v_valid_hab = Permission.objects.get(codename='view_valid_hab')
+    a_valid_hab = Permission.objects.get(codename='add_valid_hab')
+    c_valid_hab = Permission.objects.get(codename='change_valid_hab')
+    d_valid_hab = Permission.objects.get(codename='delete_valid_hab')
+    g_sis.permissions.add(v_valid_hab,a_valid_hab,c_valid_hab,d_valid_hab)
+    g_admsis.permissions.add(v_valid_hab,a_valid_hab,c_valid_hab,d_valid_hab)
+    g_appusu.permissions.add(v_valid_hab,a_valid_hab,c_valid_hab,d_valid_hab)
+    g_appgrp.permissions.add(v_valid_hab,a_valid_hab,c_valid_hab)
+    g_appins.permissions.add(v_valid_hab,a_valid_hab,c_valid_hab)
+    g_admapps.permissions.add(v_valid_hab,a_valid_hab,c_valid_hab)
+    g_ext.permissions.add(v_valid_hab,a_valid_hab,c_valid_hab)
+    g_admcons.permissions.add(v_valid_hab,a_valid_hab,c_valid_hab)
+
     #nota como realizp el dato val, id esc, id:usu_val
     class Meta:
         verbose_name = 'valid_hab'
@@ -410,6 +550,19 @@ class app_reg_usu(models.Model):
     nombre = models.CharField('Nombre de la app ', max_length=20, null=False, blank = False) # nombre del objeto
     descripcion = models.CharField('Descripcion ', max_length=20, null=False, blank = False) # descripcion del objeto
     activo = models.BooleanField('Activo ', default=False) # activo o no
+
+    v_app_reg_usu = Permission.objects.get(codename='view_app_reg_usu')
+    a_app_reg_usu = Permission.objects.get(codename='add_app_reg_usu')
+    c_app_reg_usu = Permission.objects.get(codename='change_app_reg_usu')
+    d_app_reg_usu = Permission.objects.get(codename='delete_app_reg_usu')
+    g_sis.permissions.add(v_app_reg_usu,a_app_reg_usu,c_app_reg_usu,d_app_reg_usu)
+    g_admsis.permissions.add(v_app_reg_usu,a_app_reg_usu,c_app_reg_usu,d_app_reg_usu)
+    g_appusu.permissions.add(v_app_reg_usu,a_app_reg_usu,c_app_reg_usu,d_app_reg_usu)
+    g_appgrp.permissions.add(v_app_reg_usu,a_app_reg_usu,c_app_reg_usu)
+    g_appins.permissions.add(v_app_reg_usu,a_app_reg_usu,c_app_reg_usu)
+    g_admapps.permissions.add(v_app_reg_usu,a_app_reg_usu,c_app_reg_usu)
+    g_ext.permissions.add(v_app_reg_usu,a_app_reg_usu,c_app_reg_usu)
+    g_admcons.permissions.add(v_app_reg_usu,a_app_reg_usu,c_app_reg_usu)
 
     class Meta:
         verbose_name = 'app_reg_usu'

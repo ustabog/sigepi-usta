@@ -14,7 +14,15 @@ ROL_APP = [
     (3,'Otro'),
     ]
 
-
+g_sis = Group.objects.get(name = 'Sistema')
+g_admsis = Group.objects.get(name = 'Admin Módulo Administración')
+g_appusu = Group.objects.get(name = 'Admin App Usuarios')
+g_appgrp = Group.objects.get(name = 'Admin App Grupos')
+g_appins = Group.objects.get(name = 'Admin App Instituciones')
+g_admapps = Group.objects.get(name = 'Admin Aplicaciones')
+g_ext =  Group.objects.get(name = 'Admin Extensión')
+g_inv = Group.objects.get(name = 'Invitado')
+g_admcons = Group.objects.get(name = 'Admin Módulo Consultas')
 
 class usui(models.Model):
     # Clase que almacena y procesa la información de un usuario institucional
@@ -26,6 +34,22 @@ class usui(models.Model):
     #  # Identificador del Rol de Usuario Institucional dentro de la app_reg_ins
     fch_regi = models.DateField('fecha de registro de usurio: ', auto_now = False) # fecha de registro de usurio
     activo = models.BooleanField(' estatus del usuario activo', default = True) # estatus del usuario activo (True) inactivo (False)
+
+    v_usui = Permission.objects.get(codename='view_usui')
+    a_usui = Permission.objects.get(codename='add_usui')
+    c_usui = Permission.objects.get(codename='change_usui')
+    d_usui = Permission.objects.get(codename='delete_usui')
+
+    g_sis.permissions.add(v_usui ,a_usui ,c_usui ,d_usui)
+    g_admsis.permissions.add(v_usui ,a_usui ,c_usui ,d_usui)
+    g_appins.permissions.add(v_usui ,a_usui ,c_usui ,d_usui)
+
+    g_appusu.permissions.add(v_usui ,a_usui ,c_usui)
+    g_appgrp.permissions.add(v_usui ,a_usui ,c_usui)
+    g_admapps.permissions.add(v_usui ,a_usui ,c_usui)
+    g_ext.permissions.add(v_usui ,a_usui ,c_usui)
+    g_inv.permissions.add(v_usui ,a_usui ,c_usui)
+    g_admcons.permissions.add(v_usui ,a_usui ,c_usui)
 
     class Meta:
         verbose_name = 'usui'
@@ -39,6 +63,22 @@ class usui_inf_apps(models.Model):
     rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank = False) # Identificador de rol de sistema.
 #    app_act = models.ForeignKey(listado_aplicativo, on_delete=models.CASCADE, null=False, blank = False) # identificador de funcionalidad actual (Sistema, módulo, aplicacion, extensión)
     #rol_act = 0 # identificador del rol actual.
+
+    v_usui_inf_apps = Permission.objects.get(codename='view_usui_inf_apps')
+    a_usui_inf_apps = Permission.objects.get(codename='add_usui_inf_apps')
+    c_usui_inf_apps = Permission.objects.get(codename='change_usui_inf_apps')
+    d_usui_inf_apps = Permission.objects.get(codename='delete_usui_inf_apps')
+
+    g_sis.permissions.add(v_usui_inf_apps ,a_usui_inf_apps ,c_usui_inf_apps ,d_usui_inf_apps)
+    g_admsis.permissions.add(v_usui_inf_apps ,a_usui_inf_apps ,c_usui_inf_apps ,d_usui_inf_apps)
+    g_appins.permissions.add(v_usui_inf_apps ,a_usui_inf_apps ,c_usui_inf_apps ,d_usui_inf_apps)
+
+    g_appusu.permissions.add(v_usui_inf_apps ,a_usui_inf_apps ,c_usui_inf_apps)
+    g_appgrp.permissions.add(v_usui_inf_apps ,a_usui_inf_apps ,c_usui_inf_apps)
+    g_admapps.permissions.add(v_usui_inf_apps ,a_usui_inf_apps ,c_usui_inf_apps)
+    g_ext.permissions.add(v_usui_inf_apps ,a_usui_inf_apps ,c_usui_inf_apps)
+    g_inv.permissions.add(v_usui_inf_apps ,a_usui_inf_apps ,c_usui_inf_apps)
+    g_admcons.permissions.add(v_usui_inf_apps ,a_usui_inf_apps ,c_usui_inf_apps)
 
     class Meta:
         verbose_name = 'usui_inf_apps'
@@ -66,6 +106,22 @@ class usui_inf_inst(models.Model):
     url_imag = models.URLField('url de la imagen institucional o logo', blank=False, null=False) # url de la imagen institucional o logo.
     zona_hor = models.CharField('Zona Horario internacional', max_length=60, null=False, blank=False) #Zona Horario internacional
 
+    v_usui_inf_inst = Permission.objects.get(codename='view_usui_inf_inst')
+    a_usui_inf_inst = Permission.objects.get(codename='add_usui_inf_inst')
+    c_usui_inf_inst = Permission.objects.get(codename='change_usui_inf_inst')
+    d_usui_inf_inst = Permission.objects.get(codename='delete_usui_inf_inst')
+
+    g_sis.permissions.add(v_usui_inf_inst ,a_usui_inf_inst ,c_usui_inf_inst ,d_usui_inf_inst)
+    g_admsis.permissions.add(v_usui_inf_inst ,a_usui_inf_inst ,c_usui_inf_inst ,d_usui_inf_inst)
+    g_appins.permissions.add(v_usui_inf_inst ,a_usui_inf_inst ,c_usui_inf_inst ,d_usui_inf_inst)
+
+    g_appusu.permissions.add(v_usui_inf_inst ,a_usui_inf_inst ,c_usui_inf_inst)
+    g_appgrp.permissions.add(v_usui_inf_inst ,a_usui_inf_inst ,c_usui_inf_inst)
+    g_admapps.permissions.add(v_usui_inf_inst ,a_usui_inf_inst ,c_usui_inf_inst)
+    g_ext.permissions.add(v_usui_inf_inst ,a_usui_inf_inst ,c_usui_inf_inst)
+    g_inv.permissions.add(v_usui_inf_inst)
+    g_admcons.permissions.add(v_usui_inf_inst ,a_usui_inf_inst ,c_usui_inf_inst)
+
     class Meta:
         verbose_name = 'usui_inf_inst'
         verbose_name_plural = 'usui_inf_insts'
@@ -82,6 +138,22 @@ class usui_inf_contac(models.Model):
     ls_ha = models.IntegerField(choices= HORARIO, blank=False, default=0, null=False) #Listado de Horario de atención [día,hora ini, hora fin]
     web = models.URLField(' dirección de página web o blog institucional', max_length=60, null=False, blank=False) # dirección de página web o blog institucional
     dir_pri = models.TextField('Dirección de sede principal (país, ciudad, dir. ', null=False, blank=False) # Dirección de sede principal (país, ciudad, dir)
+
+    v_usui_inf_contac = Permission.objects.get(codename='view_usui_inf_contac')
+    a_usui_inf_contac = Permission.objects.get(codename='add_usui_inf_contac')
+    c_usui_inf_contac = Permission.objects.get(codename='change_usui_inf_contac')
+    d_usui_inf_contac = Permission.objects.get(codename='delete_usui_inf_contac')
+
+    g_sis.permissions.add(v_usui_inf_contac ,a_usui_inf_contac ,c_usui_inf_contac ,d_usui_inf_contac)
+    g_admsis.permissions.add(v_usui_inf_contac ,a_usui_inf_contac ,c_usui_inf_contac ,d_usui_inf_contac)
+    g_appins.permissions.add(v_usui_inf_contac ,a_usui_inf_contac ,c_usui_inf_contac ,d_usui_inf_contac)
+
+    g_appusu.permissions.add(v_usui_inf_contac ,a_usui_inf_contac ,c_usui_inf_contac)
+    g_appgrp.permissions.add(v_usui_inf_contac ,a_usui_inf_contac ,c_usui_inf_contac)
+    g_admapps.permissions.add(v_usui_inf_contac ,a_usui_inf_contac ,c_usui_inf_contac)
+    g_ext.permissions.add(v_usui_inf_contac ,a_usui_inf_contac ,c_usui_inf_contac)
+    g_inv.permissions.add(v_usui_inf_contac)
+    g_admcons.permissions.add(v_usui_inf_contac ,a_usui_inf_contac ,c_usui_inf_contac)
 
     class Meta:
         verbose_name = 'usui_inf_contac'
@@ -123,6 +195,22 @@ class prog_ofer(models.Model):
     ven_acrd = models.PositiveSmallIntegerField('Año de vencimiento de la acreditación', default = 5) #Año de vencimiento de la acreditación
     url_prog = models.URLField('sitio web donde se puede localizar el programa', max_length=80, null=False, blank=False) #Url del documento o sitio web donde se puede localizar el programa
 
+    v_prog_ofer = Permission.objects.get(codename='view_prog_ofer')
+    a_prog_ofer = Permission.objects.get(codename='add_prog_ofer')
+    c_prog_ofer = Permission.objects.get(codename='change_prog_ofer')
+    d_prog_ofer = Permission.objects.get(codename='delete_prog_ofer')
+
+    g_sis.permissions.add(v_prog_ofer ,a_prog_ofer ,c_prog_ofer ,d_prog_ofer)
+    g_admsis.permissions.add(v_prog_ofer ,a_prog_ofer ,c_prog_ofer ,d_prog_ofer)
+    g_appins.permissions.add(v_prog_ofer ,a_prog_ofer ,c_prog_ofer ,d_prog_ofer)
+
+    g_appusu.permissions.add(v_prog_ofer ,a_prog_ofer ,c_prog_ofer)
+    g_appgrp.permissions.add(v_prog_ofer ,a_prog_ofer ,c_prog_ofer)
+    g_admapps.permissions.add(v_prog_ofer ,a_prog_ofer ,c_prog_ofer)
+    g_ext.permissions.add(v_prog_ofer ,a_prog_ofer ,c_prog_ofer)
+    g_inv.permissions.add(v_prog_ofer)
+    g_admcons.permissions.add(v_prog_ofer ,a_prog_ofer ,c_prog_ofer)
+
     class Meta:
         verbose_name = 'prog_ofer'
         verbose_name_plural = 'prog_ofers'
@@ -160,6 +248,22 @@ class conv_inv(models.Model):
     url_conv = models.URLField('sitio web donde se puede localizar los términos de al convocatoria', max_length = 80, blank=False, null=False) #Url del documento o sitio web donde se puede localizar los términos de al convocatoria.
     url_insc = models.URLField('Url del formulario de inscripción', max_length = 80, blank=False, null=False) #Url del formulario de inscripción.
 
+    v_conv_inv = Permission.objects.get(codename='view_conv_inv')
+    a_conv_inv = Permission.objects.get(codename='add_conv_inv')
+    c_conv_inv = Permission.objects.get(codename='change_conv_inv')
+    d_conv_inv = Permission.objects.get(codename='delete_conv_inv')
+
+    g_sis.permissions.add(v_conv_inv ,a_conv_inv ,c_conv_inv ,d_conv_inv)
+    g_admsis.permissions.add(v_conv_inv ,a_conv_inv ,c_conv_inv ,d_conv_inv)
+    g_appins.permissions.add(v_conv_inv ,a_conv_inv ,c_conv_inv ,d_conv_inv)
+
+    g_appusu.permissions.add(v_conv_inv ,a_conv_inv ,c_conv_inv)
+    g_appgrp.permissions.add(v_conv_inv ,a_conv_inv ,c_conv_inv)
+    g_admapps.permissions.add(v_conv_inv ,a_conv_inv ,c_conv_inv)
+    g_ext.permissions.add(v_conv_inv ,a_conv_inv ,c_conv_inv)
+    g_inv.permissions.add(v_conv_inv)
+    g_admcons.permissions.add(v_conv_inv ,a_conv_inv ,c_conv_inv)
+
     class Meta:
         verbose_name = 'conv_inv'
         verbose_name_plural = 'conv_invs'
@@ -183,6 +287,22 @@ class app_reg_ins(models.Model):
     nomb_app_reg_ins = models.CharField('Nombre  ', max_length=20, null=False, blank = False)  # nombre de la App Registro de Instituciones
     desc_app_reg_ins = models.CharField('Descripcion  ', max_length=20, null=False, blank = False)  # descripcion de la App Registro de Instituciones
     status_app_reg_ins = models.BooleanField('Activo ', default=False)# estatus de la App Registro de Instituciones
+
+    v_app_reg_ins = Permission.objects.get(codename='view_app_reg_ins')
+    a_app_reg_ins = Permission.objects.get(codename='add_app_reg_ins')
+    c_app_reg_ins = Permission.objects.get(codename='change_app_reg_ins')
+    d_app_reg_ins = Permission.objects.get(codename='delete_app_reg_ins')
+
+    g_sis.permissions.add(v_app_reg_ins ,a_app_reg_ins ,c_app_reg_ins ,d_app_reg_ins)
+    g_admsis.permissions.add(v_app_reg_ins ,a_app_reg_ins ,c_app_reg_ins ,d_app_reg_ins)
+    g_appins.permissions.add(v_app_reg_ins ,a_app_reg_ins ,c_app_reg_ins ,d_app_reg_ins)
+
+    g_appusu.permissions.add(v_app_reg_ins ,a_app_reg_ins ,c_app_reg_ins)
+    g_appgrp.permissions.add(v_app_reg_ins ,a_app_reg_ins ,c_app_reg_ins)
+    g_admapps.permissions.add(v_app_reg_ins ,a_app_reg_ins ,c_app_reg_ins)
+    g_ext.permissions.add(v_app_reg_ins ,a_app_reg_ins ,c_app_reg_ins)
+    g_inv.permissions.add(v_app_reg_ins)
+    g_admcons.permissions.add(v_app_reg_ins ,a_app_reg_ins ,c_app_reg_ins)
 
     class Meta:
         verbose_name = 'app_reg_ins'
