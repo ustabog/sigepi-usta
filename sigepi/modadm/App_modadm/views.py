@@ -13,7 +13,7 @@ from django.contrib import messages
 #from rest_framework import viewsets
 from .models import *
 from .form import *
-from modcons.App_cons.form import frm_con_mod
+#from modcons.App_cons.form import frm_con_mod
 
 ######   CRUD MODULO    ################################
 class vts_reg_mod(CreateView):
@@ -84,23 +84,13 @@ class vts_reg_rol(CreateView):
     success_url = reverse_lazy('consulta_rol')
     success_message = 'El rol fue creado satisfactoriamente'
 
-    g_sis, created = Group.objects.get_or_create(name = 'Sistema')
-    g_admsis, created = Group.objects.get_or_create(name = 'Admin Módulo Administración')
-    g_appusu, created = Group.objects.get_or_create(name = 'Admin App Usuarios')
-    g_appgrp, created = Group.objects.get_or_create(name = 'Admin App Grupos')
-    g_appins, created = Group.objects.get_or_create(name = 'Admin App Instituciones')
-    g_admapps = Group.objects.get_or_create(name = 'Admin Aplicaciones')
-    g_ext, created = Group.objects.get_or_create(name = 'Admin Extensión')
-    g_inv, created = Group.objects.get_or_create(name = 'Invitado')
-
-    perm_sis = Permission.objects.get(codename='add_rol')
-    g_sis.permissions.add(perm_sis)
-    g_sis.save()
-    # permission = Permission.objects.create(codename='add_rol',
-    #                                    name='Can add rol',
-    #                                    content_type=content_type)   
-    # group = Group.objects.get(name='wizard')
-    # group.permissions.add(permission)
+    g_admsis = Group.objects.get(name = 'Admin Módulo Administración')
+    v_rol = Permission.objects.get(codename='view_rol')
+    a_rol = Permission.objects.get(codename='add_rol')
+    c_rol = Permission.objects.get(codename='change_rol')
+    d_rol = Permission.objects.get(codename='delete_rol')
+    g_admsis.permissions.add(v_rol,a_rol,c_rol,d_rol)
+    g_admsis.save()
     
 
 class vts_ls_rol(ListView): 
