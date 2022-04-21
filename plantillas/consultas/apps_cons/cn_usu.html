@@ -1,0 +1,57 @@
+{% extends 'index_adm.html' %}
+{% block titulo %} Listado de usuario {% endblock titulo %}
+{% block cuerpo %}
+{% block js %}
+    {% if messages %}
+    {% for m in messages %}
+        <script type="text/javascript">
+            function eliminarUsu (id) {
+                console.log(id);
+            } 
+        </script>
+    {% endfor %}
+    {% endif %} 
+{% endblock %}
+{% if form.errors %}
+    <p>La lista de usuario no se ha logrado consultar.</p>
+{% endif %}
+<form method="POST">
+    {{form.as_ul}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <div class="table-responsive">
+                    <table class="table">
+                        <h2>Listado de usuarios</h2>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th colspan="2">Opciones</th>
+                            </tr>
+                        </thead>
+                        {% for usu in object_list %}
+                        <tbody>
+                            <tr>
+                                <td> {{ usu.id }} </td>
+                                <td> {{ usu.username }} </td>
+                                <td> {{ usu.first_name}} </td>
+                                <td> {{ usu.last_name}} </td>
+                                <td> <a href="../edi_usu/{{usu.id}}" class="btn btn-block btn-sm btn-info">Editar</a> <br></td>
+                                <td> <a href="../eli_usu/{{usu.id}}" class="btn btn-block btn-sm btn-danger">Eliminar</a> <br></td> 
+                                <!-- <td> <a href="../eli_usu/{{usu.id}}" onclick="eliminarUsu({{ usu.id }})" class="btn btn-block btn-sm btn-danger">Eliminar</a> <br></td>  -->
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+            {% block modf_consl %}
+            {% endblock modf_consl  %}
+    </div>
+</form>
+{% endblock cuerpo %}

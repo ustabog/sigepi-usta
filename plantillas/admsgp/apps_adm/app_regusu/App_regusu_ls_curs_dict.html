@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de usuarios {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado usuarios</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>usuario</th>
+            <th>instituto</th>
+            <th>tipo formacion </th>
+            <th>fecha de inicio</th>
+            <th>fecha ed fin</th>
+            <th>certificado</th>
+            <th>fecha de nacimiento</th>
+            <th>nacionalidad</th>
+            <th>ciudad</th>
+            <th>modalidad</th>
+            <th>Cantidad de Estudiantes</th>
+            <th>Nombre del Curso</th>
+            <th>cuántas veces se dictó el curso</th>
+            <th>url del documento o sitio web </th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for curs_dict in  object_list %}
+        <tr>
+          <td>{{ curs_dict.id_usu }}</td>
+          <td>{{ curs_dict.instit }}</td>
+          <td>{{ curs_dict.tipo_form }}</td>
+          <td>{{ curs_dict.fch_ini }}</td>
+          <td>{{ curs_dict.fch_fin }}</td>
+          <td>{{ curs_dict.certif }}</td>
+          <td>{{ curs_dict.nal }}</td>
+          <td>{{ curs_dict.ciudad }}</td>
+          <td>{{ curs_dict.mod }}</td>
+          <td>{{ curs_dict.num_est }}</td>
+          <td>{{ curs_dict.dur }}</td>
+          <td>{{ curs_dict.nom_curs }}</td>
+          <td>{{ curs_dict.mun_ciclos }}</td>
+          <td>{{ curs_dict.url_prog }}</td>
+          <td><a href="{% url 'editarcurs_dict' curs_dict.id_cd  %}"> Editar </a> <a href="{% url 'eliminarcursdict' curs_dict.id_cd   %} "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+      {% endblock cuerpo %}
+  </body>
+</html>

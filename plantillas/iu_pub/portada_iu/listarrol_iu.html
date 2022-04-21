@@ -1,0 +1,19 @@
+{% load static %}
+{% block rolusuario %}
+    <table border="2">
+        <thead>
+          <tr>
+             <th>id</th>
+            <th>nombre</th>
+          </tr>
+        </thead>
+      <tbody>
+          {% for usu_inf_apps in object_list %}
+            <tr>
+                <td>{{ usu_inf_apps.id }}</td>
+                
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock rolusuario %}

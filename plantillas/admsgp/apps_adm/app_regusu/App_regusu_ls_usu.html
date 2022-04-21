@@ -1,0 +1,41 @@
+{% extends 'index_front.html' %}
+{% block cuerpo %}
+  <div id='main'>
+    <article id="principal">
+      {% block contenido %}
+          <h1> listado usuarios</h1>
+          <table border="2">
+              <thead>
+                <tr>
+                  <th>last_name</th>
+                  <th>login</th>
+                  <th>username</th>
+                  <th>first_name</th>
+                  <th>email</th>
+                </tr>
+              </thead>
+            <tbody>
+              {% for usu in  object_list %}
+              <tr>
+                <td>{{ usu.last_name }}</td>
+                <td>{{ usu.last_login }}</td>
+                <td>{{ usu.username }}</td>
+                <td>{{ usu.first_name }}</td>
+                <td>{{ usu.email }}</td>
+                <td><a href="{% url 'edi_usu/usu.user'  %}"> Editar </a> <a href="{% url 'eliminarusu' usu.user  %} "> Eliminar </a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      {% endblock %}
+    </article>
+    <script language="JavaScript" type="text/javascript">
+      $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+      });
+    </script>
+  </div>
+{% endblock %}
+{% block pie %}
+{% include 'menu_inf.html' %}
+{% endblock %}

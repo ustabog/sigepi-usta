@@ -1,0 +1,28 @@
+{% extends 'index_adm.html' %}
+{% block titulo %} Formulario de usuarios {% endblock titulo %}
+{% block cuerpo %}
+<form class="" action="" method="post">
+  {% csrf_token %}
+  {{ form2.as_p}}
+  {{ form.as_p}}
+  <button type="submit" >Editar</button>
+</form>
+
+{% block info_pers %}
+{% endblock %}
+{% block info_contac %}
+{% endblock %}
+{% block red_social %}
+{% endblock %}
+{% block form_academica %}
+{% endblock %}
+{% block info_prof %}
+{% endblock %}
+{% block empleo %}
+{% endblock %}
+{% block habilidades %}
+{% endblock %}
+{% block val_hab %}
+{% endblock %}
+
+ {% endblock cuerpo %}

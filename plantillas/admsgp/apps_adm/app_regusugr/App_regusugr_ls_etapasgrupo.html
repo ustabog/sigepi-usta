@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de roles {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado etapas grupos</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>Identificador único</th>
+            <th>nombre del grupo</th>
+            <th>Fecha en la que se creó </th>
+            <th>Fecha en la que se terminó </th>
+            <th>El nombre se encuentra vigente</th>
+            <th>Sigla </th>
+            <th>repositorio virtual</th>
+            <th>Url del Grup  </th>
+            <th>opciones</th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for etapa_gr in  object_list %}
+        <tr>
+          <td>{{ etapa_gr.id_etp_gr }}</td>
+          <td>{{ etapa_gr.nom }}</td>
+          <td>{{ etapa_gr.fch_ini_nom }}</td>
+          <td>{{ etapa_gr.fch_fin_nom }}</td>
+          <td>{{ etapa_gr.vig }}</td>
+          <td>{{ etapa_gr.sigla }}</td>
+          <td>{{ etapa_gr.url_arch }}</td>
+          <td>{{ etapa_gr.gruplac }}</td>
+          <td><a href="{% url 'editaretapa_gr' etapa_gr.id_etp_gr  %}"> Editar </a> <a href="{% url 'eliminaretapagr'   etapa_gr.id_etp_gr %}  "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endblock cuerpo %}
+  </body>
+</html>

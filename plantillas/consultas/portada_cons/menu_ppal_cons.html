@@ -1,0 +1,22 @@
+{% load static %}
+{% csrf_token %}
+
+{% block meta_menu_ppal %}
+{% endblock meta_menu_ppal%}
+
+{% block menu_ppal %}
+
+<nav class="fila" >
+    <div class="col">
+        <a href="#">SIGEPI-USTA</a>
+        <a href="../../inicio" >
+            <img src="{% static 'img/logo.png' %}" alt="Logo" style="height:55px" ></img>
+        </a>
+        <a href="#panel_der_nav" class="abrir">
+            <i class="material-icons" >menu</i>
+        </a>
+    </div>
+
+</nav>
+
+{% endblock menu_ppal %}

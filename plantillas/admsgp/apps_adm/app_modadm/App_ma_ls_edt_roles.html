@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de Roles {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado APP</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>titulo</th>
+            <th>descripcion</th>
+            <th>url doc</th>
+            <th>version</th>
+            <th>mod principal</th>
+            <th>version mod</th>
+            <th>activo</th>
+            <th>instalada</th>
+            <th>visible</th>
+            <th>opcion</th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for app_mod in  object_list %}
+        <tr>
+          <td>{{ app_mod.id_app }}</td>
+          <td>{{ app_mod.titulo }}</td>
+          <td>{{ app_mod.desc }}</td>
+          <td>{{ app_mod.url_doc }}</td>
+          <td>{{ app_mod.version }}</td>
+          <td>{{ app_mod.mod_prin }}</td>
+          <td>{{ app_mod.ver_mod }}</td>
+          <td>{{ app_mod.activo }}</td>
+          <td>{{ app_mod.instalada }}</td>
+          <td>{{ app_mod.visible }}</td>
+          <td><a href="{% url 'editarapp' app_mod.id_app %}"> Editar </a> <a href="{% url 'eliminarapp' app_mod.id_app %} "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+      {% endblock cuerpo %}
+  </body>
+</html>
