@@ -1,0 +1,6 @@
+<form method="post">
+  {% csrf_token %}
+  <h1> Desea eliminar al aplicativo {{ object }} ?</h1>
+  <button type="submit" name="button"> Confirmar</button>
+  <a href="{% url  'aplicativo' %}"> cancelar</a>
+</form>

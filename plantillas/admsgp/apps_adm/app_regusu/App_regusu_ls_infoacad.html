@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titulo %} listado de usuarios {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1> listado usuarios</h1>
+    <table border="2">
+        <thead>
+          <tr>
+            <th>instituto</th>
+            <th>tipo formacion </th>
+            <th>fecha de inicio</th>
+            <th>fecha ed fin</th>
+            <th>certificado</th>
+            <th>fecha de nacimiento</th>
+            <th>nacionalidad</th>
+            <th>ciudad</th>
+            <th>modalidad</th>
+            <th>titulo</th>
+            <th>mencion</th>
+            <th>token</th>
+          </tr>
+        </thead>
+      <tbody>
+        {% for form_acad in  object_list %}
+        <tr>
+          <td>{{ form_acad.instit }}</td>
+          <td>{{ form_acad.tipo_form }}</td>
+          <td>{{ form_acad.fch_ini }}</td>
+          <td>{{ form_acad.fch_fin }}</td>
+          <td>{{ form_acad.certif }}</td>
+          <td>{{ form_acad.fch_naci }}</td>
+          <td>{{ form_acad.nal }}</td>
+          <td>{{ form_acad.ciudad }}</td>
+          <td>{{ form_acad.mod }}</td>
+          <td>{{ form_acad.tit }}</td>
+          <td>{{ form_acad.menc }}</td>
+          <td>{{ form_acad.token }}</td>
+          <td><a href="{% url 'editarinfoacad' form_acad.id_fa  %}"> Editar </a> <a href="{% url 'eliminarinfoacad' form_acad.id_fa  %} "> Eliminar </a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+      {% endblock cuerpo %}
+  </body>
+</html>

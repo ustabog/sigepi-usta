@@ -1,0 +1,81 @@
+<!--  -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head id='metadatos'>
+    <link rel="stylesheet" href="{% static 'css/sigepi.css' %}">
+    <link rel="stylesheet" href="{% static 'fuentes/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2' %}" >
+    {% block meta_head %}{% endblock meta_head %}
+    {% block meta_cuerpo %}{% endblock meta_cuerpo%}
+    {% block meta_cabecera %}{% endblock meta_cabecera%}
+    {% block meta_menu_ppal %}{% endblock meta_menu_ppal%}
+    {% block meta_app %}{% endblock meta_app%}
+    {% block meta_panel_der %}{% endblock meta_panel_der%}
+    {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+    {% block meta_panel_iz %}{% endblock meta_panel_iz%}
+    {% block meta_pie_app%}{% endblock meta_pie_app%}
+    {% block meta_pie_extra%}{% endblock meta_pie_extra%}
+    {% block meta_pie%}{% endblock meta_pie%}
+    <title id='titulo'>
+        {% block titulo %}SIGEPI-USTA{% endblock titulo%}
+    </title>
+</head>
+
+<body id="cuerpo" class="fila">
+    <header id="cabecera" class="fila">
+        {% block cabecera %}
+        {% endblock cabecera %}
+        <div id="menu_ppal" style="" class="menu_ppal">
+            {% block menu_ppal %}
+            {% endblock menu_ppal %}
+        </div>
+    </header>
+    <div id="app" style="" class="fila cuerpo">
+        <div id="menu_app" style="" class="col">
+            {% block menu_app %}
+            {% endblock menu_app %}
+        </div>
+        <div id="panel_der" style="" class="col">
+            {% block panel_der %}
+            {% endblock panel_der %}
+        </div>
+        <div id="panel_ppal" style="" class="col">
+            {% block panel_ppal %}
+                <div id="articulo" style="" class="col">
+                    {% block articulo %}
+                    {% endblock articulo %}
+                </div>
+            {% endblock panel_ppal %}
+        </div>
+        <div id="panel_iz" style="" class="col">
+            {% block panel_iz %}
+            {% endblock panel_iz %}
+        </div>
+        <div id="pie_app" style="" class="col">
+            {% block pie_app %}
+            {% endblock pie_app %}
+        </div>
+    </div>
+    {% block script_meta%}{% endblock script_meta%}
+    {% block script_cuerpo%}{% endblock script_cuerpo %}
+    {% block script_cabecera%}{% endblock script_cabecera%}
+    {% block script_app%}{% endblock script_app%}
+    {% block script_menu_app%}{% endblock script_menu_app%}
+    {% block script_panel_der%}{% endblock script_panel_der%}
+    {% block script_panel_ppal%}{% endblock script_panel_ppal%}
+    {% block script_panel_iz %}{% endblock script_panel_iz %}
+    {% block script_pie_app%}{% endblock script_pie_app%}
+    {% block script_pie_extra%}{% endblock script_pie_extra%}
+    {% block script_pie%}{% endblock script_pie%}
+    <footer id="pie" style="" class="fila">
+        <div id="pie_extra" style="" class="fila">
+            {% block pie_extra%}
+            {% endblock pie_extra%}
+        </div>
+        {% block pie %}
+        {% endblock pie%}
+    </footer>
+</body>
+
+</html>

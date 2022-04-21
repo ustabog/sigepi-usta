@@ -1,0 +1,117 @@
+{% load static %}
+
+{% block panel_der %}
+<ul class="navlateral">
+  <li>
+    <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+  </li>
+  <li>
+    <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+  </li>
+  <li>
+    <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+  </li>
+</ul>
+</div>
+
+<nav class="navlateral">
+    {%block encabezado_pn_der%}
+    <!-- Encabezado panel derecho -->
+    <div id="sup_pn_der" class="nav-title">
+        <span>SIGEPI-USTA</span>
+    </div>
+    {%endblock encabezado_pn_der%}
+
+
+    {%block autent_pn_der%}
+    <!--información de usuario panel derecho que se carga una vez
+    se ha autenticado -->
+    {% csrf_token %}
+
+    <ul id="sidebar-nav">
+        <li id="sidebar-brand">
+            <a href="">Ingresar</a>
+        </li>
+        <li id="sidebar-brand" class="sidebar-brand">
+            <a href="">Registro</a>
+        </li>
+        <li id="sidebar-brand">
+            <a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
+                <span class="card"></span>
+            </a>
+        </li>
+        <li id="sidebar-brand">
+            <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
+        </li>
+        <div class="card">
+            <div class="card-header">
+                Tablero de Control
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success" role="alert">
+                    <a class="btn btn-outline-info" href="">Ingresar</a>
+                    <a class="btn btn-outline-info" href="">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </ul>
+
+    {%endblock autent_pn_der%}
+    <ul class="">
+        {% if user.is_authenticated %}
+        <li class="nav-item activo">
+            <span> Bienvenido(a) {{user.username}} </span>
+        </li>
+        <li class="nav-item active">
+            <a href="" class="nav-link ">Grupos</a>
+        </li>
+        <li class="nav-item active">
+            <a href="" class="nav-link ">Grupos</a>
+        </li>
+        <li class="nav-item active">
+            <a href="" class="nav-link ">Instituciones</a>
+        </li>
+        <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Proyectos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="">Ver Proyectos</a></li>
+                <li><a class="dropdown-item" href="">Registrar Proyectos</a></li>
+                <li><a class="dropdown-item" href="">Modificar Proyectos</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="">Eliminar Proyectos</a></li>
+            </ul>
+        </li>
+        <li class="nav-item active">
+            <a href="" class="nav-link ">Herramientas</a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+            <a href="" class="nav-link ">Inicio</a>
+        </li>
+        <form class="form-inline">
+            <input type="text" class="form-control-sm" placeholder="Buscar">
+            <button type="button" class="btn btn-outline-secondary">Buscar</button>
+        </form>
+        {% endif %}
+    </ul>
+
+    {%block app_pn_der%}
+    <!-- Menu de aplicación panel derecho -->
+    {%endblock app_pn_der%}
+
+    {%block modulos %}
+    {%endblock modulos %}
+
+    {%block pie_pn_der %}
+    {%endblock pie_pn_der %}
+</nav>
+
+
+{% endblock panel_der %}
