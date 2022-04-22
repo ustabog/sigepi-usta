@@ -1,10 +1,11 @@
 {% load static %}
 {% csrf_token %}
 
+<!-- metadatos del documento (head)-->
 {% block meta_menu_ppal %}
 {% endblock meta_menu_ppal%}
 
-
+{% block menu_ppal %}
 <nav class="nav-extendida">
     <div class="nav-solapa">
         <a href="inicio" class="logotipo der">
@@ -19,13 +20,13 @@
         </a>
     </div>
 </nav>
+{% endblock menu_ppal %}
 
-{% block script_cabecera%}
+{% block script_menu_ppal%}
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
    var elems = document.querySelectorAll('.navlateral');
    var instances = M.Sidenav.init(elems, options);
  });
-
  </script>
-{% endblock script_cabecera%}
+{% endblock script_menu_ppal%}
