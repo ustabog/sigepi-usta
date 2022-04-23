@@ -7,17 +7,18 @@
 
 {% block menu_ppal %}
 <nav class="nav-extendida">
-    <div class="nav-solapa">
-        <a href="inicio" class="logotipo der">
-            SIGEPI-USTA
-            <img src="{% static 'img/logo.png' %}" alt="Logo" style="height:55px" ></img>
-        </a>
-        <div class="logotipo">
-
-        </div>
-            <a href="#" data-target="panel_der" class="disparador-navlateral">
+    <div class="nav-sup" style="vertical-align:middle">
+        <a href="#" data-target="panel_der" class="disparador-navlateral">
             <i class="material-icons">menu</i>
         </a>
+        <div class="logotipo">
+            <a href="inicio" class="logotipo der">
+                <img src="{% static 'img/logo.png' %}" alt="Logo" style="height:40px" ></img>
+            </a>
+        </div>
+        <div class="nav-titulo">
+            SIGEPI-USTA
+        </div>
     </div>
 </nav>
 {% endblock menu_ppal %}
