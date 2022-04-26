@@ -28,7 +28,7 @@ ESTRUC_BASE_CLASES=[
     ['clase_articulo',''],
     ['clase_panel_iz',''],
     ['clase_pie_app',''],
-    ['clase_pie',''],
+    ['clase_pie','pie-pag'],
     ['clase_pie_extra','']
 ];
 
