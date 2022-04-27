@@ -261,9 +261,7 @@ class ext_app(models.Model):
     def __str__(self):
         return '{}'.format(self.titulo_app_ext)
 
-class rol(models.Model):
-    id_rol = models.AutoField(primary_key = True) # Identificador único del Rol
-    grupo = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank =True)
+class rol(Group):
     etq_rol = models.CharField('Etiqueta: ', max_length=30, null=False, blank = False) # Etiqueta del Rol
     desc = models.CharField('Descripcion del Rol: ', max_length=30, null=False, blank = False) # Descripcion del Rol
     tipo = models.IntegerField(null = False, blank = False, choices = TIPO_ROL, default = 0) # Ver diccionario TIPO_ROL
