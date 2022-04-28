@@ -14,13 +14,13 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from .models import *
 from .form import *
 from modcons.App_cons.form import frm_con_mod
-
+from .roles import roles
 ######   CRUD MODULO    ################################
 class vts_reg_mod(CreateView, PermissionRequiredMixin):
     #crear información de las personas
     model = mod
     form_class = frm_reg_mod
-    template_name = 'App_ma_nvo_mod.html'
+    template_name = 'App_ma_frm_nvo_mod.html'
     success_url = reverse_lazy('consulta_modulos')
     success_message = 'El modelo fue creado satisfactoriamente'
     permission_required = 'mod.can_add_mod'   
@@ -38,7 +38,7 @@ class vts_edt_mod(UpdateView, PermissionRequiredMixin):
     #clase que almacena los modulos generales del sistema
     model = mod
     form_class = frm_con_mod
-    template_name = 'App_ma_nvo_mod.html'
+    template_name = 'App_ma_frm_nvo_mod.html'
     success_url = reverse_lazy('consulta_modulos')
     permission_required = 'mod.can_change_mod' 
     
@@ -118,6 +118,7 @@ class vts_reg_rol(CreateView):
     template_name = 'App_ma_frm_crearrol.html'
     success_url = reverse_lazy('consulta_rol')
     success_message = 'El rol fue creado satisfactoriamente'
+    crear_rol = roles.crear_roles(self=None)
 
 class vts_ls_rol(ListView): 
     model = rol
