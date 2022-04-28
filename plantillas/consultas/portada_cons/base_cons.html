@@ -1,4 +1,3 @@
-<!--  -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -11,6 +10,7 @@
     {% block meta_cabecera %}{% endblock meta_cabecera%}
     {% block meta_menu_ppal %}{% endblock meta_menu_ppal%}
     {% block meta_app %}{% endblock meta_app%}
+    {% block meta_barra_herr %}{% endblock meta_barra_herr%}
     {% block meta_panel_der %}{% endblock meta_panel_der%}
     {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
     {% block meta_panel_iz %}{% endblock meta_panel_iz%}
@@ -22,44 +22,52 @@
     </title>
 </head>
 
-<body id="cuerpo" class="fila">
-    <header id="cabecera" class="fila">
+<body id="cuerpo" class="cuerpo">
+    <header id="cabecera" class="cabecera">
         {% block cabecera %}
-        {% endblock cabecera %}
-        <div id="menu_ppal" style="" class="menu_ppal">
+        <div id="menu_ppal"  class="menu_ppal">
             {% block menu_ppal %}
             {% endblock menu_ppal %}
         </div>
+        {% endblock cabecera %}
     </header>
-    <div id="app" style="" class="fila cuerpo">
-        <div id="menu_app" style="" class="col">
+    <aside id="panel_der"  class="panel_der">
+        {% block panel_der %}
+        {% endblock panel_der %}
+    </aside>
+    <div id="app" class="app">
+        {% block app%}
+        <div id="menu_app" class="menu_app">
             {% block menu_app %}
             {% endblock menu_app %}
         </div>
-        <div id="panel_der" style="" class="col">
-            {% block panel_der %}
-            {% endblock panel_der %}
-        </div>
-        <div id="panel_ppal" style="" class="col">
+        <aside id="barra_herr" class="barra_herr">
+            {% block barra_herr %}
+            {% endblock barra_herr %}
+        </aside>
+       <div id="panel_ppal" class="panel_ppal">
             {% block panel_ppal %}
-                <div id="articulo" style="" class="col">
+                <div id="articulo" class="articulo">
                     {% block articulo %}
                     {% endblock articulo %}
                 </div>
             {% endblock panel_ppal %}
         </div>
-        <div id="panel_iz" style="" class="col">
-            {% block panel_iz %}
-            {% endblock panel_iz %}
-        </div>
-        <div id="pie_app" style="" class="col">
+        <div id="pie_app" style="" class="pie_app">
             {% block pie_app %}
             {% endblock pie_app %}
         </div>
+        {% endblock app%}
+        <aside id="panel_iz" class="panel_iz">
+            {% block panel_iz %}
+            {% endblock panel_iz %}
+        </aside>
     </div>
+    
     {% block script_meta%}{% endblock script_meta%}
     {% block script_cuerpo%}{% endblock script_cuerpo %}
     {% block script_cabecera%}{% endblock script_cabecera%}
+    {% block script_menu_ppal%}{% endblock script_menu_ppal%}
     {% block script_app%}{% endblock script_app%}
     {% block script_menu_app%}{% endblock script_menu_app%}
     {% block script_panel_der%}{% endblock script_panel_der%}
@@ -68,8 +76,8 @@
     {% block script_pie_app%}{% endblock script_pie_app%}
     {% block script_pie_extra%}{% endblock script_pie_extra%}
     {% block script_pie%}{% endblock script_pie%}
-    <footer id="pie" style="" class="fila">
-        <div id="pie_extra" style="" class="fila">
+    <footer id="pie" class="pie">
+        <div id="pie_extra" class="pie_extra">
             {% block pie_extra%}
             {% endblock pie_extra%}
         </div>
@@ -77,5 +85,4 @@
         {% endblock pie%}
     </footer>
 </body>
-
 </html>

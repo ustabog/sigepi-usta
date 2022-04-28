@@ -8,11 +8,11 @@
  de la Universidad Santo Tomás del 2022 */
 
 /* variables globales*/
-.root {
+:root {
   --azul:#00336a;
   --azul-1:#004f9f;
   --azul-2:#008FE3;
-  --fondo-az-cl:#BBD6FF;
+  --azul-cl:#cee7ffda;
   --amarillo:#ffe000;
   --naranja:#fdc300;
   --verde:#13a538;
@@ -38,136 +38,195 @@
 }
 
 /* características generales de cada caja */
-* {
-    box-sizing: border-box
-}
-
-*+* {
-    margin: .5em 0
-}
-/* clases base de etiquetas*/
-pre {
-    overflow: auto
-}
-
-html {
-  box-sizing: border-box;
-  font-size: 20px;
-  line-height: 1.5;
-  -webkit-tap-highlight-color: transparent;
-}
-
-header {
-  background-color: #00336a;
-  color: var(--blanco);
+.app {
   width: 100%;
-  height: 10%;
-  text-align: right;
+  height: auto;
+  overflow: hidden;
 }
-
-header a:link, a:visited {
-  background-color: transparent;
-  color:white;
-  text-align: center;
-  text-decoration: none;
+.articulo {
 
 }
-
-header a:hover, a:active {
-  background-color:var(--verde);
-  color:var(--blanco);
-}
-
-
-body {
-  background-color: var(--fondo-az-cl);
+.cuerpo {
   width: 100%;
-  color:var(--fondo-az-cl);
+  background-color: var(--azul-cl);
+  color:var(--azul);
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   font-size: .8rem;
-  overflow-x: hidden;
+  margin: 0;
+  display:grid;
+  grid-template-rows: 10vh auto 10vh;
+  overflow: hidden;
 }
-
-footer{
-  background: var(--azul);
+.cabecera {
   width: 100%;
-  height: 10%;
+  height: 55px;
+  color: #fff;
+  background-color:var(--azul);
+  line-height: 40px;
 }
+.barra_herr {
 
-nav{
-background: var(--azul);
-width: auto;
-display: inline;
-vertical-align: middle;
 }
-
-nav i.material-icons  {
+.menu_ppal {
   display: inline;
-  color: var(--azul-2);
-  font-size: 42px;
-  text-align:right;
-  height: 56px;
-  line-height: 56px;
+  vertical-align: middle;
 }
-
-ul.nav-items{
-clear:both;
-height: 0;
-overflow: hidden;
-transition:height 0.4s ease-in-out 0s, background-color 2s ease 0s;
+.menu_ppal i {
+  padding-top: 10px;
+  padding-left: 10px;
+  color: var(--blanco);
+  font-size: 2.1rem;
+  text-decoration: none;
 }
-
-i.material-icons  {
-  display: inline;
-  color: var(--azul-2);
-  font-size: 36 px;
-  height: 56px;
-  line-height: 56px;
+.menu_app {
+  
+ }
+.nav-titulo {
+  display:flex;
+  float: right;
+  color: var(--blanco);
+  font-size: 24px;
+  padding-top: 8px;
+  padding-right: 5px;
 }
+.logotipo {
+  position:static;
+  float: right;
+  color: var(--blanco);
+  display:flex;
+  font-size: 2.1rem;
+  padding: 0px;
+  margin-top:0px;
+  right:0;
+}
+.logotipo a img{
+  position:relative;
+  height:50px;
+  color:var(--blanco);
+  display:flex;
+  font-size: 30px;
+  padding: 2px;
+  text-decoration: none;
+}
+.panel_der {
+background-color:#00d9ff6e;
+width: 30vw;
+position: absolute;
+display: flex;
+top: 55px;
+min-width: 150px;
+max-width: 300px;
+overflow-y:auto;
+border-right: 2px solid rgba(255, 255, 255, 0.438);
+box-shadow: 0 10px 10px rgba(0, 95, 112, 0.267);
+}
+.panel_iz {
 
-a:link, a:visited {
+}
+.panel_ppal {
+
+}
+.pie {
+  padding-top: 5px;
+  color: var(--azul-cl);
   background-color: var(--azul);
-  color:var(--azul);
-  text-align: left;
-  text-decoration: none;
+  width: 100%;
+  height: 65px;
+  position: fixed;
+  left: 0;
+  bottom:0px;
+  text-align: center;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  display:inline-block;
+  /*grid-template-rows: 80% 20%;*/
+}
+.pie .contenedor {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  overflow:hidden;
+}
+.pie .item {
+  display:block;
+  width:100%;
+}
+.pie a {
+  background-color:var(--azul);
+  color:var(--azul-1);
+  text-align: center;
+  font-size:small;
+  text-decoration:solid;
+}
+.pie i {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: linear-gradient(0deg, var(--azul),var(--azul-1));
+  border-radius: 2%;
+  font-size: 35px;
+  color: var(--azul-2);
+  transition: 0.5s;
+}
+.pie i:hover{
+  background: linear-gradient(0deg, var(--azul-2),var(--azul-1));
+  border-radius: 2%;
+  font-size: 33px;
+  color: var(--blanco);
+  transition: 0.5s;
 }
 
-a:hover, a:active {
-  background-color:var(--gris);
+.pie a:hover {
+  box-shadow: 0 5px 10px rgba(162, 244, 255, 0.822);
+  color: var(--blanco);
+
+}
+.pie .btn {
+  width: 100%;
+  background-color: var(--azul);
+  position: relative;
+  list-style: none;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  margin: 0px 0px;
+  border-radius: 2%;
+  padding: 0px;
+  text-decoration: none;
+  box-sizing:content-box;
+  transform: translate(0%,-5%);
+  display:flex;
+  box-shadow: 0 10px 10px rgba(0, 17, 54, 0.267);
+  background: linear-gradient(0deg,var(--azul-1), var(--azul));
+  transition: 0.3s;
+}
+.pie p {
   color:var(--azul-2);
-  text-align: left;
-  text-decoration: none;
+  text-align: center;
+  margin: 0px 0px;
+  font-size: small;
+  font-family:Haettenschweiler, 'Arial Narrow Bold';
+  text-decoration:double;
+  transition: 0.2s;
 }
-
-.cerrar{
-display: none;
+.pie p:hover {
+  color:var(--blanco);
+  text-align: center;
+  font-size: small;
+  text-decoration:solid;
+  transition: 0.2s;
 }
-
-#panel_der_nav:target .abrir{
-display: none;
+.pie .derechos{
+  width: 100%;
+  overflow: hidden;
+  min-height: 10px;
+  display:block;
+  padding-top: 3px;
+  color: var(--azul-2);
+  background-color: var(--azul);
 }
+.pie_app {
 
-#panel_der_nav:target .cerrar{
-display: block;
-}
-#panel_der_nav:target .nav-items{
-background: #f0f0f0 none repeat scroll 0 0;
-height: 100%;
-transition: height 0.4s ease-in-out 1s, background-color 0.9 ease 0s;
-}
-
-
-@media (min-width: 30em) {
-    .fila { width: 100%; display: table; table-layout: fixed; }
-    .col { display: table-cell; }
-}
-
-
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(../fuentes/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2);
 }
 
 .material-icons {
@@ -184,10 +243,16 @@ transition: height 0.4s ease-in-out 1s, background-color 0.9 ease 0s;
   direction: ltr;
   -moz-font-feature-settings: 'liga';
   -moz-osx-font-smoothing: grayscale;
- /* This is needed for some mobile phones to display the Google Icon font properly */
- text-rendering: optimizeLegibility;
- -webkit-font-feature-settings: 'liga';
+  /* This is needed for some mobile phones to display the Google Icon font properly */
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: 'liga';
     -moz-font-feature-settings: 'liga';
          font-feature-settings: 'liga';
+}
 
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 200;
+  src: url(../fuentes/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2);
 }

@@ -8,7 +8,7 @@
 {% block menu_ppal %}
 <nav class="nav-extendida">
     <div class="nav-sup" style="vertical-align:middle">
-        <a href="inicio" data-target="panel_der" class="disparador-navlateral">
+        <a href="inicio" class="disparador-navlateral" onclick="operar_navlateral()">
             <i class="material-icons">menu</i>
         </a>
         <div class="logotipo">
@@ -25,9 +25,15 @@
 
 {% block script_menu_ppal%}
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-   var elems = document.querySelectorAll('.navlateral');
-   var instances = M.Sidenav.init(elems, options);
- });
+function operar_navlateral() {
+    if (document.getElementById("panel_der").style.width = "0px") {
+        document.getElementById("cont_pn_der").style.width = "250px";
+        document.getElementById("app").style.marginLeft = "250px";
+    }    
+    else if (document.getElementById("panel_der").style.width !== "0px") {
+        document.getElementById("cont_pn_der").style.width = "0px";
+        document.getElementById("app").style.marginLeft = "0px";
+    }
+}
  </script>
 {% endblock script_menu_ppal%}

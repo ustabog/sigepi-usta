@@ -2,7 +2,7 @@
  <!--información de usuario panel derecho que se carga una vez se ha autenticado -->
 
 {% block panel_der %}
-<div class="nav">
+<div class="navlateral" id="cont_pn_der">
 <!--Prueba-->
 {% block encabezado_pn_der %}
 <section id="encabezado_pn_der">
@@ -13,7 +13,7 @@
 {% block seccion_usuario %}
 <section id="usu_pn_der" class="">
     {% block autent_pn_der %}
-    <ul class="navlateral">
+    <ul class="">
         {% if user.is_authenticated %}
         <li class="tarjeta">
             <div class="tarjeta-imagen">
