@@ -214,12 +214,12 @@ class discapacidad(models.Model):
         return '{}'.format(self.tipo_disca)
 
 class usu_inf_pers(models.Model):
-    
+    id
     id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=True, blank=True) # identificador de usuario
     nuip = models.CharField('Número único de identificación personal ', max_length=30, null=False, blank = False)  # número único de identificación personal sin puntos
     tipo_nuip = models.CharField( max_length=30, choices = TIPO_NUIP_CO, default =0, null=False, blank = False) # tipo de Número de identificación personal
-    #nombres = models.CharField(usu.first_name, max_length=30, null=False, blank = False)
-    #apelllidos = models.CharField(usu.last_name, max_length=30, null=False, blank = False)
+    #nombres = models.CharField(usu.first_name, max_length=30, null=True, blank = False)
+    #apelllidos = models.CharField(usu.last_name, max_length=30, null=True, blank = False)
     nal = models.CharField('Nacionalidad ', max_length=30, null=False, blank = False) # nacionalidad
     fch_naci = models.DateField('Fecha de nacimiento', auto_now = False)   # fecha de nacimiento de usuario
     mail = models.EmailField(max_length = 254, null=False, blank = False)
@@ -227,10 +227,10 @@ class usu_inf_pers(models.Model):
     gene = models.CharField('Género', choices = GENERO, max_length=30, default = 0, null=False, blank = False)  #genero del usuario
     ocup = models.CharField('Ocupacion ', max_length=30, null = False, blank = False) # ocupación del usuario
     dir = models.CharField('Direccion ', max_length=100, null=False, blank = False) # direccion de residencia
-    # discap = models.BooleanField('¿Es una persona en condición de discapacidad?', default=False) # Es una persona en condición de discapacidad
-    # tipo_discap = models.ForeignKey(discapacidad, on_delete=models.CASCADE, null=True, blank =True)  # Tipo de  discapacidad tabla de discapacidad
-    # url_imag = models.URLField('url de la imagen personal.', null=True, blank=True)  # url de la imagen personal.
-    # zona_hor = models.CharField('Zona Horaria ', max_length=100, null=True, blank = True) #Zona Horario internacional
+    discap = models.BooleanField('¿Es una persona en condición de discapacidad?', default=False) # Es una persona en condición de discapacidad
+    tipo_discap = models.ForeignKey(discapacidad, on_delete=models.CASCADE, null=True, blank =True)  # Tipo de  discapacidad tabla de discapacidad
+    url_imag = models.URLField('url de la imagen personal.', null=True, blank=True)  # url de la imagen personal.
+    zona_hor = models.CharField('Zona Horaria ', max_length=100, null=True, blank = True) #Zona Horario internacional
 
     class Meta:
         verbose_name = 'usu_inf_pers'

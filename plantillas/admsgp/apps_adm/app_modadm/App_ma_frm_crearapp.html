@@ -1,10 +1,14 @@
 {% extends 'index_adm.html' %}
-{% block titulo %} Formulario de App {% endblock titulo %}
-{% block cuerpo %}
-<form class="" action="" method="post">
-  {% csrf_token %}
-  {{ form.as_p}}
-  <button type="submit" >crear</button>
-</form>
+{% block titulo %} Creación nueva aplicacion de módulo {% endblock titulo %}
+{% block app %}
+    {% if form.errors %}
+        <p>La aplicacion de módulo no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+    {% endif %}
+    <h3>Registrar Nueva Aplicacion Módulo</h3>
 
- {% endblock cuerpo %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Registrar">
+    </form>
+{% endblock app %}

@@ -1,0 +1,54 @@
+{% extends 'index_adm.html' %}
+{% block titulo %} Listado Informacion personal de Usuario {% endblock titulo %}
+{% block app %}
+    {% if form.errors %}
+        <p>La lista de aplicaciones de módulos no se ha podido consultar.</p>
+    {% endif %}
+    <form method="POST">
+        <div class="table-responsive">
+            <table class="table">
+                <h2>Infoprmacion Personal</h2>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>nuip</th>
+                        <th>tipo_nuip</th>
+                        <th>Nacionalidad</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>e-mail</th>
+                        <th>Telefono</th>
+                        <th>Genero</th>
+                        <th>Ocupacion</th>
+                        <th>Direccion</th>
+                        <th>Discapacidad</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                {% for usu_inf_pers in  object_list %}
+                    <tbody>
+                        <tr>
+                            <td> {{ usu_inf_pers.id_usu }} </td>
+                            <td> {{ usu_inf_pers.nuip }} </td>
+                            <td> {{ usu_inf_pers.tipo_nuip }} </td>
+                            <td> {{ usu_inf_pers.nombres }} </td>
+                            <td> {{ usu_inf_pers.apelllidos }} </td>
+                            <td> {{ usu_inf_pers.nal }} </td>
+                            <td> {{ usu_inf_pers.fch_naci }} </td>
+                            <td> {{ usu_inf_pers.mail }} </td>
+                            <td> {{ usu_inf_pers.telefono }} </td>
+                            <td> {{ usu_inf_pers.gene }}  </td>
+                            <td> {{ usu_inf_pers.ocup }}  </td>
+                            <td> {{ usu_inf_pers.dir }}  </td>
+                            <td> {{ usu_inf_pers.discap }}  </td>
+                            <td> {{ usu_inf_pers.tipo_discap }}  </td>
+                            <td> {{ usu_inf_pers.url_imag }}  </td>
+                            <td> {{ usu_inf_pers.zona_hor }}  </td>
+                            <td> <a href="../edt_infopers/{{usu_inf_pers.id_usu }}" class="btn btn-block btn-sm btn-info">Editar</a><br></td>
+                            <td> <a href="../eli_infopers/{{usu_inf_pers.id_usu }}" class="btn btn-block btn-sm btn-danger">Eliminar</a><br><br></td> 
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table> 
+        </div>
+    </form>
+{% endblock app %}

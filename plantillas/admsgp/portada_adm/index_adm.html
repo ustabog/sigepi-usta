@@ -1,5 +1,5 @@
 <!--  -->
-{% include 'base_adm.html' %}
+{% extends 'base_adm.html' %}
 {% load static %}
 
 <!-- metadatos del documento (head) -->
@@ -28,10 +28,12 @@
 {% block menu_app %}
 {% endblock menu_app %}
 {% block panel_der %}
+
 {% endblock panel_der %}
 {% block panel_ppal %}
 {% block articulo %}
 {% endblock articulo %}
+
 {% endblock panel_ppal %}
 {% block panel_iz %}
 {% endblock panel_iz %}

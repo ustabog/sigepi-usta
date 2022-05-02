@@ -1,0 +1,15 @@
+{% extends 'index_adm.html' %}
+{% block encabezado %}
+{% endblock %}
+{% block app %}
+  <div id='main'>
+    <article id="principal">
+      <form class="" action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" >crear</button>
+      </form>
+    </article>
+  </div>
+{% endblock app%}
+

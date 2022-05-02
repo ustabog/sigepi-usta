@@ -5,9 +5,9 @@ from .models import *
 
 admin.site.register(mod)
 admin.site.register(app_mod)
-#admin.site.register(listado_aplicativo)
-#admin.site.register(ext_mod)
-#admin.site.register(ext_app)
+admin.site.register(listado_aplicativo)
+admin.site.register(ext_mod)
+admin.site.register(ext_app)
 admin.site.register(rol)
 admin.site.register(usu)
 #admin.site.register(param_config)

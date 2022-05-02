@@ -31,12 +31,22 @@ class frm_con_app_mod(forms.ModelForm):
         model =  app_mod
         fields = '__all__'
 
-class frm_con_group(forms.ModelForm):
-    class Meta:
-        model =  Group
-        fields = '__all__'
-
 class frm_con_rol(forms.ModelForm):
     class Meta:
         model =  rol
+        fields = '__all__'
+
+class frm_con_list_app(forms.ModelForm):
+    class Meta:
+        model = listado_aplicativo
+        fields = '__all__'
+
+class frm_con_ext_mod(forms.ModelForm):
+    class Meta:
+        model = ext_mod
+        fields = '__all__'
+
+class frm_con_ext_app(forms.ModelForm):
+    class Meta:
+        model = ext_app
         fields = '__all__'

@@ -1,0 +1,9 @@
+{% extends 'index_adm.html' %}
+{% block titulo %} Aplicacion externa {% endblock titulo %}
+{% block app %}
+  <form class="" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" >Crear</button>
+  </form>
+ {% endblock app %}

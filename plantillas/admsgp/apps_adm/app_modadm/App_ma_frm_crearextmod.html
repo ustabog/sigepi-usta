@@ -1,0 +1,14 @@
+{% extends 'index_adm.html' %}
+{% block titulo %} Creacion extension de modulo {% endblock titulo %}
+{% block app %}
+    {% if form.errors %}
+        <p>La extension de modulo no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+    {% endif %}
+    <h3>Registrar Nueva Extension de Módulo</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Registrar">
+    </form>
+{% endblock app %}

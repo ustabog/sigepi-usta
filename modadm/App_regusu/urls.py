@@ -25,7 +25,21 @@ urlpatterns = [
     #Modificar la información de usuarios
     path('editarinf/<int:pk>/',infopersUpdate.as_view(), name='editarinf'),
     #Eliminar información de usuarios
-    path('eliminarinf/<int:pk>/',infopersDelete.as_view(), name='eliminarinf')
-# #funciones
+    path('eliminarinf/<int:pk>/',infopersDelete.as_view(), name='eliminarinf'),
+
+    # CRUD DISCAPACIDAD
+    path('reg_disc/', vts_reg_discapacidad.as_view(), name = 'reg_disc'),
+    path('cons_disc/', vts_ls_discapacidad.as_view(), name = 'cons_discapacidad'),
+    path('edt_disc/<int:pk>/', vts_edt_discapacidad.as_view(), name='edt_disc'),
+    path('eli_disc/<int:pk>/', vts_del_discapacidad.as_view(), name='eli_disc'),
+
+    # CRUD INFORMACION PERSONAL
+    path('reg_infopers/', vts_reg_usu_inf_pers.as_view(), name = 'reg_infopers'),
+    path('cons_infopers/', vts_ls_usu_inf_pers.as_view(), name = 'cons_infopers'),
+    path('edt_infopers/<int:pk>/', vts_edt_usu_inf_pers.as_view(), name='edt_infopers'),
+    path('eli_infopers/<int:pk>/', vts_del_usu_inf_pers.as_view(), name='eli_infopers'),
+
 
 ]
+    
+

@@ -30,6 +30,12 @@ TIPO_NUII_CO = [
     (1,'RUT') #Registro Único Tributario.
     ]
 
+#Tipo de aplicativo
+TIPO_APP = [
+    (0, 'Web'),
+    (1, 'Android'),
+    (2, 'IOS'),
+]
 #Tipos de Identidad de Género
 GENERO = [
     (0,'Neutro'),
@@ -223,7 +229,8 @@ class app_mod(models.Model):
 #identifica si es app, android, web etc
 class listado_aplicativo(models.Model): 
     id_aplicativo =  models.AutoField(primary_key = True)
-    nom_aplicativo= models.CharField('aplicativo nombre: ', max_length=30, null=False, blank = False)
+    nom_aplicativo = models.CharField('aplicativo nombre: ', max_length=30, null=False, blank = False)
+    tipo_aplicativo = models.IntegerField(null = False, blank = False, choices = TIPO_APP, default = 0) # Ver diccionario TIPO_ROL
     activoaplicativo = models.BooleanField('¿Activo o desactivo.?', default=False)
 
     class Meta:
