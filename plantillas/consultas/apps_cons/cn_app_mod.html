@@ -1,6 +1,6 @@
 {% extends 'index_adm.html' %}
 {% block titulo %} Listado de Aplicación de Modulos {% endblock titulo %}
-{% block app %}
+{% block cuerpo %}
 {% if form.errors %}
     <p>La lista de usuario no se ha logrado consultar.</p>
 {% endif %}
@@ -46,4 +46,4 @@
         </table> 
     </div>
 </form>
-{% endblock app %}
+{% endblock cuerpo %}

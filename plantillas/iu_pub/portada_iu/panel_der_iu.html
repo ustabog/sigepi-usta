@@ -1,82 +1,80 @@
 {% load static %}
  <!--información de usuario panel derecho que se carga una vez se ha autenticado -->
-{% csrf_token %}
 
 {% block panel_der %}
+<div class="navlateral" id="cont_pn_der">
 <!--Prueba-->
 {% block encabezado_pn_der %}
-<section id="encabezado_pn_der">
+<!--Encabezado panel derecho-->
+<section id="cbz_pn_der" class="cbz_pn_der">
+    {% if user.is_authenticated %}
+    <ul class="">
+        <li>
+            <div class=""><i class="material-icons">account_circle</i>Usuario</div>
+        </li>
+        <li>
+            <div class=""><i class="material-icons">assignment</i>Asignaciones</div>
+        </li>
+        <li>
+            <div class=""><i class="material-icons">email</i>Mensajes</div>
+        </li>
+        <li>
+            <div class=""><i class="material-icons">notifications_active</i>Notificaciones</div>
+        </li>
+    </ul>
+    {% else %}
+    <ul class="">
+        <li>
+            <div class=""><i class="material-icons">account_circle</i>Usuario</div>
+        </li>
+        <li>
+            <div class=""><i class="material-icons">assignment</i>Asignaciones</div>
+        </li>
+        <li>
+            <div class=""><i class="material-icons">email</i>Mensajes</div>
+        </li>
+        <li>
+            <div class=""><i class="material-icons">notifications_active</i>Notificaciones</div>
+        </li>
+    </ul>
+    {% endif %}
 </section>
 {% endblock encabezado_pn_der %}
 
-
 <!--Información de usuario-->
 {% block seccion_usuario %}
-<section id="usu_pn_der">
+<section id="usu_pn_der" class="">
     {% block autent_pn_der %}
-    <nav class="navlateral">
-        <ul class="">
-            {% if user.is_authenticated %}
-            <li class="nav-item activo">
-                <span> Bienvenido(a) {{user.username}} </span>
-            </li>
-            <li class="nav-item active">
-                <a href="" class="nav-link ">Grupos</a>
-            </li>
-            <li class="nav-item active">
-                <a href="" class="nav-link ">Grupos</a>
-            </li>
-            <li class="nav-item active">
-                <a href="" class="nav-link ">Instituciones</a>
-            </li>
-            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Proyectos
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="">Ver Proyectos</a></li>
-                    <li><a class="dropdown-item" href="">Registrar Proyectos</a></li>
-                    <li><a class="dropdown-item" href="">Modificar Proyectos</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="">Eliminar Proyectos</a></li>
-                </ul>
-            </li>
-            <li class="nav-item active">
-                <a href="" class="nav-link ">Herramientas</a>
-            </li>
-            {% else %}
-            <ul id="nav-lateral">
-                <li>
-                    <a href="">Ingresar</a>
-                </li>
-                <li>
-                    <a href="">Registro</a>
-                </li>
-                <li>
-                    <a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
-                        <span class="card"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
-                </li>
-                <div class="tarjeta peque horizontal">
-                    <div class="tarjeta-titulo">
-                        Información de usuario
-                    </div>
-                    <div class="tarjeta-contenido">
-                        <div class="alert alert-success" role="alert">
-                            <a class="btn btn-outline-info" href="">Ingresar</a>
-                            <a class="btn btn-outline-info" href="">Registrarse</a>
-                        </div>
+    <ul class="">
+        {% if user.is_authenticated %}
+        <li class="tarjeta">
+            <div class="tarjeta-imagen">
+                <div class="tarjeta-titulo">
+                    <span> Bienvenido(a) {{user.username}} </span>
+                </div>
+                <div class="tarjeta-contenido">
+                </div>
+            </div>
+        </li>
+        <liclass="nav-item activo">
+            <a class="btn" href="">Salir</a>
+        </li>        
+        {% else %}
+        <li class="tarjeta">
+            <div class="tarjeta-imagen">
+                <div class="tarjeta-titulo">
+                    Información de usuario
+                </div>
+                <div class="tarjeta-contenido">
+                    <div class="" role="alert">
+                        <a class="btn btn-outline-info" href="">Ingresar</a>
+                        <a class="btn btn-outline-info" href="">Registrarse</a>
                     </div>
                 </div>
-            </ul>        
-            {% endif %}
-        </ul>
-    </nav>
+            </div>
+        </li>  
+        {% endif %}
+    </ul>
     {% endblock autent_pn_der %}
 </section>
 {% endblock seccion_usuario %}
@@ -90,18 +88,18 @@
 <!--Información de aplicación-->
 {% block app_pn_der %}
 <section id="app_pn_der">
-    <ul class="navlateral">
+    <ul class="">
     <li>
-        <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        <div class=""><i class="material-icons">filter_drama</i>First</div>
+        <div class=""><span>Lorem ipsum dolor sit amet.</span></div>
     </li>
     <li>
-        <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        <div class=""><i class="material-icons">place</i>Second</div>
+        <div class=""><span>Lorem ipsum dolor sit amet.</span></div>
     </li>
     <li>
-        <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        <div class=""><i class="material-icons">whatshot</i>Third</div>
+        <div class=""><span>Lorem ipsum dolor sit amet.</span></div>
     </li>
     </ul>
 </section>
@@ -122,5 +120,5 @@
 <section id="info_pn_der">
 </section>
 {% endblock seccion_info %}
-
+</div>
 {% endblock panel_der %}

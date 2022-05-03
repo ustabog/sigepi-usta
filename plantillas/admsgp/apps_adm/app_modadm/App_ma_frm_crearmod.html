@@ -1,0 +1,10 @@
+{% extends 'moduloAdm/modulos/mod.html' %}
+{% block titulo %} Formulario de Modulos {% endblock titulo %}
+{% block cuerpo %}
+<form class="" action="" method="post">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <button type="submit" >crear</button>
+</form>
+
+ {% endblock cuerpo %}

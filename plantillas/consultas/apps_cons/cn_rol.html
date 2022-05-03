@@ -1,6 +1,6 @@
 {% extends 'index_adm.html' %}
 {% block titulo %} Listado de Grupos {% endblock titulo %}
-{% block app %}
+{% block cuerpo %}
 {% if form.errors %}
     <p>La lista de aplicaciones de grupos no se ha podido consultar.</p>
 {% endif %}
@@ -46,4 +46,4 @@
         </table> 
     </div>
 </form>
-{% endblock app %}
+{% endblock cuerpo %}

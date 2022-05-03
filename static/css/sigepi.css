@@ -44,7 +44,62 @@
   overflow: hidden;
 }
 .articulo {
+  width: 100%;
+}
+.barra_herr {
+  width: 100%;
+}
+.btn_az_cl {
+  background-color: var(--blanco);
+  position:relative;
+  width:100%;
+  height: 30px;
+  vertical-align: middle;
+  text-align: center;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  margin: 2px 2px;
+  border-radius: 2%;
+  padding: 2px, 2px, 2px, 2px;
+  text-decoration: none;
+  box-sizing:content-box;
+  box-shadow: 0 2px 2px rgba(0, 17, 54, 0.267);
+  background: linear-gradient(0deg,var(--blanco), var(--azul-cl));
+  transition: 0.3s;
+}
+.btn_az_cl:hover {
+  border-left: 1px solid var(--blanco);
+  background: linear-gradient(0deg,var(--azul-cl),var(--blanco) );
+  box-shadow: 0 2px 2px rgba(241, 245, 255, 0.514);
+  transform: translate(0%,-3%);
+}
+:disabled {
+  border-left: 1px solid var(--gris);
+  background: linear-gradient(0deg,var(--azul-cl),var(--gris) );
+  box-shadow: 0 2px 2px rgba(95, 95, 95, 0.15);
+  transform: translate(0%,-3%);
+  font-size: 30px;
+  color: var(--gris-oscuro);
+  transition: 0.5s;
+  padding: auto;
+}
 
+.btn_az_cl i {
+  font-size: 30px;
+  color: var(--azul);
+  transition: 0.5s;
+  padding: auto;
+}
+.btn_az_cl i:hover{
+  font-size: 27px;
+  color: var(--azul-1);
+  transition: 0.5s;
+  padding:2px;
+}
+.deshabilitado {
+  background: linear-gradient(0deg,rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.3));
+  box-shadow: -2px -2px 2px rgba(241, 245, 255, 0.1);
+  transform: translate(0%,-3%);
+  color: rgba(255, 255, 255, 0.2);
 }
 .cuerpo {
   width: 100%;
@@ -64,9 +119,34 @@
   background-color:var(--azul);
   line-height: 40px;
 }
-.barra_herr {
+.cont_pn_der{
+  position: relative;
+  width: 100%;
+  height: 100%;
 
 }
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+  /* This is needed for some mobile phones to display the Google Icon font properly */
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga';
+         font-feature-settings: 'liga';
+}
+
 .menu_ppal {
   display: inline;
   vertical-align: middle;
@@ -79,7 +159,7 @@
   text-decoration: none;
 }
 .menu_app {
-  
+  width: 100%;
  }
 .nav-titulo {
   display:flex;
@@ -109,22 +189,50 @@
   text-decoration: none;
 }
 .panel_der {
-background-color:#00d9ff6e;
+background-color:#000b3b44;
 width: 30vw;
-position: absolute;
+height: calc(100vh - 80px);
+position:absolute;
 display: flex;
 top: 55px;
 min-width: 150px;
 max-width: 300px;
-overflow-y:auto;
-border-right: 2px solid rgba(255, 255, 255, 0.438);
-box-shadow: 0 10px 10px rgba(0, 95, 112, 0.267);
+box-sizing: border-box;
+border-right: 1px solid rgba(255, 255, 255, 0.438);
+box-shadow: 3px 5px 5px rgba(34, 44, 46, 0.25);
+overflow:auto;
 }
-.panel_iz {
+.panel_der::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
 
+.panel_der::-webkit-scrollbar:vertical {
+  width:10px;
+}
+
+.panel_der::-webkit-scrollbar-button:increment,.panel_der::-webkit-scrollbar-button {
+  display: none;
+} 
+
+.panel_der::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.panel_der::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+.panel_der::-webkit-scrollbar-track {
+  border-radius: 10px;  
+}
+
+.panel_iz {
+  width: 100%;
 }
 .panel_ppal {
-
+  width: 100%;
 }
 .pie {
   padding-top: 5px;
@@ -226,28 +334,22 @@ box-shadow: 0 10px 10px rgba(0, 95, 112, 0.267);
   background-color: var(--azul);
 }
 .pie_app {
-
+  width: 100%;
 }
 
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -moz-font-feature-settings: 'liga';
-  -moz-osx-font-smoothing: grayscale;
-  /* This is needed for some mobile phones to display the Google Icon font properly */
-  text-rendering: optimizeLegibility;
-  -webkit-font-feature-settings: 'liga';
-    -moz-font-feature-settings: 'liga';
-         font-feature-settings: 'liga';
+.seccion_pn_der{
+  background-color:#ffffff6e;
+  width: 95%;
+  height: auto;
+  position: relative;
+  text-align: center;
+  display: flex;
+  top: 5px;
+  overflow:hidden;
+  border: 2px solid rgba(240, 253, 255, 0.521);
+  box-shadow: 3px 3px 3px rgba(240, 253, 255, 0.521);
+  border-radius:3px;
+  padding: 2px 2px 2px 2px;  
 }
 
 @font-face {
