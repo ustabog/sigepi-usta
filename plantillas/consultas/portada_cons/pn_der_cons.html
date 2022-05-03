@@ -1,9 +1,6 @@
 {% load static %}
  <!--información de usuario panel derecho que se carga una vez se ha autenticado -->
 
-{% load static %}
- <!--información de usuario panel derecho que se carga una vez se ha autenticado -->
-
 {% block panel_der %}
 <div  id="cont_pn_der" class="cont_pn_der">
 <!--Prueba-->
@@ -11,12 +8,12 @@
 <!--Encabezado panel derecho-->
 <section id="encbz_pn_der" class="seccion_pn_der">
     {% if user.is_authenticated %}
-    <a class="disabled" href="cons"><i class="material-icons" alt="Usuario">account_circle</i></a>
+    <a class="btn_az_cl disabled" href="cons"><i class="material-icons disabled" alt="Usuario">account_circle</i></a>
     <a class="btn_az_cl" href="cons"><i class="material-icons" alt="Asignaciones">assignment</i></a>
     <a class="btn_az_cl" href="cons"><i class="material-icons" alt="Mensajes">email</i></a>
     <a class="btn_az_cl" href="cons"><i class="material-icons" alt="Notificaciones">notifications_active</i></a>
     {% else %}
-    <a class="btn_az_cl" href="cons"><i class="material-icons" alt="Usuario">account_circle</i></a>
+    <a class="btn_az_cl deshab" href="cons"><i class="material-icons deshab" alt="Usuario">account_circle</i></a>
     <a class="btn_az_cl" href="cons"><i class="material-icons" alt="Asignaciones">assignment</i></a>
     <a class="btn_az_cl" href="cons"><i class="material-icons" alt="Mensajes">email</i></a>
     <a class="btn_az_cl" href="cons"><i class="material-icons" alt="Notificaciones">notifications_active</i></a>
@@ -26,12 +23,13 @@
 
 <!--Información de usuario-->
 {% block seccion_usuario %}
-<section id="usu_pn_der" class="">
+<section id="usu_pn_der" class="seccion_pn_der">
     {% block autent_pn_der %}
-    <ul class="">
+    <ul class="nav-ul">
         {% if user.is_authenticated %}
         <li class="tarjeta">
             <div class="tarjeta-imagen">
+                <img class="circulo" src="{% static 'img/person.svg' %}" alt="Imagen personal" width="80" height="80" >
                 <div class="tarjeta-titulo">
                     <span> Bienvenido(a) {{user.username}} </span>
                 </div>
@@ -43,15 +41,16 @@
             <a class="btn" href="">Salir</a>
         </li>        
         {% else %}
-        <li class="tarjeta">
-            <div class="tarjeta-imagen">
-                <div class="tarjeta-titulo">
-                    Información de usuario
+        <li class="li_v">
+            <div class="trj_pers">
+                <div>
+                    <img class="circulo" src="{% static 'img/person.svg' %}" alt="Imagen personal" width="80" height="80" >
+                    <span>Información de usuario</span> 
                 </div>
-                <div class="tarjeta-contenido">
-                    <div class="" role="alert">
-                        <a class="btn btn-outline-info" href="">Ingresar</a>
-                        <a class="btn btn-outline-info" href="">Registrarse</a>
+                <div class="">
+                    <div class="">
+                        <button class="btn_az_cl" href="">Ingresar</button>
+                        <button class="btn_az_cl" href="">Registrarse</button>
                     </div>
                 </div>
             </div>
@@ -103,5 +102,6 @@
 <section id="info_pn_der">
 </section>
 {% endblock seccion_info %}
+
 </div>
 {% endblock panel_der %}
