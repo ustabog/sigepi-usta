@@ -4,7 +4,7 @@
 Creado: 21-04-2021
 Última Modificación: 21-04-2021 08:02
 Autor: Milton castro
-colaboración: María Fernanza Zambrano; Juan Seabastian;
+colaboración: María Fernanza Zambrano; Juan Sebastian Cely;
 Hora:04:24
 
 Vistas (views.py) aplicación principal SIGEPI
