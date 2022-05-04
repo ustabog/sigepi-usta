@@ -1,4 +1,3 @@
-{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
@@ -41,7 +40,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Registrarse en SIGEPI-USTA</h1>
                                     </div>
                                     <form class="user">
-                                        {% block app %}
+                                        {% block cuerpo %}
                                             <div class="container">
                                                 <div class=" m-4 justify-content-center">
                                                     <form method="post" action="">
@@ -56,7 +55,7 @@
                                                                 {% if form.errors %}
                                                                     <p>El usuario o la contraseña no son correctos. Por favor, inténtalo de nuevo.</p>
                                                                 {% endif %}
-                                                                <p><a href="{% url 'reset_password' %}">¿ Olvidaste tu contraseña ?</a></p>
+                                                                <p><a href="{% url 'password_reset' %}">¿ Olvidaste tu contraseña ?</a></p>
                                                             </div>
                                                         {% endif %}
                                                     </form>
@@ -89,9 +88,12 @@
                                             <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                                 <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                             </a>
-                                        {% endblock app %}
+                                        {% endblock cuerpo %}
                                     </form>
                                     <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div>
                                     <div class="text-center">
                                         <a class="small" href="register.html">Create an Account!</a>
                                     </div>
