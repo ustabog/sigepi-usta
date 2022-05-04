@@ -15,7 +15,28 @@ from .models import *
 from .form import *
 from modcons.App_cons.form import frm_con_mod
 from .roles import roles
+
+class portada_adm():
+    #Clase que presenta la portada del administrador de SIGEPI.
+    def vst_inicio(self,solicitud):
+    #función para plantilla de inicio
+        return render(solicitud,"inicio_adm.html")
+
+    def vst_doc(self, solicitud):
+        #función para plantilla de inicio de al documentación del sistema
+        respuesta='Documentación del sistema'
+        return HttpResponse(respuesta)
+
+    def vst_raiz(self, solicitud):
+        #función para plantilla de inicio sin extensión
+        plt=loader.get_template('inicio_adm.html')
+        respuesta=plt.render()
+        return HttpResponse(respuesta)
+    
+
+
 ######   CRUD MODULO    ################################
+
 class vts_reg_mod(CreateView, PermissionRequiredMixin):
     #crear información de las personas
     model = mod

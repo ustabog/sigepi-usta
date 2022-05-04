@@ -8,6 +8,9 @@ from .models import *
 
 urlpatterns = [
 # direcciones del modulo admin
+    path('',portada_adm().vst_raiz),
+    path('inicio',portada_adm().vst_inicio, name = 'inicio'),
+    
 # registrar modulos
     path('reg_mod/', vts_reg_mod.as_view(), name ='reg_mod'),
     path('cons_mod/', vts_ls_mod.as_view(), name ='consulta_modulos'),
