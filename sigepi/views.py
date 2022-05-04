@@ -59,13 +59,13 @@ class front():
                 if usuario is not None:
                     login(solicitud, usuario)
                     messages.success(solicitud,F"Bienvenido {nombreusu}")
-                    return render(solicitud,'inicio.html')
+                    return render(solicitud,'index_front.html')
                 else:
                     messages.success(solicitud,F"Los datos son incorrectos")
             else:
                 messages.success(solicitud,F"Los datos son incorrectos")
         form = AuthenticationForm()
-        return render(solicitud,'frm_ingreso_iu.html', {"form": form} )
+        return render(solicitud,'frm_ingreso.html', {"form": form} )
 
     def vst_registro(self, request):
         data = {
@@ -81,7 +81,7 @@ class front():
                 login(request, usuario)
                 return redirect(to='inicio')
             data["form"] = formulario
-        return render(request,'frm_registro_iu.html', data )
+        return render(request,'frm_registro.html', data )
 
     def vst_cerrar(self, solicitud):
         logout(solicitud)
