@@ -1,4 +1,3 @@
-{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
@@ -36,7 +35,7 @@
                             </div>
                             <form class="user">
                                 <div class="form-group row">
-                                    {% block app %}
+                                    {% block cuerpo %}
                                         <div class="container">
                                             <div class=" m-4 d-flex justify-content-center">
                                                 <div class="col-md-6">
@@ -48,7 +47,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    {% endblock app %}
+                                    {% endblock cuerpo %}
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
                                             placeholder="First Name">
@@ -82,6 +81,9 @@
                                 </a>
                             </form>
                             <hr>
+                            <div class="text-center">
+                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                            </div>
                             <div class="text-center">
                                 <a class="small" href="login.html">Already have an account? Login!</a>
                             </div>
