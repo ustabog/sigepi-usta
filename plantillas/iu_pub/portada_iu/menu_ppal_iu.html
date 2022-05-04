@@ -1,39 +1,33 @@
 {% load static %}
 {% csrf_token %}
 
-<!-- metadatos del documento (head)-->
 {% block meta_menu_ppal %}
 {% endblock meta_menu_ppal%}
 
 {% block menu_ppal %}
-<nav class="nav-extendida">
-    <div class="nav-sup" style="vertical-align:middle">
-        <a href="inicio" class="disparador-navlateral" onclick="operar_navlateral()">
-            <i class="material-icons">menu</i>
+
+<nav class="menu_ppal" >
+    <a href="cons" class="disparador-navlateral" onclick="operar_navlateral()">
+        <i class="material-icons">menu</i>
+    </a>
+    <div class="logotipo">
+        <a href="cons" class="logotipo der">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" ></img>
         </a>
-        <div class="logotipo">
-            <a href="inicio" class="logotipo der">
-                <img src="{% static 'img/logo.png' %}" alt="Logo" style="height:40px" ></img>
-            </a>
-        </div>
-        <div class="nav-titulo">
-            SIGEPI-USTA
-        </div>
+    </div>
+    <div class="nav-titulo">
+        SIGEPI-USTA
     </div>
 </nav>
+
 {% endblock menu_ppal %}
 
 {% block script_menu_ppal%}
 <script type="text/javascript">
-function operar_navlateral() {
-    if (document.getElementById("panel_der").style.width = "0px") {
-        document.getElementById("cont_pn_der").style.width = "250px";
-        document.getElementById("app").style.marginLeft = "250px";
-    }    
-    else if (document.getElementById("panel_der").style.width !== "0px") {
-        document.getElementById("cont_pn_der").style.width = "0px";
-        document.getElementById("app").style.marginLeft = "0px";
-    }
-}
+$(document).ready(function(){
+    $(".menu").click(function(){
+        $(".keep").toggleClass("width");
+    });
+});
  </script>
 {% endblock script_menu_ppal%}
