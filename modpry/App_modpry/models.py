@@ -21,7 +21,6 @@ TIPO_PRY=[
     (10,'Propiedad industrial'),
     (11,'Revisión crítica'),
     ]
-
 #tipos de Investigación
 TIPO_INV_FIN=[
     #por fuente de financiación:
@@ -34,7 +33,6 @@ TIPO_INV_FIN=[
     (6,'Mixta PUBCOM'), #Recursos Públicos y Personales
     (7,'Otra') #Otra categoría de clasificación de financiación
     ]
-
 ESTADO_PRY=[
     (0, 'Borrador'),
     (1, 'Diseño y gestión'),
@@ -42,8 +40,7 @@ ESTADO_PRY=[
     (3, 'Ejecución'),
     (4, 'Ejecutado'),
     (5, 'Archivado'),
-]
-
+    ]
 TIPO_INV_INF=[
     #Por fuente de información:
     (0,'Sin Información'), #Sin información sobre las fuentes
@@ -55,7 +52,6 @@ TIPO_INV_INF=[
     (6,'Simulación'), #Se generan datos no experimentales para realizar pruebas simuladas de modelos.
     (7,'Otra') #Otra categoría de clasificación de fuente de información
     ]
-
 TIPO_INV_MET=[
     #Por énfasis metodológico:
     (0,'Sin Información'), #Sin información sobre el énfasis metodológico
@@ -70,7 +66,6 @@ TIPO_INV_MET=[
     (9,'Teórica'), #Su proceso de validación no requiere de evidencias empíricas, sino que ssus resultados se validan por sus premisas lógicas, que permiten explroar nuevas formas de comprensión de los fenómenos.
     (10,'Otra') #Otra categoría de clasificación metodológica.
     ]
-
 TIPO_INV_TMP=[
     #Por énfasis temporal:
     (0,'Sin Información'),  #Sin información sobre el periodo de estudio.
@@ -87,7 +82,6 @@ TIPO_INV_TMP=[
     (11,'Seccional'), #Se puede comprender como una variación de un estudio transversal que se reliza por una sola vez.
     (12,'Otra') #Otra categoría de clasificación temporal
     ]
-
 TIPO_INV_VAR=[
     #Por los tipos de variables:
     (0,'Sin Información'),  #Sin información sobre las variables del estudio.
@@ -100,7 +94,6 @@ TIPO_INV_VAR=[
     (7,'Muestral'), #Es un tipo de investigación que se realiza con un intervalo de tiempo determinado y que tiene unos objtivos definidos por quienes la realizan o financian.
     (8,'Otra') #Otra categoría de clasificación por variables.
     ]
-
 TIPO_INV_CNT=[
     #Por contextos de investigación:
     (0,'Sin Información'),  #Sin información sobre las variables del estudio.
@@ -113,7 +106,6 @@ TIPO_INV_CNT=[
     (7,'Forense'), #Es una investigación de corte histórico, busca establecer las situaciones más probables y demostrables, basados en evidencias para establecer responsabiliddes e imputaciones, a los posibles resposables de situaciones punibles o sancionables.
     (8,'Otra') #Otra categoría de clasificación de contextos
     ]
-
 TIPO_INV_LOG=[
     #Por énfasis de marco axiológico
     (0,'Sin Información'),  #Sin información sobre el marco axiológico del estudio.
@@ -138,7 +130,6 @@ TIPO_INV_LOG=[
     (19,'Crítica'), #La investigación crítica tiene por objetivo encontrar las fisuras e incosistencias de un planteamiento teórico o un modelo existente o propuesto. Cumple una función depuradora de los principios lógicos sobre los que operan las soluciones y los modelos científicos.
     (20,'Otra')  #Otra categoría de clasificación por marco axiológico.
     ]
-
 TIPO_INV_CPR=[
     #Por énfasis de campo profesional
     (0,'Sin Información'), #Sin información sobre el campo profesional de la investigacion.
@@ -156,7 +147,6 @@ TIPO_INV_CPR=[
     (12,'Genética'), #Investigación propia de las ciencias de la salud, con énfasis en informática.
     (13,'Otra') #Otra categoría de clasificación por campo profesional.
     ]
-
 #Roles en el proceso de investigación.
 ROL_INV=[
     (0,'Sin Información'), #Sin información sobre el rol desempeñado
@@ -169,14 +159,12 @@ ROL_INV=[
     (7,'Auxiliar de Investigación'), #Se participó ena ctividade relacionadas con la investigación.
     (8,'Investigador(a) independiente') #No se ha estado vinculado institucionalmente, pero se cuenta con productos de investigación.
     ]
-
 USO_RED=[
     (0,'frecuente'),
     (1,'moderado'),
     (2,'poco frecuente'),
     (3,'inactivo')
     ]
-
 TIPO_EXTEN=[
     (0,'.Zip'),
     (1,'.Gz'),
@@ -184,14 +172,12 @@ TIPO_EXTEN=[
     (3,'.exe'),
     (4,'otro')
     ]
-
 USO_RED=[
     (0, 'frecuente'),
     (1, 'moderado'),
     (2, 'poco frecuente'),
     (3, 'inactivo')
     ]
-
 #tipo de formación Académica para grupos
 TIPO_FORM_GR = [
     (0,'Seminario'),
@@ -209,7 +195,6 @@ TIPO_FORM_GR = [
     (12,'Coloquio'),
     (13,'Otro')
     ]
-
 #Tipos de gupos de Investigación
 TIPO_GR_INV = [
     (0,'Independiente'), #Grupo registrado en la plataforma como independiente, asociación de usuarios de la plataforma.
@@ -219,7 +204,6 @@ TIPO_GR_INV = [
     (4,'Comunidad'), #Grupo de comunidad de conocimiento abierto o libre. Con o sin cuotas de participación.
     (5,'Estado del Arte') #Grupo orientado a la construcción de estados del arte temáticos. Son grupos de comunidades abiertas con vinculación temporal y cuotas de participación.
     ]
-
 #Integrantes según modelo de Colciencias
 INTEGR_GR_COLC = [
     (0,'Investigador Emérito'), # Cumple con las características de Investigador Emérito - Se le asigna vinculación.
@@ -235,7 +219,6 @@ INTEGR_GR_COLC = [
     (10,'Estudiante de pregrado'), # Cumple con las características de Estudiante de pregrado - Se le asigna vinculación.
     (11,'ninguna de las anteriores') # No cumple ninguna de las anteriores características - Se vincula como Integrante vinculado.
     ]
-
 #tipo de formación Académica
 TIPO_FORM_CO = [
     (0,'Universitaria'),
@@ -252,25 +235,20 @@ TIPO_FORM_CO = [
     (11,'tecnológica'),
     (12,'Curso libre')
     ]
-
 UNIDAD_MED_TIEM = [
     (0, 'Seg'),
     (1, 'Min'),
     (2, 'Horas'),
     (3, 'Meses'),
     (4, 'Años')
-]
-
+    ]
 EJE_PRY = [
     (0,'Formulación'),
     (1,'implementación'),
     (2,'evaluación.')
     ]
 
-
-"""
-Clases del Módulo Proyectos de SIGEPI
-"""
+#Clases del Módulo Proyectos de SIGEPI
 class mod_pry(models.Model):
     id_mod_pry = models.AutoField(primary_key = True) # Identificador único
     nomb_mod_pry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la aplicacion
@@ -280,3 +258,110 @@ class mod_pry(models.Model):
     class Meta:
         verbose_name = 'mod_pry'
         verbose_name_plural = 'mod_prys'
+
+#clase base de registro de proyecto
+class pry_base(models.Model):
+    id_pry=models.AutoField(primary_key = True) #Identificador unico del proyecto
+    cod_pry = models.CharField('Codigo:', max_length= 100, null = False, blank = False) # código unico del proyecto
+    nombre_pry=models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
+    desc_pry=models.CharField('Descripción del proyecto: ', max_length=50, null=False, blank=False)#Decripción del proyecto
+    tipo_pry=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto - diccionario TIPO_PRY
+    prop_pry=models.CharField('Propietario del proyecto: ', max_length=255)#Propietario del proyecto
+    est_pry = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)
+    #estado - por defecto borrador
+    # debe esta diseño y gestion como opción, DIVIDIR LA CLASE EN PARTICIPANTES, beneficiarios, 
+    #el ususario puede crear nuevos tipos, ejemplo otros 
+    #campo saber, campo disciplinar, nuevo conocimiento 
+    #programa: categoria de proyectos, ampliar, perosnas, grupos, divisiones, div academ y adminis, dependencias,
+    #tipos progr categorias
+    #información de usuario: clasificar el rol con rol de investigador, procesos(estado del proceso)
+    #cvalc ordic otra clase de visibilidad o publicidad del investigador, mirar desde ad,, enlace de esa información, 
+    
+
+    class Meta:
+        verbose_name = 'pry'
+        verbose_name_plural = 'prys'
+
+class inf_pry(models.Model):
+    #Clase que contiene toda la informacion referente al proyecto
+    id_inf_pry = # identificador unico para  App Registro de Proyectos
+    nombre_archivo = # Nombre del archivo del proyecto.
+    url_archivo =  # Url del archivo del proyecto.
+    id_gr_inv = #identificador del grupo de investgación
+    id_ln_inv = # Identificador de la linea de investigación
+    conv =  # Convenio propuesto o previsto para la realización de la investigación.
+    geo_nal =  #id registro de unidades territoriales nacionales que abarca el proyecto.
+    url_ap =  # Url de la imágen del árbol de problemas.
+    url_ao = # Url de la imágen del árbol de objetivos.
+    id_ml = # id de registro de marco lógico
+    id_act = #identificador de registro de actores proyecto.
+    obj_gen =  # Objetivo general del proyecto.
+    obj_esp =  # Objetivos específicos del proyecto.
+
+class inf_prod_pry(models.Model):
+    #Clase que contiene toda la informacion referente a los productos vinculados al proyecto
+    id_prod_pry=
+    id_pry_base=
+    prod_pry= # productos vinculados al proyecto y su estado
+    id_gest_prod= #identificador de gestión de producto
+    coment= #comentarios
+
+class rel_pry_prod(models.Model):
+    #lista que relación actores con proyectos
+    id_pry_base=
+    id_usu_res= # identificador del usuario o investigador responsable principal del producto
+    id_prod=
+    tipo_prod=
+    est_prod= #Estado del producto [compremetido, pendiente, descartado, realizado, realizado y avalado]
+
+class inf_act_proy(models.Model):
+    #clase que define la información de los actores del proyecto
+    id_act_pry = # id actores del proyecto
+    act_inv = # listado de Investigadores y roles de investigación dentro del proyecto
+    act_bnf = # listado de beneficiarios directos del proyecto
+    act_afc = # listado de actores afectados directos o indirectos del proyecto
+    act_ptrc = # listado de patrocinadores dentro del proyecto
+    act_ev = # listado de evaluadores del proyecto
+    act_par = # listado de pares que trabajn temas similares al proyecto
+    act_vc = # listado de actores de vigilancia y control del proyecto
+    act_pry_acd = # listado de actores que intervienen en un proyecto de tipo académico.
+
+class rel_act_pry(models.Model):
+    #lista que relación actores con proyectos
+    id_pry_base=
+    id_usu=
+    rol_inv=
+    rol_act=
+    rol_inv_acdm =
+
+class rel_geo_proy(models.Model):
+    #clase que define la información geográfica del proyecto, recoge los valores de divpola del daen con latitudes y longitudes.
+    id_inf_geo=
+    id_pry_base=
+    unid_terr= #código del municipio
+
+class inf_detalle(models.Model):
+    # clase que guarda la información de actividades del proyecto en un cronograma determinado.
+    id_inf_act=
+    id_pry_base=
+    dur = # Duración del proyecto valores dentro de un rango.
+    und_dur = # unidad de medida del rango de tiempo, 0:seg; 1:min; 2:horas; 3:meses; 4:años.
+    actv = # actividades del proyecto 
+    tareas =
+    
+class activ_pry():
+
+class tareas_pry():
+
+class eventos_pry():
+
+class recur_pry():
+
+
+
+class rel_actv_pry(models.Model):
+    #lista que relación actores con proyectos
+    id_pry_base=
+    id_usu=
+    
+

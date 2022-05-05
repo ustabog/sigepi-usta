@@ -24,8 +24,7 @@ class app_ges_pry(models.Model):
 
 class inf_ges_pry(models.Model):
     #Clase que contiene la informacion de la gestion del proyecto
-
-    inf_ges_pry =  models.AutoField(primary_key = True)   # identificador unico para App Gestión de Proyectos
+    id_ges_pry =  models.AutoField(primary_key = True)   # identificador unico para App Gestión de Proyectos
     Cpto_proy = models.CharField('Conceptualización del Proyecto:', max_length=40, null=False, blank= False)  # Conceptualización del Proyecto: Es realizar el marco teórico y coneptual de la o las ideas principaples del proyecto.',
     Form_proy = models.CharField('Formulación o diseño del Proyecto', max_length=40, null=False, blank= False) # Formulación o diseño del Proyecto: Es la expresión de las características y metodologías de un proyecto, expresando la temporalidad en el cual se realiza.',
     Eva_proy = models.CharField('evaluación del Proyecto:', max_length=40, null=False, blank= False)  # evaluación del Proyecto: Se valora el proyecto de acuerdo a los indicadores construidos y acordados para su medición .',
