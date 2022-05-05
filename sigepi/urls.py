@@ -67,7 +67,7 @@ urlpatterns = [
     path('modcons/', include('modcons.App_cons.urls')),
 
     # Resetear contrasena
-    path('reset_password/', auth_views.PasswordResetView.as_view(template_name = "password"), name="reset_password"),
+    path('reset_password/', auth_views.PasswordResetView.as_view(template_name="password_reset.html"), name="reset_password"),
     path('reset_password_enviar/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
     path('reset/<uidb64>/token/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
