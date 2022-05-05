@@ -38,9 +38,11 @@
 }
 /* características generales de cada caja */
 .app {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
+  display: grid;
+  grid-row: 25vw 50vw 25vw ;
+  width: 95%;
+  height: 100%;
+  overflow: auto;
 }
 .articulo {
   width: 100%;
@@ -103,6 +105,15 @@
 .circulo {
   border-radius: 50%;
   border: 1px solid var(--azul-cl);
+}
+.cont{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  background: linear-gradient(0deg,var(--azul-cl),var(--azul-2));
+  box-shadow: 0 5px 5px rgba(0, 17, 54, 0.267);
+  border-radius: 2%;
 }
 .cont_pn_der{
   position: relative;
@@ -201,7 +212,7 @@
   text-decoration: none;
 }
 .panel_der {
-background-color:#000b3b44;
+background-color:#000b3bc2;
 width: 30vw;
 height: calc(100vh - 80px);
 position:absolute;

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% csrf_token %}
+<!-- título de la página-->
+{% block titulo %}Página principal del SIGEPI-USTA{% endblock titulo%}
+
+{% block menu_ppal %}
+    {% include 'menu_ppal_iu.html' %}
+{% endblock menu_ppal %}
+    
+{% block panel_der %}
+    {% include 'panel_der_iu.html' %}
+{% endblock panel_der %}
+
+{% block app %}
+    {% include 'app_base_iu.html' %}
+{% endblock app %}
+
+{% block pie %}
+    {% include 'pie_iu.html' %}
+{% endblock pie %}

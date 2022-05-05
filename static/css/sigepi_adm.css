@@ -15,10 +15,10 @@
   --azul-cl:#cee7ffda;
   --amarillo:#ffe000;
   --naranja:#fdc300;
-  --verde:#004712;
-  --verde-1:#00751d;
-  --verde-2:#13a538;
-  --verde-cl:#9bffb47a;
+  --verde:#004732;
+  --verde-1:#00691a;
+  --verde-2:#009926;
+  --verde-cl:#d9ffe23b;
   --vinotinto:#800000;
   --blanco:#ffffff;
   --gris:#606060;
@@ -69,7 +69,7 @@
 }
 .btn_vrd_cl:hover {
   border-left: 1px solid var(--verde-2);
-  background: linear-gradient(0deg,var(--blanco),var(--verde-1) );
+  background: linear-gradient(0deg,var(--blanco),var(--verde-cl) );
   box-shadow: 0 2px 2px rgba(241, 245, 255, 0.514);
   transform: translate(0%,-3%);
 }
@@ -91,7 +91,7 @@
 }
 .btn_vrd_cl i:hover{
   font-size: 27px;
-  color: var(--blanco);
+  color: var(--verde-2);
   transition: 0.5s;
   padding:2px;
 }
@@ -110,7 +110,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-
+  overflow:auto;
 }
 .cuerpo {
   width: 100%;
@@ -205,7 +205,7 @@
 .panel_der {
 background-color:#000b3b44;
 width: 30vw;
-height: calc(100vh - 80px);
+height: calc(100vh - 120px);
 position:absolute;
 display: flex;
 top: 55px;
@@ -276,6 +276,11 @@ overflow:hidden;
   font-size:small;
   text-decoration:solid;
 }
+.pie a:hover {
+  box-shadow: 0 5px 10px rgba(162, 255, 208, 0.822);
+  color: var(--blanco);
+
+}
 .pie i {
   width: 100%;
   height: 100%;
@@ -283,24 +288,18 @@ overflow:hidden;
   background: linear-gradient(0deg, var(--verde),var(--verde-1));
   border-radius: 2%;
   font-size: 35px;
-  color: var(--verde-2);
+  color: var(--verde-cl);
   transition: 0.5s;
 }
 .pie i:hover{
-  background: linear-gradient(0deg, var(--verde-2),var(--verde-1));
+  background: linear-gradient(0deg, var(--verde-1),var(--verde));
   border-radius: 2%;
   font-size: 33px;
   color: var(--blanco);
   transition: 0.5s;
 }
-.pie a:hover {
-  box-shadow: 0 5px 10px rgba(162, 244, 255, 0.822);
-  color: var(--blanco);
-
-}
 .pie .btn {
   width: 100%;
-  background-color: var(--verde);
   position: relative;
   list-style: none;
   border-left: 1px solid rgba(0,0,0,0.2);
@@ -312,11 +311,11 @@ overflow:hidden;
   transform: translate(0%,-5%);
   display:flex;
   box-shadow: 0 10px 10px rgba(0, 17, 54, 0.267);
-  background: linear-gradient(0deg,var(--verde-1), var(--verde));
+  background: linear-gradient(0deg,var(--verde-cl), var(--verde));
   transition: 0.3s;
 }
 .pie p {
-  color:var(--verde-2);
+  color:var(--verde-cl);
   text-align: center;
   margin: 0px 0px;
   font-size: small;
@@ -369,8 +368,8 @@ overflow:hidden;
   display: flex;
   top: 2px;
   overflow:hidden;
-  border: 2px solid rgba(175, 244, 255, 0.521);
-  box-shadow: 3px 3px 3px rgba(187, 246, 255, 0.521);
+  border: 2px solid rgba(175, 255, 235, 0.521);
+  box-shadow: 3px 3px 3px rgba(175, 255, 235, 0.521);
   border-radius:3px;
   padding: 2px 2px 2px 2px;  
 }
