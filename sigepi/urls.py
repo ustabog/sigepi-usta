@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 #Librerías de sistema
-from re import template
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -62,12 +61,13 @@ urlpatterns = [
     path('doc', front().vst_doc, name ='doc'),
     path('registro', front().vst_registro, name ='registro'),
 
+
     #consultas globales
     #path('conusus', vts_ls_usu.as_view(), name='consulta_usuarios'),
     path('modcons/', include('modcons.App_cons.urls')),
 
     # Resetear contrasena
-    path('reset_password/', auth_views.PasswordResetView.as_view(template_name="password_reset.html"), name="reset_password"),
+    path('reset_password/', auth_views.PasswordResetView.as_view(template_name = "password"), name="reset_password"),
     path('reset_password_enviar/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
     path('reset/<uidb64>/token/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),

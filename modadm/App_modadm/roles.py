@@ -8,8 +8,6 @@ Auto: Juan Sebastian Cely Caro
 import logging
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
-from django.db import migrations
-from django.db import connection
 
 
 
@@ -23,6 +21,7 @@ GRUPOS = [
     'Admin Aplicacion Configuracion',
     'Admin Aplicacion Modulo Consultas',
     'Admin Aplicacion Consultas',
+    'Invitado'
 ]
 
 MODELOS_ADM = [
@@ -61,85 +60,75 @@ class roles ():
 
     def crear_roles(self):
 
-        def db_table_exists(table):
-            return table in connection.introspection.table_names()
-
-        var = db_table_exists(table='auth_group')
-        # print(var)
-
-        if var == True:
-            for group in GRUPOS:
-                new_group, created = Group.objects.get_or_create(name=group)
-                for model in MODELOS:
-                    for permission in PERMISOS_VA:
-                        name = 'Can {} {}'.format(permission, model)    
-                        #print("Creating {}".format(name))
-                        try:
-                            model_add_perm = Permission.objects.get(name=name)
-                        except Permission.DoesNotExist:
-                            logging.warning("No se crearon los permisos '{}'.".format(name))
-                            continue
-                        new_group.permissions.add(model_add_perm)
-
-            g_sis = Group.objects.get(name='Sistema')
-            g_modadm = Group.objects.get(name='Admin Modulo Administracion')
-            g_appmodadm = Group.objects.get(name='Admin Aplicacion Modulo Administracion')
-            g_usu = Group.objects.get(name='Admin Aplicacion Usuarios')
-            g_usugr = Group.objects.get(name='Admin Aplicacion Grupos')
-            g_usui = Group.objects.get(name='Admin Aplicacion Instituciones')
-            g_inv, create = Group.objects.get_or_create(name='Invitado')
-
+        # if  Group.check(name = 'Sistema'):
+        #     resultado = 'asd'
+        for group in GRUPOS:
+            new_group, created = Group.objects.get_or_create(name=group)
             for model in MODELOS:
-                for permission in PERMISOS:
+                for permission in PERMISOS_VA:
                     name = 'Can {} {}'.format(permission, model)
+                    #print("Creating {}".format(name))
                     try:
                         model_add_perm = Permission.objects.get(name=name)
                     except Permission.DoesNotExist:
                         logging.warning("No se crearon los permisos '{}'.".format(name))
                         continue
-                    g_sis.permissions.add(model_add_perm)
-                    g_modadm.permissions.add(model_add_perm)
-                    g_appmodadm.permissions.add(model_add_perm)
+                    new_group.permissions.add(model_add_perm)
 
-            for model in MODELOS_USU:
-                for permission in PERMISOS:
-                    name = 'Can {} {}'.format(permission, model)
-                    try:
-                        model_add_perm = Permission.objects.get(name=name)
-                    except Permission.DoesNotExist:
-                        logging.warning("No se crearon los permisos '{}'.".format(name))
-                        continue
+        g_sis = Group.objects.get(name='Sistema')
+        g_modadm = Group.objects.get(name='Admin Modulo Administracion')
+        g_appmodadm = Group.objects.get(name='Admin Aplicacion Modulo Administracion')
+        g_usu = Group.objects.get(name='Admin Aplicacion Usuarios')
+        g_usugr = Group.objects.get(name='Admin Aplicacion Grupos')
+        g_usui = Group.objects.get(name='Admin Aplicacion Instituciones')
 
-                    g_usu.permissions.add(model_add_perm)
+        for model in MODELOS:
+            for permission in PERMISOS:
+                name = 'Can {} {}'.format(permission, model)
+                try:
+                    model_add_perm = Permission.objects.get(name=name)
+                except Permission.DoesNotExist:
+                    logging.warning("No se crearon los permisos '{}'.".format(name))
+                    continue
+                g_sis.permissions.add(model_add_perm)
+                g_modadm.permissions.add(model_add_perm)
+                g_appmodadm.permissions.add(model_add_perm)
 
-            for model in MODELOS_USUGR:
-                for permission in PERMISOS:
-                    name = 'Can {} {}'.format(permission, model)
-                    try:
-                        model_add_perm = Permission.objects.get(name=name)
-                    except Permission.DoesNotExist:
-                        logging.warning("No se crearon los permisos '{}'.".format(name))
-                        continue
+        for model in MODELOS_USU:
+            for permission in PERMISOS:
+                name = 'Can {} {}'.format(permission, model)
+                try:
+                    model_add_perm = Permission.objects.get(name=name)
+                except Permission.DoesNotExist:
+                    logging.warning("No se crearon los permisos '{}'.".format(name))
+                    continue
 
-                    g_usugr.permissions.add(model_add_perm)
+                g_usu.permissions.add(model_add_perm)
 
-            for model in MODELOS_USUI:
-                for permission in PERMISOS:
-                    name = 'Can {} {}'.format(permission, model)
-                    try:
-                        model_add_perm = Permission.objects.get(name=name)
-                    except Permission.DoesNotExist:
-                        logging.warning("No se crearon los permisos '{}'.".format(name))
-                        continue
+        for model in MODELOS_USUGR:
+            for permission in PERMISOS:
+                name = 'Can {} {}'.format(permission, model)
+                try:
+                    model_add_perm = Permission.objects.get(name=name)
+                except Permission.DoesNotExist:
+                    logging.warning("No se crearon los permisos '{}'.".format(name))
+                    continue
 
-                    g_usui.permissions.add(model_add_perm)
-            
-            resultado = "Se crearon los grupos y permisos por defecto"
-            return resultado
+                g_usugr.permissions.add(model_add_perm)
+
+        for model in MODELOS_USUI:
+            for permission in PERMISOS:
+                name = 'Can {} {}'.format(permission, model)
+                try:
+                    model_add_perm = Permission.objects.get(name=name)
+                except Permission.DoesNotExist:
+                    logging.warning("No se crearon los permisos '{}'.".format(name))
+                    continue
+
+                g_usui.permissions.add(model_add_perm)
         
-        else:
-            print('Debes realizar las migraciones')
-            pass
+        resultado = "Se crearon los grupos y permisos por defecto"
+        return resultado
         
 
 roles().crear_roles()

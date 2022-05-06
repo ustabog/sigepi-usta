@@ -1,14 +1,14 @@
-{% extends 'inicio.html' %}
+{% extends 'app_base_iu.html' %}
 {% load static %}
 
-{% block app %}
+{% block articulo %}
 <div class="cont">
     <img src="{% static 'img/logo_usta.png' %}" alt="Universidad Santo Tomás">
-    <h1 class="">Registrarse en SIGEPI-USTA</h1>
+    <h1 class="">Ingresar al SIGEPI-USTA</h1>
     <div>
         <form method="post" action="">
             {% if Users.is_authenticated %}
-             <p>Ya ingreaste y tu sesión está activa</p>
+            <p>Ya ingreaste y tu sesión está activa</p>
             {% else %}
             <div class="">
                 {% csrf_token %}
@@ -24,4 +24,4 @@
         </form>
     </div>
 </div>
-{% endblock app %}
+{% endblock articulo %}

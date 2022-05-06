@@ -28,7 +28,7 @@
   --peligro:#FF4646;
   --luminoso:#FBF6C8;
   --oscuro:#000B3B;
-  --pntcorte-xs: 0;
+  --pntcorte-xs: 0px;
   --pntcorte-sm: 576px;
   --pntcorte-md: 768px;
   --pntcorte-lg: 992px;
@@ -37,10 +37,13 @@
   --fuente-familia-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 /* características generales de cada caja */
+*, *::after,*::before{
+  box-sizing: border-box;
+}
 .app {
-  display: grid;
-  grid-row: 25vw 50vw 25vw ;
-  width: 95%;
+  display:grid;
+  grid-template-columns: 15% auto auto;
+  width: 100%;
   height: 100%;
   overflow: auto;
 }
@@ -107,29 +110,29 @@
   border: 1px solid var(--azul-cl);
 }
 .cont{
-  position:absolute;
+  position:relative;
+  display:flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   border-left: 1px solid rgba(0,0,0,0.2);
-  background: linear-gradient(0deg,var(--azul-cl),var(--azul-2));
-  box-shadow: 0 5px 5px rgba(0, 17, 54, 0.267);
-  border-radius: 2%;
+  background: linear-gradient(0deg,var(--azul-cl),var(--blanco));
+  box-shadow: 5px 5px 5px rgba(0, 17, 54, 0.267);
+  border-radius: 2px;
+  padding: 5px 5px 5px 5px;
 }
-.cont_pn_der{
-  position: relative;
+
+.cuerpo {
+  position:absolute;
+  display:grid;
+  grid-template-rows: 55px auto 65px;
   width: 100%;
   height: 100%;
-
-}
-.cuerpo {
-  width: 100%;
   background-color: var(--azul-cl);
   color:var(--azul);
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   font-size: .8rem;
   margin: 0;
-  display:grid;
-  grid-template-rows: 10vh auto 10vh;
   overflow: auto;
 }
 .material-icons {
@@ -186,7 +189,7 @@
   list-style-position: outside;
   padding: 0px;
 }
- .nav-li:hover{
+.nav-li:hover{
   /*li item de lista vertical*/
   list-style:none;
   list-style-position: outside;
@@ -212,18 +215,17 @@
   text-decoration: none;
 }
 .panel_der {
-background-color:#000b3bc2;
-width: 30vw;
-height: calc(100vh - 80px);
-position:absolute;
-display: flex;
-top: 55px;
-min-width: 150px;
-max-width: 400px;
-box-sizing: border-box;
-border-right: 1px solid rgba(255, 255, 255, 0.438);
-box-shadow: 3px 5px 5px rgba(34, 44, 46, 0.25);
-overflow:auto;
+  background-color:#000b3bc2;
+  width: 100%;
+  height:100%;
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  max-width: 450px;
+  border-right: 1px solid rgba(255, 255, 255, 0.438);
+  box-shadow: 5px 5px 5px rgba(34, 44, 46, 0.25);
+  overflow:auto;
 }
 .panel_der::-webkit-scrollbar {
   -webkit-appearance: none;
@@ -246,10 +248,15 @@ overflow:auto;
   border-radius: 10px;  
 }
 .panel_iz {
-  width: 100%;
+  width: 0px;
 }
 .panel_ppal {
+  position:relative;
   width: 100%;
+  height: 100%;
+  display:grid;
+  grid-template-columns: 30% auto auto;
+  overflow: auto;
 }
 .pie {
   padding-top: 5px;
@@ -260,7 +267,7 @@ overflow:auto;
   position: fixed;
   left: 0;
   bottom:0px;
-  text-align: center;
+  align-items: center;
   /*margin-left: auto;
   margin-right: auto;*/
   display:inline-block;
@@ -340,12 +347,11 @@ overflow:auto;
   text-decoration:solid;
   transition: 0.2s;
 }
-.pie .derechos{
+.pie .der-copia{
   width: 100%;
   overflow: hidden;
-  min-height: 10px;
   display:block;
-  padding-top: 3px;
+  padding-top: -8px;
   color: var(--azul-2);
   background-color: var(--azul);
 }
@@ -354,7 +360,7 @@ overflow:auto;
 }
 .seccion_pn_der{
   background-color:#ffffff6e;
-  width: 95%;
+  width: 100%;
   height: auto;
   margin-bottom: 5px;
   position: relative;
@@ -370,7 +376,7 @@ overflow:auto;
 .trj_pers {
   /*tarjeta personal*/
   background-color:#78c2f36e;
-  width: 95%;
+  width: 100%;
   min-height: 150px;
   margin-bottom: 2px;
   position: relative;
@@ -388,4 +394,45 @@ overflow:auto;
   font-style: normal;
   font-weight: 200;
   src: url(../fuentes/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2);
+}
+
+@media only screen and (max-width:580px){
+  .panel_ppal {
+    position: relative;
+    width: 100%;
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+  }
+  .panel_der {
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    border-right: 0px;
+    max-width: 580px;
+    box-shadow: 0px 0px;
+    }
+    .app {
+      display:flex;
+      width: 100%;
+      height: auto;
+      flex-direction:row;
+      flex-wrap: wrap;
+      overflow: auto;
+    }
+    .cont{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      width: 100%;
+      height: 100%;
+      min-width: 100px;
+      max-width: 400px;
+      border-left: 1px solid rgba(0,0,0,0.2);
+      background: linear-gradient(0deg,var(--azul-cl),var(--blanco));
+      box-shadow: 5px 5px 5px rgba(0, 17, 54, 0.267);
+      border-radius: 2px;
+      padding: 5px 5px 5px 5px;
+    }
 }
