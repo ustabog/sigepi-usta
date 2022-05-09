@@ -18,9 +18,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.staticfiles import views
-from django.urls import re_path
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import views as auth_views
 #from rest_framework.routers import DefaultRouter
@@ -67,10 +66,10 @@ urlpatterns = [
     path('modcons/', include('modcons.App_cons.urls')),
 
     # Resetear contrasena
-    path('reset_password/', auth_views.PasswordResetView.as_view(template_name = "password"), name="reset_password"),
-    path('reset_password_enviar/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
-    path('reset/<uidb64>/token/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
-    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
+    path('reset_password/', auth_views.PasswordResetView.as_view(template_name = 'password_reset_form.html'), name="reset_password"),
+    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name = 'password_reset_done.html'), name="password_reset_done"),
+    path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name = 'password_reset_confirm.html'), name='password_reset_confirm'),
+    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name = 'password_reset_complete.html'), name="password_reset_complete"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
