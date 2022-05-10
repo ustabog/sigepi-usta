@@ -296,7 +296,7 @@ class func_app(models.Model):
     com_exc = models.CharField('Comando de Ejecución de la Función: ', max_length=20, null=False, blank = False) # Comando de Ejecución de la Función
     text = models.CharField('Nombre de Función: ', max_length=20, null=False, blank = False) # Nombre de Función para menús o etiquetas.
     context = models.CharField('Contexto: ', max_length=20, null=False, blank = False) # Nombre de Función para menús contextuales o emergentes y panel de inf.
-    activa = models.BooleanField('¿Activa o desactiva.?', default=False)  # La función está activa o desactiva.
+    activa = models.BooleanField('¿Activa o desactivada?', default=False)  # La función está activa o desactiva.
     indice = models.IntegerField() #Índice de selección, para navegar con el tabulador.
     # realizar una tabla de ralcion con rol y permisos
     #[[0,False,True,False,False]]
