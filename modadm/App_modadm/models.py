@@ -205,8 +205,9 @@ class mod(models.Model):
     def __str__(self):
         return '{}'.format(self.titulo)
 
-#Clase que almacena los datos del objeto aplicación, las aplicaciones son unidades de
+
 class app_mod(models.Model):
+    #Clase que almacena los datos del objeto aplicación, las aplicaciones son unidades de lso módulos
     id_app = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
     titulo = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False) # Título de la aplicacion ej. "Editor de Texto SABER"
     desc  = models.CharField('descricion de la aplicacion: ', max_length=80, null=False, blank = False) # descripcion de la Aplicación.
@@ -214,7 +215,7 @@ class app_mod(models.Model):
     version = models.DecimalField('Versión de desarrollo de la aplicación: ', max_digits=4, decimal_places=2, null=False, blank = False)  # Versión de desarrollo de la aplicación. "0.01.04"
     mod_prin = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)# Id del módulo principal con el cual se integra.
     ver_mod = models.DecimalField('Versión de desarrollo de la aplicación: ', max_digits=4, decimal_places=2, null=False, blank = False)  # Versión mínima del módulo principal con la que la actual versión de la aplicación es compatible.
-    activo = models.BooleanField('estatus de la aplicacion ', default=False)# estatus de la aplicacion para indicar  el modulo de Administración
+    activo = models.BooleanField('la aplicacion está activa o no', default=False)# estatus de la aplicacion para indicar  el modulo de Administración
     instalada = models.BooleanField('¿La aplicación se encuentra instalada? ', default=False) # ¿La aplicación se encuentra instalada? sí =True; no= False.
     visible = models.BooleanField('¿Activa o desactiva la visibilidad de la aplicacion.?', default=False)  # Activa o desactiva la visibilidad de la aplicacion.
 

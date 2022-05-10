@@ -25,7 +25,6 @@ from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
 from .form import *
-from django.contrib.auth.models import Group
 from modadm.App_conf.stlapp import estilo
 # from modadm.App_regusu.models import usu_inf_apps
 
@@ -78,45 +77,7 @@ class front():
                 formulario.save()
                 usuario = formulario.cleaned_data.get('username')
                 password = formulario.cleaned_data.get('password1')
-                grp_iv = Group.objects.get(name="Invitado")
                 usuario = authenticate(username=usuario, password=password)
-                usuario.groups.add(grp_iv)
-                login(request, usuario)
-                return redirect(to='inicio')
-            data["form"] = formulario
-        return render(request,'frm_registro_iu.html', data )
-    
-    def vst_registro_inv(self, request):
-        data = {
-            'form': frm_reg_usu()
-        }
-        if request.method == "POST":
-            formulario = frm_reg_usu(data=request.POST)
-            if formulario.is_valid():
-                formulario.save()
-                usuario = formulario.cleaned_data.get('username')
-                password = formulario.cleaned_data.get('password1')
-                grp_inv = Group.objects.get(name="Investigador")
-                usuario = authenticate(username=usuario, password=password)
-                usuario.groups.add(grp_inv)
-                login(request, usuario)
-                return redirect(to='inicio')
-            data["form"] = formulario
-        return render(request,'frm_registro_iu.html', data )
-
-    def vst_registro_grp(self, request):
-        data = {
-            'form': frm_reg_usu()
-        }
-        if request.method == "POST":
-            formulario = frm_reg_usu(data=request.POST)
-            if formulario.is_valid():
-                formulario.save()
-                usuario = formulario.cleaned_data.get('username')
-                password = formulario.cleaned_data.get('password1')
-                grp_inv = Group.objects.get(name="Investigador")
-                usuario = authenticate(username=usuario, password=password)
-                usuario.groups.add(grp_inv)
                 login(request, usuario)
                 return redirect(to='inicio')
             data["form"] = formulario
@@ -127,10 +88,6 @@ class front():
         messages.success(solicitud,"tu sesión ha cerrado ")
         return render(solicitud,'index_front.html')
 
-    def vst_vue(self, solicitud):
-        stl=estilo()
-        ctx=stl.DevolverDict()
-        return render(solicitud,"apivue.html",ctx)
 
 
 class ls_rolusu():

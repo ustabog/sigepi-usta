@@ -1,0 +1,40 @@
+{% extends 'apivue.html' %}
+{% load static %}
+
+<!-- metadatos del documento (head)-->
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
+
+<!-- bloques de Aplicación-->
+{% block app%}
+<aside id="barra_herr" class="barra_herr">
+    {% block barra_herr %}
+    <p>barra de herramientas</p>
+    {% endblock barra_herr %}
+</aside>
+<div id="panel_app" class="panel_app">
+    {% block panel_app %}
+        <div id="menu_app" class="menu_app">
+            {% block menu_app %}
+            <p>menú app</p>
+            {% endblock menu_app %}
+        </div>
+        <div id="articulo" class="articulo">
+            {% block articulo %}
+            {% endblock articulo %}
+        </div>
+        <div id="pie_app" class="pie_app">
+            {% block pie_app %}
+            <p>pie app</p>
+            {% endblock pie_app %}
+        </div>
+    {% endblock panel_app %}
+</div>
+
+{% endblock app%}
+
+{% block script_app%}{% endblock script_app%}
+{% block script_menu_app%}{% endblock script_menu_app%}
+{% block script_panel_ppal%}{% endblock script_panel_ppal%}
+{% block script_pie_app%}{% endblock script_pie_app%}

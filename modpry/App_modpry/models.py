@@ -147,8 +147,8 @@ TIPO_INV_CPR=[
     (12,'Genética'), #Investigación propia de las ciencias de la salud, con énfasis en informática.
     (13,'Otra') #Otra categoría de clasificación por campo profesional.
     ]
-#Roles en el proceso de investigación.
 ROL_INV=[
+    #Roles en el proceso de investigación.
     (0,'Sin Información'), #Sin información sobre el rol desempeñado
     (1,'Investigador(a) Principal'), #Responsable del proyecto y del equipo de investigación.
     (2,'Investigador(a) Senior'), #Categoría según Colciencias.
@@ -178,8 +178,8 @@ USO_RED=[
     (2, 'poco frecuente'),
     (3, 'inactivo')
     ]
-#tipo de formación Académica para grupos
 TIPO_FORM_GR = [
+    #tipo de formación Académica para grupos
     (0,'Seminario'),
     (1,'Taller'),
     (2,'Foro'),
@@ -195,8 +195,8 @@ TIPO_FORM_GR = [
     (12,'Coloquio'),
     (13,'Otro')
     ]
-#Tipos de gupos de Investigación
 TIPO_GR_INV = [
+    #Tipos de gupos de Investigación
     (0,'Independiente'), #Grupo registrado en la plataforma como independiente, asociación de usuarios de la plataforma.
     (1,'Reconocido Inst'), #Grupo que además de registrado está vinculado y reconocido por una Institución o Entidad.
     (2,'Reconocido COLC'), #Grupo que además de registrado está vinculado y reconocido por Colciencias.
@@ -204,8 +204,8 @@ TIPO_GR_INV = [
     (4,'Comunidad'), #Grupo de comunidad de conocimiento abierto o libre. Con o sin cuotas de participación.
     (5,'Estado del Arte') #Grupo orientado a la construcción de estados del arte temáticos. Son grupos de comunidades abiertas con vinculación temporal y cuotas de participación.
     ]
-#Integrantes según modelo de Colciencias
 INTEGR_GR_COLC = [
+    #Integrantes según modelo de Colciencias
     (0,'Investigador Emérito'), # Cumple con las características de Investigador Emérito - Se le asigna vinculación.
     (1,'Investigador Sénior'), # Cumple con las características de Investigador Sénior - Se le asigna vinculación.
     (2,'Investigador Asociado'), # Cumple con las características de Investigador Asociado - Se le asigna vinculación.
@@ -219,8 +219,8 @@ INTEGR_GR_COLC = [
     (10,'Estudiante de pregrado'), # Cumple con las características de Estudiante de pregrado - Se le asigna vinculación.
     (11,'ninguna de las anteriores') # No cumple ninguna de las anteriores características - Se vincula como Integrante vinculado.
     ]
-#tipo de formación Académica
 TIPO_FORM_CO = [
+    #tipo de formación Académica
     (0,'Universitaria'),
     (1,'Especializacion'),
     (2,'Maestría'),
@@ -248,8 +248,8 @@ EJE_PRY = [
     (2,'evaluación.')
     ]
 
-#Clases del Módulo Proyectos de SIGEPI
 class mod_pry(models.Model):
+    #Clases del Módulo Proyectos de SIGEPI
     id_mod_pry = models.AutoField(primary_key = True) # Identificador único
     nomb_mod_pry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la aplicacion
     desc_mod_pry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion del aplicacion
@@ -259,8 +259,8 @@ class mod_pry(models.Model):
         verbose_name = 'mod_pry'
         verbose_name_plural = 'mod_prys'
 
-#clase base de registro de proyecto
 class pry_base(models.Model):
+    #clase base de registro de proyecto
     id_pry=models.AutoField(primary_key = True) #Identificador unico del proyecto
     cod_pry = models.CharField('Codigo:', max_length= 100, null = False, blank = False) # código unico del proyecto
     nombre_pry=models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
@@ -356,8 +356,6 @@ class tareas_pry():
 class eventos_pry():
 
 class recur_pry():
-
-
 
 class rel_actv_pry(models.Model):
     #lista que relación actores con proyectos

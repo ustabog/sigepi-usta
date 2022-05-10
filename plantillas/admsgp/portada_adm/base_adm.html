@@ -35,30 +35,20 @@
         {% block panel_der %}
         {% endblock panel_der %}
     </aside>
-    <div id="app" class="app">
-        {% block app%}
-        <div id="menu_app" class="menu_app">
-            {% block menu_app %}
-            {% endblock menu_app %}
-        </div>
-        <aside id="barra_herr" class="barra_herr">
-            {% block barra_herr %}
-            {% endblock barra_herr %}
+    <div id="panel_ppal" class="panel_ppal">
+        <aside id="panel_der"  class="panel_der">
+            {% block panel_der %}
+            {% endblock panel_der %}
         </aside>
-       <div id="panel_ppal" class="panel_ppal">
-            {% block panel_ppal %}
-                <div id="articulo" class="articulo">
-                    {% block articulo %}
-                    {% endblock articulo %}
-                </div>
-            {% endblock panel_ppal %}
+        <div id="app" class="app">
+            {% block app%}
+            {% endblock app%}
         </div>
-        <div id="pie_app" style="" class="pie_app">
-            {% block pie_app %}
-            {% endblock pie_app %}
-        </div>
-        {% endblock app%}
-    </div>
+        <aside id="panel_iz" class="panel_iz">
+            {% block panel_iz %}
+            {% endblock panel_iz %}
+        </aside>
+    </div>    
     <aside id="panel_iz" class="panel_iz">
         {% block panel_iz %}
         {% endblock panel_iz %}
