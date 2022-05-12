@@ -7,13 +7,11 @@ from modadm.App_regusu.models import usu_inf_apps
 
 
 class ls_rolusu():
-# clase para retornar roles de usuario
+    # clase para retornar roles de usuario
     def sel_rol_usu(id_usu):
         #seleccion de roles por id de usuario inico sesion
         ls_rol_usu = usu_inf_apps.objects.get(id = id_usu)
         return ls_rol_usu
-
-
 
 
 """
@@ -25,3 +23,11 @@ class ls_rolusu():
     def mostrar_datos(self):
         pass
 """
+class acceso_usu():
+    #clase que genera los elementos a cargar en la portada o en las aplicaciones 
+    #a las que se tiene permiso de acceder por parte de un usuario registrado.
+    def __init__(self):
+        self.mods=[]
+        self.apps=[]
+        self.func=[]
+        self.usu=usu()
