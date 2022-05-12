@@ -1,0 +1,14 @@
+{% extends 'app_base_adm.html' %}
+{% block titulo %} Creación De Red Social {% endblock titulo %}
+{% block articulo %}
+    {% if form.errors %}
+        <p>La Informacion no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+    {% endif %}
+    <h3>Registrar Nueva Red Social</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Registrar">
+    </form>
+{% endblock articulo %} 

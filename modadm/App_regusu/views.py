@@ -52,7 +52,7 @@ class vst_mod_usu(UpdateView, PermissionRequiredMixin):
     #clase que me modifca los usuarios para registro de usuario
     model = usu
     form_class = frm_con_usu
-    exclude = ['passord']
+    exclude = ['password']
     template_name = 'App_regusu_frm_edt_usu.html'
     success_url = reverse_lazy('consulta_usuarios')
 
@@ -61,13 +61,6 @@ def eli_usu(request, id):
     usuario.delete()
     messages.success(request, "Eliminado correctamente")
     return redirect(to="../cons_usus")
-
-# class vts_eli_usu(DeleteView):
-#     #eliminar usuarios
-#     model = usu
-#     template_name = 'App_regusu_verificacion.html'
-#     success_url = reverse_lazy('cn_usu.html')
-############FIN - Registro como invitado################
 
 class func_usu():
     #clase que me almacena las vistas de la aplicacion registro de usuario
@@ -82,38 +75,6 @@ class vst_selc_usu_cons(vts_ls_usu, PermissionRequiredMixin):
     #funcion que me pinta la lista para modificar el usuario
     template_name = 'sl_usu.html'
     success_url = reverse_lazy('sl_usu.html')
-
-###################CREAR USUARIO DESDE ADMIN#########################
-class infopersCreate(CreateView, PermissionRequiredMixin):
-    #crear información de las personas
-    model = usu_inf_pers
-    form_class = frm_reg_usu_pers
-    template_name = 'App_regusu_frm_crearinfopers.html'
-    success_url = reverse_lazy('infopers')
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        self.object.save()
-        return super(infopersCreate, self).form_valid(form)
-
-class infoperslList(ListView, PermissionRequiredMixin): #hereda de listwview
-    #información de las personas
-    model = usu_inf_pers
-    template_name = 'App_regusu_ls_infopers.html'
-    
-class infopersUpdate(UpdateView, PermissionRequiredMixin):
-    #modificar la información de los usuarios
-    model = usu_inf_pers
-    form_class = frm_reg_usu_pers
-    template_name = 'App_regusu_frm_crearinfopers.html'
-    success_url = reverse_lazy('infopers')
-
-class infopersDelete(DeleteView, PermissionRequiredMixin):
-    #eliminar usuarios
-    model = usu_inf_pers
-    template_name = 'App_regusu_verificacion.html'
-    success_url = reverse_lazy('infopers')
 
 ########## CRUD DISCAPACIDAD ###############################
 
@@ -177,8 +138,59 @@ class vts_edt_usu_inf_pers(UpdateView, PermissionRequiredMixin):
     success_url = reverse_lazy('cons_infopers')
     permission_required = 'usu_inf_pers.change_usu_inf_pers'
 
-class vts_del_usu_inf_pers(DeleteView, PermissionRequiredMixin):
-    model = usu_inf_pers
-    template_name = 'App_regusu_del_infopers.html'
-    success_url = reverse_lazy('cons_infopers')
-    permission_required = 'usu_inf_pers.delete_usu_inf_pers'
+##### CRUD INFORMACION DE CONTACTO #######################################
+
+class vts_reg_contc(CreateView, PermissionRequiredMixin):
+    # Clase para crear informacion de contacto del usuario
+    model = usu_inf_contac
+    form_class = frm_con_info_contact
+    template_name = 'App_regusu_frm_infocontc.html'
+    success_url = reverse_lazy('cons_infocontc')
+    success_message = 'La discapacidad fue creada satisfactoriamente'
+    permission_required = 'usu_inf_contac.add_usu_inf_contac'
+
+class vts_ls_contc(ListView, PermissionRequiredMixin): #hereda de listwview
+    # Consulta de informacion de contacto del usuario
+    model = usu_inf_contac
+    form_class = frm_con_info_contact
+    template_name = 'cn_infcontc.html'
+    success_url = reverse_lazy('cn_infocontc.html')
+    success_message = 'Listado cargado correctamente'
+    permission_required = 'usu_inf_contac.view_usu_inf_contac'
+
+class vts_edt_contc(UpdateView, PermissionRequiredMixin):
+    # Clase que edita la informacion de contacto del usuario
+    model = usu_inf_contac
+    form_class = frm_con_info_contact
+    template_name = 'App_regusu_frm_infocontc.html'
+    success_url = reverse_lazy('cons_infocontc')
+    permission_required = 'usu_inf_contac.change_usu_inf_contac'
+
+##### CRUD INFORMACION DE CONTACTO #######################################
+
+class vts_reg_red_soc(CreateView, PermissionRequiredMixin):
+    # Clase para crear informacion de contacto del usuario
+    model = red_soc
+    form_class = frm_con_red_social
+    template_name = 'App_regusu_frm_red_soc.html'
+    success_url = reverse_lazy('cons_red_soc')
+    success_message = 'La discapacidad fue creada satisfactoriamente'
+    permission_required = 'red_soc.add_red_soc'
+
+class vts_ls_red_soc(ListView, PermissionRequiredMixin): #hereda de listwview
+    # Consulta de informacion de contacto del usuario
+    model = red_soc
+    form_class = frm_con_red_social
+    template_name = 'cn_red_soc.html'
+    success_url = reverse_lazy('cn_red_soc.html')
+    success_message = 'Listado cargado correctamente'
+    permission_required = 'red_soc.view_usu_red_soc'
+
+class vts_edt_red_soc(UpdateView, PermissionRequiredMixin):
+    # Clase que edita la informacion de contacto del usuario
+    model = red_soc
+    form_class = frm_con_red_social
+    template_name = 'App_regusu_frm_red_soc.html'
+    success_url = reverse_lazy('cons_red_soc')
+    permission_required = 'red_soc.change_red_soc'
+
