@@ -1,10 +1,10 @@
 {% extends 'app_base_adm.html' %}
-{% block titulo %} Creación Informacion Personal {% endblock titulo %}
+{% block titulo %} Creación De Red Social {% endblock titulo %}
 {% block articulo %}
     {% if form.errors %}
-        <p>La personal no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+        <p>La Informacion no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
     {% endif %}
-    <h3>Registrar Nueva Informacion Personal</h3>
+    <h3>Registrar Nueva Red Social</h3>
 
     <form method="POST">
         {% csrf_token %}

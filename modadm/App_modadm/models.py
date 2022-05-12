@@ -8,11 +8,14 @@ from django.contrib.auth.models import AbstractUser
 
 #Tipo de rol dentro de la plataforma
 TIPO_ROL = [
-    (0,'Sistema'),
-    (1,'Módulo'),
-    (2,'Aplicación'),
-    (3,'Extensión'),
-    (4,'Otro')
+    (0,'Adm. Sistema'),
+    (1,'Adm. Institución'),
+    (2,'Adm. Grupo'),
+    (3,'Usuario'),
+    (4,'Usuario grupo'),
+    (5,'Usuario institución'),
+    (6,'invitado'),
+    (7,'anonimo')
     ]
 
 #Tipos de números de identificación personal
@@ -35,7 +38,7 @@ TIPO_APP = [
     (0, 'Web'),
     (1, 'Android'),
     (2, 'IOS'),
-    ]
+]
 #Tipos de Identidad de Género
 GENERO = [
     (0,'Neutro'),
@@ -103,6 +106,7 @@ TIPO_CONTR_CO = [
     (7,'independiente')
     ]
 
+
 #Tipos de gupos de Investigación
 TIPO_GR_INV = [
     (0,'Independiente'), #Grupo registrado en la plataforma como independiente, asociación de usuarios de la plataforma.
@@ -161,16 +165,14 @@ SECTOR_ECO = [
     ]
 
 # Tipo de fuente de inst. Externa, local, remota.
-TIPO_FUENTE_INST = [
+TIPO_FUENTE = [
     (0,'Externa'),
     (1,'Local'),
     (2,'Remota')
     ]
 
  #Numerar las posibles extensiones del archivo de instalación 1=".zip";2=".gz",3=".deb";4=".exe"; etc)
-
-# Tipo de extensión del archivo de instalación.
-TIPO_EXT = [
+TIPO_EXTEN = [
     (0,'.Zip'),
     (1,'.Gz'),
     (2,'.ded'),
@@ -206,23 +208,20 @@ class mod(models.Model):
     def __str__(self):
         return '{}'.format(self.titulo)
 
+#Clase que almacena los datos del objeto aplicación, las aplicaciones son unidades de
 class app_mod(models.Model):
-    #Clase que almacena los datos del objeto aplicación, las aplicaciones son unidades de los módulos
     id_app = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
-    titulo = models.CharField('Título de la aplicación: ', max_length=40, null=False, blank = False) # Título de la aplicacion ej. "Editor de Texto SABER"
-    desc  = models.CharField('descripcion de la aplicación: ', max_length=80, null=False, blank = False) # descripcion de la Aplicación.
-    url_doc = models.URLField('URL de la documentación o manual de la aplicación', null=False, blank=False)  # direción local a la documentación o manual de la aplicación.
-    url_instal = models.URLField('Url aplicación', null=False, blank=False)  # direción local a la carpeta donde está instalada la aplicación.
-    url_pl = models.URLField('Url plantilla de aplicación', null=False, blank=False)  #Nombre de la plantilla  de la aplicación ej. 'app_mod_ej.html'.
-    nom_url = models.URLField('Nombre de la Url de plantilla de aplicación', null=False, blank=False)  #Nombre de la dirección de la aplicación ej. 'app_ej'.
+    titulo = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False) # Título de la aplicacion ej. "Editor de Texto SABER"
+    desc  = models.CharField('descricion de la aplicacion: ', max_length=80, null=False, blank = False) # descripcion de la Aplicación.
+    url_doc = models.URLField('Direción local a la documentación o manual de la aplicación', null=False, blank=False)  # direción local a la documentación o manual de la aplicación.
     version = models.DecimalField('Versión de desarrollo de la aplicación: ', max_digits=4, decimal_places=2, null=False, blank = False)  # Versión de desarrollo de la aplicación. "0.01.04"
     mod_prin = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)# Id del módulo principal con el cual se integra.
     ver_mod = models.DecimalField('Versión de desarrollo de la aplicación: ', max_digits=4, decimal_places=2, null=False, blank = False)  # Versión mínima del módulo principal con la que la actual versión de la aplicación es compatible.
-    activo = models.BooleanField('la aplicacion está activa o no', default=False)# estatus de la aplicacion para indicar  el modulo de Administración
+    activo = models.BooleanField('estatus de la aplicacion ', default=False)# estatus de la aplicacion para indicar  el modulo de Administración
     instalada = models.BooleanField('¿La aplicación se encuentra instalada? ', default=False) # ¿La aplicación se encuentra instalada? sí =True; no= False.
     visible = models.BooleanField('¿Activa o desactiva la visibilidad de la aplicacion.?', default=False)  # Activa o desactiva la visibilidad de la aplicacion.
 
-    #NOTA: #nota ls_func foranea, rol
+#NOTA: #nota ls_func foranea, rol
     class Meta:
         verbose_name = 'app_mod'
         verbose_name_plural = 'app_mods'
@@ -230,8 +229,8 @@ class app_mod(models.Model):
     def __str__(self):
         return '{}'.format(self.titulo)
 
+#identifica si es app, android, web etc
 class listado_aplicativo(models.Model): 
-    #identifica si es app, android, web etc
     id_aplicativo =  models.AutoField(primary_key = True)
     nom_aplicativo = models.CharField('aplicativo nombre: ', max_length=30, null=False, blank = False)
     tipo_aplicativo = models.IntegerField(null = False, blank = False, choices = TIPO_APP, default = 0) # Ver diccionario TIPO_ROL
@@ -244,17 +243,16 @@ class listado_aplicativo(models.Model):
     def __str__(self):
         return '{}'.format(self.nom_aplicativo)
 
-
+#Clase que almacena los datos de las Extensiones.
 class mod_ext(models.Model):
-    #Clase que almacena la información de módulos externos instalados.
     id_mod_ext = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
-    titulo_mod_ext = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False) # título del módulo
-    desc = models.TextField('Descripción del Módulo: ', max_length=255) # Descripción del módulo externo instalado
-    ico = models.CharField('nombre del la imagen del ícono a utilizar:', max_length=40) #nombre del ícono a utilizar según las funestes disponibles ej. 'person' (material icons por defecto)
-    
+    titulo_ext = models.CharField('Título de la aplicacion: ', max_length=40, null=False, blank = False)
+    mod_prin_ext = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)
+#    ls_mods_ext = models.ManyToManyField(mod, help_text="Listado de id de módulos a los que está vinculada la aplicación")
+
     class Meta:
-        verbose_name = 'mod_ext'
-        verbose_name_plural = 'mod_ext'
+        verbose_name = 'ext_mod'
+        verbose_name_plural = 'ext_mods'
 
     def __str__(self):
         return '{}'.format(self.titulo_ext)
@@ -300,7 +298,7 @@ class func_app(models.Model):
     com_exc = models.CharField('Comando de Ejecución de la Función: ', max_length=20, null=False, blank = False) # Comando de Ejecución de la Función
     text = models.CharField('Nombre de Función: ', max_length=20, null=False, blank = False) # Nombre de Función para menús o etiquetas.
     context = models.CharField('Contexto: ', max_length=20, null=False, blank = False) # Nombre de Función para menús contextuales o emergentes y panel de inf.
-    activa = models.BooleanField('¿Activa o desactivada?', default=False)  # La función está activa o desactiva.
+    activa = models.BooleanField('¿Activa o desactiva.?', default=False)  # La función está activa o desactiva.
     indice = models.IntegerField() #Índice de selección, para navegar con el tabulador.
     # realizar una tabla de ralcion con rol y permisos
     #[[0,False,True,False,False]]
@@ -316,8 +314,7 @@ class func_app(models.Model):
         return '{}'.format(self.nom_func)
 
 
-class rl_mod_app_mod(models.Model):  
-    # relacion Listado de id de aplicaciones vinculadas al módulo.
+class rl_mod_app_mod(models.Model):  # relacion Listado de id de aplicaciones vinculadas al módulo.
     id_mod = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)
     ls_app = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False)
 
@@ -325,8 +322,7 @@ class rl_mod_app_mod(models.Model):
         verbose_name = 'rl_mod_app_mod'
         verbose_name_plural = 'rl_mod_app_mods'
 
-class rl_mod_rol(models.Model): 
-    # relacion Listado de id de roles vinculados al módulo - rol
+class rl_mod_rol(models.Model): # relacion Listado de id de roles vinculados al módulo - rol
     id_mod = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)#
     ls_rol = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)#
 
@@ -334,8 +330,7 @@ class rl_mod_rol(models.Model):
         verbose_name = 'rl_mod_rol'
         verbose_name_plural = 'rl_mod_rols'
 
-class rl_mod_func(models.Model): 
-    #Listado de funciones propias del módulo, objetos de la clase func_app().
+class rl_mod_func(models.Model): #Listado de funciones propias del módulo, objetos de la clase func_app().
     id_mod = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)#
     ls_func =  models.ForeignKey(func_app, on_delete=models.CASCADE, null=False, blank =False)#) # Listado de funciones propias del módulo, objetos de la clase func_app().
 

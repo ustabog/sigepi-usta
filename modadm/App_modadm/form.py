@@ -41,12 +41,12 @@ class frm_con_list_app(forms.ModelForm):
         model = listado_aplicativo
         fields = '__all__'
 
-class frm_con_mod_ext(forms.ModelForm):
+class frm_con_ext_mod(forms.ModelForm):
     class Meta:
-        model = mod_ext
+        model = ext_mod
         fields = '__all__'
 
-class frm_con_app_ext(forms.ModelForm):
+class frm_con_ext_app(forms.ModelForm):
     class Meta:
         model = app_ext
         fields = '__all__'
