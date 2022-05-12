@@ -6,7 +6,7 @@ from modadm.App_modadm.models import *
 """
 Clases de la Aplicación Registro de Proyectos de Investigación
 """
-
+'''
 class tipos_pry(models.Model):
     #Clase que contiene los tipos de proyectos Investigación descriptiva y de catalogación.
     #Investigación correlacional, Investigación explicativa, Investigación comparativa
@@ -32,7 +32,7 @@ class inf_pry(models.Model):
     prom_frm = models.IntegerField(null = False, blank = False, choices = TIPO_FORM_CO, default = 0)  # Nivel de formación promedio del grupo 0:Profesional; 1:esp.; 2:Maestría; 3. Doctorado.
     conv = models.CharField('Convenio propuesto  ', max_length=40, null=False, blank= False)  # Convenio propuesto o previsto para la realización de la investigación.
     dur =  models.IntegerField('Duración del proyecto valores dentro de un rango.') # Duración del proyecto valores dentro de un rango.
-    und_dur =  models.IntegerField(null = False, blank = False, choices = UNIDAD_MED_TIEM, default = 0)   # unidad de medida del rango de tiempo, 0:seg; 1:min; 2:horas; 3:meses; 4:años.
+    #und_dur =  models.IntegerField(null = False, blank = False, choices = UNIDAD_MED_TIEM, default = 0)   # unidad de medida del rango de tiempo, 0:seg; 1:min; 2:horas; 3:meses; 4:años.
     geo = models.CharField('Aŕea geográfica que abarca el proyecto.', max_length=40, null=False, blank= False) # Aŕea geográfica que abarca el proyecto.
     resu = models.TextField('Resumen del proyecto.') # Resumen del proyecto.
     url_ap = models.URLField(' Url de la imágen del árbol de problemas.', null=False, blank=False) # Url de la imágen del árbol de problemas.
@@ -50,7 +50,7 @@ class app_reg_pry(models.Model):
     #Clase que contiene los objetos de la App Registro de Proyectos
     id_app_reg_pry = models.AutoField(primary_key = True)  # identificador unico para  App Registro de Proyectos
     id_mod_app = models.ForeignKey(app_mod, on_delete=models.CASCADE, null=False, blank =False, default = 0)
-    id_mod_pry = models.ForeignKey(mod_pry, on_delete=models.CASCADE, null=False, blank =False) # Identificador único ddel modulo proyecto
+    #id_mod_pry = models.ForeignKey(mod_pry, on_delete=models.CASCADE, null=False, blank =False) # Identificador único ddel modulo proyecto
     nomb_app_reg_pry  = models.CharField('nombre de la App Registro ', max_length=40, null=False, blank= False) # nombre de la App Registro de Proyectos
     desc_app_reg_pry  = models.CharField('Descripcion de la Ap  id_grup_bd = p ', max_length=40, null=False, blank= False) # descripcion de la App Registro de Proyectos
     status_app_reg_pry  =  models.BooleanField('Estatus de la aplicacion', default= True) # estatus de la App Registro de Proyectos
@@ -58,3 +58,4 @@ class app_reg_pry(models.Model):
     class Meta:
         verbose_name = 'app_reg_pry'
         verbose_name_plural = 'app_reg_prys'
+'''

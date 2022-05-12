@@ -2,7 +2,6 @@ from django.urls import path
 from django.contrib.auth.views import *
 #from rest_framework.routers import DefaultRouter
 from modpry.App_regpry.views import *
-from modpry.App_modpry.views import *
 from .models import *
 
 urlpatterns = [ 
