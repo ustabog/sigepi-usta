@@ -171,67 +171,67 @@ class vts_del_list_app(DeleteView, PermissionRequiredMixin):
 
 ###### CRUD EXTENSIONES DE MODULO #############################################
 
-class vts_reg_ext_mod(CreateView, PermissionRequiredMixin):
+class vts_reg_mod_ext(CreateView, PermissionRequiredMixin):
     #crear información de las personas
-    model = ext_mod
-    form_class = frm_con_ext_mod
+    model = mod_ext
+    form_class = frm_con_mod_ext
     template_name = 'App_ma_frm_crearextmod.html'
-    success_url = reverse_lazy('consulta_ext_mod')
+    success_url = reverse_lazy('consulta_mod_ext')
     success_message = 'La extesion de modulo fue creada satisfactoriamente'
-    permission_required = 'ext_mod.add_ext_mod'
+    permission_required = 'mod_ext.add_mod_ext'
 
-class vts_ls_ext_mod(ListView, PermissionRequiredMixin): 
-    model = ext_mod
-    form_class = frm_con_ext_mod
+class vts_ls_mod_ext(ListView, PermissionRequiredMixin): 
+    model = mod_ext
+    form_class = frm_con_mod_ext
     template_name = 'cn_extmod.html'
-    success_url = reverse_lazy('consulta_ext_mod')
+    success_url = reverse_lazy('consulta_mod_ext')
     success_message = 'Listado cargado correctamente'
-    permission_required = 'ext_mod.view_ext_mod'
+    permission_required = 'mod_ext.view_mod_ext'
 
-class vts_edt_ext_mod(UpdateView, PermissionRequiredMixin):
-    model = ext_mod
-    form_class = frm_con_ext_mod
+class vts_edt_mod_ext(UpdateView, PermissionRequiredMixin):
+    model = mod_ext
+    form_class = frm_con_mod_ext
     template_name = 'App_ma_frm_crearextmod.html'
-    success_url = reverse_lazy('consulta_ext_mod')
-    permission_required = 'ext_mod.change_ext_mod'
+    success_url = reverse_lazy('consulta_mod_ext')
+    permission_required = 'mod_ext.change_mod_ext'
     
-class vts_del_ext_mod(DeleteView, PermissionRequiredMixin):
-    model = ext_mod
-    template_name = 'App_ma_del_ext_mod.html'
-    success_url = reverse_lazy('consulta_ext_mod')
-    permission_required = 'ext_mod.delete_ext_mod'
+class vts_del_mod_ext(DeleteView, PermissionRequiredMixin):
+    model = mod_ext
+    template_name = 'App_ma_del_mod_ext.html'
+    success_url = reverse_lazy('consulta_mod_ext')
+    permission_required = 'mod_ext.delete_mod_ext'
 
 ###### CRUD APLICACIONES EXTERNAS #############################################
 
-class vts_reg_ext_app(CreateView, PermissionRequiredMixin):
+class vts_reg_app_ext(CreateView, PermissionRequiredMixin):
     #crear información de las personas
-    model = ext_app
-    form_class = frm_con_ext_app
+    model = app_ext
+    form_class = frm_con_app_ext
     template_name = 'App_ma_frm_crearextapp.html'
-    success_url = reverse_lazy('consulta_ext_app')
+    success_url = reverse_lazy('consulta_app_ext')
     success_message = 'La aplicacion externa fue creada satisfactoriamente'
-    permission_required = 'ext_app.add_ext_app'
+    permission_required = 'app_ext.add_app_ext'
 
-class vts_ls_ext_app(ListView, PermissionRequiredMixin): 
-    model = ext_app
-    form_class = frm_con_ext_app
+class vts_ls_app_ext(ListView, PermissionRequiredMixin): 
+    model = app_ext
+    form_class = frm_con_app_ext
     template_name = 'cn_extapp.html'
-    success_url = reverse_lazy('consulta_ext_app')
+    success_url = reverse_lazy('consulta_app_ext')
     success_message = 'Listado cargado correctamente'
-    permission_required = 'ext_app.view_ext_app'
+    permission_required = 'app_ext.view_app_ext'
 
-class vts_edt_ext_app(UpdateView, PermissionRequiredMixin):
-    model = ext_app
-    form_class = frm_con_ext_app
+class vts_edt_app_ext(UpdateView, PermissionRequiredMixin):
+    model = app_ext
+    form_class = frm_con_app_ext
     template_name = 'App_ma_frm_crearextapp.html'
-    success_url = reverse_lazy('consulta_ext_app')
-    permission_required = 'ext_app.change_ext_app'
+    success_url = reverse_lazy('consulta_app_ext')
+    permission_required = 'app_ext.change_app_ext'
     
-class vts_del_ext_app(DeleteView, PermissionRequiredMixin):
-    model = ext_app
-    template_name = 'App_ma_del_ext_app.html'
-    success_url = reverse_lazy('consulta_ext_app')
-    permission_required = 'ext_mod.delete_ext_app'
+class vts_del_app_ext(DeleteView, PermissionRequiredMixin):
+    model = app_ext
+    template_name = 'App_ma_del_app_ext.html'
+    success_url = reverse_lazy('consulta_app_ext')
+    permission_required = 'mod_ext.delete_app_ext'
 
 
 

@@ -35,15 +35,15 @@ urlpatterns = [
     path('eli_lsapp/<int:pk>', vts_del_list_app.as_view(), name ='eli_lsapp'),
 
 # Extensiones de modulo
-    path('reg_extmod/', vts_reg_ext_mod.as_view(), name ='reg_ext_mod'),
-    path('cons_extmod/', vts_ls_ext_mod.as_view(), name ='consulta_ext_mod'),
-    path('edt_extmod/<int:pk>', vts_edt_ext_mod.as_view(), name ='edt_ext_mod'),
-    path('eli_extmod/<int:pk>', vts_del_ext_mod.as_view(), name ='eli_ext_mod'),
+    path('reg_extmod/', vts_reg_mod_ext.as_view(), name ='reg_mod_ext'),
+    path('cons_extmod/', vts_ls_mod_ext.as_view(), name ='consulta_mod_ext'),
+    path('edt_extmod/<int:pk>', vts_edt_mod_ext.as_view(), name ='edt_mod_ext'),
+    path('eli_extmod/<int:pk>', vts_del_mod_ext.as_view(), name ='eli_mod_ext'),
 
 # Aplicaciones externas
-    path('reg_extapp/', vts_reg_ext_app.as_view(), name ='reg_ext_app'),
-    path('cons_extapp/', vts_ls_ext_app.as_view(), name ='consulta_ext_app'),
-    path('edt_extapp/<int:pk>', vts_edt_ext_app.as_view(), name ='edt_ext_app'),
-    path('eli_extapp/<int:pk>', vts_del_ext_app.as_view(), name ='eli_ext_app'),
+    path('reg_extapp/', vts_reg_app_ext.as_view(), name ='reg_app_ext'),
+    path('cons_extapp/', vts_ls_app_ext.as_view(), name ='consulta_app_ext'),
+    path('edt_extapp/<int:pk>', vts_edt_app_ext.as_view(), name ='edt_app_ext'),
+    path('eli_extapp/<int:pk>', vts_del_app_ext.as_view(), name ='eli_app_ext'),
 
 ]
