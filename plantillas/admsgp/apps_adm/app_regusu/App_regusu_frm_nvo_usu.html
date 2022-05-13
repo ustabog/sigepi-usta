@@ -1,7 +1,7 @@
-{% extends 'app_base_adm.html' %}
+{% extends 'inicio_adm.html' %}
 {% load static %}
 {% block titulo %} Formulario de registro nuevo usuario {% endblock titulo %}
-{% block articulo %}
+{% block app %}
     {% if form.errors %}
         <p>El usuario no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
     {% endif %}
@@ -13,4 +13,4 @@
             <button type="submit">Registrar</button>
         </form>
     </div>
-{% endblock articulo %}
+{% endblock app %}

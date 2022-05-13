@@ -60,6 +60,8 @@ urlpatterns = [
     path('doc', front().vst_doc, name ='doc'),
     path('registro', front().vst_registro, name ='registro'),
 
+    #Direcciones módulo de proyectos
+    path('pry/', include('modpry.App_modpry.urls')),
 
     #consultas globales
     #path('conusus', vts_ls_usu.as_view(), name='consulta_usuarios'),

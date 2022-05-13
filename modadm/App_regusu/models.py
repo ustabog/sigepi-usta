@@ -214,7 +214,8 @@ class discapacidad(models.Model):
         return '{}'.format(self.tipo_disca)
 
 class usu_inf_pers(models.Model):
-    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE)
+    id
+    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=True, blank=True) # identificador de usuario
     nuip = models.CharField('Número único de identificación personal ', max_length=30, null=False, blank = False)  # número único de identificación personal sin puntos
     tipo_nuip = models.CharField( max_length=30, choices = TIPO_NUIP_CO, default =0, null=False, blank = False) # tipo de Número de identificación personal
     #nombres = models.CharField(usu.first_name, max_length=30, null=True, blank = False)
@@ -252,7 +253,8 @@ class usu_inf_contac(models.Model):
         verbose_name_plural = 'usu_inf_contacs'
 
 class red_soc(models.Model):
-    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
+
+    id_red = models.AutoField(primary_key = True)
     nombre_red = models.CharField('Dirección de Oficina (país, ciudad, dir) ', max_length=30, null=False, blank = False)
     usuario =  models.CharField('Direcció n de Oficina (país, ciudad, dir) ', max_length=20, null=False, blank = False)  #nick o dirección de usuario
     url = models.URLField('Url de página principal dentro de la red.', null=False, blank=False) #Url de página principal dentro de la red.
@@ -273,6 +275,7 @@ class rl_usu_inf_red_social(models.Model): # relacion Listado de objetos de rede
 
 
 class form_acad(models.Model):
+
     id_fa =  models.AutoField(primary_key = True) #Id de formación académica
     id_usu = models.ForeignKey(usu, on_delete=models.CASCADE)  # identificador de usuario
     instit = models.CharField('Nombre de la institucion ', max_length=25, null=False, blank = False) # Nombre de la institucion académica donde curso la formación

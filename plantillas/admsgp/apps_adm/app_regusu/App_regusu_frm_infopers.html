@@ -1,6 +1,6 @@
-{% extends 'app_base_adm.html' %}
+{% extends 'inicio_adm.html' %}
 {% block titulo %} Creación Informacion Personal {% endblock titulo %}
-{% block articulo %}
+{% block app %}
     {% if form.errors %}
         <p>La personal no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
     {% endif %}
@@ -11,4 +11,4 @@
         {{ form.as_p }}
         <input class="btn btn-primary" type="submit" value="Registrar">
     </form>
-{% endblock articulo %} 
+{% endblock app %} 

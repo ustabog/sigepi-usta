@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AppRecurConfig(AppConfig):
+class ApisgpConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'App_recur'
+    name = 'modapi.App_apisgp'

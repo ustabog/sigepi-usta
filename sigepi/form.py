@@ -1,19 +1,14 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import fields
+
 from modadm.App_modadm.models import usu
-from modadm.App_regusugr.models import usugr
+
 
 class frm_reg_usu_su(forms.ModelForm):
     #Calse que automatiza la creación de formularios de Registro de Super Usuario en Django.
     class Meta:
         model = usu
-        fields = '__all__'
-
-class frm_reg_usu_su(forms.ModelForm):
-    #Calse que automatiza la creación de formularios de Registro de Super Usuario en Django.
-    class Meta:
-        model = usugr
         fields = '__all__'
 
 class frm_reg_usu_adm(forms.ModelForm):
@@ -28,7 +23,6 @@ class frm_reg_usu_adm(forms.ModelForm):
                   'is_staff',
                   'is_active'
                  ]
-
 class frm_reg_usu(UserCreationForm):
     #Calse que automatiza la creación de formularios de Registro de Usuario en Django.
     first_name = forms.CharField(max_length=140, required=True)

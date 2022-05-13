@@ -5,6 +5,7 @@ from .models import *
 
 
 urlpatterns = [ 
+    path('creapry/',vts_reg_pry.as_view(), name = 'crea_pry'), #Crea el proyecto
     path('creapry/',vts_reg_pry.as_view(), name = 'crea_pry'), #Crea el proyecto 
     path('cons_pry/', vts_ls_pry.as_view(), name='cn_pry'), #Lista de proyectos
     path('editpry/<int:pk>/',vts_edit_pry.as_view(), name = 'edit_pry'), #Actualizar proyecto
