@@ -6,13 +6,13 @@ from .models import *
 
 class frm_reg_pry(ModelForm):
     class Meta:
-        model = pry
+        model = pry_base
         fields = '__all__'
 
 class frm_con_pry(forms.ModelForm):
     #Clase que automatiza la creación de formularios de consulta de Usuario en Django.
     class Meta:
-        model = pry
+        model = pry_base
         fields = (
             'nombre_pry',
             'desc_pry',
@@ -30,7 +30,7 @@ class frm_con_pry(forms.ModelForm):
 class frm_reg_pry(forms.ModelForm):
     #Clase para el formulario del registro de proyecto
     class Meta:
-        model = pry
+        model = pry_base
         fields = (
             'nombre_pry',
             'desc_pry',

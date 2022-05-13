@@ -1,14 +1,24 @@
 from multiprocessing import context
 from django.views.generic import UpdateView,FormView, CreateView, ListView
 from django.urls import reverse_lazy
+from django.shortcuts import render, redirect
 #from rest_framework import viewsets
+
 from .models import *
 from modpry.App_regpry.models import *
 from modpry.App_regpry.form import *
 
+class vst_pry():
+    #Clase que procesa las vistas del IU del registro de proyectos de SIGEPI-USTA
+    def vst_inicio(self,solicitud):
+    #función para plantilla de inicio
+        #stl=estilo()
+        #ctx=stl.DevolverDict()
+        return render(solicitud,"app_pry_iu.html")
+
 class vts_reg_pry(CreateView):
     #Clase de la vista de registro de proyecto 
-    model = pry
+    model = pry_base
     form_class = frm_reg_pry
     template_name = 'prysgp/app_pry/App_regpry_frm_crearpry.html'
     success_url= reverse_lazy('cn_pry')
@@ -21,9 +31,9 @@ class vts_reg_pry(CreateView):
 
 class vts_ls_pry(ListView):
     # clase para listar usuarios del sistema
-    model = pry
+    model = pry_base
     template_name = 'cn_pry.html'
-    queryset = pry.objects.order_by('nombre_pry')
+    queryset = pry_base.objects.order_by('nombre_pry')
     context_object_name = 'lista_pry'
     #success_url = reverse_lazy('cn_pry.html')
     #success_message = 'listado cargado correctamente'
@@ -36,7 +46,7 @@ class vts_ls_pry(ListView):
 '''
 class vts_ls_usu(ListView):
     # clase para listar usuarios del sistema
-    model = pry
+    model = pry_base
     template_name = 'cn_pry.html' 
 
     def get_context_data(self, **kwargs):
@@ -47,7 +57,7 @@ class vts_ls_usu(ListView):
 
 class vts_edit_pry(UpdateView):
     #Clase de la vista para actualizar el registro de proyecto 
-    model = pry
+    model = pry_base
     form_class = frm_reg_pry
     template_name = 'prysgp/app_pry/App_regpry_frm_crearpry.html'
     success_url= reverse_lazy('cn_pry')
@@ -74,14 +84,14 @@ class vst_pry():
 #Función para eliminar proyecto pero aún se almacena en la base de datos
 
     def eli_pry(self):
-        pry = get_object_or_404(pry)
-        pry.delete()
+        pry = get_object_or_404(pry_base)
+        pry_base.delete()
         messages.success(request, "Eliminado correctamente")
         return redirect(to="../cn_pry")
     
     def vts_eli_pry(self, request):
-        pry = pry.objects.get(pry)
-        pry.delete()
+        pry = pry_base.objects.get(pry)
+        pry_base.delete()
         return redirect('..+cn_pry/')
 
 '''

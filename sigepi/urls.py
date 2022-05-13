@@ -62,6 +62,7 @@ urlpatterns = [
 
     #Direcciones módulo de proyectos
     path('pry/', include('modpry.App_modpry.urls')),
+    path('pry/', include('modpry.App_regpry.urls')),
 
     #consultas globales
     #path('conusus', vts_ls_usu.as_view(), name='consulta_usuarios'),

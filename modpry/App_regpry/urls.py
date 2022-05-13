@@ -5,6 +5,7 @@ from .models import *
 
 
 urlpatterns = [ 
+    path('inicio',vst_pry().vst_inicio, name = 'inicio'), #inicio de la app de proyectos
     path('creapry/',vts_reg_pry.as_view(), name = 'crea_pry'), #Crea el proyecto
     path('creapry/',vts_reg_pry.as_view(), name = 'crea_pry'), #Crea el proyecto 
     path('cons_pry/', vts_ls_pry.as_view(), name='cn_pry'), #Lista de proyectos

@@ -1,6 +1,6 @@
 from django.db import models
-from modpry.App_modpry.models import *
 #from django.contrib.auth.models import User
+from modpry.App_regpry.models import *
 
 """
 Listas únicas, Conjuntos y Diccionarios del Módulo de Proyectos
@@ -11,10 +11,10 @@ ROL_MOD = [
     (4,'Tutor(a) Proy.'),
     (5,'Director(a) Proy.'),
     (6,'Codirector(a) Proy.'),
-    (7,'Asesor(a) Proy.')
-    (8,'Gestor(a) de Inv.')
-    (9,'Curador(a)')
-    (10,'Actor Externo')
+    (7,'Asesor(a) Proy.'),
+    (8,'Gestor(a) de Inv.'),
+    (9,'Curador(a)'),
+    (10,'Actor Externo'),
     ]
 
 
