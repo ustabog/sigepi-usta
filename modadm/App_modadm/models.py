@@ -15,7 +15,7 @@ ROL_BASE = [
     (4,'Usuario grupo'),
     (5,'Usuario Institucional'),
     (6,'Invitado'),
-    (7,'Anónimo')
+    (7,'anonimo')
     ]
 
 #Tipos de números de identificación personal

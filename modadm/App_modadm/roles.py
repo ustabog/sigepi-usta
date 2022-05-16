@@ -1,8 +1,8 @@
 
 """
-Creacion de permisos y grupos por defecto
+Creacion de permisos y grupos po defecto
 Fecha: 26/04/22
-Autor: Juan Sebastian Cely Caro
+Auto: Juan Sebastian Cely Caro
 """
 
 import logging
@@ -10,6 +10,8 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
 from django.db import migrations
 from django.db import connection
+
+
 
 GRUPOS = [
     'Sistema',
@@ -28,7 +30,7 @@ MODELOS_ADM = [
 ]
 
 MODELOS_USU = [
-    'usu', 'discapacidad', 'usu_inf_pers', 'usu_inf_contac', 'red_soc', 'form_acad', 'usu_inf_acad', 'curs_dict', 'usu_inf_prof', 'empleos', 'habilidades', 'valid_hab', 'app_reg_usu'
+    'usu', 'usu_inf_apps', 'discapacidad', 'usu_inf_pers', 'usu_inf_contac', 'red_soc', 'form_acad', 'usu_inf_acad', 'curs_dict', 'usu_inf_prof', 'empleos', 'habilidades', 'valid_hab', 'app_reg_usu'
 ]
 
 MODELOS_USUGR = [
@@ -41,7 +43,7 @@ MODELOS_USUI = [
 
 MODELOS = [
     'mod', 'app_mod', 'listado_aplicativo', 'mod_ext', 'app_ext', 'rol', 'func_app', 'usu', 'mod_adm', 'log_acc_mod', 'log_acc_pltf',
-    'discapacidad', 'usu_inf_pers', 'usu_inf_contac', 'red_soc', 'form_acad', 'usu_inf_acad', 'curs_dict', 'usu_inf_prof', 'empleos', 'habilidades', 'valid_hab', 'app_reg_usu',
+    'usu_inf_apps', 'discapacidad', 'usu_inf_pers', 'usu_inf_contac', 'red_soc', 'form_acad', 'usu_inf_acad', 'curs_dict', 'usu_inf_prof', 'empleos', 'habilidades', 'valid_hab', 'app_reg_usu',
     'etapa_gr', 'usugr', 'usu_nr', 'usugr_inf_apps', 'usugr_inf_gr', 'usugr_inf_contac', 'form_acad_gr', 'curs_ofer', 'app_reg_gr',
     'usui', 'usui_inf_apps', 'usui_inf_inst', 'usui_inf_contac', 'prog_ofer', 'conv_inv', 'app_reg_ins' 
 
