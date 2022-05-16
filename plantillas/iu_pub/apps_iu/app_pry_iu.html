@@ -8,33 +8,10 @@
 
 <!-- bloques de Aplicación-->
 {% block app%}
-<aside id="barra_herr" class="barra_herr">
-    {% block barra_herr %}
-    <div id="barra_pry" class="br_app">
-        <ul>
-            <li>
-                <a href="">Proyectos de Investigación</a>
-                <li><a href="">Mis Proyectos</a></li>
-                    <li>Personales</li> 
-                    <li>Grupales</li> 
-                    <li>Institucionales</li> 
-                    <li>InterInstitucionales</li> 
-                <li><a href="">Registro de Proy.</a></li>
-                <li><a href="">Gestión de Proy.</a></li>
-                <li><a href="">Evaluación de Proy.</a></li>
-            </li>
-            <li>
-                <a href="">Programas de Investigación</a>
-                <li><a href="">Mi Programa</a></li>
-                <li><a href="">Registro de Prog.</a></li>
-            </li>
-            <li> <a href="">Marco Lógico</a></li>
-            <li> <a href="">Convocatorias</a></li>
-            <li> <a href="">Recursos</a></li>
-            <li> <a href="">Productos de Investigación</a></li>
-        </ul>
-    </div>
-    {% endblock barra_herr %}
+<aside id="br_herr" class="br_herr">
+    {% block br_herr %}
+        {% include "br_herr_app_pry.html" %}
+    {% endblock br_herr %}
 </aside>
 <div id="panel_app" class="panel_app">
     {% block panel_app %}

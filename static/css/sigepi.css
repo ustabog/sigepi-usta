@@ -36,13 +36,14 @@
   --fuente-familia-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --fuente-familia-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
 /* características generales de cada caja */
 *, *::after,*::before{
   box-sizing: border-box;
 }
 .app {
   display:grid;
-  grid-template-columns: 15% auto auto;
+  grid-template-columns: minmax(50px,200px) auto auto;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -50,8 +51,115 @@
 .articulo {
   width: 100%;
 }
-.barra_herr {
+.br_herr {
+  /* barra de herramientas */
+  position:relative;
   width: 100%;
+  height: 100%;
+  top: 0;
+  overflow:hidden;
+  transform: translateZ(0);
+  background-color: var(--azul);
+  -webkit-transform: translateZ(0);
+  visibility: visible;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.br_herr .enc_br_herr{
+  /* encabezado barra de herramientas */
+  background-color: var(--azul);
+  width: 100%;
+  display:block;
+  padding: 0.75em	1em;
+  color: var(--blanco);
+}
+.br_herr a{
+  text-decoration: none;
+  transition: transition(all 0.6s ease);
+}
+
+.br_herr a:hover{
+  transition: transition(all 0.6s ease);
+}
+.br_app{
+  position: fixed;
+  width: 13em;
+  background-color:var(--azul);
+  height: 100%;
+  font-weight: 400; 
+  font-size: 1.2em;
+  overflow: auto;
+  padding-bottom: 6em;
+  z-index: 9;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;  
+}
+.br_app ul{
+  list-style:none;
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style:none;
+  list-style-position:inside;
+  padding: 0px;
+}
+
+.br_app ul li{
+  margin-left: 0;
+  padding-left: 0;
+  min-width: 13em;
+  display:inline-block;
+  width: 100%;
+}
+.br_app ul li a{
+  color: rgba(255,255,255,0.9);
+  font-size: 0.75em;
+  padding: 1.05em	1em;
+  position: relative;
+  display:block;
+  text-decoration: none;
+}
+.br_app ul i{
+  font-size: 3em;
+  padding-right: 0.5em;
+  width: 9em;
+  display: inline;
+  vertical-align:middle;
+}
+.br_app ul li a:hover{
+  background-color: rgba(82, 84, 121, 0.541);
+  transition:all 0.6s ease;
+}
+.br_app >ul>li>a:after {
+  content: '>';
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 0.5em;
+  width: 10px;
+  color: #fff;
+  position: absolute;
+  right: 0.75em;
+  top: 45%;
+}
+.br_app .categ_br_herr{
+  position: absolute;
+  background-color:var(--azul);
+  z-index: 9;
+  left: 3em;
+  top: 0;
+  height: 100vh;
+  transform: translateX(100px);
+  transition: all 0.5s ease;
+}
+.br_app .categ_br_herr:hover{
+  transform: translateX(0%);
+  transition: all 0.5s ease;
+}
+.br_app .categ_br_herr a:hover{
+  background-color:var(--azul-cl);
+}
+.br_app .categ_br_herr>ul>li:hover{
+  transform: translateX(0%);
+  transition: all 0.5s ease;
 }
 .btn_az_cl {
   background-color: var(--blanco);
@@ -259,7 +367,7 @@
   flex-direction: column;
   min-width: 150px;
   max-width: 450px;
-  border-right: 1px solid rgba(255, 255, 255, 0.438);
+  /* border-right: 1px solid rgba(255, 255, 255, 0.438); */
   box-shadow: 5px 5px 5px rgba(34, 44, 46, 0.25);
   overflow:auto;
 }
@@ -291,7 +399,7 @@
   width: 100%;
   height: 100%;
   display:grid;
-  grid-template-columns: 20% auto 10%;
+  grid-template-columns:minmax(100px,350px) auto minmax(0px,150px);
   overflow: auto;
 }
 .pie {
