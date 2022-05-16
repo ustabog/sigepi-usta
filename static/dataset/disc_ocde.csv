@@ -1,0 +1,218 @@
+Código;cod_campo;Campo;Disciplina;cod_disc;Area
+1.1.1.;1.1.;Ciencias naturales;1.1 Matemáticas;1;Matemáticas Puras
+1.1.2.;1.1.;;;2;Matemáticas Aplicadas
+1.1.3.;1.1.;;;3;Estadísticas y Probabilidades (Investigación en Metodologías)
+1.2.1.;1.2.;;1.2 Computación y Ciencias de la Información  ;1;Ciencias de la Computación
+1.2.2.;1.2.;;;2;Ciencias de la Información y Bioinformática
+1.3.1.;1.3.;;1.3 Ciencias Físicas;1;Física Atómica, Molecular y Química
+1.3.2.;1.3.;;;2;Física de la Materia
+1.3.3.;1.3.;;;3;Física de Partículas y Campos
+1.3.4.;1.3.;;;4;Física Nuclear
+1.3.5.;1.3.;;;5;Física de Plasmas y Fluídos
+1.3.6.;1.3.;;;6;Óptica
+1.3.7.;1.3.;;;7;Acústica
+1.3.8.;1.3.;;;8;Astronomía
+1.4.1.;1.4.;;1.4 Ciencias Químicas;1;Química Orgánica
+1.4.2.;1.4.;;;2;Química Inorgánica y Nuclear
+1.4.3.;1.4.;;;3;Química Física
+1.4.4.;1.4.;;;4;Ciencias de los Polímeros
+1.4.5.;1.4.;;;5;Electroquímica
+1.4.6.;1.4.;;;6;Química de los Coloides
+1.4.7.;1.4.;;;7;Química Analítica
+1.5.1.;1.5.;;1.5 Ciencias de la Tierra y Medioambientales;1;Geociencias (Multidisciplinario)
+1.5.2.;1.5.;;;2;Mineralogía
+1.5.3.;1.5.;;;3;Paleontología
+1.5.4.;1.5.;;;4;Geoquímica y Geofísica
+1.5.5.;1.5.;;;5;Geografía Física
+1.5.6.;1.5.;;;6;Geología
+1.5.7.;1.5.;;;7;Vulcanología
+1.5.8.;1.5.;;;8;Ciencias del Medio Ambiente
+1.5.9.;1.5.;;;9;Meteorología y Ciencias Atmosféricas
+1.5.10.;1.5.;;;10;Investigación del Clima
+1.5.11.;1.5.;;;11;Oceanografía, Hidrología y Recursos del Agua
+1.6.1.;1.6.;;1.6 Ciencias Biológicas;1;Biología Celular y Microbiología
+1.6.2.;1.6.;;;2;Virología
+1.6.3.;1.6.;;;3;Bioquímica y Biología Molecular
+1.6.4.;1.6.;;;4;Métodos de Investigación en Bioquímica
+1.6.5.;1.6.;;;5;Micología
+1.6.6.;1.6.;;;6;Biofísica
+1.6.7.;1.6.;;;7;Genética y Herencia
+1.6.8.;1.6.;;;8;Biología Reproductiva
+1.6.9.;1.6.;;;9;Biología del Desarrollo
+1.6.10.;1.6.;;;10;Botánica y Ciencias de las Plantas
+1.6.11.;1.6.;;;11;Zoología, Ornitología, Entomología, Ciencias Biológicas del Comportamiento
+1.6.12.;1.6.;;;12;Biología Marina y del Agua
+1.6.13.;1.6.;;;13;Ecología
+1.6.14.;1.6.;;;14;Conservación de la Biodiversidad
+1.6.15.;1.6.;;;15;Biología (Teórica, Matemática, Criobiología, Evolutiva)
+1.6.16.;1.6.;;;16;Otras Biologías
+1.7.1.;1.7.;;1.7 Otras Ciencias Naturales;1;Otras Ciencias Naturales
+2.1.1.;2.1.;Ingeniería y tecnología;2.1 Ingeniería Civil;1;Ingeniería Civil 
+2.1.2.;2.1.;;;2;Ingeniería Arquitectónica 
+2.1.3.;2.1.;;;3;Ingeniería de la Construcción 
+2.1.4.;2.1.;;;4;Ingeniería Estructural y Municipal 
+2.1.5.;2.1.;;;5;Ingeniería del Transporte
+2.2.1.;2.2.;;2.2 Ingeniería Eléctrica, Electrónica e Informática  ;1;Ingeniería Eléctrica y Electrónica 
+2.2.2.;2.2.;;;2;Robótica y Control Automático 
+2.2.3.;2.2.;;;3;Automatización y Sistemas de Control 
+2.2.4.;2.2.;;;4;Ingeniería de Sistemas y Comunicaciones 
+2.2.5.;2.2.;;;5;Telecomunicaciones 
+2.2.6.;2.2.;;;6;Hardware y Arquitectura de Computadores
+2.3.1.;2.3.;;2.3 Ingeniería Mecánica;1;Ingeniería Mecánica 
+2.3.2.;2.3.;;;2;Mecánica Aplicada 
+2.3.3.;2.3.;;;3;Termodinámica 
+2.3.4.;2.3.;;;4;Ingeniería Aeroespacial 
+2.3.5.;2.3.;;;5;Ingeniería Nuclear 
+2.3.6.;2.3.;;;6;Ingeniería del Audio
+2.4.1.;2.4.;;2.4 Ingeniería Química;1;Ingeniería Química (Plantas y Productos) 
+2.4.2.;2.4.;;;2;Ingeniería de Procesos
+2.5.1.;2.5.;;2.5 Ingeniería de los Materiales;1;Ingeniería Mecánica 
+2.5.2.;2.5.;;;2;Cerámicos 
+2.5.3.;2.5.;;;3;Recubrimientos y películas 
+2.5.4.;2.5.;;;4;Compuestos (Laminados, Plásticos Reforzados, Fibras Sintéticas y Naturales, etc.) 
+2.5.5.;2.5.;;;5;Papel y Madera 
+2.5.6.;2.5.;;;6;Textiles
+2.6.1.;2.6.;;2.6 Ingeniería Médica;1;Ingeniería Médica 
+2.6.2.;2.6.;;;2;Tecnología médica de laboratorio (análisis de muestras, tecnologías para el diagnóstico)
+2.7.1.;2.7.;;2.7 Ingeniería Ambiental;1;Ingeniería Ambiental y Geológica e
+2.7.2.;2.7.;;;2;Geotécnicas 
+2.7.3.;2.7.;;;3;Ingeniería del Petróleo (Combustibles, Aceites), Energía y Combustibles 
+2.7.4.;2.7.;;;4;Sensores Remotos 
+2.7.5.;2.7.;;;5;Minería y Procesamiento de Minerales 
+2.7.6.;2.7.;;;6;Ingeniería Marina, Naves 
+2.7.7.;2.7.;;;7;Ingeniería Oceanográfica
+2.8.1.;2.8.;;2.8 Biotecnología Medioambiental;1;Biotecnología Medioambiental 
+2.8.2.;2.8.;;;2;Bioremediación, biotecnología para el diagnóstico (chips ADN y biosensores) en manejo ambiental 
+2.8.3.;2.8.;;;3;Ética relacionada con Biotecnología Medioambiental
+2.9.1.;2.9.;;2.9 Biotecnología Industrial;1;Biotecnología Industrial
+2.9.2.;2.9.;;;2;Tecnologías de Bioprocesamiento, Biocatálisis, Fermentación
+2.9.3.;2.9.;;;3;Bioproductos, biomateriales, bioplásticos, biocombustibles, materiales nuevos bioderivados
+2.10.1.;2.10.;;2.10 Nanotecnología;1;Nanomateriales (producción y propiedades)
+2.10.2.;2.10.;;;2;Nanoprocesos (aplicaciones a nanoescala)
+2.11.1.;2.11.;;2.11 Otras ingenierías y tecnologías;1;Alimentos y Bebidas
+2.11.2.;2.11.;;;2;Otras Ingenierías y Tecnologías
+2.11.3.;2.11.;;;3;Ingeniería de Producción
+2.11.4.;2.11.;;;4;Ingeniería Industrial
+3.1.1.;3.1.;Ciencias médica y de la salud;3.1 Medicina Básica;1;Anatomía y Morfología
+3.1.2.;3.1.;;;2;Genética humana
+3.1.3.;3.1.;;;3;Inmunología
+3.1.4.;3.1.;;;4;Neurociencias
+3.1.5.;3.1.;;;5;Farmacología y Farmacia
+3.1.6.;3.1.;;;6;Medicina Química
+3.1.7.;3.1.;;;7;Toxicología
+3.1.8.;3.1.;;;8;Fisiología (incluye Citología)
+3.1.9.;3.1.;;;9;Patología
+3.2.1.;3.2.;;3.2 Medicina Clínica;1;Andrología
+3.2.2.;3.2.;;;2;Obstetricia y Ginecología
+3.2.3.;3.2.;;;3;Pediatría
+3.2.4.;3.2.;;;4;Cardiovascular
+3.2.5.;3.2.;;;5;Vascular Periférico
+3.2.6.;3.2.;;;6;Hematología
+3.2.7.;3.2.;;;7;Respiratoria
+3.2.8.;3.2.;;;8;Cuidado crítico y de Emergencia
+3.2.9.;3.2.;;;9;Anestesiología
+3.2.10.;3.2.;;;10;Ortopédica
+3.2.11.;3.2.;;;11;Cirugía
+3.2.12.;3.2.;;;12;Radiología, Medicina Nuclear y de imágenes
+3.2.13.;3.2.;;;13;Transplantes
+3.2.14.;3.2.;;;14;Odontología, Cirugía Oral y Medicina Oral
+3.2.15.;3.2.;;;15;Dermatología y Enfermedades Venéreas
+3.2.16.;3.2.;;;16;Alergias
+3.2.17.;3.2.;;;17;Reumatología
+3.2.18.;3.2.;;;18;Endocrinología y Metabolismo (Incluye Diabetes y Transtornos Hormonales)
+3.2.19.;3.2.;;;19;Gastroenterología y Hepatología
+3.2.20.;3.2.;;;20;Urología y nefrología
+3.2.21.;3.2.;;;21;Oncología
+3.2.22.;3.2.;;;22;Oftalmología
+3.2.23.;3.2.;;;23;Otorrinonaringología
+3.2.24.;3.2.;;;24;Psiquiatría
+3.2.25.;3.2.;;;25;Neurología clínica
+3.2.26.;3.2.;;;26;Geriatría
+3.2.27.;3.2.;;;27;Medicina General e Interna
+3.2.28.;3.2.;;;28;Otro temas de Medicina Clínica
+3.2.29.;3.2.;;;29;Medicina complementaria (sistemas alternativos)
+3.3.1.;3.3.;;3.3 Ciencias de la Salud;1;Ciencias del Cuidado de la Salud y Servicios (Administración de Hospitales, financiamiento)
+3.3.2.;3.3.;;;2;Políticas de Salud y Servicios
+3.3.3.;3.3.;;;3;Enfermería
+3.3.4.;3.3.;;;4;Nutrición y Dietas
+3.3.5.;3.3.;;;5;Salud Pública
+3.3.6.;3.3.;;;6;Medicina Tropical
+3.3.7.;3.3.;;;7;Parasitología
+3.3.8.;3.3.;;;8;Enfermedades Infecciosas
+3.3.9.;3.3.;;;9;Epidemiología
+3.3.10.;3.3.;;;10;Salud Ocupacional
+3.3.11.;3.3.;;;11;Ciencias del Deporte
+3.3.12.;3.3.;;;12;Ciencias Socio Biomédicas (Planificación Familiar, Salud Sexual, Efectos políticos y sociales
+3.3.13.;3.3.;;;13;Ética
+3.3.14.;3.3.;;;14;Abuso de substancias
+3.4.1.;3.4.;;3.4 Biotecnología en Salud;1;Biotecnología relacionada con la salud
+3.4.2.;3.4.;;;2;Tecnologías para la manipulación de células, tejidos, Órganos o el organismo (Reproducción asistida)
+3.4.3.;3.4.;;;3;Tecnología para la Identificación y Funcionamiento del ADN, proteínas y encimas 
+3.4.4.;3.4.;;;4;Biomateriales (Relacionados con implantes, dispositivos, sensores)
+3.4.5.;3.4.;;;5;Ética relacionada con la Biomedicina
+3.5.1.;3.5.;;3.5 Otras Ciencias Médicas;1;Forénsicas
+3.5.2.;3.5.;;;2;Otras Ciencias Médicas
+3.5.3.;3.5.;;;3;Fonoaudiología
+4.1.1.;4.1.;Ciencias agrícolas;4.1 Agricultura, Silvicultura y Pesca;1;Agricultura
+4.1.2.;4.1.;;;2;Forestal
+4.1.3.;4.1.;;;3;Pesca
+4.1.4.;4.1.;;;4;Ciencias del Suelo
+4.1.5.;4.1.;;;5;Horticultura y viticultura
+4.1.6.;4.1.;;;6;Agronomía
+4.1.7.;4.1.;;;7;Protección y nutrición de las plantas
+4.2.1.;4.2.;;4.2 Ciencias Animales y lechería;1;Ciencias Animales y lechería
+4.2.2.;4.2.;;;2;Crías y mascotas
+4.3.1.;4.3.;;4.3 Ciencias Veterinarias;1;Ciencias Veterinarias
+4.4.1.;4.4.;;4.4 Biotecnología Agrícola;1;Biotecnología Agrícola y de alimentos 
+4.4.2.;4.4.;;;2;Tecnología MG (sembradíos y ganado), clonamiento de ganado, selección asistida, dignóstico 
+4.4.3.;4.4.;;;3;Ética relacionada a biotecnología agrícola
+4.5.1.;4.5.;;4.5 Otras Ciencias Agrícolas;1;Otras Ciencias Agrícolas
+5.1.1.;5.1.;Ciencias sociales;5.1 Psicología ;1;Psicología (incluye relaciones hombre-máquina)
+5.1.2.;5.1.;;;2;Psicología (incluye terapias de aprendizaje, habla, visual y otras discapacidades físicas y mentales)
+5.2.1.;5.2.;;5.2 Economía y Negocios;1;Economía
+5.2.2.;5.2.;;;2;Econometría
+5.2.3.;5.2.;;;3;Relaciones Industriales
+5.2.4.;5.2.;;;4;Negocios y Management
+5.3.1.;5.3.;;5.3 Ciencias de la Educación;1;Educación General (Incluye Capacitación, Pedagogía)
+5.3.2.;5.3.;;;2;Educación Especial (Para estudiantes dotados y aquellos con dificultades de aprendizaje)
+5.4.1.;5.4.;;5.4 Sociología;1;Sociologia
+5.4.2.;5.4.;;;2;Demografía
+5.4.3.;5.4.;;;3;Antropología
+5.4.4.;5.4.;;;4;Etnología
+5.4.5.;5.4.;;;5;Temas especiales (Estudio de Género, Temas Sociales, Estudios de la Familia, Trabajo Social)
+5.5.1.;5.5.;;5.5 Derecho;1;Derecho
+5.5.2.;5.5.;;;2;Penal
+5.6.1.;5.6.;;5.6 Ciencias Políticas;1;Ciencias Políticas
+5.6.2.;5.6.;;;2;Administración Pública
+5.6.3.;5.6.;;;3;Teoría Organizacional
+5.7.1.;5.7.;;5.7 Geografía Social y Económica;1;Ciencias Ambientales (Aspectos Sociales)
+5.7.2.;5.7.;;;2;Geografía Económica y Cultural
+5.7.3.;5.7.;;;3;Estudios Urbanos (Planificación y Desarrollo)
+5.7.4.;5.7.;;;4;Planificación del Transporte y Aspectos Sociales del Transporte
+5.8.1.;5.8.;;5.8 Periodismo y Comunicaciones;1;Periodismo
+5.8.2.;5.8.;;;2;Ciencias de la Información (Aspectos Sociales)
+5.8.3.;5.8.;;;3;Bibliotecología
+5.8.4.;5.8.;;;4;Medios y Comunicación Social
+5.9.1.;5.9.;;5.9 Otras Ciencias Sociales;1;Ciencias Sociales, Interdisciplinaria
+5.9.2.;5.9.;;;2;Otras Ciencias Sociales
+6.1.1.;6.1.;Humanidades;6.1 Historia y Arqueología  ;1;Historia
+6.1.2.;6.1.;;;2;Arqueología
+6.2.1.;6.2.;;6.2 Idiomas y Literatura;1;Estudios Generales del Lenguaje
+6.2.2.;6.2.;;;2;Idiomas Específicos
+6.2.3.;6.2.;;;3;Estudios Literarios
+6.2.4.;6.2.;;;4;Teoría Literaria
+6.2.5.;6.2.;;;5;Literatura Específica
+6.2.6.;6.2.;;;6;Lingüística
+6.3.1.;6.3.;;6.3 Arte ;1;Arte
+6.3.2.;6.3.;;;2;Historia del Arte
+6.3.3.;6.3.;;;3;Diseño Arquitectónico
+6.3.4.;6.3.;;;4;Artes de la Representación (Musicología, Ciencias del Teatro, Dramaturgia)
+6.3.5.;6.3.;;;5;Estudios del Folclor
+6.3.6.;6.3.;;;6;Estudios de Cine, Radio y Televisión
+6.3.7.;6.3.;;;7;Arquitectura y Urbanismo
+6.3.8.;6.3.;;;8;Diseño Industrial y otros diseños
+6.4.1.;6.4.;;6.4 Otras Historias;1;Historia de la Ciencia y Tecnología
+6.4.2.;6.4.;;;2;Otras historias especializadas
+6.5.1.;6.5.;;6.5 Otras Humanidades;1;Otras Humanidades
+6.5.2.;6.5.;;;2;Filosofía
+6.5.3.;6.5.;;;3;Teología

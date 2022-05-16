@@ -17,9 +17,9 @@ ROL_MOD = [
     (10,'Actor Externo'),
     ]
 
-
 #Clases del Módulo Proyectos de SIGEPI
 class mod_pry(models.Model):
+    #Clase de la aplicación de módulo de proyecto
     id_mod_pry = models.AutoField(primary_key = True) # Identificador único
     nomb_mod_pry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la aplicacion
     desc_mod_pry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion del aplicacion
@@ -29,24 +29,101 @@ class mod_pry(models.Model):
         verbose_name = 'mod_pry'
         verbose_name_plural = 'mod_prys'
 
-class pry_base(models.Model):
-    #clase base de registro de proyecto
-    id_pry=models.AutoField(primary_key = True) #Identificador unico del proyecto
-    cod_pry = models.CharField('Código proyecto:', max_length=50) # código unico del proyecto
-    nombre_pry=models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
-    desc_pry=models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto
-    tipo_pry=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto - diccionario TIPO_PRY
-    prop_pry=models.CharField('Propietario del proyecto: ', max_length=255)#Propietario del proyecto
-    est_pry = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)
-    #estado - por defecto borrador
-    # debe esta diseño y gestion como opción, DIVIDIR LA CLASE EN PARTICIPANTES, beneficiarios, 
-    #el ususario puede crear nuevos tipos, ejemplo otros 
-    #campo saber, campo disciplinar, nuevo conocimiento 
-    #programa: categoria de proyectos, ampliar, perosnas, grupos, divisiones, div academ y adminis, dependencias,
-    #tipos progr categorias
-    #información de usuario: clasificar el rol con rol de investigador, procesos(estado del proceso)
-    #cvalc ordic otra clase de visibilidad o publicidad del investigador, mirar desde ad,, enlace de esa información, 
+class conv_pry(models.Model):
+    #Clase de la aplicación de convenios del módulo de proyecto
+    id_mod_pry = models.AutoField(primary_key = True) # Identificador único
+    nomb_conv_pry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la aplicacion de convenios del módulo de proyectos
+    desc_conv_pry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion del aplicacion de convenios del módulo de proyectos
+    status_conv_pry = models.BooleanField('¿status de la aplicacion.?', default=False)  # estatus de la aplicacion de convenios del módulo de proyectos
     
     class Meta:
-        verbose_name = 'pry_base'
-        verbose_name_plural = 'proyectos base'
+        verbose_name = 'conv_pry'
+        verbose_name_plural = 'conv_prys'
+
+class crono_pry(models.Model):
+    #Clase de la aplicación cronograma del módulo de proyecto
+    id_crono_pry = models.AutoField(primary_key = True) # Identificador único
+    nomb_crono_pry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la aplicacion cronograma del módulo de proyectos
+    desc_crono_pry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion del aplicacion cronograma del módulo de proyectos
+    status_crono_pry = models.BooleanField('¿status de la aplicacion.?', default=False)  # estatus de la aplicacion cronograma del módulo de proyectos
+    
+    class Meta:
+        verbose_name = 'crono_pry'
+        verbose_name_plural = 'crono_prys'
+
+class dis_inv_pry(models.Model):
+    #Clase de la aplicación diseño de investigación del módulo de proyecto
+    id_disinv_pry = models.AutoField(primary_key = True) # Identificador único
+    nomb_disinv_pry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la aplicacion diseño de investigación del módulo de proyecto
+    desc_disinv_pry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion de la aplicacion diseño de investigación del módulo de proyecto
+    status_disinv_pry = models.BooleanField('¿status de la aplicacion.?', default=False)  # estatus de la aplicacion diseño de investigación del módulo de proyecto
+    
+    class Meta:
+        verbose_name = 'dis_inv_pry'
+        verbose_name_plural = 'dis_inv_prys'  
+
+class eva_pry(models.Model):
+    #Clase de la aplicación de evaluación de proyectos 
+    id_eva_pry = models.AutoField(primary_key = True) # Identificador único
+    nomb_eva_pry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la aplicación de evaluación de proyectos 
+    desc_eva_pry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion de la aplicación de evaluación de proyectos 
+    status_eva_pry = models.BooleanField('¿status de la aplicacion.?', default=False)  # estatus de la aplicación de evaluación de proyectos 
+    
+    class Meta:
+        verbose_name = 'eva_pry'
+        verbose_name_plural = 'eva_prys' 
+
+class ges_pry(models.Model):
+    #Clase de la aplicación de gestión de proyectos 
+    id_ges_pry = models.AutoField(primary_key = True) # Identificador único
+    nomb_ges_pry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la aplicación de gestión de proyectos 
+    desc_ges_pry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion de la aplicación de gestión de proyectos 
+    status_ges_pry = models.BooleanField('¿status de la aplicacion.?', default=False)  # estatus de la aplicación de gestión de proyectos 
+    
+    class Meta:
+        verbose_name = 'ges_pry'
+        verbose_name_plural = 'ges_prys' 
+
+class mlog_pry(models.Model):
+    #Clase de la aplicación de marco lógico
+    id_mlog_pry = models.AutoField(primary_key = True) # Identificador único
+    nomb_mlog_pry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la aplicación de marco lógico del proyecto
+    desc_mlog_pry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion de la aplicación de marco lógico del proyecto
+    status_mlog_pry = models.BooleanField('¿status de la aplicacion.?', default=False)  # estatus de la aplicación de marco lógico del proyecto
+    
+    class Meta:
+        verbose_name = 'mlog_pry'
+        verbose_name_plural = 'mlog_prys'   
+
+class recur_pry(models.Model):
+    #Clase de la aplicación de recursos del proyecto
+    id_recur_pry = models.AutoField(primary_key = True) # Identificador único
+    nomb_recur_pry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la aplicación de recursos del proyecto
+    desc_recur_pry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion de la aplicación de recursos del proyecto
+    status_recur_pry = models.BooleanField('¿status de la aplicacion.?', default=False)  # estatus de la aplicación de recursos del proyecto
+    
+    class Meta:
+        verbose_name = 'recur_pry'
+        verbose_name_plural = 'recur_prys' 
+
+class regprgi_pry(models.Model):
+    #Clase de la Aplicación Registro de Programas de Investigación
+    id_regprgi = models.AutoField(primary_key = True) # Identificador único
+    nomb_regprgi = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la Aplicación Registro de Programas de Investigación
+    desc_regprgi  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion de la Aplicación Registro de Programas de Investigación
+    status_regprgi = models.BooleanField('¿status de la aplicacion.?', default=False)  # estatus de la Aplicación Registro de Programas de Investigación
+    
+    class Meta:
+        verbose_name = 'regprgi_pry'
+        verbose_name_plural = 'regprgi_prys'
+
+class regpry_pry(models.Model):
+    #Clase de la Aplicación Registro de proyectos
+    id_regpry = models.AutoField(primary_key = True) # Identificador único
+    nomb_regpry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la Aplicación Registro de proyectos
+    desc_regpry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion de la Aplicación Registro de proyectos
+    status_regpry = models.BooleanField('¿status de la aplicacion.?', default=False)  # estatus de la Aplicación Registro de proyectos
+    
+    class Meta:
+        verbose_name = 'reg_pry'
+        verbose_name_plural = 'reg_prys'

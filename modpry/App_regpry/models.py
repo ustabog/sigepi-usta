@@ -41,6 +41,14 @@ TIPO_PRY=[
     (10,'Propiedad industrial'),
     (11,'Revisión crítica'),
     ]
+NIVEL_PRY =[
+    #Nivel del proyecto
+    (0,'Individual'),
+    (1,'Grupal'),
+    (2,'Institucional'),
+    (3,'Interinstitucional'),
+    (4,'Intergrupal'),
+    ]
 TIPO_INV_FIN=[
     #por fuente de financiación:
     (0,'Estatal'), #Recursos Estatales (Públicos)
@@ -234,9 +242,10 @@ TIPO_FORM_CO = [
     (12,'Curso libre')
     ]
 
-'''
+
 #clase base de registro de proyecto
 class pry_base(models.Model):
+    #clase base de registro de proyecto
     id_pry=models.AutoField(primary_key = True) #Identificador unico del proyecto
     cod_pry = models.CharField('Código proyecto:', max_length=50) # código unico del proyecto
     nombre_pry=models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
@@ -254,8 +263,9 @@ class pry_base(models.Model):
     #cvalc ordic otra clase de visibilidad o publicidad del investigador, mirar desde ad,, enlace de esa información, 
     
     class Meta:
-        verbose_name = 'pry'
-        verbose_name_plural = 'prys'
+        verbose_name = 'pry_base'
+        verbose_name_plural = 'proyectos base'
+'''
 
 class inf_pry(models.Model):
     #Clase que contiene toda la informacion referente al proyecto

@@ -1,0 +1,399 @@
+Código gran área;Gran área;Código área;Área;Código disciplina;Disciplina
+1.;Ciencias naturales;1.A.;Matemática;1A01;Matemáticas puras
+1.;Ciencias naturales;1.A.;Matemática;1A02;Matemáticas aplicadas
+1.;Ciencias naturales;1.A.;Matemática;1A03;Estadísticas y probabilidades
+1.;Ciencias naturales;1.B.;Computación y ciencias de la información;1B01;Ciencias de la computación
+1.;Ciencias naturales;1.B.;Computación y ciencias de la información;1B02;Ciencias de la información y bioinformática
+1.;Ciencias naturales;1.C.;Ciencias físicas;1C01;Física atómica, molecular y química
+1.;Ciencias naturales;1.C.;Ciencias físicas;1C02;Física de la materia
+1.;Ciencias naturales;1.C.;Ciencias físicas;1C03;Física de particulas y campos
+1.;Ciencias naturales;1.C.;Ciencias físicas;1C04;Física nuclear
+1.;Ciencias naturales;1.C.;Ciencias físicas;1C05;Física de plasmas y fluidos
+1.;Ciencias naturales;1.C.;Ciencias físicas;1C06;Óptica
+1.;Ciencias naturales;1.C.;Ciencias físicas;1C07;Acústica
+1.;Ciencias naturales;1.C.;Ciencias físicas;1C08;Astronomía
+1.;Ciencias naturales;1.D.;Ciencias químicas;1D01;Química orgánica
+1.;Ciencias naturales;1.D.;Ciencias químicas;1D02;Química inorgánica y nuclear
+1.;Ciencias naturales;1.D.;Ciencias químicas;1D03;Química física
+1.;Ciencias naturales;1.D.;Ciencias químicas;1D04;Ciencias de los polímeros
+1.;Ciencias naturales;1.D.;Ciencias químicas;1D05;Electroquímica
+1.;Ciencias naturales;1.D.;Ciencias químicas;1D06;Química de los coloides
+1.;Ciencias naturales;1.D.;Ciencias químicas;1D07;Química analítica
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E01;Geociencia
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E02;Mineralogía
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E03;Paleontología
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E04;Geoquímica y geofísica
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E05;Geografía física
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E06;Geología
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E07;Vulcanología
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E08;Ciencias del medio ambiente
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E09;Meteorología y ciencias atmosféricas
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E10;Investigación del clima
+1.;Ciencias naturales;1.E.;Ciencias de las tierra y medio ambientales;1E11;Oceanografía, hidrología y recursos del agua
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F01;Biología celular y microbilogía
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F02;Virología
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F03;Bioquímica y biología molecular
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F04;Métodos de investigación en bioquímica
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F05;Micología
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F06;Biofísica
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F07;Genética y herencia
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F08;Biología reproductiva
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F09;Biologia de desarrollo
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F10;Botanica y ciencias de las plantas
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F11;Zoología, ornitología, entomología, ciencias biológicas del comportamiento 
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F12;Biología marina y del agua
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F13;Ecología
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F14;Conservación de la biodiversidad
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F15;Biología( Teórica, matemática, criología, evolución)
+1.;Ciencias naturales;1.F.;Ciencias biológicas;1F16;Otras biologías
+1.;Ciencias naturales;1.G.;Otras ciencias;1G01;Otras ciencias naturales
+2.;Ingeniería y tecnología;2.A. ;Ingeniería civil;2A01;2A01 Ingeniería civil
+2.;Ingeniería y tecnología;2.A. ;Ingeniería civil;2A02;2A02 Ingeniería arquitectónica
+2.;Ingeniería y tecnología;2.A. ;Ingeniería civil;2A03;2A03 Ingeniería de la construcción
+2.;Ingeniería y tecnología;2.A. ;Ingeniería civil;2A04;2A04 Ingeniería estructural y municipal
+2.;Ingeniería y tecnología;2.A. ;Ingeniería civil;2A05;2A05 Ingeniería del transporte
+2.;Ingeniería y tecnología;2.B.;Ingenierías eléctrica, electrónica e informática;2B01;2B01 Ingeniería eléctrica y electrónica
+2.;Ingeniería y tecnología;2.B.;Ingenierías eléctrica, electrónica e informática;2B02;2B02 Robótica y control automático
+2.;Ingeniería y tecnología;2.B.;Ingenierías eléctrica, electrónica e informática;2B03;2B03 Automatización y sistemas de control
+2.;Ingeniería y tecnología;2.B.;Ingenierías eléctrica, electrónica e informática;2B04;2B04 Ingeniería de sistemas y comunicaciones
+2.;Ingeniería y tecnología;2.B.;Ingenierías eléctrica, electrónica e informática;2B05;2B05 Telecomunicaciones
+2.;Ingeniería y tecnología;2.B.;Ingenierías eléctrica, electrónica e informática;2B06;2B06 Hardware y arquitectura de computadores
+2.;Ingeniería y tecnología;2.C.;Ingeniería mecánica;2C01;2C01 Ingeniería mecánica
+2.;Ingeniería y tecnología;2.C.;Ingeniería mecánica;2C02;2C02 Mecánica aplicada
+2.;Ingeniería y tecnología;2.C.;Ingeniería mecánica;2C03;2C03 Termodinámica
+2.;Ingeniería y tecnología;2.C.;Ingeniería mecánica;2C04;2C04 Ingeniería aeroespacial
+2.;Ingeniería y tecnología;2.C.;Ingeniería mecánica;2C05;2C05 Ingeniería nuclear (física nuclear en 1.C)
+2.;Ingeniería y tecnología;2.C.;Ingeniería mecánica;2C06;2C06 Ingeniería del audio
+2.;Ingeniería y tecnología;2.D.;Ingeniería química;2D01;2D01 Ingeniería química (plantas y productos)
+2.;Ingeniería y tecnología;2.D.;Ingeniería química;2D02;2D02 Ingeniería de procesos
+2.;Ingeniería y tecnología;2.E.;Ingeniería de los materiales;2E01;2E01 Ingeniería mecánica
+2.;Ingeniería y tecnología;2.E.;Ingeniería de los materiales;2E02;2E02 Cerámicos
+2.;Ingeniería y tecnología;2.E.;Ingeniería de los materiales;2E03;2E03 Recubrimientos y películas
+2.;Ingeniería y tecnología;2.E.;Ingeniería de los materiales;2E04;2E04 Compuestos (laminados, plásticos reforzados, fibra sintéticas y naturales, e ECA.)
+2.;Ingeniería y tecnología;2.E.;Ingeniería de los materiales;2E05;2E05 Papel y madera
+2.;Ingeniería y tecnología;2.E.;Ingeniería de los materiales;2E06;2E06 Textiles (Nanomateriales en 2.J y biomateriales en 2.I)
+2.;Ingeniería y tecnología;2.F.;Ingeniería médica;2F01;2F01 Ingeniería médica
+2.;Ingeniería y tecnología;2.F.;Ingeniería médica;2F02;2F02 Tecnología médica de laboratorio (análisis de muestras, tecnologías para el diagnóstico)
+2.;Ingeniería y tecnología;2.G.;Ingeniería ambiental;2G01;2G01 Ingeniería ambiental y geológica
+2.;Ingeniería y tecnología;2.G.;Ingeniería ambiental;2G02;2G02 Geotécnicas
+2.;Ingeniería y tecnología;2.G.;Ingeniería ambiental;2G03;2G03 Ingeniería del petróleo (combustibles, aceites), energía y
+2.;Ingeniería y tecnología;2.G.;Ingeniería ambiental;2G04;2G04 Sensores remotos
+2.;Ingeniería y tecnología;2.G.;Ingeniería ambiental;2G05;2G05 Minería y procesamiento de minerales
+2.;Ingeniería y tecnología;2.G.;Ingeniería ambiental;2G06;2G06 Ingeniería marina, naves
+2.;Ingeniería y tecnología;2.G.;Ingeniería ambiental;2G07;2G07 Ingeniería oceanográfica
+2.;Ingeniería y tecnología;2.H.;Biotecnología ambiental ;2H01;2H01 Biotecnología ambiental
+2.;Ingeniería y tecnología;2.H.;Biotecnología ambiental ;2H02;2H02 Bioremediación, biotecnología para el diagnóstico (Chips ADN y biosensores) en manejo ambiental
+2.;Ingeniería y tecnología;2.H.;Biotecnología ambiental ;2H03;2H03 Ética relacionada con biotecnología ambiental
+2.;Ingeniería y tecnología;2.I.;Biotecnología industrial ;2I01;2I01 Biotecnología industrial
+2.;Ingeniería y tecnología;2.I.;Biotecnología industrial ;2I02;2I02 Tecnologías de bioprocesamiento, biocatálisis, fermentación
+2.;Ingeniería y tecnología;2.I.;Biotecnología industrial ;2I03;"2I03 Bioproductos (productos que se manufacturan usando biotecnología), biomateriales, bioplásticos, biocombustibles,
+materiales nuevos bioderivados, químicos finos bioredivados."
+2.;Ingeniería y tecnología;2.J.;Nanotecnología;2J01;2J01 Nanomateriales (producción y propiedades)
+2.;Ingeniería y tecnología;2.J.;Nanotecnología;2J02;2J02 Nanoprocesos (aplicaciones a nanoescala) (biomateriales en
+2.;Ingeniería y tecnología;2.K.;Otras ingenierías y tecnologías;2K01;2K01 Alimentos y bebidas
+2.;Ingeniería y tecnología;2.K.;Otras ingenierías y tecnologías;2K02;2K02 Otras ingenierías y tecnologías
+2.;Ingeniería y tecnología;2.K.;Otras ingenierías y tecnologías;2K03;2K03 Ingeniería de producción
+2.;Ingeniería y tecnología;2.K.;Otras ingenierías y tecnologías;2K04;2K04 Ingeniería industrial
+3.;Ciencias médicas y de la salud;3.A.;Medicina básica;3A01;3A01 Anatomía y morfología (ciencias vegetales en 1.F)
+3.;Ciencias médicas y de la salud;3.A.;Medicina básica;3A02;3A02 Genética humana
+3.;Ciencias médicas y de la salud;3.A.;Medicina básica;3A03;3A03 Inmunología
+3.;Ciencias médicas y de la salud;3.A.;Medicina básica;3A04;3A04 Neurociencias
+3.;Ciencias médicas y de la salud;3.A.;Medicina básica;3A05;3A05 Farmacología y farmacia
+3.;Ciencias médicas y de la salud;3.A.;Medicina básica;3A06;3A06 Medicina química
+3.;Ciencias médicas y de la salud;3.A.;Medicina básica;3A07;3A07 Toxicología
+3.;Ciencias médicas y de la salud;3.A.;Medicina básica;3A08;3A08 Fisiología (incluye citología)
+3.;Ciencias médicas y de la salud;3.A.;Medicina básica;3A09;3A09 Patología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B01;3B01 Andrología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B02;3B02 Obstetricia y ginecología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B03;3B03 Pediatría
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B04;3B04 Cardiovascular
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B05;3B05 Vascular periférico
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B06;3B06 Hematología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B07;3B07 Respiratoria
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B08;3B08 Cuidado crítico y de emergencia
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B09;3B09 Anestesiología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B10;3B10 Ortopédica
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B11;3B11 Cirugía
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B12;3B12 Radiología, medicina nuclear y de imágenes
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B13;3B13 Trasplantes
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B14;3B14 Odontología, cirugía oral y medicina oral
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B15;3B15 Dermatología y enfermedades venéreas
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B16;3B16 Alergias
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B17;3B17 Reumatología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B18;3B18 Endocrinología y metabolismo (incluye diabetes y trastornos hormonales)
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B19;3B19 Gastroenterología y hepatología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B20;3B20 Urología y nefrología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B21;3B21 Oncología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B22;3B22 Oftalmología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B23;3B23 Otorrinolaringología
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B24;3B24 Psiquiatría
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B25;3B25 Neurología clínica
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B26;3B26 Geriatría
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B27;3B27 Medicina general e interna
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B28;3B28 Otros temas de medicina clínica
+3.;Ciencias médicas y de la salud;3.B.;Medicina clínica;3B29;3B29 Medicina complementaria (sistemas alternativos)
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C01;3C01 Ciencias del cuidado de la salud y servicios (administración de hospitales, financiamiento)
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C02;3C02 Políticas de salud y servicios
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C03;3C03 Enfermería
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C04;3C04 Nutrición y dietas
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C05;3C05 Salud pública
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C06;3C06 Medicina tropical
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C07;3C07 Parasitología
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C08;3C08 Enfermedades infecciosas
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C09;3C09 Epidemiología
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C10;3C10 Salud ocupacional
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C11;3C11 Ciencias del deporte
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C12;3C12 Ciencias socio biomédicas (planificación familiar, salud sexual, efectos políticos y sociales de la investigación biomédica)
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C13;3C13 Ética
+3.;Ciencias médicas y de la salud;3.C.;Ciencias de la salud;3C14;3C14 Abuso de substancias
+3.;Ciencias médicas y de la salud;3.D.;Biotecnología en salud;3D01;3D01 Biotecnología relacionada con la salud
+3.;Ciencias médicas y de la salud;3.D.;Biotecnología en salud;3D02;3D02 Tecnologías para la manipulación de células, tejidos, órganos o el organismo (reproducción asistida)
+3.;Ciencias médicas y de la salud;3.D.;Biotecnología en salud;3D03;3D03 Tecnología para la identificación y funcionamiento del ADN, proteínas y encimas y como influencian la enfermedad)
+3.;Ciencias médicas y de la salud;3.D.;Biotecnología en salud;3D04;3D04 Biomateriales (relacionados con implantes, dispositivos,
+3.;Ciencias médicas y de la salud;3.D.;Biotecnología en salud;3D05;3D05 Ética relacionada con la biomedicina
+3.;Ciencias médicas y de la salud;3.E.;Otras ciencias médicas;3E01;3E01 Forénsicas
+3.;Ciencias médicas y de la salud;3.E.;Otras ciencias médicas;3E02;3E02 Otras ciencias médicas
+3.;Ciencias médicas y de la salud;3.E.;Otras ciencias médicas;3E03;3E03 Fonoaudiología
+4.;Ciencias agrícolas;4.A.;Agricultura, silvicultura y pesca;4A01;4A01 Agricultura
+4.;Ciencias agrícolas;4.A.;Agricultura, silvicultura y pesca;4A02;4A02 Forestal
+4.;Ciencias agrícolas;4.A.;Agricultura, silvicultura y pesca;4A03;4A03 Pesca
+4.;Ciencias agrícolas;4.A.;Agricultura, silvicultura y pesca;4A04;4A04 Ciencias del suelo
+4.;Ciencias agrícolas;4.A.;Agricultura, silvicultura y pesca;4A05;4A05 Horticultura y viticultura
+4.;Ciencias agrícolas;4.A.;Agricultura, silvicultura y pesca;4A06;4A06 Agronomía
+4.;Ciencias agrícolas;4.A.;Agricultura, silvicultura y pesca;4A07;4A07 Protección y nutrición de las plantas (biotecnología agrícola
+4.;Ciencias agrícolas;4.B.;Ciencias animales y lechería;4B01;4B01 Ciencias animales y lechería (biotecnología animal en 4.D)
+4.;Ciencias agrícolas;4.B.;Ciencias animales y lechería;4B02;4B02 Crías y mascotas
+4.;Ciencias agrícolas;4.C.;Ciencias;4C01;4C01 Ciencias Veterinarias
+4.;Ciencias agrícolas;4.D.;Biotecnología agrícola;4D01;4D01 Biotecnología agrícola y de alimentos
+4.;Ciencias agrícolas;4.D.;Biotecnología agrícola;4D02;"4D02 Tecnología MG (sembradíos y ganado), clonamiento de
+ganado, selección asistida, diagnóstico (con chips ADN, biosensores)."
+4.;Ciencias agrícolas;4.D.;Biotecnología agrícola;4D03;4D03 Ética relacionada a biotecnología agrícola
+4.;Ciencias agrícolas;4.E.;Otras ciencias;4E01;4E01 Otras ciencias Agrícolas
+5.;Ciencias sociales;5.A.;Psicología;5A01;5A01 Psicología (incluye relaciones hombre-máquina)
+5.;Ciencias sociales;5.A.;Psicología;5A02;5A02 Psicología (incluye terapias de aprendizaje, habla, visual y
+5.;Ciencias sociales;5.B.;Economía y negocios;5B01;5B01 Economía
+5.;Ciencias sociales;5.B.;Economía y negocios;5B02;5B02 Econometría
+5.;Ciencias sociales;5.B.;Economía y negocios;5B03;5B03 Relaciones Industriales
+5.;Ciencias sociales;5.B.;Economía y negocios;5B04;5B04 Negocios y management
+5.;Ciencias sociales;5.C.;Ciencias de la educación;5C01;5C01 Educación general (incluye capacitación, pedagogía)
+5.;Ciencias sociales;5.C.;Ciencias de la educación;5C02;5C02 Educación especial (para estudiantes dotados y aquellos con dificultades del aprendizaje)
+5.;Ciencias sociales;5.D.;Sociología;5D01;5D01 Sociología
+5.;Ciencias sociales;5.D.;Sociología;5D02;5D02 Demografía
+5.;Ciencias sociales;5.D.;Sociología;5D03;5D03 Antropología
+5.;Ciencias sociales;5.D.;Sociología;5D04;5D04 Etnografía
+5.;Ciencias sociales;5.D.;Sociología;5D05;5D05 Temas especiales (Estudios de Género, Temas Sociales, Estudios dela Familia, Trabajo Social,)
+5.;Ciencias sociales;5.E.;Derecho;5E01;5E01 Derecho
+5.;Ciencias sociales;5.E.;Derecho;5E02;5E02 Penal
+5.;Ciencias sociales;5.F.;Ciencias políticas;5F01;5F01 Ciencias políticas
+5.;Ciencias sociales;5.F.;Ciencias políticas;5F02;5F02 Administración pública
+5.;Ciencias sociales;5.F.;Ciencias políticas;5F03;5F03 Teoría organizacional
+5.;Ciencias sociales;5.G.;Geografía social y económica;5G01;5G01 Ciencias ambientales (aspectos sociales)
+5.;Ciencias sociales;5.G.;Geografía social y económica;5G02;5G02 Geografía económica y cultural
+5.;Ciencias sociales;5.G.;Geografía social y económica;5G03;5G03 Estudios urbanos (planificación y desarrollo)
+5.;Ciencias sociales;5.G.;Geografía social y económica;5G04;5G04 Planificación del transporte y aspectos sociales del transporte (ingeniería del transporte en 2.A)
+5.;Ciencias sociales;5.H.;Periodismo y comunicaciones;5H01;5H01 Periodismo
+5.;Ciencias sociales;5.H.;Periodismo y comunicaciones;5H02;5H02 Ciencias de la información (aspectos sociales)
+5.;Ciencias sociales;5.H.;Periodismo y comunicaciones;5H03;5H03 Bibliotecología
+5.;Ciencias sociales;5.H.;Periodismo y comunicaciones;5H04;5H04 Medios y comunicación social
+5.;Ciencias sociales;5.I.;Otras ciencias sociales;5I01;5I01 Ciencias sociales, interdisciplinaria
+5.;Ciencias sociales;5.I.;Otras ciencias sociales;5I02;5I02 Otras ciencias sociales
+6.;Humanidades;6.A.;Historia;6A01;6A01 Historia (historia de la ciencia y tecnología en 6.C)
+6.;Humanidades;6.A.;Historia;6A02;6A02 Arqueología
+6.;Humanidades;6.A.;Historia;6A03;6A03 Historia de Colombia
+6.;Humanidades;6.B.;Idiomas y literatura;6B01;6B01 Estudios generales del lenguaje
+6.;Humanidades;6.B.;Idiomas y literatura;6B02;6B02 Idiomas específicos
+6.;Humanidades;6.B.;Idiomas y literatura;6B03;6B03 Estudios literarios
+6.;Humanidades;6.B.;Idiomas y literatura;6B04;6B04 Teoría literaria
+6.;Humanidades;6.B.;Idiomas y literatura;6B05;6B05 Literatura específica
+6.;Humanidades;6.B.;Idiomas y literatura;6B06;6B06 Lingüística
+6.;Humanidades;6.C.;Otras historias;6C01;6C01 Historia de la ciencia y tecnología
+6.;Humanidades;6.C.;Otras historias;6C02;6C02 Otras historias especializadas (se incluye Historia del Arte)
+6.;Humanidades;6.D.;Arte;6D01;6D01 Artes plásticas y visuales
+6.;Humanidades;6.D.;Arte;6D02;6D02 Música y musicología
+6.;Humanidades;6.D.;Arte;6D03;6D03 Danza o Artes danzarías
+6.;Humanidades;6.D.;Arte;6D04;6D04 Teatro, dramaturgia o Artes escénicas
+6.;Humanidades;6.D.;Arte;6D05;6D05 Otras artes
+6.;Humanidades;6.D.;Arte;6D06;6D06 Artes audiovisuales
+6.;Humanidades;6.D.;Arte;6D07;6D07 Arquitectura y urbanismo
+6.;Humanidades;6.D.;Arte;6D08;6D08 Diseño
+6.;Humanidades;6.E.;Otras humanidades;6E01;6E01 Otras Humanidades (Se incluye Estudios del folclor)
+6.;Humanidades;6.E.;Otras humanidades;6E02;6E02 Filosofía
+6.;Humanidades;6.E.;Otras humanidades;6E03;6E03 Teología
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
