@@ -1,0 +1,55 @@
+{% extends 'app_base_iu.html' %}
+{% block titulo %} Listado de Grupos {% endblock titulo %}
+{% block articulo %}
+    {% if form.errors %}
+        <p>La lista de aplicaciones de grupos no se ha podido consultar.</p>
+    {% endif %}
+    <form method="POST">
+        <div class="table-responsive">
+            <table class="table">
+                <h2>Listado de modulos</h2>
+                <thead>
+                    <tr>
+                        
+                        <th>Tipo de Identifiación</th>
+                        <th>Identifiación</th>
+                        <th>Nacionalidad</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Correo Electrónico</th>
+                        <th>Teléfono</th>
+                        <th>Género</th>
+                        <th>Ocupación</th>
+                        <th>Dirección</th>
+                        <th>Tipo de Discapacidad</th>
+                        <th>Discapacidad</th>
+                        <th>URL Im[agen Personal</th>
+                        <th>Zona horaria</th>
+                        <th>Editar</th>
+                        
+                    </tr>
+                </thead>
+                {% for usu_inf_pers in  object_list %}
+                    <tbody>
+                        <tr>
+                            
+                            <td> {{ usu_inf_pers.tipo_nuip }} </td>
+                            <td> {{ usu_inf_pers.nuip }} </td>
+                            <td> {{ usu_inf_pers.nal }} </td>
+                            <td> {{ usu_inf_pers.fch_naci }} </td>
+                            <td> {{ usu_inf_pers.mail }} </td>
+                            <td> {{ usu_inf_pers.telefono }} </td>
+                            <td> {{ usu_inf_pers.gene }} </td>
+                            <td> {{ usu_inf_pers.ocup }} </td>
+                            <td> {{ usu_inf_pers.dir }} </td>
+                            <td> {{ usu_inf_pers.tipo_discap }} </td>
+                            <td> {{ usu_inf_pers.discap }} </td>
+                            <td> {{ usu_inf_pers.url_imag }} </td>
+                            <td> {{ usu_inf_pers.zona_hor }} </td>
+                            <td> <a href="../edt_infopers/usu_inf_pers" class="btn btn-block btn-sm btn-info">Editar</a><br></td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table> 
+        </div>
+    </form>
+{% endblock articulo %}

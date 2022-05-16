@@ -21,7 +21,11 @@ urlpatterns = [
     path('cons_app_mod/', vts_ls_app_mod.as_view(), name ='consulta_aplicaciones_modulos'),
     path('edt_app_mod/<int:pk>', vts_edt_app_mod.as_view(), name ='edt_app_mod'),
     path('eli_app_mod/<int:pk>', vts_del_app_mod.as_view(), name ='eli_app_mod'),
-
+# Registrar usuarios admin
+    path('creausu_adm/',vts_reg_usu_adm().vst_registro_adm, name = 'reg_usu_adm'),
+    path('cons_usus_adm/', vts_ls_usu_adm.as_view(), name='consulta_usuarios_adm'),
+    path('edi_usu_adm/<int:pk>/',vst_mod_usu_adm.as_view(), name = 'editar_usu_adm'),
+    path('eli_usu_adm/<id>',eli_usu_adm, name = 'eliminar_usu_adm'),
 # Roles
     path('reg_rol/', vts_reg_rol.as_view(), name ='reg_rol'),
     path('cons_rol/', vts_ls_rol.as_view(), name ='consulta_rol'),

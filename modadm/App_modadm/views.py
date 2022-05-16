@@ -9,6 +9,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
+from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import PermissionRequiredMixin
 #from rest_framework import viewsets
 from .models import *
@@ -33,6 +34,45 @@ class portada_adm():
         respuesta=plt.render()
         return HttpResponse(respuesta)
     
+##### CRUD USUARIO ADM ######################################################
+class vts_reg_usu_adm(CreateView):
+    def vst_registro_adm(self, request):
+        data = {
+            'form': frm_reg_usu()
+        }
+        if request.method == "POST":
+            formulario = frm_reg_usu(data=request.POST)
+            if formulario.is_valid():
+                formulario.save()
+                usuario = formulario.cleaned_data.get('username')
+                password = formulario.cleaned_data.get('password1')
+                usuario = authenticate(username=usuario, password=password)
+                login(request, usuario)
+                return redirect(to='consulta_usuarios_adm')
+            data["form"] = formulario
+        return render(request,'App_ma_frm_crearusu_adm.html', data )
+
+class vts_ls_usu_adm(ListView, PermissionRequiredMixin):
+    # clase para listar usuarios del sistema
+    model = usu
+    form_class = frm_con_usu
+    template_name = 'cn_usu_adm.html'
+    success_url = reverse_lazy('cn_usu_adm.html')
+    success_message = 'Listado cargado correctamente'
+
+class vst_mod_usu_adm(UpdateView, PermissionRequiredMixin):
+    #clase que me modifca los usuarios para registro de usuario
+    model = usu
+    form_class = frm_con_usu
+    exclude = ['password']
+    template_name = 'App_ma_frm_edt_usu.html'
+    success_url = reverse_lazy('consulta_usuarios_adm')
+
+def eli_usu_adm(request, id):
+    usuario = get_object_or_404(usu, id=id)
+    usuario.delete()
+    messages.success(request, "Eliminado correctamente")
+    return redirect(to="../cons_usus_adm")
 
 
 ######   CRUD MODULO    ################################
