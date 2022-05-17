@@ -7,7 +7,7 @@
 {% block menu_ppal %}
 
 <nav class="menu_ppal" >
-    <a href="inicio" class="disparador-navlateral" onclick="operar_navlateral()">
+    <a href="inicio" class="menu_ico" onclick="operar_navlateral()">
         <i class="material-icons">menu</i>
     </a>
     <div class="logotipo">
@@ -24,10 +24,8 @@
 
 {% block script_menu_ppal%}
 <script type="text/javascript">
-$(document).ready(function(){
-    $(".menu").click(function(){
-        $(".keep").toggleClass("width");
-    });
+function operar_navlateral(){
+    document.getElementById('panel_der') 
 });
  </script>
 {% endblock script_menu_ppal%}

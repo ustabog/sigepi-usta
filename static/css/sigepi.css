@@ -43,7 +43,7 @@
 }
 .app {
   display:grid;
-  grid-template-columns: minmax(50px,200px) auto auto;
+  grid-template-columns: minmax(50px,250px) auto auto;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -67,26 +67,19 @@
 }
 .br_herr .enc_br_herr{
   /* encabezado barra de herramientas */
-  background-color: var(--azul);
+  background-color: var(--azul-cl);
   width: 100%;
   display:block;
   padding: 0.75em	1em;
-  color: var(--blanco);
-}
-.br_herr a{
-  text-decoration: none;
-  transition: transition(all 0.6s ease);
-}
-
-.br_herr a:hover{
-  transition: transition(all 0.6s ease);
+  color: var(--azul);
+  font-weight: bolder;
 }
 .br_app{
   position: fixed;
-  width: 13em;
+  width: 100%;
   background-color:var(--azul);
   height: 100%;
-  font-weight: 400; 
+  font-weight:bolder; 
   font-size: 1.2em;
   overflow: auto;
   padding-bottom: 6em;
@@ -95,22 +88,20 @@
   -webkit-overflow-scrolling: touch;  
 }
 .br_app ul{
-  list-style:none;
+  list-style: none;
+  color: var(--azul-2);
+  font-weight: bolder;
   display: block;
   padding: 0;
   margin: 0;
-  list-style:none;
-  list-style-position:inside;
-  padding: 0px;
 }
-
 .br_app ul li{
   margin-left: 0;
   padding-left: 0;
-  min-width: 13em;
-  display:inline-block;
+  display: inline-block;
+  vertical-align: middle;
   width: 100%;
-}
+ }
 .br_app ul li a{
   color: rgba(255,255,255,0.9);
   font-size: 0.75em;
@@ -119,20 +110,9 @@
   display:block;
   text-decoration: none;
 }
-.br_app ul i{
-  font-size: 3em;
-  padding-right: 0.5em;
-  width: 9em;
-  display: inline;
-  vertical-align:middle;
-}
-.br_app ul li a:hover{
-  background-color: rgba(82, 84, 121, 0.541);
-  transition:all 0.6s ease;
-}
-.br_app >ul>li>a:after {
+.br_app >ul >li >a:after {
   content: '>';
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family:'Courier New', Courier, monospace;
   font-size: 0.5em;
   width: 10px;
   color: #fff;
@@ -147,18 +127,22 @@
   left: 3em;
   top: 0;
   height: 100vh;
-  transform: translateX(100px);
-  transition: all 0.5s ease;
-}
-.br_app .categ_br_herr:hover{
-  transform: translateX(0%);
+  transform: translateX(100%);
   transition: all 0.5s ease;
 }
 .br_app .categ_br_herr a:hover{
-  background-color:var(--azul-cl);
+  background-color: rgba(82, 84, 121, 0.541);
+  transition:all 0.6s ease;
 }
-.br_app .categ_br_herr>ul>li:hover{
-  transform: translateX(0%);
+.br_app ul li i {
+  font-size: 3em;
+  padding-right: 0.5em;
+  width: 10em;
+  display: inline;
+  vertical-align: middle;
+}
+.br_app ul > li:hover .categ_br_herr {
+  transform: translateX(0);
   transition: all 0.5s ease;
 }
 .btn_az_cl {
@@ -302,6 +286,9 @@
 .menu_ppal {
   display: inline;
   vertical-align: middle;
+}
+.menu_ppal .menu_ico + .panel_der{
+  width: 0px;
 }
 .menu_ppal i {
   padding-top: 10px;
