@@ -1,7 +1,5 @@
-{% extends 'app_pry_iu.html' %}
-{% load static %}
-
-{% block articulo %}
+{% block titulo %} Formulario de registro nuevo proyecto {% endblock titulo %}
+{% block cuerpo %}
   {% if form.errors %}
       <p>El proyecto no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
   {% endif %}
@@ -18,4 +16,4 @@
       </div>
   </div>
 
-  {% endblock articulo %}
+{% endblock cuerpo %}

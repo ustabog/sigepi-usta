@@ -9,6 +9,11 @@ class frm_reg_pry(ModelForm):
         model = pry_base
         fields = '__all__'
 
+class frm_reg_pry_grp(ModelForm):
+    class Meta:
+        model = pry_grp
+        fields = '__all__'
+
 class frm_con_pry(forms.ModelForm):
     #Clase que automatiza la creación de formularios de consulta de Usuario en Django.
     class Meta:
