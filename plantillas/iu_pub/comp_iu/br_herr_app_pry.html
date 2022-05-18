@@ -7,50 +7,53 @@
             <li>
                 <a href=""><i class="material-icons">fact_check</i><span>Mis Proyectos</span></a>           
                 <ul class="categ_br_herr">
-                    <li><a href=""><i class="material-icons">person</i><span>Personales</span></a></li> 
-                    <li><a href=""><i class="material-icons">groups</i><span>Grupales</span></a></li> 
-                    <li><a href=""><i class="material-icons">business</i><span>Institucionales</span></a></li> 
-                    <li><a href=""><i class="material-icons">hub</i><span>InterInstitucionales</span></a></li>
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">person</i><span>Personales</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">groups</i><span>Grupales</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">business</i><span>Institucionales</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">hub</i><span>InterInstitucionales</span></a></li>
                 </ul>
             </li>
             <li>
-                <a href=""><i class="material-icons">grading</i><span>Registro de Proy.</span></a>
+                <a href=""><i class="material-icons">receipt_long</i><span>Registro de Proy.</span></a>
                 <ul class="categ_br_herr">
-                    <li><a href=""><i class="material-icons">person</i><span>Personales</span></a></li> 
-                    <li><a href=""><i class="material-icons">groups</i><span>Grupales</span></a></li> 
-                    <li><a href=""><i class="material-icons">business</i><span>Institucionales</span></a></li> 
-                    <li><a href=""><i class="material-icons">hub</i><span>InterInstitucionales</span></a></li>
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">post_add</i><span>Nuevo Pry. Personal</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">post_add</i><span>Nuevo Pry. Grupo</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">post_add</i><span>Nuevo Pry. Inst.</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">post_add</i><span>Nuevo Pry. InterInst.</span></a></li>
                 </ul>
             </li>
             <li>
-                <a href=""><i class="material-icons">fact_check</i><span>Gestión de Proy.</span></a>
+                <a href=""><i class="material-icons">price_check</i><span>Gestión de Proy.</span></a>
                 <ul class="categ_br_herr">
-                    <li><a href=""><i class="material-icons">person</i><span>Personales</span></a></li> 
-                    <li><a href=""><i class="material-icons">groups</i><span>Grupales</span></a></li> 
-                    <li><a href=""><i class="material-icons">business</i><span>Institucionales</span></a></li> 
-                    <li><a href=""><i class="material-icons">hub</i><span>InterInstitucionales</span></a></li>
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">linear_scale</i><span>Estado de mis Pry.</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">group</i><span>Colaborar</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">group_add</i><span>Buscar Colaboradores(as)</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">bookmarks</i><span>Convocatorias</span></a></li>
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">paid</i><span>Patrocinadores</span></a></li>
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">school</i><span>Formación</span></a></li>
                 </ul>
             </li>
             <li>
-                <a href=""><i class="material-icons">fact_check</i><span>Evaluación de Proy.</span></a>
+                <a href=""><i class="material-icons">rule</i><span>Evaluación de Proy.</span></a>
                 <ul class="categ_br_herr">
-                    <li><a href=""><i class="material-icons">person</i><span>Personales</span></a></li> 
-                    <li><a href=""><i class="material-icons">groups</i><span>Grupales</span></a></li> 
-                    <li><a href=""><i class="material-icons">business</i><span>Institucionales</span></a></li> 
-                    <li><a href=""><i class="material-icons">hub</i><span>InterInstitucionales</span></a></li>
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">flaky</i><span>Evaluar Pry.</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">event_available</i><span>Proy. en Evaluación</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">how_to_reg</i><span>Solicitar Evaluador(a)</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">beenhere</i><span>Crear Rúbrica de Eval.</span></a></li>
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">assignment_turned_in</i><span>Pry. Evaluados</span></a></li>
                 </ul>
             </li>
-        </ul>
-        <ul>
             <li>
-                <a href="">Programas de Investigación</a>
-                <li><a href="">Mi Programa</a></li>
-                <li><a href="">Registro de Prog.</a></li>
+                <a href="{% url 'inicio' %}"><i class="material-icons">troubleshoot</i><span>Programas de investigación</span></a>
+                <ul class="categ_br_herr">
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">insights</i><span>Mis Programas</span></a></li> 
+                    <li><a href="{% url 'inicio' %}"><i class="material-icons">post_add</i><span>Registro de Prog.</span></a></li> 
+                </ul>
             </li>
-            <li> <a href="">Marco Lógico</a></li>
-            <li> <a href="">Convocatorias</a></li>
-            <li> <a href="">Recursos</a></li>
-            <li> <a href="">Productos de Investigación</a></li>
+            <li><a href="{% url 'inicio' %}"><i class="material-icons">schema</i><span>Marco Lógico</span></a></li>
+            <li> <a href="{% url 'inicio' %}"><i class="material-icons">bookmarks</i><span>Convocatorias</span></a></li>
+            <li> <a href="{% url 'inicio' %}"><i class="material-icons">precision_manufacturing</i><span>Recursos</span></a></li>
+            <li> <a href="{% url 'inicio' %}"><i class="material-icons">category</i><span>Productos de Investigación</span></a></li>
         </ul>
     </nav>
 {% endblock br_herr %}

@@ -5,27 +5,38 @@
 {% endblock meta_menu_ppal%}
 
 {% block menu_ppal %}
+<nav id="nav_menu_ppal">
 
-<nav class="menu_ppal" >
-    <a href="inicio" class="menu_ico" onclick="operar_navlateral()">
-        <i class="material-icons">menu</i>
-    </a>
+        <button id="btn_menu" class="btn_menu" onclick="abrir()">
+            <i class="material-icons">menu</i>
+        </button>
+        <button id="btn_cerrar" class="btn_cerrar" onclick="cerrar()">
+            <i class="material-icons">close</i>
+        </button>
+
+    <div class="nav-titulo">
+        SIGEPI-USTA
+    </div>
     <div class="logotipo">
         <a href="inicio" class="logotipo der">
             <img src="{% static 'img/logo.png' %}" alt="Logo" ></img>
         </a>
     </div>
-    <div class="nav-titulo">
-        SIGEPI-USTA
-    </div>
 </nav>
-
 {% endblock menu_ppal %}
 
 {% block script_menu_ppal%}
-<script type="text/javascript">
-function operar_navlateral(){
-    document.getElementById('panel_der') 
-});
- </script>
+<script>
+function abrir() {
+  document.getElementById("panel_der").style.display = "flex";
+  document.getElementById("btn_menu").style.display = "none";
+  document.getElementById("btn_cerrar").style.display = "flex";
+}
+
+function cerrar() {
+  document.getElementById("panel_der").style.display = "none";
+  document.getElementById("btn_menu").style.display = "flex";
+  document.getElementById("btn_cerrar").style.display = "none";
+}
+</script>
 {% endblock script_menu_ppal%}

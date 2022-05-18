@@ -43,7 +43,7 @@
 }
 .app {
   display:grid;
-  grid-template-columns: minmax(50px,250px) auto auto;
+  grid-template-columns: minmax(50px,350px) auto auto;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -54,6 +54,9 @@
 .br_herr {
   /* barra de herramientas */
   position:relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
   height: 100%;
   top: 0;
@@ -67,29 +70,33 @@
 }
 .br_herr .enc_br_herr{
   /* encabezado barra de herramientas */
-  background-color: var(--azul-cl);
+  background: linear-gradient(-90deg, var(--azul-cl), var(--azul));
   width: 100%;
+  height:auto;
   display:block;
-  padding: 0.75em	1em;
-  color: var(--azul);
-  font-weight: bolder;
+  padding: 5px 5px;
+  color: var(--blanco);
+  font-family:Tahoma, sans-serif;
+  font-size: small;
+  font-weight: bold;
+  text-align: center;
 }
 .br_app{
-  position: fixed;
+  position:relative;
   width: 100%;
   background-color:var(--azul);
   height: 100%;
   font-weight:bolder; 
   font-size: 1.2em;
   overflow: auto;
-  padding-bottom: 6em;
   z-index: 9;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;  
 }
+
 .br_app ul{
   list-style: none;
-  color: var(--azul-2);
+  color: var(--azul-cl);
   font-weight: bolder;
   display: block;
   padding: 0;
@@ -124,24 +131,30 @@
   position: absolute;
   background-color:var(--azul);
   z-index: 9;
-  left: 3em;
+  left: 3.7em;
   top: 0;
   height: 100vh;
   transform: translateX(100%);
   transition: all 0.5s ease;
 }
-.br_app .categ_br_herr a:hover{
-  background-color: rgba(82, 84, 121, 0.541);
+.br_app li:hover, .categ_br_herr a:hover{
+  background-color:var(--oscuro);
+  color:var(--azul-2);
   transition:all 0.6s ease;
 }
 .br_app ul li i {
   font-size: 3em;
   padding-right: 0.5em;
-  width: 10em;
+  width: 100%;
   display: inline;
   vertical-align: middle;
 }
-.br_app ul > li:hover .categ_br_herr {
+.br_app ul li a:hover{
+  color:var(--azul-2);
+}
+
+.br_app ul li:hover >.categ_br_herr {
+  background-color:var(--azul);
   transform: translateX(0);
   transition: all 0.5s ease;
 }
@@ -190,6 +203,22 @@
   transition: 0.5s;
   padding:2px;
 }
+.btn_menu{
+  display: flex;
+  position: absolute;
+  background-color: var(--azul);
+  border-radius: 2px;
+  border:0px;
+  transition: 0.5s ease;
+}
+.btn_cerrar{
+  background-color: var(--azul);
+  display:none;
+  position: absolute;
+  border-radius: 2px;
+  border:0px;
+  transition-duration: 0.5s ease;
+}
 .cabecera {
   width: 100%;
   height: 55px;
@@ -232,7 +261,7 @@
   width: 100%;
   height: 100%;
   border-left: 1px solid rgba(0,0,0,0.2);
-  background: linear-gradient( 0deg,var(--azul-cl),var(--azul));
+  background: linear-gradient( 90deg,var(--azul-cl),var(--azul));
   box-shadow: 5px 5px 5px rgba(0, 17, 54, 0.267);
   border-radius: 2px;
   padding: 5px 5px 5px 5px;
@@ -284,11 +313,7 @@
          font-feature-settings: 'liga';
 }
 .menu_ppal {
-  display: inline;
   vertical-align: middle;
-}
-.menu_ppal .menu_ico + .panel_der{
-  width: 0px;
 }
 .menu_ppal i {
   padding-top: 10px;
@@ -350,7 +375,7 @@
   width: 100%;
   height:100%;
   position:relative;
-  display: flex;
+  display:none;
   flex-direction: column;
   min-width: 150px;
   max-width: 450px;
@@ -535,25 +560,26 @@
     flex-direction:row;
     flex-wrap: wrap;
     justify-content:space-between;
+    overflow: auto;
   }
   .panel_der {
     width: 100%;
     height:100%;
     display:flex;
-    flex-direction: column;
+    flex-direction:row;
+    flex-wrap: wrap;
     border-right: 0px;
     max-width: 580px;
     box-shadow: 0px 0px;
     }
   .app {
-    display:flex;
+    display:grid;
     width: 100%;
-    height: auto;
-    flex-direction:row;
-    flex-wrap: wrap;
-    overflow: auto;
+    height:100%;
+    grid-template-columns: minmax(3.7em,9em) auto auto;
+    overflow:hidden;
   }
-  .cont_pn_der{
+/*   .cont_pn_der{
     position:relative;
     display:flex;
     flex-direction:column;
@@ -566,5 +592,5 @@
     box-shadow: 5px 5px 5px rgba(0, 17, 54, 0.267);
     border-radius: 2px;
     padding: 5px 5px 5px 5px;
-  }
+  } */
 }
