@@ -2,6 +2,7 @@ from django.db import models
 from modpry.App_modpry.models import *
 from modadm.App_regusugr.models import *
 from modadm.App_modadm.models import *
+from modcons.App_cons.models import *
 # Clases de la Aplicación Registro de Programas de Investigación
 
 class tipos_prog_inv(models.Model):

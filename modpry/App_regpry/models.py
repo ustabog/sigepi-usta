@@ -1,6 +1,7 @@
 from django.db import models
 from modpry.App_modpry.models import *
 from modadm.App_regusugr.models import *
+from modcons.App_cons.models import *
 
 ROL_APP = [
     (0,'Investigador(a) Principal'),
@@ -243,6 +244,50 @@ TIPO_FORM_CO = [
     (12,'Curso libre')
     ]
 
+TIPO_CONVE = [
+    #Tipo de convenios
+    (0,'Asociación'),
+    (1,'Coopetación'),
+    (4,'Divulgación'),
+    (5,'Formación'),
+    ]
+
+TIPO_IMPACTO = [
+    #Tipo de impacto del proyecto
+    (0,'Tecnológicos'),
+    (1,'Institucionales'),
+    (2,'Económicos'),
+    (3,'Políticos'),
+    (4, 'Socio-culturales'),
+    (5,'Ambientales'),
+    ]
+
+TIPO_RIESGO = [
+    #Tipo de impacto del proyecto
+    (0,'Corrupción del alcance'),
+    (1,'Bajo desempeño'),
+    (2,'Costos elevados'),
+    (3,'Factor tiempo'),
+    (4, 'Escasez de recursos'),
+    (5,'Cambios operativos'),
+    (6, 'Falta de claridad'),
+    (7, 'Otro'),
+    ]
+LINEA_TEMA = [
+    #Línea temática del proyecto
+    (0,'Ciencias naturales'),
+    (1,'Ingeniería y tecnología'),
+    (2,'Ciencias médicas y de la salud'),
+    (3,'Ciencias agrícolas'),
+    (4, 'Ciencias sociales'),
+    (5,'Humanidades'),
+    (7, 'Otro'),
+    ]
+    
+PRY_ARCHIVADO = [
+    (0, 'Proyecto no archivado'),
+    (1, 'Proyecto archivado'),
+    ]
 
 #clase base de registro de proyecto
 class pry_base(models.Model):
@@ -252,8 +297,9 @@ class pry_base(models.Model):
     nombre_pry=models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
     desc_pry=models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto
     tipo_pry=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto - diccionario TIPO_PRY
-    prop_pry=models.CharField('Propietario del proyecto: ', max_length=255)#Propietario del proyecto
+    prop_pry= models.ForeignKey(usu, on_delete=models.CASCADE, null= False, blank = False) #Propietario del proyecto
     est_pry = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)
+    pry_archi = models.IntegerField(null = False, blank = False, choices = PRY_ARCHIVADO, default = 0)#Si el proyecto es borrado queda como archivado
     #estado - por defecto borrador
     # debe esta diseño y gestion como opción, DIVIDIR LA CLASE EN PARTICIPANTES, beneficiarios, 
     #el ususario puede crear nuevos tipos, ejemplo otros 
@@ -266,64 +312,6 @@ class pry_base(models.Model):
     class Meta:
         verbose_name = 'pry_base'
         verbose_name_plural = 'proyectos base'
-
-class pry_grp(models.Model):
-    #clase base de registro de proyecto grupal
-    id_pry_grp = models.AutoField(primary_key = True) #Identificador unico del proyecto en grupo
-    id_gr_grp = models.ForeignKey(usugr, on_delete=models.CASCADE, null=False, blank =False)#identificar del grupo
-    cod_pry_grp = models.CharField('Código proyecto:', max_length=50) # código unico del proyecto
-    nombre_pry_grp =models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
-    desc_pry_grp =models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto
-    tipo_pry_grp =models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto - diccionario TIPO_PRY
-    prop_pry_grp =models.CharField('Propietario del proyecto: ', max_length=255)#Propietario del proyecto
-    est_pry_grp = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)
-
-    class Meta:
-        verbose_name = 'pry_grp'
-        verbose_name_plural = 'pry_grp'
-
-class pry_inst(models.Model):
-    #clase base de registro de proyecto institucional
-    id_pry_inst=models.AutoField(primary_key = True) #Identificador unico del proyecto institucional
-    cod_pry_inst = models.CharField('Código proyecto:', max_length=50) # código unico del proyecto institucional
-    nombre_pry_inst=models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto institucional
-    desc_pry_inst=models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto institucional
-    tipo_pry_inst=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto institucional - diccionario TIPO_PRY
-    prop_pry_inst=models.CharField('Propietario del proyecto: ', max_length=255)#Propietario del proyecto institucional
-    est_pry_inst = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)#Estado del proyecto institucional
-
-    class Meta:
-        verbose_name = 'pry_inst'
-        verbose_name_plural = 'pry_insts'
-
-class pry_interinst(models.Model):
-    #clase base de registro de proyecto interinstitucional
-    id_pry_interinst=models.AutoField(primary_key = True) #Identificador unico del proyecto interinstitucional
-    cod_pry_interinst = models.CharField('Código proyecto:', max_length=50) # código unico del proyecto interinstitucional
-    nombre_pry_interinst=models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto  interinstitucional
-    desc_pry_interinst=models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto  interinstitucional
-    tipo_pry_interinst=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto  interinstitucional
-    prop_pry_interinst=models.CharField('Propietario del proyecto: ', max_length=255)#Propietario del proyecto  interinstitucional
-    est_pry_interinst = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)#Estado del proyecto  interinstitucional
-
-    class Meta:
-        verbose_name = 'pry_interinst'
-        verbose_name_plural = 'pry_interinsts'
-
-class pry_intergrp(models.Model):
-    #clase base de registro de proyecto intergrupales
-    id_pry_intergrp=models.AutoField(primary_key = True) #Identificador unico del proyecto intergrupal
-    cod_pry_intergrp = models.CharField('Código proyecto:', max_length=50) # código unico del proyecto intergrupal
-    nombre_pry_intergrp =models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto  intergrupal
-    desc_pry_intergrp =models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto  intergrupal
-    tipo_pry_intergrp =models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto  intergrupal
-    prop_pry_intergrp =models.CharField('Propietario del proyecto: ', max_length=255)#Propietario del proyecto  intergrupal
-    est_pry_intergrp = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)#Estado del proyecto intergrupal
-
-    class Meta:
-        verbose_name = 'pry_intergrp'
-        verbose_name_plural = 'pry_intergrps'
-'''
 
 class inf_pry(models.Model):
     #Clase que contiene toda la informacion referente al proyecto
@@ -349,6 +337,7 @@ class inf_pry(models.Model):
     def __str__(self):
         return '{}'.format(self.nombre_archivo)
 
+'''
 class inf_prod_pry(models.Model):
     #Clase que contiene toda la informacion referente a los productos vinculados al proyecto
     id_prod_pry = models.AutoField(primary_key = True)  # Identificador único

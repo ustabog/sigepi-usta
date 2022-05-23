@@ -1,7 +1,7 @@
 from django.db import models
 from modpry.App_modpry.models import *
 from modadm.App_regusugr.models import *
-from modpry.App_regpryi.models import *
+from modpry.App_regpry.models import *
 
 class app_ev_pry(models.Model):
     #Clase que contiene los objetos de la App Evaluación de Proyectos
@@ -43,7 +43,7 @@ class tipos_evalucion(models.Model):
 class rel_evalucion_pry(models.Model):
     #Clase que contiene la forma de evaluacion individual
     id_evalucion = models.ForeignKey(evalucion_pry, on_delete=models.CASCADE, null=False, blank =False)  # identificador unico para el tipo de evalucion
-    id_investigador = models.ForeignKey(User, on_delete=models.CASCADE, null = False, blank = False) # identificador del investigador
+    id_investigador = models.ForeignKey(usu, on_delete=models.CASCADE, null= False, blank = False) # identificador del investigador
     id_tipos_evalucion = models.ForeignKey(tipos_evalucion, on_delete=models.CASCADE, null=False, blank =False)  # tipo de evaluacion
 
     class Meta:

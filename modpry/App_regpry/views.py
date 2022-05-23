@@ -62,15 +62,18 @@ class vts_edit_pry(UpdateView):
         context ['action'] = 'edit'
         return context
 
-#---------------------------Se elimina el proyecto de la base datos tambien-----------------------------
-#class vts_reg_pry(DeleteView):
-    #Clase de la vista para borrar el registro de proyecto 
-#    model = proyecto
-#    success_url = reverse_lazy('') #Retornar a la pagina de consultar proyecto
+'''
+Eliminar el proyecto de la base de datos
+class vts_reg_pry(DeleteView):
+    Clase de la vista para borrar el registro de proyecto 
+    model = proyecto
+    success_url = reverse_lazy('') #Retornar a la pagina de consultar proyecto
+'''
 
 def eli_pry(request,id):
     pry = pry_base.objects.get(id_pry=id)
     if request.method == 'POST':
+        PRY_ARCHIVADO == 1
         pry.delete()
         return redirect('cn_pry')
     return render (request, 'pry/app_pry/App_regpry_frm_elimpry.html',{'pry_base': pry_base})
@@ -89,5 +92,73 @@ class vts_reg_pry_grp(CreateView):
         context ['title'] = 'Registrar un proyecto grupal' 
         context ['action'] = 'add'
         return context
-#--------------------------- Registro de proyecto  ---------------------------------------
-#--------------------------- Registro de proyecto individual -----------------------------
+class vts_ls_pry_grp(ListView):
+    # clase para listar proyectos del sistema
+    model = pry_grp
+    template_name = 'cn_pry.html'
+    queryset = pry_grp.objects.order_by('nombre_pry_grp')
+    context_object_name = 'lista_pry_grp'
+
+    def get_context_data(self, **kwargs):
+        context = super(vts_ls_pry, self).get_context_data(**kwargs)
+        context ['titulo_pagina'] = 'Listado de proyectos'
+        return context
+
+class vts_edit_pry_grp(UpdateView):
+    #Clase de la vista para actualizar el registro de un proyecto 
+    model = pry_grp
+    form_class = frm_reg_pry_grp
+    template_name = 'iu_pub/serv_iu/App_regpry_frm_editpry.html'
+    success_url= reverse_lazy('cn_pry')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Editar un proyecto' 
+        context ['entity'] = 'pry_grp'
+        context ['list_url'] = reverse_lazy('cn_pry')
+        context ['action'] = 'edit'
+        return context
+#--------------------------- Registro de proyecto institucional---------------------------------------
+
+class vts_reg_pry_grp(CreateView):
+    #Clase de la vista de registro de proyecto 
+    model = pry_grp
+    form_class = frm_reg_pry_grp
+    template_name = 'iu_pub/serv_iu/App_regpry_frm_crearpry.html'
+    success_url= reverse_lazy('cn_pry')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Registrar un proyecto grupal' 
+        context ['action'] = 'add'
+        return context
+
+#--------------------------- Registro de proyecto interinstitucional -----------------------------
+
+class vts_reg_pry_grp(CreateView):
+    #Clase de la vista de registro de proyecto 
+    model = pry_grp
+    form_class = frm_reg_pry_grp
+    template_name = 'iu_pub/serv_iu/App_regpry_frm_crearpry.html'
+    success_url= reverse_lazy('cn_pry')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Registrar un proyecto grupal' 
+        context ['action'] = 'add'
+        return context
+
+#--------------------------- Registro de proyecto intergrupal -----------------------------
+
+class vts_reg_pry_grp(CreateView):
+    #Clase de la vista de registro de proyecto 
+    model = pry_grp
+    form_class = frm_reg_pry_grp
+    template_name = 'iu_pub/serv_iu/App_regpry_frm_crearpry.html'
+    success_url= reverse_lazy('cn_pry')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Registrar un proyecto grupal' 
+        context ['action'] = 'add'
+        return context

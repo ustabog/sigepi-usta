@@ -7,12 +7,38 @@ from .models import *
 class frm_reg_pry(ModelForm):
     class Meta:
         model = pry_base
-        fields = '__all__'
+        fields = (
+            'nombre_pry',
+            'desc_pry',
+            'tipo_pry',
+            'prop_pry',
+            'est_pry',
+        )
+        labels = {
+            'nombre_pry' : 'Nombre del proyecto',
+            'desc_pry': 'Descripción del proyecto',
+            'tipo_pry' : 'Tipo de proyecto',
+            'prop_pry' : 'Propietario del proyecto',
+            'est_pry' : 'Estado del proyecto',
+        }
 
 class frm_reg_pry_grp(ModelForm):
     class Meta:
         model = pry_grp
-        fields = '__all__'
+        fields = (
+            'nombre_pry_grp',
+            'desc_pry_grp',
+            'tipo_pry_grp',
+            'prop_pry_grp',
+            'est_pry_grp',
+        )
+        labels = {
+            'nombre_pry_grp' : 'Nombre del proyecto',
+            'desc_pry_grp': 'Descripción del proyecto',
+            'tipo_pry_grp' : 'Tipo de proyecto',
+            'prop_pry_grp' : 'Propietario del proyecto',
+            'est_pry_grp' : 'Estado del proyecto',
+        }
 
 class frm_con_pry(forms.ModelForm):
     #Clase que automatiza la creación de formularios de consulta de Usuario en Django.

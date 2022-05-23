@@ -8,13 +8,20 @@ Listas únicas, Conjuntos y Diccionarios del Módulo de Proyectos
 ROL_MOD = [
     (0,'Investigador(a) Proy.'),
     (1,'Evaluador(a) Proy.'),
-    (4,'Tutor(a) Proy.'),
-    (5,'Director(a) Proy.'),
-    (6,'Codirector(a) Proy.'),
-    (7,'Asesor(a) Proy.'),
-    (8,'Gestor(a) de Inv.'),
-    (9,'Curador(a)'),
-    (10,'Actor Externo'),
+    (2,'Tutor(a) Proy.'),
+    (3,'Director(a) Proy.'),
+    (4,'Codirector(a) Proy.'),
+    (5,'Asesor(a) Proy.'),
+    (6,'Gestor(a) de Inv.'),
+    (7,'Curador(a)'),
+    (8,'Actor Externo'),
+    ]
+
+REG_PRY = [
+    (0,'Id registro de proyecto'),
+    (1,'Nombre del proyecto'),
+    (2,'Descripción del proyecto'),
+    (3,'Estado del proyecto'),
     ]
 
 #Clases del Módulo Proyectos de SIGEPI
@@ -106,7 +113,7 @@ class recur_pry(models.Model):
         verbose_name = 'recur_pry'
         verbose_name_plural = 'recur_prys' 
 
-class regprgi_pry(models.Model):
+class regprgi(models.Model):
     #Clase de la Aplicación Registro de Programas de Investigación
     id_regprgi = models.AutoField(primary_key = True) # Identificador único
     nomb_regprgi = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la Aplicación Registro de Programas de Investigación
@@ -116,14 +123,3 @@ class regprgi_pry(models.Model):
     class Meta:
         verbose_name = 'regprgi_pry'
         verbose_name_plural = 'regprgi_prys'
-
-class regpry_pry(models.Model):
-    #Clase de la Aplicación Registro de proyectos
-    id_regpry = models.AutoField(primary_key = True) # Identificador único
-    nomb_regpry = models.CharField('Nombre ', max_length=40, null=False, blank = False) # nombre de la Aplicación Registro de proyectos
-    desc_regpry  = models.CharField('Decripcion ', max_length=40, null=False, blank = False) # descripcion de la Aplicación Registro de proyectos
-    status_regpry = models.BooleanField('¿status de la aplicacion.?', default=False)  # estatus de la Aplicación Registro de proyectos
-    
-    class Meta:
-        verbose_name = 'reg_pry'
-        verbose_name_plural = 'reg_prys'
