@@ -6,7 +6,7 @@ from modpry.App_regpry.models import *
 class app_ev_pry(models.Model):
     #Clase que contiene los objetos de la App Evaluación de Proyectos
     id_app_ev_pry =  models.AutoField(primary_key = True)   # identificador unico para App Evaluación de Proyectos
-    id_mod_pry  = models.ForeignKey(mod_pry, on_delete=models.CASCADE, null=False, blank =False)  # Identificador único del modulo proyecto
+    id_mod_pry  = models.ForeignKey(mod_pry, on_delete=models.SET_NULL, null=True, blank =False)  # Identificador único del modulo proyecto
     nomb_app_ev_pry  = models.CharField('nombre de la App Evaluación  ', max_length=40, null=False, blank= False) # nombre de la App Evaluación de Proyectos
     desc_app_ev_pry = models.CharField('descripcion de la App  ', max_length=40, null=False, blank= False) # descripcion de la App Evaluación de Proyectos
     status_app_ev_pry =  models.BooleanField('estatus de la App Evaluación de Proyectos ', default= False) # estatus de la App Evaluación de Proyectos
@@ -22,7 +22,7 @@ class evalucion_pry(models.Model):
 
     id_evalucion =  models.AutoField(primary_key = True)   # identificador unico para el tipo de evalucion
     desc_tipos_evalucion =  models.CharField('descripcion del tipo de evalucion ', max_length=40, null=False, blank= False) # descripcion del tipo de evalucion
-    id_grup_bd = models.ForeignKey(usugr, on_delete=models.CASCADE, null=False, blank=False) # identificador del grupo de investigación
+    id_grup_bd = models.ForeignKey(usugr, on_delete=models.SET_NULL, null=True, blank=False) # identificador del grupo de investigación
     fech_ini =  models.DateField('fecha de inicio', auto_now = False)  # fecha de inicio de la evaluacion
     fecha_fin =  models.DateField('fecha de fin', auto_now = False) # # fecha de fin de la evaluacion
 
@@ -42,9 +42,9 @@ class tipos_evalucion(models.Model):
 
 class rel_evalucion_pry(models.Model):
     #Clase que contiene la forma de evaluacion individual
-    id_evalucion = models.ForeignKey(evalucion_pry, on_delete=models.CASCADE, null=False, blank =False)  # identificador unico para el tipo de evalucion
-    id_investigador = models.ForeignKey(usu, on_delete=models.CASCADE, null= False, blank = False) # identificador del investigador
-    id_tipos_evalucion = models.ForeignKey(tipos_evalucion, on_delete=models.CASCADE, null=False, blank =False)  # tipo de evaluacion
+    id_evalucion = models.ForeignKey(evalucion_pry, on_delete=models.SET_NULL, null=True, blank =False)  # identificador unico para el tipo de evalucion
+    id_investigador = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False) # identificador del investigador
+    id_tipos_evalucion = models.ForeignKey(tipos_evalucion, on_delete=models.SET_NULL, null=True, blank =False)  # tipo de evaluacion
 
     class Meta:
         verbose_name = 'rel_evalucion_pry'
@@ -68,8 +68,8 @@ class criterios(models.Model):
 
 class criterios_pry(models.Model):
     #Clase que contiene los criterios evaluados del proyecto
-    id_criterios_pry =  models.ForeignKey(criterios, on_delete=models.CASCADE, null=False, blank =False)   # identificador unico
-    id_proyecto =  models.ForeignKey(inf_pry, on_delete=models.CASCADE, null=False, blank =False)   # identificador del proeycto
+    id_criterios_pry =  models.ForeignKey(criterios, on_delete=models.SET_NULL, null=True, blank =False)   # identificador unico
+    id_proyecto =  models.ForeignKey(inf_pry, on_delete=models.SET_NULL, null=True, blank =False)   # identificador del proeycto
     objetivo_logrado = models.BooleanField('si logro el objetivo', default= False)  # si logro el objetivo
 
     class Meta:

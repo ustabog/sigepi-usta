@@ -1,5 +1,7 @@
+from pickle import TRUE
 from django.db import models
 from modpry.App_modpry.models import *
+from modpry.App_regpry.models import *
 
 class convenio_pry(models.Model):
     #Clase que contiene la información de los convenio del proyecto
@@ -18,9 +20,9 @@ class convenio_pry(models.Model):
         verbose_name_plural = 'convenios_prys'
 
 class rel_conv_pry(models.Model):
-    id_pry = models.ForeignKey(pry_base, null=False, blank =False)
-    id_conv = models.ForeignKey(convenio_pry, null=False, blank =False)
+    id_pry = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=True, blank =False)
+    id_conv = models.ForeignKey(convenio_pry, on_delete=models.SET_NULL, null=True, blank =False )
 
 class rel_conv_prod(models.Model):
-    id_pry = models.ForeignKey(prod_base, null=False, blank =False)
-    id_conv = models.ForeignKey(convenio_pry, null=False, blank =False)
+    id_pry = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=TRUE, blank =False)
+    id_conv = models.ForeignKey(convenio_pry,on_delete=models.SET_NULL, null=TRUE, blank =False)

@@ -10,38 +10,10 @@ class convoca_pry(models.Model):
     desc_convo = models.CharField('Descripción de la convocatoria:', max_length=255) #Descripción de la convocatoria
     fch_ini_convo = models.DateField(null=True, blank=True, auto_now=True)#Fecha de inicio de la convocatoria
     fch_fin_convo =  models.DateField(null=True, blank=True)#Fecha de finalización de la convocatoria
-    rl_info_convoca = models.ForeignKey(rl_info_convoca, null=False, blank =False)
+    # rl_info_convoca = models.ForeignKey(rl_info_convoca, null=False, blank =False)
     class Meta:
         verbose_name = 'convoca_pry'
         verbose_name_plural = 'convoca_prys'
-
-class info_convoca(models.Model):
-    #Clase que contiene la información de la información necesaria para participar dentro de la convocatoria
-    id_info_convo =  models.AutoField(primary_key = True)#Id de la información de la convocatoria
-    titulo_pry = models.CharField('Titulo del proyecto:', max_length=255) # Titulo del proyecto
-    fch_ini_pry = models.DateField(null=True, blank=True, auto_now=True)#Fecha de inicio del proyecto
-    fch_fin_fin =  models.DateField(null=True, blank=True)#Fecha de finalización del proyecto
-    inf_geo = models.IntegerField(null = False, blank = False, choices = DEPARTAMENTOS, default = 0) #Departamento donde se realizó el proyecto
-    lin_tem = models.IntegerField(null = False, blank = False, choices = LINEA_TEMA, default = 0) #Línea temática
-    justi_lin_tem = models.CharField('Justificación de la línea temática:', max_length=255)#Justificación de la línea temática
-    inv_prin = models.ForeignKey(usu, on_delete=models.CASCADE, null= False, blank = False) #Investigador principal
-    resu_eje = models.CharField('Resumen ejecutivo del proyecto:', max_length=255) #Resumen ejecutivo
-    obje_gen = models.CharField('Objetivo general del proyecto:', max_length=255)#Objetivo general
-    obj_esp_pry = models.ForeignKey(obj_esp_pry, null=False, blank =False) #Objetivos específicos del proyecto
-    plan_prob = models.CharField('Planteamiento del problema:', max_length=255)#Planteamiento del problema
-    just_pry = models.CharField('Justificación del proyecto:', max_length=255)#Justificación del proyecto
-    metod_pry = models.ForeignKey(metod_pry, null=False, blank =False)#Metodología del proyecto
-    Est_desa = models.CharField('Descripción del estado de desarrollo del proyecto:', max_length=255)#Descripción del estado del desarrollo del proyecto
-    estado_arte =  models.CharField('Estado de arte:', max_length=255)# Estado de arte 
-    estu_merca = models.ForeignKey(riesgo_pry, null=False, blank =False)
-    resul_espe = models.CharField('Resultados esparados del proyecto:', max_length=255)#Resultados que se esperan del proyecto
-    impacto_pry = models.ForeignKey(impacto_pry, null=False, blank =False)#Impacto del proyecto
-    riesgo_pry = models.ForeignKey(riesgo_pry, null=False, blank =False)#Riesgos del proyecto
-    refe_pry = models.ForeignKey(refe_pry, null=False, blank =False) #Referencias del proyecto
-    
-    class Meta:
-        verbose_name = 'info_convo'
-        verbose_name_plural = 'info_convos'
 
 class obj_esp_pry(models.Model):
     #Clase que define la metodología del proyecto
@@ -66,18 +38,6 @@ class metod_pry(models.Model):
         verbose_name = 'metod_pry'
         verbose_name_plural = 'metod_prys'
 
-class impacto_pry(models.Model):
-    #Clase que define los impactos del proyecto
-    id_impacto_pry = models.AutoField(primary_key = True) # Id del impacto del proyecto
-    tipo_imp = models.IntegerField(null = False, blank = False, choices = TIPO_IMPACTO, default = 0)#Tipo de impacto del proyecto
-    imp1 = models.CharField('Impacto número 1 del proyecto:', max_length=255) #Impacto 1 de la convocatoria
-    imp2 = models.CharField('Impacto número 2 del proyecto:', max_length=255) #Impacto 2 de la convocatoria
-    imp3 = models.CharField('Impacto número 3 del proyecto:', max_length=255) #Impacto 3 de la convocatoria
-
-    class Meta:
-        verbose_name = 'impacto_pry'
-        verbose_name_plural = 'impactos_pry'
-
 class riesgo_pry(models.Model):
     #Clase que define los riesgos del proyecto
     id_riesgo_pry = models.AutoField(primary_key = True) # Id del riesgo del proyecto
@@ -90,6 +50,19 @@ class riesgo_pry(models.Model):
         verbose_name = 'riesgo_pry'
         verbose_name_plural = 'riesgos_pry'
 
+
+class impacto_pry(models.Model):
+    #Clase que define los impactos del proyecto
+    id_impacto_pry = models.AutoField(primary_key = True) # Id del impacto del proyecto
+    tipo_imp = models.IntegerField(null = False, blank = False, choices = TIPO_IMPACTO, default = 0)#Tipo de impacto del proyecto
+    imp1 = models.CharField('Impacto número 1 del proyecto:', max_length=255) #Impacto 1 de la convocatoria
+    imp2 = models.CharField('Impacto número 2 del proyecto:', max_length=255) #Impacto 2 de la convocatoria
+    imp3 = models.CharField('Impacto número 3 del proyecto:', max_length=255) #Impacto 3 de la convocatoria
+
+    class Meta:
+        verbose_name = 'impacto_pry'
+        verbose_name_plural = 'impactos_pry'
+
 class refe_pry(models.Model):
     #Clase que define las referencias del proyecto
     id_refe_pry = models.AutoField(primary_key = True) # Id del riesgo del proyecto
@@ -101,7 +74,35 @@ class refe_pry(models.Model):
         verbose_name = 'refe_pry'
         verbose_name_plural = 'refes_pry'
 
+class info_convoca(models.Model):
+    #Clase que contiene la información de la información necesaria para participar dentro de la convocatoria
+    id_info_convo =  models.AutoField(primary_key = True)#Id de la información de la convocatoria
+    titulo_pry = models.CharField('Titulo del proyecto:', max_length=255) # Titulo del proyecto
+    fch_ini_pry = models.DateField(null=True, blank=True, auto_now=True)#Fecha de inicio del proyecto
+    fch_fin_fin =  models.DateField(null=True, blank=True)#Fecha de finalización del proyecto
+    # inf_geo = models.IntegerField(null = False, blank = False, choices = DEPARTAMENTOS, default = 0) #Departamento donde se realizó el proyecto
+    lin_tem = models.IntegerField(null = False, blank = False, choices = LINEA_TEMA, default = 0) #Línea temática
+    justi_lin_tem = models.CharField('Justificación de la línea temática:', max_length=255)#Justificación de la línea temática
+    inv_prin = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False) #Investigador principal
+    resu_eje = models.CharField('Resumen ejecutivo del proyecto:', max_length=255) #Resumen ejecutivo
+    obje_gen = models.CharField('Objetivo general del proyecto:', max_length=255)#Objetivo general
+    obj_esp_pry = models.ForeignKey(obj_esp_pry, on_delete=models.SET_NULL, null=True, blank =False) #Objetivos específicos del proyecto
+    plan_prob = models.CharField('Planteamiento del problema:', max_length=255)#Planteamiento del problema
+    just_pry = models.CharField('Justificación del proyecto:', max_length=255)#Justificación del proyecto
+    metod_pry = models.ForeignKey(metod_pry, on_delete=models.SET_NULL, null=True, blank =False)#Metodología del proyecto
+    Est_desa = models.CharField('Descripción del estado de desarrollo del proyecto:', max_length=255)#Descripción del estado del desarrollo del proyecto
+    estado_arte =  models.CharField('Estado de arte:', max_length=255)# Estado de arte 
+    # estu_merca = models.ForeignKey(riesgo_pry, on_delete=models.SET_NULL, null=True, blank =False)
+    resul_espe = models.CharField('Resultados esparados del proyecto:', max_length=255)#Resultados que se esperan del proyecto
+    impacto_pry = models.ForeignKey(impacto_pry, on_delete=models.SET_NULL, null=True, blank =False)#Impacto del proyecto
+    riesgo_pry = models.ForeignKey(riesgo_pry,  on_delete=models.SET_NULL, null=True, blank =False)#Riesgos del proyecto
+    refe_pry = models.ForeignKey(refe_pry, on_delete=models.SET_NULL, null=True, blank =False) #Referencias del proyecto
+    
+    class Meta:
+        verbose_name = 'info_convo'
+        verbose_name_plural = 'info_convos'
+
 class rl_info_convoca(models.Model):
     id_rel_info_conv = models.AutoField(primary_key = True) # Id de la relación entre la convocatoria y la información de la convocatoria
-    id_info_convo = models.ForeignKey(info_convoca, null=False, blank =False)
-    id_convo = models.ForeignKey(convoca_pry, null=False, blank =False)
+    id_info_convo = models.ForeignKey(info_convoca, on_delete=models.SET_NULL, null=True, blank =False)
+    id_convo = models.ForeignKey(convoca_pry, on_delete=models.SET_NULL, null=True, blank =False)

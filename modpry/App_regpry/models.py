@@ -297,7 +297,7 @@ class pry_base(models.Model):
     nombre_pry=models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
     desc_pry=models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto
     tipo_pry=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto - diccionario TIPO_PRY
-    prop_pry= models.ForeignKey(usu, on_delete=models.CASCADE, null= False, blank = False) #Propietario del proyecto
+    prop_pry= models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False) #Propietario del proyecto
     est_pry = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)
     pry_archi = models.IntegerField(null = False, blank = False, choices = PRY_ARCHIVADO, default = 0)#Si el proyecto es borrado queda como archivado
     #estado - por defecto borrador
@@ -318,15 +318,15 @@ class inf_pry(models.Model):
     id_inf_pry = models.AutoField(primary_key = True)# identificador unico para  App Registro de Proyectos
     nombre_archivo = models.CharField('Nombre del archivo del proyecto: ', max_length=255)# Nombre del archivo del proyecto.
     url_archivo =models.URLField('url del archivo del proyecto',max_length=200)# Url del archivo del proyecto.
-    id_gr_inv = models.ForeignKey(usugr, on_delete=models.CASCADE, null=False, blank =False)#identificador del grupo de investgación
+    id_gr_inv = models.ForeignKey(usugr, on_delete=models.SET_NULL, null=True, blank =False)#identificador del grupo de investgación
     #id_ln_inv = models.ForeignKey(Ln_inv, on_delete=models.CASCADE, null=False, blank =False)#Identificador de la linea de investigación
     #conv =  models.IntegerField(null = False, blank = False, choices = CONVENIO, default = 0)# Convenio propuesto o previsto para la realización de la investigación.
-    dat_dep = models.IntegerField(null = False, blank = False, choices = DEPARTAMENTOS, default = 0)#Lista de los departamentos de Colombia que hacen parte del proyecto
+    #dat_dep = models.IntegerField(null = False, blank = False, choices = DEPARTAMENTOS, default = 0)#Lista de los departamentos de Colombia que hacen parte del proyecto
     #geo_nac_cp = models.ForeignKey(leer_dat_geo_cenpobl, on_delete=models.CASCADE, null=False, blank =False)#id registro de centros poblados que abarca el proyecto.
     url_ap =  models.URLField('url de la imágen de árbol de problemas',max_length=200)# Url de la imágen del árbol de problemas.
     url_ao =  models.URLField('url de la imágen de árbol de objetivos', max_length=200)# Url de la imágen del árbol de objetivos.
-    id_ml = models.ForeignKey('ID marco lógico', on_delete=models.SET_NULL, null=True)# id de registro de marco lógico
-    id_act = models.ForeignKey('ID marco lógico', on_delete=models.CASCADE, null=False, blank =False) #identificador de registro de actores proyecto.
+    # id_ml = models.ForeignKey('ID marco lógico', on_delete=models.SET_NULL, null=True, blank =False)# id de registro de marco lógico
+    # id_act = models.ForeignKey('ID marco lógico', on_delete=models.SET_NULL, null=True, blank =False) #identificador de registro de actores proyecto.
     obj_gen = models.CharField('Objetivo general: ', max_length=255)# Objetivo general del proyecto.
     obj_esp = models.CharField('Objetivos especificos: ', max_length=255)# Objetivos específicos del proyecto.
     
