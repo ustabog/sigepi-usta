@@ -77,14 +77,15 @@ class roles ():
                             logging.warning("No se crearon los permisos '{}'.".format(name))
                             continue
                         new_group.permissions.add(model_add_perm)
-
-            g_sis = Group.objects.get(name='Sistema')
-            g_modadm = Group.objects.get(name='Admin Modulo Administracion')
-            g_appmodadm = Group.objects.get(name='Admin Aplicacion Modulo Administracion')
-            g_usu = Group.objects.get(name='Admin Aplicacion Usuarios')
-            g_usugr = Group.objects.get(name='Admin Aplicacion Grupos')
-            g_usui = Group.objects.get(name='Admin Aplicacion Instituciones')
+                        
+            g_sis = Group.objects.get(name='Administrador de Sistema')
+            g_modadm = Group.objects.get(name='Administrador de Institución')
+            g_appmodadm = Group.objects.get(name='Administrador de Grupo')
+            g_usu = Group.objects.get(name='Usuario')
+            g_usugr = Group.objects.get(name='Usuario grupo')
+            g_usui = Group.objects.get(name='Usuario Institucional')
             g_inv, create = Group.objects.get_or_create(name='Invitado')
+            g_ann, create = Group.objects.get_or_create(name='Anónimo')
 
             for model in MODELOS:
                 for permission in PERMISOS:
