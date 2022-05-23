@@ -1,0 +1,35 @@
+{% extends 'inicio_adm.html' %}
+{% block titulo %} Listado de Aplicaciones de Modulos {% endblock titulo %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>La lista de aplicaciones de módulos no se ha podido consultar.</p>
+{% endif %}
+<form method="POST">
+    <div class="table-responsive">
+        <table class="table">
+            <h2>Listado de modulos</h2>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Dirección de Oficina</th>
+                    <th>Direcció n de Oficina</th>
+                    <th>URL</th>
+                    <th>Uso de la red</th>
+                    <th>Acceso público de información de red</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr>
+                        <td> {{ red_soc.nombre_red }} </td>
+                        <td> {{ red_soc.usuario }} </td>
+                        <td> {{ red_soc.url }} </td>
+                        <td> {{ red_soc.uso }} </td>
+                        <td> {{ red_soc.pub }} </td>
+                        <td> <a href="../edt_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-info">Editar</a><br></td>
+                    </tr>
+                </tbody>
+        </table> 
+    </div>
+</form>
+{% endblock cuerpo %}

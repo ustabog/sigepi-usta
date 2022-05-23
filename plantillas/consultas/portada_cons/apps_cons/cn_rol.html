@@ -1,0 +1,49 @@
+{% extends 'inicio_adm.html' %}
+{% block titulo %} Listado de Grupos {% endblock titulo %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>La lista de aplicaciones de grupos no se ha podido consultar.</p>
+{% endif %}
+<form method="POST">
+    <div class="table-responsive">
+        <table class="table">
+            <h2>Listado de roles</h2>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>grupo</th>
+                    <th>etq_rol</th>
+                    <th>desc</th>
+                    <th>tipo</th>
+                    <th>id_mod</th>
+                    <th>id_app</th>
+                    <th>id_sis</th>
+                    <th>id_ext_mod</th>
+                    <th>id_ext_app</th>
+                    <th>req_reg</th>
+                    <th colspan="2">Opciones</th>
+                </tr>
+            </thead>
+            {% for rol in  object_list %}
+                <tbody>
+                    <tr>
+                        <td> {{ rol.id_rol }} </td>
+                        <td> {{ rol.grupo}} </td>
+                        <td> {{ rol.etq_rol}} </td>
+                        <td> {{ rol.desc}} </td>
+                        <td> {{ rol.tipo}} </td>
+                        <td> {{ rol.id_mod}} </td>
+                        <td> {{ rol.id_app}} </td>
+                        <td> {{ rol.id_sis}} </td>
+                        <td> {{ rol.id_ext_mod}} </td>
+                        <td> {{ rol.id_ext_app}} </td>
+                        <td> {{ rol.id_ext_app}} </td>
+                        <td> <a href="../edt_rol/{{rol.id}}" class="btn btn-block btn-sm btn-info">Editar</a><br></td>
+                        <td> <a href="../eli_rol/{{rol.id}}" class="btn btn-block btn-sm btn-danger">Eliminar</a><br><br></td> 
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table> 
+    </div>
+</form>
+{% endblock cuerpo %}
