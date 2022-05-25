@@ -1,0 +1,106 @@
+/* Botones */
+.btn{
+    position:relative;
+    width:100%;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    border-left: 1px solid $color-primario-oscuro;
+    margin: 2px 2px;
+    border-radius: 2%;
+    padding: 2px, 2px, 2px, 2px;
+    text-decoration: none;
+    box-sizing:content-box;
+}
+
+/* boton primario claro (azul) */
+.btn_prm_cl {
+    @extend .btn;
+    background-color: var($color-blanco);
+    box-shadow: 0 2px 2px rgba(0, 17, 54, 0.267);
+    background: linear-gradient(0deg,var($color-blanco), var($color-primario));
+    transition: 0.3s;
+    :hover {
+        border-left: 1px solid var($color-blanco);
+        background: linear-gradient(0deg,var($color-primario-cl),var($color-blanco) );
+        box-shadow: 0 2px 2px rgba(241, 245, 255, 0.514);
+        transform: translate(0%,-3%);
+    }
+    i {
+        font-size: 30px;
+        color: var($color-primario);
+        transition: 0.5s;
+        padding: auto;
+    }
+    i:hover{
+        font-size: 27px;
+        color: var($color-primario-1);
+        transition: 0.5s;
+        padding:2px;
+    }
+    .deshab {
+        border-left: 1px solid var($color-gris);
+        background: linear-gradient(0deg,var($color-primario-c),var($color-gris) );
+        box-shadow: 0 2px 2px rgba(95, 95, 95, 0.15);
+        transform: translate(0%,-3%);
+        font-size: 30px;
+        color: var(--gris);
+        transition: 0.5s;
+        padding: auto;
+    }
+}
+
+/* boton secundario claro (verde) */
+.btn_prm_cl {
+    @extend .btn;
+    background-color: var($color-blanco);
+    box-shadow: 0 2px 2px rgba(0, 17, 54, 0.267);
+    background: linear-gradient(0deg,var($color-blanco), var($color-secundario));
+    transition: 0.3s;
+    :hover {
+        border-left: 1px solid var($color-blanco);
+        background: linear-gradient(0deg,var($color-secundario-cl),var($color-blanco) );
+        box-shadow: 0 2px 2px rgba(241, 245, 255, 0.514);
+        transform: translate(0%,-3%);
+    }
+    i {
+        font-size: 30px;
+        color: var($color-secundario);
+        transition: 0.5s;
+        padding: auto;
+    }
+    i:hover{
+        font-size: 27px;
+        color: var($color-secundario-1);
+        transition: 0.5s;
+        padding:2px;
+    }
+    .deshab {
+        border-left: 1px solid var($color-gris);
+        background: linear-gradient(0deg,var($color-secundario-c),var($color-gris) );
+        box-shadow: 0 2px 2px rgba(95, 95, 95, 0.15);
+        transform: translate(0%,-3%);
+        font-size: 30px;
+        color: var(--gris);
+        transition: 0.5s;
+        padding: auto;
+    }
+}
+
+.btn_menu{
+    display: flex;
+    position: absolute;
+    background-color: var(color-primario);
+    border-radius: 2px;
+    border:0px;
+    transition: 0.5s ease;
+}
+
+.btn_cerrar{
+    background-color: var(color-primario);
+    display:none;
+    position: absolute;
+    border-radius: 2px;
+    border:0px;
+    transition-duration: 0.5s ease;
+}

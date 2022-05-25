@@ -1,0 +1,57 @@
+:root{
+/* colores */
+--color-primario:#00336a;
+--color-primario-1:#004f9f;
+--color-primario-2:#008FE3;
+--color-primario-tr:#cee7ffda;
+--color-primario-oscuro:#000B3B;
+--color-secundario:#004732;
+--color-secundario-1:#00691a;
+--color-secundario-2:#009926;
+--color-secundario-tr:#d9ffe23b;
+--color-secundario-oscuro:#003b14;
+--color-terciario:#490000;
+--color-terciario-1:#800000;
+--color-terciario-2:#d60000;
+--color-terciario-tr:#80000044;
+--color-terciario-oscuro:#300000;
+--color-grises:#474747;
+--color-grises-1:#6e6e6e;
+--color-grises-2:#a1a1a1;
+--color-grises-tr:#bebebe3b;
+--color-grises-oscuro:#202020;
+--color-azul:#00336a;
+--color-amarillo:#ffe000;
+--color-naranja:#fdc300;
+--color-verde:#13a538;
+--color-vinotinto:#800000;
+--color-blanco:#ffffff;
+--color-gris:#606060;
+--color-azul-rey:#00608F;
+--color-naranja-1:#E09F2F;
+--color-exitoso:#00E8FF;
+--color-info:#34C38F;
+--color-cuidado:#ffadad;
+--color-peligro:#b30000;
+--color-luminoso:#FBF6C8;
+
+
+/* Tamaños de pantalla */
+--pnt-ancho-xs: min-max(0px,480px);
+--pnt-alto-xs: min-max(0px,360px);
+--pnt-ancho-sm: min-max(481px,640px);
+--pnt-alto-sm: min-max(361px,480px);
+--pnt-ancho-md: min-max(641px,800px);
+--pnt-alto-md: min-max(481px, 600px);
+--pnt-ancho-lg: min-max(801px,1024px);
+--pnt-alto-lg: min-max(601px,768px);
+--pnt-ancho-xl: min-max(1021px,1920px);
+--pnt-alto-xl: min-max(769px, 1080px);
+--pnt-ancho-xl: min(1921px);
+--pnt-alto-xl: min(1081px);
+
+/* fuentes */
+--fam-fuentes-contenido: "Helvetica Neue", Arial, serif;
+--fam-fuentes-codigo: "Times New Roman", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+--fam-fuentes-titulos: sans-serif;
+}

@@ -1,0 +1,24 @@
+
+
+.menu{
+    position: fixed;
+    display:flex;
+    flex-direction: row;
+    vertical-align: middle;
+    width: 100%;
+}
+.menu_app{
+   @extend .menu;
+}
+
+.menu_ppal {
+    @extend .menu;
+    vertical-align: middle;
+    i {
+        padding-top: 10px;
+        padding-left: 10px;
+        color: var($color-blanco);
+        font-size: 2.1rem;
+        text-decoration: none;
+    }
+}

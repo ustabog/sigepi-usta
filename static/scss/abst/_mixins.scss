@@ -1,0 +1,16 @@
+/* Elemencots comunes que se heredan y pueden tener algunas variaciones */
+
+/* fondo simple */
+@mixin fn_sim($color) {
+    background-color: $color;
+}
+
+/* fondo degradado vertical */
+@mixin fn_deg_vrt($color,$color1) {
+    background: linear-gradient(-90deg, var($color), var($color1));
+}
+
+/* fondo degradado horizontal */
+@mixin fn_deg_hrz($color,$color1) {
+    background: linear-gradient(0deg, var($color), var($color1));
+}

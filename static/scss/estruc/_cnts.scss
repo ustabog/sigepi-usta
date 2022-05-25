@@ -1,0 +1,61 @@
+/* Contenedores */
+.cnt{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    padding: 5px 5px 5px 5px;
+}
+
+/* contenedor normal */
+.cnt_norm{
+    @extend .cnt;
+    box-shadow: 5px 5px 5px rgba(22, 22, 22, 0.25);
+    background: linear-gradient(0deg,var($color-primario-cl),var($color-blanco));
+    border-left: 1px solid rgba(0,0,0,0.2);
+}
+
+/* Contenedor de artículo */
+.cnt_art{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid rgba(0,0,0,0.2);
+    background: linear-gradient(0deg,var(--azul-cl),var(--blanco));
+    box-shadow: 5px 5px 5px rgba(0, 17, 54, 0.267);
+    border-radius: 2px;
+    padding: 5px 5px 5px 5px;
+  }
+  
+  /* Contenedor panel derecho */
+  .cont_pn_der{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid rgba(0,0,0,0.2);
+    background: linear-gradient( 90deg,var(--azul-cl),var(--azul));
+    box-shadow: 5px 5px 5px rgba(0, 17, 54, 0.267);
+    border-radius: 2px;
+    padding: 5px 5px 5px 5px;
+    overflow: auto;
+  }
+
+  /* Contenedor de barra de herramientas */
+  .cnt_br{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    width: 150px;
+    height: 100%;
+    border-left: 1px solid rgba(0,0,0,0.2);
+    background:var(--azul);
+    box-shadow: 5px 5px 5px rgba(0, 17, 54, 0.267);
+    border-radius: 2px;
+    padding: 5px 5px 5px 5px;
+  }
