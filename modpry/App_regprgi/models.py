@@ -3,6 +3,23 @@ from modpry.App_modpry.models import *
 from modadm.App_regusugr.models import *
 from modadm.App_modadm.models import *
 from modcons.App_cons.models import *
+
+APP_PRG_INV = [
+    #Diccionario para la aplicación de programa de investigación
+    (0,'Titulo')
+    (1,'Descripción'),
+    (2,'url_documento'),
+    (3,'url_instal'),
+    (4,'url_plantilla'),
+    (5,'Nombre_url'),
+    (6,'Versión aplicación'),
+    (7,'id_mod'),
+    (8,'Versión_módulo'),
+    (9,'estado'),
+    (10,'instalada')
+    (11, 'visible')
+    ]
+
 # Clases de la Aplicación Registro de Programas de Investigación
 
 class tipos_prog_inv(models.Model):
@@ -44,16 +61,3 @@ class inf_prog_inv(models.Model): #verificar esta tabla
         verbose_name = 'inf_prog_inv'
         verbose_name_plural = 'inf_prog_invs'
 
-
-class app_reg_prog_inv(models.Model): #verificar
-    #Clase que contiene los objetos de la App Registro de Proyectos
-    id_app_reg_prog_inv = models.AutoField(primary_key = True)  # identificador unico para  App Registro de Proyectos
-    id_mod_app = models.ForeignKey(app_mod, on_delete=models.SET_NULL, null=True, blank =False, default = 0)
-    id_mod_pry = models.ForeignKey(mod_pry, on_delete=models.SET_NULL, null=True, blank =False) # Identificador único ddel modulo proyecto
-    nomb_app_reg_pry  = models.CharField('nombre de la App Registro ', max_length=40, null=False, blank= False) # nombre de la App Registro de Proyectos
-    desc_app_reg_pry  = models.CharField('Descripcion de la App ', max_length=40, null=False, blank= False) # descripcion de la App Registro de Proyectos
-    status_app_reg_pry  =  models.BooleanField('Estatus de la aplicacion', default= True) # estatus de la App Registro de Proyectos
-
-    class Meta:
-        verbose_name = 'app_reg_prog_inv'
-        verbose_name_plural = 'app_reg_prog_invs'

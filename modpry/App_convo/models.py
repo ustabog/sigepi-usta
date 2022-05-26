@@ -3,6 +3,21 @@ from modpry.App_modpry.models import *
 from modpry.App_regpry.models import *
 from modcons.App_cons.models import *
 
+APP_CONVO_PRY = [
+    #Diccionario para la aplicación de convocatoria de proyecto
+    (1,'Descripción'),
+    (2,'url_documento'),
+    (3,'url_instal'),
+    (4,'url_plantilla'),
+    (5,'Nombre_url'),
+    (6,'Versión aplicación'),
+    (7,'id_mod'),
+    (8,'Versión_módulo'),
+    (9,'estado'),
+    (10,'instalada')
+    (11, 'visible')
+    ]
+
 class convoca_pry(models.Model):
     #Clase que contiene la información de las convocatorias del proyecto
     id_convo =  models.AutoField(primary_key = True)#Id de la convocatoria

@@ -3,23 +3,24 @@ from modpry.App_modpry.models import *
 from modadm.App_regusugr.models import *
 from modpry.App_regpry.models import *
 
-class app_ev_pry(models.Model):
-    #Clase que contiene los objetos de la App Evaluación de Proyectos
-    id_app_ev_pry =  models.AutoField(primary_key = True)   # identificador unico para App Evaluación de Proyectos
-    id_mod_pry  = models.ForeignKey(mod_pry, on_delete=models.SET_NULL, null=True, blank =False)  # Identificador único del modulo proyecto
-    nomb_app_ev_pry  = models.CharField('nombre de la App Evaluación  ', max_length=40, null=False, blank= False) # nombre de la App Evaluación de Proyectos
-    desc_app_ev_pry = models.CharField('descripcion de la App  ', max_length=40, null=False, blank= False) # descripcion de la App Evaluación de Proyectos
-    status_app_ev_pry =  models.BooleanField('estatus de la App Evaluación de Proyectos ', default= False) # estatus de la App Evaluación de Proyectos
-
-    class Meta:
-        verbose_name = 'app_ev_pry'
-        verbose_name_plural = 'app_ev_prys'
-
+APP_EVA_PRY = [
+    #Diccionario para la aplicación de evaluación de proyecto
+    (0,'Titulo')
+    (1,'Descripción'),
+    (2,'url_documento'),
+    (3,'url_instal'),
+    (4,'url_plantilla'),
+    (5,'Nombre_url'),
+    (6,'Versión aplicación'),
+    (7,'id_mod'),
+    (8,'Versión_módulo'),
+    (9,'estado'),
+    (10,'instalada')
+    (11, 'visible')
+    ]
 
 class evalucion_pry(models.Model):
-        #preguntar sobre el grupo investigador
     #Clase que contiene la forma de evaluacion del proyecto
-
     id_evalucion =  models.AutoField(primary_key = True)   # identificador unico para el tipo de evalucion
     desc_tipos_evalucion =  models.CharField('descripcion del tipo de evalucion ', max_length=40, null=False, blank= False) # descripcion del tipo de evalucion
     id_grup_bd = models.ForeignKey(usugr, on_delete=models.SET_NULL, null=True, blank=False) # identificador del grupo de investigación
@@ -29,26 +30,6 @@ class evalucion_pry(models.Model):
     class Meta:
         verbose_name = 'evalucion_pry'
         verbose_name_plural = 'evalucion_prys'
-
-class tipos_evalucion(models.Model):
-    #Clase que contiene la clase de evalucion, interna, externa y comite de etica
-    id_ipos_evalucion =  models.AutoField(primary_key = True)   # identificador unico para el tipo de evalucion
-    nomb_tipos_evalucion = models.CharField('Nombre del tipo de evalucion ', max_length=40, null=False, blank= False) # nombre del tipo de evaluacion
-    desc_tipos_evalucion = models.CharField('descripcion del tipo de evalucion ', max_length=40, null=False, blank= False) # descripcion del tipo de evalucion
-
-    class Meta:
-        verbose_name = 'tipos_evalucion'
-        verbose_name_plural = 'tipos_evalucions'
-
-class rel_evalucion_pry(models.Model):
-    #Clase que contiene la forma de evaluacion individual
-    id_evalucion = models.ForeignKey(evalucion_pry, on_delete=models.SET_NULL, null=True, blank =False)  # identificador unico para el tipo de evalucion
-    id_investigador = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False) # identificador del investigador
-    id_tipos_evalucion = models.ForeignKey(tipos_evalucion, on_delete=models.SET_NULL, null=True, blank =False)  # tipo de evaluacion
-
-    class Meta:
-        verbose_name = 'rel_evalucion_pry'
-        verbose_name_plural = 'rel_evalucion_prys'
 
 
 class criterios(models.Model):
@@ -66,12 +47,3 @@ class criterios(models.Model):
         verbose_name = 'criterios'
         verbose_name_plural = 'criterioss'
 
-class criterios_pry(models.Model):
-    #Clase que contiene los criterios evaluados del proyecto
-    id_criterios_pry =  models.ForeignKey(criterios, on_delete=models.SET_NULL, null=True, blank =False)   # identificador unico
-    id_proyecto =  models.ForeignKey(inf_pry, on_delete=models.SET_NULL, null=True, blank =False)   # identificador del proeycto
-    objetivo_logrado = models.BooleanField('si logro el objetivo', default= False)  # si logro el objetivo
-
-    class Meta:
-        verbose_name = 'criterios_pry'
-        verbose_name_plural = 'criterios_prys'

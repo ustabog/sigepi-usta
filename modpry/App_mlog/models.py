@@ -29,6 +29,22 @@ ESTADO_MLOG=[
     (8,'En reformulación'),
     ]
 
+APP_MLOG = [
+    #Diccionario para la aplicación de marco lógico
+    (0,'Titulo')
+    (1,'Descripción'),
+    (2,'url_documento'),
+    (3,'url_instal'),3
+    (4,'url_plantilla'),
+    (5,'Nombre_url'),
+    (6,'Versión aplicación'),
+    (7,'id_mod'),
+    (8,'Versión_módulo'),
+    (9,'estado'),
+    (10,'instalada')
+    (11, 'visible')
+    ]
+
 class marco_log(models.Model):
     #clase que almacena la información de elaboración de un análisis desde la metodología de marco lógico
     id_mlog =  models.AutoField(primary_key = True)   # identificador unico para el registro de un análisis de marco lógico

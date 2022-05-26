@@ -17,8 +17,6 @@ urlpatterns = [
     #path('elipry/<int_pk>',vts_reg_pry.as_view(), name = 'elim_pry'), #Borrar proyecto
     path('elipry/<id>',eli_pry, name = 'eliminar_usu'),
 
-    #URL para registro de proyecto grupal
-    path('creapry_grp/',vts_reg_pry_grp.as_view(), name = 'crea_pry_grp'),
 ]
 
 

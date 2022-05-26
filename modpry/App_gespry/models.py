@@ -7,20 +7,21 @@ from modpry.App_regpry.models import *
 """
 Clases de la Aplicación Gestión de Proyectos
 """
-
-class app_ges_pry(models.Model):
-    #Clase que contiene los objetos de la App Gestión de Proyectos
-
-    id_ges_pry =  models.AutoField(primary_key = True)   # identificador unico para App Gestión de Proyectos
-    id_mod_pry =  models.ForeignKey(mod_pry, on_delete=models.SET_NULL, null=True, blank =False)   # Identificador único del modulo proyecto
-    nomb_ges_pry  = models.CharField('Nombre de la App ', max_length=40, null=False, blank= False)  # nombre de la App Gestión de Proyectos
-    desc_ges_pry =  models.CharField(' descripcion de la App  ', max_length=40, null=False, blank= False)   # descripcion de la App Gestión de Proyectos
-    status_ges_pry  = models.BooleanField('si logro el objetivo', default= False) # estatus de la App Gestión de Proyectos
-
-    class Meta:
-        verbose_name = 'app_ges_pry'
-        verbose_name_plural = 'app_ges_prys'
-
+APP_GES_PRY = [
+    #Diccionario para la aplicación de gestión de proyecto
+    (0,'Titulo')
+    (1,'Descripción'),
+    (2,'url_documento'),
+    (3,'url_instal'),
+    (4,'url_plantilla'),
+    (5,'Nombre_url'),
+    (6,'Versión aplicación'),
+    (7,'id_mod'),
+    (8,'Versión_módulo'),
+    (9,'estado'),
+    (10,'instalada')
+    (11, 'visible')
+    ]
 
 class inf_ges_pry(models.Model):
     #Clase que contiene la informacion de la gestion del proyecto

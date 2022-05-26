@@ -3,7 +3,21 @@ from modpry.App_modpry.models import *
 from modpry.App_regpry.models import *
 from modcons.App_cons.models import *
 
-# Create your models here.
+APP_DIS_PRY = [
+    #Diccionario para la aplicación de diseño de proyecto
+    (0,'Titulo')
+    (1,'Descripción'),
+    (2,'url_documento'),
+    (3,'url_instal'),
+    (4,'url_plantilla'),
+    (5,'Nombre_url'),
+    (6,'Versión aplicación'),
+    (7,'id_mod'),
+    (8,'Versión_módulo'),
+    (9,'estado'),
+    (10,'instalada')
+    (11, 'visible')
+    ]
 
 class tema(models.Model):
     #Clase que define los temas del proyecto

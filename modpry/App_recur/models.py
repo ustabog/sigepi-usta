@@ -2,7 +2,22 @@ from django.db import models
 from modpry.App_modpry.models import *
 from modpry.App_regpry.models import *
 
-# Create your models here.
+APP_REC_PRY = [
+    #Diccionario para la aplicación de recurso de proyecto
+    (0,'Titulo')
+    (1,'Descripción'),
+    (2,'url_documento'),
+    (3,'url_instal'),
+    (4,'url_plantilla'),
+    (5,'Nombre_url'),
+    (6,'Versión aplicación'),
+    (7,'id_mod'),
+    (8,'Versión_módulo'),
+    (9,'estado'),
+    (10,'instalada')
+    (11, 'visible')
+    ]
+
 TIPO_REC = [
     (0, 'Recurso material'),
     (1, 'Recurso humano'),
