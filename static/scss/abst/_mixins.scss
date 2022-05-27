@@ -1,6 +1,7 @@
-/* Elemencots comunes que se heredan y pueden tener algunas variaciones */
+/* sigepi.css: Elementos comunes que se heredan y pueden tener algunas variaciones */
 
 /* fondo simple */
+
 @mixin fn_sim($color) {
     background-color: $color;
 }

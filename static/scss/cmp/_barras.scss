@@ -1,3 +1,4 @@
+/* sigepi.css: Barras, barras de estado, barras de progreso y menús de navegación verticales */
 .brr{
     position:relative;
     display: flex;
@@ -5,18 +6,17 @@
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    font-family:$fam-fuentes-titulos;
+    font-family:--fam-fuentes-titulos;
     font-size:medium;
     font-weight: bold;
     text-align: center;
     overflow:hidden;
     -webkit-overflow-scrolling: touch;  
 }
-
 .br_herr {
     /* barra de herramientas */
     @extend .brr;
-    @include fn_sim($color-primario);
+    @include fn_sim(--color-primario);
     top: 0;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
@@ -25,24 +25,30 @@
     -webkit-backface-visibility: hidden;
     .enc_br_herr{
         /* encabezado barra de herramientas */
-        @include fn_deg_hrz($color-primario,$color-primario-1);
+        @include fn_deg_hrz(--color-primario,--color-primario-1);
         width: 100%;
         height: 65px;
         display:block;
         padding: 5px 5px;
-        color: var($color-blanco);
+        color: var(--color-blanco);
+        &_adm{
+            @include fn_deg_hrz(--color-secundario,--color-secundario-1);
+        }
+    }
+    &_adm{
+        @include fn_sim(--color-secundario);
     }
 }
 
 .br_app{
     @extend .brr;
-    @include fn_sim($color-primario);
+    @include fn_sim(--color-primario);
     height: 100%;
     overflow: auto;
     z-index: 9;
     ul{
         list-style: none;
-        color: var($color-primario);
+        color: var(--color-primario);
         font-weight: bolder;
         display: block;
         padding: 0;
@@ -62,20 +68,20 @@
                 text-decoration: none;
             }
             a:hover{
-                color:var($color-primario-2);
-              }
-            i {
+                color:var(--color-primario-2);
+            }
+            i{
                 font-size: 3em;
                 padding-right: 0.5em;
                 width: 100%;
                 /* display: inline;
                 vertical-align: middle; */
             }
-           }
-           li:hover >.categ_br_herr {
-            background-color:var($color-primario);
-            @extend .trasl_hrz_izq;
-          }
+            :hover >.categ_br_herr {
+                background-color:var(--color-primario);
+                @extend .trasl_hrz_izq;
+            }
+        }
     }
     >ul >li >a:after {
         content: '>';
@@ -89,27 +95,48 @@
     }
     .categ_br_herr{
         position: absolute;
-        background-color:var($color-primario);
+        background-color:var(--color-primario);
         z-index: 9;
         left: 3.7em;
         top: 0;
         height: 100vh;
-        @extend .trasl_hrz;
+        @extend .trasl_hrz_der;
         a:hover{
-            background-color:var($color-primario-oscuro);
-            color:var($color-primario-2);
+            background-color:var(--color-primario-oscuro);
+            color:var(--color-primario-2);
             transition:all 0.3s ease;
-          }
+        }
+        &_adm{
+            background-color:var(--color-secundario);
+            a:hover{
+                background-color:var(--color-secundario-oscuro);
+                color:var(--color-secundario-2);
+            }
+        }
+    }
+    &_adm{
+        @extend .brr;
+        @include fn_sim(--color-secundario);
+        ul{
+            color: var(--color-secundario);
+            li{
+                a:hover{
+                    color:var(--color-secundario-2);
+                  }
+            }
+            
+
+        }
     }
 }
 
 .nav_der{
     display: flex;
     flex-direction: column;
-    .titulo {
+    &_titulo {
         display:flex;
         float: right;
-        color: var($color-blanco);
+        color: var(--color-blanco);
         font-size: 24px;
         padding-top: 8px;
         padding-right: 5px;
@@ -118,33 +145,34 @@
         list-style:none;
         list-style-position: outside;
         padding: 0px;
-    }
-    li {
-        list-style:none;
-        list-style-position: outside;
-        padding: 5px;
-        :hover{
-            padding: 0px;
-        }
-    }
-    .logotipo {
-        display:flex;
-        position:static;
-        float: right;
-        color: var($color-blanco);
-        font-size: 2.1rem;
-        padding: 0px;
-        margin-top:0px;
-        right:0;
-        a{
-            img{
-                position:relative;
-                height:50px;
-                color:var($color-blanco);
-                font-size: 30px;
-                padding: 2px;
-                text-decoration: none;
+        li {
+            list-style:none;
+            list-style-position: outside;
+            padding: 5px;
+            :hover{
+                padding: 0px;
             }
         }
-      }
+        .logotipo {
+            display:flex;
+            position:static;
+            float: right;
+            color: var(--color-blanco);
+            font-size: 2.1rem;
+            padding: 0px;
+            margin-top:0px;
+            right:0;
+            a{
+                img{
+                    position:relative;
+                    height:50px;
+                    color:var(--color-blanco);
+                    font-size: 30px;
+                    padding: 2px;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    
 }

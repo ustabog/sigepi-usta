@@ -1,0 +1,5 @@
+/* Establecer las condiciones iniciale sy de normalización de los componenete y elementos */
+/* características generales de cada caja */
+*, *::after, *::before{
+    box-sizing: border-box;
+}

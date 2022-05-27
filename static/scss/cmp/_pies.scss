@@ -1,0 +1,59 @@
+/* sigepi.css: pies del diseño */
+.pie{
+    display:inline-block;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom:0px;
+    align-items: center;
+}
+
+.pie_ppal {
+    @extend .pie;
+    height: 65px;
+    padding-top: 5px;
+    color: var(--color-primario-tr);
+    background-color: var(--color-primario);
+    &_cnt{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        /*margin-left: auto;
+        margin-right: auto;*/
+        overflow:hidden;
+        &_item {
+            display:block;
+            width:100%;
+            @extend .btn_pie;
+            p {
+                color:var(--color-primario-2);
+                text-align: center;
+                margin: 0px 0px;
+                font-size: small;
+                font-family:--fam-fuentes-titulos;
+                text-decoration:double;
+                transition: 0.2s;
+                :hover {
+                    color:var(--color-blanco);
+                    text-align: center;
+                    font-size: small;
+                    text-decoration:solid;
+                    transition: 0.2s;
+                }
+            }
+        }
+    }
+    
+    .der-copia{
+        width: 100%;
+        overflow: hidden;
+        display:block;
+        padding-top: -8px;
+        color: var(--color-primario-2);
+        background-color: var(--color-primario);
+    }
+
+}
+.pie_app {
+    width: 100%;
+}

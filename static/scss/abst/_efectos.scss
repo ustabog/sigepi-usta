@@ -28,4 +28,7 @@
 .circulo {
     border-radius: 50%;
     border: 1px solid var(--color-primario);
+    &_adm{
+        border: 1px solid var(--color-secundario);
+    }
 }
