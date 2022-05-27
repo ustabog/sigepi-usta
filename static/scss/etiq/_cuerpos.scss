@@ -2,15 +2,15 @@
 
 /* formato para la etiqueta <body> */
 .cuerpo {
-    position:absolute;
+    position:fixed;
     display:grid;
     grid-template-rows: 55px auto 65px;
     width: 100%;
     height: 100%;
-    background-color: var(--azul-cl);
-    color:var(--azul);
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-    font-size: .8rem;
+    background-color: var(--color-primario-tr);
+    color:var(--color-primario);
+    font-family:var(--fam-fuentes-contenido);
+    font-size: .9rem;
     margin: 0;
     overflow: auto;
   }

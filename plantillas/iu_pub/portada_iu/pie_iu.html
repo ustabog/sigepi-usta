@@ -1,40 +1,59 @@
 {% load static %}
 
-{% block pie %}
-<div class="contenedor">
-    <div class="item">
-        <!-- Inicio -->            
-        <a class="btn" href="inicio"><i class="material-icons">home</i></a>
-        <p>Inicio</p>
-    </div>
-    <div class="item">
-        <!-- Gestión -->
-        <a class="btn" href="inicio"><i class="material-icons">assessment</i></a>
-        <p>Gestión</p>
-    </div>
-    <div class="item">
-        <!-- Noticias, Eventos y Agenda-->
-        <a class="btn" href="inicio"><i class="material-icons">event</i></a>
-        <p>Agenda</p>
-    </div>
-    <div class="item">
-        <!-- Consultar-->
-        <a class="btn" href="inicio" ><i class="material-icons">search</i></a>
-        <p>Consultar</p>
-    </div>
-    <div class="item">
-        <!-- Configuración -->
-        <a class="btn" href="inicio" ><i class="material-icons">settings_applications</i></a>
-        <p>Config.</p>
-    </div>
-    <div class="item">
-        <!-- Herramientas -->
-        <a class="btn" href="inicio"><i class="material-icons">apps</i></a>
-        <p>Herram.</p>
-    </div>
+<div id="pie_extra" class="pie_extra">
+    {% block pie_extra%}
+        <p>pie extra</p>
+    {% endblock pie_extra%}
 </div>
-<div class="der-copia">
-    <p style="font-size:smaller">© 2022 Copyright Universidad Santo Tomás</p>
+<div id="pie_ppal" class="pie_ppal">
+    {% block pie_ppal %}
+    <div class="cnt_pie">
+        <div class="item">
+            <!-- Inicio -->            
+            <a class="btn_pie" href="inicio">
+                <i class="material-icons">home</i>
+                <p>Inicio</p>
+            </a>
+        </div>
+        <div class="item">
+            <!-- Gestión -->
+            <a class="btn_pie" href="inicio">
+                <i class="material-icons">assessment</i>
+                <p>Gestión</p>
+            </a>
+        </div>
+        <div class="item">
+            <!-- Noticias, Eventos y Agenda-->
+            <a class="btn_pie" href="inicio">
+                <i class="material-icons">event</i>
+                <p>Agenda</p>
+            </a>
+            
+        </div>
+        <div class="item">
+            <!-- Consultar-->
+            <a class="btn_pie" href="inicio" >
+                <i class="material-icons">search</i>
+                <p>Consultar</p>
+            </a>
+        </div>
+        <div class="item">
+            <!-- Configuración -->
+            <a class="btn_pie" href="inicio" >
+                <i class="material-icons">settings_applications</i>
+                <p>Config.</p>
+            </a>
+        </div>
+        <div class="item">
+            <!-- Herramientas -->
+            <a class="btn_pie" href="inicio">
+                <i class="material-icons">apps</i>
+                <p>Herram.</p>
+            </a>            
+        </div>
+    </div>
+    {% endblock pie_ppal %}
 </div>
-{% endblock pie %}
-
+<div id="der_copia" class="der_copia">
+    <p>© 2022 Copyright Universidad Santo Tomás</p>
+</div>

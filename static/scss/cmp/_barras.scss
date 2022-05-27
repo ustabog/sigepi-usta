@@ -16,7 +16,7 @@
 .br_herr {
     /* barra de herramientas */
     @extend .brr;
-    @include fn_sim(--color-primario);
+    @include fn_sim(var(--color-primario));
     top: 0;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
@@ -25,24 +25,24 @@
     -webkit-backface-visibility: hidden;
     .enc_br_herr{
         /* encabezado barra de herramientas */
-        @include fn_deg_hrz(--color-primario,--color-primario-1);
+        @include fn_deg_hrz(var(--color-primario),var(--color-primario-1));
         width: 100%;
         height: 65px;
         display:block;
         padding: 5px 5px;
         color: var(--color-blanco);
         &_adm{
-            @include fn_deg_hrz(--color-secundario,--color-secundario-1);
+            @include fn_deg_hrz(var(--color-secundario),var(--color-secundario-1));
         }
     }
     &_adm{
-        @include fn_sim(--color-secundario);
+        @include fn_sim(var(--color-secundario));
     }
 }
 
 .br_app{
     @extend .brr;
-    @include fn_sim(--color-primario);
+    @include fn_sim(var(--color-primario));
     height: 100%;
     overflow: auto;
     z-index: 9;
@@ -116,7 +116,7 @@
     }
     &_adm{
         @extend .brr;
-        @include fn_sim(--color-secundario);
+        @include fn_sim(var(--color-secundario));
         ul{
             color: var(--color-secundario);
             li{

@@ -5,24 +5,22 @@
 {% endblock meta_menu_ppal%}
 
 {% block menu_ppal %}
-<nav id="nav_menu_ppal">
-
+    <div class="cnt_btn_menu">
         <button id="btn_menu" class="btn_menu" onclick="abrir()">
             <i class="material-icons">menu</i>
         </button>
         <button id="btn_cerrar" class="btn_cerrar" onclick="cerrar()">
             <i class="material-icons">close</i>
         </button>
-
-    <div class="nav-titulo">
+    </div>
+    <div class="titulo">
         SIGEPI-USTA
     </div>
     <div class="logotipo">
-        <a href="inicio" class="logotipo der">
+        <a href="inicio">
             <img src="{% static 'img/logo.png' %}" alt="Logo" ></img>
         </a>
     </div>
-</nav>
 {% endblock menu_ppal %}
 
 {% block script_menu_ppal%}

@@ -8,10 +8,10 @@
 
 /* fondo degradado vertical */
 @mixin fn_deg_vrt($color,$color1) {
-    background: linear-gradient(-90deg, var($color), var($color1));
+    background: linear-gradient(-90deg, $color, $color1);
 }
 
 /* fondo degradado horizontal */
 @mixin fn_deg_hrz($color,$color1) {
-    background: linear-gradient(0deg, var($color), var($color1));
+    background: linear-gradient(0deg, $color, $color1);
 }
