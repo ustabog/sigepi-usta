@@ -66,9 +66,9 @@
                 position: relative;
                 display:block;
                 text-decoration: none;
-            }
-            a:hover{
-                color:var(--color-primario-2);
+                &:hover{
+                    color:var(--color-primario-2);
+                }
             }
             i{
                 font-size: 3em;
@@ -77,7 +77,7 @@
                 /* display: inline;
                 vertical-align: middle; */
             }
-            :hover >.categ_br_herr {
+            &:hover >.categ_br_herr {
                 background-color:var(--color-primario);
                 @extend .trasl_hrz_izq;
             }
@@ -149,7 +149,7 @@
             list-style:none;
             list-style-position: outside;
             padding: 5px;
-            :hover{
+            &:hover{
                 padding: 0px;
             }
         }
