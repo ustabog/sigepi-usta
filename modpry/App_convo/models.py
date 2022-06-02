@@ -18,6 +18,7 @@ APP_CONVO_PRY = [
     (11, 'visible')
     ]
 
+
 class convoca_pry(models.Model):
     #Clase que contiene la información de las convocatorias del proyecto
     id_convo =  models.AutoField(primary_key = True)#Id de la convocatoria
@@ -25,11 +26,12 @@ class convoca_pry(models.Model):
     desc_convo = models.CharField('Descripción de la convocatoria:', max_length=255) #Descripción de la convocatoria
     fch_ini_convo = models.DateField(null=True, blank=True, auto_now=True)#Fecha de inicio de la convocatoria
     fch_fin_convo =  models.DateField(null=True, blank=True)#Fecha de finalización de la convocatoria
-    # rl_info_convoca = models.ForeignKey(rl_info_convoca, null=False, blank =False)
+    #Plantilla para la convocatoria de un proyecto
     class Meta:
         verbose_name = 'convoca_pry'
         verbose_name_plural = 'convoca_prys'
 
+'''
 class obj_esp_pry(models.Model):
     #Clase que define la metodología del proyecto
     id_obj_esp_pry = models.AutoField(primary_key = True) # Id de la metodología del proyecto
@@ -121,3 +123,4 @@ class rl_info_convoca(models.Model):
     id_rel_info_conv = models.AutoField(primary_key = True) # Id de la relación entre la convocatoria y la información de la convocatoria
     id_info_convo = models.ForeignKey(info_convoca, on_delete=models.SET_NULL, null=True, blank =False)
     id_convo = models.ForeignKey(convoca_pry, on_delete=models.SET_NULL, null=True, blank =False)
+'''

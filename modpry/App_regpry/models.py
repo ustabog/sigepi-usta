@@ -5,7 +5,7 @@ from modcons.App_cons.models import *
 
 APP_REG_PRY = [
     #Diccionario para la aplicación de registro de proyecto
-    (0,'Titulo')
+    (0,'Titulo'),
     (1,'Descripción'),
     (2,'url_documento'),
     (3,'url_instal'),
@@ -15,8 +15,8 @@ APP_REG_PRY = [
     (7,'id_mod'),
     (8,'Versión_módulo'),
     (9,'estado'),
-    (10,'instalada')
-    (11, 'visible')
+    (10,'instalada'),
+    (11, 'visible'),
     ]
 
 ROL_APP = [

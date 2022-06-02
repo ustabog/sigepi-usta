@@ -26,7 +26,7 @@ REG_PRY = [
 
 APP_MOD_PRY = [
     #Diccionario para la aplicación de módulo de proyecto
-    (0,'Titulo')
+    (0,'Titulo'),
     (1,'Descripción'),
     (2,'url_documento'),
     (3,'url_instal'),
@@ -36,6 +36,6 @@ APP_MOD_PRY = [
     (7,'id_mod'),
     (8,'Versión_módulo'),
     (9,'estado'),
-    (10,'instalada')
-    (11, 'visible')
+    (10,'instalada'),
+    (11, 'visible'),
     ]

@@ -12,5 +12,5 @@ urlpatterns = [
     path('cons_pry/', vts_ls_pry.as_view(), name='cn_pry'), #Lista de proyectos
     path('editpry/<int:pk>/',vts_edit_pry.as_view(), name = 'edit_pry'), #Actualizar proyecto
     #path('elipry/<int_pk>',vts_reg_pry.as_view(), name = 'elim_pry'), #Borrar proyecto
-    path('elipry/<id>',eli_pry, name = 'eliminar_usu'),
+    path('elipry/<id>',eli_pry, name = 'eliminar_pry'),
 ]
