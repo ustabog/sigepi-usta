@@ -15,3 +15,9 @@
 @mixin fn_deg_hrz($color,$color1) {
     background: linear-gradient(0deg, $color, $color1);
 }
+
+/* Tamaño de igual ancho y alto */
+@mixin tam_igu($tam_btn) {
+    width: $tam_btn;
+    height: $tam_btn;
+}

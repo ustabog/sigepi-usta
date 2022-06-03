@@ -11,8 +11,17 @@
     font-weight: bold;
     text-align: center;
     overflow:hidden;
-    -webkit-overflow-scrolling: touch;  
+    -webkit-overflow-scrolling: touch;
 }
+
+.br_pn_der{
+    /* Barra del encabezado panel derecho */
+    @extend .brr;
+    height: 55px;
+    flex-wrap:nowrap;
+    gap: 10px;
+}
+
 .br_herr {
     /* barra de herramientas */
     @extend .brr;

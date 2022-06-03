@@ -40,18 +40,18 @@
   --color-peligro:#b30000;
   --color-luminoso:#FBF6C8;
   /* Tamaños de pantalla */
-  --pnt-ancho-xs: min-max(0px,480px);
-  --pnt-alto-xs: min-max(0px,360px);
-  --pnt-ancho-sm: min-max(481px,640px);
-  --pnt-alto-sm: min-max(361px,480px);
-  --pnt-ancho-md: min-max(641px,800px);
-  --pnt-alto-md: min-max(481px, 600px);
-  --pnt-ancho-lg: min-max(801px,1024px);
-  --pnt-alto-lg: min-max(601px,768px);
-  --pnt-ancho-xl: min-max(1021px,1920px);
-  --pnt-alto-xl: min-max(769px, 1080px);
-  --pnt-ancho-xl: min(1921px);
-  --pnt-alto-xl: min(1081px);
+  --ancho-xs: min-max(0px,480px);
+  --alto-xs: min-max(0px,360px);
+  --ancho-sm: min-max(481px,640px);
+  --alto-sm: min-max(361px,480px);
+  --ancho-md: min-max(641px,800px);
+  --alto-md: min-max(481px, 600px);
+  --ancho-lg: min-max(801px,1024px);
+  --alto-lg: min-max(601px,768px);
+  --ancho-xl: min-max(1021px,1920px);
+  --alto-xl: min-max(769px, 1080px);
+  --ancho-xxl: min(1921px);
+  --alto-xxl: min(1081px);
   /* fuentes */
   --fam-fuentes-contenido: "Helvetica Neue", Arial;
   --fam-fuentes-codigo: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -104,6 +104,7 @@
 /* fondo simple */
 /* fondo degradado vertical */
 /* fondo degradado horizontal */
+/* Tamaño de igual ancho y alto */
 /* sigepi.css: formato para las etiquetas html del diseño */
 /* formato para la etiqueta <body> */
 .cuerpo {
@@ -164,7 +165,7 @@
 
 /* sigepi.css: Acordeones del diseño */
 /* sigepi.css: Barras, barras de estado, barras de progreso y menús de navegación verticales */
-.brr, .br_herr, .br_app, .br_app_adm {
+.brr, .br_pn_der, .br_herr, .br_app, .br_app_adm {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -177,6 +178,13 @@
   text-align: center;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
+}
+
+.br_pn_der {
+  /* Barra del encabezado panel derecho */
+  height: 55px;
+  flex-wrap: nowrap;
+  gap: 10px;
 }
 
 .br_herr {
@@ -355,18 +363,17 @@
 }
 
 /* sigepi.css: Botones del diseño*/
-.btn, .btn_prm_cl {
+.btn, .btn_prm_cl, .btn_sec_cl {
   position: relative;
-  width: 100%;
-  height: 30px;
-  vertical-align: middle;
+  width: 45px;
+  height: 45px;
   text-align: center;
-  border-left: 1px solid var(--color-primario-oscuro);
-  margin: 2px 2px;
-  border-radius: 2%;
-  padding: 2px, 2px, 2px, 2px;
+  margin: auto;
+  border-radius: 5px;
   text-decoration: none;
   box-sizing: content-box;
+  align-items: center;
+  align-content: center;
 }
 
 .btn_pie, .cnt_pie .item {
@@ -388,14 +395,20 @@
 
 /* boton primario claro (azul) */
 .btn_prm_cl {
-  background-color: var(--color-blanco);
-  box-shadow: 0 2px 2px rgba(0, 17, 54, 0.267);
-  background: linear-gradient(0deg, var(--color-blanco), var(--color-primario));
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  box-shadow: 2px 2px 5px var(--color-primario);
+  background: linear-gradient(0deg, var(--color-blanco), var(--color-primario-tr));
   transition: 0.3s;
+  text-decoration: none;
+  text-align: center;
+  text-underline-position: below;
 }
 
 .btn_prm_cl:hover {
-  border-left: 1px solid var(--color-blanco);
+  border-left: 1px solid var(--color-primario-tr);
   background: linear-gradient(0deg, var(--color-primario-tr), var(--color-blanco));
   box-shadow: 0 2px 2px rgba(241, 245, 255, 0.514);
   -webkit-transform: translate(0%, -3%);
@@ -403,22 +416,24 @@
 }
 
 .btn_prm_cl i {
-  font-size: 30px;
+  font-size: 40px;
   color: var(--color-primario);
   transition: 0.5s;
-  padding: auto;
+  -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btn_prm_cl i:hover {
-  font-size: 27px;
+  font-size: 35px;
   color: var(--color-primario-1);
   transition: 0.5s;
-  padding: 2px;
 }
 
 .btn_prm_cl .deshab {
   border-left: 1px solid var(--color-gris);
-  background: linear-gradient(0deg, var(--color-primario-c), var(--color-gris));
+  background: linear-gradient(0deg, var(--color-primario-tr), var(--color-gris));
   box-shadow: 0 2px 2px rgba(95, 95, 95, 0.15);
   -webkit-transform: translate(0%, -3%);
           transform: translate(0%, -3%);
@@ -429,14 +444,14 @@
 }
 
 /* boton secundario claro (verde) */
-.btn_prm_cl {
+.btn_sec_cl {
   background-color: var(--color-blanco);
-  box-shadow: 0 2px 2px rgba(0, 17, 54, 0.267);
+  box-shadow: 0 2px 2px rgba(0, 54, 33, 0.267);
   background: linear-gradient(0deg, var(--color-blanco), var(--color-secundario));
   transition: 0.3s;
 }
 
-.btn_prm_cl:hover {
+.btn_sec_cl:hover {
   border-left: 1px solid var(--color-blanco);
   background: linear-gradient(0deg, var(--color-secundario-tr), var(--color-blanco));
   box-shadow: 0 2px 2px rgba(241, 245, 255, 0.514);
@@ -444,21 +459,21 @@
           transform: translate(0%, -3%);
 }
 
-.btn_prm_cl i {
+.btn_sec_cl i {
   font-size: 30px;
   color: var(--color-secundario);
   transition: 0.5s;
   padding: auto;
 }
 
-.btn_prm_cl i:hover {
+.btn_sec_cl i:hover {
   font-size: 27px;
   color: var(--color-secundario-1);
   transition: 0.5s;
   padding: 2px;
 }
 
-.btn_prm_cl .deshab {
+.btn_sec_cl .deshab {
   border-left: 1px solid var(--color-gris);
   background: linear-gradient(0deg, var(--color-secundario-tr), var(--color-gris));
   box-shadow: 0 2px 2px rgba(95, 95, 95, 0.15);

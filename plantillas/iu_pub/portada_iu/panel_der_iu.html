@@ -7,17 +7,12 @@
     {% block encabezado_pn_der %}
     <!--Encabezado panel derecho-->
     <section id="encbz_pn_der" class="seccion_pn_der" style="height: 65px;">
-        {% if user.is_authenticated %}
-        <a class="btn_az_cl" href=""><i class="material-icons" alt="Usuario">account_circle</i></a>
-        <a class="btn_az_cl" href=""><i class="material-icons" alt="Asignaciones">assignment</i></a>
-        <a class="btn_az_cl" href=""><i class="material-icons" alt="Mensajes">email</i></a>
-        <a class="btn_az_cl" href=""><i class="material-icons" alt="Notificaciones">notifications_active</i></a>
-        {% else %}
-        <a class="btn_az_cl" href=""><i class="material-icons" alt="Usuario">account_circle</i></a>
-        <a class="btn_az_cl" href=""><i class="material-icons" alt="Asignaciones">assignment</i></a>
-        <a class="btn_az_cl" href=""><i class="material-icons" alt="Mensajes">email</i></a>
-        <a class="btn_az_cl" href=""><i class="material-icons" alt="Notificaciones">notifications_active</i></a>
-        {% endif %}
+        <div class="br_pn_der">
+            <a class="btn_prm_cl" href="{% url 'inicio_pry' %}"><i class="material-icons" alt="Usuario">account_circle</i></a>
+            <a class="btn_prm_cl" href="{% url 'inicio_pry' %}"><i class="material-icons" alt="proyectos">assignment</i></a>
+            <a class="btn_prm_cl" href=""><i class="material-icons" alt="tareas">task</i></a>
+            <a class="btn_prm_cl" href=""><i class="material-icons" alt="Notificaciones">notifications_active</i></a>
+        </div>
     </section>
     {% endblock encabezado_pn_der %}
 
@@ -51,8 +46,8 @@
                     </div>
                     <div class="">
                         <div class="">
-                            <a class="btn_az_cl" href="{% url 'ingreso' %}">Ingresar</a>
-                            <a class="btn_az_cl" href="{% url 'registro' %}">Registrarse</a>
+                            <a class="btn_prm_cl" href="{% url 'ingreso' %}">Ingresar</a>
+                            <a class="btn_prm_cl" href="{% url 'registro' %}">Registrarse</a>
                         </div>
                     </div>
                 </div>

@@ -1,16 +1,14 @@
 /* sigepi.css: Botones del diseño*/
 .btn{
     position:relative;
-    width:100%;
-    height: 30px;
-    vertical-align: middle;
+    @include tam_igu(45px);
     text-align: center;
-    border-left: 1px solid var(--color-primario-oscuro);
-    margin: 2px 2px;
-    border-radius: 2%;
-    padding: 2px, 2px, 2px, 2px;
+    margin: auto;
+    border-radius: 5px;
     text-decoration: none;
     box-sizing:content-box;
+    align-items: center;
+    align-content: center;
 }
 
 .btn_pie {
@@ -31,31 +29,38 @@
 /* boton primario claro (azul) */
 .btn_prm_cl {
     @extend .btn;
-    background-color: var(--color-blanco);
-    box-shadow: 0 2px 2px rgba(0, 17, 54, 0.267);
-    background: linear-gradient(0deg,var(--color-blanco), var(--color-primario));
+    display: flex;
+    flex-direction: column;
+    position:relative;
+    width:100%;
+    box-shadow: 2px 2px 5px var(--color-primario);
+    background: linear-gradient(0deg,var(--color-blanco), var(--color-primario-tr));
     transition: 0.3s;
+    text-decoration: none;
+    text-align: center;
+    text-underline-position: below;
     &:hover {
-        border-left: 1px solid var(--color-blanco);
+        border-left: 1px solid var(--color-primario-tr);
         background: linear-gradient(0deg,var(--color-primario-tr),var(--color-blanco) );
         box-shadow: 0 2px 2px rgba(241, 245, 255, 0.514);
         transform: translate(0%,-3%);
     }
     i {
-        font-size: 30px;
+        font-size: 40px;
         color: var(--color-primario);
         transition: 0.5s;
-        padding: auto;
-    &:hover{
-        font-size: 27px;
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+        &:hover{
+        font-size: 35px;
         color: var(--color-primario-1);
         transition: 0.5s;
-        padding:2px;
         }
     }
     .deshab {
         border-left: 1px solid var(--color-gris);
-        background: linear-gradient(0deg,var(--color-primario-c),var(--color-gris) );
+        background: linear-gradient(0deg,var(--color-primario-tr),var(--color-gris) );
         box-shadow: 0 2px 2px rgba(95, 95, 95, 0.15);
         transform: translate(0%,-3%);
         font-size: 30px;
@@ -66,10 +71,10 @@
 }
 
 /* boton secundario claro (verde) */
-.btn_prm_cl {
+.btn_sec_cl {
     @extend .btn;
     background-color: var(--color-blanco);
-    box-shadow: 0 2px 2px rgba(0, 17, 54, 0.267);
+    box-shadow: 0 2px 2px rgba(0, 54, 33, 0.267);
     background: linear-gradient(0deg,var(--color-blanco), var(--color-secundario));
     transition: 0.3s;
     &:hover {
