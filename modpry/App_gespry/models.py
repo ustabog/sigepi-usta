@@ -23,6 +23,67 @@ APP_GES_PRY = [
     (11, 'visible')
     ]
 
+TIPO_DEP = [
+    (0,'Administrativa'),
+    (1,'Investigación'),
+    (2, 'Financiera'),
+    (3, 'Sindicatura'),
+    (4, 'Bienestar'), 
+    (5, '')
+]
+
+class proceso(models.Model):
+    #Clase de un proceso
+    id_pro =  models.AutoField(primary_key = True) #ID del proceso
+    nombre_pro = models.CharField('Nombre del proceso:', max_length=40, null=False, blank= False)#Nombre del proceso
+    desc_pro = models.CharField('Descripción del proceso:', max_length=40, null=False, blank= False)#Descripción del proceso
+    encar_pro = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)#Encargado del proceso
+    pro_padre = models.BooleanField ('¿Proceso padre', default=False) #Si el proceso es padre
+    pro_hijo = models.BooleanField ('¿Proceso hijo', default=False) #Si el proceso es hijo
+
+    class Meta:
+        verbose_name = 'proceso'
+        verbose_name_plural = 'procesos'
+
+class registro(models.Model):
+    #Clase que almacena los registros de un proceso
+    id_pro =  models.AutoField(primary_key = True) #ID del proceso
+    nombre_pro = models.CharField('Nombre del registro:', max_length=40, null=False, blank= False)#Nombre del proceso
+    desc_pro = models.CharField('Descripción del registro:', max_length=40, null=False, blank= False)#Descripción del proceso
+    tipo_reg = models.CharField('Tipo de registro:', max_length=40, null=False, blank= False)#Especifica el tipo de registro que esta haciendo
+    url_doc = models.URLField('URL del documento', null=False, blank=False)#Dirección del documento de registro
+    
+    class Meta:
+        verbose_name = 'registro'
+        verbose_name_plural = 'registros'
+
+class actor(models.Model):
+    #clase que contiene los actores de un proceso
+    id_actor = models.AutoField(primary_key = True)#ID del actor
+    class Meta:
+        verbose_name = 'actor'
+        verbose_name_plural = 'actores'
+
+class dependencia(models.Model):
+    #Clase que contiene las dependencias de un proceso
+    id_dep =models.AutoField(primary_key = True) #ID de la dependencia
+    tipo_dep = models.IntegerField(choices=TIPO_DEP, default = 0, null=False, blank = False)#RTipo de dependencia
+    nombre_dep = models.CharField('Nombre de la dependencia:', max_length=255, null=False, blank= False )#Nombre de la dependencia
+    class Meta:
+        verbose_name = 'dependencia'
+        verbose_name_plural = 'dependencias'
+
+class requerimiento(models.Model):
+    #Clase que contiene los requerimientos de un proceso
+    id_req =models.AutoField(primary_key = True)#ID de requerimientos
+    url_docu = models.URLField('URL del documento', null=False, blank=False)#URL del documento
+    ima_pro = models.ImageField(upload_to=None)#Imagen para el proceso
+    docu_pro = models.FileField(upload_to = None)#Documento para el proceso
+    class Meta:
+        verbose_name = 'requerimiento'
+        verbose_name_plural = 'requerimientos'
+
+'''
 class inf_ges_pry(models.Model):
     #Clase que contiene la informacion de la gestion del proyecto
     id_ges_pry =  models.AutoField(primary_key = True)   # identificador unico para App Gestión de Proyectos
@@ -88,4 +149,4 @@ class cpto_pry(models.Model):
         verbose_name = 'cpto_pry'
         verbose_name_plural = 'cpto_prys'
 
-
+'''

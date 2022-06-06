@@ -48,6 +48,7 @@ RES_EVA = [
 class eva_pry(models.Model):
     #Clase que contiene la forma de evaluacion del proyecto
     id_eva =  models.AutoField(primary_key = True)   # identificador unico para el tipo de evalucion
+    nombre_eva = models.CharField('descripcion del tipo de evalucion ', max_length=40, null=False, blank= False)#Nombre de la evaluación
     eval = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)#evaluador del proyecto   
     desc_eva = models.CharField('descripcion del tipo de evalucion ', max_length=40, null=False, blank= False) #Descripción de la evaluación
     criterio = models.ForeignKey(criterio, on_delete=models.SET_NULL, null=True, blank =False )#id de citerios

@@ -313,7 +313,7 @@ class pry_base(models.Model):
     nombre_pry=models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
     desc_pry=models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto
     tipo_pry=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto - diccionario TIPO_PRY
-    prop_pry= models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False) #Propietario del proyecto
+    id_usu = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False) #Propietario del proyecto
     est_pry = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)
     pry_archi = models.IntegerField(null = False, blank = False, choices = PRY_ARCHIVADO, default = 0)#Si el proyecto es borrado queda como archivado
     #estado - por defecto borrador

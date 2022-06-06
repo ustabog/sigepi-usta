@@ -19,6 +19,7 @@ APP_DIS_PRY = [
     (11, 'visible')
     ]
 
+#Crear funciones de delimitación, delimitación temporal, delimitación temática
 class tema(models.Model):
     #Clase que define los temas del proyecto
     id_tema = models.AutoField(primary_key = True)#Id de temas

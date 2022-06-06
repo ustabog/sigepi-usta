@@ -1,0 +1,23 @@
+{% block cuerpo %}
+{% if form.errors %}
+    <p>La lista de cronogramas no se ha logrado consultar.</p>
+{% endif %}
+<h3>Cronogramas</h3>
+
+<form method="POST">
+    {{form.as_ul}}
+
+    <div>
+        {% for crono_pry in  object_list %}
+        <label> {{ crono_pry.id_crono_pry }} </label>
+        <label> {{ crono_pry.id_pry}} </label>
+        <label> {{ crono_pry.resp_pry}} </label>
+        <label> {{ crono_pry.nomb_crono}} </label>
+        <label> {{ crono_pry.desc_crono}} </label>
+        <label> {{ crono_pry.fch_ini_pry}} </label>
+        <label> {{ crono_pry.fch_fin_pry}} </label><br>
+        {% endfor %}
+
+</form>
+
+{% endblock cuerpo %}

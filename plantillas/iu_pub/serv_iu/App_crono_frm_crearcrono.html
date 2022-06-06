@@ -3,12 +3,12 @@
 
 {% block articulo %}
   {% if form.errors %}
-      <p>El proyecto no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+      <p>El cronograma no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
   {% endif %}
 
   <div class="cnt_norm">
       <div class="column form-group text-center">
-          <h3>Registrar Nuevo proyecto</h3>
+          <h3>Crear un nuevo cronograma</h3>
           <form method="post">
             {% csrf_token %}
             {{ form.as_p }}

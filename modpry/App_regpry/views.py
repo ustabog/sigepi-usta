@@ -1,12 +1,8 @@
-from multiprocessing import context
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from django.views.generic import UpdateView,FormView, CreateView, ListView
 from django.urls import reverse_lazy
-from django.http import request
 from django.shortcuts import render, redirect
-from django.contrib import messages
 #from rest_framework import viewsets
-
 from .models import *
 from modpry.App_regpry.models import *
 from modpry.App_regpry.form import *

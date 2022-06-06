@@ -11,14 +11,14 @@ class frm_reg_pry(ModelForm):
             'nombre_pry',
             'desc_pry',
             'tipo_pry',
-            'prop_pry',
+            'id_usu',
             'est_pry',
         )
         labels = {
             'nombre_pry' : 'Nombre del proyecto',
             'desc_pry': 'Descripción del proyecto',
             'tipo_pry' : 'Tipo de proyecto',
-            'prop_pry' : 'Propietario del proyecto',
+            'id_usu' : 'Propietario del proyecto',
             'est_pry' : 'Estado del proyecto',
         }
 
@@ -30,13 +30,13 @@ class frm_con_pry(forms.ModelForm):
             'nombre_pry',
             'desc_pry',
             'tipo_pry',
-            'prop_pry',
+            'id_usu',
         )
         labels = {
             'nombre_pry' : 'Nombre del proyecto',
             'desc_pry': 'Descripción del proyecto',
             'tipo_pry' : 'Tipo de proyecto',
-            'prop_pry' : 'Propietario del proyecto',
+            'id_usu' : 'Propietario del proyecto',
         }
 
 '''
