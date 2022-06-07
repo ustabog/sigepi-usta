@@ -4,60 +4,42 @@
 {% block panel_der %}
 <!--Prueba-->
 <div id="cont_pn_der" class="cont_pn_der">
+    <section id="encbz_pn_der" class="seccion_pn_der">
     {% block encabezado_pn_der %}
     <!--Encabezado panel derecho-->
-    <section id="encbz_pn_der" class="seccion_pn_der" style="height: 65px;">
+    
         <div class="br_pn_der">
-            <a class="btn_prm_cl" href="{% url 'inicio_pry' %}"><i class="material-icons" alt="Usuario">account_circle</i></a>
-            <a class="btn_prm_cl" href="{% url 'inicio_pry' %}"><i class="material-icons" alt="proyectos">assignment</i></a>
-            <a class="btn_prm_cl" href=""><i class="material-icons" alt="tareas">task</i></a>
-            <a class="btn_prm_cl" href=""><i class="material-icons" alt="Notificaciones">notifications_active</i></a>
+            <a class="btn_prm_cl" href="{% url 'inicio_pry' %}">
+                <i class="material-icons" alt="Usuario">account_circle</i>
+                <span>usuario</span>
+            </a>
+            <a class="btn_prm_cl" href="{% url 'inicio_pry' %}">
+                <i class="material-icons" alt="proyectos">assignment</i>
+                <span>Proyectos</span>
+            </a>
+            <a class="btn_prm_cl" href="">
+                <i class="material-icons" alt="tareas">task</i>
+                <span>Tareas</span>
+            </a>
+            <a class="btn_prm_cl" href="">
+                <i class="material-icons" alt="Notificaciones">notifications_active</i>
+                <span>Novedades</span>
+            </a>
         </div>
-    </section>
+    
     {% endblock encabezado_pn_der %}
-
-    <!--Información de usuario-->
-    {% block seccion_usuario %}
-    <section id="usu_pn_der" class="seccion_pn_der">
-        {% block autent_pn_der %}
-        <ul class="nav-ul">
-            {% if user.is_authenticated %}
-            <li class="tarjeta">
-                <div class="tarjeta-imagen">
-                    <img class="circulo" src="{% static 'img/person.svg' %}" alt="Imagen personal" width="80"
-                        height="80">
-                    <div class="tarjeta-titulo">
-                        <span> Bienvenido(a) {{user.username}} </span>
-                    </div>
-                    <div class="tarjeta-contenido">
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item activo">
-                <a class="btn" href="">Salir</a>
-            </li>
-            {% else %}
-            <li class="li_v">
-                <div class="trj_pers">
-                    <div>
-                        <img class="circulo" src="{% static 'img/person.svg' %}" alt="Imagen personal" width="80"
-                            height="80">
-                        <span>Información de usuario</span>
-                    </div>
-                    <div class="">
-                        <div class="">
-                            <a class="btn_prm_cl" href="{% url 'ingreso' %}">Ingresar</a>
-                            <a class="btn_prm_cl" href="{% url 'registro' %}">Registrarse</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            {% endif %}
-        </ul>
-        {% endblock autent_pn_der %}
     </section>
+    
+    <!--Información de usuario-->
+    <section id="usu_pn_der" class="seccion_pn_der">
+    {% block seccion_usuario %}
+    
+        {% block autent_pn_der %}
+            {% include 'trj_pers_iu.html' %}
+        {% endblock autent_pn_der %}
+    
     {% endblock seccion_usuario %}
-
+    </section>
     <!--Información Tablero de Control-->
     {% block tc_pn_der %}
     <section id="tc_pn_der">

@@ -42,8 +42,20 @@
     &:hover {
         border-left: 1px solid var(--color-primario-tr);
         background: linear-gradient(0deg,var(--color-primario-tr),var(--color-blanco) );
-        box-shadow: 0 2px 2px rgba(241, 245, 255, 0.514);
+        box-shadow: 0px 2px 2px rgba(241, 245, 255, 0.514);
         transform: translate(0%,-3%);
+        i{
+            font-size: 30px;
+            color: var(--color-primario-1);
+            transition: 0.5s;
+        }
+        span{
+            display:flex;
+            position: relative;
+            color: var(--color-primario-1);
+            font-size: smaller;
+            top: -5px;
+        }
     }
     i {
         font-size: 40px;
@@ -52,11 +64,9 @@
         align-self: center;
         margin-left: auto;
         margin-right: auto;
-        &:hover{
-        font-size: 35px;
-        color: var(--color-primario-1);
-        transition: 0.5s;
-        }
+    }
+    span{
+        display:none;
     }
     .deshab {
         border-left: 1px solid var(--color-gris);

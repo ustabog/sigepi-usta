@@ -4,12 +4,13 @@
     background-color:#ffffff6e;
     width: 100%;
     height: auto;
+    min-height: 65px;
     margin-bottom: 5px;
-    position: relative;
+    position:static;
     text-align: center;
     display: flex;
     top: 5px;
-    overflow:hidden;
+    overflow:auto;
     border: 2px solid rgba(240, 253, 255, 0.521);
     box-shadow: 3px 3px 3px rgba(240, 253, 255, 0.521);
     border-radius:3px;

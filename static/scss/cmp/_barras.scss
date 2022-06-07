@@ -34,7 +34,7 @@
     -webkit-backface-visibility: hidden;
     .enc_br_herr{
         /* encabezado barra de herramientas */
-        @include fn_deg_hrz(var(--color-primario),var(--color-primario-1));
+        @include fn_deg_hrz(var(--color-primario-2),var(--color-primario));
         width: 100%;
         height: 65px;
         display:block;
@@ -139,6 +139,34 @@
     }
 }
 
+.br_trj{
+    display: flex;
+    background-color:rgba(0, 41, 117, 0.185);
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap:wrap;
+    gap: 10px;
+    height:100%;
+    width:100%;
+    ul{
+        list-style: none;
+        font-weight: bolder;  
+        padding: 5px;    
+        li{ 
+            a{
+                height:45px;
+                width:100%;
+                @extend .btn_prm_cl;
+                list-style: none;
+                vertical-align: middle;
+                top:10px;
+                margin: 5px;
+                padding-top: 10px;
+                text-decoration: none;
+            }
+        }
+    }
+}
 .nav_der{
     display: flex;
     flex-direction: column;

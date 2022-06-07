@@ -1,0 +1,88 @@
+{% load static %}
+{% block autent_pn_der %}
+
+{% if user.is_authenticated %}
+<div id="trj" class="trj">
+    <div id="trj_cnt_img" class="trj_cnt_img">
+        <img class="img" src="{% static 'img/person.svg' %}" alt="Imagen personal">
+        <span class="base_img"> Bienvenido(a) {{user.username}} </span>
+    </div>
+    <div id="cnt_trj" class="cnt_trj">
+        <div id="cnt_trj_titulo" class="cnt_trj_titulo">
+            <a href="{% url 'infopers' %}"> Perfil</a>
+        </div>
+        <div id="cnt_trj_datos" class="cnt_trj_datos">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio doloribus, tempora maxime enim rem
+                est quia nihil sed repellat necessitatibus? Ipsam nemo obcaecati quia magnam placeat voluptate facere
+                tempore delectus?
+            </p>
+        </div>
+        <div id="cnt_trj_pie" class="cnt_trj_pie">
+            <a href="">pie de tarjeta</a>
+        </div>
+    </div>
+    <div class="br_trj">
+        <ul>
+            <li>
+                <a href="">
+                    <i class="material-icons">edit</i>
+                    <span>Editar</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="material-icons">image_search</i>
+                    <span>Cargar Imagen</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="material-icons">new_label</i>
+                    <span>Agregar inf. Perfil</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% else %}
+
+<div id="trj" class="trj">
+    <div id="cnt_img_trj" class="cnt_img_trj">
+        <img class="img" src="{% static 'img/person.svg' %}" alt="Imagen personal">
+        <span class="base_img"> Usuario sin ingresar </span>
+    </div>
+    <div id="cnt_trj" class="cnt_trj">
+        <div id="cnt_trj_titulo" class="cnt_trj_titulo">
+            <a href="{% url 'infopers' %}"> Perfil</a>
+        </div>
+        <div id="cnt_trj_datos" class="cnt_trj_datos">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio doloribus, tempora maxime enim rem
+                est quia nihil sed repellat necessitatibus? Ipsam nemo obcaecati quia magnam placeat voluptate facere
+                tempore delectus?
+            </p>
+        </div>
+        <div id="cnt_trj_pie" class="cnt_trj_pie">
+            <a class="btn_prm_cl" href="">pie de tarjeta</a>
+        </div>
+    </div>
+    <div class="br_trj">
+        <ul>
+            <li>
+                <a class="btn_prm_cl" href="{% url 'ingreso' %}">
+                    <i class="material-icons">login</i>
+                    Ingresar</a>
+            </li>
+            <li>
+                <a class="btn_prm_cl" href="{% url 'registro' %}">
+                    <i class="material-icons">image_search</i>
+                    Registrarse
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+{% endblock autent_pn_der %}

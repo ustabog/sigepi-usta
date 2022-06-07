@@ -89,7 +89,7 @@
 }
 
 /* enmarcar en un círculo */
-.circulo {
+.circulo, .trj_cnt_img .img {
   border-radius: 50%;
   border: 1px solid var(--color-primario);
 }
@@ -200,7 +200,7 @@
 
 .br_herr .enc_br_herr {
   /* encabezado barra de herramientas */
-  background: linear-gradient(0deg, var(--color-primario), var(--color-primario-1));
+  background: linear-gradient(0deg, var(--color-primario-2), var(--color-primario));
   width: 100%;
   height: 65px;
   display: block;
@@ -312,6 +312,34 @@
   color: var(--color-secundario-2);
 }
 
+.br_trj {
+  display: flex;
+  background-color: rgba(0, 41, 117, 0.185);
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.br_trj ul {
+  list-style: none;
+  font-weight: bolder;
+  padding: 5px;
+}
+
+.br_trj ul li a {
+  height: 45px;
+  width: 100%;
+  list-style: none;
+  vertical-align: middle;
+  top: 10px;
+  margin: 5px;
+  padding-top: 10px;
+  text-decoration: none;
+}
+
 .nav_der {
   display: flex;
   flex-direction: column;
@@ -363,7 +391,7 @@
 }
 
 /* sigepi.css: Botones del diseño*/
-.btn, .btn_prm_cl, .btn_sec_cl {
+.btn, .btn_prm_cl, .br_trj ul li a, .btn_sec_cl {
   position: relative;
   width: 45px;
   height: 45px;
@@ -394,7 +422,7 @@
 }
 
 /* boton primario claro (azul) */
-.btn_prm_cl {
+.btn_prm_cl, .br_trj ul li a {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -407,15 +435,29 @@
   text-underline-position: below;
 }
 
-.btn_prm_cl:hover {
+.btn_prm_cl:hover, .br_trj ul li a:hover {
   border-left: 1px solid var(--color-primario-tr);
   background: linear-gradient(0deg, var(--color-primario-tr), var(--color-blanco));
-  box-shadow: 0 2px 2px rgba(241, 245, 255, 0.514);
+  box-shadow: 0px 2px 2px rgba(241, 245, 255, 0.514);
   -webkit-transform: translate(0%, -3%);
           transform: translate(0%, -3%);
 }
 
-.btn_prm_cl i {
+.btn_prm_cl:hover i, .br_trj ul li a:hover i {
+  font-size: 30px;
+  color: var(--color-primario-1);
+  transition: 0.5s;
+}
+
+.btn_prm_cl:hover span, .br_trj ul li a:hover span {
+  display: flex;
+  position: relative;
+  color: var(--color-primario-1);
+  font-size: smaller;
+  top: -5px;
+}
+
+.btn_prm_cl i, .br_trj ul li a i {
   font-size: 40px;
   color: var(--color-primario);
   transition: 0.5s;
@@ -425,13 +467,11 @@
   margin-right: auto;
 }
 
-.btn_prm_cl i:hover {
-  font-size: 35px;
-  color: var(--color-primario-1);
-  transition: 0.5s;
+.btn_prm_cl span, .br_trj ul li a span {
+  display: none;
 }
 
-.btn_prm_cl .deshab {
+.btn_prm_cl .deshab, .br_trj ul li a .deshab {
   border-left: 1px solid var(--color-gris);
   background: linear-gradient(0deg, var(--color-primario-tr), var(--color-gris));
   box-shadow: 0 2px 2px rgba(95, 95, 95, 0.15);
@@ -600,15 +640,45 @@
 }
 
 /* sijepi: tarjetas del diseño */
-.trj_pers {
-  /*tarjeta personal*/
-  background-color: --color-primario-tr;
+.trj {
+  /* tarjeta base */
+  background: linear-gradient(90deg, var(--color-primario), var(--color-primario-2));
+  border-color: var(--color-primario-2);
+  border: 2px;
+  border-radius: 5px;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 50% 20%;
+      grid-template-columns: 30% 50% 20%;
+  width: min-max(120px, 450px);
+  height: min-max(250px, 350px);
+  padding: 5px;
+  overflow: auto;
+}
+
+.trj_cnt_img .img {
+  position: relative;
   width: 100%;
+  height: auto;
+  top: 0px;
+  left: 0px;
+}
+
+.trj_cnt_img .base_img {
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  bottom: 0px;
+  left: 0px;
+}
+
+.trj_pers_vrt {
+  /*tarjeta personal vertical*/
+  background-color: --color-primario-tr;
   min-height: 150px;
   margin-bottom: 2px;
-  position: relative;
   text-align: center;
-  display: flex;
   top: 2px;
   overflow: hidden;
   border: 2px solid rgba(175, 244, 255, 0.521);
@@ -634,7 +704,7 @@
 }
 
 /* Contenedores */
-.cnt, .cnt_norm {
+.cnt, .cnt_norm, .cnt_trj {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -694,6 +764,7 @@
   padding: 5px 5px 5px 5px;
 }
 
+/* Contenedor del pie principal */
 .cnt_pie {
   display: flex;
   flex-direction: row;
@@ -736,6 +807,47 @@
   border-right: 1px solid rgba(142, 240, 232, 0.856);
 }
 
+/* Contenedor de tarjeta */
+.cnt_trj {
+  color: var(--color-blanco);
+}
+
+.cnt_trj_titulo {
+  position: static;
+  display: flex;
+  width: 100%;
+  height: 25px;
+  text-align: center;
+  -webkit-text-decoration: solid;
+          text-decoration: solid;
+  font-size: medium;
+}
+
+.cnt_trj_txt {
+  position: static;
+  display: flex;
+  width: 100%;
+  height: auto;
+  text-align: justify;
+  align-items: center;
+  word-break: break-word;
+  margin-top: 30px;
+  margin-bottom: auto;
+  text-overflow: ellipsis;
+}
+
+.cnt_trj_pie {
+  position: static;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 30px;
+  text-align: justify;
+  align-items: center;
+  gap: 5px;
+}
+
 /* encabezados */
 .cabecera {
   width: 100%;
@@ -766,7 +878,7 @@
 }
 
 .panel_der ::-webkit-scrollbar :vertical {
-  width: 8px;
+  width: 6px;
 }
 
 .panel_der ::-webkit-scrollbar :horizontal {
@@ -807,12 +919,13 @@
   background-color: #ffffff6e;
   width: 100%;
   height: auto;
+  min-height: 65px;
   margin-bottom: 5px;
-  position: relative;
+  position: static;
   text-align: center;
   display: flex;
   top: 5px;
-  overflow: hidden;
+  overflow: auto;
   border: 2px solid rgba(240, 253, 255, 0.521);
   box-shadow: 3px 3px 3px rgba(240, 253, 255, 0.521);
   border-radius: 3px;
