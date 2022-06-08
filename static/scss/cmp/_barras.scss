@@ -141,28 +141,31 @@
 
 .br_trj{
     display: flex;
-    background-color:rgba(0, 41, 117, 0.185);
+    background-color:rgba(138, 218, 255, 0.185);
     flex-direction: column;
     justify-content: center;
     flex-wrap:wrap;
-    gap: 10px;
+    gap: 5px;
     height:100%;
     width:100%;
     ul{
         list-style: none;
         font-weight: bolder;  
-        padding: 5px;    
+        padding: 0px;    
         li{ 
+            list-style: none;
+            /* top:5px; */
+            margin: 3px;
+            padding-top: 0px;
             a{
-                height:45px;
+                display:block;
+                position: relative;
                 width:100%;
                 @extend .btn_prm_cl;
                 list-style: none;
                 vertical-align: middle;
-                top:10px;
-                margin: 5px;
-                padding-top: 10px;
-                text-decoration: none;
+                text-decoration:none;
+                font-size:smaller;
             }
         }
     }

@@ -1,0 +1,55 @@
+/* Estructuras de bloques basados en grillas (grid) */
+
+/* grilla base una columna (titulo-contenido-pie) */
+.gr_col1{
+    position: relative;
+    display: grid;
+    grid-template-columns: 35px auto 35px;
+    width: 100%;
+    height: 100%;
+}
+
+.gr_col2_iz{
+    position: relative;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    width: 100%;
+    height: 100%;
+}
+.gr_col2_der{
+    position: relative;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    width: 100%;
+    height: 100%;
+}
+.gr_br_der{
+    position:relative;
+    display: grid;
+    grid-template-columns: auto 20%;
+    width: 100%;
+    height: 100%;
+}
+.gr_br_iz{
+    position: relative;
+    display: grid;
+    grid-template-columns: 20% auto;
+    width: 100%;
+    height: 100%;
+}
+
+.gr_fila_sup{
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 20%;
+    width: 100%;
+    height: 100%;
+}
+
+.gr_fila_inf{
+    position: relative;
+    display: grid;
+    grid-template-rows: 20% auto;
+    width: 100%;
+    height: 100%;
+}
