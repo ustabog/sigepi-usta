@@ -310,7 +310,7 @@ class pry_base(models.Model):
     #clase base de registro de proyecto
     id_pry=models.AutoField(primary_key = True) #Identificador unico del proyecto
     cod_pry = models.CharField('Código proyecto:', max_length=50) # código unico del proyecto
-    nombre_pry=models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
+    nombre_pry = models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
     desc_pry=models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto
     tipo_pry=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto - diccionario TIPO_PRY
     id_usu = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False) #Propietario del proyecto

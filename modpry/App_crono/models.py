@@ -91,7 +91,7 @@ class etapa(models.Model):
 
 class crono_pry (models.Model):
     id_crono_pry = models.AutoField(primary_key = True)#Id del cronograma del proyecto
-    id_pry = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=True, blank =False)#Proyecto base
+    nombre_pry = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=True, blank =False)#Nombre del proyecto 
     resp_pry = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)# responsable del proyecto
     nomb_crono = models.CharField('Nombre del cronograma:', max_length=255) #Nombre del cronograma
     desc_crono = models.CharField('Descripción del cronograma:', max_length=255) #Descripción del cronograma

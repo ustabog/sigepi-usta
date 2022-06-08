@@ -9,7 +9,7 @@ class frm_crea_crono(ModelForm):
         model = crono_pry
         fields = (
             'resp_pry',
-            #'id_pry',
+            'nombre_pry',
             'nomb_crono',
             'desc_crono',
             'fch_ini_pry',
@@ -17,7 +17,7 @@ class frm_crea_crono(ModelForm):
         )
         labels = {
             'resp_pry' : 'Responsable del cronograma', 
-            #'id_pry' : 'Identificador del proyecto',
+            'nombre_pry' : 'Nombre del proyecto',
             'nomb_crono' : 'Nombre del cronograma',
             'desc_crono' : 'Descripción del cronograma',
             'fch_ini_pry' : 'Fecha de inicio del proyecto',

@@ -35,8 +35,6 @@ class vts_ls_pry(ListView):
     template_name = 'cn_pry.html'
     queryset = pry_base.objects.order_by('nombre_pry')
     context_object_name = 'lista_pry'
-    #success_url = reverse_lazy('cn_pry.html')
-    #success_message = 'listado cargado correctamente'
 
     def get_context_data(self, **kwargs):
         context = super(vts_ls_pry, self).get_context_data(**kwargs)
