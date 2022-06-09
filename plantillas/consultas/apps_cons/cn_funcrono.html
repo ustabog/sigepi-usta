@@ -9,11 +9,11 @@
     {{form.as_ul}}
 
     <div>
-        {% for etapa in  object_list %}
-        <label> {{ etapa.nombre_eta}} </label>
-        <label> {{ etapa.desc_eta}} </label>
-        <label> {{ etapa.fch_ini_eta}} </label>
-        <label> {{ etapa.fch_fin_eta}} </label><br>
+        {% for etapa_dto in  object_list %}
+        <label> {{ etapa_dto.nombre_eta}} </label>
+        <label> {{ etapa_dto.desc_eta}} </label>
+        <label> {{ etapa_dto.fch_ini_eta}} </label>
+        <label> {{ etapa_dto.fch_fin_eta}} </label><br>
         {% endfor %}
 
 </form>

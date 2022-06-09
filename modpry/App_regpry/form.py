@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django import forms
-from modpry.App_modpry.models import *
+from modpry.app_modpry.models import *
 from .models import *
 
 class frm_reg_pry(ModelForm):

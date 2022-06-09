@@ -1,6 +1,6 @@
 from django.db import models
-from modpry.App_modpry.models import *
-from modpry.App_regpry.models import *
+from modpry.app_modpry.models import *
+from modpry.app_regpry.models import *
 from modcons.App_cons.models import *
 
 APP_DIS_PRY = [

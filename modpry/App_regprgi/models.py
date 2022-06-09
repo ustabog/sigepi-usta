@@ -1,5 +1,5 @@
 from django.db import models
-from modpry.App_modpry.models import *
+from modpry.app_modpry.models import *
 from modadm.App_regusugr.models import *
 from modadm.App_modadm.models import *
 from modcons.App_cons.models import *

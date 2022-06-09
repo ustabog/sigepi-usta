@@ -1,7 +1,7 @@
 from pickle import TRUE
 from django.db import models
-from modpry.App_modpry.models import *
-from modpry.App_regpry.models import *
+from modpry.app_modpry.models import *
+from modpry.app_regpry.models import *
 
 APP_CONVE_PRY = [
     #Diccionario para la aplicación de convenio de proyecto

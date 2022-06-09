@@ -4,8 +4,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 #from rest_framework import viewsets
 from .models import *
-from modpry.App_regpry.models import *
-from modpry.App_regpry.form import *
+from modpry.app_regpry.models import *
+from modpry.app_regpry.form import *
 
 class vst_pry():
     #Clase que procesa las vistas del IU del registro de proyectos de SIGEPI-USTA

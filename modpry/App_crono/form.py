@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
-from modpry.App_modpry.models import *
-from modpry.App_crono.models import *
+from modpry.app_modpry.models import *
+from modpry.app_crono.models import *
 
 #---------------------------Formulario para crear un nuevo cronograma para un proyecto--------------------------
 class frm_crea_crono(ModelForm):

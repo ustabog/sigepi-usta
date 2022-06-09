@@ -1,8 +1,8 @@
 from django.db import models
 from django.forms import CharField
-from modpry.App_modpry.models import *
+from modpry.app_modpry.models import *
 from modadm.App_regusugr.models import *
-from modpry.App_regpry.models import *
+from modpry.app_regpry.models import *
 
 APP_EVA_PRY = [
     #Diccionario para la aplicación de evaluación de proyecto

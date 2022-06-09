@@ -1,7 +1,7 @@
 from django.db import models
-from modpry.App_modpry.models import *
-from modpry.App_regpry.models import *
-from modpry.App_disinv.models import *
+from modpry.app_modpry.models import *
+from modpry.app_regpry.models import *
+from modpry.app_disinv.models import *
 
 TIPO_PRBL=[
     # tipo de problema que se enfrenta

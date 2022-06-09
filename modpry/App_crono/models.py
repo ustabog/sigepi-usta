@@ -1,6 +1,6 @@
 from django.db import models
-from modpry.App_regpry.models import *
-from modpry.App_recur.models import *
+from modpry.app_regpry.models import *
+from modpry.app_recur.models import *
 
 APP_CRONO_PRY = [
     #Diccionario para la aplicación de cronograma

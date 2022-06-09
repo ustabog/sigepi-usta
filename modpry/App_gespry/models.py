@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from modadm.App_regusugr.models import *
 from modadm.App_modadm.models import *
-from modpry.App_modpry.models import *
-from modpry.App_regpry.models import *
+from modpry.app_modpry.models import *
+from modpry.app_regpry.models import *
 """
 Clases de la Aplicación Gestión de Proyectos
 """

@@ -7,7 +7,7 @@
 <form method="POST">
     {{form.as_ul}}
 
-    <div>
+    <div class="cnt_norm">
         {% for pry_base in  object_list %}
         <label> {{ pry_base.id_pry }} </label>
         <label> {{ pry_base.cod_pry}} </label>
@@ -17,7 +17,7 @@
         <label> {{ pry_base.prop_pry}} </label>
         <label> {{ pry_base.est_pry}} </label><br>
         {% endfor %}
-
+    </div>
 </form>
 
 {% endblock cuerpo %}

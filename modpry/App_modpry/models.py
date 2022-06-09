@@ -1,6 +1,6 @@
 from django.db import models
 #from django.contrib.auth.models import User
-from modpry.App_regpry.models import *
+from modpry.app_regpry.models import *
 
 """
 Listas únicas, Conjuntos y Diccionarios del Módulo de Proyectos

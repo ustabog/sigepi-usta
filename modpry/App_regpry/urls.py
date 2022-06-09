@@ -1,6 +1,6 @@
 from django.urls import path
-from modpry.App_regpry.views import *
-from modpry.App_modpry.views import *
+from modpry.app_regpry.views import *
+from modpry.app_modpry.views import *
 from .models import *
 
 
