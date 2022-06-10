@@ -8,13 +8,8 @@
 
 <!-- bloques de Aplicación-->
 {% block app%}
-<aside id="barra_herr" class="barra_herr">
-    {% block barra_herr %}
-    <p>barra de herramientas</p>
-    {% endblock barra_herr %}
-</aside>
-<div id="panel_app" class="panel_app">
-    {% block panel_app %}
+<div id="panel_app_cnt" class="panel_app_cnt">
+    {% block panel_app_cnt %}
         <div id="menu_app" class="menu_app">
             {% block menu_app %}
             <p>menú app</p>
@@ -29,7 +24,7 @@
             <p>pie app</p>
             {% endblock pie_app %}
         </div>
-    {% endblock panel_app %}
+    {% endblock panel_app_cnt %}
 </div>
 
 {% endblock app%}

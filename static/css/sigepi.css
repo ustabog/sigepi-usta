@@ -39,19 +39,6 @@
   --color-cuidado:#ffadad;
   --color-peligro:#b30000;
   --color-luminoso:#FBF6C8;
-  /* Tamaños de pantalla */
-  --ancho-xs: min-max(0px,480px);
-  --alto-xs: min-max(0px,360px);
-  --ancho-sm: min-max(481px,640px);
-  --alto-sm: min-max(361px,480px);
-  --ancho-md: min-max(641px,800px);
-  --alto-md: min-max(481px, 600px);
-  --ancho-lg: min-max(801px,1024px);
-  --alto-lg: min-max(601px,768px);
-  --ancho-xl: min-max(1021px,1920px);
-  --alto-xl: min-max(769px, 1080px);
-  --ancho-xxl: min(1921px);
-  --alto-xxl: min(1081px);
   /* fuentes */
   --fam-fuentes-contenido: "Helvetica Neue", Arial;
   --fam-fuentes-codigo: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -105,6 +92,7 @@
 /* fondo degradado vertical */
 /* fondo degradado horizontal */
 /* Tamaño de igual ancho y alto */
+/* Estructura del panel */
 /* sigepi.css: formato para las etiquetas html del diseño */
 /* formato para la etiqueta <body> */
 .cuerpo {
@@ -165,13 +153,14 @@
 
 /* sigepi.css: Acordeones del diseño */
 /* sigepi.css: Barras, barras de estado, barras de progreso y menús de navegación verticales */
-.brr, .br_pn_der, .br_herr, .br_app, .br_app_adm {
-  position: relative;
+.brr, .br_pn_der, .br_herr, .br_app, .br_app_adm, .trj_pers_cnt_pie {
+  /* una fila hasta tres columnas */
   display: flex;
-  flex-direction: row;
+  position: relative;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
+  flex-direction: row;
   font-family: --fam-fuentes-titulos;
   font-size: medium;
   font-weight: bold;
@@ -182,15 +171,17 @@
 
 .br_pn_der {
   /* Barra del encabezado panel derecho */
-  height: 55px;
+  height: 50px;
   flex-wrap: nowrap;
   gap: 10px;
+  overflow-x: auto;
 }
 
 .br_herr {
   /* barra de herramientas */
   background-color: var(--color-primario);
   top: 0;
+  max-width: 300px;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   visibility: visible;
@@ -220,7 +211,6 @@
   background-color: var(--color-primario);
   height: 100%;
   overflow: auto;
-  z-index: 9;
 }
 
 .br_app ul {
@@ -257,8 +247,6 @@
   font-size: 3em;
   padding-right: 0.5em;
   width: 100%;
-  /* display: inline;
-                vertical-align: middle; */
 }
 
 .br_app ul li:hover > .categ_br_herr {
@@ -321,6 +309,7 @@
   gap: 5px;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 .br_trj ul, .trj_pers_br ul {
@@ -337,7 +326,7 @@
 }
 
 .br_trj ul li a, .trj_pers_br ul li a {
-  display: block;
+  display: flex;
   position: relative;
   width: 100%;
   list-style: none;
@@ -408,6 +397,64 @@
   box-sizing: content-box;
   align-items: center;
   align-content: center;
+}
+
+/* botón redondo */
+.btn_rdn, .trj_pers_cnt_pie a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  border-radius: 50%;
+  text-decoration: none;
+  align-items: center;
+  align-content: center;
+  text-underline-position: below;
+  box-shadow: 3px 3px 3px var(--color-primario-tr) inset;
+  margin: 5px;
+}
+
+.btn_rdn i, .trj_pers_cnt_pie a i {
+  font-size: 30px;
+  color: var(--color-primario-2);
+  transition: 0.5s;
+  -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn_rdn span, .trj_pers_cnt_pie a span {
+  font-size: x-small;
+  display: none;
+  color: var(--color-blanco);
+}
+
+.btn_rdn:hover, .trj_pers_cnt_pie a:hover {
+  background-color: var(--color-blanco);
+  box-shadow: 3px 3px 10px var(--color-primario-oscuro) inset;
+}
+
+.btn_rdn:hover i, .trj_pers_cnt_pie a:hover i {
+  font-size: 30px;
+  color: var(--color-primario);
+  transition: 0.5s;
+  -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transform: translate(0%, 7%);
+          transform: translate(0%, 7%);
+}
+
+.btn_rdn:hover span, .trj_pers_cnt_pie a:hover span {
+  display: flex;
+  -webkit-transform: translate(0%, -3px);
+          transform: translate(0%, -3px);
+  color: var(--color-primario-2);
 }
 
 .btn_pie, .cnt_pie .item {
@@ -547,7 +594,7 @@
 /* sigepi.css: carruseles utilizados */
 /* sigepi.css: cintas, esquineros, separadores, adornos */
 /* sigepi.css: menús del diseño */
-.menu, .menu_app, .app .menu_app, .menu_ppal {
+.menu, .menu_app, .menu_ppal {
   position: relative;
   display: flex;
   gap: 5px;
@@ -559,7 +606,7 @@
   font-size: .8rem;
 }
 
-.menu_app, .app .menu_app {
+.menu_app {
   height: 45px;
 }
 
@@ -648,39 +695,38 @@
 /* sijepi: tarjetas del diseño */
 /* tarjeta base */
 .trj {
-  width: min-max(120px, 450px);
-  height: min/250px;
+  width: minmax(120px, 450px);
+  height: minmax(150px, 250px);
   padding: 0px;
   overflow: auto;
-  margin: 3px;
+  margin: 5px;
 }
 
+/* Tarjeta personal */
 .trj_pers {
-  width: min-max(120px, 450px);
-  height: min-max(150px, 250px);
+  height: minmax(150px, 200px);
+  width: minmax(120px, 550px);
   border-radius: 5px;
   background: linear-gradient(45deg, var(--color-primario-2), var(--color-primario));
-  border-color: var(--color-blanco);
-  border: 2px;
-  box-shadow: 5px 5px 5px #07006b7c;
+  border: 2px solid rgba(115, 204, 255, 0.521);
+  box-shadow: 5px 5px 5px var(--color-primario);
   -webkit-transform: translate(0%, 0px);
           transform: translate(0%, 0px);
+  overflow: auto;
+}
+
+.trj_pers_cnt_ppal .cnt_img {
+  align-items: center;
+  justify-items: center;
 }
 
 .trj_pers_cnt_ppal .cnt_img .img {
   position: relative;
-  width: 100%;
-  height: auto;
-  top: 0px;
-  left: 0px;
 }
 
 .trj_pers_cnt_ppal .cnt_img .base_img {
-  width: 100%;
-  height: 35px;
+  position: relative;
   text-align: center;
-  bottom: 0px;
-  left: 0px;
 }
 
 .trj_pers_cnt_ppal .cnt_trj {
@@ -690,26 +736,26 @@
 }
 
 .trj_pers_cnt_ppal .cnt_trj_titulo {
-  background: linear-gradient(0deg, var(--color-primario), var(--color-primario-2));
+  background: linear-gradient(-45deg, var(--color-primario-2), var(--color-primario-1));
   display: flex;
   font-size: medium;
   align-items: center;
+  top: 0px;
 }
 
 .trj_pers_cnt_ppal .cnt_trj_txt {
   display: flex;
-  width: 100%;
-  height: auto;
   text-align: justify;
   align-items: center;
+  white-space: clip;
+  overflow: auto;
   word-break: break-word;
-  margin-top: 5px;
-  margin-bottom: auto;
+  margin: 5px;
   text-overflow: ellipsis;
 }
 
 .trj_pers_cnt_ppal .cnt_trj_pie {
-  background-color: var(--color-primario);
+  background: linear-gradient(-45deg, var(--color-primario-2), var(--color-primario-1));
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -720,13 +766,17 @@
 }
 
 .trj_pers_cnt_pie {
-  background-color: var(--color-primario);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  text-align: justify;
+  background-color: var(--color-primario-oscuro);
   align-items: center;
   gap: 5px;
+  border-radius: 25px 0px 0px 25px;
+  padding-left: 10px;
+  margin-left: auto;
+}
+
+.trj_pers_br {
+  width: 100%;
+  height: 100%;
 }
 
 .trj_pers_vrt {
@@ -745,10 +795,15 @@
 
 /* Se trabajan las estructuras de comportamiento de las aplicaciones en diferentes formatos */
 .app {
+  /* una fila hasta tres columnas */
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: minmax(50px, 350px) auto auto;
-      grid-template-columns: minmax(50px, 350px) auto auto;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 2 4;
+      grid-template-columns: 2 4;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -875,130 +930,187 @@
 /* Estructuras de bloques basados en grillas (grid) */
 /* grilla base una columna (titulo-contenido-pie) */
 .gr_col1, .trj, .trj_pers_cnt_ppal .cnt_trj {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 35px auto 35px;
-      grid-template-columns: 35px auto 35px;
+  -ms-grid-rows: minmax(25px, 1fr) 8fr minmax(25px, 1fr);
+      grid-template-rows: minmax(25px, 1fr) 8fr minmax(25px, 1fr);
+  width: 100%;
+  height: 100%;
+}
+
+.gr_col2 {
+  position: -webkit-sticky;
+  position: sticky;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   width: 100%;
   height: 100%;
 }
 
 .gr_col2_iz, .trj_pers_cnt_ppal {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 30% 70%;
-      grid-template-columns: 30% 70%;
+  -ms-grid-columns: 1fr 3fr;
+      grid-template-columns: 1fr 3fr;
   width: 100%;
   height: 100%;
 }
 
 .gr_col2_der {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 70% 30%;
-      grid-template-columns: 70% 30%;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
   width: 100%;
   height: 100%;
 }
 
 .gr_br_der, .trj_pers {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto 20%;
-      grid-template-columns: auto 20%;
+  -ms-grid-columns: 4fr 1fr;
+      grid-template-columns: 4fr 1fr;
   width: 100%;
   height: 100%;
 }
 
 .gr_br_iz {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 20% auto;
-      grid-template-columns: 20% auto;
+  -ms-grid-columns: 1fr 4fr;
+      grid-template-columns: 1fr 4fr;
   width: 100%;
   height: 100%;
 }
 
 .gr_fila_sup, .trj_pers_cnt, .trj_pers_cnt_ppal .cnt_img {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: auto 20%;
-      grid-template-rows: auto 20%;
+  -ms-grid-rows: 6fr 1fr;
+      grid-template-rows: 6fr 1fr;
   width: 100%;
   height: 100%;
 }
 
 .gr_fila_inf {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 20% auto;
-      grid-template-rows: 20% auto;
+  -ms-grid-rows: 1fr 4fr;
+      grid-template-rows: 1fr 4fr;
   width: 100%;
   height: 100%;
 }
 
 /* contenedores */
 /* sigepi.css: Páneles contenedores de componenetes y secciones */
-.panel_der {
-  background-color: var(--color-primario);
+/* panel principal */
+.panel_ppal {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 4fr 7fr 0fr;
+      grid-template-columns: 4fr 7fr 0fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
   width: 100%;
   height: 100%;
-  position: relative;
+  overflow: auto;
+}
+
+.panel_ppal ::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.panel_ppal ::-webkit-scrollbar :vertical {
+  width: 6px;
+}
+
+.panel_ppal ::-webkit-scrollbar :horizontal {
+  height: 10px;
+}
+
+.panel_ppal ::-webkit-scrollbar-button:increment, .panel_ppal ::-webkit-scrollbar-button {
   display: none;
-  flex-direction: column;
-  min-width: 150px;
-  max-width: 450px;
+}
+
+.panel_ppal ::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 10px;
+  border: 2px solid #f1f2f3;
+}
+
+.panel_ppal ::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Panel derecho */
+.panel_der {
+  /* una fila hasta tres columnas */
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primario);
   /* border-right: 1px solid rgba(255, 255, 255, 0.438); */
   box-shadow: 5px 5px 5px rgba(34, 44, 46, 0.25);
   overflow: auto;
 }
 
-.panel_der ::-webkit-scrollbar {
-  -webkit-appearance: none;
+/* Panel de aplicación */
+.panel_app {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: auto;
 }
 
-.panel_der ::-webkit-scrollbar :vertical {
-  width: 6px;
-}
-
-.panel_der ::-webkit-scrollbar :horizontal {
-  height: 10px;
-}
-
-.panel_der ::-webkit-scrollbar-button:increment, .panel_der ::-webkit-scrollbar-button {
-  display: none;
-}
-
-.panel_der ::-webkit-scrollbar-thumb {
-  background-color: #797979;
-  border-radius: 20px;
-  border: 2px solid #f1f2f3;
-}
-
-.panel_der ::-webkit-scrollbar-track {
-  border-radius: 10px;
+.panel_app_cnt {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1 8 1;
+      grid-template-rows: 1 8 1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .panel_iz {
   width: 0px;
-}
-
-.panel_ppal {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: minmax(100px, 350px) auto minmax(0px, 150px);
-      grid-template-columns: minmax(100px, 350px) auto minmax(0px, 150px);
-  overflow: auto;
+  height: 0px;
 }
 
 /* sigepi.css: secciones de apartes estructurales */
@@ -1016,37 +1128,52 @@
   border: 2px solid rgba(240, 253, 255, 0.521);
   box-shadow: 3px 3px 3px rgba(240, 253, 255, 0.521);
   border-radius: 3px;
-  padding: 2px 2px 2px 2px;
+  padding: 5px;
 }
 
 /* Diseño adaptativo o Responsive @media */
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 480px) {
   .panel_ppal {
-    position: relative;
-    width: 100%;
+    /* una fila hasta tres columnas */
     display: flex;
-    flex-direction: row;
+    position: relative;
     flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
     justify-content: space-between;
     overflow: auto;
   }
   .panel_der {
+    /* una fila hasta tres columnas */
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     border-right: 0px;
-    max-width: 580px;
     box-shadow: 0px 0px;
   }
-  .app {
-    display: -ms-grid;
-    display: grid;
+  .panel_app {
+    /* una fila hasta tres columnas */
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    -ms-grid-columns: minmax(3.7em, 9em) auto auto;
-        grid-template-columns: minmax(3.7em, 9em) auto auto;
+    overflow: auto;
+  }
+  .app {
+    /* una fila hasta tres columnas */
+    display: -ms-grid;
+    display: grid;
+    position: -webkit-sticky;
+    position: sticky;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 1 8 1;
+        grid-template-rows: 1 8 1;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
   }
   /*   .cont_pn_der{
@@ -1063,4 +1190,33 @@
       border-radius: 2px;
       padding: 5px 5px 5px 5px;
     } */
+}
+
+@media only screen and (max-width: 640px) {
+  /* extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1,$tam_fr2:0,$tam_fr3:0) */
+  .panel_ppal {
+    /* una fila hasta tres columnas */
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    overflow: auto;
+  }
+  .panel_der {
+    display: block;
+    flex-wrap: wrap;
+    border-right: 0px;
+    box-shadow: 0px 0px;
+  }
+  .app {
+    display: -ms-grid;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    -ms-grid-columns: minmax(3.7em, 9em) auto auto;
+        grid-template-columns: minmax(3.7em, 9em) auto auto;
+    overflow: hidden;
+  }
 }

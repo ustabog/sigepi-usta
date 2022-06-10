@@ -40,20 +40,6 @@
 --color-peligro:#b30000;
 --color-luminoso:#FBF6C8;
 
-/* Tamaños de pantalla */
---ancho-xs: min-max(0px,480px);
---alto-xs: min-max(0px,360px);
---ancho-sm: min-max(481px,640px);
---alto-sm: min-max(361px,480px);
---ancho-md: min-max(641px,800px);
---alto-md: min-max(481px, 600px);
---ancho-lg: min-max(801px,1024px);
---alto-lg: min-max(601px,768px);
---ancho-xl: min-max(1021px,1920px);
---alto-xl: min-max(769px, 1080px);
---ancho-xxl: min(1921px);
---alto-xxl: min(1081px);
-
 /* fuentes */
 --fam-fuentes-contenido: "Helvetica Neue", Arial;
 --fam-fuentes-codigo: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;

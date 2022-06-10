@@ -3,17 +3,11 @@
 
 <!-- metadatos del documento (head)-->
 {% block meta_app %}{% endblock meta_app%}
-{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
 {% block meta_pie_app%}{% endblock meta_pie_app%}
 
 <!-- bloques de Aplicación-->
 {% block app%}
-<aside id="barra_herr" class="barra_herr">
-    {% block barra_herr %}
-    <p>barra de herramientas</p>
-    {% endblock barra_herr %}
-</aside>
-<div id="panel_app" class="panel_app">
+<div id="panel_app_cnt" class="panel_app_cnt">
     {% block panel_app %}
         <div id="menu_app" class="menu_app">
             {% block menu_app %}
@@ -22,6 +16,7 @@
         </div>
         <div id="articulo" class="articulo">
             {% block articulo %}
+            <p>artículo</p>
             {% endblock articulo %}
         </div>
         <div id="pie_app" class="pie_app">

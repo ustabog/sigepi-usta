@@ -2,54 +2,61 @@
 
 /* grilla base una columna (titulo-contenido-pie) */
 .gr_col1{
-    position: relative;
+    position:sticky;
     display: grid;
-    grid-template-columns: 35px auto 35px;
+    grid-template-rows: minmax(25px,1fr) 8fr minmax(25px,1fr);
     width: 100%;
     height: 100%;
 }
 
-.gr_col2_iz{
-    position: relative;
+.gr_col2{
+    position:sticky;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 100%;
+}
+.gr_col2_iz{
+    position:sticky;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
     width: 100%;
     height: 100%;
 }
 .gr_col2_der{
-    position: relative;
+    position:sticky;
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 3fr 1fr;
     width: 100%;
     height: 100%;
 }
 .gr_br_der{
-    position:relative;
+    position:sticky;
     display: grid;
-    grid-template-columns: auto 20%;
+    grid-template-columns: 4fr 1fr;
     width: 100%;
     height: 100%;
 }
 .gr_br_iz{
-    position: relative;
+    position: sticky;
     display: grid;
-    grid-template-columns: 20% auto;
+    grid-template-columns: 1fr 4fr;
     width: 100%;
     height: 100%;
 }
 
 .gr_fila_sup{
-    position: relative;
+    position: sticky;
     display: grid;
-    grid-template-rows: auto 20%;
+    grid-template-rows: 6fr 1fr;
     width: 100%;
     height: 100%;
 }
 
 .gr_fila_inf{
-    position: relative;
+    position: sticky;
     display: grid;
-    grid-template-rows: 20% auto;
+    grid-template-rows: 1fr 4fr;
     width: 100%;
     height: 100%;
 }

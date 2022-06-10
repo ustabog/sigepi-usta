@@ -1,11 +1,5 @@
 /* Se trabajan las estructuras de comportamiento de las aplicaciones en diferentes formatos */
 .app {
-    display:grid;
-    grid-template-columns: minmax(50px,350px) auto auto;
-    width: 100%;
-    height: 100%;
+    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:2,$tam_fr2:4,$tam_fr3:0);
     overflow: auto;
-    .menu_app{
-        @extend .menu_app
-    }
   }

@@ -26,13 +26,17 @@
 {% block script_menu_ppal%}
 <script>
 function abrir() {
+  document.getElementById("panel_ppal").style.gridTemplateColumns= "4fr 7fr 0fr";
   document.getElementById("panel_der").style.display = "flex";
+  document.getElementById("panel_der").style.width = "100%";
   document.getElementById("btn_menu").style.display = "none";
   document.getElementById("btn_cerrar").style.display = "flex";
 }
 
 function cerrar() {
-  document.getElementById("panel_der").style.display = "none";
+  document.getElementById("panel_ppal").style.gridTemplateColumns= "0fr auto 0fr";
+  document.getElementById("panel_der").style.width = "0px";
+  document.getElementById("panel_der").style.display = "flex";
   document.getElementById("btn_menu").style.display = "flex";
   document.getElementById("btn_cerrar").style.display = "none";
 }
