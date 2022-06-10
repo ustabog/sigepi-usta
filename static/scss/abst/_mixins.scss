@@ -21,3 +21,52 @@
     width: $tam_btn;
     height: $tam_btn;
 }
+
+/* Estructura del panel */
+@mixin extruc_gr_pn($num_col:1,$num_filas:1fr,$tam_fr1:1fr,$tam_fr2:0fr,$tam_fr3:0fr) {
+    /* una fila hasta tres columnas */
+    @if $num_filas==1 and $num_col==2{
+        display: grid;
+        position:sticky;
+        grid-template-columns: #{$tam_fr1} #{$tam_fr2};
+        grid-template-rows: 1fr;
+    } @else if $num_filas==1 and $num_col==3{
+        display: grid;
+        position:sticky;
+        grid-template-columns: #{$tam_fr1} #{$tam_fr2} #{$tam_fr3};
+        grid-template-rows: 1fr;
+    }
+    /* una columna hasta tres filas*/
+    @else if $num_filas==2 and $num_col==1{
+        display: grid;
+        position:sticky;
+        grid-template-columns: 1fr;
+        grid-template-rows: #{$tam_fr1} #{$tam_fr2};        
+    }
+    @else if $num_filas==3 and $num_col==1{
+        display: grid;
+        position:sticky;
+        grid-template-columns: 1fr;
+        grid-template-rows: #{$tam_fr1} #{$tam_fr2} #{$tam_fr3};
+    }
+    /* filas y columnas simétricas */
+    @else if $num_filas==2 and $num_col==2{
+        display: grid;
+        position:sticky;
+        grid-template-columns: #{$tam_fr1} #{$tam_fr2};
+        grid-template-rows: #{$tam_fr1} #{$tam_fr2};
+    }
+    @else if $num_filas==3 and $num_col==3{
+        display: grid;
+        position:sticky;
+        grid-template-columns: #{$tam_fr1} #{$tam_fr2} #{$tam_fr3};
+        grid-template-rows: #{$tam_fr1} #{$tam_fr2} #{$tam_fr3};
+    } 
+    @else {
+        display:flex;
+        position:relative;
+        flex-wrap: wrap;
+    }
+    width: 100%;
+    height: 100%;    
+}

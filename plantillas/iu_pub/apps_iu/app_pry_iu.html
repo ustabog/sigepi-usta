@@ -8,33 +8,23 @@
 
 <!-- bloques de Aplicación-->
 {% block app%}
-<aside id="br_herr" class="br_herr">
-    {% block br_herr %}
-        {% include "br_herr_app_pry.html" %}
-    {% endblock br_herr %}
-</aside>
-<div id="panel_app" class="panel_app">
-    {% block panel_app %}
-        <div id="menu_app" class="menu_app">
-            {% block menu_app %}
-            <p>menú app</p>
-            {% endblock menu_app %}
-        </div>
-        <div id="articulo" class="articulo">
-            {% block articulo %}
-            {% endblock articulo %}
-        </div>
-        <div id="pie_app" class="pie_app">
-            {% block pie_app %}
-            <p>pie app</p>
-            {% endblock pie_app %}
-        </div>
-    {% endblock panel_app %}
+<div id="menu_app" class="menu_app">
+    {% block menu_app %}
+    <p>menú app</p>
+    {% endblock menu_app %}
 </div>
-
+<div id="articulo" class="articulo">
+    {% block articulo %}
+    <p>artículo</p>
+    {% endblock articulo %}
+</div>
+<div id="pie_app" class="pie_app">
+    {% block pie_app %}
+    <p>pie app</p>
+    {% endblock pie_app %}
+</div>
 {% endblock app%}
 
 {% block script_app%}{% endblock script_app%}
 {% block script_menu_app%}{% endblock script_menu_app%}
-{% block script_panel_ppal%}{% endblock script_panel_ppal%}
 {% block script_pie_app%}{% endblock script_pie_app%}

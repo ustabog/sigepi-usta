@@ -5,6 +5,7 @@
 <head id='metadatos'>
     <link rel="stylesheet" href="{% static 'css/sigepi.css' %}">
     <link rel="stylesheet" href="{% static 'fuentes/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2' %}" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% block meta_head %}{% endblock meta_head %}
     {% block meta_cuerpo %}{% endblock meta_cuerpo%}
     {% block meta_cabecera %}{% endblock meta_cabecera%}
@@ -36,9 +37,15 @@
             {% block panel_der %}
             {% endblock panel_der %}
         </aside>
-        <div id="app" class="app">
-            {% block app%}
-            {% endblock app%}
+        <div id="panel_app" class="panel_app">
+            <aside id="br_herr" class="br_herr">
+                {% block br_herr %}
+                {% endblock br_herr %}
+            </aside>
+            <div id="app" class="app">
+                {% block app%}
+                {% endblock app%}
+            </div>
         </div>
         <aside id="panel_iz" class="panel_iz">
             {% block panel_iz %}

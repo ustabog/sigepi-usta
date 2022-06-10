@@ -10,6 +10,53 @@
     align-items: center;
     align-content: center;
 }
+/* botón redondo */
+.btn_rdn{
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    position:relative;
+    @include tam_igu(35px);
+    text-align: center;
+    border-radius: 50%;
+    text-decoration: none;
+    align-items: center;
+    align-content: center;
+    text-underline-position: below;
+    box-shadow: 3px 3px 3px var(--color-primario-tr) inset;
+    margin: 5px;
+    i{
+        font-size: 30px;
+        color: var(--color-primario-2);
+        transition: 0.5s;
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    span{
+        font-size: x-small;
+        display:none;
+        color: var(--color-blanco);
+    }
+    &:hover{
+        background-color: var(--color-blanco);
+        box-shadow: 3px 3px 10px var(--color-primario-oscuro) inset;
+        i{
+            font-size: 30px;
+            color: var(--color-primario);
+            transition: 0.5s;
+            align-self: center;
+            margin-left: auto;
+            margin-right: auto;
+            transform: translate(0%,7%);
+        }
+        span{
+            display:flex;
+            transform: translate(0%,-3px);
+            color: var(--color-primario-2);
+        }
+    }
+}
 
 .btn_pie {
     background: linear-gradient(0deg,var(--color-primario-1), var(--color-primario));

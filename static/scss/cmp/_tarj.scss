@@ -3,46 +3,40 @@
 /* tarjeta base */
 .trj{
     @extend .gr_col1;
-    width: min-max(120px, 450px);
-    height:min/max(150px, 250px);
+    width: minmax(120px, 450px);
+    height:minmax(150px, 250px);
     padding: 0px;
     overflow:auto;
-    margin: 3px;
+    margin: 5px;
 }
 
-
+/* Tarjeta personal */
 .trj_pers {
     @extend .gr_br_der;
-    width: min-max(120px, 450px);
-    height:min-max(150px, 250px);
+    height: minmax(150px,200px);
+    width: minmax(120px,550px);
     border-radius: 5px;
     background: linear-gradient(45deg, var(--color-primario-2),var(--color-primario));
-    border-color: var(--color-blanco);
-    border: 2px;
-    box-shadow: 5px 5px 5px #07006b7c;
+    border: 2px solid rgba(115, 204, 255, 0.521);
+    box-shadow: 5px 5px 5px var(--color-primario);
     transform: translate(0%,0px);
+    overflow:auto;
     &_cnt{
         @extend .gr_fila_sup;
         &_ppal{
             @extend .gr_col2_iz;
             .cnt_img{
                 @extend .gr_fila_sup;
+                align-items: center;
+                justify-items: center;
                 .img{
                     @extend .circulo;
                     position:relative;
-                    width: 100%;
-                    height: auto;
-                    top: 0px;
-                    left: 0px;
                 }
                 .base_img{
-                    width: 100%;
-                    height: 35px;
+                    position:relative;
                     text-align: center;
-                    bottom: 0px;
-                    left: 0px;
                 }
-    
             }
             .cnt_trj{
                 @extend .gr_col1;
@@ -50,24 +44,24 @@
                 text-align: center;
                 align-content: center;
                 &_titulo{
-                    background:linear-gradient(0deg, var(--color-primario),var(--color-primario-2));
+                    background:linear-gradient(-45deg, var(--color-primario-2),var(--color-primario-1));
                     display:flex;
                     font-size: medium;
                     align-items: center;
+                    top:0px;
                 }
                 &_txt{
                     display:flex;
-                    width: 100%;
-                    height: auto;
                     text-align: justify;
                     align-items: center;
+                    white-space:clip;
+                    overflow:auto;
                     word-break: break-word;
-                    margin-top: 5px;
-                    margin-bottom: auto;
-                    text-overflow: ellipsis;
+                    margin: 5px;
+                    text-overflow:ellipsis;
                 }
                 &_pie{
-                    background-color: var(--color-primario);
+                    background:linear-gradient(-45deg, var(--color-primario-2),var(--color-primario-1));
                     display: flex;
                     flex-direction: row;
                     flex-wrap: wrap;
@@ -79,17 +73,22 @@
             }
         }
         &_pie{
-            background-color: var(--color-primario);
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            text-align: justify;
-            align-items: center;
+            @extend .brr;
+            background-color: var(--color-primario-oscuro);
+            align-items:center;
             gap: 5px;
+            border-radius: 25px 0px 0px 25px;
+            padding-left: 10px;
+            margin-left: auto;
+            a{
+                @extend .btn_rdn;
+            }
         }
     }
     &_br{
         @extend .br_trj;
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -107,3 +106,4 @@
     border-radius:3px;
     padding: 2px 2px 2px 2px;  
   }
+

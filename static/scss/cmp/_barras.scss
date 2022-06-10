@@ -1,11 +1,7 @@
 /* sigepi.css: Barras, barras de estado, barras de progreso y menús de navegación verticales */
 .brr{
-    position:relative;
-    display: flex;
+    @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1,$tam_fr2:0,$tam_fr3:0);
     flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
     font-family:--fam-fuentes-titulos;
     font-size:medium;
     font-weight: bold;
@@ -17,9 +13,10 @@
 .br_pn_der{
     /* Barra del encabezado panel derecho */
     @extend .brr;
-    height: 55px;
+    height: 50px;
     flex-wrap:nowrap;
     gap: 10px;
+    overflow-x: auto;
 }
 
 .br_herr {
@@ -27,6 +24,7 @@
     @extend .brr;
     @include fn_sim(var(--color-primario));
     top: 0;
+    max-width: 300px;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
     visibility: visible;
@@ -54,7 +52,6 @@
     @include fn_sim(var(--color-primario));
     height: 100%;
     overflow: auto;
-    z-index: 9;
     ul{
         list-style: none;
         color: var(--color-primario);
@@ -83,8 +80,6 @@
                 font-size: 3em;
                 padding-right: 0.5em;
                 width: 100%;
-                /* display: inline;
-                vertical-align: middle; */
             }
             &:hover >.categ_br_herr {
                 background-color:var(--color-primario);
@@ -148,6 +143,7 @@
     gap: 5px;
     height:100%;
     width:100%;
+    overflow:auto;
     ul{
         list-style: none;
         font-weight: bolder;  
@@ -158,7 +154,7 @@
             margin: 3px;
             padding-top: 0px;
             a{
-                display:block;
+                display:flex;
                 position: relative;
                 width:100%;
                 @extend .btn_prm_cl;
@@ -170,6 +166,7 @@
         }
     }
 }
+
 .nav_der{
     display: flex;
     flex-direction: column;
