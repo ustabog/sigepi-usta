@@ -12,7 +12,7 @@
 
 /* Tarjeta personal */
 .trj_pers {
-    @extend .gr_br_der;
+    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:5fr,$tam_fr2:1fr,$tam_fr3:0fr);
     height: minmax(150px,200px);
     width: minmax(120px,550px);
     border-radius: 5px;
@@ -22,11 +22,11 @@
     transform: translate(0%,0px);
     overflow:auto;
     &_cnt{
-        @extend .gr_fila_sup;
+        @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:4fr,$tam_fr2:1fr,$tam_fr3:0fr);
         &_ppal{
-            @extend .gr_col2_iz;
+            @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:1fr,$tam_fr2:3fr,$tam_fr3:0fr);
             .cnt_img{
-                @extend .gr_fila_sup;
+                @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:2fr,$tam_fr2:1fr,$tam_fr3:0fr);
                 align-items: center;
                 justify-items: center;
                 .img{
@@ -39,15 +39,29 @@
                 }
             }
             .cnt_trj{
-                @extend .gr_col1;
+                @include extruc_gr_pn($num_col:1,$num_filas:3,$tam_fr1:20px,$tam_fr2:minmax(120px,150px),$tam_fr3:20px);
                 color: var(--color-blanco);
                 text-align: center;
                 align-content: center;
+                a{
+                    @extend .btn_prm_cl;
+                    background: linear-gradient(-45deg, var(--color-primario),var(--color-primario-2));
+                    height: 15px;
+                    justify-self:center;
+                    text-decoration: none;
+                    color: var(--color-primario-tr);
+                    font-size: small;
+                    font-family: var(--fam-fuentes-btn);
+                    &:hover{
+                        color: var(--color-primario-oscuro);
+                        background: linear-gradient(-45deg, var(--color-primario-tr),var(--color-primario-2));
+                    }
+                }
                 &_titulo{
-                    background:linear-gradient(-45deg, var(--color-primario-2),var(--color-primario-1));
+                    background:linear-gradient(-45deg, var(--color-primario),var(--color-primario-2));
                     display:flex;
                     font-size: medium;
-                    align-items: center;
+                    align-items:center;
                     top:0px;
                 }
                 &_txt{
@@ -61,7 +75,7 @@
                     text-overflow:ellipsis;
                 }
                 &_pie{
-                    background:linear-gradient(-45deg, var(--color-primario-2),var(--color-primario-1));
+                    background:linear-gradient(-45deg, var(--color-primario),var(--color-primario-2));
                     display: flex;
                     flex-direction: row;
                     flex-wrap: wrap;
@@ -74,6 +88,11 @@
         }
         &_pie{
             @extend .brr;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            position: relative;
+            width: auto;
             background-color: var(--color-primario-oscuro);
             align-items:center;
             gap: 5px;
@@ -106,4 +125,3 @@
     border-radius:3px;
     padding: 2px 2px 2px 2px;  
   }
-

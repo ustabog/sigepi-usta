@@ -1,5 +1,5 @@
 /* Se trabajan las estructuras de comportamiento de las aplicaciones en diferentes formatos */
 .app {
-    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:2,$tam_fr2:4,$tam_fr3:0);
+    @include extruc_gr_pn($num_col:1,$num_filas:3,$tam_fr1:35px,$tam_fr2:auto,$tam_fr3:35px);
     overflow: auto;
   }

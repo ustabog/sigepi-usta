@@ -4,47 +4,41 @@
     @include extruc_gr_pn($num_col:3,$num_filas:1,$tam_fr1:4fr,$tam_fr2:7fr,$tam_fr3:0fr);
     overflow: auto;
     ::-webkit-scrollbar {
-        -webkit-appearance: none;
+        /* -webkit-appearance: none; */
         :vertical {
-            width:6px;
+            width:8px;
         }
         :horizontal {
-            height: 10px;
+            height: 8px;
         }
     }
     ::-webkit-scrollbar-button:increment, ::-webkit-scrollbar-button {
         display: none;
     }
     ::-webkit-scrollbar-thumb {
-        background-color: #797979;
-        border-radius: 10px;
-        border: 2px solid #f1f2f3;
+        background-color: #001a7048;
+        border-radius: 8px;
+        border: 0px solid #f1f2f3;
     }
     ::-webkit-scrollbar-track {
-        border-radius: 10px;  
+        border-radius: 4px;  
     }
 }
 /* Panel derecho */
 .panel_der {
     @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0,$tam_fr3:0);
     background-color:var(--color-primario);
-    /* border-right: 1px solid rgba(255, 255, 255, 0.438); */
     box-shadow: 5px 5px 5px rgba(34, 44, 46, 0.25);
     overflow:auto;
 }
 /* Panel de aplicación */
-
 .panel_app{
-    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:auto,$tam_fr2:auto,$tam_fr3:0);
+    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:250px,$tam_fr2:6fr,$tam_fr3:0fr);
     flex-direction: column;
     flex-wrap: wrap;
     overflow: auto;
 }
-.panel_app_cnt{
-    @include extruc_gr_pn($num_col:1,$num_filas:3,$tam_fr1:1,$tam_fr2:8,$tam_fr3:1);
-    overflow: auto;
-}
+
 .panel_iz {
-    width: 0px;
-    height: 0px;
+    display: none;
 }

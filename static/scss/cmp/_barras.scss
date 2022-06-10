@@ -1,6 +1,6 @@
 /* sigepi.css: Barras, barras de estado, barras de progreso y menús de navegación verticales */
 .brr{
-    @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1,$tam_fr2:0,$tam_fr3:0);
+    @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0,$tam_fr3:0);
     flex-direction: row;
     font-family:--fam-fuentes-titulos;
     font-size:medium;
@@ -21,10 +21,9 @@
 
 .br_herr {
     /* barra de herramientas */
-    @extend .brr;
+    @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:45px,$tam_fr2:auto,$tam_fr3:0);
     @include fn_sim(var(--color-primario));
-    top: 0;
-    max-width: 300px;
+    width: minmax(125px,300px);
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
     visibility: visible;
@@ -34,15 +33,19 @@
         /* encabezado barra de herramientas */
         @include fn_deg_hrz(var(--color-primario-2),var(--color-primario));
         width: 100%;
-        height: 65px;
+        height: 45px;
         display:block;
         padding: 5px 5px;
         color: var(--color-blanco);
+        font-size:small;
+        font-family: var(--fam-fuentes-titulos);
         &_adm{
+            @extend .enc_br_herr;
             @include fn_deg_hrz(var(--color-secundario),var(--color-secundario-1));
         }
     }
     &_adm{
+        @extend .br_herr;
         @include fn_sim(var(--color-secundario));
     }
 }

@@ -23,7 +23,7 @@
 }
 
 /* Estructura del panel */
-@mixin extruc_gr_pn($num_col:1,$num_filas:1fr,$tam_fr1:1fr,$tam_fr2:0fr,$tam_fr3:0fr) {
+@mixin extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0fr,$tam_fr3:0fr) {
     /* una fila hasta tres columnas */
     @if $num_filas==1 and $num_col==2{
         display: grid;
