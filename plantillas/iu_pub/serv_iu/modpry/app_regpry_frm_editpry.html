@@ -1,0 +1,27 @@
+{% extends 'app_pry_iu.html' %}
+{% load static %}
+
+{% block articulo %}
+
+{% block titulo %} Formulario de proyectos {% endblock titulo %}
+{% block app %}
+  <form class="" action="" method="post">
+    {% csrf_token %}
+    {{ form2.as_p}}
+    {{ form.as_p}}
+    <button type="submit" >Editar</button>
+  </form>
+
+  {% block nombre_pry %}
+  {% endblock %}
+  {% block desc_pry %}
+  {% endblock %}
+  {% block tipo_pry %}
+  {% endblock %}
+  {% block prop_pry %}
+  {% endblock %}
+  {% block est_pry %}
+  {% endblock %}
+
+{% endblock app %}
+{% endblock articulo %}

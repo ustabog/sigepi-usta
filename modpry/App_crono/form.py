@@ -85,7 +85,7 @@ class frm_crea_tarea(ModelForm):
             'desc_tarea',
             'fch_ini_tarea',
             'fch_fin_tarea',
-            'url_tar',
+            'url_tarea',
             #'ima_tar',
             #'docu_tar',
         )
@@ -95,7 +95,7 @@ class frm_crea_tarea(ModelForm):
             'desc_tarea' : 'Descripción de la tarea',
             'fch_ini_tarea' : 'Fecha de inicio de la tarea',
             'fch_fin_tarea' : 'Fecha de finalización de la tarea',
-            'url_tar' : 'URL de la evidencia de la tarea',
+            'url_tarea' : 'URL de la evidencia de la tarea',
             #'ima_tar':'Imagen de la evidencia de la tarea',
             #'docu_tar' : 'Documento de la evidencia de la tarea',        
         }

@@ -46,7 +46,7 @@ class tarea(models.Model):
     fch_fin_tarea =  models.DateField('Fecha de finalización de la tarea', auto_now=False)#Fecha de finalización de la tarea
     id_recurso = models.ForeignKey(recu_pry, on_delete=models.SET_NULL, null=True, blank =False)#Id del recurso de la tarea
     acti =  models.ForeignKey(acti, on_delete=models.SET_NULL, null=True, blank =False)#id de la actividad del proyecto
-    url_tar = models.URLField('URL de la evidencia de la tarea', null=False, blank=False)#URL de la evidencia de la tarea
+    url_tarea = models.URLField('URL de la evidencia de la tarea', null=False, blank=False)#URL de la evidencia de la tarea
     #ima_tar = models.ImageField('Imagen de la evidencia de la tarea',upload_to=None)#Imagen de la evidencia de la tarea
     #docu_tar = models.FileField('Archivo de la evidencia de la tarea',upload_to = None)#Documento de la evidencia de la tarea
     class Meta:

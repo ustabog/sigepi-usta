@@ -22,11 +22,15 @@ urlpatterns = [
     path('creacrono/',vst_crea_crono.as_view(), name = 'crea_crono'), #Crea el proyecto
     path('cncrono',vst_ls_crono.as_view(), name = 'vercrono'),#Lista de cronograma
     path('creaeta/',vst_crea_etapa.as_view(), name = 'creaetapa'), #Crear etapa de un cronograma
-    path('funcrono/',vst_ls_crono.as_view(), name = 'verfuncrono'),#Lista de las funciones del cronograma (etapa, fase, proceso, tarea y actividades)
-    #path('creafase/',vts_crea_fase.as_view(), name = 'crea_fase'), #Crear fase de una etapa
-    #path('creaproc/',vts_crea_proc.as_view(), name = 'crea_proc'), #Crea el proceso de una fase
-    #path('creatarea/',vts_crea_tarea.as_view(), name = 'crea_tarea'), #Crea la tarea de un proceso
-    #path('creaacti/',vts_crea_acti.as_view(), name = 'crea_acti'), #Crea la actividad de una tarea 
+    path('funcrono/',vst_ls_crono.as_view(), name = 'veretapa'),#Lista de etapas de un cronograma
+    path('creafase/',vst_crea_fase.as_view(), name = 'crea_fase'), #Crear fase de una etapa
+    path('funcrono/',vst_ls_crono.as_view(), name = 'verfase'),#Lista de fases de un cronograma
+    path('creaproc/',vst_crea_proc.as_view(), name = 'crea_proc'), #Crea el proceso de una fase
+    path('funcrono/',vst_ls_crono.as_view(), name = 'verproc'),#Lista de procesos de un cronograma
+    path('creatar/',vst_crea_tarea.as_view(), name = 'crea_tarea'), #Crea la tarea de un proceso
+    path('funcrono/',vst_ls_crono.as_view(), name = 'vertarea'),#Lista de tareas de un cronograma
+    path('creacti/',vst_crea_acti.as_view(), name = 'crea_acti'), #Crea la actividad de una tarea 
+    path('funcrono/',vst_ls_crono.as_view(), name = 'veracti'),#Lista de actividades de un cronograma
 ]
 
 
