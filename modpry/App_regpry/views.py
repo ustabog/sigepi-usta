@@ -20,7 +20,7 @@ class vts_reg_pry(CreateView):
     #Clase de la vista de registro de proyecto 
     model = pry_base
     form_class = frm_reg_pry
-    template_name = 'iu_pub/serv_iu/modpry/App_regpry_frm_crearpry.html'
+    template_name = 'iu_pub/serv_iu/modpry/app_regpry_frm_crearpry.html'
     success_url= reverse_lazy('cn_pry')
 
     def get_context_data(self, **kwargs):

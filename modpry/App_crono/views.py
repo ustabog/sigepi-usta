@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
-from django.views.generic import UpdateView,FormView, CreateView, ListView
+from django.views.generic import UpdateView, CreateView, ListView
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from modpry.app_crono.form import *
@@ -21,7 +21,7 @@ class vst_crea_crono(CreateView):
     #Clase de la vista para crear un cronograma 
     model = crono_pry
     form_class = frm_crea_crono
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_crearcrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
     success_url= reverse_lazy('consultas/apps_cons/cn_crono')
 
     def get_context_data(self, **kwargs):
@@ -48,7 +48,7 @@ class vts_edit_crpno(UpdateView):
     #Clase de la vista para actualizar o editar el cronograma de un proyecto 
     model = crono_pry
     form_class = frm_crea_crono
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_editcrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_crono')
 
     def get_context_data(self, **kwargs):
@@ -64,7 +64,7 @@ class vst_crea_etapa(CreateView):
     #Clase de la vista para crear una etapa
     model = etapa
     form_class = frm_crea_etapa
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_funcrono.html' 
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html' 
     success_url= reverse_lazy('cn_crono')
 
     def get_context_data(self, **kwargs):
@@ -89,7 +89,7 @@ class vts_edit_etapa(UpdateView):
     #Clase de la vista para actualizar o editar la etapa de un cronograma
     model = etapa
     form_class = frm_crea_etapa
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_edifuncrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_funcrono')
 
     def get_context_data(self, **kwargs):
@@ -105,7 +105,7 @@ class vst_crea_fase(CreateView):
     #Clase de la vista para crear una fase
     model = fase
     form_class = frm_crea_fase
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_funcrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_funcrono')
 
     def get_context_data(self, **kwargs):
@@ -130,7 +130,7 @@ class vts_edit_fase(UpdateView):
     #Clase de la vista para actualizar o editar la fase de una etapa
     model = fase
     form_class = frm_crea_fase
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_edifuncrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_funcrono')
 
     def get_context_data(self, **kwargs):
@@ -145,7 +145,7 @@ class vst_crea_proc(CreateView):
     #Clase de la vista para crear un proceso
     model = proceso
     form_class = frm_crea_proc
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_funcrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_funcrono')
 
     def get_context_data(self, **kwargs):
@@ -170,7 +170,7 @@ class vts_edit_proc(UpdateView):
     #Clase de la vista para actualizar o editar un proceso dentro de una etapa
     model = proceso
     form_class = frm_crea_proc
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_edifuncrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_funcrono')
 
     def get_context_data(self, **kwargs):
@@ -185,7 +185,7 @@ class vst_crea_tarea(CreateView):
     #Clase de la vista para crear una tarea
     model = tarea
     form_class = frm_crea_tarea
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_funcrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_funcrono')
 
     def get_context_data(self, **kwargs):
@@ -210,7 +210,7 @@ class vts_edit_tarea(UpdateView):
     #Clase de la vista para actualizar o editar la tarea de un proceso
     model = tarea
     form_class = frm_crea_tarea
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_edifuncrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_funcrono')
 
     def get_context_data(self, **kwargs):
@@ -226,7 +226,7 @@ class vst_crea_acti(CreateView):
     #Clase de la vista para crear una actividad
     model = acti
     form_class = frm_crea_acti
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_funcrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_funcrono')
 
     def get_context_data(self, **kwargs):
@@ -251,7 +251,7 @@ class vts_edit_acti(UpdateView):
     #Clase de la vista para actualizar o editar una actividad dentro de una tarea
     model = acti
     form_class = frm_crea_acti
-    template_name = 'iu_pub/serv_iu/modpry/app_crono_frm_edifuncrono.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_funcrono')
 
     def get_context_data(self, **kwargs):

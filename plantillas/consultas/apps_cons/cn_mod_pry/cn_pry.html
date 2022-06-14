@@ -1,0 +1,23 @@
+{% block cuerpo %}
+{% if form.errors %}
+    <p>La lista de proyectos no se ha logrado consultar.</p>
+{% endif %}
+<h3>Lista de proyectos</h3>
+
+<form method="POST">
+    {{form.as_ul}}
+
+    <div>
+        {% for pry_base in  object_list %}
+        <label> {{ pry_base.id_pry }} </label>
+        <label> {{ pry_base.cod_pry}} </label>
+        <label> {{ pry_base.nombre_pry}} </label>
+        <label> {{ pry_base.desc_pry}} </label>
+        <label> {{ pry_base.tipo_pry}} </label>
+        <label> {{ pry_base.prop_pry}} </label>
+        <label> {{ pry_base.est_pry}} </label><br>
+        {% endfor %}
+
+</form>
+
+{% endblock cuerpo %}

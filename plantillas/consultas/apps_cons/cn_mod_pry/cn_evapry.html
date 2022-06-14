@@ -1,0 +1,22 @@
+<!--Plantilla para las funciones de la aplicación de cronograma (etapa, fase, proceso, tarea y actividad)-->
+{% block cuerpo %}
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+<h3>Lista</h3>
+
+<form method="POST">
+    {{form.as_ul}}
+
+    <div>
+        {% for eva_pry in  object_list %}
+        <label> {{ eva_pry.id_eva}} </label>
+        <label> {{ eva_pry.pry_base}} </label>
+        <label> {{ eva_pry.eval}} </label>
+        <label> {{ eva_pry.nomb_eva}} </label>
+        <label> {{ eva_pry.desc_eva}} </label><br>
+        {% endfor %}
+
+</form>
+
+{% endblock cuerpo %}
