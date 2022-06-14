@@ -164,7 +164,6 @@
   font-family: --fam-fuentes-titulos;
   font-size: medium;
   font-weight: bold;
-  text-align: center;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
 }
@@ -186,8 +185,8 @@
   position: sticky;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: 45px auto;
-      grid-template-rows: 45px auto;
+  -ms-grid-rows: 1fr 11fr;
+      grid-template-rows: 1fr 11fr;
   width: 100%;
   height: 100%;
   background-color: var(--color-primario);
@@ -221,7 +220,7 @@
 
 .br_app {
   background-color: var(--color-primario);
-  height: 100%;
+  position: relative;
   overflow: auto;
 }
 
@@ -255,10 +254,13 @@
   color: var(--color-primario-2);
 }
 
-.br_app ul li i {
+.br_app ul li a i {
   font-size: 3em;
   padding-right: 0.5em;
   width: 100%;
+  width: 6em;
+  display: inline;
+  vertical-align: middle;
 }
 
 .br_app ul li:hover > .categ_br_herr {
@@ -282,7 +284,7 @@
   z-index: 9;
   left: 3.7em;
   top: 0;
-  height: 100vh;
+  height: 100%;
 }
 
 .br_app .categ_br_herr a:hover {
@@ -727,7 +729,6 @@
       grid-template-rows: 1fr;
   width: 100%;
   height: 100%;
-  height: minmax(150px, 200px);
   width: minmax(120px, 550px);
   border-radius: 5px;
   background: linear-gradient(45deg, var(--color-primario-2), var(--color-primario));
@@ -774,8 +775,8 @@
   position: sticky;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: 2fr 1fr;
-      grid-template-rows: 2fr 1fr;
+  -ms-grid-rows: 3fr 1fr;
+      grid-template-rows: 3fr 1fr;
   width: 100%;
   height: 100%;
   align-items: center;
@@ -799,9 +800,10 @@
   position: sticky;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: 20px minmax(120px, 150px) 20px;
-      grid-template-rows: 20px minmax(120px, 150px) 20px;
+  -ms-grid-rows: 20px 150px 20px;
+      grid-template-rows: 20px 150px 20px;
   width: 100%;
+  height: 100%;
   height: 100%;
   color: var(--color-blanco);
   text-align: center;
@@ -833,7 +835,7 @@
 }
 
 .trj_pers_cnt_ppal .cnt_trj_txt {
-  display: flex;
+  /* display:flex; */
   text-align: justify;
   align-items: center;
   white-space: clip;
@@ -1232,9 +1234,14 @@
   }
   .panel_app {
     /* una fila hasta tres columnas */
-    display: flex;
-    position: relative;
-    flex-wrap: wrap;
+    display: -ms-grid;
+    display: grid;
+    position: -webkit-sticky;
+    position: sticky;
+    -ms-grid-columns: 6rem 10fr;
+        grid-template-columns: 6rem 10fr;
+    -ms-grid-rows: 1fr;
+        grid-template-rows: 1fr;
     width: 100%;
     height: 100%;
     flex-direction: row;
@@ -1243,17 +1250,27 @@
   }
   .br_herr, .br_herr_adm {
     /* una fila hasta tres columnas */
-    display: -ms-grid;
-    display: grid;
-    position: -webkit-sticky;
-    position: sticky;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: 1fr 8fr;
-        grid-template-rows: 1fr 8fr;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    max-width: 480px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 6rem;
+  }
+  .br_app {
+    width: 6rem;
+  }
+  .br_app ul li a {
+    text-underline-position: below;
+  }
+  .br_app ul li a span {
+    display: none;
+  }
+  .br_app ul li a:hover span {
+    display: flex;
+    translate: translateY(-5px);
   }
   .app {
     /* una fila hasta tres columnas */
@@ -1293,13 +1310,13 @@
     display: grid;
     position: -webkit-sticky;
     position: sticky;
-    -ms-grid-columns: 4fr 4fr;
-        grid-template-columns: 4fr 4fr;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     -ms-grid-rows: 1fr;
         grid-template-rows: 1fr;
     width: 100%;
     height: 100%;
-    justify-content: space-between;
+    flex-direction: column;
     overflow: auto;
   }
   .panel_der {
@@ -1312,6 +1329,7 @@
     flex-wrap: wrap;
     border-right: 0px;
     box-shadow: 5px 5px var(--color-primario-oscuro);
+    width: minmax(150px, 350px);
   }
   .panel_app {
     /* una fila hasta tres columnas */
@@ -1319,13 +1337,37 @@
     display: grid;
     position: -webkit-sticky;
     position: sticky;
-    -ms-grid-columns: 2fr 4fr;
-        grid-template-columns: 2fr 4fr;
+    -ms-grid-columns: 6rem 4fr;
+        grid-template-columns: 6rem 4fr;
     -ms-grid-rows: 1fr;
         grid-template-rows: 1fr;
     width: 100%;
     height: 100%;
     overflow: auto;
+  }
+  .br_herr, .br_herr_adm {
+    /* una fila hasta tres columnas */
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 6rem;
+  }
+  .br_app {
+    width: 6rem;
+  }
+  .br_app ul li a {
+    text-underline-position: below;
+  }
+  .br_app ul li a span {
+    display: none;
+  }
+  .br_app ul li a:hover span {
+    display: flex;
+    translate: translateY(-5px);
   }
 }
 

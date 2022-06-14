@@ -13,7 +13,6 @@
 /* Tarjeta personal */
 .trj_pers {
     @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:5fr,$tam_fr2:1fr,$tam_fr3:0fr);
-    height: minmax(150px,200px);
     width: minmax(120px,550px);
     border-radius: 5px;
     background: linear-gradient(45deg, var(--color-primario-2),var(--color-primario));
@@ -26,7 +25,7 @@
         &_ppal{
             @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:1fr,$tam_fr2:3fr,$tam_fr3:0fr);
             .cnt_img{
-                @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:2fr,$tam_fr2:1fr,$tam_fr3:0fr);
+                @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:3fr,$tam_fr2:1fr,$tam_fr3:0fr);
                 align-items: center;
                 justify-items: center;
                 .img{
@@ -39,7 +38,8 @@
                 }
             }
             .cnt_trj{
-                @include extruc_gr_pn($num_col:1,$num_filas:3,$tam_fr1:20px,$tam_fr2:minmax(120px,150px),$tam_fr3:20px);
+                @include extruc_gr_pn($num_col:1,$num_filas:3,$tam_fr1:20px,$tam_fr2:150px,$tam_fr3:20px);
+                height: 100%;
                 color: var(--color-blanco);
                 text-align: center;
                 align-content: center;
@@ -65,7 +65,8 @@
                     top:0px;
                 }
                 &_txt{
-                    display:flex;
+
+                    /* display:flex; */
                     text-align: justify;
                     align-items: center;
                     white-space:clip;

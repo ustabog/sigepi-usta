@@ -24,15 +24,36 @@ $alto-xxl:1081px;
       box-shadow: 0px 0px;
       }
     .panel_app{
-        @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0,$tam_fr3:0);
+        @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:6rem,$tam_fr2:10fr,$tam_fr3:0);
         flex-direction: row;
         flex-wrap: wrap;
         overflow: auto;
     }
     .br_herr{
-      @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:1fr,$tam_fr2:8fr,$tam_fr3:0);
-      max-width: $ancho-xs;
+      @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0fr,$tam_fr3:0fr);
+      flex-wrap: wrap;
+      flex-direction: row;
+      width:6rem;
     }
+    .br_app{
+      width: 6rem;
+      ul{
+        li{
+          a{
+            text-underline-position: below;
+            span{
+              display: none;
+            }
+            &:hover{
+              span{
+                display: flex;
+                translate: translateY(-5px);
+              }
+            }
+          }
+        }
+      }
+    }  
     .app {
       @include extruc_gr_pn($num_col:1,$num_filas:3,$tam_fr1:1fr,$tam_fr2:8fr,$tam_fr3:1fr);
       overflow:auto;
@@ -57,19 +78,45 @@ $alto-xxl:1081px;
 @media only screen and (min-width:$ancho-xs) and (max-width: $ancho-lg){
 /* extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1,$tam_fr2:0,$tam_fr3:0) */
   .panel_ppal {
-    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:4fr,$tam_fr2:4fr,$tam_fr3:0);
-    justify-content:space-between;
+    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:1fr,$tam_fr2:1fr,$tam_fr3:0fr);
+    flex-direction: column;
     overflow: auto;
   }
   .panel_der {
-    @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0,$tam_fr3:0);
+    @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0fr,$tam_fr3:0fr);
     flex-wrap:wrap;
     border-right: 0px;
     box-shadow: 5px 5px var(--color-primario-oscuro);
+    width: minmax(150px,350px);
     }
   .panel_app{
-    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:2fr,$tam_fr2:4fr,$tam_fr3:0);
+    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:6rem,$tam_fr2:4fr,$tam_fr3:0fr);
     overflow: auto;
+  }
+  .br_herr{
+    @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0fr,$tam_fr3:0fr);
+    flex-wrap: wrap;
+    flex-direction: row;
+    width:6rem;
+  }
+  .br_app{
+    width: 6rem;
+    ul{
+      li{
+        a{
+          text-underline-position: below;
+          span{
+            display: none;
+          }
+          &:hover{
+            span{
+              display: flex;
+              translate: translateY(-5px);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

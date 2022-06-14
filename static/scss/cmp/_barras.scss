@@ -5,7 +5,6 @@
     font-family:--fam-fuentes-titulos;
     font-size:medium;
     font-weight: bold;
-    text-align: center;
     overflow:hidden;
     -webkit-overflow-scrolling: touch;
 }
@@ -21,7 +20,7 @@
 
 .br_herr {
     /* barra de herramientas */
-    @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:45px,$tam_fr2:auto,$tam_fr3:0);
+    @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:1fr,$tam_fr2:11fr,$tam_fr3:0);
     @include fn_sim(var(--color-primario));
     width: minmax(125px,300px);
     transform: translateZ(0);
@@ -53,7 +52,7 @@
 .br_app{
     @extend .brr;
     @include fn_sim(var(--color-primario));
-    height: 100%;
+    position: relative;
     overflow: auto;
     ul{
         list-style: none;
@@ -78,11 +77,14 @@
                 &:hover{
                     color:var(--color-primario-2);
                 }
-            }
-            i{
-                font-size: 3em;
-                padding-right: 0.5em;
-                width: 100%;
+                i{
+                    font-size: 3em;
+                    padding-right: 0.5em;
+                    width: 100%;
+                    width: 6em;
+                    display: inline;
+                    vertical-align:middle;
+                }
             }
             &:hover >.categ_br_herr {
                 background-color:var(--color-primario);
@@ -106,7 +108,7 @@
         z-index: 9;
         left: 3.7em;
         top: 0;
-        height: 100vh;
+        height: 100%;
         @extend .trasl_hrz_der;
         a:hover{
             background-color:var(--color-primario-oscuro);
