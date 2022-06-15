@@ -48,6 +48,7 @@ RES_EVA = [
 class rango_eva(models.Model):
     #Clase que contiene los rango de la evaluación del proyecto
     id_rango =  models.AutoField(primary_key = True)#ID del rango de la evaluación de proyectos
+    nombre_rango = models.CharField('Nombre del rango', max_length=255, null=False, blank= False)#Nombre para diferenciar los diferentes rangos de evaluación
     c_eva_pry = models.IntegerField(choices = EVA_PRY,default = 0, null=False, blank = False)#Si la evaluación es cuantitativa o cualitativa
     valor_ini = models.FloatField('Valor inicial de la evaluación =', max_length=10, null=False, blank= False)#Valor inicial de la calificación cuantittativa
     valor_fin = models.FloatField('Valor final de la evaluación =', max_length=10, null=False, blank= False)#Valor final de la calificación cuantittativa
@@ -82,7 +83,7 @@ class defi(models.Model):
 class tipo_eva(models.Model):
     #Clase que contiene el tipo de evaluación de proyectos
     id_tipo_eva = models.AutoField(primary_key = True)#ID del tipo de evaluación
-    tipo_eva = models.CharField('Tipo de evaluación:', max_length=40, null=False, blank= False)
+    tipo_eva = models.CharField('Tipo de evaluación:', max_length=100, null=False, blank= False)
     desc_eva = models.CharField('Descripción del tipo de evaluación:', max_length=40, null=False, blank= False)
     class Meta:
         verbose_name = 'tipo_eva'
@@ -102,9 +103,9 @@ class resultado(models.Model):
 class criterio(models.Model):
     #Clase que recopila la información de los criterios de evaluación del proyecto
     id_crit =  models.AutoField(primary_key = True)   # identificador unico para criterios del proyecto
-    nomb_crit= models.CharField('Nombre del criterio', max_length=40, null=False, blank= False) #Nombre del criterio
-    desc_crit =  models.CharField('Descripcion del criterio', max_length=40, null=False, blank= False) # descripcion del criterio
-    rango_eva = models.ForeignKey(rango_eva, on_delete=models.SET_NULL, null=True, blank =False )#id de citerios
+    nomb_crit= models.CharField('Nombre del criterio', max_length=100, null=False, blank= False) #Nombre del criterio
+    desc_crit =  models.CharField('Descripcion del criterio', max_length=255, null=False, blank= False) # descripcion del criterio
+    nombre_rango = models.ForeignKey(rango_eva, on_delete=models.SET_NULL, null=True, blank =False )#id de citerios
     url_doc = models.URLField('URL del documento', null=False, blank=False)#Dirección del documento
     distancia = models.IntegerField('Distancia del criterio:', null=False, blank=False )#Distanci estadística de criterio a criterio
     class Meta:

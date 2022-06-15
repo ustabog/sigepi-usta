@@ -27,13 +27,13 @@ class frm_criterio(ModelForm):
         fields = (
             'nomb_crit', 
             'desc_crit',
-            'rango_eva',
+            'nombre_rango',
             'url_doc',
         )
         labels = {
             'nomb_crit':'Nombre del criterio', 
             'desc_crit' : 'Descripción del criterio',
-            'rango_eva' : 'Rango de evaluación',
+            'nombre_rango' : 'Rango de evaluación',
             'url_doc' : 'URL del documento',    
         }
 
@@ -57,11 +57,13 @@ class frm_rangoeva(ModelForm):
     class Meta:
         model = rango_eva
         fields = (
+            'nombre_rango',
             'c_eva_pry',
             'valor_ini',
             'valor_fin',
         )
         labels = {
+            'nombre_rango': 'Nombre del rango de evaluación',
             'valor_ini' : 'Valor inicial de la evaluación',
             'valor_fin' : 'Valor final de la evaluación',
         }

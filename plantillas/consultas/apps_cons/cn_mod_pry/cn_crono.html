@@ -1,3 +1,4 @@
+{% load static %}
 {% block cuerpo %}
 {% if form.errors %}
     <p>La lista de cronogramas no se ha logrado consultar.</p>
@@ -10,20 +11,41 @@
     
     <div>
             {% for crono_pry in  object_list %}
-            <label> {{ crono_pry.id_crono_pry }} </label>
-            <label> {{ crono_pry.id_pry}} </label>
             <label> {{ crono_pry.resp_pry}} </label>
             <label> {{ crono_pry.nomb_crono}} </label>
-            <label> {{ crono_pry.desc_crono}} </label>
             <label> {{ crono_pry.fch_ini_pry}} </label>
             <label> {{ crono_pry.fch_fin_pry}} </label><br>
             {% endfor %}
 
-            <a href='creaeta'><input type="button" value="Crear etapa"></a>   
-            <a href='creafase'><input type="button" value="Crear fase"></a>  
-            <a href='creaproc'><input type="button" value="Crear proceso"></a> 
-            <a href='creatar'><input type="button" value="Crear tarea"></a> 
-            <a href='creacti'><input type="button" value="Crear actividad"></a> 
+            {% for etapa in  object_list %}
+            <label> {{ etapa.nombre_eta}} </label>
+            <label> {{ etapa.fch_ini_eta}} </label>
+            <label> {{ etapa.fch_fin_eta}} </label><br>
+            {% endfor %}
+
+            {% for proceso in  object_list %}
+            <label> {{ proceso.nombre_proc}} </label>
+            <label> {{ proceso.fch_ini_proc}} </label>
+            <label> {{ proceso .fch_fin_proc}} </label><br>
+            {% endfor %}
+
+            {% for tarea in  object_list %}
+            <label> {{ tarea.nombre_tarea}} </label>
+            <label> {{ tarea.fch_ini_tarea}} </label>
+            <label> {{ tarea.fch_fin_tarea}} </label><br>
+            {% endfor %}
+
+            {% for acti in  object_list %}
+            <label> {{ acti.nombre_acti}} </label>
+            <label> {{ acti.fch_ini_acti}} </label>
+            <label> {{ acti.fch_fin_acti}} </label><br>
+            {% endfor %}
+
+            <a href="{% url 'creaeta' %}"><input type="button" value="Crear etapa"></a>   
+            <a href="{% url 'creafase' %}"><input type="button" value="Crear fase"></a>  
+            <a href="{% url 'creaproc' %}"><input type="button" value="Crear proceso"></a> 
+            <a href="{% url 'creatar' %}"><input type="button" value="Crear tarea"></a> 
+            <a href="{% url 'creacti' %}"><input type="button" value="Crear actividad"></a> 
 </form>
 
 {% endblock cuerpo %}

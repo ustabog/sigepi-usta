@@ -1,9 +1,10 @@
+{% load static %}
 {% block cuerpo %}
 {% if form.errors %}
     <p>La lista de cronogramas no se ha logrado consultar.</p>
 {% endif %}
 
-<h3>Cronogramas</h3>
+<h3>Rúbricas</h3>
 
 <form method="POST">
     {{form.as_ul}}
@@ -15,11 +16,11 @@
             <label> {{ rubrica.desc_rub}} </label>
             <label> {{ rubrica.arb_crit}} </label><br>
             {% endfor %}
-
-            <a href='creacrit'><input type="button" value="Crear criterio"></a>   
-            <a href='crearango'><input type="button" value="Crear rango de evaluación"></a>  
-            <a href='creaciclo'><input type="button" value="Crear ciclo de evaluación"></a> 
-            <a href='creatipo'><input type="button" value="Tipo de evaluación"></a> 
+            
+            <a href="{% url 'crear_crit' %}"><input type="button" value="Crear criterio"></a>   
+            <a href="{% url 'crear_rango' %}"><input type="button" value="Crear rango de evaluación"></a>  
+            <a href="{% url 'crear_ciclo' %}"><input type="button" value="Crear ciclo de evaluación"></a> 
+            <a href="{% url 'crear_tipo' %}"><input type="button" value="Tipo de evaluación"></a> 
 </form>
-
+        
 {% endblock cuerpo %}

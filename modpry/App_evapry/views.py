@@ -16,7 +16,7 @@ class vst_pry():
         #ctx=stl.DevolverDict()
         return render(solicitud,"app_pry_iu.html")
 
-#---- registro de una evaluación de proyectos ---------
+#------------ registro de una evaluación de proyectos ---------
 class vst_reg_evapry(CreateView):
     #Clase de la vista de registro de una evaluación de proyecto
     model = eva_pry
@@ -42,6 +42,21 @@ class vst_ls_evapry(ListView):
         context ['titulo_pagina'] = 'Listado de evaluación de proyectos'
         return context
 
+class vts_edit_evapry(UpdateView):
+    #Clase de la vista para actualizar o editar la evaluación del proyecto
+    model = eva_pry
+    form_class = frm_evapry
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
+    success_url= reverse_lazy('cn_evapry')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Editar la evaluación del proyecto' 
+        context ['entity'] = 'Evaluación'
+        context ['list_url'] = reverse_lazy('cn_evapry')
+        context ['action'] = 'edit'
+        return context
+
 #----------------------- Para un criterio ----------------
 class vst_crear_crit(CreateView):
     #Clase de la vista de registro de un criterio de evaluación
@@ -55,13 +70,40 @@ class vst_crear_crit(CreateView):
         context ['title'] = 'Nuevo criterio evaluación de proyecto' 
         context ['action'] = 'add'
         return context
+
+class vst_ls_crit(ListView):
+    # clase para listar los criterios de evaluación
+    model = criterio
+    template_name = 'cn_evapry'
+    queryset = eva_pry.objects.order_by('nomb_eva')
+    context_object_name = 'lista_evapry'
+
+    def get_context_data(self, **kwargs):
+        context = super(vst_ls_evapry, self).get_context_data(**kwargs)
+        context ['titulo_pagina'] = 'Listado de evaluación de proyectos'
+        return context
+
+class vts_edit_evapry(UpdateView):
+    #Clase de la vista para actualizar o editar la evaluación del proyecto
+    model = eva_pry
+    form_class = frm_evapry
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
+    success_url= reverse_lazy('cn_evapry')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Editar la evaluación del proyecto' 
+        context ['entity'] = 'Evaluación'
+        context ['list_url'] = reverse_lazy('cn_evapry')
+        context ['action'] = 'edit'
+        return context
 #----------------------- Para una rúbrica ----------------
 class vst_crear_rub(CreateView):
     #Clase de la vista de registro de una rúbrica de evaluación de proyecto
     model = rubrica
     form_class = frm_rubrica
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_evapry')
+    success_url= reverse_lazy('cn_rub')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -72,13 +114,12 @@ class vst_crear_rub(CreateView):
 class vst_ls_rub(ListView):
     # clase para listar las rúbricas de evaluación
     model = rubrica
-    template_name = 'cn_rub.html'
+    template_name = 'consultas/apps_cons/cn_mod_pry/cn_rub.html'
     queryset = rubrica.objects.order_by('nomb_rub')
-    context_object_name = 'lista_rubricas'
 
     def get_context_data(self, **kwargs):
         context = super(vst_ls_rub, self).get_context_data(**kwargs)
-        context ['titulo_pagina'] = 'Listado de evaluación de proyectos'
+        context ['titulo_pagina'] = 'Listado de rúbricas'
         return context
 #----------------------- Para un rango de evaluación -----
 class vst_crear_rango(CreateView):
