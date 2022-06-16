@@ -89,18 +89,19 @@ class tipo_eva(models.Model):
         verbose_name = 'tipo_eva'
         verbose_name_plural = 'tipo_evas'
 
-class resultado(models.Model):
+class res_eva(models.Model):
     #Clase de los resultados de evaluación
     id_res = models.AutoField(primary_key = True)#ID de los resultados de la evaluación
     valor_total = models.FloatField('Resultado total = ', max_length=10, null=False, blank=False)#Valor total de la evaluación
     aprobado = models.IntegerField(choices = RES_EVA,default = 0, null=False, blank = False)#Resultado de la  evaluación, si aprobo o no 
     ls_comen = models.ForeignKey(defi, on_delete=models.SET_NULL, null=True, blank =False ) #Lista de las definciones del proyecto
     estado_eva = models.IntegerField(choices = ESTADO_EVA,default = 0, null=False, blank = False)#Estado de la evaluación
+    id_usu_eval = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)#id de usuario(a) evaluador(a) del proyecto 
     class Meta:
         verbose_name = 'resultado'
         verbose_name_plural = 'resultados'
 
-class criterio(models.Model):
+class crit_eva(models.Model):
     #Clase que recopila la información de los criterios de evaluación del proyecto
     id_crit =  models.AutoField(primary_key = True)   # identificador unico para criterios del proyecto
     nomb_crit= models.CharField('Nombre del criterio', max_length=100, null=False, blank= False) #Nombre del criterio
@@ -112,13 +113,15 @@ class criterio(models.Model):
         verbose_name = 'criterio'
         verbose_name_plural = 'criterios'
 
-class rubrica(models.Model):
+class rubr_eva(models.Model):
     #Clase de la rubrica de la evaluación del proyecto
     id_rub = models.AutoField(primary_key = True)#ID de la rúbrica de la evaluación de un proyecto
     nomb_rub = models.CharField('Nombre de la rúbrica de evaluación: ', max_length=255, null=False, blank= False)#Nombre de la rúbrica de evaluación
     desc_rub = models.CharField('Descripción de la rúbrica de evaluación: ', max_length=255, null=False, blank= False)#Descripción de la rúbrica de evaluación
-    arb_crit = models.ForeignKey(criterio, on_delete=models.SET_NULL, null=True, blank =False)#Árbol de criterios
-    #matriz_resu = #Matriz que relaciona la calificación con el criterio
+    arb_crit = models.ForeignKey(criterio, on_delete=models.SET_NULL, null=True, blank =False)#Árbol de criterios listado de relaciones de criterios con la rúbrica, debe contemer al menos un criterio padre
+    #matriz_val_eval = #Matriz que relaciona el peso de cada criterio dentro de la evaluación, valores numéricos del árbol de criterios de la rúbrica
+    #id_usu_dis = ... Usuario quien diseña la rúbrica
+    #vers = ... versión de la rúbrica
     class Meta:
         verbose_name = 'rubrica'
         verbose_name_plural = 'rubricas'
@@ -126,14 +129,16 @@ class rubrica(models.Model):
 class eva_pry(models.Model):
     #Clase que contiene la forma de evaluacion del proyecto
     id_eva =  models.AutoField(primary_key = True)   # identificador unico para el tipo de evalucion
-    pry_base = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=True, blank =False )#Lista de proyectos
-    eval = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)#evaluador del proyecto  
+    ls_prys = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=True, blank =False )#Lista de proyectos a ser evaluados
+    Ls_evalds = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)#listado de ids de usuarios(as) evaluadores(as) del proceso de evaluación  
     nomb_eva = models.CharField('Nombre de la evaluación del proyecto', max_length = 255, null = False, blank = False)#Nombre de la evaluación del proyecto 
     desc_eva = models.CharField('Descripcion del tipo de evalucion ', max_length = 255, null = False, blank= False) #Descripción de la evaluación
-    criterio = models.ForeignKey(criterio, on_delete=models.SET_NULL, null=True, blank =False )#id de citerios
     rubrica = models.ForeignKey(rubrica, on_delete=models.SET_NULL, null=True, blank =False )#ID de rúbrica
-    resultado = models.ForeignKey(resultado, on_delete=models.SET_NULL, null=True, blank =False )#ID de resultados de la evaluación
+    ls_pry_res_eva = models.ForeignKey(resultado, on_delete=models.SET_NULL, null=True, blank =False )#listado de resultdo de evaluación por proyecto ls[id_pry, id_res_eva]
     tipo_eva = models.ForeignKey(tipo_eva, on_delete=models.SET_NULL, null=True, blank =False )#ID del tipo de evaluación
+    est_eva= #estado del proceso de evaluación
+    fch_ini= 
+    fch_fin=
     class Meta:
         verbose_name = 'evalucion_pry'
         verbose_name_plural = 'evalucion_prys'
