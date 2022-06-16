@@ -20,7 +20,7 @@ class vts_reg_pry(CreateView):
     #Clase de la vista de registro de proyecto 
     model = pry_base
     form_class = frm_reg_pry
-    template_name = 'iu_pub/serv_iu/modpry/app_regpry_frm_crearpry.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_pry')
 
     def get_context_data(self, **kwargs):
@@ -45,7 +45,7 @@ class vts_edit_pry(UpdateView):
     #Clase de la vista para actualizar el registro de un proyecto 
     model = pry_base
     form_class = frm_reg_pry
-    template_name = 'iu_pub/serv_iu/modpry/App_regpry_frm_editpry.html'
+    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_pry')
 
     def get_context_data(self, **kwargs):
@@ -70,5 +70,5 @@ def eli_pry(request,id):
         PRY_ARCHIVADO == 1
         pry.delete()
         return redirect('cn_pry')
-    return render (request, 'pry/app_pry/modpry/App_regpry_frm_elimpry.html',{'pry_base': pry_base})
+    return render (request, 'pry/app_pry/modpry/mod_pry_frm_eli.html',{'pry_base': pry_base})
 

@@ -31,7 +31,7 @@ class vst_crea_crono(CreateView):
 class vst_ls_crono(ListView):
     # clase para listar los cronogramas de un usuario
     model = crono_pry
-    template_name = 'consultas/apps_cons/cn_mod_pry/cn_crono.html'
+    template_name = 'consultas/apps_cons/cn_crono.html'
     queryset = crono_pry.objects.order_by('nomb_crono')
 
     def get_context_data(self, **kwargs):
@@ -71,7 +71,7 @@ class vst_crea_etapa(CreateView):
 class vst_ls_etapa(ListView):
     # clase para listar las etapas de un cronograma
     model = etapa
-    template_name = 'consultas/apps_cons/cn_mod_pry/cn_crono.html'
+    template_name = 'consultas/apps_cons/cn_crono.html'
     queryset = etapa.objects.order_by('nombre_eta')
     context_object_name = 'lista_etapa'
 
@@ -112,7 +112,7 @@ class vst_crea_fase(CreateView):
 class vst_ls_fase(ListView):
     # clase para listar las fases de una etapa
     model = fase
-    template_name = 'consultas/apps_cons/cn_mod_pry/cn_crono.html'
+    template_name = 'consultas/apps_cons/cn_crono.html'
     queryset = fase.objects.order_by('nombre_fase')
     context_object_name = 'lista_etapa'
 
@@ -152,7 +152,7 @@ class vst_crea_proc(CreateView):
 class vst_ls_proc(ListView):
     # clase para listar los procesos de una fase
     model = proceso
-    template_name = 'consultas/apps_cons/cn_mod_pry/cn_crono.html'
+    template_name = 'consultas/apps_cons/cn_crono.html'
     queryset = proceso.objects.order_by('nombre_proc')
     context_object_name = 'lista_proceso'
 
@@ -192,7 +192,7 @@ class vst_crea_tarea(CreateView):
 class vst_ls_tarea(ListView):
     # clase para listar las tareas de un proceso
     model = tarea
-    template_name = 'consultas/apps_cons/cn_mod_pry/cn_crono.html'
+    template_name = 'consultas/apps_cons/cn_crono.html'
     queryset = tarea.objects.order_by('nombre_tarea')
     context_object_name = 'lista_tarea'
 
@@ -233,7 +233,7 @@ class vst_crea_acti(CreateView):
 class vst_ls_acti(ListView):
     # clase para listar las tareas de un proceso
     model = acti
-    template_name = 'consultas/apps_cons/cn_mod_pry/cn_crono.html'
+    template_name = 'consultas/apps_cons/cn_crono.html'
     queryset = acti.objects.order_by('nombre_acti')
     context_object_name = 'lista_acti'
 

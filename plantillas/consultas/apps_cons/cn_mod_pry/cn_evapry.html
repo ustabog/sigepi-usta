@@ -1,0 +1,54 @@
+<!--Plantilla para las funciones de la aplicación de cronograma (etapa, fase, proceso, tarea y actividad)-->
+{% load static %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+<h3>Lista</h3>
+
+<form method="POST">
+    {{form.as_ul}}
+
+    <div>
+        {% for eva_pry in  object_list %}
+        <label> {{ eva_pry.pry_base}} </label>
+        <label> {{ eva_pry.eval}} </label>
+        <label> {{ eva_pry.nomb_eva}} </label>
+        <label> {{ eva_pry.desc_eva}} </label><br>
+        {% endfor %}
+
+        {% for rango_eva in  object_list %}
+        <label> {{ rango_eva.nombre_rango}} </label>
+        <label> {{ rango_eva.c_eva_pry}} </label><br>
+        {% endfor %}
+
+        {% for ciclo_eva in  object_list %}
+        <label> {{ ciclo_eva.fch_ini}} </label>
+        <label> {{ ciclo_eva.fch_fin}} </label>
+        <label> {{ ciclo_eva.estado_eva}} </label><br>
+        {% endfor %}
+
+        {% for defi in  object_list %}
+        <label> {{ defi.tipo_def}} </label>
+        <label> {{ defi.vers}} </label>
+        <label> {{ defi.fch_reg}} </label><br>
+        {% endfor %}
+
+        {% for tipo_eva in  object_list %}
+        <label> {{ tipo_eva.tipo_eva}} </label>
+        <label> {{ tipo_eva.desc_eva}} </label><br>
+        {% endfor %}
+
+        {% for resultado in  object_list %}
+        <label> {{ resultado.valor_total}} </label>
+        <label> {{ resultado.aprobado}} </label><br>
+        {% endfor %}
+
+        {% for criterio in  object_list %}
+        <label> {{ criterio.nomb_crit}} </label>
+        <label> {{ criterio.desc_crit}} </label><br>
+        {% endfor %}
+
+</form>
+
+{% endblock cuerpo %}

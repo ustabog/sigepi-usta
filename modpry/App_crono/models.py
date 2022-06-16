@@ -22,12 +22,12 @@ class acti(models.Model):
     # clase que guarda la información de las actividades del proyecto.
     id_activ= models.AutoField(primary_key = True) 
     id_pry_base = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=True, blank =False)
-    id_usu = models.ForeignKey(usu, on_delete=models.SET_NULL, null=True, blank =False)#Responsable de la actividad
+    resp_acti = models.ForeignKey(usu, on_delete=models.SET_NULL, null=True, blank =False)#Responsable de la actividad
     nombre_acti =models.CharField('Nombre de la actividad:', max_length=255)#Nombre de la actividad
     desc_acti =models.CharField('Descripción de la actividad:', max_length=255)#Descripción de la actividad
     fch_ini_acti = models.DateField('Fecha de inicio de la actividad', auto_now=False)#Fecha de inicio de la actividad
     fch_fin_acti =  models.DateField('Fecha de finalización de la actividad', auto_now=False)#Fecha de finalización de la actividad
-    id_recurso = models.ForeignKey(recu_pry, on_delete=models.SET_NULL, null=True, blank =False)#Id del recurso de la actividad
+    recurso = models.ForeignKey(recu_pry, on_delete=models.SET_NULL, null=True, blank =False)#Id del recurso de la actividad
     url_acti = models.URLField('URL de la evidencia de la actividad', null=False, blank=False)#URL de la evidencia de la actividad
     #ima_acti = models.ImageField('Imagen de la evidencia de la actividad',upload_to=None)#Imagen de la evidencia de la actividad
     #docu_acti = models.FileField('Archivo de la evidencia de la actividad',upload_to = None)#Documento de la evidencia de la actividad
@@ -39,12 +39,12 @@ class tarea(models.Model):
     # clase que guarda la información de las tareas del proyecto.
     id_tarea= models.AutoField(primary_key = True) #id de la tarea
     id_pry_base = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=True, blank =False)
-    id_usu=models.ForeignKey(usu, on_delete=models.SET_NULL, null=True, blank =False)#Responsable de la tarea
+    resp_tarea=models.ForeignKey(usu, on_delete=models.SET_NULL, null=True, blank =False)#Responsable de la tarea
     nombre_tarea =models.CharField('Nombre de la actividad:', max_length=255)#Nombre de la tarea
     desc_tarea =models.CharField('Descripción de la actividad:', max_length=255)#Descripción de la tarea
     fch_ini_tarea = models.DateField('Fecha de inicio de la tarea', auto_now=False)#Fecha de inicio de la tarea
     fch_fin_tarea =  models.DateField('Fecha de finalización de la tarea', auto_now=False)#Fecha de finalización de la tarea
-    id_recurso = models.ForeignKey(recu_pry, on_delete=models.SET_NULL, null=True, blank =False)#Id del recurso de la tarea
+    recurso = models.ForeignKey(recu_pry, on_delete=models.SET_NULL, null=True, blank =False)#Id del recurso de la tarea
     acti =  models.ForeignKey(acti, on_delete=models.SET_NULL, null=True, blank =False)#id de la actividad del proyecto
     url_tarea = models.URLField('URL de la evidencia de la tarea', null=False, blank=False)#URL de la evidencia de la tarea
     #ima_tar = models.ImageField('Imagen de la evidencia de la tarea',upload_to=None)#Imagen de la evidencia de la tarea

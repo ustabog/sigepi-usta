@@ -1,0 +1,155 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta listado de Evaluaciones de Proyecto</p>
+</div>
+
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+
+<!--CONSULTAR LOS COMENTARIOS DEFINICIONES, RECOMENDACIONES DE LA EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for defi in  object_list %}
+        <h2>Comentarios</h2>
+        <label> {{ defi.tipo_def}} </label>
+        <label> {{ defi.tipo_def}} </label>
+        <label> {{ defi.vers}} </label>
+        <label> {{ defi.fch_reg}} </label>
+        <label> {{ defi.vers1}} </label>
+        <label> {{ defi.vers2}} </label>
+        <label> {{ defi.vers3}} </label>
+        <label> {{ defi.vers4}} </label>
+        <label> {{ defi.vers5}} </label>
+        <label> {{ defi.fch_mod}} </label><br>
+
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR EL TIPO DE EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for tipo_eva in  object_list %}
+        <h2>Tipo de evaluación</h2>
+        <label> {{ tipo_eva.tipo_eva}} </label>
+        <label> {{ tipo_eva.desc_eva}} </label><br>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LOS RESULTADOS DE UNA EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for resultado in  object_list %}
+        <h2>Resultados</h2>
+        <label> {{ resultado.valor_total}} </label>
+        <label> {{ resultado.aprobado}} </label>
+        <label> {{ resultado.ls.comen}} </label>
+        <label> {{ resultado.estado_eva}}</label>
+        <label> {{ resultado.id_usu_eval}} </label><br>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LOS CRITERIOS DE UNA RÚBRICA DE EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for criterio in  object_list %}
+        <h2>Criterios</h2>
+        <label> {{ criterio.nomb_crit}} </label>
+        <label> {{ criterio.desc_crit}} </label><br>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LAS FASES DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for fase in  object_list %}
+            <h2>Fases</h2>
+            <label> {{ fase.nombre_fase}} </label>
+            <label> {{ fase.desc_fase}} </label>
+            <label> {{ fase.fch_ini_fase}} </label>
+            <label> {{ fase.fch_fin_fase}} </label><br>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LAS ETAPAS DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for etapa in  object_list %}
+            <h2>Etapas</h2>
+            <label> {{ etapa.nombre_eta}} </label>
+            <label> {{ etapa.desc_eta}} </label>
+            <label> {{ etapa.fch_ini_eta}} </label>
+            <label> {{ etapa.fch_fin_eta}} </label><br>
+        {% endfor %}
+        <a href="{% url 'creaeta' %}"><input type="button" value="Crear etapa"></a>   
+        <a href="{% url 'creafase' %}"><input type="button" value="Crear fase"></a>  
+        <a href="{% url 'creaproc' %}"><input type="button" value="Crear proceso"></a> 
+        <a href="{% url 'creatar' %}"><input type="button" value="Crear tarea"></a> 
+        <a href="{% url 'creacti' %}"><input type="button" value="Crear actividad"></a>
+    </div>
+</form>
+
+<!--CONSULTAR LOS PROCESOS DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for proceso in  object_list %}
+            <h2>Procesos</h2>
+            <label> {{ proceso.nombre_proc}} </label>
+            <label> {{ proceso.desc_proc}} </label>
+            <label> {{ proceso.fch_ini_proc}} </label>
+            <label> {{ procesos.fch_fin_proc}} </label><br>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LAS TAREAS DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for tarea in  object_list %}
+            <h2>Tarea</h2>
+            <label> {{ tarea.nombre_tarea}} </label>
+            <label> {{ tarea.desc_tarea}} </label>
+            <label> {{ tarea.resp_tarea}} </label>
+            <label> {{ tarea.fch_ini_tarea}} </label>
+            <label> {{ tarea.fch_fin_tarea}} </label>
+            <label> {{ tarea.recurso}} </label>
+            <label> {{ tarea.url_tarea}} </label>
+            <br>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LAS ACTIVIDADES DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for acti in  object_list %}
+            <h2>Actividades</h2>
+            <label> {{ tarea.nombre_acti}} </label>
+            <label> {{ tarea.desc_acti}} </label>
+            <label> {{ tarea.resp_acti}} </label>
+            <label> {{ tarea.fch_ini_acti}} </label>
+            <label> {{ tarea.fch_fin_acti}} </label>
+            <label> {{ tarea.recurso}} </label>
+            <label> {{ tarea.url_acti}} </label>
+            <br>
+        {% endfor %}
+    </div>
+</form>
+{% endblock consulta %}
+
+

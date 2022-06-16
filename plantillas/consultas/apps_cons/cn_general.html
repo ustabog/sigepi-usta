@@ -1,0 +1,90 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta listado de Evaluaciones de Proyecto</p>
+</div>
+
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+
+<!--CONSULTAR EL REGISTRO DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for pry_base in  object_list %}
+        <h2>Prroyectos</h2>
+        <label> {{ pry_base.nombre_pry}} </label>
+        <label> {{ pry_base.desc_pry}} </label>
+        <label> {{ pry_base.tipo_pry}} </label>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for eva_pry in  object_list %}
+        <h3>Evaluación de proyectos</h3>
+        <label> {{ eva_pry.nomb_eva}} </label>
+        <label> {{ eva_pry.desc_eva}} </label>
+        <label> {{ eva_pry.fch_ini}} </label>
+        <label> {{ eva_pry.fch_fin}} </label><br>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA INFORMACIÓN BASE DE UN CRONOGRAMA-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        % for crono_pry in  object_list %}
+            <h2>Cronogramas</h2>
+            <label> {{ crono_pry.nomb_crono}} </label>
+            <label> {{ crono_pry.desc_crono}} </label>
+            <label> {{ crono_pry.fch_ini_pry}} </label>
+            <label> {{ crono_pry.fch_fin_pry}} </label><br>
+            {% endfor %}
+            <a href='creaeta'><input type="button" value="Crear etapa"></a>   
+            <a href='creafase'><input type="button" value="Crear fase"></a>  
+            <a href='creaproc'><input type="button" value="Crear proceso"></a> 
+            <a href='creatar'><input type="button" value="Crear tarea"></a> 
+            <a href='creacti'><input type="button" value="Crear actividad"></a>
+    </div>
+</form>
+
+<!--CONSULTAR LA INFORMACIÓN BASE DE UNA RÚBRICA DE EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for rubrica in  object_list %}
+        <h2>Rúbricas</h2>
+        <label> {{ rubrica.nomb_rub}} </label>
+        <label> {{ rubrica.desc_rub}} </label>
+
+        <a href="{% url 'crear_crit' %}"><input type="button" value="Crear criterio"></a>   
+        <a href="{% url 'crear_rango' %}"><input type="button" value="Crear rango de evaluación"></a>  
+        <a href="{% url 'crear_ciclo' %}"><input type="button" value="Crear ciclo de evaluación"></a> 
+        <a href="{% url 'crear_tipo' %}"><input type="button" value="Tipo de evaluación"></a> 
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LAS TAREAS DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for tarea in  object_list %}
+            <h2>tarea</h2>
+            <label> {{ tarea.nombre_tarea}} </label>
+            <label> {{ tarea.desc_tarea}} </label>
+            <label> {{ tarea.fch_ini_tarea}} </label>
+            <label> {{ tarea.fch_fin_tarea}} </label>
+        {% endfor %}
+    </div>
+</form>
+
+
+        
+{% endblock consulta %}

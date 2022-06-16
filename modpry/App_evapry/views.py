@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.generic import UpdateView, CreateView, ListView
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
@@ -60,7 +60,7 @@ class vts_edit_evapry(UpdateView):
 #----------------------- Para un criterio ----------------
 class vst_crear_crit(CreateView):
     #Clase de la vista de registro de un criterio de evaluación
-    model = criterio
+    model = crit_eva
     form_class = frm_criterio
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_evapry')
@@ -73,8 +73,8 @@ class vst_crear_crit(CreateView):
 
 class vst_ls_crit(ListView):
     # clase para listar los criterios de evaluación
-    model = criterio
-    template_name = 'cn_evapry'
+    model = crit_eva
+    template_name = 'consultas/apps_cons/cn_evapry.html'
     queryset = eva_pry.objects.order_by('nomb_eva')
     context_object_name = 'lista_evapry'
 
@@ -100,7 +100,7 @@ class vts_edit_evapry(UpdateView):
 #----------------------- Para una rúbrica ----------------
 class vst_crear_rub(CreateView):
     #Clase de la vista de registro de una rúbrica de evaluación de proyecto
-    model = rubrica
+    model = rubr_eva
     form_class = frm_rubrica
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_rub')
@@ -113,9 +113,9 @@ class vst_crear_rub(CreateView):
 
 class vst_ls_rub(ListView):
     # clase para listar las rúbricas de evaluación
-    model = rubrica
-    template_name = 'consultas/apps_cons/cn_mod_pry/cn_rub.html'
-    queryset = rubrica.objects.order_by('nomb_rub')
+    model = rubr_eva
+    template_name = 'consultas/apps_cons/cn_evapry.html'
+    queryset = rubr_eva.objects.order_by('nomb_rub')
 
     def get_context_data(self, **kwargs):
         context = super(vst_ls_rub, self).get_context_data(**kwargs)
@@ -134,23 +134,22 @@ class vst_crear_rango(CreateView):
         context ['title'] = 'Rango de rúbrica' 
         context ['action'] = 'add'
         return context
-#----------------------- Para un ciclo de evaluación -----
-class vst_crear_cicloeva(CreateView):
-    #Clase de la vista de registro de proyecto 
-    model = ciclo_eva
-    form_class = frm_cicloeva
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_evapry')
+
+class vst_ls_rango(ListView):
+    # clase para listar los rangos de evaluación
+    model = rango_eva
+    template_name = 'consultas/apps_cons/cn_evapry.html'
+    queryset = rango_eva.objects.order_by('nombre_rango')
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context ['title'] = 'Ciclo de evaluación del proyecto' 
-        context ['action'] = 'add'
+        context = super(vst_ls_rango, self).get_context_data(**kwargs)
+        context ['titulo_pagina'] = 'Rangos de evalución'
         return context
+
 #----------------------- Para un resultado ---------------
 class vst_crear_resul(CreateView):
     #Clase de la vista de resultado de una evaluación de un proyecto
-    model = resultado
+    model = res_eva
     form_class = frm_resultado
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_evapry')
@@ -159,6 +158,17 @@ class vst_crear_resul(CreateView):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Resultado de la evaluación de un proyecto' 
         context ['action'] = 'add'
+        return context
+
+class vst_ls_resultado(ListView):
+    # clase para listar los resultados de evaluación
+    model = res_eva
+    template_name = 'consultas/apps_cons/cn_evapry.html'
+    queryset = res_eva.objects.order_by('valor_total')
+
+    def get_context_data(self, **kwargs):
+        context = super(vst_ls_resultado, self).get_context_data(**kwargs)
+        context ['titulo_pagina'] = 'Resultados'
         return context
 #----------------------- Para tipo de evaluación ---------
 class vst_crear_tipoeva(CreateView):
@@ -174,6 +184,17 @@ class vst_crear_tipoeva(CreateView):
         context ['action'] = 'add'
         return context
 
+class vst_ls_tipoeva(ListView):
+    # clase para listar los tipos de evaluación
+    model = tipo_eva
+    template_name = 'consultas/apps_cons/cn_evapry.html'
+    queryset = tipo_eva.objects.order_by('tipo_eva')
+
+    def get_context_data(self, **kwargs):
+        context = super(vst_ls_tipoeva, self).get_context_data(**kwargs)
+        context ['titulo_pagina'] = 'Tipos de evaluación'
+        return context
+
 #----------------------- Para una definición ------------
 class vst_crear_defi(CreateView):
     #Clase de la vista crear un comentario, definición, comentario, etc
@@ -186,5 +207,16 @@ class vst_crear_defi(CreateView):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Definciones, comentarios, recomendaciones, etc' 
         context ['action'] = 'add'
+        return context
+
+class vst_ls_defi(ListView):
+    # clase para listar las definiciones, comentarios, recomendaciones, etc.
+    model = defi
+    template_name = 'consultas/apps_cons/cn_evapry.html'
+    queryset = defi.objects.order_by('tipo_def')
+
+    def get_context_data(self, **kwargs):
+        context = super(vst_ls_defi, self).get_context_data(**kwargs)
+        context ['titulo_pagina'] = 'Comentarios'
         return context
 
