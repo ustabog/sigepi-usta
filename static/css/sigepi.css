@@ -76,7 +76,7 @@
 }
 
 /* enmarcar en un círculo */
-.circulo, .trj_pers_cnt_ppal .cnt_img .img {
+.circulo, .trj_pers_cnt_ppal .cnt_img .img, .trj_pry_cnt_ppal .img_pry .img {
   border-radius: 50%;
   border: 1px solid var(--color-primario);
 }
@@ -153,7 +153,7 @@
 
 /* sigepi.css: Acordeones del diseño */
 /* sigepi.css: Barras, barras de estado, barras de progreso y menús de navegación verticales */
-.brr, .br_pn_der, .br_app, .br_app_adm, .trj_pers_cnt_pie {
+.brr, .br_app, .br_app_adm, .trj_pers_cnt_pie, .trj_pry_cnt_pie {
   /* una fila hasta tres columnas */
   display: flex;
   position: relative;
@@ -170,10 +170,18 @@
 
 .br_pn_der {
   /* Barra del encabezado panel derecho */
+  /* una fila hasta tres columnas */
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
   height: 50px;
   flex-wrap: nowrap;
-  gap: 10px;
+  padding-right: 5px;
+  gap: 5px;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .br_herr, .br_herr_adm {
@@ -221,7 +229,8 @@
 .br_app {
   background-color: var(--color-primario);
   position: relative;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .br_app ul {
@@ -400,7 +409,7 @@
 }
 
 /* sigepi.css: Botones del diseño*/
-.btn, .btn_prm_cl, .br_trj ul li a, .trj_pers_br ul li a, .trj_pers_cnt_ppal .cnt_trj a, .btn_sec_cl {
+.btn, .btn_prm_cl, .br_trj ul li a, .trj_pers_br ul li a, .trj_pers_cnt_ppal .cnt_trj a, .trj_pry_cnt_ppal .cnt_pry a, .btn_sec_cl {
   position: relative;
   width: 45px;
   height: 45px;
@@ -414,7 +423,7 @@
 }
 
 /* botón redondo */
-.btn_rdn, .trj_pers_cnt_pie a {
+.btn_rdn, .trj_pers_cnt_pie a, .trj_pry_cnt_pie a, .trj_pry_br a {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -431,7 +440,7 @@
   margin: 5px;
 }
 
-.btn_rdn i, .trj_pers_cnt_pie a i {
+.btn_rdn i, .trj_pers_cnt_pie a i, .trj_pry_cnt_pie a i, .trj_pry_br a i {
   font-size: 30px;
   color: var(--color-primario-2);
   transition: 0.5s;
@@ -441,18 +450,18 @@
   margin-right: auto;
 }
 
-.btn_rdn span, .trj_pers_cnt_pie a span {
+.btn_rdn span, .trj_pers_cnt_pie a span, .trj_pry_cnt_pie a span, .trj_pry_br a span {
   font-size: x-small;
   display: none;
   color: var(--color-blanco);
 }
 
-.btn_rdn:hover, .trj_pers_cnt_pie a:hover {
+.btn_rdn:hover, .trj_pers_cnt_pie a:hover, .trj_pry_cnt_pie a:hover, .trj_pry_br a:hover {
   background-color: var(--color-blanco);
   box-shadow: 3px 3px 10px var(--color-primario-oscuro) inset;
 }
 
-.btn_rdn:hover i, .trj_pers_cnt_pie a:hover i {
+.btn_rdn:hover i, .trj_pers_cnt_pie a:hover i, .trj_pry_cnt_pie a:hover i, .trj_pry_br a:hover i {
   font-size: 30px;
   color: var(--color-primario);
   transition: 0.5s;
@@ -464,7 +473,7 @@
           transform: translate(0%, 7%);
 }
 
-.btn_rdn:hover span, .trj_pers_cnt_pie a:hover span {
+.btn_rdn:hover span, .trj_pers_cnt_pie a:hover span, .trj_pry_cnt_pie a:hover span, .trj_pry_br a:hover span {
   display: flex;
   -webkit-transform: translate(0%, -3px);
           transform: translate(0%, -3px);
@@ -489,7 +498,7 @@
 }
 
 /* boton primario claro (azul) */
-.btn_prm_cl, .br_trj ul li a, .trj_pers_br ul li a, .trj_pers_cnt_ppal .cnt_trj a {
+.btn_prm_cl, .br_trj ul li a, .trj_pers_br ul li a, .trj_pers_cnt_ppal .cnt_trj a, .trj_pry_cnt_ppal .cnt_pry a {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -502,7 +511,7 @@
   text-underline-position: below;
 }
 
-.btn_prm_cl:hover, .br_trj ul li a:hover, .trj_pers_br ul li a:hover, .trj_pers_cnt_ppal .cnt_trj a:hover {
+.btn_prm_cl:hover, .br_trj ul li a:hover, .trj_pers_br ul li a:hover, .trj_pers_cnt_ppal .cnt_trj a:hover, .trj_pry_cnt_ppal .cnt_pry a:hover {
   border-left: 1px solid var(--color-primario-tr);
   background: linear-gradient(0deg, var(--color-primario-tr), var(--color-blanco));
   box-shadow: 0px 2px 2px rgba(241, 245, 255, 0.514);
@@ -510,13 +519,13 @@
           transform: translate(0%, -3%);
 }
 
-.btn_prm_cl:hover i, .br_trj ul li a:hover i, .trj_pers_br ul li a:hover i, .trj_pers_cnt_ppal .cnt_trj a:hover i {
+.btn_prm_cl:hover i, .br_trj ul li a:hover i, .trj_pers_br ul li a:hover i, .trj_pers_cnt_ppal .cnt_trj a:hover i, .trj_pry_cnt_ppal .cnt_pry a:hover i {
   font-size: 30px;
   color: var(--color-primario-1);
   transition: 0.5s;
 }
 
-.btn_prm_cl:hover span, .br_trj ul li a:hover span, .trj_pers_br ul li a:hover span, .trj_pers_cnt_ppal .cnt_trj a:hover span {
+.btn_prm_cl:hover span, .br_trj ul li a:hover span, .trj_pers_br ul li a:hover span, .trj_pers_cnt_ppal .cnt_trj a:hover span, .trj_pry_cnt_ppal .cnt_pry a:hover span {
   display: flex;
   position: relative;
   color: var(--color-primario-1);
@@ -524,7 +533,7 @@
   top: -5px;
 }
 
-.btn_prm_cl i, .br_trj ul li a i, .trj_pers_br ul li a i, .trj_pers_cnt_ppal .cnt_trj a i {
+.btn_prm_cl i, .br_trj ul li a i, .trj_pers_br ul li a i, .trj_pers_cnt_ppal .cnt_trj a i, .trj_pry_cnt_ppal .cnt_pry a i {
   font-size: 40px;
   color: var(--color-primario);
   transition: 0.5s;
@@ -534,11 +543,11 @@
   margin-right: auto;
 }
 
-.btn_prm_cl span, .br_trj ul li a span, .trj_pers_br ul li a span, .trj_pers_cnt_ppal .cnt_trj a span {
+.btn_prm_cl span, .br_trj ul li a span, .trj_pers_br ul li a span, .trj_pers_cnt_ppal .cnt_trj a span, .trj_pry_cnt_ppal .cnt_pry a span {
   display: none;
 }
 
-.btn_prm_cl .deshab, .br_trj ul li a .deshab, .trj_pers_br ul li a .deshab, .trj_pers_cnt_ppal .cnt_trj a .deshab {
+.btn_prm_cl .deshab, .br_trj ul li a .deshab, .trj_pers_br ul li a .deshab, .trj_pers_cnt_ppal .cnt_trj a .deshab, .trj_pry_cnt_ppal .cnt_pry a .deshab {
   border-left: 1px solid var(--color-gris);
   background: linear-gradient(0deg, var(--color-primario-tr), var(--color-gris));
   box-shadow: 0 2px 2px rgba(95, 95, 95, 0.15);
@@ -889,6 +898,258 @@
   padding: 2px 2px 2px 2px;
 }
 
+.trj_pry {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 45px;
+      grid-template-rows: 1fr 45px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  background: linear-gradient(45deg, var(--color-blanco), var(--color-primario-tr));
+  border: 2px solid rgba(115, 204, 255, 0.521);
+  box-shadow: 5px 5px 5px var(--color-primario-oscuro);
+  overflow: auto;
+  width: 240px;
+  height: 360px;
+  -ms-grid-row-align: center;
+      align-self: center;
+  margin: auto;
+}
+
+.trj_pry_simple {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 4fr;
+      grid-template-rows: 1fr 4fr;
+  width: 100%;
+  height: 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.trj_pry_simple .cnt_sup {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  width: 100%;
+  height: 100%;
+  background: var(--color-primario-oscuro);
+}
+
+.trj_pry_simple .cnt_sup_img {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 4fr 1fr;
+      grid-template-rows: 4fr 1fr;
+  width: 100%;
+  height: 100%;
+  background: var(--color-primario);
+}
+
+.trj_pry_simple .cnt_sup_img_base {
+  color: var(--color-blanco);
+}
+
+.trj_pry_simple .cnt_sup_titulo {
+  color: var(--color-blanco);
+  text-align: center;
+}
+
+.trj_pry_simple .cuerpo_pry {
+  /* una fila hasta tres columnas */
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  color: var(--color-primario-oscuro);
+  margin: 5px;
+  text-align: justify;
+  text-overflow: ellipsis;
+}
+
+.trj_pry_cnt {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 8fr 1fr;
+      grid-template-columns: 8fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.trj_pry_cnt_ppal {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 8fr;
+      grid-template-rows: 1fr 8fr;
+  width: 100%;
+  height: 100%;
+}
+
+.trj_pry_cnt_ppal .img_pry {
+  /* una fila hasta tres columnas */
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
+.trj_pry_cnt_ppal .img_pry .img {
+  position: relative;
+}
+
+.trj_pry_cnt_ppal .img_pry .txt_img {
+  position: relative;
+  text-align: center;
+}
+
+.trj_pry_cnt_ppal .cnt_pry {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 35px 12fr 35px;
+      grid-template-rows: 35px 12fr 35px;
+  width: 100%;
+  height: 100%;
+  height: 100%;
+  color: var(--color-primario-oscuro);
+  text-align: justify;
+  align-content: center;
+  padding: 5px;
+}
+
+.trj_pry_cnt_ppal .cnt_pry a {
+  background: linear-gradient(-45deg, var(--color-primario), var(--color-primario-oscuro));
+  height: 25px;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  text-decoration: none;
+  color: var(--color-primario-tr);
+  font-size: small;
+  font-family: var(--fam-fuentes-btn);
+}
+
+.trj_pry_cnt_ppal .cnt_pry a:hover {
+  color: var(--color-blanco);
+  background: linear-gradient(-45deg, var(--color-primario), var(--color-primario-oscuro));
+}
+
+.trj_pry_cnt_ppal .cnt_pry_titulo {
+  background: linear-gradient(-45deg, var(--color-primario-tr), var(--color-primario));
+  display: flex;
+  font-size: medium;
+  align-self: flex-end;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  top: 0px;
+}
+
+.trj_pry_cnt_ppal .cnt_pry_cmp {
+  /* componenetes del contenido del proyecto */
+  display: flex;
+  text-align: justify;
+  align-items: baseline;
+  overflow: auto;
+  gap: 10px;
+}
+
+.trj_pry_cnt_ppal .cnt_pry_pie {
+  background: linear-gradient(-45deg, var(--color-primario-tr), var(--color-primario-oscuro));
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: justify;
+  align-items: center;
+  gap: 5px;
+  bottom: 0px;
+}
+
+.trj_pry_cnt_pie {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  width: auto;
+  background-color: var(--color-primario-oscuro);
+  align-items: center;
+  gap: 5px;
+  border-radius: 25px 0px 0px 25px;
+  padding-left: 10px;
+  margin-left: auto;
+}
+
+.trj_pry_br {
+  border-top-left-radius: 20px;
+  background: var(--color-primario-oscuro);
+  /* una fila hasta tres columnas */
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 3px;
+  align-items: center;
+}
+
+.trj_pry_br a {
+  color: var(--color-primario-tr);
+  display: inline-flex;
+  position: relative;
+  height: 25px;
+  width: 25px;
+  font-size: smaller;
+}
+
+.trj_pry_br a i {
+  font-size: 22px;
+}
+
 /* Se trabajan las estructuras de comportamiento de las aplicaciones en diferentes formatos */
 .app {
   /* una fila hasta tres columnas */
@@ -944,11 +1205,15 @@
 
 /* Contenedor panel derecho */
 .cont_pn_der {
-  position: relative;
+  /* una fila hasta tres columnas */
   display: flex;
-  flex-direction: column;
+  position: relative;
+  flex-wrap: wrap;
   width: 100%;
   height: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
   border-left: 1px solid rgba(0, 0, 0, 0.2);
   background: linear-gradient(90deg, var(--color-primario-tr), var(--color-primario));
   box-shadow: 5px 5px 5px rgba(0, 17, 54, 0.267);
@@ -1166,6 +1431,7 @@
   width: 100%;
   height: 100%;
   background-color: var(--color-primario);
+  height: 100%;
   box-shadow: 5px 5px 5px rgba(34, 44, 46, 0.25);
   overflow: auto;
 }
@@ -1193,21 +1459,60 @@
 }
 
 /* sigepi.css: secciones de apartes estructurales */
-.seccion_pn_der {
-  background-color: #ffffff6e;
-  width: 100%;
-  height: auto;
-  min-height: 65px;
-  margin-bottom: 5px;
-  position: static;
-  text-align: center;
+/* sección base */
+.seccion {
+  /* una fila hasta tres columnas */
   display: flex;
-  top: 5px;
-  overflow: auto;
-  border: 2px solid rgba(240, 253, 255, 0.521);
-  box-shadow: 3px 3px 3px rgba(240, 253, 255, 0.521);
-  border-radius: 3px;
+  position: relative;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.secc {
+  /* una fila hasta tres columnas */
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 20px auto;
+      grid-template-rows: 20px auto;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primario-tr);
+  top: 0px;
+  overflow-y: auto;
+}
+
+.secc_pn_der {
+  border: 1px solid #93cfff;
+  box-shadow: 3px 3px 3px rgba(65, 179, 255, 0.521);
+  border-radius: 5px;
+  height: auto;
+  width: 100%;
+  min-height: 15px;
   padding: 5px;
+  margin-top: 0px;
+  margin-top: 3px;
+  overflow-y: auto;
+}
+
+.secc_titulo {
+  background-color: var(--color-primario);
+  border: 1px solid #93cfff;
+  box-shadow: 3px 3px 3px rgba(65, 179, 255, 0.521);
+  border-radius: 5px;
+  color: var(--color-primario-2);
+  width: 50%;
+  height: 15px;
+  text-align: center;
+  font-size: smaller;
+  padding-top: 0px;
+  margin-top: 15px;
 }
 
 /* Diseño adaptativo o Responsive @media */
@@ -1238,8 +1543,8 @@
     display: grid;
     position: -webkit-sticky;
     position: sticky;
-    -ms-grid-columns: 6rem 10fr;
-        grid-template-columns: 6rem 10fr;
+    -ms-grid-columns: 7.5rem 10fr;
+        grid-template-columns: 7.5rem 10fr;
     -ms-grid-rows: 1fr;
         grid-template-rows: 1fr;
     width: 100%;
@@ -1257,10 +1562,10 @@
     height: 100%;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 6rem;
+    width: 7.5rem;
   }
   .br_app {
-    width: 6rem;
+    width: 7.5rem;
   }
   .br_app ul li a {
     text-underline-position: below;
@@ -1337,8 +1642,8 @@
     display: grid;
     position: -webkit-sticky;
     position: sticky;
-    -ms-grid-columns: 6rem 4fr;
-        grid-template-columns: 6rem 4fr;
+    -ms-grid-columns: 7.5rem 4fr;
+        grid-template-columns: 7.5rem 4fr;
     -ms-grid-rows: 1fr;
         grid-template-rows: 1fr;
     width: 100%;
@@ -1354,10 +1659,10 @@
     height: 100%;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 6rem;
+    width: 7.5rem;
   }
   .br_app {
-    width: 6rem;
+    width: 7.5rem;
   }
   .br_app ul li a {
     text-underline-position: below;

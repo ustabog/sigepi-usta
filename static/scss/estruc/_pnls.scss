@@ -28,6 +28,7 @@
 .panel_der {
     @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0,$tam_fr3:0);
     background-color:var(--color-primario);
+    height:100%;
     box-shadow: 5px 5px 5px rgba(34, 44, 46, 0.25);
     overflow:auto;
 }

@@ -1,18 +1,38 @@
 /* sigepi.css: secciones de apartes estructurales */
+/* sección base */
+.seccion{
+  @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0fr,$tam_fr3:0fr);
+  position:sticky;
+}
 
-.seccion_pn_der{
-    background-color:#ffffff6e;
+.secc{
+  @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:20px,$tam_fr2:auto,$tam_fr3:0fr);
+  background-color: var(--color-primario-tr);
+  top: 0px;
+  overflow-y:auto;
+  &_pn_der{
+    border: 1px solid rgb(147, 207, 255);
+    box-shadow: 3px 3px 3px rgba(65, 179, 255, 0.521);
+    border-radius:5px;
+    height:auto;
     width: 100%;
-    height: auto;
-    min-height: 65px;
-    margin-bottom: 5px;
-    position:static;
-    text-align: center;
-    display: flex;
-    top: 5px;
-    overflow:auto;
-    border: 2px solid rgba(240, 253, 255, 0.521);
-    box-shadow: 3px 3px 3px rgba(240, 253, 255, 0.521);
-    border-radius:3px;
-    padding: 5px;  
+    min-height: 15px;
+    padding:5px;
+    margin-top: 0px;
+    margin-top: 3px;
+    overflow-y:auto;
   }
+  &_titulo{
+    background-color: var(--color-primario);
+    border: 1px solid rgb(147, 207, 255);
+    box-shadow: 3px 3px 3px rgba(65, 179, 255, 0.521);
+    border-radius:5px;
+    color: var(--color-primario-2);
+    width:50%;
+    height: 15px;
+    text-align: center;
+    font-size: smaller;
+    padding-top:0px;
+    margin-top:15px;
+  }
+}

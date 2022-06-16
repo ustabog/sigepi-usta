@@ -24,7 +24,7 @@ $alto-xxl:1081px;
       box-shadow: 0px 0px;
       }
     .panel_app{
-        @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:6rem,$tam_fr2:10fr,$tam_fr3:0);
+        @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:7.5rem,$tam_fr2:10fr,$tam_fr3:0);
         flex-direction: row;
         flex-wrap: wrap;
         overflow: auto;
@@ -33,10 +33,10 @@ $alto-xxl:1081px;
       @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0fr,$tam_fr3:0fr);
       flex-wrap: wrap;
       flex-direction: row;
-      width:6rem;
+      width:7.5rem;
     }
     .br_app{
-      width: 6rem;
+      width: 7.5rem;
       ul{
         li{
           a{
@@ -90,17 +90,17 @@ $alto-xxl:1081px;
     width: minmax(150px,350px);
     }
   .panel_app{
-    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:6rem,$tam_fr2:4fr,$tam_fr3:0fr);
+    @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:7.5rem,$tam_fr2:4fr,$tam_fr3:0fr);
     overflow: auto;
   }
   .br_herr{
     @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0fr,$tam_fr3:0fr);
     flex-wrap: wrap;
     flex-direction: row;
-    width:6rem;
+    width:7.5rem;
   }
   .br_app{
-    width: 6rem;
+    width: 7.5rem;
     ul{
       li{
         a{

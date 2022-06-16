@@ -4,11 +4,10 @@
 {% block panel_der %}
 <!--Prueba-->
 <div id="cont_pn_der" class="cont_pn_der">
-    <section id="encbz_pn_der" class="seccion_pn_der">
     {% block encabezado_pn_der %}
-    <!--Encabezado panel derecho-->
-    
-        <div class="br_pn_der">
+    <section id="encbz_pn_der" class="secc_pn_der">
+     <!--Encabezado panel derecho-->
+        <div id="br_pn_der" class="br_pn_der">
             <a class="btn_prm_cl" href="{% url 'inicio_pry' %}">
                 <i class="material-icons" alt="Usuario">account_circle</i>
                 <span>usuario</span>
@@ -30,29 +29,36 @@
                 <span>Salir</span>
             </a>
         </div>
-    
+    </section>
     {% endblock encabezado_pn_der %}
-    </section>
     
-    <!--Información de usuario-->
-    <section id="usu_pn_der" class="seccion_pn_der">
     {% block seccion_usuario %}
-    
+     <!--Información de usuario-->
+    <div id="usu_pn_der_titulo" class="secc_titulo">
+        <span>Inf. de Usuario(a)</span>
+    </div>
+    <section id="usu_pn_der" class="secc_pn_der">
         {% block autent_pn_der %}
-            {% include 'trj_pers_iu.html' %}
+            {% include 'trj_pers.html' %}
         {% endblock autent_pn_der %}
-    
-    {% endblock seccion_usuario %}
     </section>
-    <!--Información Tablero de Control-->
+    {% endblock seccion_usuario %}
+    
     {% block tc_pn_der %}
-    <section id="tc_pn_der">
+    <!--Información Tablero de Control-->
+    <div id="tc_pn_der_titulo" class="secc_titulo">
+        <span>Tablero de Control</span>
+    </div>
+    <section id="tc_pn_der" class="secc_pn_der">
     </section>
     {% endblock tc_pn_der %}
-
-    <!--Información de aplicación-->
+    
     {% block app_pn_der %}
-    <section id="app_pn_der" class="seccion_pn_der">
+    <!--Información de aplicación-->
+    <div id="app_pn_der_titulo" class="secc_titulo">
+        <span>Inf. de Aplicación</span>
+    </div>
+    <section id="app_pn_der" class="secc_pn_der">
         <ul class="">
             <li>
                 <div class=""><i class="material-icons">filter_drama</i>First</div>
@@ -69,21 +75,28 @@
         </ul>
     </section>
     {% endblock app_pn_der %}
-     <!--Información de Módulo-->
+
     {% block mod_pn_der %}
-    <section id="mod_pn_der" class="seccion_pn_der">
+     <!--Información de Módulo-->
+    <div id="mod_pn_der_titulo" class="secc_titulo">
+        <span>Inf. de Módulo</span>
+    </div>
+    <section id="mod_pn_der" class="secc_pn_der">
     </section>
     {% endblock mod_pn_der %}
 
-    {% block pie_pn_der %}
-    <section id="pie_pn_der" class="seccion_pn_der">
-    </section>
-    {% endblock pie_pn_der %}
-
-    <!--Información de información varia-->
     {% block seccion_info %}
-    <section id="info_pn_der" class="seccion_pn_der">
+    <!--Información de información varia-->
+    <div id="info_pn_der_titulo" class="secc_titulo">
+        <span>Panel de inf.</span>
+    </div>
+    <section id="info_pn_der" class="secc_pn_der">
     </section>
     {% endblock seccion_info %}
+
+    {% block pie_pn_der %}
+    <section id="pie_pn_der" class="secc_pn_der">
+    </section>
+    {% endblock pie_pn_der %}
 </div>
 {% endblock panel_der %}

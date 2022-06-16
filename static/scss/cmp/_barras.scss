@@ -11,11 +11,13 @@
 
 .br_pn_der{
     /* Barra del encabezado panel derecho */
-    @extend .brr;
+    @include extruc_gr_pn($num_col:1,$num_filas:1,$tam_fr1:1fr,$tam_fr2:0fr,$tam_fr3:0fr);
     height: 50px;
     flex-wrap:nowrap;
-    gap: 10px;
+    padding-right: 5px;
+    gap: 5px;
     overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .br_herr {
@@ -53,7 +55,8 @@
     @extend .brr;
     @include fn_sim(var(--color-primario));
     position: relative;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     ul{
         list-style: none;
         color: var(--color-primario);
@@ -170,6 +173,10 @@
             }
         }
     }
+}
+
+.br_pry{
+
 }
 
 .nav_der{
