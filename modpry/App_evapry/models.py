@@ -91,16 +91,16 @@ class res_eva(models.Model):
     estado_eva = models.IntegerField(choices = ESTADO_EVA,default = 0, null=False, blank = False)#Estado de la evaluación
     id_usu_eval = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)#id de usuario(a) evaluador(a) del proyecto 
     class Meta:
-        verbose_name = 'resultado'
-        verbose_name_plural = 'resultados'
+        verbose_name = 'res_eva'
+        verbose_name_plural = 'res_evas'
 
 class crit_eva(models.Model):
     #Clase que recopila la información de los criterios de evaluación del proyecto
     id_crit =  models.AutoField(primary_key = True)   # identificador unico para criterios del proyecto
     nomb_crit= models.CharField('Nombre del criterio', max_length=100, null=False, blank= False) #Nombre del criterio
     class Meta:
-        verbose_name = 'criterio'
-        verbose_name_plural = 'criterios'
+        verbose_name = 'crit_eva'
+        verbose_name_plural = 'crits_eva'
 
 class rubr_eva(models.Model):
     #Clase de la rubrica de la evaluación del proyecto
@@ -114,10 +114,10 @@ class rubr_eva(models.Model):
     id_usu_dis = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)#Usuario que diseña la evaluación
     vers = models.CharField('Descripción', max_length=10, null=False, blank= False)#versión de la rúbrica
     class Meta:
-        verbose_name = 'rubrica'
-        verbose_name_plural = 'rubricas'
+        verbose_name = 'rubr_eva'
+        verbose_name_plural = 'rubrs_eva'
 
-class eva_pry(models.Model):
+class eva_pry(models.Models):
     #Clase que contiene la forma de evaluacion del proyecto
     id_eva =  models.AutoField(primary_key = True)   # identificador unico para el tipo de evalucion
     pry_base = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=True, blank =False )#Lista de proyectos
