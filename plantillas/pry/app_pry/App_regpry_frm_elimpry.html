@@ -1,9 +1,0 @@
-{% block titulo %} Eliminar proyecto {% endblock titulo %}
-{% block app %}
-  <form class="" action="" method="post">
-    {% csrf_token %}
-    <h3>¿Desea elminar el registro del {{ pry_base.nombre_pry}} ?</h3>
-    <button class = "btm btn-danger"type="submit" >Sí, eliminar</button>
-    <a class= "btn btn-default" href="cn_pry">Cancelar</a>
-  </form>
-  {% endblock app %}
