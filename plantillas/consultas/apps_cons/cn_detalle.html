@@ -1,12 +1,28 @@
 {% load static %}
 {% block consulta %}
 <div>
-    <p>Consulta listado de Evaluaciones de Proyecto</p>
+    <p>Consulta de listado</p>
 </div>
 
 {% if form.errors %}
     <p>La lista no se ha logrado consultar.</p>
 {% endif %}
+
+<!--CONSULTAR LA EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for eva_pry in  object_list %}
+        <h3>Evaluación de proyectos</h3>
+        <label> {{ eva_pry.nomb_eva}} </label>
+        <label> {{ eva_pry.desc_eva}} </label>
+        <label> {{ eva_pry.tipo_eva}} </label>
+        <label> {{ eva_pry.fch_ini}} </label>
+        <label> {{ eva_pry.fch_fin}} </label>
+        <label> {{ eva_pry.estado_eva}} </label><br>
+        {% endfor %}
+    </div>
+</form>
 
 <!--CONSULTAR LOS COMENTARIOS DEFINICIONES, RECOMENDACIONES DE LA EVALUACIÓN DE UN PROYECTO-->
 <form method="GET">
@@ -139,13 +155,13 @@
     <div>
         {% for acti in  object_list %}
             <h2>Actividades</h2>
-            <label> {{ tarea.nombre_acti}} </label>
-            <label> {{ tarea.desc_acti}} </label>
-            <label> {{ tarea.resp_acti}} </label>
-            <label> {{ tarea.fch_ini_acti}} </label>
-            <label> {{ tarea.fch_fin_acti}} </label>
-            <label> {{ tarea.recurso}} </label>
-            <label> {{ tarea.url_acti}} </label>
+            <label> {{ acti.nombre_acti}} </label>
+            <label> {{ acti.desc_acti}} </label>
+            <label> {{ acti.resp_acti}} </label>
+            <label> {{ acti.fch_ini_acti}} </label>
+            <label> {{ acti.fch_fin_acti}} </label>
+            <label> {{ acti.recurso}} </label>
+            <label> {{ acti.url_acti}} </label>
             <br>
         {% endfor %}
     </div>

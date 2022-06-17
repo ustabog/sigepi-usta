@@ -1,4 +1,3 @@
-import imp
 from django.forms import ModelForm
 from .models import *
 from modpry.app_modpry.models import *
@@ -10,37 +9,38 @@ class frm_evapry(ModelForm):
         model = eva_pry
         fields = (
             'nomb_eva',
-            'eval',
             'desc_eva',
+            'tipo_eva',
+            'fch_ini',
+            'fch_fin',
+            'estado_eva',
             
         )
         labels = {
             'nomb_eva': 'Nombre de la evaluación del proyecto',
-            'eval': 'Nombre del evaluador',
-            'desc_eva': 'Descripción de la evaluación del proyecto',          
+            'desc_eva': 'Descripción de la evaluación del proyecto',
+            'fch_ini': 'Fecha de inicio de la evaluación',
+            'fch_fin': 'Fecha de finalización de la evaluación',  
+            'estado_eva' : 'Estado de la evaluación',     
         }
 
 class frm_criterio(ModelForm):
 #Formulario para crear un criterio 
     class Meta:
-        model = criterio
+        model = crit_eva
         fields = (
             'nomb_crit', 
             'desc_crit',
-            'nombre_rango',
-            'url_doc',
         )
         labels = {
             'nomb_crit':'Nombre del criterio', 
-            'desc_crit' : 'Descripción del criterio',
-            'nombre_rango' : 'Rango de evaluación',
-            'url_doc' : 'URL del documento',    
+            'desc_crit' : 'Descripción del criterio',   
         }
 
 class frm_rubrica(ModelForm):
 #Formulario para crear una rúbrica de evaluación
     class Meta:
-        model = rubrica
+        model = rubr_eva
         fields = (
             'nomb_rub', 
             'desc_rub',
@@ -68,25 +68,10 @@ class frm_rangoeva(ModelForm):
             'valor_fin' : 'Valor final de la evaluación',
         }
 
-class frm_cicloeva(ModelForm):
-#Formulario para crear un ciclo de evaluación
-    class Meta:
-        model = ciclo_eva
-        fields = (
-            'fch_ini',
-            'fch_fin',
-            'estado_eva',
-        )
-        labels = {
-            'fch_ini' : 'Fecha de inicio de la evaluación del proyecto',
-            'fch_fin' : 'Fecha de finalización de la evaluación del proyecto',
-            'estado_eva' : 'Estado de la evaluación',
-        }
-
 class frm_resultado(ModelForm):
 #Formulario para crear un resultado
     class Meta:
-        model = resultado
+        model = res_eva
         fields = (
             'valor_total',  
             'ls_comen', 
@@ -114,7 +99,7 @@ class frm_defi(ModelForm):
     class Meta:
         model = defi
         fields = (
-            'id_usu',
+            'resp_defi',
             'tipo_def',
             'vers',
             'fch_reg',
@@ -126,7 +111,7 @@ class frm_defi(ModelForm):
             'fch_mod',
         )
         labels = {
-            'id_usu' : 'Responsable',
+            'resp_defi' : 'Responsable',
             'tipo_def' : 'Tipo', 
             'vers' : 'Versión',
             'fch_reg' : 'Fecha de registro',

@@ -80,7 +80,7 @@ class frm_crea_tarea(ModelForm):
     class Meta:
         model = tarea
         fields = (
-            'id_usu',
+            'resp_tarea',
             'nombre_tarea',
             'desc_tarea',
             'fch_ini_tarea',
@@ -90,7 +90,7 @@ class frm_crea_tarea(ModelForm):
             #'docu_tar',
         )
         labels = {
-            'id_usu': 'Responsable de la tarea',
+            'resp_tarea': 'Responsable de la tarea',
             'nombre_tarea' : 'Nombre de la tarea',
             'desc_tarea' : 'Descripción de la tarea',
             'fch_ini_tarea' : 'Fecha de inicio de la tarea',
@@ -105,7 +105,7 @@ class frm_crea_acti(ModelForm):
     class Meta:
         model = acti
         fields = (
-            'id_usu',
+            'resp_acti',
             'nombre_acti',
             'desc_acti',
             'fch_ini_acti',
@@ -115,7 +115,7 @@ class frm_crea_acti(ModelForm):
             #'docu_acti',
         )
         labels = {
-            'id_usu' : 'Responsable de la actividad',
+            'resp_acti' : 'Responsable de la actividad',
             'nombre_acti' : 'Nombre de la actividad',
             'desc_acti' : 'Descripción de la actividad',
             'fch_ini_acti' : 'Fecha de inicio de la actividad',

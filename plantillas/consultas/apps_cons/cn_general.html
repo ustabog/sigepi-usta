@@ -1,7 +1,7 @@
 {% load static %}
 {% block consulta %}
 <div>
-    <p>Consulta listado de Evaluaciones de Proyecto</p>
+    <p>Consulta general</p>
 </div>
 
 {% if form.errors %}
@@ -39,18 +39,19 @@
 <form method="GET">
     {{form.as_ul}}
     <div>
-        % for crono_pry in  object_list %}
+        {% for crono_pry in  object_list %}
             <h2>Cronogramas</h2>
             <label> {{ crono_pry.nomb_crono}} </label>
             <label> {{ crono_pry.desc_crono}} </label>
             <label> {{ crono_pry.fch_ini_pry}} </label>
             <label> {{ crono_pry.fch_fin_pry}} </label><br>
-            {% endfor %}
+            
             <a href='creaeta'><input type="button" value="Crear etapa"></a>   
             <a href='creafase'><input type="button" value="Crear fase"></a>  
             <a href='creaproc'><input type="button" value="Crear proceso"></a> 
             <a href='creatar'><input type="button" value="Crear tarea"></a> 
             <a href='creacti'><input type="button" value="Crear actividad"></a>
+        {% endfor %}
     </div>
 </form>
 
@@ -84,7 +85,5 @@
         {% endfor %}
     </div>
 </form>
-
-
-        
+   
 {% endblock consulta %}

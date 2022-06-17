@@ -20,7 +20,7 @@ class vst_crea_crono(CreateView):
     model = crono_pry
     form_class = frm_crea_crono
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy("cncrono")
+    success_url= reverse_lazy('cn_general')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,7 +31,7 @@ class vst_crea_crono(CreateView):
 class vst_ls_crono(ListView):
     # clase para listar los cronogramas de un usuario
     model = crono_pry
-    template_name = 'consultas/apps_cons/cn_crono.html'
+    template_name = 'cn_general.html'
     queryset = crono_pry.objects.order_by('nomb_crono')
 
     def get_context_data(self, **kwargs):
@@ -44,13 +44,13 @@ class vts_edit_crono(UpdateView):
     model = crono_pry
     form_class = frm_crea_crono
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_general')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar un cronograma' 
         context ['entity'] = 'crono_pry'
-        context ['list_url'] = reverse_lazy('cn_crono')
+        context ['list_url'] = reverse_lazy('cn_general')
         context ['action'] = 'edit'
         return context
 
@@ -60,7 +60,7 @@ class vst_crea_etapa(CreateView):
     model = etapa
     form_class = frm_crea_etapa
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html' 
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -71,7 +71,7 @@ class vst_crea_etapa(CreateView):
 class vst_ls_etapa(ListView):
     # clase para listar las etapas de un cronograma
     model = etapa
-    template_name = 'consultas/apps_cons/cn_crono.html'
+    template_name = 'cn_detalle.html'
     queryset = etapa.objects.order_by('nombre_eta')
     context_object_name = 'lista_etapa'
 
@@ -85,13 +85,13 @@ class vts_edit_etapa(UpdateView):
     model = etapa
     form_class = frm_crea_etapa
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar etapa' 
         context ['entity'] = 'etapa'
-        context ['list_url'] = reverse_lazy('cn_crono')
+        context ['list_url'] = reverse_lazy('cn_detalle')
         context ['action'] = 'edit'
         return context
 
@@ -101,7 +101,7 @@ class vst_crea_fase(CreateView):
     model = fase
     form_class = frm_crea_fase
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -112,7 +112,7 @@ class vst_crea_fase(CreateView):
 class vst_ls_fase(ListView):
     # clase para listar las fases de una etapa
     model = fase
-    template_name = 'consultas/apps_cons/cn_crono.html'
+    template_name = 'cn_detalle.html'
     queryset = fase.objects.order_by('nombre_fase')
     context_object_name = 'lista_etapa'
 
@@ -126,13 +126,13 @@ class vts_edit_fase(UpdateView):
     model = fase
     form_class = frm_crea_fase
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar fase' 
         context ['entity'] = 'fase'
-        context ['list_url'] = reverse_lazy('cn_crono')
+        context ['list_url'] = reverse_lazy('cn_detalle')
         context ['action'] = 'edit'
         return context
 #------------------------------ PROCESO ---------------------
@@ -141,7 +141,7 @@ class vst_crea_proc(CreateView):
     model = proceso
     form_class = frm_crea_proc
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -152,7 +152,7 @@ class vst_crea_proc(CreateView):
 class vst_ls_proc(ListView):
     # clase para listar los procesos de una fase
     model = proceso
-    template_name = 'consultas/apps_cons/cn_crono.html'
+    template_name = 'cn_detalle.html'
     queryset = proceso.objects.order_by('nombre_proc')
     context_object_name = 'lista_proceso'
 
@@ -166,13 +166,13 @@ class vts_edit_proc(UpdateView):
     model = proceso
     form_class = frm_crea_proc
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar proceso' 
         context ['entity'] = 'proceso'
-        context ['list_url'] = reverse_lazy('cn_crono')
+        context ['list_url'] = reverse_lazy('cn_detalle')
         context ['action'] = 'edit'
         return context
 #------------------------------ TAREA ---------------------
@@ -181,7 +181,7 @@ class vst_crea_tarea(CreateView):
     model = tarea
     form_class = frm_crea_tarea
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -192,7 +192,7 @@ class vst_crea_tarea(CreateView):
 class vst_ls_tarea(ListView):
     # clase para listar las tareas de un proceso
     model = tarea
-    template_name = 'consultas/apps_cons/cn_crono.html'
+    template_name = 'cn_detalle.html'
     queryset = tarea.objects.order_by('nombre_tarea')
     context_object_name = 'lista_tarea'
 
@@ -206,13 +206,13 @@ class vts_edit_tarea(UpdateView):
     model = tarea
     form_class = frm_crea_tarea
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar tarea' 
         context ['entity'] = 'tarea'
-        context ['list_url'] = reverse_lazy('cn_crono')
+        context ['list_url'] = reverse_lazy('cn_detalle')
         context ['action'] = 'edit'
         return context
 
@@ -222,7 +222,7 @@ class vst_crea_acti(CreateView):
     model = acti
     form_class = frm_crea_acti
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -233,7 +233,7 @@ class vst_crea_acti(CreateView):
 class vst_ls_acti(ListView):
     # clase para listar las tareas de un proceso
     model = acti
-    template_name = 'consultas/apps_cons/cn_crono.html'
+    template_name = 'cn_detalle.html'
     queryset = acti.objects.order_by('nombre_acti')
     context_object_name = 'lista_acti'
 
@@ -247,12 +247,12 @@ class vts_edit_acti(UpdateView):
     model = acti
     form_class = frm_crea_acti
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_crono')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar actividad' 
         context ['entity'] = 'acti'
-        context ['list_url'] = reverse_lazy('cn_crono')
+        context ['list_url'] = reverse_lazy('cn_detalle')
         context ['action'] = 'edit'
         return context

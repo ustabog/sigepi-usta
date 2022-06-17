@@ -35,7 +35,6 @@ urlpatterns = [
     path('cnrub/', vst_ls_rub.as_view(), name = 'cn_rub'), #Consultar rúbrica
     path('creacrit/', vst_crear_crit.as_view(), name = 'crear_crit'), #Crear criterios de la rúbrica
     path('crearango/', vst_crear_rango.as_view(), name = 'crear_rango'), #Crear un rango de evaluación
-    path('creaciclo/', vst_crear_cicloeva.as_view(), name = 'crear_ciclo'), #Crear un ciclo de evaluación  
     path('crearesul/', vst_crear_resul.as_view(), name = 'crear_resul'), #Crear un resultado de evaluación
     path('creatipo/', vst_crear_tipoeva.as_view(), name = 'crear_tipo'), #Crear tipo de evaluación 
     path('creardefi/', vst_crear_defi.as_view(), name = 'crear_defi'), #Crear definición, comentario, recomendación

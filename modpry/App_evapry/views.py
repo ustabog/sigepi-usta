@@ -21,8 +21,8 @@ class vst_reg_evapry(CreateView):
     #Clase de la vista de registro de una evaluación de proyecto
     model = eva_pry
     form_class = frm_evapry
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_evapry')
+    template_name = 'mod_pry_frm_crear.html'
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,7 +33,7 @@ class vst_reg_evapry(CreateView):
 class vst_ls_evapry(ListView):
     # clase para listar las evaluaciones de proyectos
     model = eva_pry
-    template_name = 'cn_evapry.html'
+    template_name = 'cn_general.html'
     queryset = eva_pry.objects.order_by('nomb_eva')
     context_object_name = 'lista_evapry'
 
@@ -47,13 +47,13 @@ class vts_edit_evapry(UpdateView):
     model = eva_pry
     form_class = frm_evapry
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_evapry')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar la evaluación del proyecto' 
         context ['entity'] = 'Evaluación'
-        context ['list_url'] = reverse_lazy('cn_evapry')
+        context ['list_url'] = reverse_lazy('cn_detalle')
         context ['action'] = 'edit'
         return context
 
@@ -63,7 +63,7 @@ class vst_crear_crit(CreateView):
     model = crit_eva
     form_class = frm_criterio
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_evapry')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -74,7 +74,7 @@ class vst_crear_crit(CreateView):
 class vst_ls_crit(ListView):
     # clase para listar los criterios de evaluación
     model = crit_eva
-    template_name = 'consultas/apps_cons/cn_evapry.html'
+    template_name = 'cn_detalle.html'
     queryset = eva_pry.objects.order_by('nomb_eva')
     context_object_name = 'lista_evapry'
 
@@ -88,13 +88,13 @@ class vts_edit_evapry(UpdateView):
     model = eva_pry
     form_class = frm_evapry
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_evapry')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar la evaluación del proyecto' 
         context ['entity'] = 'Evaluación'
-        context ['list_url'] = reverse_lazy('cn_evapry')
+        context ['list_url'] = reverse_lazy('cn_detalle')
         context ['action'] = 'edit'
         return context
 #----------------------- Para una rúbrica ----------------
@@ -103,7 +103,7 @@ class vst_crear_rub(CreateView):
     model = rubr_eva
     form_class = frm_rubrica
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_rub')
+    success_url= reverse_lazy('cn_general')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -114,7 +114,7 @@ class vst_crear_rub(CreateView):
 class vst_ls_rub(ListView):
     # clase para listar las rúbricas de evaluación
     model = rubr_eva
-    template_name = 'consultas/apps_cons/cn_evapry.html'
+    template_name = 'cn_general.html'
     queryset = rubr_eva.objects.order_by('nomb_rub')
 
     def get_context_data(self, **kwargs):
@@ -127,7 +127,7 @@ class vst_crear_rango(CreateView):
     model = rango_eva
     form_class = frm_rangoeva
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_evapry')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -138,7 +138,7 @@ class vst_crear_rango(CreateView):
 class vst_ls_rango(ListView):
     # clase para listar los rangos de evaluación
     model = rango_eva
-    template_name = 'consultas/apps_cons/cn_evapry.html'
+    template_name = 'cn_detalle.html'
     queryset = rango_eva.objects.order_by('nombre_rango')
 
     def get_context_data(self, **kwargs):
@@ -152,7 +152,7 @@ class vst_crear_resul(CreateView):
     model = res_eva
     form_class = frm_resultado
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_evapry')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -163,7 +163,7 @@ class vst_crear_resul(CreateView):
 class vst_ls_resultado(ListView):
     # clase para listar los resultados de evaluación
     model = res_eva
-    template_name = 'consultas/apps_cons/cn_evapry.html'
+    template_name = 'cn_detalle.html'
     queryset = res_eva.objects.order_by('valor_total')
 
     def get_context_data(self, **kwargs):
@@ -176,7 +176,7 @@ class vst_crear_tipoeva(CreateView):
     model = tipo_eva
     form_class = frm_tipoeva
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_evapry')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -187,7 +187,7 @@ class vst_crear_tipoeva(CreateView):
 class vst_ls_tipoeva(ListView):
     # clase para listar los tipos de evaluación
     model = tipo_eva
-    template_name = 'consultas/apps_cons/cn_evapry.html'
+    template_name = 'cn_detalle.html'
     queryset = tipo_eva.objects.order_by('tipo_eva')
 
     def get_context_data(self, **kwargs):
@@ -201,7 +201,7 @@ class vst_crear_defi(CreateView):
     model = defi
     form_class = frm_defi
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_evapry')
+    success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -212,7 +212,7 @@ class vst_crear_defi(CreateView):
 class vst_ls_defi(ListView):
     # clase para listar las definiciones, comentarios, recomendaciones, etc.
     model = defi
-    template_name = 'consultas/apps_cons/cn_evapry.html'
+    template_name = 'cn_detalle.html'
     queryset = defi.objects.order_by('tipo_def')
 
     def get_context_data(self, **kwargs):
