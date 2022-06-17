@@ -1,10 +1,10 @@
 # Este codigo se trae de el modulo de consulta
 from django import forms
-from modadm.App_modadm.models import usu
-from modadm.App_regusu.models import *
-from modadm.App_regusugr.models import usugr
-from modadm.App_regusui.models import usui
-from modadm.App_modadm.models import mod
+from modadm.app_modadm.models import usu
+from modadm.app_regusu.models import *
+from modadm.app_regusugr.models import usugr
+from modadm.app_regusui.models import usui
+from modadm.app_modadm.models import mod
 
 class frm_con_usu(forms.ModelForm):
     #Calse que automatiza la creación de formularios de consulta de Usuario en Django.

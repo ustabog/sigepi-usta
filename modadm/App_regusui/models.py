@@ -1,8 +1,8 @@
 from django.db import models
 #from django.contrib.auth.models import User
-from modadm.App_modadm.models import *
-from modadm.App_regusu.models import *
-from modadm.App_regusugr.models import *
+from modadm.app_modadm.models import *
+from modadm.app_regusu.models import *
+from modadm.app_regusugr.models import *
 
 #Clases de la Aplicación Registro de Instituciones
 ###############################################################

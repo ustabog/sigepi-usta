@@ -4,10 +4,10 @@ from django.views.generic import CreateView, DeleteView,ListView,UpdateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .form import *
-from modadm.App_regusu.models import usu_inf_apps
-from modadm.App_regusugr.models import usugr
-from modadm.App_regusui.models import usui
-from modadm.App_modadm.models import *
+from modadm.app_regusu.models import usu_inf_apps
+from modadm.app_regusugr.models import usugr
+from modadm.app_regusui.models import usui
+from modadm.app_modadm.models import *
 
 class consulta():
     #Clase que permite una consulta genérica desde la página principal sin estar registrado en el sistema.

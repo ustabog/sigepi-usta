@@ -25,11 +25,11 @@ from django.contrib.auth import views as auth_views
 #from rest_framework.routers import DefaultRouter
 
 #Librerías de aplicaciones
-from modadm.App_modadm.views import *
-from modadm.App_modadm.urls import *
-from modcons.App_cons.views import *
-from modadm.App_regusu.urls import *
-from modadm.App_regusugr.urls import *
+from modadm.app_modadm.views import *
+from modadm.app_modadm.urls import *
+from modcons.app_cons.views import *
+from modadm.app_regusu.urls import *
+from modadm.app_regusugr.urls import *
 
 from .views import *
 
@@ -42,14 +42,14 @@ if settings.DEBUG:
 
 urlpatterns = [
     path('admdjg/', admin.site.urls),
-    #Direcciones de la Aplicación App_regusu
-    path('modadm/',include("modadm.App_regusu.urls")),
-    #Direcciones de la Aplicación App_regusui
-    path('modadm/',include("modadm.App_regusui.urls")),
-    #Direcciones de la Aplicación App_reguusgr
-    path('modadm/',include("modadm.App_regusugr.urls")),
-    #Direcciones de la aplicación App_modadm
-    path('modadm/',include("modadm.App_modadm.urls")),
+    #Direcciones de la Aplicación app_regusu
+    path('modadm/',include("modadm.app_regusu.urls")),
+    #Direcciones de la Aplicación app_regusui
+    path('modadm/',include("modadm.app_regusui.urls")),
+    #Direcciones de la Aplicación app_reguusgr
+    path('modadm/',include("modadm.app_regusugr.urls")),
+    #Direcciones de la aplicación app_modadm
+    path('modadm/',include("modadm.app_modadm.urls")),
 
     #direcciones del front (finales en producción)
     path('',front().vst_raiz),
@@ -61,12 +61,12 @@ urlpatterns = [
     path('registro', front().vst_registro, name ='registro'),
 
     #Direcciones módulo de proyectos
-    path('pry/', include('modpry.App_modpry.urls')),
-    path('pry/', include('modpry.App_regpry.urls')),
+    path('pry/', include('modpry.app_modpry.urls')),
+    path('pry/', include('modpry.app_regpry.urls')),
 
     #consultas globales
     #path('conusus', vts_ls_usu.as_view(), name='consulta_usuarios'),
-    path('modcons/', include('modcons.App_cons.urls')),
+    path('modcons/', include('modcons.app_cons.urls')),
 
     # Resetear contrasena
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name = 'password_reset_form.html'), name="reset_password"),

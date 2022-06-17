@@ -1,5 +1,5 @@
 from django.db import models
-from modadm.App_modadm.models import *
+from modadm.app_modadm.models import *
 from .models import *
 
 #Tipo de rol dentro de la plataforma
@@ -187,7 +187,7 @@ class usu_inf_apps(models.Model):
     ls_roles =[[0,0]] #Listado de roles en aplicaciones y módulos autorizados por administradores de paltaforma
         # [0,] id_rol; [,0] id_usu quien autoriza. clave foranea a roles .. muchos
     #rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador de rol de sistema.
-#    app_act = models.ForeignKey(listado_aplicativo,on_delete=models.CASCADE, null=False, blank =False) # identificador de funcionalidad actual (Sistema, módulo, aplicacion, extensión, app_mod
+    #    app_act = models.ForeignKey(listado_aplicativo,on_delete=models.CASCADE, null=False, blank =False) # identificador de funcionalidad actual (Sistema, módulo, aplicacion, extensión, app_mod
 
     class Meta:
         verbose_name = 'usu_inf_apps'
@@ -295,7 +295,7 @@ class form_acad(models.Model):
         verbose_name_plural = 'form_acads'
 
 class usu_inf_acad(models.Model):
-#ESTA NO ME PARECE YA
+    #ESTA NO ME PARECE YA
     id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)  # identificador unico
     nivelform =  models.IntegerField(choices = TIPO_FORM_CO, default = 0, null=False, blank = False) # me indica la formacion qu tiene la usuario
 
@@ -393,7 +393,7 @@ class rl_usu_inf_hab(models.Model): # relacion de listado de id de habilidades r
 
 class valid_hab(models.Model): # verificar esta
     #clase que procesa la información de validación social de habilidades
-#    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # Identificador del Usuario que registra la habilidad
+    #    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # Identificador del Usuario que registra la habilidad
     id_hab = models.ForeignKey(habilidades, on_delete=models.CASCADE, null=False, blank =False) #Identificador de la habilidad que se va a validar
     id_usu_val = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)  #Identificador del Usuario que valida la habilidad
     id_esc = models.CharField('IDENTIFICADOR ', max_length=20, null=False, blank = False) #Identificador de la escala de validación

@@ -1,5 +1,5 @@
 from django.urls import path, include
-from modadm.App_regusugr.views import *
+from modadm.app_regusugr.views import *
 
 urlpatterns = [
     #url para crear registro de igrupo

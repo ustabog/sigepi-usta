@@ -16,9 +16,9 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 #from rest_framework import viewsets
 from .models import *
 from .form import *
-from modadm.App_regusu.models import *
-#from modcons.App_cons.form import frm_con_usu
-#from modcons.App_cons.views import vts_ls_usu
+from modadm.app_regusu.models import *
+#from modcons.app_cons.form import frm_con_usu
+#from modcons.app_cons.views import vts_ls_usu
 
 ##### CRUD USUARIO ######################################################
 
@@ -38,7 +38,7 @@ class vts_reg_usu(CreateView):
                 login(request, usuario)
                 return redirect(to='consulta_usuarios')
             data["form"] = formulario
-        return render(request,'App_regusu_frm_nvo_usu.html', data )
+        return render(request,'app_regusu_frm_nvo_usu.html', data )
 
 class vts_ls_usu(ListView, PermissionRequiredMixin):
     # clase para listar usuarios del sistema
@@ -53,7 +53,7 @@ class vst_mod_usu(UpdateView, PermissionRequiredMixin):
     model = usu
     form_class = frm_con_usu
     exclude = ['passord']
-    template_name = 'App_regusu_frm_edt_usu.html'
+    template_name = 'app_regusu_frm_edt_usu.html'
     success_url = reverse_lazy('consulta_usuarios')
 
 def eli_usu(request, id):
@@ -65,7 +65,7 @@ def eli_usu(request, id):
 # class vts_eli_usu(DeleteView):
 #     #eliminar usuarios
 #     model = usu
-#     template_name = 'App_regusu_verificacion.html'
+#     template_name = 'app_regusu_verificacion.html'
 #     success_url = reverse_lazy('cn_usu.html')
 ############FIN - Registro como invitado################
 
@@ -74,7 +74,7 @@ class func_usu():
     #vista para listar usuarios
     def vst_ls_mod_usu(self, solicitud):
         #vista para istar los usuarios
-        plt = loader.get_template('App_regusu_ls_usu.html')
+        plt = loader.get_template('app_regusu_ls_usu.html')
         respuesta = plt.render()
         return HttpResponse(respuesta)
 
@@ -88,7 +88,7 @@ class infopersCreate(CreateView, PermissionRequiredMixin):
     #crear información de las personas
     model = usu_inf_pers
     form_class = frm_reg_usu_pers
-    template_name = 'App_regusu_frm_crearinfopers.html'
+    template_name = 'app_regusu_frm_crearinfopers.html'
     success_url = reverse_lazy('infopers')
 
     def form_valid(self, form):
@@ -100,19 +100,19 @@ class infopersCreate(CreateView, PermissionRequiredMixin):
 class infoperslList(ListView, PermissionRequiredMixin): #hereda de listwview
     #información de las personas
     model = usu_inf_pers
-    template_name = 'App_regusu_ls_infopers.html'
+    template_name = 'app_regusu_ls_infopers.html'
     
 class infopersUpdate(UpdateView, PermissionRequiredMixin):
     #modificar la información de los usuarios
     model = usu_inf_pers
     form_class = frm_reg_usu_pers
-    template_name = 'App_regusu_frm_crearinfopers.html'
+    template_name = 'app_regusu_frm_crearinfopers.html'
     success_url = reverse_lazy('infopers')
 
 class infopersDelete(DeleteView, PermissionRequiredMixin):
     #eliminar usuarios
     model = usu_inf_pers
-    template_name = 'App_regusu_verificacion.html'
+    template_name = 'app_regusu_verificacion.html'
     success_url = reverse_lazy('infopers')
 
 ########## CRUD DISCAPACIDAD ###############################
@@ -121,7 +121,7 @@ class vts_reg_discapacidad(CreateView, PermissionRequiredMixin):
     #crear información de las personas
     model = discapacidad
     form_class = frm_con_discapacidad
-    template_name = 'App_regusu_frm_discapacidad.html'
+    template_name = 'app_regusu_frm_discapacidad.html'
     success_url = reverse_lazy('cons_discapacidad')
     success_message = 'La discapacidad fue creada satisfactoriamente'
     permission_required = 'discapacidad.add_discapacidad'
@@ -139,13 +139,13 @@ class vts_edt_discapacidad(UpdateView, PermissionRequiredMixin):
     #clase que almacena los modulos generales del sistema
     model = discapacidad
     form_class = frm_con_discapacidad
-    template_name = 'App_regusu_frm_discapacidad.html'
+    template_name = 'app_regusu_frm_discapacidad.html'
     success_url = reverse_lazy('cons_discapacidad')
     permission_required = 'discapacidad.change_discapacidad'
 
 class vts_del_discapacidad(DeleteView, PermissionRequiredMixin):
     model = discapacidad
-    template_name = 'App_regusu_del_discapacidad.html'
+    template_name = 'app_regusu_del_discapacidad.html'
     success_url = reverse_lazy('cons_discapacidad')
     permission_required = 'discapacidad.delete_discapacidad'
 
@@ -155,7 +155,7 @@ class vts_reg_usu_inf_pers(CreateView, PermissionRequiredMixin):
     #crear información de las personas
     model = usu_inf_pers
     form_class = frm_con_usu_inf_pers
-    template_name = 'App_regusu_frm_infopers.html'
+    template_name = 'app_regusu_frm_infopers.html'
     success_url = reverse_lazy('cons_infopers')
     success_message = 'La discapacidad fue creada satisfactoriamente'
     permission_required = 'usu_inf_pers.add_usu_inf_pers'
@@ -173,12 +173,12 @@ class vts_edt_usu_inf_pers(UpdateView, PermissionRequiredMixin):
     #clase que almacena los modulos generales del sistema
     model = usu_inf_pers
     form_class = frm_con_usu_inf_pers
-    template_name = 'App_regusu_frm_infopers.html'
+    template_name = 'app_regusu_frm_infopers.html'
     success_url = reverse_lazy('cons_infopers')
     permission_required = 'usu_inf_pers.change_usu_inf_pers'
 
 class vts_del_usu_inf_pers(DeleteView, PermissionRequiredMixin):
     model = usu_inf_pers
-    template_name = 'App_regusu_del_infopers.html'
+    template_name = 'app_regusu_del_infopers.html'
     success_url = reverse_lazy('cons_infopers')
     permission_required = 'usu_inf_pers.delete_usu_inf_pers'

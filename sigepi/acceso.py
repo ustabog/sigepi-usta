@@ -3,7 +3,7 @@
 #fecha 24/04/2021
 from django.contrib.auth.models import User
 from .form import *
-from modadm.App_regusu.models import usu_inf_apps
+from modadm.app_regusu.models import usu_inf_apps
 
 
 class ls_rolusu():

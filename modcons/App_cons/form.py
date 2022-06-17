@@ -1,9 +1,9 @@
 from django import forms
 #from django.contrib.auth.models import User
-from modadm.App_regusu.models import *
-from modadm.App_regusugr.models import usugr
-from modadm.App_regusui.models import usui
-from modadm.App_modadm.models import *
+from modadm.app_regusu.models import *
+from modadm.app_regusugr.models import usugr
+from modadm.app_regusui.models import usui
+from modadm.app_modadm.models import *
 
 class frm_con_usu(forms.ModelForm):
     #Calse que automatiza la creación de formularios de consulta de Usuario en Django.

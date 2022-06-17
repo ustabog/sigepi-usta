@@ -26,8 +26,8 @@ from django.contrib.auth import views as auth_views
 from django.contrib import messages
 from .form import *
 from django.contrib.auth.models import Group
-from modadm.App_conf.stlapp import estilo
-# from modadm.App_regusu.models import usu_inf_apps
+from modadm.app_conf.stlapp import estilo
+# from modadm.app_regusu.models import usu_inf_apps
 
 class front():
 #Clase que procesa las vistas del front de SIGEPI-USTA

@@ -15,7 +15,7 @@ Módulo administrativo SIGEPI
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from modadm.App_modadm.models import *
+from modadm.app_modadm.models import *
 from .models import *
 
 class frm_reg_usu(UserCreationForm):

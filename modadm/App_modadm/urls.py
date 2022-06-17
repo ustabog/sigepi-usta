@@ -3,13 +3,13 @@ from django.contrib.auth.views import *
 from django.contrib.auth import views as auth_views
 # from django.conf.urls import url
 #from rest_framework.routers import DefaultRouter
-from modadm.App_modadm.views import *
+from modadm.app_modadm.views import *
 from .models import *
 
 urlpatterns = [
 # direcciones del modulo admin
     path('',portada_adm().vst_raiz),
-    path('inicio',portada_adm().vst_inicio, name = 'inicio'),
+    path('inicio',portada_adm().vst_inicio, name = 'inicio_adm'),
     
 # registrar modulos
     path('reg_mod/', vts_reg_mod.as_view(), name ='reg_mod'),

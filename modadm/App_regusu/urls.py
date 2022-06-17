@@ -2,7 +2,7 @@ from django.urls import path, include
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import views as auth_views
 #from rest_framework.routers import DefaultRouter
-from modadm.App_regusu.views import *
+from modadm.app_regusu.views import *
 from .models import *
 
 
@@ -38,7 +38,6 @@ urlpatterns = [
     path('cons_infopers/', vts_ls_usu_inf_pers.as_view(), name = 'cons_infopers'),
     path('edt_infopers/<int:pk>/', vts_edt_usu_inf_pers.as_view(), name='edt_infopers'),
     path('eli_infopers/<int:pk>/', vts_del_usu_inf_pers.as_view(), name='eli_infopers'),
-
 
 ]
     

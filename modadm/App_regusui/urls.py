@@ -1,5 +1,5 @@
 from django.urls import path, include
-from modadm.App_regusui.views import *
+from modadm.app_regusui.views import *
 
 urlpatterns = [
     #url para crear registro de institución

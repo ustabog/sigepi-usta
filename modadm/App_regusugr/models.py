@@ -1,6 +1,6 @@
 from django.db import models
-from modadm.App_modadm.models import *
-from modadm.App_regusu.models import *
+from modadm.app_modadm.models import *
+from modadm.app_regusu.models import *
 
 class etapa_gr(models.Model):
     #Clase que registra las etapas de los grupos de investigación en el sistema.

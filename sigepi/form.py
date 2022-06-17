@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import fields
 
-from modadm.App_modadm.models import usu
+from modadm.app_modadm.models import usu
 
 
 class frm_reg_usu_su(forms.ModelForm):

@@ -130,23 +130,22 @@
 .trj_pry {
     @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:1fr,$tam_fr2:45px,$tam_fr3:0fr);
     position:relative;
+    width: 240px;
+    height: 360px;
     border-radius: 5px;
     background: linear-gradient(45deg, var(--color-blanco),var(--color-primario-tr));
     border: 2px solid rgba(115, 204, 255, 0.521);
     box-shadow: 5px 5px 5px var(--color-primario-oscuro);
     overflow:auto;
-    width: 240px;
-    height: 360px;
     align-self:center;
     margin: auto;
     &_simple{
         @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:1fr,$tam_fr2:4fr,$tam_fr3:0fr);
-        width: 100%;
-        height: 100%;
         overflow:hidden;
+        color: var(--color-blanco);
         .cnt_sup{
             @include extruc_gr_pn($num_col:2,$num_filas:1,$tam_fr1:1fr,$tam_fr2:1fr,$tam_fr3:0fr);
-            background: var(--color-primario-oscuro);
+            background: var(--color-primario);
             &_img{
                 @include extruc_gr_pn($num_col:1,$num_filas:2,$tam_fr1:4fr,$tam_fr2:1fr,$tam_fr3:0fr);
                 background: var(--color-primario);
@@ -155,7 +154,8 @@
                 }
             }
             &_titulo{
-                color: var(--color-blanco);
+                text-align: center;
+                color:var(--color-blanco);
                 text-align: center;
             }
         }
@@ -260,7 +260,7 @@
         overflow:hidden;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 100%;
+        height: 100%;
         padding: 3px;
         align-items: center;
         a{
