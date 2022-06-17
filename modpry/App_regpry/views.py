@@ -21,7 +21,7 @@ class vts_reg_pry(CreateView):
     model = pry_base
     form_class = frm_reg_pry
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_pry')
+    success_url= reverse_lazy('cn_ls_pry')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -32,7 +32,7 @@ class vts_reg_pry(CreateView):
 class vts_ls_pry(ListView):
     # clase para listar proyectos del sistema
     model = pry_base
-    template_name = 'cn_general.html'
+    template_name = 'cn_ls_pry.html'
     queryset = pry_base.objects.order_by('nombre_pry')
     context_object_name = 'lista_pry'
 
@@ -46,7 +46,7 @@ class vts_edit_pry(UpdateView):
     model = pry_base
     form_class = frm_reg_pry
     template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_general')
+    success_url= reverse_lazy('cn_ls_pry')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -69,6 +69,6 @@ def eli_pry(request,id):
     if request.method == 'POST':
         PRY_ARCHIVADO == 1
         pry.delete()
-        return redirect('cn_general')
+        return redirect('cn_ls_pry')
     return render (request, 'pry/app_pry/modpry/mod_pry_frm_eli.html',{'pry_base': pry_base})
 

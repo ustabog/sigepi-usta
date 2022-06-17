@@ -10,10 +10,10 @@
 
 <!--CONSULTAR EL REGISTRO DE UN PROYECTO-->
 <form method="GET">
-    {{form.as_ul}}
+    {{form.as_p}}
     <div>
         {% for pry_base in  object_list %}
-        <h2>Prroyectos</h2>
+        <h2>Proyectos</h2>
         <label> {{ pry_base.nombre_pry}} </label>
         <label> {{ pry_base.desc_pry}} </label>
         <label> {{ pry_base.tipo_pry}} </label>
