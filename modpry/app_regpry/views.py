@@ -20,8 +20,8 @@ class vts_reg_pry(CreateView):
     #Clase de la vista de registro de proyecto 
     model = pry_base
     form_class = frm_reg_pry
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_ls_pry')
+    template_name = 'mod_pry_frm_crear.html'
+    success_url= reverse_lazy('cn_trj_pry')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -32,7 +32,7 @@ class vts_reg_pry(CreateView):
 class vts_ls_pry(ListView):
     # clase para listar proyectos del sistema
     model = pry_base
-    template_name = 'cn_ls_pry.html'
+    template_name = 'cn_trj_pry.html'
     queryset = pry_base.objects.order_by('nombre_pry')
     context_object_name = 'lista_pry'
 
@@ -45,14 +45,14 @@ class vts_edit_pry(UpdateView):
     #Clase de la vista para actualizar el registro de un proyecto 
     model = pry_base
     form_class = frm_reg_pry
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_ls_pry')
+    template_name = 'mod_pry_frm_editar.html'
+    success_url= reverse_lazy('cn_trj_pry')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar un proyecto' 
         context ['entity'] = 'pry'
-        context ['list_url'] = reverse_lazy('cn_general')
+        context ['list_url'] = reverse_lazy('cn_trj_pry')
         context ['action'] = 'edit'
         return context
 
@@ -69,6 +69,6 @@ def eli_pry(request,id):
     if request.method == 'POST':
         PRY_ARCHIVADO == 1
         pry.delete()
-        return redirect('cn_ls_pry')
-    return render (request, 'pry/app_pry/modpry/mod_pry_frm_eli.html',{'pry_base': pry_base})
+        return redirect('cn_trj_pry')
+    return render (request, 'mod_pry_frm_eli.html',{'pry_base': pry_base})
 

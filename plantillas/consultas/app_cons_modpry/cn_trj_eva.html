@@ -1,0 +1,50 @@
+{% extends 'app_pry_iu.html' %}
+{% load static %}
+
+<!--Tarjeta para consultar la información basica de una evaluación de un proyecto-->
+{% block articulo %}
+<div class="cnt_norm" style="flex-direction: row; flex-wrap: wrap;">
+<h2>Evaluaciones de proyectos</h2>
+<br>
+{% for eva_pry in  object_list %}
+<div id="trj_pry" class="trj_pry">
+    <div id="trj_pry_simple" class="trj_pry_simple">
+        <span>simple</span>
+        <div id="cnt_sup" class="cnt_sup">
+            <div id="cnt_sup_img"  class="cnt_sup_img">
+                <i class="material-icons" style="width: 65px; height: 65px; color: var(--color-blanco);">quiz</i>
+                <span id="cnt_sup_img_base" class="cnt_sup_img_base"> {{ eva_pry.fch_ini}}</span>
+                <span id="cnt_sup_img_base" class="cnt_sup_img_base"> {{ eva_pry.fch_fin}}</span>
+            </div>
+            <div id="cnt_sup_titulo" class="cnt_sup_titulo">
+                {{ eva_pry.nomb_eva}}
+            </div>
+        </div>
+        <div id="cuerpo_pry" class="cuerpo_pry">
+            <div>
+                {{ eva_pry.desc_eva}}
+            </div>
+        </div>
+    </div>
+    <div id="" class="trj_pry_br">
+        <a  href="">
+            <i class="material-icons">description</i>
+            <span>Ver</span>
+        </a>
+        <a  href="">
+            <i class="material-icons">edit</i>
+            <span>Editar</span>
+        </a>
+        <a   href="">
+            <i class="material-icons">add</i>
+            <span>Agregar</span>
+        </a>
+        <a  href="">
+            <i class="material-icons">delete</i>
+            <span>Eliminar</span>
+        </a>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock articulo %}

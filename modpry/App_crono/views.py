@@ -19,8 +19,8 @@ class vst_crea_crono(CreateView):
     #Clase de la vista para crear un cronograma 
     model = crono_pry
     form_class = frm_crea_crono
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_general')
+    template_name = 'mod_pry_frm_crear.html'
+    success_url= reverse_lazy('cn_trj_crono.html')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,7 +31,7 @@ class vst_crea_crono(CreateView):
 class vst_ls_crono(ListView):
     # clase para listar los cronogramas de un usuario
     model = crono_pry
-    template_name = 'cn_general.html'
+    template_name = 'cn_trj_crono.html'
     queryset = crono_pry.objects.order_by('nomb_crono')
 
     def get_context_data(self, **kwargs):
@@ -43,14 +43,14 @@ class vts_edit_crono(UpdateView):
     #Clase de la vista para actualizar o editar el cronograma de un proyecto 
     model = crono_pry
     form_class = frm_crea_crono
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_general')
+    template_name = 'mod_pry_frm_editar.html'
+    success_url= reverse_lazy('cn_trj_crono.html')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar un cronograma' 
         context ['entity'] = 'crono_pry'
-        context ['list_url'] = reverse_lazy('cn_general')
+        context ['list_url'] = reverse_lazy('cn_trj_crono.html')
         context ['action'] = 'edit'
         return context
 

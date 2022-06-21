@@ -10,7 +10,7 @@ class frm_evapry(ModelForm):
         fields = (
             'nomb_eva',
             'desc_eva',
-            'tipo_eva',
+            'rubrica',
             'fch_ini',
             'fch_fin',
             'estado_eva',

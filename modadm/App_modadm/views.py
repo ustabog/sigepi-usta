@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from .models import *
 from .form import *
 from modcons.app_cons.form import frm_con_mod
-from .roles import roles
+#from .roles import roles
 
 class portada_adm():
     #Clase que presenta la portada del administrador de SIGEPI.
@@ -112,7 +112,7 @@ class vts_reg_rol(CreateView, PermissionRequiredMixin):
     template_name = 'app_ma_frm_crearrol.html'
     success_url = reverse_lazy('consulta_rol')
     success_message = 'El rol fue creado satisfactoriamente'
-    crear_rol = roles.crear_roles(self=None)
+    #crear_rol = roles.crear_roles(self=None)
     permission_required = 'rol.add_rol'
 
 class vts_ls_rol(ListView, PermissionRequiredMixin): 
