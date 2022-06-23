@@ -32,6 +32,7 @@ class acti(models.Model):
     url_acti = models.URLField('URL de la evidencia de la actividad', null=False, blank=False)#URL de la evidencia de la actividad
     #ima_acti = models.ImageField('Imagen de la evidencia de la actividad',upload_to=None)#Imagen de la evidencia de la actividad
     #docu_acti = models.FileField('Archivo de la evidencia de la actividad',upload_to = None)#Documento de la evidencia de la actividad
+    acti_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la actividad es borrada queda como archivada
     class Meta:
         verbose_name = 'actividad'
         verbose_name_plural = 'actividades'
@@ -50,6 +51,7 @@ class tarea(models.Model):
     url_tarea = models.URLField('URL de la evidencia de la tarea', null=False, blank=False)#URL de la evidencia de la tarea
     #ima_tar = models.ImageField('Imagen de la evidencia de la tarea',upload_to=None)#Imagen de la evidencia de la tarea
     #docu_tar = models.FileField('Archivo de la evidencia de la tarea',upload_to = None)#Documento de la evidencia de la tarea
+    tarea_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la tarea es borrada queda como archivada
     class Meta:
         verbose_name = 'tarea'
         verbose_name_plural = 'tareas'
@@ -61,6 +63,7 @@ class proceso(models.Model):
     fch_ini_proc = models.DateField('Fecha de inicio del proceso', auto_now=False)#Fecha de inicio del proceso
     fch_fin_proc =  models.DateField('Fecha de finalización del proceso', auto_now=False)#Fecha de finalización del proceso
     tarea = models.ForeignKey(tarea, on_delete=models.SET_NULL, null=True, blank =False )#id de la tarea
+    proc_archi = models.BooleanField(null = False, blank = False, default = 0)#Si el proceso es borrado queda como archivado
     class Meta:
         verbose_name = 'proceso'
         verbose_name_plural = 'procesos'
@@ -73,6 +76,7 @@ class fase(models.Model):
     fch_ini_fase = models.DateField('Fecha de inicio de la fase', auto_now=False)#Fecha de inicio de la fase
     fch_fin_fase =  models.DateField('Fecha de finalización de la fase', auto_now=False)#Fecha de finalización de la fase
     proceso = models.ForeignKey(proceso, on_delete=models.SET_NULL, null=True, blank =False )#id de la proceso
+    fase_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la fase es borrada queda como archivada
     
     class Meta:
         verbose_name = 'fase'
@@ -86,6 +90,7 @@ class etapa(models.Model):
     fch_ini_eta = models.DateField('Fecha de inicio de la etapa', auto_now=False)#Fecha de inicio de la etapa
     fch_fin_eta =  models.DateField('Fecha de finalización de la etapa', auto_now=False)#Fecha de finalización de la etapa
     fase = models.ForeignKey(fase, on_delete=models.SET_NULL, null=True, blank =False )#id de la tarea
+    etapa_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la etapa es borrada queda como archivada
     class Meta:
         verbose_name = 'etapa'
         verbose_name_plural = 'etapas'
@@ -98,6 +103,7 @@ class crono_pry (models.Model):
     desc_crono = models.CharField('Descripción del cronograma:', max_length=255) #Descripción del cronograma
     fch_ini_pry = models.DateField('Fecha de inicio del proyecto', auto_now=False)#Fecha de inicio del proyecto
     fch_fin_pry =  models.DateField('Fecha de finalización del proyecto', auto_now=False)#Fecha de finalización del proyecto
+    crono_archi = models.BooleanField(null = False, blank = False, default = 0)#Si el cronograma es borrado queda como archivado
     etapa = models.ForeignKey(etapa, on_delete=models.SET_NULL, null=True, blank =False )#id de la etapa
     
     class Meta:

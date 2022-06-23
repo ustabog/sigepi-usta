@@ -3,22 +3,12 @@
 
 {% block articulo %}
 <!--Plantilla para editar -->
-{% block titulo %} Funciones del cronograma {% endblock titulo %}
-{% block app %}
-  <form class="" action="" method="post">
-    {% csrf_token %}
-    {{ form2.as_p}}
-    {{ form.as_p}}
-    <button type="submit" >Editar</button>
-  </form>
-
-  {% block nomb_crono %}
-  {% endblock %}
-  {% block desc_crono %}
-  {% endblock %}
-  {% block fch_ini_pry %}
-  {% endblock %}
-  {% block fch_fin_pry %}
-
-{% endblock app %}
+<div class="cnt_norm">
+  <h1>{{ tit_form }}</h1> 
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p}}
+      <button type="submit" >Editar</button>
+    </form>
+</div>
 {% endblock articulo %}

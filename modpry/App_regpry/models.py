@@ -299,23 +299,18 @@ LINEA_TEMA = [
     (5,'Humanidades'),
     (7, 'Otro'),
     ]
-    
-PRY_ARCHIVADO = [
-    (0, 'Proyecto no archivado'),
-    (1, 'Proyecto archivado'),
-    ]
 
 #clase base de registro de proyecto
 class pry_base(models.Model):
     #clase base de registro de proyecto
-    id_pry=models.AutoField(primary_key = True) #Identificador unico del proyecto
+    id_pry=models.AutoField(primary_key = True, null = False, unique= True) #Identificador unico del proyecto
     cod_pry = models.CharField('Código proyecto:', max_length=50) # código unico del proyecto
     nombre_pry = models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
     desc_pry=models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto
     tipo_pry=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto - diccionario TIPO_PRY
     id_usu = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False) #Propietario del proyecto
     est_pry = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)
-    pry_archi = models.IntegerField(null = False, blank = False, choices = PRY_ARCHIVADO, default = 0)#Si el proyecto es borrado queda como archivado
+    pry_archi = models.BooleanField(null = False, blank = False, default = 0)#Si el proyecto es borrado queda como archivado
     #estado - por defecto borrador
     # debe esta diseño y gestion como opción, DIVIDIR LA CLASE EN PARTICIPANTES, beneficiarios, 
     #el ususario puede crear nuevos tipos, ejemplo otros 
@@ -331,6 +326,7 @@ class pry_base(models.Model):
 
 class inf_pry(models.Model):
     #Clase que contiene toda la informacion referente al proyecto
+    id_pry_base = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=True, blank =False)#Id del proyecto base 
     id_inf_pry = models.AutoField(primary_key = True)# identificador unico para  App Registro de Proyectos
     nombre_archivo = models.CharField('Nombre del archivo del proyecto: ', max_length=255)# Nombre del archivo del proyecto.
     url_archivo =models.URLField('url del archivo del proyecto',max_length=200)# Url del archivo del proyecto.

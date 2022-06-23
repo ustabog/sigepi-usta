@@ -20,6 +20,13 @@ APP_EVA_PRY = [
     (11, 'visible'),
     ]
 
+ROL = [
+    (0,'Evaluador'), 
+    (1,'Evaluado'),
+    (2,'Gestor de investigación'),
+    (3,'Coevaluador'),
+]    
+
 ESTADO_EVA = [
     (0,'Evaluación finalizada'),
     (1,'Evaluación proceso'),
@@ -52,6 +59,7 @@ class rango_eva(models.Model):
     c_eva_pry = models.IntegerField(choices = EVA_PRY,default = 0, null=False, blank = False)#Si la evaluación es cuantitativa o cualitativa
     valor_ini = models.FloatField('Valor inicial de la evaluación =', max_length=10, null=False, blank= False)#Valor inicial de la calificación cuantittativa
     valor_fin = models.FloatField('Valor final de la evaluación =', max_length=10, null=False, blank= False)#Valor final de la calificación cuantittativa
+    rng_archi = models.BooleanField(null = False, blank = False, default = 0)#Si el rango es borrado queda como archivado
     class Meta:
         verbose_name = 'rango_eva'
         verbose_name_plural = 'rango_evas'
@@ -69,6 +77,7 @@ class defi(models.Model):
     vers4 = models.CharField('Descripción', max_length=255, null=False, blank= False)#Descripción de la versión 4
     vers5 = models.CharField('Descripción', max_length=255, null=False, blank= False)#Descripción de la versión 5
     fch_mod= models.DateField('Fecha de registro', auto_now = False) #Fecha de modificación
+    defi_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la definición es borrada queda como archivada
     class Meta:
         verbose_name = 'definición'
         verbose_name_plural = 'definiciones'
@@ -99,6 +108,7 @@ class crit_eva(models.Model):
     id_crit =  models.AutoField(primary_key = True)   # identificador unico para criterios del proyecto
     nomb_crit= models.CharField('Nombre del criterio', max_length=100, null=False, blank= False) #Nombre del criterio
     desc_crit =  models.CharField('Descripción del criterio', max_length=100, null=False, blank= False) #Descripción del criterio
+    crit_archi = models.BooleanField(null = False, blank = False, default = 0)#Si el criterio es borrado queda como archivado
     class Meta:
         verbose_name = 'crit_eva'
         verbose_name_plural = 'crits_eva'
@@ -114,6 +124,7 @@ class rubr_eva(models.Model):
     #matriz_val_eval = #Matriz que relaciona el peso de cada criterio dentro de la evaluación, valores numéricos del árbol de criterios de la rúbrica
     id_usu_dis = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)#Usuario que diseña la evaluación
     vers = models.CharField('Descripción', max_length=10, null=False, blank= False)#versión de la rúbrica
+    rub_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la rúbrica es borrada queda como archivada
     class Meta:
         verbose_name = 'rubr_eva'
         verbose_name_plural = 'rubrs_eva'
@@ -130,6 +141,7 @@ class eva_pry(models.Model):
     fch_ini =  models.DateField('fecha de inicio', auto_now = False)  # fecha de inicio de la evaluacion
     fch_fin =  models.DateField('fecha de fin', auto_now = False) # # fecha de fin de la evaluacion
     estado_eva = models.IntegerField(choices = ESTADO_EVA,default = 0, null=False, blank = False)#Estado de la evaluación
+    eva_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la evaluación del proyecto es borrada queda como archivada
 
     class Meta:
         verbose_name = 'evalucion_pry'

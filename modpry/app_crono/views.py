@@ -20,7 +20,7 @@ class vst_crea_crono(CreateView):
     model = crono_pry
     form_class = frm_crea_crono
     template_name = 'mod_pry_frm_crear.html'
-    success_url= reverse_lazy('cn_trj_crono.html')
+    success_url= reverse_lazy('vercrono')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -29,28 +29,24 @@ class vst_crea_crono(CreateView):
         return context
 
 class vst_ls_crono(ListView):
-    # clase para listar los cronogramas de un usuario
+    # clase para listar proyectos del sistema
     model = crono_pry
     template_name = 'cn_trj_crono.html'
-    queryset = crono_pry.objects.order_by('nomb_crono')
+    queryset = crono_pry.objects.filter(crono_archi=0)
+    context_object_name = 'lista_pry'
 
-    def get_context_data(self, **kwargs):
-        context = super(vst_ls_crono, self).get_context_data(**kwargs)
-        context ['titulo_pagina'] = 'Cronogramas'
-        return context
-
-class vts_edit_crono(UpdateView):
+class vst_edit_crono(UpdateView):
     #Clase de la vista para actualizar o editar el cronograma de un proyecto 
     model = crono_pry
     form_class = frm_crea_crono
-    template_name = 'mod_pry_frm_editar.html'
-    success_url= reverse_lazy('cn_trj_crono.html')
+    template_name = 'edit_crono.html'
+    success_url= reverse_lazy('vercrono')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context ['title'] = 'Editar un cronograma' 
         context ['entity'] = 'crono_pry'
-        context ['list_url'] = reverse_lazy('cn_trj_crono.html')
+        context ['list_url'] = reverse_lazy('vercrono')
         context ['action'] = 'edit'
         return context
 
@@ -59,8 +55,8 @@ class vst_crea_etapa(CreateView):
     #Clase de la vista para crear una etapa
     model = etapa
     form_class = frm_crea_etapa
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html' 
-    success_url= reverse_lazy('cn_detalle')
+    template_name = 'mod_pry_frm_crear.html' 
+    success_url= reverse_lazy('vercrono')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -69,22 +65,17 @@ class vst_crea_etapa(CreateView):
         return context
 
 class vst_ls_etapa(ListView):
-    # clase para listar las etapas de un cronograma
+    # clase para listar proyectos del sistema
     model = etapa
     template_name = 'cn_detalle.html'
-    queryset = etapa.objects.order_by('nombre_eta')
+    queryset = etapa.objects.filter(etapa_archi=0)
     context_object_name = 'lista_etapa'
 
-    def get_context_data(self, **kwargs):
-        context = super(vst_ls_etapa, self).get_context_data(**kwargs)
-        context ['titulo_pagina'] = 'Etapas'
-        return context
-
-class vts_edit_etapa(UpdateView):
+class vst_edit_etapa(UpdateView):
     #Clase de la vista para actualizar o editar la etapa de un cronograma
     model = etapa
     form_class = frm_crea_etapa
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
+    template_name = 'mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
@@ -121,11 +112,11 @@ class vst_ls_fase(ListView):
         context ['titulo_pagina'] = 'Fases'
         return context
 
-class vts_edit_fase(UpdateView):
+class vst_edit_fase(UpdateView):
     #Clase de la vista para actualizar o editar la fase de una etapa
     model = fase
     form_class = frm_crea_fase
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
+    template_name = 'mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
@@ -140,7 +131,7 @@ class vst_crea_proc(CreateView):
     #Clase de la vista para crear un proceso
     model = proceso
     form_class = frm_crea_proc
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
+    template_name = 'mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
@@ -161,11 +152,11 @@ class vst_ls_proc(ListView):
         context ['titulo_pagina'] = 'Procesos'
         return context
 
-class vts_edit_proc(UpdateView):
+class vst_edit_proc(UpdateView):
     #Clase de la vista para actualizar o editar un proceso dentro de una etapa
     model = proceso
     form_class = frm_crea_proc
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
+    template_name = 'mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
@@ -180,7 +171,7 @@ class vst_crea_tarea(CreateView):
     #Clase de la vista para crear una tarea
     model = tarea
     form_class = frm_crea_tarea
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
+    template_name = 'mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
@@ -201,11 +192,11 @@ class vst_ls_tarea(ListView):
         context ['titulo_pagina'] = 'Tareas'
         return context
 
-class vts_edit_tarea(UpdateView):
+class vst_edit_tarea(UpdateView):
     #Clase de la vista para actualizar o editar la tarea de un proceso
     model = tarea
     form_class = frm_crea_tarea
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
+    template_name = 'mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
@@ -221,7 +212,7 @@ class vst_crea_acti(CreateView):
     #Clase de la vista para crear una actividad
     model = acti
     form_class = frm_crea_acti
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_crear.html'
+    template_name = 'mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):
@@ -242,11 +233,11 @@ class vst_ls_acti(ListView):
         context ['titulo_pagina'] = 'Actividades'
         return context
 
-class vts_edit_acti(UpdateView):
+class vst_edit_acti(UpdateView):
     #Clase de la vista para actualizar o editar una actividad dentro de una tarea
     model = acti
     form_class = frm_crea_acti
-    template_name = 'iu_pub/serv_iu/modpry/mod_pry_frm_editar.html'
+    template_name = 'mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_detalle')
 
     def get_context_data(self, **kwargs):

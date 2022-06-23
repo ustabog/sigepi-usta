@@ -1,11 +1,14 @@
 {% extends 'app_pry_iu.html' %}
 
 {% block articulo %}
-<h1>{{ tit_form }}</h1> 
+<div class="cnt_norm">
+  <h1>{{ tit_form }}</h1> 
   <form class="" action="" method="post">
     {% csrf_token %}
-    <h3>¿Desea elminar el registro permanentemente?</h3>
+    <h3>¿Desea elminar el registro?</h3>
     <button class = "btm btn-danger"type="submit" >Sí, eliminar</button>
     <a class= "btn btn-default" href="{%url 'cn_pry'%}">Cancelar</a>
   </form>
+</div>
 {% endblock articulo %}
+

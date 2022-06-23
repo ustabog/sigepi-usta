@@ -42,7 +42,7 @@ class vst_ls_evapry(ListView):
         context ['titulo_pagina'] = 'Listado de evaluación de proyectos'
         return context
 
-class vts_edit_evapry(UpdateView):
+class vst_edit_evapry(UpdateView):
     #Clase de la vista para actualizar o editar la evaluación del proyecto
     model = eva_pry
     form_class = frm_evapry
@@ -83,17 +83,17 @@ class vst_ls_crit(ListView):
         context ['titulo_pagina'] = 'Listado de evaluación de proyectos'
         return context
 
-class vts_edit_evapry(UpdateView):
-    #Clase de la vista para actualizar o editar la evaluación del proyecto
-    model = eva_pry
-    form_class = frm_evapry
+class vst_edit_crit(UpdateView):
+    #Clase de la vista para actualizar o editar un criterio de evaluación
+    model = crit_eva
+    form_class = frm_criterio
     template_name = 'mod_pry_frm_editar.html'
     success_url= reverse_lazy('cn_detalle.html')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context ['title'] = 'Editar la evaluación del proyecto' 
-        context ['entity'] = 'Evaluación'
+        context ['title'] = 'Editar un criterio de evaluación' 
+        context ['entity'] = 'Criterio'
         context ['list_url'] = reverse_lazy('cn_detalle.html')
         context ['action'] = 'edit'
         return context
@@ -121,6 +121,20 @@ class vst_ls_rub(ListView):
         context = super(vst_ls_rub, self).get_context_data(**kwargs)
         context ['titulo_pagina'] = 'Listado de rúbricas'
         return context
+
+class vst_edit_rub(UpdateView):
+    #Clase de la vista para actualizar o editar la rúbrica de evaluación
+    model = rubr_eva
+    form_class = frm_rubrica
+    template_name = 'mod_pry_frm_editar.html'
+    success_url= reverse_lazy('cn_detalle.html')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Editar la rúbrica de evaluación' 
+        context ['list_url'] = reverse_lazy('cn_detalle.html')
+        context ['action'] = 'edit'
+        return context
 #----------------------- Para un rango de evaluación -----
 class vst_crear_rango(CreateView):
     #Clase de la vista para crear un rango de evaluación
@@ -144,6 +158,21 @@ class vst_ls_rango(ListView):
     def get_context_data(self, **kwargs):
         context = super(vst_ls_rango, self).get_context_data(**kwargs)
         context ['titulo_pagina'] = 'Rangos de evalución'
+        return context
+
+class vst_edit_rng(UpdateView):
+    #Clase de la vista para actualizar o editar un rango de evaluación
+    model = rango_eva
+    form_class = frm_rangoeva
+    template_name = 'mod_pry_frm_editar.html'
+    success_url= reverse_lazy('cn_detalle.html')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Editar un rango de evaluación' 
+        context ['entity'] = 'Rango'
+        context ['list_url'] = reverse_lazy('cn_detalle.html')
+        context ['action'] = 'edit'
         return context
 
 #----------------------- Para un resultado ---------------
@@ -170,6 +199,21 @@ class vst_ls_resultado(ListView):
         context = super(vst_ls_resultado, self).get_context_data(**kwargs)
         context ['titulo_pagina'] = 'Resultados'
         return context
+
+class vst_edit_res(UpdateView):
+    #Clase de la vista para actualizar o editar un resultado de evaluación
+    model = res_eva
+    form_class = frm_resultado
+    template_name = 'mod_pry_frm_editar.html'
+    success_url= reverse_lazy('cn_detalle.html')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Editar resultado de una evaluación' 
+        context ['entity'] = 'Resultado'
+        context ['list_url'] = reverse_lazy('cn_detalle.html')
+        context ['action'] = 'edit'
+        return context
 #----------------------- Para tipo de evaluación ---------
 class vst_crear_tipoeva(CreateView):
     #Clase de la vista para añadir el tipo de evaluación de un proyecto
@@ -195,6 +239,21 @@ class vst_ls_tipoeva(ListView):
         context ['titulo_pagina'] = 'Tipos de evaluación'
         return context
 
+class vst_edit_tipo(UpdateView):
+    #Clase de la vista para actualizar o editar un tipo de evaluación
+    model = tipo_eva
+    form_class = frm_tipoeva
+    template_name = 'mod_pry_frm_editar.html'
+    success_url= reverse_lazy('cn_detalle.html')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Editar un tipo de evaluación' 
+        context ['entity'] = 'Tipo de evaluación'
+        context ['list_url'] = reverse_lazy('cn_detalle.html')
+        context ['action'] = 'edit'
+        return context
+
 #----------------------- Para una definición ------------
 class vst_crear_defi(CreateView):
     #Clase de la vista crear un comentario, definición, comentario, etc
@@ -218,5 +277,20 @@ class vst_ls_defi(ListView):
     def get_context_data(self, **kwargs):
         context = super(vst_ls_defi, self).get_context_data(**kwargs)
         context ['titulo_pagina'] = 'Comentarios'
+        return context
+
+class vst_edit_defi(UpdateView):
+    #Clase de la vista para actualizar o editar una definción, comentario, recomenadación
+    model = defi
+    form_class = frm_defi
+    template_name = 'mod_pry_frm_editar.html'
+    success_url= reverse_lazy('cn_detalle.html')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Editar una definción' 
+        context ['entity'] = 'Definición'
+        context ['list_url'] = reverse_lazy('cn_detalle.html')
+        context ['action'] = 'edit'
         return context
 
