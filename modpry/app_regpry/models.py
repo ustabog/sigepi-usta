@@ -300,6 +300,13 @@ LINEA_TEMA = [
     (7, 'Otro'),
     ]
 
+VAR_PLAN_REGPRY = [
+    #Variables para utilizar dentro de la plantila de eliminar y archivar
+    (0,'Proyecto'), #Variable proyecto
+    (1,'archipry/<id>'), #URL para archivar el proyecto en la base de datos
+    (2,'elipry/<id>'), #URL para eliminar el proyecto de la base de datos
+]
+
 #clase base de registro de proyecto
 class pry_base(models.Model):
     #clase base de registro de proyecto
@@ -348,6 +355,25 @@ class inf_pry(models.Model):
 
     def __str__(self):
         return '{}'.format(self.nombre_archivo)
+
+class fn_app_regpry(models.Model):
+    #Clase para las funciones de la aplicación del registro de proyecto
+    id_func = models.AutoField(primary_key = True) # identificador único de función
+    nom_func = models.CharField('Nombre de la función: ', max_length=30, null=False, blank = False) # Nombre de la función
+    lib_func = models.CharField('Librería que contiene la función: ', max_length=30, null=False, blank = False) # Librería que contiene la función
+    url_loc = models.URLField('Direción local a la documentación o manual de la aplicación', null=False, blank=False)  # Direción local donde se encuentra la librería que contiene la función
+    com_exc = models.CharField('Comando de Ejecución de la Función: ', max_length=20, null=False, blank = False) # Comando de Ejecución de la Función
+    text = models.CharField('Nombre de Función: ', max_length=20, null=False, blank = False) # Nombre de Función para menús o etiquetas.
+    context = models.CharField('Contexto: ', max_length=20, null=False, blank = False) # Nombre de Función para menús contextuales o emergentes y panel de inf.
+    activa = models.BooleanField('¿Activa o desactivada?', default=False)  # La función está activa o desactiva.
+    indice = models.IntegerField() #Índice de selección, para navegar con el tabulador.
+
+    class Meta:
+        verbose_name = 'fn_app_regpry'
+        verbose_name_plural = 'fn_app_regprys'
+
+    def __str__(self):
+        return '{}'.format(self.nom_func)
 
 '''
 class inf_prod_pry(models.Model):

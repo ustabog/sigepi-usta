@@ -52,6 +52,22 @@ RES_EVA = [
     (1, 'Reprobado'),
 ]
 
+VAR_PLANT_EVA = [
+    (0,'Evaluación de proyecto'), 
+    (1,'archieva/<id>'), #URL para archivar el proyecto en la base de datos
+    (2,'elieva/<id>'), #URL para eliminar el proyecto de la base de datos
+    (2,'Rúbrica'),
+    (1,'archirub/<id>'), #URL para archivar el proyecto en la base de datos
+    (2,'elirub/<id>'), #URL para eliminar el proyecto de la base de datos
+    (4,'Criterio'),
+    (1,'archicrit/<id>'), #URL para archivar el proyecto en la base de datos
+    (2,'elicrti/<id>'), #URL para eliminar el proyecto de la base de datos
+    (6,'Resultado'),
+    (1,'archires/<id>'), #URL para archivar el proyecto en la base de datos
+    (2,'elires/<id>'), #URL para eliminar el proyecto de la base de datos
+]
+
+
 class rango_eva(models.Model):
     #Clase que contiene los rango de la evaluación del proyecto
     id_rango =  models.AutoField(primary_key = True)#ID del rango de la evaluación de proyectos
@@ -99,6 +115,7 @@ class res_eva(models.Model):
     ls_comen = models.ForeignKey(defi, on_delete=models.SET_NULL, null=True, blank =False ) #Lista de las definciones del proyecto
     estado_eva = models.IntegerField(choices = ESTADO_EVA,default = 0, null=False, blank = False)#Estado de la evaluación
     id_usu_eval = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)#id de usuario(a) evaluador(a) del proyecto 
+    res_archi = models.BooleanField(null = False, blank = False, default = 0)#Si el resultado es borrado queda como archivado, solo para el rol de evaluador no para estudiante
     class Meta:
         verbose_name = 'res_eva'
         verbose_name_plural = 'res_evas'
@@ -170,3 +187,22 @@ class rl_crit_rub(models.Model):
     #id_crit_hijo = models.ForeignKey(criterio, on_delete=models.SET_NULL, null=True, blank =False )#ID del criterio hijo
     valor_rel = models.IntegerField('Valor relativo = ',null=False, blank= False) #Valor relativo en la rúbrica de evlauación ( de 0% a 100%)
     valor_abs = models.IntegerField('Valor absoluto = ', null=False, blank= False)#Valor absoluto, calculado de acuerdo a la posición del criterio en la rúbrica de evaluación.
+
+class fn_app_evapry(models.Model):
+    #Clase para las funciones de la aplicación del registro de proyecto
+    id_func = models.AutoField(primary_key = True) # identificador único de función
+    nom_func = models.CharField('Nombre de la función: ', max_length=30, null=False, blank = False) # Nombre de la función
+    lib_func = models.CharField('Librería que contiene la función: ', max_length=30, null=False, blank = False) # Librería que contiene la función
+    url_loc = models.URLField('Direción local a la documentación o manual de la aplicación', null=False, blank=False)  # Direción local donde se encuentra la librería que contiene la función
+    com_exc = models.CharField('Comando de Ejecución de la Función: ', max_length=20, null=False, blank = False) # Comando de Ejecución de la Función
+    text = models.CharField('Nombre de Función: ', max_length=20, null=False, blank = False) # Nombre de Función para menús o etiquetas.
+    context = models.CharField('Contexto: ', max_length=20, null=False, blank = False) # Nombre de Función para menús contextuales o emergentes y panel de inf.
+    activa = models.BooleanField('¿Activa o desactivada?', default=False)  # La función está activa o desactiva.
+    indice = models.IntegerField() #Índice de selección, para navegar con el tabulador.
+
+    class Meta:
+        verbose_name = 'fn_app_evapry'
+        verbose_name_plural = 'fn_app_evaprys'
+
+    def __str__(self):
+        return '{}'.format(self.nom_func)
