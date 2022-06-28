@@ -1,0 +1,109 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta de listado</p>
+</div>
+
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+
+<!--CONSULTAR LA INFORMACIÓN DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    <h2>Cronograma</h2>
+    {{form.as_ul}}
+    <div>
+        {% for fase in  object_list %}
+            <p><b>Nombre del proyecto: </b><label> {{ crono_pry.nombre_pry}} </label></p>
+            <p><b>Responsable del proyecto: </b><label> {{ crono_pry.resp_pry}} </label></p>
+            <p><b>Nombre del cronograma: </b><label> {{ crono_pry.nomb_crono}} </label></p>
+            <p><b>Descripción del cronograma: </b><label> {{ crono_pry.desc_crono}} </label></p>
+            <p><b>Fecha de inicio del proyecto: </b><label> {{ crono_pry.fch_ini_pry}} </label></p>
+            <p><b>Fecha de finalización del proyecto: </b><label> {{ crono_pry.fch_fin_pry}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LAS FASES DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    <h2>Fases</h2>
+    {{form.as_ul}}
+    <div>
+        {% for fase in  object_list %}
+            <p><b>Nombre de la fase: </b><label> {{ fase.nombre_fase}} </label></p>
+            <p><b>Descripción de la fase: </b><label> {{ fase.desc_fase}} </label></p>
+            <p><b>Fecha de inicio de la fase: </b><label> {{ fase.fch_ini_fase}} </label></p>
+            <p><b>Fecha de finalización de la fase: </b><label> {{ fase.fch_fin_fase}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LAS ETAPAS DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    <h2>Etapas</h2>
+    {{form.as_ul}}
+    <div>
+        {% for etapa in  object_list %}
+            <p><b>Nombre de la etapa: </b> <label> {{ etapa.nombre_eta}} </label></p>
+            <p></p><b>Descripción de la etapa: </b> <label> {{ etapa.desc_eta}} </label></p>
+            <p></p><b>Fecha de inicio de la etapa:</b> <label> {{ etapa.fch_ini_eta}} </label></p>
+            <p></p><b>Fecha de finalización de la etapa: </b> <label> {{ etapa.fch_fin_eta}} </label><br></p>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LOS PROCESOS DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    <h2>Procesos</h2>
+    {{form.as_ul}}
+    <div>
+        {% for proceso in  object_list %}
+            <p><b>Nombre del proceso: </b><label> {{ proceso.nombre_proc}} </label>
+            <p><b>Descripción del proceso: </b><label> {{ proceso.desc_proc}} </label></p>
+            <p><b>Fecha de inicio del proceso: </b><label> {{ proceso.fch_ini_proc}} </label></p>
+            <p><b>Fecha de finalización del proceso: </b><label> {{ procesos.fch_fin_proc}} </label><br></p>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LAS TAREAS DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    <h2>Tarea</h2>
+    {{form.as_ul}}
+    <div>
+        {% for tarea in  object_list %}
+            <p><b>Nombre de la tarea: </b><label> {{ tarea.nombre_tarea}} </label></p>
+            <p><b>Descripción de la tarea: </b><label> {{ tarea.desc_tarea}} </label></p>
+            <p><b>Responsable de la tarea: </b><label> {{ tarea.resp_tarea}} </label></p>
+            <p><b>Fecha de incio de la tarea: </b><label> {{ tarea.fch_ini_tarea}} </label></p>
+            <p><b>Fecha de finalización de la tarea: </b><label> {{ tarea.fch_fin_tarea}} </label></p>
+            <p><b>Recurso de la tarea: </b<label> {{ tarea.recurso}} </label></p>
+            <p><b>URL de la tarea: </b><label> {{ tarea.url_tarea}} </label><br></p>
+            <p>---------------------------------------------------------</p>
+            <br>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LAS ACTIVIDADES DE UN CRONOGRAMA DE UN PROYECTO-->
+<form method="GET">
+    <h2>Actividades</h2>
+    {{form.as_ul}}
+    <div>
+        {% for acti in  object_list %}
+            <p><b>Nombre de la actividad: </b><label> {{ acti.nombre_acti}} </label></p>
+            <p><b>Descripción de la actividad: </b><label> {{ acti.desc_acti}} </label></p>
+            <p><b>Responsable de la actividad: </b><label> {{ acti.resp_acti}} </label></p>
+            <p><b>Fecha de inicio de la actividad: </b><label> {{ acti.fch_ini_acti}} </label></p>
+            <p><b>Fecha de finalización de la actividad </b><label> {{ acti.fch_fin_acti}} </label></p>
+            <p><b>Nombre del recurso de la actividad: </b><label> {{ acti.recurso}} </label></p>
+            <p><b>URL de la actividad: </b><label> {{ acti.url_acti}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+{% endblock consulta %}

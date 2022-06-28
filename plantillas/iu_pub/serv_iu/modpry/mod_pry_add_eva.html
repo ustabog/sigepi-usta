@@ -1,0 +1,37 @@
+{% extends 'app_pry_iu.html' %}
+{% load static %}
+
+{% block menu_app %}
+    <nav id="menu_crono" class="menu_crono">
+        <a href="{% url 'crear_rub' %}"><i class="material-icons">app_registration</i><span>Crear rúbrica</span></a>   
+        <a href="{% url 'crear_crit' %}"><i class="material-icons">view_list</i><span>Crear criterio</span></a> 
+        <a href="{% url 'crear_rango' %}"><i class="material-icons">thumbs_up_down</i><span>Crear rango de evaluación</span></a> 
+        <a href="{% url 'crear_tipo' %}"><i class="material-icons">drive_file_rename_outline</i><span>Registrar tipo de evaluación</span></a> 
+        <a href="{% url 'crear_resul' %}"><i class="material-icons">fact_check</i><span>Registrar resultado</span></a> 
+        <a href="{% url 'crear_defi' %}"><i class="material-icons">feedback</i><span>Nuevo comentario</span></a> 
+    </nav>
+
+{% endblock menu_app %}
+
+{% block articulo %}
+  {% if form.errors %}
+      <p>No se ha añadido correctamente. Por favor, inténtalo de nuevo.</p>
+  {% endif %}
+
+<!--AÑADIR INFROMACIÓN DE UN CRONOGRAMA-->
+<!--CONSULTAR LA EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for eva_pry in  object_list %}
+        <h3>Evaluación de proyectos</h3>
+        <p><b>Nombre de la evaluación del proyecto: </b><label> {{ eva_pry.nomb_eva}} </label></p>
+        <p><b>Descripción de la evaluación del proyecto: </b><label> {{ eva_pry.desc_eva}} </label></p>
+        <p><b>Tipo de evaluación: </b><label> {{ eva_pry.tipo_eva}} </label></p>
+        <p><b>Fecha de inicio del proyecto: </b><label> {{ eva_pry.fch_ini}} </label></p>
+        <p><b>Fecha de finalización de la evaluación del proyecto: </b><label> {{ eva_pry.fch_fin}} </label></p>
+        <p><b>Estado de la evaluación del proyecto: </b><label> {{ eva_pry.estado_eva}} </label></p><br>
+        {% endfor %}
+    </div>
+</form>
+{% endblock articulo %}

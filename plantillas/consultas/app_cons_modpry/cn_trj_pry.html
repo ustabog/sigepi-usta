@@ -26,19 +26,19 @@
         </div>
     </div>
     <div id="" class="trj_pry_br">
-        <a  href="">
+        <a  href="{% url 'cn_det_pry' %}">
             <i class="material-icons">description</i>
             <span>Ver</span>
         </a>
-        <a  href="">
+        <a  href="{% url 'edit_pry' pry_base.id_pry %}">
             <i class="material-icons">edit</i>
             <span>Editar</span>
         </a>
-        <a   href="">
+        <a   href="{% url 'add_pry' %}">
             <i class="material-icons">add</i>
             <span>Agregar</span>
         </a>
-        <a  href="{url 'elipry/{{pry_base.id_pry}}' }">
+        <a  href="{% url 'archi_pry' pry_base.id_pry %}">
             <i class="material-icons">delete</i>
             <span>Eliminar</span>
         </a>

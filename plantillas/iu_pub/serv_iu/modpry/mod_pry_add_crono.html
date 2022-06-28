@@ -1,0 +1,35 @@
+{% extends 'app_pry_iu.html' %}
+{% load static %}
+
+{%block menu_app%}
+    <nav id="menu_crono" class="menu_crono">
+        <a href="{% url 'creaeta' %}"><i class="material-icons">more_time</i><span>Nueva etapa</span></a>  
+        <a href="{% url 'creafase' %}"><i class="material-icons">addchart</i><span>Nueva fase</span></a>
+        <a href="{% url 'creaproc' %}"><i class="material-icons">new_label</i><span>Nuevo proceso</span></a>
+        <a href="{% url 'creatar' %}"><i class="material-icons">add_task</i><span>Nueva tarea</span></a>
+        <a href="{% url 'creacti' %}"><i class="material-icons">bookmark_add</i><span>Nueva actividad</span></a>
+    </nav>
+{%endblock menu_app%}
+
+{% block articulo %}
+  {% if form.errors %}
+      <p>No se ha añadido correctamente. Por favor, inténtalo de nuevo.</p>
+  {% endif %}
+
+<!--AÑADIR INFROMACIÓN DE UN CRONOGRAMA-->
+<form method="GET">
+    <h2>Cronograma</h2>
+    {{form.as_ul}}
+    <div>
+        {% for crono_pry in  object_list %}
+            <p><b>Nombre del proyecto: </b><label> {{ crono_pry.nombre_pry}} </label></p>
+            <p><b>Responsable del proyecto: </b><label> {{ crono_pry.resp_pry}} </label></p>
+            <p><b>Nombre del cronograma: </b><label> {{ crono_pry.nomb_crono}} </label></p>
+            <p><b>Descripción del cronograma: </b><label> {{ crono_pry.desc_crono}} </label></p>
+            <p><b>Fecha de inicio del proyecto: </b><label> {{ crono_pry.fch_ini_pry}} </label></p>
+            <p><b>Fecha de finalización del proyecto: </b><label> {{ crono_pry.fch_fin_pry}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+{% endblock articulo %}

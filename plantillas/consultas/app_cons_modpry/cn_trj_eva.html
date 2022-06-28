@@ -27,19 +27,19 @@
         </div>
     </div>
     <div id="" class="trj_pry_br">
-        <a  href="">
+        <a  href="{% url 'cn_rub' %}">
             <i class="material-icons">description</i>
             <span>Ver</span>
         </a>
-        <a  href="">
+        <a  href="{% url 'edit_eva' eva_pry.id_eva %}">
             <i class="material-icons">edit</i>
             <span>Editar</span>
         </a>
-        <a   href="">
+        <a   href="{% url 'add_eva' %}">
             <i class="material-icons">add</i>
             <span>Agregar</span>
         </a>
-        <a  href="">
+        <a  href="{% url 'archi_eva' eva_pry.id_eva %}">
             <i class="material-icons">delete</i>
             <span>Eliminar</span>
         </a>

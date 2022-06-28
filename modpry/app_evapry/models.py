@@ -135,8 +135,6 @@ class rubr_eva(models.Model):
     id_rub = models.AutoField(primary_key = True)#ID de la rúbrica de la evaluación de un proyecto
     nomb_rub = models.CharField('Nombre de la rúbrica de evaluación: ', max_length=255, null=False, blank= False)#Nombre de la rúbrica de evaluación
     desc_rub = models.CharField('Descripción de la rúbrica de evaluación: ', max_length=255, null=False, blank= False)#Descripción de la rúbrica de evaluación
-    arb_crit = models.ForeignKey(crit_eva, on_delete=models.SET_NULL, null=True, blank =False)#Árbol de criterios
-    #matriz_resu = #Matriz que relaciona la calificación con el criterio
     arb_crit = models.ForeignKey(crit_eva, on_delete=models.SET_NULL, null=True, blank =False)#Árbol de criterios listado de relaciones de criterios con la rúbrica, debe contemer al menos un criterio padre
     #matriz_val_eval = #Matriz que relaciona el peso de cada criterio dentro de la evaluación, valores numéricos del árbol de criterios de la rúbrica
     id_usu_dis = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False)#Usuario que diseña la evaluación

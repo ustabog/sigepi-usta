@@ -62,6 +62,14 @@ class vts_add_pry(CreateView):
         context ['title'] = 'Añadir información de un proyecto' 
         context ['action'] = 'add'
         return context
+
+class vst_ls_infopry(ListView):
+    # clase para listar la información de los proyectos del sistema
+    model = inf_pry
+    template_name = 'cn_det_pry.html'
+    queryset = pry_base.objects.filter(pry_archi=0)#Muestra solo los proyecto que no están archivados
+    context_object_name = 'lista_info_pry'
+    
  
 
         

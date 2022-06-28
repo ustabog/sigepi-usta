@@ -1,0 +1,48 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta de la información de un proyecto</p>
+</div>
+
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+
+<!--CONSULTAR UN PROYECTO-->
+<form method="GET">
+    <h2>proyecto</h2>
+    {{form.as_ul}}
+    <div>
+        {% for pry_base in  object_list %}
+        <p><b>Código del proyecto:</b><label> {{ pry.base.cod_pry}} </label></p>
+        <p><b>Nombre del proyecto:</b><label> {{ pry_base.nombre_pry}} </label></p>
+        <p><b>Descripción del proyecto:</b><label> {{ pry_base.desc_pry}}</label></p>
+        <p><b>Tipo de proyecto: </b><label> {{ pry_base.tipo_pry}} </label></p>
+        <p><b>Propietario del proyecto: </b><label> {{ pry_base.id_usu}} </label></p>
+        <p><b>Estado del proyecto: </b><label> {{ pry_base.est_pry}} </label></p><br>
+        <p>-------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!-- CONSULTAR LA INFORMACIÓN DE UN PROYECTO -->
+<form method="GET">
+    <h2>información del proyecto</h2>
+    {{form.as_ul}}
+    <div>
+        {% for inf_pry in  object_list %}
+        <p><b>Nombre del archivo: </b><label> {{ inf_pry.nombre_archivo}} </label></p>
+        <p><b>URL del archivo:</b><label> {{ inf_pry.url_archivo}} </label></p>
+        <p><b>Departamento: </b><label> {{ inf_pry.dat_dep}}</label></p>
+        <p><b>URL del árbol de problemas: </b><label> {{ inf_pry.url_ap}} </label></p>
+        <p><b>URL del árbol de objetivos: </b><label> {{ inf_pry.url_ao}} </label></p>
+        <p><b>Objetivo General: </b><label> {{ inf_pry.obj_gen}} </label></p>
+        <p><b>Objetivo Específico: </b><label> {{ inf_pry.obj_esp}} </label></p><br>
+        <p>-------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+{% endblock consulta %}
+
+
+

@@ -27,19 +27,19 @@
         </div>
     </div>
     <div id="" class="trj_pry_br">
-        <a  href="">
+        <a  href="{% url 'veretapa' %}">
             <i class="material-icons">description</i>
             <span>Ver</span>
         </a>
-        <a  href="">
+        <a  href="{% url 'edit_crono' crono_pry.id_crono_pry %}">
             <i class="material-icons">edit</i>
             <span>Editar</span>
         </a>
-        <a   href="">
+        <a   href="{% url 'addcrono' %}">
             <i class="material-icons">add</i>
             <span>Agregar</span>
         </a>
-        <a  href="">
+        <a  href="{% url 'archi_crono' crono_pry.id_crono_pry %}">
             <i class="material-icons">delete</i>
             <span>Eliminar</span>
         </a>

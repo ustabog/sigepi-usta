@@ -1,0 +1,106 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta de la información de la evaluación de proyecto</p>
+</div>
+
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+
+<!--CONSULTAR LA EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    <h3>Evaluación de proyectos</h3>
+    {{form.as_ul}}
+    <div>
+        {% for eva_pry in  object_list %}
+        <p><b>Nombre de la evaluación del proyecto: </b><label> {{ eva_pry.nomb_eva}} </label></p>
+        <p><b>Descripción de la evaluación del proyecto: </b><label> {{ eva_pry.desc_eva}} </label></p>
+        <p><b>Tipo de evaluación: </b><label> {{ eva_pry.tipo_eva}} </label></p>
+        <p><b>Fecha de inicio del proyecto: </b><label> {{ eva_pry.fch_ini}} </label></p>
+        <p><b>Fecha de finalización de la evaluación del proyecto: </b><label> {{ eva_pry.fch_fin}} </label></p>
+        <p><b>Estado de la evaluación del proyecto: </b><label> {{ eva_pry.estado_eva}} </label></p><br>
+        <p>----------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA RÚBRICA DE UNA EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    <h2>Rúbrica</h2>
+    {{form.as_ul}}
+    <div>
+        {% for rubr_eva in  object_list %}
+        <p><b>Nombre de la rúbrica de evaluación:</b><label> {{ rubr_eva.nomb_rub}} </label></p>
+        <p><b>Descripción de la rúbrica de evaluación:</b><label> {{ rubr_eva.desc_rub}} </label></p><br>
+        <p><b>Criterios:</b><label> {{ rubr_eva.arb_crti}} </label></p><br>
+        <p><b>Diseñador de la evaluación:</b><label> {{ rubr_eva.id_usu_dis} </label></p><br>
+        <p><b>versión de la rúbrica:</b><label> {{ rubr_eva.vers}} </label></p><br>
+        {% endfor %}
+    </div>
+</form>
+{% endblock consulta %}
+
+<!--CONSULTAR LOS CRITERIOS DE UNA RÚBRICA DE EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    <h2>Criterios</h2>
+    {{form.as_ul}}
+    <div>
+        {% for crit_eva in  object_list %}
+        <p><b>Nombre del criterio de evaluación:</b><label> {{ criterio.nomb_crit}} </label></p>
+        <p><b>Descripción del criterio de evaluación:</b><label> {{ criterio.desc_crit}} </label></p><br>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR EL TIPO DE EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    <h2>Tipo de evaluación</h2>
+    {{form.as_ul}}
+    <div>
+        {% for tipo_eva in  object_list %}
+        <p><b>Tipo de evaluación:</b><label> {{ tipo_eva.tipo_eva}} </label></p>
+        <p><b>Descrición del tipo de evaluación:</b><label> {{ tipo_eva.desc_eva}} </label></p><br>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LOS COMENTARIOS DEFINICIONES, RECOMENDACIONES DE LA EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    <h2>Comentarios</h2>
+    {{form.as_ul}}
+    <div>
+        {% for defi in  object_list %}
+        <p><b>Responsable del comentario:</b><label> {{ defi.resp_def}} </label></p>
+        <p><b>Tipo:</b><label> {{ defi.tipo_def}} </label></p>
+        <p><b>Versión:</b><label> {{ defi.vers}} </label></p>
+        <p><b>Fecha de registro:</b><label> {{ defi.fch_reg}} </label></p>
+        <p><b>Versión 1:</b><label> {{ defi.vers1}} </label></p>
+        <p><b>Versión 2:</b><label> {{ defi.vers2}} </label></p>
+        <p><b>Versión 3:</b><label> {{ defi.vers3}} </label></p>
+        <p><b>Versión 4:</b><label> {{ defi.vers4}} </label></p>
+        <p><b>Versión 5:</b><label> {{ defi.vers5}} </label></p>
+        <p><b>Fecha de modificación: </b><label> {{ defi.fch_mod}} </label></p><br>
+        <p>----------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LOS RESULTADOS DE UNA EVALUACIÓN DE UN PROYECTO-->
+<form method="GET">
+    <h2>Resultados</h2>
+    {{form.as_ul}}
+    <div>
+        {% for res_eva in  object_list %}
+        <p><b>Resultado:</b><label> {{ resultado.valor_total}} </label></p>
+        <p><b>¿Aprobó?</b><label></label><label> {{ resultado.aprobado}} </label></p>
+        <p><b>Comentarios:</b><label></label><label> {{ resultado.ls.comen}} </label></p>
+        <p><b>Estado de la evaluación:</b><label></label><label> {{ resultado.estado_eva}}</label></p>
+        <p><b>Evaluador:</b><label></label><label> {{ resultado.id_usu_eval}} </label><br></p>
+        {% endfor %}
+    </div>
+</form>
+
+
+
+
