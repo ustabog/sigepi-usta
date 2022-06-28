@@ -39,21 +39,25 @@ class frm_con_pry(forms.ModelForm):
             'id_usu' : 'Propietario del proyecto',
         }
 
-'''
-class frm_reg_pry(forms.ModelForm):
-    #Clase para el formulario del registro de proyecto
+class frm_info_pry(forms.ModelForm):
+    #Clase que permite diligenciar la información adicional del proyecto
     class Meta:
-        model = pry_base
+        model = inf_pry
         fields = (
-            'nombre_pry',
-            'desc_pry',
-            'tipo_pry',
-            'prop_pry',
+            'nombre_archivo',
+            'url_archivo',
+            'dat_dep',
+            'url_ap',
+            'url_ao',
+            'obj_gen',
+            'obj_esp',
         )
         labels = {
-            'nombre_pry' : 'Nombre del proyecto',
-            'desc_pry': 'Descripción del proyecto',
-            'tipo_pry' : 'Tipo de proyecto',
-            'prop_pry' : 'Propietario del proyecto',
+            'nombre_archivo' : 'Nombre del archivo',
+            'url_archivo' : 'URL del archivo',
+            'url_ap' : 'URL del árbol de problemas',
+            'url_ao' : 'URL del árbol de objetivos',
+            'obj_gen' : 'Objetivo general',
+            'obj_esp' : 'Objetivos específico',
         }
-'''
+

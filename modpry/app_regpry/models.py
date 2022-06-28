@@ -59,6 +59,43 @@ TIPO_PRY=[
     (10,'Propiedad industrial'),
     (11,'Revisión crítica'),
     ]
+
+DEPARTAMENTOS = [
+    (0,'Antioquia'),
+    (1,'Atlántico'),
+    (2,'Abriaquí'),
+    (3,'Bogotá D.C'),
+    (4,'Boyacá'),
+    (5,'Caldas'),
+    (6,'Caquetá'),
+    (7,'Cauca'),
+    (8,'Cesar'),
+    (9,'Córdoba'),
+    (10,'Cundinamarca'),
+    (11,'Chocó'),
+    (12,'Huila'),
+    (13,'La guajira'),
+    (14,'Magdalena'),
+    (15,'Meta'),
+    (16,'Ñariño'),
+    (17,'Norte de Santander'),
+    (18,'Quindio'),
+    (19,'Risaralda'),
+    (20,'Santander'),
+    (21,'Sucre'),
+    (22,'Tolima'),
+    (23,'Valle del Cauca'),
+    (24,'Arauca'),
+    (25,'Casanare'),
+    (26,'Putumayo'),
+    (27,'Archipiélago de San Andrés, Providencia y Santa Catalina'),
+    (28,'Amazonas'),
+    (29,'Guainía'),
+    (30,'Guaviare'),
+    (31,'Vaupés'),
+    (32,'Vichada'),
+    ]
+
 NIVEL_PRY =[
     #Nivel del proyecto
     (0,'Individual'),
@@ -340,7 +377,7 @@ class inf_pry(models.Model):
     id_gr_inv = models.ForeignKey(usugr, on_delete=models.SET_NULL, null=True, blank =False)#identificador del grupo de investgación
     #id_ln_inv = models.ForeignKey(Ln_inv, on_delete=models.CASCADE, null=False, blank =False)#Identificador de la linea de investigación
     #conv =  models.IntegerField(null = False, blank = False, choices = CONVENIO, default = 0)# Convenio propuesto o previsto para la realización de la investigación.
-    #dat_dep = models.IntegerField(null = False, blank = False, choices = DEPARTAMENTOS, default = 0)#Lista de los departamentos de Colombia que hacen parte del proyecto
+    dat_dep = models.IntegerField(null = False, blank = False, choices = DEPARTAMENTOS, default = 0)#Departamento que hace parte del proyecto
     #geo_nac_cp = models.ForeignKey(leer_dat_geo_cenpobl, on_delete=models.CASCADE, null=False, blank =False)#id registro de centros poblados que abarca el proyecto.
     url_ap =  models.URLField('url de la imágen de árbol de problemas',max_length=200)# Url de la imágen del árbol de problemas.
     url_ao =  models.URLField('url de la imágen de árbol de objetivos', max_length=200)# Url de la imágen del árbol de objetivos.

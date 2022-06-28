@@ -21,6 +21,7 @@ urlpatterns = [
     path('editpry/<int:pk>/',vts_edit_pry.as_view(), name = 'edit_pry'), #Actualizar proyecto
     path('archipry/<id>',fn_archi_pry, name = 'archi_pry'), #Archivar un proyecto
     path('elipry/<id>',fn_eli_pry, name = 'eli_pry'),#Eliminar un proyecto
+    path('addpry/',vts_add_pry.as_view(), name = 'add_pry'),#Añadir información del proyecto
 
     #URL para las funciones de un cronograma
     path('inicio',vst_pry().vst_inicio, name = 'inicio_pry'), #inicio de la app de proyectos
