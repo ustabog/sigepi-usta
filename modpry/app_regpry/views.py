@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from django.views.generic import UpdateView, CreateView, ListView, DeleteView
+from django.views.generic import UpdateView, CreateView, ListView, DetailView
 from django.urls import reverse_lazy
+from requests import request
 #from rest_framework import viewsets
 from .models import *
 from modpry.app_regpry.models import *
@@ -34,6 +35,9 @@ class vst_ls_pry(ListView):
     template_name = 'cn_trj_pry.html'
     queryset = pry_base.objects.filter(pry_archi=0)#Muestra solo los proyecto que no están archivados
     context_object_name = 'lista_pry'
+
+    def get_queryset(self):
+        return pry_base.objects.filter(id_usu = self.request.user)
 
 class vts_edit_pry(UpdateView):
     #Clase de la vista para actualizar el registro de un proyecto 
@@ -69,7 +73,9 @@ class vst_ls_infopry(ListView):
     template_name = 'cn_det_pry.html'
     queryset = pry_base.objects.filter(pry_archi=0)#Muestra solo los proyecto que no están archivados
     context_object_name = 'lista_info_pry'
-    
+
+    def get_queryset(self):
+        return pry_base.objects.filter(id_usu = self.request.user)
  
 
         

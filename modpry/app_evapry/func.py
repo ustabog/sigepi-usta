@@ -1,6 +1,7 @@
 from .models import *
 from modpry.app_regpry.models import *
 from modpry.app_regpry.form import *
+from modpry.app_evapry.models import *
 from django.shortcuts import render, redirect
 from django.template import context
 from re import template
@@ -130,4 +131,9 @@ def fn_var_plan_eva(request):
     contexto = context({tit_form})
     plantilla = template.render(contexto)
     return HttpResponse(plantilla)
+
+
+
+    
+
 

@@ -35,6 +35,9 @@ class vst_ls_crono(ListView):
     queryset = crono_pry.objects.filter(crono_archi=0)
     context_object_name = 'lista_pry'
 
+    def get_queryset(self):
+        return crono_pry.objects.filter(resp_pry = self.request.user) 
+
 class vst_add_crono(ListView):
      #clase para añadir información al cronograma desde el botón de añadir de la tarjeta
     model = crono_pry

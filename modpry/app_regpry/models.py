@@ -548,7 +548,7 @@ class lin_inv(models.Model):
     desc_lin_inv = models.CharField('Descripción de la línea de investigación: ', max_length=255)#Descripción de la línea de investigación
     #res_lin_inv = #Responsable de la línea de investigación
     #invs_lin_inv = #Investigadores de la línea de investigación
-    #cmp_disc_ocdi = models.IntegerField(leer_dat_ocde, null = False, blank = False, default = 0)#código del municipio#Campos disciplinarios OCDI
+    #cmp_disc_ocdi = models.IntegerField(leer_dat_ocde, null = False, blank = False, default = 0)#Campos disciplinarios OCDI
     #cmp_disc_minc = models.IntegerField(leer_dat_minciencias, null = False, blank = False, default = 0)#Campos disciplinarios MINCIENCIAS
     #id_padre_li = models.ForeignKey('id padre de la línea de investigación', null=False, blank =False))#Id padre de la línea de investigación
     #id_hijo = #Id hijo
