@@ -32,11 +32,10 @@ class vst_ls_crono(ListView):
     # clase para listar proyectos del sistema
     model = crono_pry
     template_name = 'cn_trj_crono.html'
-    queryset = crono_pry.objects.filter(crono_archi=0)
     context_object_name = 'lista_pry'
 
     def get_queryset(self):
-        return crono_pry.objects.filter(resp_pry = self.request.user) 
+        return crono_pry.objects.filter(resp_pry = self.request.user).filter(crono_archi=0)#Filtrar desde id de usuario y que no este archivado 
 
 class vst_add_crono(ListView):
      #clase para añadir información al cronograma desde el botón de añadir de la tarjeta

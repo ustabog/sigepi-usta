@@ -33,11 +33,10 @@ class vst_ls_pry(ListView):
     # clase para listar proyectos del sistema
     model = pry_base
     template_name = 'cn_trj_pry.html'
-    queryset = pry_base.objects.filter(pry_archi=0)#Muestra solo los proyecto que no están archivados
     context_object_name = 'lista_pry'
 
     def get_queryset(self):
-        return pry_base.objects.filter(id_usu = self.request.user)
+        return pry_base.objects.filter(id_usu = self.request.user).filter(pry_archi=0)
 
 class vts_edit_pry(UpdateView):
     #Clase de la vista para actualizar el registro de un proyecto 
@@ -71,11 +70,11 @@ class vst_ls_infopry(ListView):
     # clase para listar la información de los proyectos del sistema
     model = inf_pry
     template_name = 'cn_det_pry.html'
-    queryset = pry_base.objects.filter(pry_archi=0)#Muestra solo los proyecto que no están archivados
     context_object_name = 'lista_info_pry'
 
     def get_queryset(self):
-        return pry_base.objects.filter(id_usu = self.request.user)
+        return pry_base.objects.filter(id_usu = self.request.user).filter(pry_archi=0)
+
  
 
         

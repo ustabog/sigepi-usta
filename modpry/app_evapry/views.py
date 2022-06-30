@@ -33,16 +33,16 @@ class vst_ls_evapry(ListView):
     # clase para listar las evaluaciones de proyectos
     model = eva_pry
     template_name = 'cn_trj_eva.html'
-    queryset = eva_pry.objects.filter(eva_archi=0)
     context_object_name = 'lista_evapry'
 
     def get_queryset(self):
-        return eva_pry.objects.filter(ls_evalds = self.request.user)            
+        return eva_pry.objects.filter(ls_evalds = self.request.user).filter(eva_archi=0)#Filtrar desde id de usuario y que no este archivado     
+            
 
 class vst_add_eva(ListView):
     #clase para añadir información de la evaluación de proyectos desde el botón de añadir de la tarjeta
     template_name = 'mod_pry_add_eva.html'
-    queryset = eva_pry.objects.filter(eva_archi=0)
+    queryset = eva_pry.objects.order_by('nomb_eva')
     context_object_name = 'lista_evapry'
 
 class vst_edit_evapry(UpdateView):
