@@ -4,8 +4,21 @@ from modadm.app_modadm.models import *
 from modadm.app_regusu.models import *
 from modadm.app_regusugr.models import *
 
-#Clases de la Aplicación Registro de Instituciones
-###############################################################
+#Diccionario de información de instalación de aplicación
+INF_APP = [
+    ['Titulo', "App Registro de Usuario institucional"],
+    ['Descripción',"aplicación para el registro de la información de usuario institucional"],
+    ['url_documento','doc'],
+    ['url_instal','modadm/app_regusui'],
+    ['url_plantilla','ini_regusui_adm.html'],
+    ['Nombre_url','ini_regusui'],
+    ['Versión aplicación','0.7.0'],
+    ['id_mod', 0],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', True],
+    ['visible', True],
+    ]
 
 ROL_APP = [
     (0,'Administrador de aplicación'),
@@ -14,8 +27,7 @@ ROL_APP = [
     (3,'Otro'),
     ]
 
-
-
+#Clases de la Aplicación Registro de Instituciones
 class usui(models.Model):
     # Clase que almacena y procesa la información de un usuario institucional
     id_usuinst = models.AutoField(primary_key = True) # Identificador único del usuario institucionnal

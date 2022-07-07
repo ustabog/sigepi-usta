@@ -3,42 +3,21 @@ from modadm.app_regusu.models import *
 from modpry.app_regpry.models import *
 from modpry.app_recur.models import *
 
-APP_CRONO_PRY = [
+INF_APP = [
     #Diccionario para la aplicación de cronograma
-    (0,'Titulo'),
-    (1,'Descripción'),
-    (2,'url_documento'),
-    (3,'url_instal'),
-    (4,'url_plantilla'),
-    (5,'Nombre_url'),
-    (6,'Versión aplicación'),
-    (7,'id_mod'),
-    (8,'Versión_módulo'),
-    (9,'estado'),
-    (10,'instalada'),
-    (11, 'visible'),
+    ['Titulo', "App Cronograma"],
+    ['Descripción',"aplicación para la definición de un gronograma de un proyecto"],
+    ['url_documento','doc'],
+    ['url_instal','modpry/app_crono'],
+    ['url_plantilla','app_crono_iu.html'],
+    ['Nombre_url','ini_crono'],
+    ['Versión aplicación','0.4.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', True],
+    ['visible', True],
     ]
-
-VAR_PLANTILLAS = [
-    (0,'Cronograma'), 
-    (1,'archicrono/<id>'), #URL para archivar el cronograma en la base de datos
-    (2,'elicrono/<id>'), #URL para eliminar el cronograma de la base de datos
-    (3,'Fase'), 
-    (4,'archifase/<id>'), #URL para archivar la fase en la base de datos
-    (5,'elifase/<id>'), #URL para eliminar la fase de la base de datos
-    (6,'Etapa'),  
-    (7,'archieta/<id>'), #URL para archivar la etapa en la base de datos
-    (8,'elieta/<id>'), #URL para eliminar la etapa de la base de datos
-    (9,'Proceso'), 
-    (10,'archiproc/<id>'), #URL para archivar el proceso en la base de datos
-    (11,'eliproc/<id>'), #URL para eliminar el proceso de la base de datos
-    (12,'Tarea'), 
-    (13,'architar/<id>'), #URL para archivar la tarea en la base de datos
-    (14,'elitar/<id>'), #URL para eliminar la tarea de la base de datos
-    (15,'Actividad'), 
-    (16,'archiacti/<id>'), #URL para archivar la acti en la base de datos
-    (17,'eliacti/<id>'), #URL para eliminar la acti   de la base de datos
-]
 
 class acti(models.Model):
     # clase que guarda la información de las actividades del proyecto.
@@ -130,21 +109,3 @@ class crono_pry (models.Model):
     class Meta:
         verbose_name = 'crono_pry'
         verbose_name_plural = 'crono_prys'
-
-class fn_app_crono(models.Model):
-    #Clase para las funciones de la aplicación del registro de proyecto
-    id_func = models.AutoField(primary_key = True) # identificador único de función
-    nom_func = models.CharField('Nombre de la función: ', max_length=30, null=False, blank = False) # Nombre de la función
-    lib_func = models.CharField('Librería que contiene la función: ', max_length=30, null=False, blank = False) # Librería que contiene la función
-    url_loc = models.URLField('Direción local a la documentación o manual de la aplicación', null=False, blank=False)  # Direción local donde se encuentra la librería que contiene la función
-    com_exc = models.CharField('Comando de Ejecución de la Función: ', max_length=20, null=False, blank = False) # Comando de Ejecución de la Función
-    text = models.CharField('Nombre de Función: ', max_length=20, null=False, blank = False) # Nombre de Función para menús o etiquetas.
-    context = models.CharField('Contexto: ', max_length=20, null=False, blank = False) # Nombre de Función para menús contextuales o emergentes y panel de inf.
-    activa = models.BooleanField('¿Activa o desactivada?', default=False)  # La función está activa o desactiva.
-    indice = models.IntegerField() #Índice de selección, para navegar con el tabulador.
-    class Meta:
-            verbose_name = 'fn_app_crono'
-            verbose_name_plural = 'fn_app_cronos'
-
-    def __str__(self):
-        return '{}'.format(self.nom_func)

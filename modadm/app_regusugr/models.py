@@ -2,6 +2,22 @@ from django.db import models
 from modadm.app_modadm.models import *
 from modadm.app_regusu.models import *
 
+#Diccionario de información de instalación de aplicación
+INF_APP = [
+    ['Titulo', "App Registro de Usuario grupo"],
+    ['Descripción',"aplicación para el registro de la información de usuario grupo"],
+    ['url_documento','doc'],
+    ['url_instal','modadm/app_regusugr'],
+    ['url_plantilla','ini_regusugr_adm.html'],
+    ['Nombre_url','ini_regusugr'],
+    ['Versión aplicación','0.7.0'],
+    ['id_mod', 0],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', True],
+    ['visible', True],
+    ]
+
 class etapa_gr(models.Model):
     #Clase que registra las etapas de los grupos de investigación en el sistema.
     id_etp_gr = models.AutoField(primary_key = True) #Identificador único de la etapa del grupo de investigacion.
@@ -195,6 +211,7 @@ class rl_usugr_curs_ofer(models.Model):  ##listado de id cursos o eventos acade�
     ls_cursofer =  models.ForeignKey(curs_ofer, on_delete=models.CASCADE, null=False, blank =False)
 #    ls_prod = [] #Listado de id de productos de investigación vinculados al id usugr
 
+'''
 class app_reg_gr(models.Model):
     #Clase que contiene los objetos de la App Registro de Grupos
     id_app_reg_gr = models.AutoField(primary_key = True)
@@ -204,3 +221,4 @@ class app_reg_gr(models.Model):
     class Meta:
         verbose_name = 'app_reg_gr'
         verbose_name_plural = 'app_reg_grs'
+'''

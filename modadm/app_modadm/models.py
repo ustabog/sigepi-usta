@@ -5,6 +5,21 @@ from django.contrib.auth.models import Group
 import datetime
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import AbstractUser
+#Diccionario de información de instalación de aplicación
+INF_APP = [
+    ['Titulo', "App Módulo de Administración"],
+    ['Descripción',"aplicación para la administración del Sistema"],
+    ['url_documento','doc'],
+    ['url_instal','modadm/app_modadm'],
+    ['url_plantilla','inicio_adm.html'],
+    ['Nombre_url','inicio_adm'],
+    ['Versión aplicación','0.5.0'],
+    ['id_mod', 0],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', True],
+    ['visible', True],
+    ]
 
 #Tipo de rol dentro de la plataforma
 ROL_BASE = [
@@ -247,7 +262,6 @@ class listado_aplicativo(models.Model):
     def __str__(self):
         return '{}'.format(self.nom_aplicativo)
 
-
 class mod_ext(models.Model):
     #Clase que almacena la información de módulos externos instalados.
     id_mod_ext = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
@@ -285,11 +299,11 @@ class rol(Group):
     id_sis = models.ForeignKey(listado_aplicativo, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de sistema
     id_mod_ext = models.ForeignKey(mod_ext, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de módulo
     id_app_ext = models.ForeignKey(app_ext, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Extensión de aplicación
-    req_reg = models.BooleanField('¿Activa o desactiva.?', default=False) # Variable que indica si require registro en aplicativo o plataforma o no.
+    req_reg = models.BooleanField('¿Usuario(a) registrado(a)?', default=False) # Variable que indica si el rol require estar registrado y con sesión activa en plataforma o no.
 
     class Meta:
-        verbose_name = 'rol'
-        verbose_name_plural = 'rols'
+        verbose_name = 'rol de usuario'
+        verbose_name_plural = 'roles de usuario'
 
     def __str__(self):
         return '{}'.format(self.etq_rol)
@@ -335,7 +349,7 @@ class rl_mod_rol(models.Model):
         verbose_name = 'rl_mod_rol'
         verbose_name_plural = 'rl_mod_rols'
 
-class rl_mod_func(models.Model): 
+class rl_app_func(models.Model): 
     #Listado de funciones propias del módulo, objetos de la clase func_app().
     id_mod = models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False)#
     ls_func =  models.ForeignKey(func_app, on_delete=models.CASCADE, null=False, blank =False)#) # Listado de funciones propias del módulo, objetos de la clase func_app().

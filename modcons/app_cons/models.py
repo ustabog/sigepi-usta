@@ -3,17 +3,8 @@ from django.db import models
 from rest_framework import serializers
 from modpry.app_regpry.models import *
 from modpry.app_crono.models import *
+from modcons.app_cons.func import *
 from dataclasses import dataclass
-
-# Create your models here.
-
-UNIDAD_MED_TIEM = [
-    (0, 'Seg'),
-    (1, 'Min'),
-    (2, 'Horas'),
-    (3, 'Meses'),
-    (4, 'Años')
-    ]
 
 #---------------------------------------------DTO-----------------------------------------
 #*************Para el modulo de proyectos*******************

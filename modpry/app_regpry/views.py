@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import UpdateView, CreateView, ListView, DetailView
 from django.urls import reverse_lazy
-from requests import request
+#from djangorequests import request
 #from rest_framework import viewsets
 from .models import *
 from modpry.app_regpry.models import *

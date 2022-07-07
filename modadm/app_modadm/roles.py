@@ -1,6 +1,6 @@
 
 """
-Creacion de permisos y grupos po defecto
+Creacion de permisos y grupos por defecto
 Fecha: 26/04/22
 Auto: Juan Sebastian Cely Caro
 """
