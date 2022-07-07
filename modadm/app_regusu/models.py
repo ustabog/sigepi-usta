@@ -298,7 +298,7 @@ class usu_form_acad(models.Model):
     id_lugar= models.IntegerField('Identificador único de lugar', default=0, null=False, blank = False) #identificador de lugar clave valor de lugares (País, Estado, ciudad)
     mod =  models.IntegerField(choices = MODALIDAD, default = 0, null=False, blank = False) # modalidad
     tit = models.CharField('Titulo obtenido ', max_length=120, null=False, blank = False) # Título obtenido
-    menc =  models.BooleanField('Mención de Honor', default= False; null=False, blank = False)  # Mensión de honor
+    menc = models.BooleanField('Mención de Honor', default= False, null=False, blank = False) # Mensión de honor
     url_cert = models.CharField('Dirección URL del certificado', null=True, blank = True) # Dirección o enlace público del certificado
     token = models.CharField('Token de validación', null=False, blank = False)  #Token de validación electrónica de certificación de la formación
 

@@ -1,3 +1,51 @@
+# App de la evaluación de un proyecto de investigación - Funciones para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 07-07-2022
+
+# Funciones de la aplicación
+
+#Agregar inf. de la Evaluación de un Proyecto de Investigación
+#Modificar inf. de la Evaluación de un Proyecto de Investigación
+#Archivar inf. de la Evaluación de un Proyecto de Investigación
+#Eliminar inf. de la Evaluación de un Proyecto de Investigación
+#Consultar inf. de la Evaluación de un Proyecto de Investigación
+#Agregar inf. de la Rúbrica de Evaluación de un Proyecto de Investigación
+#Diseñar la jerarquía de una Rúbrica de Evaluación de un Proyecto de Investigación
+#Modificar inf. de la Rúbrica de Evaluación de un Proyecto de Investigación
+#Archivar inf. de la Rúbrica de Evaluación de un Proyecto de Investigación
+#Eliminar inf. de la Rúbrica de Evaluación de un Proyecto de Investigación
+#Consultar inf. de la Rúbrica de Evaluación de un Proyecto de Investigación
+#Agregar inf. de los criterios de Evaluación de un Proyecto de Investigación
+#Modificar inf. de los criterios de Evaluación de un Proyecto de Investigación
+#Archivar inf. de los criterios de Evaluación de un Proyecto de Investigación
+#Eliminar inf. de los criterios de Evaluación de un Proyecto de Investigación
+#Consultar inf. de los criterios de Evaluación de un Proyecto de Investigación
+#Agregar inf. del Tipo de Evaluación de un Proyecto de Investigación
+#Modificar inf. del Tipo de Evaluación de un Proyecto de Investigación
+#Archivar inf. del Tipo de Evaluación de un Proyecto de Investigación
+#Eliminar inf. del Tipo de Evaluación de un Proyecto de Investigación
+#Consultar inf. del Tipo de Evaluación de un Proyecto de Investigación
+#Agregar inf. del Rango de Evaluación de un Proyecto de Investigación
+#Modificar inf. del Rango de Evaluación de un Proyecto de Investigación
+#Archivar inf. del Rango de Evaluación de un Proyecto de Investigación
+#Eliminar inf. del Rango de Evaluación de un Proyecto de Investigación
+#Consultar inf. del Rango de Evaluación de un Proyecto de Investigación
+#Agregar inf. del Resultado de la Evaluación de un Proyecto de Investigación
+#Modificar inf. del Resultado de la Evaluación de un Proyecto de Investigación
+#Archivar inf. del Resultado de la Evaluación de un Proyecto de Investigación
+#Eliminar inf. del Resultado de la Evaluación de un Proyecto de Investigación
+#Consultar inf. del Resultado de la Evaluación de un Proyecto de Investigación
+#Agregar inf. de los comentarios de una Evaluación de un Proyecto de Investigación
+#Modificar inf. de los comentarios de una Evaluación de un Proyecto de Investigación
+#Archivar inf. de los comentarios de una Evaluación de un Proyecto de Investigación
+#Eliminar inf. de los comentarios de una Evaluación de un Proyecto de Investigación
+#Consultar inf. de los comentarios de una Evaluación de un Proyecto de Investigación
+#Vincular un proyecto a una evaluación de proyecto
+#Vincular un usuario Evaluador a una evaluación de proyecto
+#Vincular un usuario Diseñador de evaluación a una evaluación de proyecto
+#Vincular un usuario Evaluado a una evaluación de un proyecto
+
 from .models import *
 from modpry.app_regpry.models import *
 from modpry.app_regpry.form import *

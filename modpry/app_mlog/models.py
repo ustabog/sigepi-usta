@@ -1,7 +1,29 @@
+# App de marco lógico de un proyecto de investigación - Modelos para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 07-07-2022
+
 from django.db import models
 from modpry.app_modpry.models import *
 from modpry.app_regpry.models import *
 from modpry.app_disinv.models import *
+
+INF_APP = [
+    #Diccionario para la aplicación de evaluación de proyecto de investigación
+    ['Titulo', "App Marco Lógico"],
+    ['Descripción',"aplicación para la definición del marco lógico de Proyectos de investigación"],
+    ['url_documento','doc'],
+    ['url_instal','modpry/app_mlog'],
+    ['url_plantilla','app_mlog_iu.html'],
+    ['Nombre_url','ini_mlog'],
+    ['Versión aplicación','0.1.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', False],
+    ['visible', False],
+    ]
+
 
 TIPO_PRBL=[
     # tipo de problema que se enfrenta

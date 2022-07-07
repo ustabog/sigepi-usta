@@ -1,6 +1,6 @@
 # App Registro de usuarios individuales funciones para SIGEPI
 #Autor: Milton O. Castro Ch.
-# Coautor(a): Laura Sofía Rodríguez
+# Coautor(a): Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
 #fecha 06-07-2022
 
 # Funciones de la aplicación
