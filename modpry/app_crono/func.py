@@ -10,31 +10,43 @@
 #Archivar inf. de las actividades de un Cronograma
 #Eliminar inf. de las actividades de un Cronograma
 #Consultar inf. de las actividades de un Cronograma
+#Clonar inf. de las actividades de un Cronograma
+#Listar inf. de las actividades de un Cronograma
 #Agregar inf. de las tareas de un Cronograma
 #Modificar inf. de las tareas de un Cronograma
 #Archivar inf. de las tareas de un Cronograma
 #Eliminar inf. de las tareas de un Cronograma
 #Consultar inf. de las tareas de un Cronograma
+#Clonar inf. de las tareas de un Cronograma
+#Listar inf. de las tareas de un Cronograma
 #Agregar inf. de los procesos de un Cronograma
 #Modificar inf. de los procesos de un Cronograma
 #Archivar inf. de los procesos de un Cronograma
 #Eliminar inf. de los procesos de un Cronograma
 #Consultar inf. de los procesos de un Cronograma
+#Clonar inf. de los procesos de un Cronograma
+#Listar inf. de los procesos de un Cronograma
 #Agregar inf. de las fases de un Cronograma
 #Modificar inf. de las fases de un Cronograma
 #Archivar inf. de las fases de un Cronograma
 #Eliminar inf. de las fases de un Cronograma
 #Consultar inf. de las fases de un Cronograma
+#Clonar inf. de las fases de un Cronograma
+#Listar inf. de las fases de un Cronograma
 #Agregar inf. de las etapas de un Cronograma
 #Modificar inf. de las etapas de un Cronograma
 #Archivar inf. de las etapas de un Cronograma
 #Eliminar inf. de las etapas de un Cronograma
 #Consultar inf. de las etapas de un Cronograma
+#Clonar inf. de las etapas de un Cronograma
+#Listar inf. de las etapas de un Cronograma
 #Agregar inf. de un Cronograma
 #Modificar inf. de un Cronograma
 #Archivar inf. de un Cronograma
 #Eliminar inf. de un Cronograma
 #Consultar inf. de un Cronograma
+#Clonar inf. de un Cronograma
+#Listar inf. de un Cronograma
 #Vincular un proyecto a un Cronograma
 #Vincular un usuario o varios usuarios a un Cronograma
 #Vincular un usuario a una Tarea

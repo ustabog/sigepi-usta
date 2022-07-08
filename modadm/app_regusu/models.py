@@ -1,3 +1,8 @@
+# App Registro de usuarios individuales - Modelos para SIGEPI
+#Autor: Juan Sebastian Cely
+# Coautor(a): Milton O. Castro Ch.
+#fecha 01-04-2022
+
 from django.db import models
 from modadm.app_modadm.models import *
 from modcons.app_cons.func import *

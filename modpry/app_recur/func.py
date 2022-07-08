@@ -10,5 +10,7 @@
 #Archivar inf. de los recursos de un Proyecto de Investigación
 #Eliminar inf. de los recursos de un Proyecto de Investigación
 #Consultar inf. de los recursos de un Proyecto de Investigación
+#Clonar inf. de los recursos de un Proyecto de Investigación
+#Listar inf. de los recursos de un Proyecto de Investigación
 #Vincular un usuario a un recurso
 #Vincular un proyecto a un recurso

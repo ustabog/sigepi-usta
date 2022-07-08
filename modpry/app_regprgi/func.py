@@ -10,9 +10,12 @@
 #Archivar inf. del programa de Investigación
 #Eliminar inf. del programa de Investigación
 #Consultar inf. del programa de Investigación
+#Listar inf. del programa de Investigación
 #Agregar inf. del tipo de programa de Investigación
 #Modificar inf. del tipo de programa de Investigación
 #Archivar inf. del tipo de programa de Investigación
 #Eliminar inf. del tipo de programa de Investigación
 #Consultar inf. del tipo de programa de Investigación
+#Listar inf. del tipo de programa de Investigación
 #Vincular un usuario a un programa de investigación
+#Clonar un programa de investigación

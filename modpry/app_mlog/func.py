@@ -10,4 +10,7 @@
 #Archivar inf. del marco lógico de un Proyecto de Investigación
 #Eliminar inf. del marco lógico de un Proyecto de Investigación
 #Consultar inf. del marco lógico de un Proyecto de Investigación
+#Clonar inf. del marco lógico de un Proyecto de Investigación
+#Listar inf. del marco lógico de un Proyecto de Investigación
+#Listar los marcos lógicos
 #Vincular un proyecto a un marco lógico.
