@@ -1,3 +1,60 @@
+# App de registro de un proyecto de investigación - Funciones para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 07-07-2022
+
+# Funciones de la aplicación
+
+#Agregar inf. del registro de un proyecto de Investigación
+#Modificar inf. del registro de un proyecto de Investigación
+#Archivar inf. del registro de un proyecto de Investigación
+#Eliminar inf. del registro de un proyecto de Investigación
+#Consultar inf. del registro de un proyecto de Investigación
+#Listar inf. del registro de un proyecto de Investigación
+#Agregar inf. del proyecto de Investigación
+#Modificar inf. del proyecto de Investigación
+#Archivar inf. del proyecto de Investigación
+#Eliminar inf. del proyecto de Investigación
+#Consultar inf. del proyecto de Investigación
+#Listar inf. del proyecto de Investigación
+#Agregar inf. de los productos vinculados proyecto de Investigación
+#Modificar inf. de los productos vinculados proyecto de Investigación
+#Archivar inf. de los productos vinculados proyecto de Investigación
+#Eliminar inf. de los productos vinculados proyecto de Investigación
+#Consultar inf. de los productos vinculados proyecto de Investigación
+#Listar inf. de los productos vinculados proyecto de Investigación
+#Agregar inf. de los actores vinculados proyecto de Investigación
+#Modificar inf. de los actores vinculados proyecto de Investigación
+#Archivar inf. de los actores vinculados proyecto de Investigación
+#Eliminar inf. de los actores vinculados proyecto de Investigación
+#Consultar inf. de los actores vinculados proyecto de Investigación
+#Clonar inf. de los actores vinculados proyecto de Investigación
+#Listar inf. de los actores vinculados proyecto de Investigación
+#Agregar inf. de los eventos del proyecto de Investigación
+#Modificar inf. de los eventos del proyecto de Investigación
+#Archivar inf. de los eventos del proyecto de Investigación
+#Eliminar inf. de los eventos del proyecto de Investigación
+#Consultar inf. de los eventos del proyecto de Investigación
+#Clonar inf. de los eventos del proyecto de Investigación
+#Listar inf. de los eventos del proyecto de Investigación
+#Agregar inf. de los recursos del proyecto de Investigación
+#Modificar inf. de los recursos del proyecto de Investigación
+#Archivar inf. de los recursos del proyecto de Investigación
+#Eliminar inf. de los recursos del proyecto de Investigación
+#Consultar inf. de los recursos del proyecto de Investigación
+#Clonar inf. de los recursos del proyecto de Investigación
+#Listar inf. de los recursos del proyecto de Investigación
+#Agregar inf. de la línea de investigación del proyecto
+#Modificar inf. de la línea de investigación del proyecto
+#Archivar inf. de la línea de investigación del proyecto
+#Eliminar inf. de la línea de investigación del proyecto
+#Consultar inf. de la línea de investigación del proyecto
+#Clonar inf. de la línea de investigación del proyecto
+#Listar inf. de la línea de investigación del proyecto
+#Vincular un usuario a un proyecto de investigación
+#Clonar un proyecto de investigación
+
+
 from re import template
 from django.http import HttpResponse
 from .models import *

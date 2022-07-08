@@ -1,22 +1,27 @@
+# App de registro de un proyecto de investigación - Modelos para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 07-07-2022
+
 from django.db import models
 from modpry.app_modpry.models import *
 from modadm.app_regusugr.models import *
 from modcons.app_cons.models import *
 
-APP_REG_PRY = [
+INF_APP = [
     #Diccionario para la aplicación de registro de proyecto
-    (0,'Titulo'),
-    (1,'Descripción'),
-    (2,'url_documento'),
-    (3,'url_instal'),
-    (4,'url_plantilla'),
-    (5,'Nombre_url'),
-    (6,'Versión aplicación'),
-    (7,'id_mod'),
-    (8,'Versión_módulo'),
-    (9,'estado'),
-    (10,'instalada'),
-    (11, 'visible'),
+    ['Titulo', "App Registro de Proyecto de Investigación"],
+    ['Descripción',"Aplicación para la definición del registro del Proyecto de Investigación"],
+    ['url_documento','doc'],
+    ['url_instal','modpry/app_regpry'],
+    ['url_plantilla','app_regpry_iu.html'],
+    ['Nombre_url','ini_regpry'],
+    ['Versión aplicación','0.7.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', True],
+    ['visible', True],
     ]
 
 ROL_APP = [

@@ -1,19 +1,24 @@
+# App de recursos de un proyecto de investigación - Modelos para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 07-07-2022
+
 from django.db import models
 
-APP_REC_PRY = [
-    #Diccionario para la aplicación de recurso de proyecto
-    (0,'Titulo'),
-    (1,'Descripción'),
-    (2,'url_documento'),
-    (3,'url_instal'),
-    (4,'url_plantilla'),
-    (5,'Nombre_url'),
-    (6,'Versión aplicación'),
-    (7,'id_mod'),
-    (8,'Versión_módulo'),
-    (9,'estado'),
-    (10,'instalada'),
-    (11, 'visible'),
+INF_APP = [
+    #Diccionario para la aplicación de recursos
+    ['Titulo', "App Recurso"],
+    ['Descripción',"aplicación para la definición de los recursos de proyecto"],
+    ['url_documento','doc'],
+    ['url_instal','modpry/app_recur'],
+    ['url_plantilla','app_recur_iu.html'],
+    ['Nombre_url','ini_recur'],
+    ['Versión aplicación','0.1.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', True],
+    ['visible', True],
     ]
 
 TIPO_REC = [

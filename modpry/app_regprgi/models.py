@@ -1,23 +1,28 @@
+# App de registro de un programa de investigación - Modelos para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 07-07-2022
+
 from django.db import models
 from modpry.app_modpry.models import *
 from modadm.app_regusugr.models import *
 from modadm.app_modadm.models import *
 from modcons.app_cons.models import *
 
-APP_PRG_INV = [
-    #Diccionario para la aplicación de programa de investigación
-    (0,'Titulo')
-    (1,'Descripción'),
-    (2,'url_documento'),
-    (3,'url_instal'),
-    (4,'url_plantilla'),
-    (5,'Nombre_url'),
-    (6,'Versión aplicación'),
-    (7,'id_mod'),
-    (8,'Versión_módulo'),
-    (9,'estado'),
-    (10,'instalada')
-    (11, 'visible')
+INF_APP = [
+    #Diccionario para la aplicación de registro de programa de investigación
+    ['Titulo', "App Registro de Programa de Investigación"],
+    ['Descripción',"Aplicación para la definición del registro del Programa de Investigación"],
+    ['url_documento','doc'],
+    ['url_instal','modpry/app_regprgi'],
+    ['url_plantilla','app_regprgi_iu.html'],
+    ['Nombre_url','ini_regprgi'],
+    ['Versión aplicación','0.1.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', False],
+    ['visible', False],
     ]
 
 # Clases de la Aplicación Registro de Programas de Investigación
