@@ -1,8 +1,3 @@
-# App Registro de usuarios grupales - Modelos para SIGEPI
-#Autor: Juan Sebastian Cely
-# Coautor(a): Milton O. Castro Ch.
-#fecha 01-04-2022
-
 from django.db import models
 from modadm.app_modadm.models import *
 from modadm.app_regusu.models import *
@@ -43,6 +38,7 @@ class etapa_gr(models.Model):
 
 class usugr(models.Model): #ojo falta listado de productos y protyectos vinculados al grupo
     #Clase que registra la información básica del usuario grupo en el sistema.
+
     id_gr = models.AutoField(primary_key = True) #Identificador único del grupo de investigacion.
     passgr  = models.CharField('Descripcion ', max_length=20, null=False, blank = False)  # contraseña para el usuario grupo (diferente a la del usuario del sistema)
     id_usu_admin = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)  #Identificador del usuario administrador (debe estar registrado y se le asignan permisos de administración de app_reg_gr)
@@ -216,7 +212,6 @@ class rl_usugr_curs_ofer(models.Model):  ##listado de id cursos o eventos acade�
 #    ls_prod = [] #Listado de id de productos de investigación vinculados al id usugr
 
 '''
-Esta definida en el primer diccionario
 class app_reg_gr(models.Model):
     #Clase que contiene los objetos de la App Registro de Grupos
     id_app_reg_gr = models.AutoField(primary_key = True)

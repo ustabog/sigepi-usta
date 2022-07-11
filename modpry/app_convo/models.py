@@ -1,28 +1,23 @@
-# App de la convocatoria de un proyecto de investigación - Modelos para SIGEPI
-#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
-# Coautor(a):  Milton O. Castro Ch.
-#fecha 07-07-2022
-
 from django.db import models
 from modpry.app_modpry.models import *
 from modpry.app_regpry.models import *
 from modcons.app_cons.models import *
 
-INF_APP = [
-    #Diccionario para la aplicación de convocatoria
-    ['Titulo', "App Convocatoria"],
-    ['Descripción',"aplicación para la definición de una convocatoria de un proyecto"],
-    ['url_documento','doc'],
-    ['url_instal','modpry/app_convo'],
-    ['url_plantilla','app_convo_iu.html'],
-    ['Nombre_url','ini_convo'],
-    ['Versión aplicación','0.1.0'],
-    ['id_mod', 4],
-    ['Versión_módulo', 'prueba'],
-    ['estado', 'en Desarrollo'],
-    ['instalada', False],
-    ['visible', False],
+APP_CONVO_PRY = [
+    #Diccionario para la aplicación de convocatoria de proyecto
+    (1,'Descripción'),
+    (2,'url_documento'),
+    (3,'url_instal'),
+    (4,'url_plantilla'),
+    (5,'Nombre_url'),
+    (6,'Versión aplicación'),
+    (7,'id_mod'),
+    (8,'Versión_módulo'),
+    (9,'estado'),
+    (10,'instalada')
+    (11, 'visible')
     ]
+
 
 class convoca_pry(models.Model):
     #Clase que contiene la información de las convocatorias del proyecto
@@ -35,8 +30,6 @@ class convoca_pry(models.Model):
     class Meta:
         verbose_name = 'convoca_pry'
         verbose_name_plural = 'convoca_prys'
-
-#Diseñar una plantilla base para diseñar un proyecto para una convocatoria
 
 '''
 class obj_esp_pry(models.Model):

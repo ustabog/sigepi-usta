@@ -117,37 +117,37 @@ class infopersDelete(DeleteView, PermissionRequiredMixin):
 
 ########## CRUD DISCAPACIDAD ###############################
 
-class vts_reg_discapacidad(CreateView, PermissionRequiredMixin):
+class vts_reg_discap(CreateView, PermissionRequiredMixin):
     #crear información de las personas
-    model = discapacidad
-    form_class = frm_con_discapacidad
+    model = discap
+    form_class = frm_con_discap
     template_name = 'app_regusu_frm_discapacidad.html'
     success_url = reverse_lazy('cons_discapacidad')
     success_message = 'La discapacidad fue creada satisfactoriamente'
-    permission_required = 'discapacidad.add_discapacidad'
+    permission_required = 'discap.add_discap'
 
-class vts_ls_discapacidad(ListView, PermissionRequiredMixin): #hereda de listwview
+class vts_ls_discap(ListView, PermissionRequiredMixin): #hereda de listwview
     #información de las personas
-    model = discapacidad
-    form_class = frm_con_discapacidad
+    model = discap
+    form_class = frm_con_discap
     template_name = 'cn_discapacidad.html'
     success_url = reverse_lazy('cn_discapacidad.html')
     success_message = 'Listado cargado correctamente'
-    permission_required = 'discapacidad.view_discapacidad'
+    permission_required = 'discap.view_discap'
 
-class vts_edt_discapacidad(UpdateView, PermissionRequiredMixin):
+class vts_edt_discap(UpdateView, PermissionRequiredMixin):
     #clase que almacena los modulos generales del sistema
-    model = discapacidad
-    form_class = frm_con_discapacidad
+    model = discap
+    form_class = frm_con_discap
     template_name = 'app_regusu_frm_discapacidad.html'
     success_url = reverse_lazy('cons_discapacidad')
-    permission_required = 'discapacidad.change_discapacidad'
+    permission_required = 'discap.change_discap'
 
-class vts_del_discapacidad(DeleteView, PermissionRequiredMixin):
-    model = discapacidad
+class vts_del_discap(DeleteView, PermissionRequiredMixin):
+    model = discap
     template_name = 'app_regusu_del_discapacidad.html'
     success_url = reverse_lazy('cons_discapacidad')
-    permission_required = 'discapacidad.delete_discapacidad'
+    permission_required = 'discap.delete_discap'
 
 ##### CRUD INFORMACION PERSONAL #######################################
 

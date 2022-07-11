@@ -64,10 +64,10 @@ class frm_con_usu_inf_pers(forms.ModelForm):
         model =  usu_inf_pers
         fields = '__all__'
 
-class frm_con_discapacidad(forms.ModelForm):
+class frm_con_discap(forms.ModelForm):
     #Información de contacto
     class Meta:
-        model = discapacidad
+        model = discap
         fields = '__all__'
 
 class frm_con_info_contact(forms.ModelForm):
@@ -79,17 +79,17 @@ class frm_con_info_contact(forms.ModelForm):
 class frm_con_red_social(forms.ModelForm):
     #Red Social
     class Meta:
-        model = red_soc
+        model = usu_red_soc
         fields = '__all__'
 
 class frm_form_academica(forms.ModelForm):
     #Formación académica
     class Meta:
-        model = form_acad
+        model = usu_form_acad
         fields = '__all__'
 
 class frm_curs_dict(forms.ModelForm):
     #Formación académica
     class Meta:
-        model = form_acad
+        model = usu_form_acad
         fields = '__all__'

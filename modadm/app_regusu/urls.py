@@ -28,10 +28,10 @@ urlpatterns = [
     path('eliminarinf/<int:pk>/',infopersDelete.as_view(), name='eliminarinf'),
 
     # CRUD DISCAPACIDAD
-    path('reg_disc/', vts_reg_discapacidad.as_view(), name = 'reg_disc'),
-    path('cons_disc/', vts_ls_discapacidad.as_view(), name = 'cons_discapacidad'),
-    path('edt_disc/<int:pk>/', vts_edt_discapacidad.as_view(), name='edt_disc'),
-    path('eli_disc/<int:pk>/', vts_del_discapacidad.as_view(), name='eli_disc'),
+    path('reg_disc/', vts_reg_discap.as_view(), name = 'reg_disc'),
+    path('cons_disc/', vts_ls_discap.as_view(), name = 'cons_discapacidad'),
+    path('edt_disc/<int:pk>/', vts_edt_discap.as_view(), name='edt_disc'),
+    path('eli_disc/<int:pk>/', vts_del_discap.as_view(), name='eli_disc'),
 
     # CRUD INFORMACION PERSONAL
     path('reg_infopers/', vts_reg_usu_inf_pers.as_view(), name = 'reg_infopers'),

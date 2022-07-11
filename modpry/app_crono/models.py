@@ -1,8 +1,3 @@
-# App de Cronograma de un proyecto de investigación - Modelos para SIGEPI
-#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
-# Coautor(a):  Milton O. Castro Ch.
-#fecha 07-07-2022
-
 from django.db import models
 from modadm.app_regusu.models import *
 from modpry.app_regpry.models import *

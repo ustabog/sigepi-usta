@@ -4,7 +4,7 @@ from django.views.generic import CreateView, DeleteView,ListView,UpdateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .form import *
-from modadm.app_regusu.models import usu_inf_apps
+from modadm.app_regusu.models import rl_usu_rol
 from modadm.app_regusugr.models import usugr
 from modadm.app_regusui.models import usui
 from modadm.app_modadm.models import *
@@ -51,7 +51,7 @@ class vts_ls_mod(ListView):
 
 class ls_rol_usu(ListView):
     # clase para listar roles de usuarios del sistema
-    model = usu_inf_apps
+    model = rl_usu_rol
     form_class = frm_rol_usu
     template_name = 'listarrol.html'
     success_url = reverse_lazy('cn_usu')

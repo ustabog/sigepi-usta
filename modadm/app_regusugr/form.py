@@ -94,5 +94,5 @@ class frm_con_mod(forms.ModelForm):
 class frm_rol_usu(forms.ModelForm):
     #Calse que busca los campos de roles de usaurio
     class Meta:
-        model = usu_inf_apps
+        model = rl_usu_rol
         fields = '__all__'

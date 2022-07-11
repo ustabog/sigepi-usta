@@ -1,8 +1,3 @@
-# App Registro de usuarios institucionales - Modelos para SIGEPI
-#Autor: Juan Sebastian Cely
-# Coautor(a): Milton O. Castro Ch.
-#fecha 01-04-2022
-
 from django.db import models
 #from django.contrib.auth.models import User
 from modadm.app_modadm.models import *
@@ -159,7 +154,7 @@ class rl_usuo_prog_ofer(models.Model): #Listado de id de programas ofertados por
 
 
 class conv_inv(models.Model):
-    #clase que almacena la información de convocatoria de investigación
+    #clase que almacena la información de los programas ofertados a cargo de un usuario Institucional
     id_conv = models.AutoField(primary_key=True)  # identificado único de convocatoria.
     id_usui = models.ForeignKey(usui,on_delete=models.CASCADE, null=False, blank=False) # Id del usuario institucion .
     val_min = models.IntegerField() #valor mínimo
@@ -193,9 +188,8 @@ class rl_usui_conv_inv(models.Model):  #relacion Listado de id de convocatorias 
     id_usui = models.ForeignKey(usui, on_delete=models.CASCADE, null=False, blank=False) # identificador unico
     ls_conv_inv = models.ForeignKey(conv_inv, on_delete=models.CASCADE, null=False, blank=False)
 
-'''
-Esta definida en el primer diccionario 
 class app_reg_ins(models.Model):
+
     app_reg_ins = models.AutoField(primary_key = True)  # identificador unico para App Registro de Instituciones
     id_aplicacion_administrador =  models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False) # Identificador único ddel modulo administrador
     nomb_app_reg_ins = models.CharField('Nombre  ', max_length=20, null=False, blank = False)  # nombre de la App Registro de Instituciones
@@ -205,4 +199,3 @@ class app_reg_ins(models.Model):
     class Meta:
         verbose_name = 'app_reg_ins'
         verbose_name_plural = 'app_reg_inss'
-'''

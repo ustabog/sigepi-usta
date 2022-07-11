@@ -1,8 +1,3 @@
-# App Registro de usuarios individuales - Modelos para SIGEPI
-#Autor: Juan Sebastian Cely
-# Coautor(a): Milton O. Castro Ch.
-#fecha 01-04-2022
-
 from django.db import models
 from modadm.app_modadm.models import *
 from modcons.app_cons.func import *
@@ -259,7 +254,7 @@ class usu_inf_pers(models.Model):
     fch_naci = models.DateField('Fecha de nacimiento', auto_now = False)   # fecha de nacimiento de usuario
     gene = models.IntegerField('Género', choices = GENERO, default = 0, null=True, blank = True)  #genero del usuario
     ocup = models.CharField('Ocupacion', max_length=50, null = False, blank = False) # ocupación del usuario
-    dir_res = models.CharField('Direccion de Residencia', null=False, blank = False, default='Colombia, Bogotá, Carrera 9 n.° 51-11') # direccion de residencia
+    dir_res = models.CharField('Direccion de Residencia', max_length=255, null=False, blank = False, default='Colombia, Bogotá, Carrera 9 n.° 51-11') # direccion de residencia
     disc = models.BooleanField('¿Es una persona en condición de discapacidad?', default=False) # Es una persona en condición de discapacidad
     tipo_discap = models.ForeignKey(discap, on_delete=models.SET_NULL, null=True, blank =True)  # Tipo de  discapacidad tabla de discapacidad
     url_imag = models.URLField('url de la imagen personal.', null=True, blank=True)  # url de la imagen personal.
@@ -303,9 +298,9 @@ class usu_form_acad(models.Model):
     id_lugar= models.IntegerField('Identificador único de lugar', default=0, null=False, blank = False) #identificador de lugar clave valor de lugares (País, Estado, ciudad)
     mod =  models.IntegerField(choices = MODALIDAD, default = 0, null=False, blank = False) # modalidad
     tit = models.CharField('Titulo obtenido ', max_length=120, null=False, blank = False) # Título obtenido
-    menc = models.BooleanField('Mención de Honor', default= False, null=False, blank = False) # Mensión de honor
-    url_cert = models.CharField('Dirección URL del certificado', null=True, blank = True) # Dirección o enlace público del certificado
-    token = models.CharField('Token de validación', null=False, blank = False)  #Token de validación electrónica de certificación de la formación
+    menc =  models.BooleanField('Mención de Honor', default= False, null=False, blank = False)  # Mensión de honor
+    url_cert = models.CharField('Dirección URL del certificado',  max_length=255, null=True, blank = True) # Dirección o enlace público del certificado
+    token = models.CharField('Token de validación', max_length=255, null=False, blank = False)  #Token de validación electrónica de certificación de la formación
 
     class Meta:
         verbose_name = 'form_acad'
@@ -330,7 +325,7 @@ class usu_red_soc(models.Model):
 class usu_empleo(models.Model):
     #Clase que almacena la información de empleos del usuario
     id_empl = models.AutoField(primary_key = True)
-    id_usu = models.OneToOneField(usu, on_delete=models.SET_NULL, null=False, blank =False)
+    id_usu = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank =True)
     instit = models.CharField('Nombre de la institucion o empresa ', max_length= 100, null=False, blank = False) # Nombre de la institucion académica donde curso la formación
     nom_cargo = models.CharField('Nombre del Cargo ', max_length=100, null=False, blank = False)  #Nombre del Cargo
     fch_ini = models.DateField('fecha de inicio', auto_now = False,null=False, blank = False)
@@ -374,10 +369,10 @@ class usu_curs_dict(models.Model):
 
 class usu_valid_hab(models.Model):
     #clase que procesa la información de validación social de habilidades
-    id_usu = models.OneToOneField(usu, on_delete=models.SET_NULL, null=False, blank =False) # Identificador del Usuario que registra la habilidad
-    id_hab = models.ForeignKey(habil, on_delete=models.SET_NULL, null=False, blank =False) #Identificador de la habilidad que se va a validar
-    id_usu_val = models.ForeignKey(usu, on_delete=models.SET_NULL, null=False, blank =False)  #Identificador del Usuario que valida la habilidad
-    id_esc = models.IntegerField('id de la escala de validación', max_length=20, null=False, blank = False) #Identificador de la escala de validación
+    id_usu = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank =True) # Identificador del Usuario que registra la habilidad
+    id_hab = models.ForeignKey(habil, on_delete=models.SET_NULL, null=True, blank =True) #Identificador de la habilidad que se va a validar
+    id_usu_val = models.IntegerField(usu, null=True, blank =True)  #Identificador del Usuario que valida la habilidad
+    id_esc = models.IntegerField('id de la escala de validación', null=False, blank = False) #Identificador de la escala de validación
     val = models.CharField('Valor', max_length=20, null=False, blank = False) #Valor dentro del rango de la escala de validación
     archi = models.BooleanField(null = False, blank = False, default = 0)#Si el registro está archivada (antes de proceder a borrarlo de la base de datos)
     
