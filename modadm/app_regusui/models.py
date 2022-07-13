@@ -33,7 +33,7 @@ class usui(models.Model):
     id_usuinst = models.AutoField(primary_key = True) # Identificador único del usuario institucionnal
     passinst  = models.CharField('Contraseña ', null = False, blank = False, max_length = 15) # contraseña para el usuario institucional (diferente a la del usuario del sistema)
     id_usu_admin = models.ForeignKey(usu, on_delete=models.CASCADE, null= False, blank = False) #Identificador del usuario administrador (debe estar registrado y se le asignan permisos de administración de app_reg_ins)
-    id_rol_app = models.ForeignKey(rol, on_delete = models.CASCADE, null= False, blank = False)
+    id_rol_app = models.ForeignKey(adm_rol, on_delete = models.CASCADE, null= False, blank = False)
     #id_rol_app = models.ForeignKey(rol, on_delete = models.CASCADE, null= False, blank = False)
     #  # Identificador del Rol de Usuario Institucional dentro de la app_reg_ins
     fch_regi = models.DateField('fecha de registro de usurio: ', auto_now = False) # fecha de registro de usurio
@@ -48,7 +48,7 @@ class usui_inf_apps(models.Model):
     id_usui = models.ForeignKey(usui, on_delete=models.CASCADE, null=False, blank = False) #id único de Usuario de sistema
     ls_roles =[[0,0]] #Listado de roles en aplicaciones y módulos autorizados por administradores de paltaforma
         # [0,] id_rol; [,0] id_usu quien autoriza.
-    rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank = False) # Identificador de rol de sistema.
+    rol_sis = models.ForeignKey(adm_rol, on_delete=models.CASCADE, null=False, blank = False) # Identificador de rol de sistema.
 #    app_act = models.ForeignKey(listado_aplicativo, on_delete=models.CASCADE, null=False, blank = False) # identificador de funcionalidad actual (Sistema, módulo, aplicacion, extensión)
     #rol_act = 0 # identificador del rol actual.
 
@@ -58,7 +58,7 @@ class usui_inf_apps(models.Model):
 
 class rl_usui_rol_actual(models.Model): #relacion qu me almacena el rol actual
     id_usui = models.ForeignKey(usui, on_delete=models.CASCADE, null=False, blank = False) #
-    rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank = False)
+    rol_sis = models.ForeignKey(adm_rol, on_delete=models.CASCADE, null=False, blank = False)
 
 class usui_inf_inst(models.Model):
     #clase de información de usuario institucional.
@@ -191,7 +191,7 @@ class rl_usui_conv_inv(models.Model):  #relacion Listado de id de convocatorias 
 class app_reg_ins(models.Model):
 
     app_reg_ins = models.AutoField(primary_key = True)  # identificador unico para App Registro de Instituciones
-    id_aplicacion_administrador =  models.ForeignKey(mod, on_delete=models.CASCADE, null=False, blank =False) # Identificador único ddel modulo administrador
+    id_aplicacion_administrador =  models.ForeignKey(adm_mod, on_delete=models.CASCADE, null=False, blank =False) # Identificador único ddel modulo administrador
     nomb_app_reg_ins = models.CharField('Nombre  ', max_length=20, null=False, blank = False)  # nombre de la App Registro de Instituciones
     desc_app_reg_ins = models.CharField('Descripcion  ', max_length=20, null=False, blank = False)  # descripcion de la App Registro de Instituciones
     status_app_reg_ins = models.BooleanField('Activo ', default=False)# estatus de la App Registro de Instituciones

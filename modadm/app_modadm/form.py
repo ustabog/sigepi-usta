@@ -4,49 +4,57 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
-class funcionForm(forms.ModelForm):
+
+#Clase que automatiza la creación de formularios para el modelo de usuarios(as) individuales usu.
+class frm_usu(forms.ModelForm):
+    
     class Meta:
-        model =  func_app
+        model = usu
         fields = '__all__'
 
-class frm_reg_mod(forms.ModelForm):
-    #Calse que automatiza la creación de formularios de Registro de Usuario en Django.
+#Clase que automatiza la creación de formularios para el modelo de usuarios(as) grupales usugr.
+class frm_usugr(forms.ModelForm):
+    
     class Meta:
-        model =  mod
+        model = usugr
         fields = '__all__'
 
-class frm_con_mod(forms.ModelForm):
+#Clase que automatiza la creación de formularios para el modelo de usuarios(as) institucionales usui.
+class frm_usui(forms.ModelForm):
+    
+    class Meta:
+        model = usui
+        fields = '__all__'
+
+#Clase que automatiza la creación de formularios para el modelo de módulos adm_mod.
+class frm_mod(forms.ModelForm):
+    
+    class Meta:
+        model =  adm_mod
+        fields = '__all__'
+
+#Clase que automatiza la creación de formularios para el modelo de aplicaciones adm_app.
+class frm_app(forms.ModelForm):
     #Clase que automatiza la creación de formularios de consulta de Usuario en Django.
     class Meta:
-        model =  mod
+        model =  adm_app
         fields = '__all__'
 
-class frm_reg_app_mod(forms.ModelForm):
+#Clase que automatiza la creación de formularios para el modelo de funciones adm_func.
+class frm_rol(forms.ModelForm):
     class Meta:
-        model =  app_mod
+        model =  adm_rol
         fields = '__all__'
 
-class frm_con_app_mod(forms.ModelForm):
+#Clase que automatiza la creación de formularios para el modelo de funciones adm_func.
+class frm_func(forms.ModelForm):
     class Meta:
-        model =  app_mod
+        model =  adm_func
         fields = '__all__'
 
-class frm_con_rol(forms.ModelForm):
+#Clase que automatiza la creación de formularios para el modelo de relación funciones y roles rl_func_rol.
+class frm_rl_func_rol(forms.ModelForm):
     class Meta:
-        model =  rol
+        model =  rl_func_rol
         fields = '__all__'
 
-class frm_con_list_app(forms.ModelForm):
-    class Meta:
-        model = listado_aplicativo
-        fields = '__all__'
-
-class frm_con_mod_ext(forms.ModelForm):
-    class Meta:
-        model = mod_ext
-        fields = '__all__'
-
-class frm_con_app_ext(forms.ModelForm):
-    class Meta:
-        model = app_ext
-        fields = '__all__'

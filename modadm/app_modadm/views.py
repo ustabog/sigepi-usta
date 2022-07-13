@@ -13,7 +13,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 #from rest_framework import viewsets
 from .models import *
 from .form import *
-from modcons.app_cons.form import frm_con_mod
+from modcons.app_cons.form import frm_con_usugr
 #from .roles import roles
 
 class portada_adm():

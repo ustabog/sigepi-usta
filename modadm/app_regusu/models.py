@@ -384,7 +384,7 @@ class usu_valid_hab(models.Model):
 class rl_usu_rol(models.Model):
     # Relaciona al usuarios con las aplicaciones a las que puede acceder y los roles de aplicación
     id_usu = models.OneToOneField(usu, on_delete=models.CASCADE, null=False, blank =False) #id único de Usuario de sistema
-    id_roles = models.ForeignKey(rol, on_delete=models.CASCADE, null=True, blank=True) # id de rol de aplicación al que tiene asignación.
+    id_roles = models.ForeignKey(adm_rol, on_delete=models.CASCADE, null=True, blank=True) # id de rol de aplicación al que tiene asignación.
     #[[0,0]] Listado de roles en aplicaciones y módulos autorizados por administradores de paltaforma
         # [0,] id_rol; [,0] id_usu quien autoriza. clave foranea a roles .. muchos
     #rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador de rol de sistema.

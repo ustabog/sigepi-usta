@@ -1,12 +1,11 @@
 from django import forms
 #from django.contrib.auth.models import User
 from modadm.app_regusu.models import *
-from modadm.app_regusugr.models import usugr
-from modadm.app_regusui.models import usui
 from modadm.app_modadm.models import *
 
+#Clase que automatiza la creación de formularios de consulta de Usuario en Django.
 class frm_con_usu(forms.ModelForm):
-    #Calse que automatiza la creación de formularios de consulta de Usuario en Django.
+    
     class Meta:
         model = usu
         fields = ['username',
@@ -20,49 +19,58 @@ class frm_con_usu(forms.ModelForm):
                 'last_name' : 'apellido',
                 'email' : 'correo',
                 }
-
+#Clase que automatiza la creación de formularios de consulta de Usuarios de grupo en Django.
 class frm_con_usugr(forms.ModelForm):
-    #Calse que automatiza la creación de formularios de consulta de Usuario en Django.
+    
     class Meta:
         model = usugr
-        fields = ['id_gr',
-                  'passgr',
-                  'id_usu_admin',
-                  'id_rol_app',
+        fields = ['id',
+                  'username',
+                  'first_name',
+                  'email',
+                  'fch_reg',
                   'activo',
+                  'id_usu_adm',
+                  'id_usu_asig',
                  ]
         labels = {
-                'id_gr' : 'id',
-                'passgr' : 'password',
-                'id_usu_admin' : 'id usuario',
-                'id_rol_app' : 'id rol',
-                'activo' : 'activo',
+                'id': 'id',
+                'username': 'Sigla',
+                'first_name': 'Nombre del Grupo',
+                'email': 'Correo-e del grupo',
+                'fch_reg': 'Fecha de Registro',
+                'activo': 'Activo',
+                'id_usu_adm': 'Identificador de usuario Adm. del grupo',
+                'id_usu_asig': 'Identificador de usuario asignado para Adm. del grupo',
                 }
 
 class frm_con_usui(forms.ModelForm):
-    #Calse que automatiza la creación de formularios de consulta de Usuario en Django.
+    #Calse que automatiza la creación de formularios de consulta de Usuarios institucionales en Django.
     class Meta:
         model = usui
-        fields = ['id_usuinst',
-                  'passinst',
-                  'id_usu_admin',
-                  'id_rol_app',
-                  'fch_regi',
-                  'activo'
+        fields = ['id',
+                  'username',
+                  'first_name',
+                  'email',
+                  'fch_reg',
+                  'activo',
+                  'id_usu_adm',
+                  'id_usu_asig',
                  ]
         labels = {
-                'id_usuinst' : 'id',
-                'passinst' : 'password',
-                'id_usu_admin' : 'id usuario',
-                'id_rol_app' : 'id rol',
-                'fch_regi' : 'fch_regi',
-                'activo' : 'activo',
+                'id': 'id',
+                'username': 'Sigla',
+                'first_name': 'Nombre del Grupo',
+                'email': 'Correo-e del grupo',
+                'fch_reg': 'Fecha de Registro',
+                'activo': 'Activo',
+                'id_usu_adm': 'Identificador de usuario Adm. del grupo',
+                'id_usu_asig': 'Identificador de usuario asignado para Adm. del grupo',
                 }
-
 class frm_con_mod(forms.ModelForm):
     #Calse que automatiza la creación de formularios de consulta de modulos en Django.
     class Meta:
-        model = mod
+        model = adm_mod
         fields = [
                 'id_mod',
                 'titulo',
