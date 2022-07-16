@@ -13,246 +13,157 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 #from rest_framework import viewsets
 from .models import *
 from .form import *
-from modcons.app_cons.form import frm_con_usugr
+from modcons.app_cons.form import *
 #from .roles import roles
 
+#Clase que presenta la portada del administrador de SIGEPI.
 class portada_adm():
-    #Clase que presenta la portada del administrador de SIGEPI.
-    def vst_inicio(self,solicitud):
     #función para plantilla de inicio
+    def vst_inicio(self,solicitud):
         return render(solicitud,"inicio_adm.html")
 
+    #función para plantilla de inicio de al documentación del sistema
     def vst_doc(self, solicitud):
-        #función para plantilla de inicio de al documentación del sistema
         respuesta='Documentación del sistema'
         return HttpResponse(respuesta)
 
+    #función para plantilla de inicio sin extensión
     def vst_raiz(self, solicitud):
-        #función para plantilla de inicio sin extensión
         plt=loader.get_template('inicio_adm.html')
         respuesta=plt.render()
         return HttpResponse(respuesta)
     
 
-
-######   CRUD MODULO    ################################
-
+##CRUD de módulo ##
+#Vista de registro de módulos nuevos en el sistema
 class vts_reg_mod(CreateView, PermissionRequiredMixin):
-    #crear información de las personas
-    model = mod
-    form_class = frm_reg_mod
+    model = adm_mod
+    form_class = frm_mod
     template_name = 'app_ma_frm_nvo_mod.html'
     success_url = reverse_lazy('consulta_modulos')
     success_message = 'El modelo fue creado satisfactoriamente'
     permission_required = 'mod.add_mod'   
 
+#Vista de listado de módulos registrados en el sistema
 class vts_ls_mod(ListView, PermissionRequiredMixin): #hereda de listwview
     #información de las personas
-    model = mod
-    form_class = frm_con_mod
+    model = adm_mod
+    form_class = frm_mod
     template_name = 'cn_mod.html'
     success_url = reverse_lazy('cn_mod.html')
     success_message = 'Listado cargado correctamente'
     permission_required = 'mod.view_mod' 
 
+#Vista de edición o modificación de módulos registrados en el sistema
 class vts_edt_mod(UpdateView, PermissionRequiredMixin):
-    #clase que almacena los modulos generales del sistema
-    model = mod
-    form_class = frm_con_mod
+    model = adm_mod
+    form_class = frm_mod
     template_name = 'app_ma_frm_nvo_mod.html'
     success_url = reverse_lazy('consulta_modulos')
     permission_required = 'mod.change_mod' 
     
-class vts_del_mod(DeleteView, PermissionRequiredMixin):
-    model = mod
-    template_name = 'app_ma_del_mod.html'
+#Vista de eliminación o borrado de módulos en el sistema
+class vts_elim_mod(DeleteView, PermissionRequiredMixin):
+    model = adm_mod
+    template_name = 'app_ma_elim_mod.html'
     success_url = reverse_lazy('consulta_modulos')
     permission_required = 'mod.delete_mod'
 
-######   CRUD APP MODULO    ################################
-class vts_reg_app_mod(CreateView, PermissionRequiredMixin):
-    #crear información de las personas
-    model = app_mod
-    form_class = frm_con_app_mod
+## CRUD de aplicaciones ##
+
+#Vista de registro de aplicaciones en el sistema
+class vts_reg_app(CreateView, PermissionRequiredMixin):
+    model = adm_app
+    form_class = frm_cons_app
     template_name = 'app_ma_frm_crearapp.html'
     success_url = reverse_lazy('consulta_aplicaciones_modulos')
     success_message = 'La aplicacion de modulos fue creada satisfactoriamente'
-    permission_required = 'app_mod.add_app_mod'
+    permission_required = 'adm_mod.add_adm_mod'
 
-class vts_ls_app_mod(ListView, PermissionRequiredMixin): #hereda de listwview
-    #información de las personas
-    model = app_mod
-    form_class = frm_con_app_mod
-    template_name = 'cn_app_mod.html'
-    success_url = reverse_lazy('cn_app_mod.html')
+#Vista del listado de aplicaciones registradas en el sistema
+class vts_ls_app(ListView, PermissionRequiredMixin): #hereda de listwview
+    model = adm_mod
+    form_class = frm_cons_app
+    template_name = 'cn_app.html'
+    success_url = reverse_lazy('cn_app.html')
     success_message = 'Listado cargado correctamente'
-    permission_required = 'app_mod.view_app_mod'
+    permission_required = 'adm_mod.view_adm_mod'
 
-class vts_edt_app_mod(UpdateView, PermissionRequiredMixin):
-    #clase que almacena los modulos generales del sistema
-    model = app_mod
-    form_class = frm_con_app_mod
+#Vista de edición o modificación de aplicaciones registradas en el sistema
+class vts_edt_app(UpdateView, PermissionRequiredMixin):
+    model = adm_mod
+    form_class = frm_cons_app
     template_name = 'app_ma_frm_crearapp.html'
     success_url = reverse_lazy('consulta_aplicaciones_modulos')
-    permission_required = 'app_mod.change_app_mod'
+    permission_required = 'adm_mod.change_adm_mod'
 
-class vts_del_app_mod(DeleteView, PermissionRequiredMixin):
-    model = app_mod
-    form_class = frm_con_app_mod
-    template_name = 'app_ma_del_app_mod.html'
+#Vista de eliminación o borrado de aplicaciones en el sistema
+class vts_elim_app(DeleteView, PermissionRequiredMixin):
+    model = adm_mod
+    form_class = frm_cons_app
+    template_name = 'app_ma_elim_app.html'
     success_url = reverse_lazy('consulta_aplicaciones_modulos')
-    permission_required = 'app_mod.delete_app_mod'
+    permission_required = 'adm_mod.delete_adm_mod'
 
-###### CRUD ROLES #############################################
+## CRUD de roles ##
+#Vista de registro de roles en el sistema
 class vts_reg_rol(CreateView, PermissionRequiredMixin):
-    #crear información de las personas
-    #Los estilos estan afectando la vista, en cuanto a seleccion de objetos de la llave foranea
-    model = rol
-    form_class = frm_con_rol
+    model = adm_rol
+    form_class = frm_cons_rol
     template_name = 'app_ma_frm_crearrol.html'
     success_url = reverse_lazy('consulta_rol')
     success_message = 'El rol fue creado satisfactoriamente'
     #crear_rol = roles.crear_roles(self=None)
-    permission_required = 'rol.add_rol'
+    permission_required = 'adm_rol.add_adm_rol'
 
+#Vista del listado de registro de roles en el sistema
 class vts_ls_rol(ListView, PermissionRequiredMixin): 
-    model = rol
-    form_class = frm_con_rol
+    model = adm_rol
+    form_class = frm_cons_rol
     template_name = 'cn_rol.html'
     success_url = reverse_lazy('cn_rol.html')
     success_message = 'Listado cargado correctamente'
-    permission_required = 'rol.view_rol'
+    permission_required = 'adm_rol.view_adm_rol'
 
+#Vista de edición o modificación de registro de roles en el sistema
 class vts_edt_rol(UpdateView, PermissionRequiredMixin):
-    model = rol
-    form_class = frm_con_rol
+    model = adm_rol
+    form_class = frm_cons_rol
     template_name = 'app_ma_frm_crearrol.html'
     success_url = reverse_lazy('consulta_rol')
-    permission_required = 'rol.change_rol'
+    permission_required = 'adm_rol.change_adm_rol'
     
-class vts_del_rol(DeleteView, PermissionRequiredMixin):
-    model = rol
-    form_class = frm_con_rol
-    template_name = 'app_ma_del_rol.html'
+#Vista de eliminación de registro de roles en el sistema
+class vts_elim_rol(DeleteView, PermissionRequiredMixin):
+    model = adm_rol
+    form_class = frm_cons_rol
+    template_name = 'app_ma_elim_rol.html'
     success_url = reverse_lazy('consulta_rol')
-    permission_required = 'rol.delete_rol'
-
-###### CRUD LISTADO APLICATIVO #############################################
-
-class vts_reg_list_app(CreateView, PermissionRequiredMixin):
-    #crear información de las personas
-    model = listado_aplicativo
-    form_class = frm_con_list_app
-    template_name = 'app_ma_frm_crealsapp.html'
-    success_url = reverse_lazy('consulta_lsapp')
-    success_message = 'El rol fue creado satisfactoriamente'
-    permission_required = 'listado_aplicativo.add_listado_aplicativo'
-
-class vts_ls_list_app(ListView, PermissionRequiredMixin): 
-    model = listado_aplicativo
-    form_class = frm_con_list_app
-    template_name = 'cn_lsapp.html'
-    success_url = reverse_lazy('cn_lsapp.html')
-    success_message = 'Listado cargado correctamente'
-    permission_required = 'listado_aplicativo.view_listado_aplicativo'
-
-class vts_edt_list_app(UpdateView, PermissionRequiredMixin):
-    model = listado_aplicativo
-    form_class = frm_con_list_app
-    template_name = 'app_ma_frm_crealsapp.html'
-    success_url = reverse_lazy('consulta_lsapp')
-    permission_required = 'listado_aplicativo.change_listado_aplicativo'
-    
-class vts_del_list_app(DeleteView, PermissionRequiredMixin):
-    model = listado_aplicativo
-    template_name = 'app_ma_del_lsapp.html'
-    success_url = reverse_lazy('consulta_lsapp')
-    permission_required = 'listado_aplicativo.delete_listado_aplicativo'
-
-###### CRUD EXTENSIONES DE MODULO #############################################
-
-class vts_reg_mod_ext(CreateView, PermissionRequiredMixin):
-    #crear información de las personas
-    model = mod_ext
-    form_class = frm_con_mod_ext
-    template_name = 'app_ma_frm_crearextmod.html'
-    success_url = reverse_lazy('consulta_mod_ext')
-    success_message = 'La extesion de modulo fue creada satisfactoriamente'
-    permission_required = 'mod_ext.add_mod_ext'
-
-class vts_ls_mod_ext(ListView, PermissionRequiredMixin): 
-    model = mod_ext
-    form_class = frm_con_mod_ext
-    template_name = 'cn_extmod.html'
-    success_url = reverse_lazy('consulta_mod_ext')
-    success_message = 'Listado cargado correctamente'
-    permission_required = 'mod_ext.view_mod_ext'
-
-class vts_edt_mod_ext(UpdateView, PermissionRequiredMixin):
-    model = mod_ext
-    form_class = frm_con_mod_ext
-    template_name = 'app_ma_frm_crearextmod.html'
-    success_url = reverse_lazy('consulta_mod_ext')
-    permission_required = 'mod_ext.change_mod_ext'
-    
-class vts_del_mod_ext(DeleteView, PermissionRequiredMixin):
-    model = mod_ext
-    template_name = 'app_ma_del_mod_ext.html'
-    success_url = reverse_lazy('consulta_mod_ext')
-    permission_required = 'mod_ext.delete_mod_ext'
-
-###### CRUD APLICACIONES EXTERNAS #############################################
-
-class vts_reg_app_ext(CreateView, PermissionRequiredMixin):
-    #crear información de las personas
-    model = app_ext
-    form_class = frm_con_app_ext
-    template_name = 'app_ma_frm_crearextapp.html'
-    success_url = reverse_lazy('consulta_app_ext')
-    success_message = 'La aplicacion externa fue creada satisfactoriamente'
-    permission_required = 'app_ext.add_app_ext'
-
-class vts_ls_app_ext(ListView, PermissionRequiredMixin): 
-    model = app_ext
-    form_class = frm_con_app_ext
-    template_name = 'cn_extapp.html'
-    success_url = reverse_lazy('consulta_app_ext')
-    success_message = 'Listado cargado correctamente'
-    permission_required = 'app_ext.view_app_ext'
-
-class vts_edt_app_ext(UpdateView, PermissionRequiredMixin):
-    model = app_ext
-    form_class = frm_con_app_ext
-    template_name = 'app_ma_frm_crearextapp.html'
-    success_url = reverse_lazy('consulta_app_ext')
-    permission_required = 'app_ext.change_app_ext'
-    
-class vts_del_app_ext(DeleteView, PermissionRequiredMixin):
-    model = app_ext
-    template_name = 'app_ma_del_app_ext.html'
-    success_url = reverse_lazy('consulta_app_ext')
-    permission_required = 'mod_ext.delete_app_ext'
+    permission_required = 'adm_rol.delete_adm_rol'
 
 
-
-
-class funcionList(ListView, PermissionRequiredMixin):
-    model = func_app
+## CRUD de funciones ##
+#Vista de listado de funciones registradas en el sistema
+class vst_ls_func(ListView, PermissionRequiredMixin):
+    model = adm_func
     template_name = 'app_ma_ls_funciones.html'
 
-class funcionCreate(CreateView, PermissionRequiredMixin):
-    model = func_app
-    form_class = funcionForm
+#Vista de creación de nuevo registro de funciones en el sistema
+class vst_reg_func(CreateView, PermissionRequiredMixin):
+    model = adm_func
+    form_class = frm_func
     template_name = 'app_ma_crearfunciones.html'
     success_url = reverse_lazy('funciones')
 
-class funcionUpdate(UpdateView, PermissionRequiredMixin):
-    model = func_app
-    form_class = funcionForm
+#Vista de edición o modificación de funciones registradas en el sistema
+class vst_edt_func(UpdateView, PermissionRequiredMixin):
+    model = adm_func
+    form_class = frm_func
     template_name = 'app_ma_crearfunciones.html'
     success_url = reverse_lazy('funciones')
 
-class funcionDelete(DeleteView, PermissionRequiredMixin):
-    model = func_app
+#Vista de eliminación o borrado de funciones registradas en el sistema
+class vst_elim_func(DeleteView, PermissionRequiredMixin):
+    model = adm_func
     template_name = 'app_ma_func_verificacion.html'
     success_url = reverse_lazy('funciones')

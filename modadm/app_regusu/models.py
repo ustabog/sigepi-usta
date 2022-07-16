@@ -5,8 +5,8 @@ from .models import *
 
 #Diccionario de información de instalación de aplicación
 INF_APP = [
-    ['Titulo', "App Registro de Usuario Individual"],
-    ['Descripción',"aplicación para el registro de la información de usuario individual"],
+    ['Titulo', "App Registro de Usuario(a) Individual"],
+    ['Descripción',"aplicación para el registro de la información de usuario(a) individual"],
     ['url_documento','doc'],
     ['url_instal','modadm/app_regusu'],
     ['url_plantilla','ini_regusu_adm.html'],
@@ -25,7 +25,8 @@ ROL_APP = {
     (1, ''),
     (1, ''),
     (1, '')
-}
+    }
+
 #Tipos de números de identificación personal
 TIPO_NUIP_CO = [
     ('Cédula', 'Cédula'),
@@ -111,7 +112,7 @@ TIPO_CONTR_CO = [
 
 #Tipos de gupos de Investigación
 TIPO_GR_INV = [
-    (0,'Independiente'), #Grupo registrado en la plataforma como independiente, asociación de usuarios de la plataforma.
+    (0,'Independiente'), #Grupo registrado en la plataforma como independiente, asociación de usuario(a)s de la plataforma.
     (1,'Reconocido Inst.'), #Grupo que además de registrado está vinculado y reconocido por una Institución o Entidad.
     (2,'Reconocido COLC'), #Grupo que además de registrado está vinculado y reconocido por Colciencias.
     (3,'Semillero de Inv.'), #Grupo que está reconocido como semillero por una Institución o Entidad.
@@ -174,6 +175,8 @@ TIPO_FUENTE = [
     ]
 
  #Numerar las posibles extensiones del archivo de instalación 1=".zip";2=".gz",3=".deb";4=".exe"; etc)
+
+# Tipo de extensión del archivo
 TIPO_EXTEN = [
     (0,'.Zip'),
     (1,'.Gz'),
@@ -182,8 +185,7 @@ TIPO_EXTEN = [
     (4,'otro'),
     ]
 
-#LIstado de  Horarios
-
+# Listado de redes sociales
 RED_SOC =[
     (0,'Google Académico'),
     (1,'Linkedin'),
@@ -207,7 +209,8 @@ USO_RED=[
     (1,'moderado'),
     (2,'poco frecuente'),
     (3,'inactivo')
-]
+    ]
+
 #Tipo de discapacidad
 TIPO_DISC=[
     (0,'Discapacidad física'),
@@ -217,10 +220,12 @@ TIPO_DISC=[
     (0,'Discapacidad intelectual'),
     (0,'Discapacidad psicosocial (mental)'),
     (0,'Discapacidad múltiple')
-]
+    ]
+
 #clases independientes
+# clase para el registro de discapacidades
 class discap(models.Model):
-    id_disc = models.AutoField(primary_key = True) # identificador de usuario
+    id_disc = models.AutoField(primary_key = True) # identificador de usuario(a)
     tipo_disca = models.IntegerField('Tipo de discapacidad ',choices=TIPO_DISC, null=False, blank = False)  # número único de identificación personal sin puntos
     nom_disc = models.CharField('Denominación de la discapacidad', max_length=120, null=False, blank=False)
     desc_disca = models.CharField('Descripción', max_length=30, null=False, blank = False)  # tipo de Número de identificación personal
@@ -232,6 +237,7 @@ class discap(models.Model):
     def __str__(self):
         return '{}'.format(self.tipo_disca)
 
+# Clase para el registro de habilidades
 class habil(models.Model):
     #clase que almacena la información de tipos de habilidad
     id_hab = models.AutoField(primary_key = True)
@@ -244,16 +250,16 @@ class habil(models.Model):
 
 #clases dependientes
 class usu_inf_pers(models.Model):
-    # Registra la información personal del usuario individual
-    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE, null=True, blank=True) # identificador de usuario
+    # Registra la información personal del usuario(a) individual
+    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE, null=True, blank=True) # identificador de usuario(a)
     nuip = models.CharField('Número único de identificación personal ', max_length=30, null=False, blank = False)  # número único de identificación personal sin puntos
     tipo_nuip = models.CharField( max_length=30, choices = TIPO_NUIP_CO, default =0, null=False, blank = False) # tipo de Número de identificación personal
     #nombres = models.CharField(usu.first_name, max_length=30, null=True, blank = False)
     #apelllidos = models.CharField(usu.last_name, max_length=30, null=True, blank = False)
     nal = models.CharField('Nacionalidad ', max_length=50, null=False, blank = False) # nacionalidad
-    fch_naci = models.DateField('Fecha de nacimiento', auto_now = False)   # fecha de nacimiento de usuario
-    gene = models.IntegerField('Género', choices = GENERO, default = 0, null=True, blank = True)  #genero del usuario
-    ocup = models.CharField('Ocupacion', max_length=50, null = False, blank = False) # ocupación del usuario
+    fch_naci = models.DateField('Fecha de nacimiento', auto_now = False)   # fecha de nacimiento de usuario(a)
+    gene = models.IntegerField('Género', choices = GENERO, default = 0, null=True, blank = True)  #genero del usuario(a)
+    ocup = models.CharField('Ocupacion', max_length=50, null = False, blank = False) # ocupación del usuario(a)
     dir_res = models.CharField('Direccion de Residencia', max_length=255, null=False, blank = False, default='Colombia, Bogotá, Carrera 9 n.° 51-11') # direccion de residencia
     disc = models.BooleanField('¿Es una persona en condición de discapacidad?', default=False) # Es una persona en condición de discapacidad
     tipo_discap = models.ForeignKey(discap, on_delete=models.SET_NULL, null=True, blank =True)  # Tipo de  discapacidad tabla de discapacidad
@@ -265,9 +271,9 @@ class usu_inf_pers(models.Model):
         verbose_name = 'usu_inf_pers'
         verbose_name_plural = 'usu_inf_perss'
 
+# Modelo para el registro d ela información de contacto pública del usuario(a)
 class usu_inf_contac(models.Model):
-    # Modelo apra el registro d ela información de contacto pública del usuario
-    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE)  # identificador de usuario
+    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE)  # identificador de usuario(a)
     correo = models.EmailField('Correo personal',max_length = 254, null=True, blank = True)
     correo_ins = models.EmailField('Correo institucional',max_length = 254, null=False, blank = False)
     ind_pais = models.IntegerField('Indicativo del país(Sólo números)', null=False, blank = False)  # número de indicativo
@@ -286,10 +292,10 @@ class usu_inf_contac(models.Model):
         verbose_name = 'usu_inf_contac'
         verbose_name_plural = 'usu_inf_contacs'
 
+# Modelo para el registro de la información académica pública del usuario(a)
 class usu_form_acad(models.Model):
-
     id_fa =  models.AutoField(primary_key = True) #Id de formación académica
-    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE)  # identificador de usuario
+    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE)  # identificador de usuario(a)
     instit = models.CharField('Nombre de la institucion ', max_length=25, null=False, blank = False) # Nombre de la institucion académica donde curso la formación
     tipo_form = models.IntegerField(choices = TIPO_FORM_CO, default = 0, null=False, blank = False) #tipo de formación ver diccionario TIPO_FORM
     fch_ini = models.DateField('Fecha de Inicio', auto_now = False)#fecha de inicio de la formación
@@ -306,14 +312,15 @@ class usu_form_acad(models.Model):
         verbose_name = 'form_acad'
         verbose_name_plural = 'form_acads'
 
+# Modelo para el registro de la información de redes sociales públicas del usuario(a)
 class usu_red_soc(models.Model):
-    #información de redes sociales del usuario individual
+    #información de redes sociales del usuario(a) individual
     id_red = models.AutoField(primary_key = True)
-    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario
+    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE, null=False, blank =False) # identificador de usuario(a)
     red_def = models.IntegerField(choices=RED_SOC, default=0)
     nombre_red = models.CharField('Nombre de Otra red ', max_length=50, null=True, blank =True)
-    alias =  models.CharField('Alias o (Nick) de usuario', max_length=50, null=True, blank = True)  #nick o dirección de usuario
-    url = models.URLField('Url de página principal de usuario(a) dentro de la red.', null=True, blank=True) #Url de página principal dentro de la red.
+    alias =  models.CharField('Alias o (Nick) de usuario(a)', max_length=50, null=True, blank = True)  #nick o dirección de usuario(a)
+    url = models.URLField('Url de página principal de usuario(a)(a) dentro de la red.', null=True, blank=True) #Url de página principal dentro de la red.
     uso = models.IntegerField(choices=USO_RED, null=True, blank = True)  #Uso de la red (frecuente:0; moderado:1; poco frecuente:2; inactivo:3)
     pub = models.BooleanField('¿La información es de acceso público?', default=False)  #Acceso público de información de red sí (True) no (False)
     archi = models.BooleanField(null = False, blank = False, default = 0)#Si el registro está archivada (antes de proceder a borrarlo de la base de datos)
@@ -322,8 +329,9 @@ class usu_red_soc(models.Model):
         verbose_name = 'red social'
         verbose_name_plural = 'redes sociales'
 
+# Modelo para el registro de la información pública de empleos del usuario(a)
 class usu_empleo(models.Model):
-    #Clase que almacena la información de empleos del usuario
+    #Clase que almacena la información de empleos del usuario(a)
     id_empl = models.AutoField(primary_key = True)
     id_usu = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank =True)
     instit = models.CharField('Nombre de la institucion o empresa ', max_length= 100, null=False, blank = False) # Nombre de la institucion académica donde curso la formación
@@ -344,8 +352,9 @@ class usu_empleo(models.Model):
         verbose_name = 'empleos'
         verbose_name_plural = 'empleoss'
 
+# Modelo para el registro de la información pública de cursos dictados o a cargo del usuario(a)
 class usu_curs_dict(models.Model):
-    #clase que almacena la información de cursos dictados a cargo de un usuario
+    #clase que almacena la información de cursos dictados a cargo de un usuario(a)
     id_cd = models.AutoField(primary_key = True)    #Id de formación académica
     id_usu = models.OneToOneField(usu, on_delete=models.CASCADE, null=False, blank =False)
     instit =  models.CharField('Nombre de la institucion académica donde dictó el curso. ', max_length=20, null=False, blank = False) # Nombre de la institucion académica donde dictó el curso.
@@ -367,11 +376,12 @@ class usu_curs_dict(models.Model):
         verbose_name = 'curs_dict'
         verbose_name_plural = 'curs_dicts'
 
+# Modelo para el registro de validaciones de habilidades del usuario(a)
 class usu_valid_hab(models.Model):
     #clase que procesa la información de validación social de habilidades
-    id_usu = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank =True) # Identificador del Usuario que registra la habilidad
+    id_usu = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank =True) # Identificador del Usuario(a) que registra la habilidad
     id_hab = models.ForeignKey(habil, on_delete=models.SET_NULL, null=True, blank =True) #Identificador de la habilidad que se va a validar
-    id_usu_val = models.IntegerField(usu, null=True, blank =True)  #Identificador del Usuario que valida la habilidad
+    id_usu_val = models.IntegerField(usu, null=True, blank =True)  #Identificador del Usuario(a) que valida la habilidad
     id_esc = models.IntegerField('id de la escala de validación', null=False, blank = False) #Identificador de la escala de validación
     val = models.CharField('Valor', max_length=20, null=False, blank = False) #Valor dentro del rango de la escala de validación
     archi = models.BooleanField(null = False, blank = False, default = 0)#Si el registro está archivada (antes de proceder a borrarlo de la base de datos)
@@ -381,15 +391,16 @@ class usu_valid_hab(models.Model):
         verbose_name = 'validación de habilidad'
         verbose_name_plural = 'validaciones de habilidades'
 
+# Modelo para el registro de la información de roles asignados al usuario(a)
 class rl_usu_rol(models.Model):
-    # Relaciona al usuarios con las aplicaciones a las que puede acceder y los roles de aplicación
-    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE, null=False, blank =False) #id único de Usuario de sistema
-    id_roles = models.ForeignKey(adm_rol, on_delete=models.CASCADE, null=True, blank=True) # id de rol de aplicación al que tiene asignación.
+    # Relaciona al usuario(a)s con las aplicaciones a las que puede acceder y los roles de aplicación
+    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE, null=False, blank =False) #id único de Usuario(a) de sistema
+    id_rol = models.ForeignKey(adm_rol, on_delete=models.CASCADE, null=True, blank=True) # id de rol de aplicación al que tiene asignación.
     #[[0,0]] Listado de roles en aplicaciones y módulos autorizados por administradores de paltaforma
         # [0,] id_rol; [,0] id_usu quien autoriza. clave foranea a roles .. muchos
     #rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador de rol de sistema.
     #    app_act = models.ForeignKey(listado_aplicativo,on_delete=models.CASCADE, null=False, blank =False) # identificador de funcionalidad actual (Sistema, módulo, aplicacion, extensión, app_mod
 
     class Meta:
-        verbose_name = 'Relación Usuario-Rol'
-        verbose_name_plural = 'Relaciones Usuario-Roles'
+        verbose_name = 'Relación Usuario(a)-Rol'
+        verbose_name_plural = 'Relaciones Usuario(a)-Roles'

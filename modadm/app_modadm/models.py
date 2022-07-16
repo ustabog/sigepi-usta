@@ -3,6 +3,7 @@ from nntplib import GroupInfo
 from django.db import models
 from django.contrib.auth.models import Group
 import datetime
+from django.utils import timezone
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import AbstractUser
 #Diccionario de información de instalación de aplicación
@@ -236,7 +237,7 @@ class usu(AbstractUser):
     #last_name = models.CharField(max_length=80)
     #email = models.EmailField(max_length = 254)
     #id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
-    fch_reg = models.DateField('fecha de registro', auto_now = True) # fecha de registro de usuario
+    fch_reg = models.DateField('fecha de registro', default=timezone.now) # fecha de registro de usuario
     activo = models.BooleanField('¿Activo o desactivado.?', default=True) # estatus del usuario activo (True) inactivo (False)
     
     class Meta:
@@ -254,7 +255,7 @@ class usugr(AbstractUser):
     #last_name = models.CharField(max_length=80)
     email = models.EmailField('Correo-e del Grupo', max_length = 254) #Correo elect´ronico del grupo de investigación
     #id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
-    fch_reg = models.DateField('fecha de registro', auto_now = True) # fecha de registro de usuario
+    fch_reg = models.DateField('fecha de registro', default=timezone.now) # fecha de registro de usuario
     activo = models.BooleanField('¿Activo o inactivo?', default=True) # estatus del usuario(a) activo (True) inactivo (False)
     id_usu_adm = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank=True) # Usuario(a) principal que administra el grupo
     id_usu_asig = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank=True) # Usuario(a) asignado como administrador(a) del grupo
@@ -274,7 +275,7 @@ class usui(AbstractUser):
     #last_name = models.CharField(max_length=80)
     email = models.EmailField('Correo-e de soporte técnico de la Institución',max_length = 254)
     #id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
-    fch_reg = models.DateField('fecha de registro', auto_now = True) # fecha de registro de usuario
+    fch_reg = models.DateField('fecha de registro', default=timezone.now) # fecha de registro de usuario
     activo = models.BooleanField('¿Activo o desactivado.?', default=True) # estatus del usuario(a) activo (True) inactivo (False)
     id_usu_adm = models.OneToOneField(usu,on_delete=models.SET_NULL, null=True, blank=True) # Usuario(a) principal que administra la Institución
     id_usu_asig = models.OneToOneField(usu,on_delete=models.SET_NULL, null=True, blank=True) # Usuario(a) asignado como administrador(a) de la Institución

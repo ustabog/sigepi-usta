@@ -20,7 +20,7 @@ from modadm.app_regusu.models import *
 #from modcons.app_cons.form import frm_con_usu
 #from modcons.app_cons.views import vts_ls_usu
 
-##### CRUD USUARIO ######################################################
+##### CRUD USUARIO ##
 
 class vts_reg_usu(CreateView):
     #Clase que devuelve un formulario para registro de usuario
@@ -56,7 +56,7 @@ class vst_mod_usu(UpdateView, PermissionRequiredMixin):
     template_name = 'app_regusu_frm_edt_usu.html'
     success_url = reverse_lazy('consulta_usuarios')
 
-def eli_usu(request, id):
+def vst_eli_usu(request, id):
     usuario = get_object_or_404(usu, id=id)
     usuario.delete()
     messages.success(request, "Eliminado correctamente")
@@ -83,7 +83,7 @@ class vst_selc_usu_cons(vts_ls_usu, PermissionRequiredMixin):
     template_name = 'sl_usu.html'
     success_url = reverse_lazy('sl_usu.html')
 
-###################CREAR USUARIO DESDE ADMIN#########################
+##CREAR USUARIO DESDE ADMIN ##
 class infopersCreate(CreateView, PermissionRequiredMixin):
     #crear información de las personas
     model = usu_inf_pers

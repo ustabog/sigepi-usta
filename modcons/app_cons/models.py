@@ -4,6 +4,7 @@ from rest_framework import serializers
 from modpry.app_regpry.models import *
 from modpry.app_crono.models import *
 from modcons.app_cons.func import *
+from modadm.app_modadm.models import *
 from dataclasses import dataclass
 
 #---------------------------------------------DTO-----------------------------------------
