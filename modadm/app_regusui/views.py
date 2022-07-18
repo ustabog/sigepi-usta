@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, DeleteView,ListView,UpdateView
 from django.urls import reverse_lazy
-from modcons.app_cons.form import frm_con_usui
+from modcons.app_cons.form import frm_cons_usui
 from modcons.app_cons.views import vts_ls_usui
 from modadm.app_regusui.models import usui
 #Create your views here.
@@ -10,7 +10,7 @@ from modadm.app_regusui.models import usui
 
 class vst_reg_usui(CreateView):
     #Clase que devuelve un formulario para registro de usuario institucion
-    form_class = frm_con_usui
+    form_class = frm_cons_usui
     template_name = 'nvo_usui_prb.html'
     success_url = reverse_lazy('cons_usui')
     success_message = "El usuario fue creado correctamente"
@@ -18,7 +18,7 @@ class vst_reg_usui(CreateView):
 class vst_mod_reg_usui(UpdateView):
     #clase que me modifca los usuarios para registro de usuario
     model = usui
-    form_class = frm_con_usui
+    form_class = frm_cons_usui
     template_name = 'nvo_usui_prb.html'
     success_url = reverse_lazy('cons_usui')
 

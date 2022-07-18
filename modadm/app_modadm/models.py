@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group
 import datetime
 from django.utils import timezone
 from django.contrib.auth.signals import user_logged_in
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 #Diccionario de información de instalación de aplicación
 
 #Diccionario de información de instalación del Móludo
@@ -230,35 +230,27 @@ HORARIO = [
 #Usuarios básicos del sistema
 
 #Usuario individual
-class usu(AbstractUser):
-    #user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    #username = models.CharField('Nombres', max_length=100, unique=True)
-    #first_name = models.CharField(max_length=45)
-    #last_name = models.CharField(max_length=80)
-    #email = models.EmailField(max_length = 254)
-    #id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
+class usu(models.Model):
+    id_user = models.OneToOneField(User, on_delete=models.CASCADE, null=False, blank=False)
     fch_reg = models.DateField('fecha de registro', default=timezone.now) # fecha de registro de usuario
     activo = models.BooleanField('¿Activo o desactivado.?', default=True) # estatus del usuario activo (True) inactivo (False)
+    archi = models.BooleanField(null = False, blank = False, default = 0)#Si el registro está archivado (antes de proceder a borrarlo de la base de datos)
     
     class Meta:
         verbose_name = 'usurio individual'
         verbose_name_plural = 'usuarios individuales'
 
-    # def __str__(self):
-    #     return '{}'.format(self.usu)
-
 #Usuario de grupo
-class usugr(AbstractUser):
-    #user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    username = models.CharField('usuario (Sigla del Grupo)', max_length=100, unique=True)
-    first_name = models.CharField('Nombre del Grupo', max_length=254)
-    #last_name = models.CharField(max_length=80)
-    email = models.EmailField('Correo-e del Grupo', max_length = 254) #Correo elect´ronico del grupo de investigación
-    #id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
+class usugr(models.Model):
+    id_user = models.OneToOneField(User, on_delete=models.CASCADE, null=False, blank=False)
+    sigla = models.CharField('usuario (Sigla del Grupo)', max_length=50, unique=True)
+    nom_grup = models.CharField('Nombre del Grupo', max_length=254, null=False, blank=False)
+    emailgr = models.EmailField('Correo-e del Grupo', max_length = 254, null=True, blank=True) #Correo elect´ronico del grupo de investigación
+    id_usu_adm = models.IntegerField('Id de usuario Director(a) Adm. Grupo', null=True, blank=True) # Usuario(a) principal que administra el grupo
+    id_usu_asig = models.IntegerField('Id de usuario asignado para Adm. Grupo', null=True, blank=True) # Usuario(a) asistente para administración del grupo
     fch_reg = models.DateField('fecha de registro', default=timezone.now) # fecha de registro de usuario
-    activo = models.BooleanField('¿Activo o inactivo?', default=True) # estatus del usuario(a) activo (True) inactivo (False)
-    id_usu_adm = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank=True) # Usuario(a) principal que administra el grupo
-    id_usu_asig = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank=True) # Usuario(a) asignado como administrador(a) del grupo
+    activo = models.BooleanField('¿Activo o inactivo?', default=True, null=False, blank=False) # estatus del usuario(a) activo (True) inactivo (False)
+    archi = models.BooleanField('¿Usuario archivado?', default = 0, null=False, blank=False)#Si el registro está archivado (antes de proceder a borrarlo de la base de datos)
     
     class Meta:
         verbose_name = 'usurio de grupo'
@@ -268,18 +260,17 @@ class usugr(AbstractUser):
     #     return '{}'.format(self.usu)
 
 #Usuario de Institución
-class usui(AbstractUser):
-    #user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    username = models.CharField('usuario (Sigla de la Institución)', max_length=100, unique=True)
-    first_name = models.CharField('Nombre de la Institución', max_length=254)
-    #last_name = models.CharField(max_length=80)
-    email = models.EmailField('Correo-e de soporte técnico de la Institución',max_length = 254)
-    #id_rol_sis = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)  # Identificador del  módulo# Identificador del Rol de Usuario de Sistema
+class usui(models.Model):
+    id_user = models.OneToOneField(User, on_delete=models.CASCADE, null=False, blank=False)
+    sigla = models.CharField('usuario (Sigla de la Institución)', max_length=100, unique=True)
+    nom_inst = models.CharField('Nombre de la Institución', max_length=254)
+    id_usu_adm = models.IntegerField('Id de usuario Principal Adm. Institución', null=True, blank=True) # Usuario(a) principal que administra la Institución
+    id_usu_asig = models.IntegerField('Id de usuario asignado Adm. Institución', null=True, blank=True) # Usuario(a) asignado para administración de la cuenta Institución
+    email_inst = models.EmailField('Correo-e de soporte técnico de la Institución',max_length = 254)
     fch_reg = models.DateField('fecha de registro', default=timezone.now) # fecha de registro de usuario
     activo = models.BooleanField('¿Activo o desactivado.?', default=True) # estatus del usuario(a) activo (True) inactivo (False)
-    id_usu_adm = models.OneToOneField(usu,on_delete=models.SET_NULL, null=True, blank=True) # Usuario(a) principal que administra la Institución
-    id_usu_asig = models.OneToOneField(usu,on_delete=models.SET_NULL, null=True, blank=True) # Usuario(a) asignado como administrador(a) de la Institución
- 
+    archi = models.BooleanField(null = False, blank = False, default = 0)#Si el registro está archivado (antes de proceder a borrarlo de la base de datos)
+    
     class Meta:
         verbose_name = 'usurio institucional'
         verbose_name_plural = 'usuarios institucionales'

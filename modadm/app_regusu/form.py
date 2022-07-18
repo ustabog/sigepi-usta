@@ -18,76 +18,43 @@ from django.contrib.auth.forms import UserCreationForm
 from modadm.app_modadm.models import *
 from .models import *
 
-class frm_reg_usu(UserCreationForm):
-    #Calse que automatiza la creación de formularios de Registro de Usuario en Django.
-    class Meta:
-        model = usu
-        fields = (
-            'username',
-            'email',
-            'first_name',
-            'last_name',
-            'password1',
-            'password2',
-        )
-#clase ubicado inicialmente en el modulo de consulta y App_cons
-class frm_con_usu(forms.ModelForm):
-    #Clase que automatiza la creación de formularios de consulta de Usuario en Django.
-    class Meta:
-        model = usu
-        fields = [
-                    'username',
-                    'first_name',
-                    'last_name',
-                    'email',
-                    'password',
-                 ]
-        labels = {
-                    'username' : 'Username',
-                    'first_name' : 'Nombre',
-                    'last_name' : 'Apellido',
-                    'email' : 'Correo',
-                    'password' : 'Contraseña',
-                }
-
-class frm_reg_usu_pers(forms.ModelForm):
-    #clase para la creación de un formulario de registro de información personal de usuario SIGEPI.
+#clase para la creación de un formulario de registro de información personal de usuario SIGEPI.
+class frm_usu_inf_pers(forms.ModelForm):
+    
     class Meta:
         #Metadatos de la clase
         model =  usu_inf_pers
         fields = '__all__'
 
-class frm_con_usu_inf_pers(forms.ModelForm):
-    #clase para la creación de un formulario de registro de información personal de usuario SIGEPI.
-    class Meta:
-        #Metadatos de la clase
-        model =  usu_inf_pers
-        fields = '__all__'
-
-class frm_con_discap(forms.ModelForm):
+#Formulario para el modelo de Discapacidad
+class frm_discap(forms.ModelForm):
     #Información de contacto
     class Meta:
         model = discap
         fields = '__all__'
 
-class frm_con_info_contact(forms.ModelForm):
+#Formulario para el modelo de Información de Contacto usuario individual
+class frm_usu_inf_contact(forms.ModelForm):
     #Información de contacto
     class Meta:
         model = usu_inf_contac
         fields = '__all__'
 
-class frm_con_red_social(forms.ModelForm):
+#Formulario para el modelo de redes sociales del usuario individual
+class frm_usu_red_soc(forms.ModelForm):
     #Red Social
     class Meta:
         model = usu_red_soc
         fields = '__all__'
 
-class frm_form_academica(forms.ModelForm):
+#Formulario para el modelo de formación académica del usuario individual
+class frm_usu_form_acad(forms.ModelForm):
     #Formación académica
     class Meta:
         model = usu_form_acad
         fields = '__all__'
 
+#Formulario para el modelo de Información de Contacto usuario individual
 class frm_curs_dict(forms.ModelForm):
     #Formación académica
     class Meta:

@@ -14,9 +14,9 @@ urlpatterns = [
     #Seleccionar usuario de consulta
     path('sel_usu_cons/', vst_selc_usu_cons.as_view(), name='seleccion_usuario_consulta'),
 #   #editar usuario de consulta
-    path('edi_usu/<int:pk>/',vst_mod_usu.as_view(), name = 'editar_usu'),
+    path('edi_usu/<int:pk>/',vst_edit_usu.as_view(), name = 'editar_usu'),
     #from urls modAdm
-    path('eli_usu/<id>',eli_usu, name = 'eliminar_usu'),
+    path('eli_usu/<id>',vst_eli_usu, name = 'eliminar_usu'),
     
     #Crear información adicional de usuarios
     path('crearinf/',infopersCreate.as_view(), name = 'crearinf'),

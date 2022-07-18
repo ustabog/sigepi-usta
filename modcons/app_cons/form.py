@@ -8,65 +8,20 @@ class frm_cons_usu(forms.ModelForm):
     
     class Meta:
         model = usu
-        fields = ['username',
-                  'first_name',
-                  'last_name',
-                  'email',
-                 ]
-        labels ={
-                'username' : 'username',
-                'first_name' : 'nombre',
-                'last_name' : 'apellido',
-                'email' : 'correo',
-                }
+        fields = '__all__'
 #Clase que automatiza la creación de formularios de consulta de Usuarios de grupo en Django.
 class frm_cons_usugr(forms.ModelForm):
 
     class Meta:
         model = usugr
-        fields = ['id',
-                  'username',
-                  'first_name',
-                  'email',
-                  'fch_reg',
-                  'activo',
-                  'id_usu_adm',
-                  'id_usu_asig',
-                 ]
-        labels = {
-                'id': 'id',
-                'username': 'Sigla',
-                'first_name': 'Nombre del Grupo',
-                'email': 'Correo-e del grupo',
-                'fch_reg': 'Fecha de Registro',
-                'activo': 'Activo',
-                'id_usu_adm': 'Identificador de usuario Adm. del grupo',
-                'id_usu_asig': 'Identificador de usuario asignado para Adm. del grupo',
-                }
+        fields = '__all__'
 
 class frm_cons_usui(forms.ModelForm):
     #Calse que automatiza la creación de formularios de consulta de Usuarios institucionales en Django.
     class Meta:
         model = usui
-        fields = ['id',
-                  'username',
-                  'first_name',
-                  'email',
-                  'fch_reg',
-                  'activo',
-                  'id_usu_adm',
-                  'id_usu_asig',
-                 ]
-        labels = {
-                'id': 'id',
-                'username': 'Sigla',
-                'first_name': 'Nombre del Grupo',
-                'email': 'Correo-e del grupo',
-                'fch_reg': 'Fecha de Registro',
-                'activo': 'Activo',
-                'id_usu_adm': 'Identificador de usuario Adm. del grupo',
-                'id_usu_asig': 'Identificador de usuario asignado para Adm. del grupo',
-                }
+        fields = '__all__'
+
 class frm_cons_mod(forms.ModelForm):
     #Calse que automatiza la creación de formularios de consulta de modulos en Django.
     class Meta:
@@ -143,7 +98,6 @@ class frm_cons_rol(forms.ModelForm):
     class Meta:
         model = adm_rol
         fields = '__all__'
-
 
 class frm_cons_rl_rol_usu(forms.ModelForm):
     #Clase que consulta las relaciones entre roles y usuarios

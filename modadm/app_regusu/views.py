@@ -17,7 +17,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from .models import *
 from .form import *
 from modadm.app_regusu.models import *
-#from modcons.app_cons.form import frm_con_usu
+from modadm.app_modadm.form import *
 #from modcons.app_cons.views import vts_ls_usu
 
 ##### CRUD USUARIO ##
@@ -43,15 +43,15 @@ class vts_reg_usu(CreateView):
 class vts_ls_usu(ListView, PermissionRequiredMixin):
     # clase para listar usuarios del sistema
     model = usu
-    form_class = frm_con_usu
+    form_class = frm_usu
     template_name = 'cn_usu.html'
     success_url = reverse_lazy('cn_usu.html')
     success_message = 'listado cargado correctamente'
 
-class vst_mod_usu(UpdateView, PermissionRequiredMixin):
+class vst_edit_usu(UpdateView, PermissionRequiredMixin):
     #clase que me modifca los usuarios para registro de usuario
     model = usu
-    form_class = frm_con_usu
+    form_class = frm_edit_usu
     exclude = ['passord']
     template_name = 'app_regusu_frm_edt_usu.html'
     success_url = reverse_lazy('consulta_usuarios')
@@ -87,7 +87,7 @@ class vst_selc_usu_cons(vts_ls_usu, PermissionRequiredMixin):
 class infopersCreate(CreateView, PermissionRequiredMixin):
     #crear información de las personas
     model = usu_inf_pers
-    form_class = frm_reg_usu_pers
+    form_class = frm_usu_inf_pers
     template_name = 'app_regusu_frm_crearinfopers.html'
     success_url = reverse_lazy('infopers')
 
@@ -105,7 +105,7 @@ class infoperslList(ListView, PermissionRequiredMixin): #hereda de listwview
 class infopersUpdate(UpdateView, PermissionRequiredMixin):
     #modificar la información de los usuarios
     model = usu_inf_pers
-    form_class = frm_reg_usu_pers
+    form_class = frm_usu_inf_pers
     template_name = 'app_regusu_frm_crearinfopers.html'
     success_url = reverse_lazy('infopers')
 
@@ -120,7 +120,7 @@ class infopersDelete(DeleteView, PermissionRequiredMixin):
 class vts_reg_discap(CreateView, PermissionRequiredMixin):
     #crear información de las personas
     model = discap
-    form_class = frm_con_discap
+    form_class = frm_discap
     template_name = 'app_regusu_frm_discapacidad.html'
     success_url = reverse_lazy('cons_discapacidad')
     success_message = 'La discapacidad fue creada satisfactoriamente'
@@ -129,7 +129,7 @@ class vts_reg_discap(CreateView, PermissionRequiredMixin):
 class vts_ls_discap(ListView, PermissionRequiredMixin): #hereda de listwview
     #información de las personas
     model = discap
-    form_class = frm_con_discap
+    form_class = frm_discap
     template_name = 'cn_discapacidad.html'
     success_url = reverse_lazy('cn_discapacidad.html')
     success_message = 'Listado cargado correctamente'
@@ -138,7 +138,7 @@ class vts_ls_discap(ListView, PermissionRequiredMixin): #hereda de listwview
 class vts_edt_discap(UpdateView, PermissionRequiredMixin):
     #clase que almacena los modulos generales del sistema
     model = discap
-    form_class = frm_con_discap
+    form_class = frm_discap
     template_name = 'app_regusu_frm_discapacidad.html'
     success_url = reverse_lazy('cons_discapacidad')
     permission_required = 'discap.change_discap'
@@ -154,7 +154,7 @@ class vts_del_discap(DeleteView, PermissionRequiredMixin):
 class vts_reg_usu_inf_pers(CreateView, PermissionRequiredMixin):
     #crear información de las personas
     model = usu_inf_pers
-    form_class = frm_con_usu_inf_pers
+    form_class = frm_usu_inf_pers
     template_name = 'app_regusu_frm_infopers.html'
     success_url = reverse_lazy('cons_infopers')
     success_message = 'La discapacidad fue creada satisfactoriamente'
@@ -163,7 +163,7 @@ class vts_reg_usu_inf_pers(CreateView, PermissionRequiredMixin):
 class vts_ls_usu_inf_pers(ListView, PermissionRequiredMixin): #hereda de listwview
     #información de las personas
     model = usu_inf_pers
-    form_class = frm_con_usu_inf_pers
+    form_class = frm_usu_inf_pers
     template_name = 'cn_infopers.html'
     success_url = reverse_lazy('cn_infopers.html')
     success_message = 'Listado cargado correctamente'
@@ -172,7 +172,7 @@ class vts_ls_usu_inf_pers(ListView, PermissionRequiredMixin): #hereda de listwvi
 class vts_edt_usu_inf_pers(UpdateView, PermissionRequiredMixin):
     #clase que almacena los modulos generales del sistema
     model = usu_inf_pers
-    form_class = frm_con_usu_inf_pers
+    form_class = frm_usu_inf_pers
     template_name = 'app_regusu_frm_infopers.html'
     success_url = reverse_lazy('cons_infopers')
     permission_required = 'usu_inf_pers.change_usu_inf_pers'
