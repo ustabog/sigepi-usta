@@ -7,13 +7,13 @@ from .models import *
 from modpry.app_evapry.models import *
 from modpry.app_evapry.form import *
 
-class vst_pry():
-    #Clase que procesa las vistas del IU del registro de proyectos de SIGEPI-USTA
+class vst_evapry():
+    #Clase que procesa las vistas del IU del inicio de la evaluación de proyectos de SIGEPI-USTA
     def vst_inicio(self,solicitud):
     #función para plantilla de inicio
         #stl=estilo()
         #ctx=stl.DevolverDict()
-        return render(solicitud,"app_pry_iu.html")
+        return render(solicitud,"app_evapry_iu.html")
 
 #------------ registro de una evaluación de proyectos ---------
 class vst_reg_evapry(CreateView):

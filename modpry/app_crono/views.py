@@ -6,13 +6,13 @@ from django.shortcuts import render, redirect
 from modpry.app_crono.form import *
 from .models import *
 
-class vst_pry():
-    #Clase que procesa las vistas del IU del registro de proyectos de SIGEPI-USTA
+class vst_crono():
+    #Clase que procesa las vistas del IU del incio de cronograma de SIGEPI-USTA
     def vst_inicio(self,solicitud):
     #función para plantilla de inicio
         #stl=estilo()
         #ctx=stl.DevolverDict()
-        return render(solicitud,"app_pry_iu.html")
+        return render(solicitud,"app_crono_iu.html")
 
 #------------------------------ CRONOGRAMA ---------------------
 class vst_crea_crono(CreateView):

@@ -10,5 +10,8 @@
 #Archivar información de la convocaria
 #Eliminar información de la convocaria
 #Consultar información de la convocaria
+#Clonar la información de la convocaria 
+#Importar la información de la convocaria 
+#Exportar la información de la convocaria 
 #Vincular un proyecto a una convocatoria
 #Diseñar un proyecto con una plantilla de una convocatoria

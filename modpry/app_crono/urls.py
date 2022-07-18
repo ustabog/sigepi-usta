@@ -5,10 +5,9 @@ from modpry.app_crono.views import *
 from modpry.app_crono.func import *
 from .models import *
 
-
 urlpatterns = [   
-    #URL para las funciones de un cronograma
-    path('inicio',vst_pry().vst_inicio, name = 'inicio_pry'), #inicio de la app de proyectos
+    #URL's para las funciones de un cronograma
+    path('inicio',vst_crono().vst_inicio, name = 'ini_crono'), #inicio de la app de cronograma
     #URL para cronogramas
     path('creacrono/',vst_crea_crono.as_view(), name = 'creacrono'), #Crear cronograma 
     path('cncrono/',vst_ls_crono.as_view(), name = 'vercrono'),#Lista de cronograma

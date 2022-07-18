@@ -4,10 +4,9 @@ from modpry.app_evapry.views import *
 from modpry.app_evapry.func import *
 from .models import *
 
-
 urlpatterns = [ 
-    #URL para las funciones de la evaluación de un proyecto
-    path('inicio',vst_pry().vst_inicio, name = 'inicio_pry'), #inicio de la app de proyectos
+    #URL's para las funciones de la evaluación de un proyecto
+    path('inicio',vst_evapry().vst_inicio, name = 'ini_evapry'), #inicio de la app de evaluación proyectos
     #URL para la evaluación de un proyecto
     path('creaeva/', vst_reg_evapry.as_view(), name = 'crear_eva'), #Crear evaluación de un proyecto
     path('cneva/', vst_ls_evapry.as_view(), name = 'cn_evapry'), #Consultar evaluación de un proyecto

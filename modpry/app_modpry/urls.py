@@ -11,21 +11,24 @@ from modpry.app_crono.urls import *
 from modpry.app_evapry.views import *
 from modpry.app_evapry.func import *
 from modpry.app_modpry.urls import *
+from modpry.app_conve.views import *
+from modpry.app_convo.views import *
+from modpry.app_disinv.views import *
+from modpry.app_gespry.views import *
+from modpry.app_mlog.views import *
+from modpry.app_recur.views import *
+from modpry.app_regprgi.views import *
 from .models import *
 
-urlpatterns = [ 
-    #URL's para registro de proyecto
-    path('inicio',vst_pry().vst_inicio, name = 'inicio_pry'), #inicio de la app de proyectos
-    path('creapry/',vts_reg_pry.as_view(), name = 'crea_pry'), #Crea el proyecto 
-    path('cnpry/', vst_ls_pry.as_view(), name='cn_pry'), #Lista de proyectos
-    path('cndetpry/', vst_ls_infopry.as_view(), name='cn_det_pry'), #Lista de la información de los proyectos
-    path('editpry/<int:pk>/',vts_edit_pry.as_view(), name = 'edit_pry'), #Actualizar proyecto
-    path('archipry/<id>',fn_archi_pry, name = 'archi_pry'), #Archivar un proyecto
-    path('elipry/<id>',fn_eli_pry, name = 'eli_pry'),#Eliminar un proyecto
-    path('addpry/',vts_add_pry.as_view(), name = 'add_pry'),#Añadir información del proyecto
+urlpatterns = [
+    #URL's para convenios
+    path('inicio',vst_conve().vst_inicio, name = 'ini_conve'), #inicio de la app de convenios
+
+    #URL's para convocatorias
+    path('inicio',vst_convo().vst_inicio, name = 'ini_convo'), #inicio de la app de convocatorias
 
     #URL para las funciones de un cronograma
-    path('inicio',vst_pry().vst_inicio, name = 'inicio_pry'), #inicio de la app de proyectos
+    path('inicio',vst_crono().vst_inicio, name = 'ini_crono'), #inicio de la app de cronograma
     #URL para cronogramas
     path('creacrono/',vst_crea_crono.as_view(), name = 'creacrono'), #Crear cronograma 
     path('cncrono/',vst_ls_crono.as_view(), name = 'vercrono'),#Lista de cronograma
@@ -64,8 +67,11 @@ urlpatterns = [
     path('archiacti/<id>/',fn_archi_acti, name = 'archi_acti'), #Archivar actividad
     path('eliacti/<id>/',fn_eli_acti, name = 'eli_acti'), #Eliminar actividad
 
+    #URL's para la aplicación de diseño de proyecto de investigación
+    path('inicio',vst_disinv().vst_inicio, name = 'ini_disinv'), #inicio de la app de diseño de proyecto de investigación
+
     #URL para las funciones de la evaluación de un proyecto
-    path('inicio',vst_pry().vst_inicio, name = 'inicio_pry'), #inicio de la app de proyectos
+    path('inicio',vst_evapry().vst_inicio, name = 'inicio_pry'), #inicio de la app de proyectos
     #URL para la evaluación de un proyecto
     path('creaeva/', vst_reg_evapry.as_view(), name = 'crear_eva'), #Crear evaluación de un proyecto
     path('cneva/', vst_ls_evapry.as_view(), name = 'cn_evapry'), #Consultar evaluación de un proyecto
@@ -108,6 +114,56 @@ urlpatterns = [
     path('editdefi/<int:pk>/',vst_edit_defi.as_view(), name = 'edit_defi'), #Editar definciónes, comentarios, ect, de la evaluación de un proyecto
     path('archidefi/<id>',fn_archi_defi, name = 'archi_defi'), #Archivar definciónes, comentarios, ect, de la evaluación de un proyecto
     path('elidefi/<id>',fn_eli_defi, name = 'eli_defi'),#Eliminar definciónes, comentarios, ect, de la evaluación de un proyecto
+
+    #URL's para la aplicación de gestión de proyecto de investigación
+    path('inicio',vst_gespry().vst_inicio, name = 'ini_gespry'), #inicio de la app de gestión de proyectos
+
+    #URL's para la aplicación de marco lógico
+    path('inicio',vst_mlog().vst_inicio, name = 'ini_mlog'), #inicio de la app de marco lógico
+
+    #URL's para la aplicación de recursos
+    path('inicio',vst_recur().vst_inicio, name = 'ini_recur'), #inicio de la app de recursos
+
+    #URL's para la aplicación de registro de programa de investigación
+    path('inicio',vst_regprgi().vst_inicio, name = 'ini_regprgi'), #inicio de la app de registro de programa de investigación
+
+    #URL para registro de un proyecto
+    path('inicio',vst_regpry().vst_inicio, name = 'ini_regpry'), #inicio de la app de proyectos
+    path('creapry/',vts_reg_pry.as_view(), name = 'crea_pry'), #Crea el proyecto 
+    path('cnpry/', vst_ls_pry.as_view(), name='cn_pry'), #Lista de proyectos
+    path('cndetpry/', vst_ls_infopry.as_view(), name='cn_det_pry'), #Lista de la información de los proyectos
+    path('editpry/<int:pk>/',vts_edit_pry.as_view(), name = 'edit_pry'), #Actualizar proyecto
+    path('archipry/<id>',fn_archi_pry, name = 'archi_pry'), #Archivar un proyecto
+    path('elipry/<id>',fn_eli_pry, name = 'eli_pry'),#Eliminar un proyecto
+
+    #URL para la información adicional de un proyecto
+    path('addpry/',vts_add_pry.as_view(), name = 'add_pry'),#Añadir información del proyecto
+    path('cninf/', vst_ls_infopry.as_view(), name = 'cn_infpry'),#Consultar información adicional de un proyecto
+    path('editinf/<int:pk>/', vts_edit_infpry.as_view(), name = 'edit_inf'),#Editar información de un proyecto
+    path('archinf/<id>',fn_archi_infpry, name = 'archi_inf_pry'), #Archivar la información adicional de un proyecto
+    path('elinf/<id>',fn_eli_infpry, name = 'eli_inf_pry'),#Eliminar la información adicional de un proyecto
+
+    #URL para la información geográfica de un proyecto
+    path('addgeo/',vts_reg_geo.as_view(), name = 'add_geo'),#Añadir información geográfica del proyecto
+    path('cngeo/', vst_ls_geopry.as_view(), name = 'cn_geo'),#Consultar información geográfica  de un proyecto
+    path('editgeo/<int:pk>/', vts_edit_geo.as_view(), name = 'edit_geo'),#Editar información geográfica de un proyecto
+    path('archigeo/<id>',fn_archi_geo, name = 'archi_geo'), #Archivar la información geográfica de un proyecto
+    path('eligeo/<id>',fn_eli_geo, name = 'eli_geo'),#Eliminar la información geográfica de un proyecto
+
+    #URL para los eventos de un proyecto
+    path('addeven/',vts_reg_even.as_view(), name = 'add_even'),#Añadir eventos de un proyecto
+    path('cneven/', vst_ls_evenpry.as_view(), name = 'cn_even'),#Consultar eventos de un proyecto
+    path('editeven/<int:pk>/', vts_edit_even.as_view(), name = 'edit_even'),#Editar eventos de un proyecto
+    path('archieven/<id>',fn_archi_even, name = 'archi_even'), #Archivar eventos de un proyecto
+    path('elieven/<id>',fn_eli_even, name = 'eli_even'),#Eliminar eventos de un proyecto
+
+    #URL para la línea de investigación
+    path('addlninv/',vts_reg_lninv.as_view(), name = 'add_lninv'),#Añadir línea de investigación
+    path('cnlninv/', vst_ls_lninv.as_view(), name = 'cn_lninv'),#Consultar línea de investigación
+    path('editlninv/<int:pk>/', vts_edit_lninv.as_view(), name = 'edit_lninv'),#Editar línea de investigación
+    path('archilninv/<id>',fn_archi_lninv, name = 'archi_lninv'), #Archivar línea de investigación
+    path('elilninv/<id>',fn_eli_lninv, name = 'eli_lninv'),#Eliminar línea de investigación
+
 ]
 
 

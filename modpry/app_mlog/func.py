@@ -13,4 +13,6 @@
 #Clonar inf. del marco lógico de un Proyecto de Investigación
 #Listar inf. del marco lógico de un Proyecto de Investigación
 #Listar los marcos lógicos
+#Exportar inf. del marco lógico de un Proyecto de Investigación
+#Importar inf. del marco lógico de un Proyecto de Investigación
 #Vincular un proyecto a un marco lógico.

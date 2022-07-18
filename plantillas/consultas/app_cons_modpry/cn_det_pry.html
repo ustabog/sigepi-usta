@@ -44,5 +44,64 @@
 </form>
 {% endblock consulta %}
 
+<!-- CONSULTAR LA INFORMACIÓN GEOGRÁFICA DE UN PROYECTO -->
+<form method="GET">
+    <h2>Información geográfica del proyecto</h2>
+    {{form.as_ul}}
+    <div>
+        {% for inf_geo_pry in  object_list %}
+        <p><b>Departamento: </b><label> {{ inf_geo_pry.dat_dep}} </label></p>
+        <p><b>Municipio:</b><label> {{ inf_geo_pry.municipio}} </label></p>
+        <p><b>Ciudad: </b><label> {{ inf_geo_pry.ciudad}} </label></p><br>
+        <p>-------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+{% endblock consulta %}
+
+<!-- CONSULTAR LOS EVENTOS DE UN PROYECTO -->
+
+<form method="GET">
+    <h2>Eventos del proyecto</h2>
+    {{form.as_ul}}
+    <div>
+        {% for even_pry in  object_list %}
+        <p><b>Encargado del evento: </b><label> {{ even_pry.enc_eve}} </label></p>
+        <p><b>Nombre del evento:</b><label> {{ even_pry.nomb_eve}} </label></p>
+        <p><b>Descripción del evento: </b><label> {{ even_pry.desc_eve}} </label></p>
+        <p><b>Fecha del evento: </b><label> {{ even_pry.fch_eve}} </label></p>
+        <p><b>Hora del evento: </b><label> {{ even_pry.hora_eve}} </label></p>
+        <p><b>Lugar del evento: </b><label> {{ even_pry.lugar_eve}} </label></p>
+        <p><b>Dirección del evento: </b><label> {{ even_pry.dir_eve}} </label></p>
+        <p><b>Modalidad del evento: </b><label> {{ even_pry.mod_eve}} </label></p>
+        <p><b>Información adicional: </b><label> {{ even_pry.inf_adi}} </label></p><br>
+        <p>-------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+{% endblock consulta %}
+
+<!-- CONSULTAR LA LÍNEA DE INVESTIGACIÓN DE UN PROYECTO -->
+<form method="GET">
+    <h2>Línea de investigación del proyecto</h2>
+    {{form.as_ul}}
+    <div>
+        {% for lin_inv in  object_list %}
+        <p><b>Nombre de la línea de investigación: </b><label> {{ lin_inv.nomb_ln_inv}} </label></p>
+        <p><b>Descripción de la línea de investigación: </b><label> {{ lin_inv.desc_ln_inv}} </label></p>
+        <p><b>Fecha de inicio de la línea de investigación: </b><label> {{ lin_inv.fch_ini_ln}} </label></p>
+        <p><b>Fecha de finalización de la línea de investigación: </b><label> {{ lin_inv.fch_fin_ln}} </label></p>
+        <p><b>Fecha de modificación de la línea de investigación: </b><label> {{ lin_inv.fch_mod_ln}} </label></p>
+        <p><b>Responsable de la línea de investigación: </b><label> {{ lin_inv.res_ln_inv}} </label></p>
+        <p><b>Investigadores de la línea de investigación : </b><label> {{ lin_inv.invs.ln_inv}} </label></p>
+        <p><b>Campo disciplinar OCDE: </b><label> {{ lin_inv.cmp_dis_ocde}} </label></p>
+        <p><b>Campo disciplinar MINCIENCIAS: </b><label> {{ lin_inv.cmp_dis_minc}} </label></p>
+        <p><b>Estado de la línea de investigación: </b><label> {{ lin_inv.est_ln_inv}} </label></p><br>
+        <p>-------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+{% endblock consulta %}
+
 
 

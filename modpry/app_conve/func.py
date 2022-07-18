@@ -10,11 +10,19 @@
 #Archivar información del convenio de un proyecto
 #Eliminar información del convenio de un proyecto
 #Consultar información del convenio de un producto
+#Clonar la información del convenio de un producto 
+#Listar la información del convenio de un producto 
+#Importar la información del convenio de un producto
+#Exportar la información del convenio de un producto
 #Agregar información del convenio de un producto
 #Modificar información del convenio de un producto
 #Archivar información del convenio de un producto
 #Eliminar información del convenio de un producto
 #Consultar información del convenio de un producto
+#Clonar la información del convenio de un producto 
+#Listar la información del convenio de un producto 
+#Importar la información del convenio de un producto
+#Exportar la información del convenio de un producto
 #Vincular un proyecto a un convenio
 #Vincular un producto a un convenio
 

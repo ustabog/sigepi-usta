@@ -1,22 +1,27 @@
+# App de los convenios de un proyecto de investigación - Modelos para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 07-07-2022
+
 from pickle import TRUE
 from django.db import models
 from modpry.app_modpry.models import *
 from modpry.app_regpry.models import *
 
-APP_CONVE_PRY = [
-    #Diccionario para la aplicación de convenio de proyecto
-    (0,'Titulo')
-    (1,'Descripción'),
-    (2,'url_documento'),
-    (3,'url_instal'),
-    (4,'url_plantilla'),
-    (5,'Nombre_url'),
-    (6,'Versión aplicación'),
-    (7,'id_mod'),
-    (8,'Versión_módulo'),
-    (9,'estado'),
-    (10,'instalada')
-    (11, 'visible')
+INF_APP = [
+    #Diccionario para la aplicación de convenio
+    ['Titulo', "App Convenio"],
+    ['Descripción',"aplicación para la definición de un convenio de un proyecto o producto"],
+    ['url_documento','doc'],
+    ['url_instal','modpry/app_conve'],
+    ['url_plantilla','app_conve_iu.html'],
+    ['Nombre_url','ini_conve'],
+    ['Versión aplicación','0.1.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', False],
+    ['visible', False],
     ]
 
 class convenio_pry(models.Model):
@@ -40,5 +45,5 @@ class rel_conv_pry(models.Model):
     id_conv = models.ForeignKey(convenio_pry, on_delete=models.SET_NULL, null=True, blank =False )
 
 class rel_conv_prod(models.Model):
-    id_pry = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=TRUE, blank =False)
+    #id_prod = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=TRUE, blank =False)
     id_conv = models.ForeignKey(convenio_pry,on_delete=models.SET_NULL, null=TRUE, blank =False)

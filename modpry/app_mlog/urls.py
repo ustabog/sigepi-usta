@@ -1,13 +1,8 @@
-from django.urls import path, include
-from django.contrib.auth.views import LoginView
-from django.contrib.auth import views as auth_views
-#from rest_framework.routers import DefaultRouter
+from django.urls import path
 from modpry.app_mlog.views import *
 from .models import *
 
-
 urlpatterns = [ 
-
+    #URL's para la aplicación de marco lógico
+    path('inicio',vst_mlog().vst_inicio, name = 'ini_mlog'), #inicio de la app de marco lógico
 ]
-    
-

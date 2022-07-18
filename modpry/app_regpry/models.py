@@ -1,22 +1,27 @@
+# App de registro de un proyecto de investigación - Modelos para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 07-07-2022
+
 from django.db import models
 from modpry.app_modpry.models import *
 from modadm.app_regusugr.models import *
 from modcons.app_cons.models import *
 
-APP_REG_PRY = [
+INF_APP = [
     #Diccionario para la aplicación de registro de proyecto
-    (0,'Titulo'),
-    (1,'Descripción'),
-    (2,'url_documento'),
-    (3,'url_instal'),
-    (4,'url_plantilla'),
-    (5,'Nombre_url'),
-    (6,'Versión aplicación'),
-    (7,'id_mod'),
-    (8,'Versión_módulo'),
-    (9,'estado'),
-    (10,'instalada'),
-    (11, 'visible'),
+    ['Titulo', "App Registro de Proyecto de Investigación"],
+    ['Descripción',"Aplicación para la definición del registro del Proyecto de Investigación"],
+    ['url_documento','doc'],
+    ['url_instal','modpry/app_regpry'],
+    ['url_plantilla','app_regpry_iu.html'],
+    ['Nombre_url','ini_regpry'],
+    ['Versión aplicación','0.7.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', True],
+    ['visible', True],
     ]
 
 ROL_APP = [
@@ -337,13 +342,25 @@ LINEA_TEMA = [
     (7, 'Otro'),
     ]
 
+MOD_EVE = [
+    #Modalidad del evento 
+    (0,'Presencial'),
+    (1,'Virtual'),
+    (2,'Presencial mediado por TIC (PMT)'),
+]
+
+EST_LN_INV=[
+    (0, 'Activa'),
+    (1, 'Archivada'),
+    (2, 'No activa'),
+    ]
+
 VAR_PLAN_REGPRY = [
     #Variables para utilizar dentro de la plantila de eliminar y archivar
     (0,'Proyecto'), #Variable proyecto
     (1,'archipry/<id>'), #URL para archivar el proyecto en la base de datos
     (2,'elipry/<id>'), #URL para eliminar el proyecto de la base de datos
 ]
-
 #clase base de registro de proyecto
 class pry_base(models.Model):
     #clase base de registro de proyecto
@@ -385,13 +402,62 @@ class inf_pry(models.Model):
     # id_act = models.ForeignKey('ID marco lógico', on_delete=models.SET_NULL, null=True, blank =False) #identificador de registro de actores proyecto.
     obj_gen = models.CharField('Objetivo general: ', max_length=255)# Objetivo general del proyecto.
     obj_esp = models.CharField('Objetivos especificos: ', max_length=255)# Objetivos específicos del proyecto.
-    
+    inf_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la información es borrada queda como archivada
+
     class Meta:
         verbose_name = 'inf_pry'
         verbose_name_plural = 'inf_prys'
 
     def __str__(self):
         return '{}'.format(self.nombre_archivo)
+
+class inf_geo_pry(models.Model):
+    #clase que define la información geográfica del proyecto, recoge los valores de divipola del dane con latitudes y longitudes.
+    id_inf_geo = models.AutoField(primary_key = True) 
+    id_pry_base = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)
+    dat_dep = models.IntegerField(null = False, blank = False, choices = DEPARTAMENTOS, default = 0)#Lista de los departamentos de Colombia que hacen parte del proyecto 
+    municipio = models.CharField('Municipio:', max_length=150)#Municipio donde se desarrolla el proyecto
+    ciudad = models.CharField('Ciudad:', max_length=150)# Ciudad donde se desarrolla el proyecto
+    geo_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la información geográfica es borrada queda como archivada
+
+class even_pry(models.Model):
+    # clase que guarda la información de los eventos del proyecto.
+    id_even_pry= models.AutoField(primary_key = True) 
+    even_pry = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)#Proyecto que hara parte del evento
+    enc_eve=models.ForeignKey(usu, on_delete=models.SET_NULL, null=True, blank =False)#Encargado del evento
+    nomb_eve = models.CharField('Nombre del evento:', max_length=255)# Ciudad donde se desarrolla el proyecto#Nombre del evento
+    desc_eve = models.CharField('Descripción del evento:', max_length=400)# Ciudad donde se desarrolla el proyecto#Descripción del evento
+    fch_eve = models.DateField('Fecha del evento:', null=True, blank=True )#Fecha del evento
+    hora_eve = models.TimeField('Hora del evento:',null=True, blank=True)#Hora del evento
+    lugar_eve = models.CharField('Lugar del evento:', max_length=255)# Ciudad donde se desarrolla el proyecto#Lugar del evento
+    dir_eve = models.CharField('Dirección del evento:', max_length=400)# Dirección del evento
+    mod_eve = models.IntegerField(null = False, blank = False, choices = MOD_EVE, default = 0)# Modalidad del evento (Presencial, virtual)
+    inf_adi = models.CharField('Información adicional:', max_length=400)#Información adicional
+    even_archi = models.BooleanField(null = False, blank = False, default = 0)#Si el evento es borrado queda como archivado
+    class Meta:
+        verbose_name = 'evento_pry'
+        verbose_name_plural = 'eventos_prys'
+
+class lin_inv(models.Model):
+    #Clase de las líneas de investigación de un proyecto
+    id_ln_inv = models.AutoField(primary_key = True) #Identificador de la línea de investigación
+    #id_pry_base = models.ForeignKey(usugr, on_delete=models.SET_NULL, null=True, blank =False)
+    #id_grp_vinpry = models.ForeignKey(usugr, on_delete=models.SET_NULL, null=True, blank =False)#identificador de los grupos que estan vinculados a la linea de investigación
+    nomb_ln_inv = models.CharField('Nombre de la línea de investigación: ', max_length=255) #Nombre de la línea de investigación
+    desc_ln_inv = models.CharField('Descripción de la línea de investigación: ', max_length=255)#Descripción de la línea de investigación
+    fch_ini_ln = models.DateField('Fecha de inicio de la línea:', auto_now=False)#Fecha de inicio de la línea de investigación
+    fch_fin_ln = models.DateField('Fecha de finalización de la línea:', auto_now=False)#Fecha de finalización de la línea de investigación
+    fch_mod_ln = models.DateField('Fecha de modificación de la línea:',auto_now=False)#Fecha de modificación de la línea de investigación
+    #res_ln_inv = models.ForeignKey(usu, on_delete=models.SET_NULL, null=True, blank =False)#Responsable de la línea de investigación
+    #invs_ln_inv = models.ForeignKey(usu, on_delete=models.SET_NULL, null=True, blank =False)#Investigadores de la línea de investigación
+    cmp_dis_ocde = models.IntegerField(null = False, blank = False, choices = LN_INV_OCDE, default = 0)#Campos disciplinarios OCDI
+    cmp_dis_minc = models.IntegerField(null = False, blank = False, choices = LN_INV_MINCI, default = 0)#Campos disciplinarios MINCIENCIAS
+    est_ln_inv = models.IntegerField(null = False, blank = False, choices = EST_LN_INV, default = 0)#Estado de la línea de investigación, se define con relación a si tiene productos o proyectos dentro de la línea
+    ln_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la línea es borrada queda como archivado
+
+    class Meta:
+        verbose_name = 'linea_investigación'
+        verbose_name_plural = 'lineas_investigación'
 
 class fn_app_regpry(models.Model):
     #Clase para las funciones de la aplicación del registro de proyecto
@@ -411,7 +477,6 @@ class fn_app_regpry(models.Model):
 
     def __str__(self):
         return '{}'.format(self.nom_func)
-
 '''
 class inf_prod_pry(models.Model):
     #Clase que contiene toda la informacion referente a los productos vinculados al proyecto
@@ -432,6 +497,7 @@ class rel_pry_prod(models.Model):
     id_prod= models.ForeignKey(prod, on_delete=models.CASCADE, null=False, blank =False)
     tipo_prod= models.IntegerField(null = False, blank = False, choices = TIPO_PROD, default = 0)
     est_prod= models.IntegerField(null = False, blank = False, choices = EST_PROD, default = 0)#Estado del producto [compremetido, pendiente, descartado, realizado, realizado y avalado]
+
 
 class inf_act_proy(models.Model):
     #clase que define la información de los actores del proyecto
@@ -459,112 +525,4 @@ class rel_act_pry(models.Model):
     rol_inv= models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)#Listado de los investigadores del proyecto
     rol_act= models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False)#Listado de los actores del proyecto
     rol_inv_acdm = models.ForeignKey(rol, on_delete=models.CASCADE, null=False, blank =False) #Listado de investigador acdm
-
-class rel_geo_proy(models.Model):
-    #clase que define la información geográfica del proyecto, recoge los valores de divipola del dane con latitudes y longitudes.
-    id_inf_geo = models.AutoField(primary_key = True) 
-    id_pry_base = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)
-    municipio = models.CharField('Objetivos especificos: ', max_length=100)# actividades del proyecto
-    dat_dep = models.IntegerField(null = False, blank = False, choices = DEPARTAMENTOS, default = 0)#Lista de los departamentos de Colombia que hacen parte del proyecto 
-    #Hacer la función para mostrar codigo y territorio
-
-class inf_detalle(models.Model):
-    # clase que guarda la información de actividades del proyecto en un cronograma determinado.
-    id_inf_act= models.AutoField(primary_key = True) 
-    id_pry_base = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)
-    dur = models.DateField(null=True, blank=True, auto_now=True) # Duración del proyecto valores dentro de un rango.
-    und_dur = models.DateField(null=True, blank=True) # unidad de medida del rango de tiempo, 0:seg; 1:min; 2:horas; 3:meses; 4:años.
-    actv = models.CharField('Objetivos especificos: ', max_length=255)# actividades del proyecto 
-    tareas = models.CharField('Objetivos especificos: ', max_length=255)# Tareas del proyecto
-    
-    class Meta:
-        verbose_name = 'inf_detalle'
-        verbose_name_plural = 'inf_detalles'
-
-class activ_pry(models.Model):
-    # clase que guarda la información de actividades del proyecto.
-    id_activ_pry= models.AutoField(primary_key = True) 
-    id_pry_base = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)
-    id_usu=models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)
-    id_act_pry = models.ForeignKey(inf_act_proy, on_delete=models.CASCADE, null=False, blank =False)
-    id_inf_act= models.ForeignKey(inf_detalle, on_delete=models.CASCADE, null=False, blank =False)
-    class Meta:
-        verbose_name = 'activ_pry'
-        verbose_name_plural = 'activ_prys'
-
-class tareas_pry(models.Model):
-    # clase que guarda la información de actividades del proyecto.
-    id_tareas_pry= models.AutoField(primary_key = True) 
-    id_pry_base = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)
-    id_usu=models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)
-    id_act_pry = models.ForeignKey(inf_act_proy, on_delete=models.CASCADE, null=False, blank =False)
-    id_inf_act= models.ForeignKey(inf_detalle, on_delete=models.CASCADE, null=False, blank =False)
-
-    class Meta:
-        verbose_name = 'tareas_pry'
-        verbose_name_plural = 'tareas_prys'
-
-class eventos_pry(models.Model):
-    # clase que guarda la información de los eventos del proyecto.
-    id_eventos_pry= models.AutoField(primary_key = True) 
-    id_pry_base = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)
-    id_usu=models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)
-    id_inf_act= models.ForeignKey(inf_detalle, on_delete=models.CASCADE, null=False, blank =False)
-    
-    class Meta:
-        verbose_name = 'evento_pry'
-        verbose_name_plural = 'eventos_prys'
-
-class recur_pry(models.Model):
-    # clase que guarda la información de los recursos del proyecto.
-    id_recur_pry = models.AutoField(primary_key = True) 
-    id_pry_base = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)
-    id_usu=models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)
-    id_inf_act= models.ForeignKey(inf_detalle, on_delete=models.CASCADE, null=False, blank =False)
-    
-    class Meta:
-        verbose_name = 'recur_pry'
-        verbose_name_plural = 'recurs_prys'
-
-class rel_actv_pry(models.Model):
-    #lista que relación actores con proyectos
-    id_pry_base=models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)#id del proyecto
-    id_usu=models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)#Id del usuario 
-    tarea_encar= models.ForeignKey(activ_pry, on_delete=models.CASCADE, null=False, blank =False)#Encargado de realizar la actividad del proyecto
-
-class rel_tarea_pry(models.Model):
-    #lista que relación actores con proyectos
-    id_pry_base=models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)#id del proyecto
-    id_usu=models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False)#Id del usuario 
-    tarea_encar= models.ForeignKey(tareas_pry, on_delete=models.CASCADE, null=False, blank =False)#Encargado de realizar la tarea del proyecto
-
-class lin_inv(models.Model):
-    #Clase de las líneas de investigación de un proyecto
-    id_linea_inv = models.AutoField(primary_key = True) #Identificador de la línea de investigación
-    fch_ini_li = models.DateField(null=True, blank=True, auto_now=True)#Fecha de inicio de la línea de investigación
-    fch_fin_li = models.DateField(null=True, blank=True)#Fecha de finalización de la línea de investigación
-    fch_mdf_li = models.DateField(null=True, blank=True)#Fecha de modificación de la línea de investigación
-    nombre_lin_inv = models.CharField('Nombre de la línea de investigación: ', max_length=255) #Nombre de la línea de investigación
-    desc_lin_inv = models.CharField('Descripción de la línea de investigación: ', max_length=255)#Descripción de la línea de investigación
-    #res_lin_inv = #Responsable de la línea de investigación
-    #invs_lin_inv = #Investigadores de la línea de investigación
-    #cmp_disc_ocdi = models.IntegerField(leer_dat_ocde, null = False, blank = False, default = 0)#Campos disciplinarios OCDI
-    #cmp_disc_minc = models.IntegerField(leer_dat_minciencias, null = False, blank = False, default = 0)#Campos disciplinarios MINCIENCIAS
-    #id_padre_li = models.ForeignKey('id padre de la línea de investigación', null=False, blank =False))#Id padre de la línea de investigación
-    #id_hijo = #Id hijo
-    #estado_lin_inv = #Estado de la línea de investigación, se define con relación a si tiene productos o proyectos dentro de la línea
-    #tipo_mod_lin_inv = #Tipo de modificación de la línea de investigación
-    id_pry=models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False) #id proyecto
-    #id_grp = #id del grupo de investigación
-    id_grp_prin = models.ForeignKey(usugr, on_delete=models.CASCADE, null=False, blank =False)#id del grupo de investigación principal
-    id_grp_vinpry = models.ForeignKey(usugr, on_delete=models.CASCADE, null=False, blank =False)#identificador de los grupos que estan viunculados a la linea de investigación
-
-class rel_pry_lninv(models.Model):
-    #clase de relación proyecto con la línea de investigación
-    id_pry_base = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)#id del proyecto
-    id_linea_inv = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)#id de la línea de investigación 
-
 '''
-
-
-
