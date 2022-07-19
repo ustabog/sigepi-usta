@@ -33,13 +33,13 @@ class frm_usu(forms.ModelForm):
         model = usu
         fields = [
             'id_user',
-            'fch_reg',
+            #'fch_reg',
             'activo',
             'archi',
             ]
         labels = {
             'id_user': 'Identificador de Usuario Individual',
-            'fch_reg': 'Fecha de registro',
+            #'fch_reg': 'Fecha de registro',
             'activo': 'Usuario Activo',
             'archi': 'Usuario archivado',
             }
@@ -55,7 +55,7 @@ class frm_usugr(forms.ModelForm):
             'emailgr',
             'id_usu_adm',
             'id_usu_asig',
-            'fch_reg',
+            #'fch_reg',
             'activo',
             'archi',
             ]
@@ -66,7 +66,7 @@ class frm_usugr(forms.ModelForm):
             'emailgr': 'Correo electrónico del Grupo',
             'id_usu_adm': 'Usuario del director(a) del Grupo',
             'id_usu_asig': 'Usuario asignado para Administración del Grupo',
-            'fch_reg': 'Fecha de registro del Grupo',
+            #'fch_reg': 'Fecha de registro del Grupo',
             'activo': '¿Usuario Grupo activo?',
             'archi': '¿Usuario Grupo archivado?',
             }
@@ -82,7 +82,6 @@ class frm_usui(forms.ModelForm):
             'email_inst',
             'id_usu_adm',
             'id_usu_asig',
-            'fch_reg',
             'activo',
             'archi',
             ]
@@ -93,7 +92,6 @@ class frm_usui(forms.ModelForm):
             'email_inst': 'Correo electrónico de la Institución',
             'id_usu_adm': 'Usuario(a) del Administrador(a) del Usuario Institución',
             'id_usu_asig': 'Usuario(a) asignado(a) para Administración del Grupo',
-            'fch_reg': 'Fecha de registro de la Institución',
             'activo': '¿Usuario Institucional activo?',
             'archi': '¿Usuario Institucional archivado?',
             }
