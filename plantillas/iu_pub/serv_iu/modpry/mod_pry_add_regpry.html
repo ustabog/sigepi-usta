@@ -1,0 +1,29 @@
+{% extends 'app_pry_iu.html' %}
+{% load static %}
+
+{% block menu_app %}
+<nav id="menu_regpry" class="menu_regpry">
+    <a href="{% url 'add_geo' %}"><i class="material-icons">location_on</i><span>Información geográfica</span></a>  
+    <a href="{% url 'add_even' %}"><i class="material-icons">event</i><span>Nuevo evento</span></a>
+    <a href="{% url 'add_lninv' %}"><i class="material-icons">book</i><span>Línea de investigación</span></a>
+</nav>
+{%endblock menu_app%}
+
+{% block articulo %}
+  {% if form.errors %}
+      <p>No se ha añadido correctamente. Por favor, inténtalo de nuevo.</p>
+  {% endif %}
+
+  <div class="container">
+      <div class="column form-group text-center">
+          <h3>Añadir</h3>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Añadir">
+        </form>
+          </form>
+      </div>
+  </div>
+
+  {% endblock articulo %}

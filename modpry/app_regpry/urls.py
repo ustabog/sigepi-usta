@@ -7,7 +7,7 @@ from .models import *
 
 urlpatterns = [ 
     #URL para registro de un proyecto
-    path('inicio',vst_regpry().vst_inicio, name = 'ini_regpry'), #inicio de la app de proyectos
+    path('inireg',vst_regpry().vst_inicio, name = 'ini_regpry'), #inicio de la app de proyectos
     path('creapry/',vts_reg_pry.as_view(), name = 'crea_pry'), #Crea el proyecto 
     path('cnpry/', vst_ls_pry.as_view(), name='cn_pry'), #Lista de proyectos
     path('cndetpry/', vst_ls_infopry.as_view(), name='cn_det_pry'), #Lista de la información de los proyectos

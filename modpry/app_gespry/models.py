@@ -4,11 +4,11 @@
 #fecha 07-07-2022
 
 from django.db import models
-from django.contrib.auth.models import User
 from modadm.app_regusugr.models import *
 from modadm.app_modadm.models import *
 from modpry.app_modpry.models import *
 from modpry.app_regpry.models import *
+from modcons.app_cons.dic import *
 
 INF_APP = [
     #Diccionario para la aplicación de evaluación de proyecto de investigación
@@ -25,15 +25,6 @@ INF_APP = [
     ['instalada', False],
     ['visible', False],
     ]
-
-TIPO_DEP = [
-    (0,'Administrativa'),
-    (1,'Investigación'),
-    (2, 'Financiera'),
-    (3, 'Sindicatura'),
-    (4, 'Bienestar'), 
-    (5, '')
-]
 
 """
 Clases de la Aplicación Gestión de Proyectos

@@ -94,7 +94,7 @@ class frm_even_pry(forms.ModelForm):
             'nomb_eve' : 'Nombre del evento:',
             'desc_eve' : 'Descripción del evento',
             'fch_eve' : 'Fecha del evento',
-            'hora_eve' : 'Hora dele evento',
+            'hora_eve' : 'Hora del evento',
             'lugar_eve' : 'Lugar del evento',
             'dir_eve' : 'Dirección del evento',
             'inf_adi' : 'Información adicional',

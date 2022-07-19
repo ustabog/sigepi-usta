@@ -8,6 +8,7 @@ from django.forms import CharField
 from modpry.app_modpry.models import *
 from modadm.app_regusugr.models import *
 from modpry.app_regpry.models import *
+from modcons.app_cons.dic import *
 
 INF_APP = [
     #Diccionario para la aplicación de evaluación de proyecto de investigación
@@ -31,47 +32,6 @@ ROL = [
     (2,'Gestor de investigación'),
     (3,'Coevaluador'),
 ]    
-
-ESTADO_EVA = [
-    (0,'Evaluación finalizada'),
-    (1,'Evaluación proceso'),
-    (2,'Evaluación preliminar'),
-]
-
-EVA_PRY = [
-    (0,'Cuantitativa'),
-    (1,'Cualitativa'),
-]
-
-CATG = [
-    #Lista de categorias
-    (0,'Comentario'),
-    (1,'Concepto'),
-    (2,'Recomendación'),
-    (3,'Retroalimentación'),
-    (4, 'Definiciones'),
-]
-
-RES_EVA = [
-    (0, 'Aprobado'),
-    (1, 'Reprobado'),
-]
-
-VAR_PLANT_EVA = [
-    (0,'Evaluación de proyecto'), 
-    (1,'archieva/<id>'), #URL para archivar el proyecto en la base de datos
-    (2,'elieva/<id>'), #URL para eliminar el proyecto de la base de datos
-    (2,'Rúbrica'),
-    (1,'archirub/<id>'), #URL para archivar el proyecto en la base de datos
-    (2,'elirub/<id>'), #URL para eliminar el proyecto de la base de datos
-    (4,'Criterio'),
-    (1,'archicrit/<id>'), #URL para archivar el proyecto en la base de datos
-    (2,'elicrti/<id>'), #URL para eliminar el proyecto de la base de datos
-    (6,'Resultado'),
-    (1,'archires/<id>'), #URL para archivar el proyecto en la base de datos
-    (2,'elires/<id>'), #URL para eliminar el proyecto de la base de datos
-]
-
 
 class rango_eva(models.Model):
     #Clase que contiene los rango de la evaluación del proyecto

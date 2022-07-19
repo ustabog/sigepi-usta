@@ -24,7 +24,6 @@ HORARIO = [
     (2,'8am-12pm;2pm-6pm')
     ]
 
-
 UNIDAD_MED_TIEM = [
     (0, 'Seg'),
     (1, 'Min'),

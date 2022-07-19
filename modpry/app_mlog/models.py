@@ -7,6 +7,7 @@ from django.db import models
 from modpry.app_modpry.models import *
 from modpry.app_regpry.models import *
 from modpry.app_disinv.models import *
+from modcons.app_cons.dic import *
 
 INF_APP = [
     #Diccionario para la aplicación de evaluación de proyecto de investigación
@@ -22,49 +23,6 @@ INF_APP = [
     ['estado', 'en Desarrollo'],
     ['instalada', False],
     ['visible', False],
-    ]
-
-
-TIPO_PRBL=[
-    # tipo de problema que se enfrenta
-    (0,'Social'),
-    (1,'Investigación'),
-    (2,'Normativo'),
-    (3,'Político'),
-    (4,'Económico'),
-    (5,'Administrativo'),
-    (6,'Metodológico'),
-    (7,'Cultural'),
-    (8,'otro'),
-    ]
-
-ESTADO_MLOG=[
-    # Estado del Análisis de Marco lógico
-    (0,'Borrador'),
-    (1,'Básico'),
-    (2,'Estructurado'),
-    (3,'Fundamentado'),
-    (4,'Consolidado'),
-    (5,'Depurado'),
-    (6,'Validado'),
-    (7,'Avanzado'),
-    (8,'En reformulación'),
-    ]
-
-APP_MLOG = [
-    #Diccionario para la aplicación de marco lógico
-    (0,'Titulo')
-    (1,'Descripción'),
-    (2,'url_documento'),
-    (3,'url_instal'),3
-    (4,'url_plantilla'),
-    (5,'Nombre_url'),
-    (6,'Versión aplicación'),
-    (7,'id_mod'),
-    (8,'Versión_módulo'),
-    (9,'estado'),
-    (10,'instalada')
-    (11, 'visible')
     ]
 
 class marco_log(models.Model):

@@ -59,7 +59,7 @@ class vts_add_pry(CreateView):
     #Clase de la vista de registro de proyecto 
     model = inf_pry
     form_class = frm_inf_pry
-    template_name = 'mod_pry_frm_add.html'
+    template_name = 'mod_pry_add_regpry.html'
     success_url= reverse_lazy('cn_pry')
 
     def get_context_data(self, **kwargs):

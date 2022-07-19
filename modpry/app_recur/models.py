@@ -4,6 +4,7 @@
 #fecha 07-07-2022
 
 from django.db import models
+from modcons.app_cons.dic import *
 
 INF_APP = [
     #Diccionario para la aplicación de recursos
@@ -19,15 +20,6 @@ INF_APP = [
     ['estado', 'en Desarrollo'],
     ['instalada', True],
     ['visible', True],
-    ]
-
-TIPO_REC = [
-    (0, 'Talento humano'),
-    (1, 'Recurso material'),
-    (2, 'Recurso financiero'),
-    (3, 'Recurso organizacional'),
-    (4, 'Recurso espacial'), 
-    (5, 'Recurso documental'),
     ]
 
 class recu_pry(models.Model):
