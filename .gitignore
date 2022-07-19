@@ -61,11 +61,11 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 **/__pycache__/**
-!**/__pycache__
-!**/__pycache__/__init__.py
+**/__pycache__
+**/__pycache__/__init__.py
 **/migrations/**
-!**/migrations
-!**/migrations/__init__.py
+**/migrations
+**/migrations/__init__.py
 
 
 #Settings.py

@@ -6,21 +6,8 @@ import datetime
 from django.utils import timezone
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import AbstractUser, User
+from .dic import *
 #Diccionario de información de instalación de aplicación
-
-#Diccionario de información de instalación del Móludo
-INF_MOD = [
-    ['titulo', "Módulo de Administración SIGEPI"],
-    ['desc',"Módulo de administración del SIGEPI"],
-    ['url_doc','doc'],
-    ['version','0.7.0'],
-    ['activo', True],
-    ['instalado', True],
-    ['externo', True],
-    ['visible', True],
-    ['ls_param_cnf', []],
-    ]
-
 INF_APP = [
     ['titulo', "App Módulo de Administración"],
     ['desc',"aplicación para la administración del Sistema"],
@@ -36,6 +23,19 @@ INF_APP = [
     ['visible', True],
     ]
 
+#Diccionario de información de instalación del Móludo
+INF_MOD = [
+    ['titulo', "Módulo de Administración SIGEPI"],
+    ['desc',"Módulo de administración del SIGEPI"],
+    ['url_doc','doc'],
+    ['version','0.7.0'],
+    ['activo', True],
+    ['instalado', True],
+    ['externo', True],
+    ['visible', True],
+    ['ls_param_cnf', []],
+    ]
+
 #Tipo de rol dentro de la plataforma
 ROL_BASE = [
     (0,'Adm. Sistema'),
@@ -48,187 +48,7 @@ ROL_BASE = [
     (7,'anonimo')
     ]
 
-#Tipos de números de identificación personal
-TIPO_NUIP_CO = [
-    (0,'Cédula de Ciudadanía'),
-    (1,'Tarjeta de Identidad'),
-    (2,'Cédula de Extranjería'),
-    (3,'Pasaporte'),
-    (4,'Permiso de Residencia')
-    ]
-
-#Tipos de número de Único de Identificación Institucional
-TIPO_NUII_CO = [
-    (0,'NIT'), #Número de Identificación tributaria (Colombia)
-    (1,'RUT') #Registro Único Tributario.
-    ]
-
-#Tipo de aplicativo
-TIPO_APP = [
-    (0, 'SIGEPI-BASE'),
-    (1, 'Web Server'),
-    (2, 'Web Cliente'),
-    (3, 'Android'),
-    (4, 'IOS'),
-    (5, 'Escritorio Windows'),
-    (6, 'Escritorio Linux'),
-    (7, 'Escritorio MAC'),
-    (8, 'otro'),
-    ]
-#Tipos de Identidad de Género
-GENERO = [
-    (0,'Neutro'),
-    (1,'Femenino'),
-    (2,'Masculino'),
-    (3,'Intergénero'),
-    (4,'Transgénero'),
-    (5,'Sisgénero'),
-    (6,'Otro')
-    ]
-
-#tipo de formación Académica
-TIPO_FORM_CO = [
-    (0,'Universitaria'),
-    (1,'Especializacion'),
-    (2,'Maestría'),
-    (3,'Doctorado'),
-    (4, 'PHD'),
-    (5,'Posdoctorado'),
-    (6,'Básica Secundaria'),
-    (7,'Básica Primaria'),
-    (8,'Diplomado'),
-    (9,'Curso Corto'),
-    (10,'Técnica'),
-    (11,'tecnológica'),
-    (12,'Curso libre')
-    ]
-
-#tipo de formación Académica para grupos
-TIPO_FORM_GR = [
-    (0,'Seminario'),
-    (1,'Taller'),
-    (2,'Foro'),
-    (3,'Charla'),
-    (4,'Encuentro'),
-    (5,'Simposio'),
-    (6,'Panel'),
-    (7,'Conferencia'),
-    (8,'Diplomado'),
-    (9,'Curso Corto'),
-    (10,'Congreso'),
-    (11,'Socialización'),
-    (12,'Coloquio'),
-    (13,'Otro')
-    ]
-
-#tipo de modalidad de formación Académica
-MODALIDAD = [
-    (0,'Presencial'),
-    (1,'Virtual'),
-    (2,'Semipresencial'),
-    (3,'A distancia'),
-    (4,'Aprendizaje Acompañado')
-    ]
-
-#Tipo de Contratación
-TIPO_CONTR_CO = [
-    (0,'Término Indefinido'),
-    (1,'Término Fijo'),
-    (2,'Temporal'),
-    (3,'Orden de Servicio'),
-    (4,'Contrato de Obra'),
-    (5,'Asesoría'),
-    (6,'Consultoría'),
-    (7,'independiente')
-    ]
-
-#Tipos de gupos de Investigación
-TIPO_GR_INV = [
-    (0,'Independiente'), #Grupo registrado en la plataforma como independiente, asociación de usuarios de la plataforma.
-    (1,'Reconocido Inst'), #Grupo que además de registrado está vinculado y reconocido por una Institución o Entidad.
-    (2,'Reconocido COLC'), #Grupo que además de registrado está vinculado y reconocido por Colciencias.
-    (3,'Semillero de Inv.'), #Grupo que está reconocido como semillero por una Institución o Entidad.
-    (4,'Comunidad'), #Grupo de comunidad de conocimiento abierto o libre. Con o sin cuotas de participación.
-    (5,'Estado del Arte') #Grupo orientado a la construcción de estados del arte temáticos. Son grupos de comunidades abiertas con vinculación temporal y cuotas de participación.
-    ]
-
-#Integrantes según modelo de Colciencias
-INTEGR_GR_COLC = [
-    (0,'Investigador Emérito'), # Cumple con las características de Investigador Emérito - Se le asigna vinculación.
-    (1,'Investigador Sénior'), # Cumple con las características de Investigador Sénior - Se le asigna vinculación.
-    (2,'Investigador Asociado'), # Cumple con las características de Investigador Asociado - Se le asigna vinculación.
-    (3,'Investigador Junior'), # Cumple con las características de Investigador Junior - Se le asigna vinculación.
-    (4,'Integrante vinculado'), # Cumple con las características de Integrante vinculado con doctorado - Se le asigna vinculación.
-    (5,'Estudiante de doctorado'), # Cumple con las características de Estudiante de doctorado - Se le asigna vinculación.
-    (6,'Integrante vinculado'), # Cumple con las características de Integrante vinculado con maestría o especialidad clínica - Se le asigna vinculación."":
-    (7,'Estudiante de maestría o especialidad clínica'), # Cumple con las características de Estudiante de maestría o especialidad clínica - Se le asigna vinculación."":
-    (8,'Integrante vinculado con especialización'), # Cumple con las características de Integrante vinculado con especialización - Se le asigna vinculación.
-    (9,'Integrante vinculado con pregrado'), # Cumple con las características de Integrante vinculado con pregrado - Se le asigna vinculación.
-    (10,'Estudiante de pregrado'), # Cumple con las características de Estudiante de pregrado - Se le asigna vinculación.
-    (11,'ninguna de las anteriores') # No cumple ninguna de las anteriores características - Se vincula como Integrante vinculado.
-    ]
-
-#Estado de desarrollo del grupo.
-ESTADO_DLLO_GR = [
-    (0,'Creado'), #El grupo apenas se está convocando y aún no ha culminado al etapa de conformación.
-    (1,'Desarrollo Temprano'),
-    (2,'Dearrollo Medio'),
-    (3,'Desarrollo Alto'),
-    (4,'Consolidado'),
-    (5,'Ramificado'),
-    (6,'Fusionado'),
-    (7,'Disgregado'),
-    (8,'Disuelto'),
-    (9,'liquidado'),
-    (10,'Abandonado')
-    ]
-
-#Tipo de Institución o entidad
-TIPO_INS = [
-    (0,'Privada'),
-    (1,'Publica'),
-    (2,'xxx'),
-    (3,'zzzz'),
-    ]
-
-#Sector Económico
-SECTOR_ECO = [
-    (0,'Privado'),
-    (1,'Publico'),
-    (2,'xxx'),
-    (3,'zzzz'),
-    ]
-
-# Tipo de fuente de inst. Externa, local, remota.
-TIPO_FUENTE_INST = [
-    (0,'Externa'),
-    (1,'Local'),
-    (2,'Remota')
-    ]
-
- #Numerar las posibles extensiones del archivo de instalación 1=".zip";2=".gz",3=".deb";4=".exe"; etc)
-
-# Tipo de extensión del archivo de instalación.
-TIPO_EXT = [
-    (0,'.Zip'),
-    (1,'.Gz'),
-    (2,'.msi'),
-    (3,'.exe'),
-    (3,'.deb'),
-    (3,'.rpm'),
-    (3,'.tar'),
-    (4,'otro'),
-    ]
-
-#LIstado de  Horarios
-HORARIO = [
-    (0,'8am 12pm'),
-    (1,'2pm 6pm'),
-    (2,'8am 12pm - 2pm 6pm')
-    ]
-
-#Usuarios básicos del sistema
-
+## Usuarios básicos del sistema ##
 #Usuario individual
 class usu(models.Model):
     id_user = models.OneToOneField(User, primary_key = True, on_delete=models.CASCADE, null=False, blank=False)

@@ -139,13 +139,13 @@ class prog_ofer(models.Model):
         verbose_name = 'prog_ofer'
         verbose_name_plural = 'prog_ofers'
 
-class rl_usuo_prog_ofer(models.Model): #Listado de id de programas ofertados por la entidad o Institución.
+class rl_usui_prog_ofer(models.Model): #Listado de id de programas ofertados por la entidad o Institución.
     id_usui = models.ForeignKey(usui, on_delete=models.CASCADE ) # identificador unico
     id_prog_ofer = models.ForeignKey(prog_ofer, on_delete=models.CASCADE, default = 0) # identificador unico
 
     class Meta:
-        verbose_name = 'rl_usuo_prog_ofer'
-        verbose_name_plural = 'rl_usuo_prog_ofers'
+        verbose_name = 'rl_usui_prog_ofer'
+        verbose_name_plural = 'rl_usui_prog_ofers'
 #class usui_inf_inv(models.Model): #esta ya no seria buena
     # Clase que almacena y procesa la información académica del usuario
 #    id_usui = models.ForeignKey(usui, on_delete=models.CASCADE, null=False, blank=False) # identificador unico

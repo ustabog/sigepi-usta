@@ -7,6 +7,7 @@ from django.db import models
 from modpry.app_modpry.models import *
 from modadm.app_regusugr.models import *
 from modcons.app_cons.dic import *
+from modadm.app_modadm.models import *
 
 INF_APP = [
     #Diccionario para la aplicación de registro de proyecto
@@ -39,7 +40,7 @@ class pry_base(models.Model):
     nombre_pry = models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
     desc_pry=models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto
     tipo_pry=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto - diccionario TIPO_PRY
-    id_usu = models.ForeignKey(usu, on_delete=models.SET_NULL, null= True, blank = False) #Propietario del proyecto
+    id_usu = models.ForeignKey(User, on_delete=models.SET_NULL, null= True, blank = False) #Propietario del proyecto
     est_pry = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)
     pry_archi = models.BooleanField(null = False, blank = False, default = 0)#Si el proyecto es borrado queda como archivado
     #estado - por defecto borrador
