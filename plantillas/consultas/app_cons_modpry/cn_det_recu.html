@@ -1,0 +1,26 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta de la información de un recurso</p>
+</div>
+
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+
+<!--CONSULTAR UN PROYECTO-->
+<form method="GET">
+    <h2>Recurso/h2>
+    {{form.as_ul}}
+    <div>
+        {% for recu_pry in object_list %}
+        <p><b>Nombre del recurso:</b><label> {{ recu_pry.nombre_rec}} </label></p>
+        <p><b>Descripción del recurso:</b><label> {{ recu_pry.desc_rec}} </label></p>
+        <p><b>Utilidad del recurso:</b><label> {{ recu_pry.uti_rec}}</label></p>
+        <p><b>Tipo de recurso: </b><label> {{ recu_pry.tip_rec}} </label></p>
+        <p><b>Contacto del recurso: </b><label> {{ recu_pry.cont_rec} </label></p>
+        <p><b>Número de Contacto: </b><label> {{ recu_pry.num_cont}} </label></p><br>
+        <p>-------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>

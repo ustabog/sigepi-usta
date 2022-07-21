@@ -69,13 +69,14 @@
 #Clonar un proyecto de investigación
 
 
-from re import template
+from django import template
 from django.http import HttpResponse
 from .models import *
 from modpry.app_regpry.models import *
 from modpry.app_regpry.form import *
 from django.template import context
 from django.shortcuts import render, redirect
+from modadm.app_modadm.dic import *
 
 #------------- Registro de un proyecto ---------------
 
@@ -179,3 +180,10 @@ def fn_var_plan_pry(request):
     contexto = context({tit_form})
     plantilla = template.render(contexto)
     return HttpResponse(plantilla)
+
+#--------------- Función para el diccionario ---------------
+def fn_val_dic(request, dicc, item):
+    dicc = TIPO_PRY
+    item = pry_base.objects.get(tipo_pry = dicc)
+    print(item)
+    return request ('cn_trj_pry.html', item,{'item' : item})

@@ -7,7 +7,7 @@ from django.db import models
 from modpry.app_modpry.models import *
 from modpry.app_regpry.models import *
 from modpry.app_disinv.models import *
-from modcons.app_cons.dic import *
+from modadm.app_modadm.dic import *
 
 INF_APP = [
     #Diccionario para la aplicación de evaluación de proyecto de investigación

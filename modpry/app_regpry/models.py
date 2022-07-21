@@ -4,10 +4,10 @@
 #fecha 07-07-2022
 
 from django.db import models
+from modadm.app_modadm.models import *
 from modpry.app_modpry.models import *
 from modadm.app_regusugr.models import *
-from modcons.app_cons.dic import *
-from modadm.app_modadm.models import *
+from modadm.app_modadm.dic import *
 
 INF_APP = [
     #Diccionario para la aplicación de registro de proyecto
@@ -40,7 +40,7 @@ class pry_base(models.Model):
     nombre_pry = models.CharField('Nombre del proyecto: ', max_length=255)#Nombre proyecto
     desc_pry=models.CharField('Descripción del proyecto: ', max_length=255, null=False, blank=False)#Decripción del proyecto
     tipo_pry=models.IntegerField(null = False, blank = False, choices = TIPO_PRY, default = 0) # Tipo de proyecto - diccionario TIPO_PRY
-    id_usu = models.ForeignKey(User, on_delete=models.SET_NULL, null= True, blank = False) #Propietario del proyecto
+    id_usu = models.ForeignKey(User, on_delete=models.SET_NULL, null= True, blank = False, db_constraint=False) #Propietario del proyecto
     est_pry = models.IntegerField(null = False, blank = False, choices = ESTADO_PRY, default = 0)
     pry_archi = models.BooleanField(null = False, blank = False, default = 0)#Si el proyecto es borrado queda como archivado
     #estado - por defecto borrador
@@ -51,7 +51,6 @@ class pry_base(models.Model):
     #tipos progr categorias
     #información de usuario: clasificar el rol con rol de investigador, procesos(estado del proceso)
     #cvalc ordic otra clase de visibilidad o publicidad del investigador, mirar desde ad,, enlace de esa información, 
-    
     class Meta:
         verbose_name = 'pry_base'
         verbose_name_plural = 'proyectos base'
@@ -85,17 +84,21 @@ class inf_pry(models.Model):
 class inf_geo_pry(models.Model):
     #clase que define la información geográfica del proyecto, recoge los valores de divipola del dane con latitudes y longitudes.
     id_inf_geo = models.AutoField(primary_key = True) 
-    id_pry_base = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)
     dat_dep = models.IntegerField(null = False, blank = False, choices = DEPARTAMENTOS, default = 0)#Lista de los departamentos de Colombia que hacen parte del proyecto 
     municipio = models.CharField('Municipio:', max_length=150)#Municipio donde se desarrolla el proyecto
     ciudad = models.CharField('Ciudad:', max_length=150)# Ciudad donde se desarrolla el proyecto
     geo_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la información geográfica es borrada queda como archivada
 
+class rl_geo_pry(models.Model):
+    id_rl_geo_pry = models.AutoField(primary_key = True) 
+    id_inf_geo = models.ForeignKey(inf_geo_pry, on_delete=models.CASCADE, null=False, blank =False)
+    id_pry_base = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)
+
 class even_pry(models.Model):
     # clase que guarda la información de los eventos del proyecto.
     id_even_pry= models.AutoField(primary_key = True) 
     even_pry = models.ForeignKey(pry_base, on_delete=models.CASCADE, null=False, blank =False)#Proyecto que hara parte del evento
-    enc_eve=models.ForeignKey(usu, on_delete=models.SET_NULL, null=True, blank =False)#Encargado del evento
+    enc_eve=models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank =False)#Encargado del evento
     nomb_eve = models.CharField('Nombre del evento:', max_length=255)# Ciudad donde se desarrolla el proyecto#Nombre del evento
     desc_eve = models.CharField('Descripción del evento:', max_length=400)# Ciudad donde se desarrolla el proyecto#Descripción del evento
     fch_eve = models.DateField('Fecha del evento:', null=True, blank=True )#Fecha del evento

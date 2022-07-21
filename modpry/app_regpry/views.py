@@ -1,3 +1,8 @@
+# App de registro de un proyecto de investigación - Vistas para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 07 -07-2022
+
 from django.shortcuts import render, redirect
 from django.views.generic import UpdateView, CreateView, ListView, DetailView
 from django.urls import reverse_lazy
@@ -22,6 +27,9 @@ class vts_reg_pry(CreateView):
     form_class = frm_reg_pry
     template_name = 'mod_pry_frm_crear.html'
     success_url= reverse_lazy('cn_pry')
+
+    def get_queryset(self):
+        return pry_base.objects.filter(id_usu = self.request.user)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
