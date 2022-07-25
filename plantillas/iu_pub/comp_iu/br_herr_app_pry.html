@@ -28,10 +28,15 @@
                     <li><a href="{% url 'inicio' %}"><i class="material-icons">linear_scale</i><span>Estado de mis Pry.</span></a></li> 
                     <li><a href="{% url 'inicio' %}"><i class="material-icons">group</i><span>Colaborar</span></a></li> 
                     <li><a href="{% url 'inicio' %}"><i class="material-icons">group_add</i><span>Buscar Colaboradores(as)</span></a></li> 
-                    <li><a href="{% url 'inicio' %}"><i class="material-icons">bookmarks</i><span>Convocatorias</span></a></li>
                     <li><a href="{% url 'inicio' %}"><i class="material-icons">paid</i><span>Patrocinadores</span></a></li>
                     <li><a href="{% url 'inicio' %}"><i class="material-icons">school</i><span>Formación</span></a></li>
-                    <li><a href="{% url 'creacrono' %}"><i class="material-icons">event_note</i><span>Cronograma</span></a></li>
+                    <li>
+                        <a href=""><i class="material-icons">event_note</i><span>Cronograma</span></a>
+                        <ul class="categ_br_herr">
+                            <li><a href="{% url 'creacrono' %}"><i class="material-icons">edit_calendar</i><span>Nuevo Cronograma</span></a></li> 
+                            <li><a href="{% url 'vercrono' %}"><i class="material-icons">calendar_view_day</i><span>Mis cronogramas</span></a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -52,8 +57,21 @@
                 </ul>
             </li>
             <li><a href="{% url 'inicio' %}"><i class="material-icons">schema</i><span>Marco Lógico</span></a></li>
-            <li> <a href="{% url 'inicio' %}"><i class="material-icons">bookmarks</i><span>Convocatorias</span></a></li>
-            <li> <a href="{% url 'inicio' %}"><i class="material-icons">precision_manufacturing</i><span>Recursos</span></a></li>
+            <li> 
+                <a href=""><i class="material-icons">bookmarks</i><span>Convocatorias</span></a>
+                <ul class="categ_br_herr">
+                    <li><a href="{% url 'crea_convo' %}"><i class="material-icons">note_add</i><span>Nueva Convocatoria</span></a></li> 
+                    <li><a href="{% url 'cn_convo' %}"><i class="material-icons">manage_search</i><span>Convocatorias</span></a></li> 
+                </ul>
+            </li>
+            <li> 
+                <a href="{% url 'inicio' %}"><i class="material-icons">precision_manufacturing</i><span>Recursos</span></a>
+                <ul class="categ_br_herr">
+                    <li><a href="{% url 'crea_recu' %}"><i class="material-icons">playlist_add</i><span>Nuevo Recurso</span></a></li> 
+                    <li><a href="{% url 'cn_recu' %}"><i class="material-icons">manage_search</i><span>Recursos</span></a></li> 
+                </ul>
+            </li>
+            
             <li> <a href="{% url 'inicio' %}"><i class="material-icons">category</i><span>Productos de Investigación</span></a></li>
         </ul>
     </nav>

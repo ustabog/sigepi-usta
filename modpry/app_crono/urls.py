@@ -18,7 +18,7 @@ urlpatterns = [
     #URL para etapas
     path('creaeta/',vst_crea_etapa.as_view(), name = 'creaeta'), #Crear etapa de un cronograma
     path('cndetcrono/',vst_ls_etapa.as_view(), name = 'veretapa'),#Lista de etapas
-    path('editeta/<int:pk>/',vst_edit_etapa.as_view(), name = 'edit_crono'),#Editar etapa
+    path('editeta/<int:pk>/',vst_edit_etapa.as_view(), name = 'edit_etapa'),#Editar etapa
     path('archieta/<id>/',fn_archi_etapa, name = 'archi_etapa'), #Archivar etapa
     path('elieta/<id>/',fn_eli_etapa, name = 'eli_etapa'), #Eliminar etapa
     #URL para fases

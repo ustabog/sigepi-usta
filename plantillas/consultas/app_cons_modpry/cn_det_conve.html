@@ -1,0 +1,28 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta de la información del convenio</p>
+</div>
+
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+
+<!--CONSULTAR LA INFORMACIÓN DE UN CONVENIO-->
+<form method="GET">
+    <h3>Convenio</h3>
+    {{form.as_ul}}
+    <div>
+        {% for conve_pry in  object_list %}
+        <p><b>Nombre del convenio: </b><label> {{ conve_pry.nombre_conv}} </label></p>
+        <p><b>Descripción del convenio: </b><label> {{ conve_pry.desc_conv}} </label></p>
+        <p><b>Fecha de inicio del convenio: </b><label> {{ conve_pry.fch_ini_conv}} </label></p>
+        <p><b>Fecha de finalización del convenio: </b><label> {{ conve_pry.fch_fin_conv}} </label></p>
+        <p><b>Tipo de recurso del convenio: </b><label> {{ conve_pry.tipo_recur_conv}} </label></p>
+        <p><b>URL del archivo del convenio: </b><label> {{ conve_pry.url_archv_conv}} </label></p>
+        <p><b>Departamento responsable del convenio: </b><label> {{ conve_pry.dep_resp}} </label></p>
+        <p><b>Contacto del convenio: </b><label> {{ conve_pry.cont_conv}} </label></p><br>
+        <p>----------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>

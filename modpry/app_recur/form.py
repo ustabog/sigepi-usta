@@ -1,4 +1,3 @@
-from django.forms import ModelForm
 from django import forms
 from modpry.app_recur.models import *
 

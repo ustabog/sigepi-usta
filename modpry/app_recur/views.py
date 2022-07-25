@@ -57,3 +57,12 @@ class vts_edit_recu(UpdateView):
         context ['list_url'] = reverse_lazy('cnrecu')
         context ['action'] = 'edit'
         return context
+
+class vst_ls_detrecu(ListView):
+    # clase para listar la información en detalle de un recurso
+    model = recu_pry
+    template_name = 'cn_det_recu.html'
+    context_object_name = 'lista_info_recu'
+
+    def get_queryset(self):
+        return recu_pry.objects.filter(id_usu = self.request.user).filter(recu_archi=0)

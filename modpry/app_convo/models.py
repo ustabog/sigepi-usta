@@ -24,17 +24,25 @@ INF_APP = [
     ['visible', False],
     ]
 
-class convoca_pry(models.Model):
+class convo_pry(models.Model):
     #Clase que contiene la información de las convocatorias del proyecto
     id_convo =  models.AutoField(primary_key = True)#Id de la convocatoria
     nombre_convo = models.CharField('Nombre de la convocatoria:', max_length=255) #Nombre de la convocatoria
     desc_convo = models.CharField('Descripción de la convocatoria:', max_length=255) #Descripción de la convocatoria
-    fch_ini_convo = models.DateField(null=True, blank=True, auto_now=True)#Fecha de inicio de la convocatoria
+    fch_ini_convo = models.DateField(null=True, blank=True)#Fecha de inicio de la convocatoria
     fch_fin_convo =  models.DateField(null=True, blank=True)#Fecha de finalización de la convocatoria
+    convo_archi = models.BooleanField(null = False, blank = False, default = 0)#Si la convocatoria es borrada queda como archivada
+
     #Plantilla para la convocatoria de un proyecto
     class Meta:
         verbose_name = 'convoca_pry'
         verbose_name_plural = 'convoca_prys'
+
+class rl_convo_pry():
+    #Clase de relación entre convenio y un proyecto
+    id_rl_convo_pry = models.AutoField(primary_key= True)#Id de la relación convocatoria y proyecto
+    id_pry_base = models.ForeignKey(pry_base, on_delete=models.SET_NULL, null=True, blank =False)#Id del proyecto
+    id_convo = models.ForeignKey(convo_pry, on_delete=models.SET_NULL, null=True, blank =False)#Id del proyecto
 
 #Diseñar una plantilla base para diseñar un proyecto para una convocatoria
 

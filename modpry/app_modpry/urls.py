@@ -1,3 +1,8 @@
+# App del módulo de proyectos de investigación - URL's para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a): Milton O. Castro Ch.
+#fecha 07-07-2022
+
 from django.urls import path
 from django.contrib.auth.views import *
 #from rest_framework.routers import DefaultRouter
@@ -5,28 +10,55 @@ from modpry.app_regpry.views import *
 from modpry.app_regpry.func import *
 from modpry.app_regpry.urls import *
 from modpry.app_modpry.views import *
+from modpry.app_modpry.urls import *
 from modpry.app_crono.views import *
 from modpry.app_crono.func import *
 from modpry.app_crono.urls import *
 from modpry.app_evapry.views import *
 from modpry.app_evapry.func import *
-from modpry.app_modpry.urls import *
+from modpry.app_evapry.urls import *
 from modpry.app_conve.views import *
+from modpry.app_conve.func import *
+from modpry.app_conve.urls import *
 from modpry.app_convo.views import *
-from modpry.app_disinv.views import *
-from modpry.app_gespry.views import *
-from modpry.app_mlog.views import *
+from modpry.app_convo.func import *
+from modpry.app_convo.urls import *
+#from modpry.app_disinv.views import *
+#from modpry.app_disinv.func import *
+#from modpry.app_disinv.urls import *
+#from modpry.app_gespry.views import *
+#from modpry.app_gespry.urls import *
+#from modpry.app_gespry.func import *
+#from modpry.app_mlog.views import *
+#from modpry.app_mlog.func import *
+#from modpry.app_mlog.urls import *
 from modpry.app_recur.views import *
 from modpry.app_recur.func import *
-from modpry.app_regprgi.views import *
+from modpry.app_recur.urls import *
+#from modpry.app_regprgi.views import *
+#from modpry.app_regprgi.func import *
+#from modpry.app_regprgi.urls import *
 from .models import *
 
 urlpatterns = [
-    #URL's para convenios
+    # ------------------------------ URL's para convenios --------------------
     path('inicio',vst_conve().vst_inicio, name = 'ini_conve'), #inicio de la app de convenios
+    path('crearconve/',vts_reg_conve.as_view(), name = 'crea_conve'), #Crea el convenio 
+    path('cnconve/', vst_ls_conve.as_view(), name='cn_conve'), #Lista de convenios
+    path('cndetconve/', vst_ls_detconve.as_view(), name = 'cn_det_conve'),# Información de un convenio
+    path('editconve/<int:pk>/',vts_edit_conve.as_view(), name = 'edit_conve'), #Actualizar convenio
+    path('archiconve/<id>',fn_archi_conve, name = 'archi_conve'), #Archivar un convenio
+    path('eliconve/<id>',fn_eli_conve, name = 'eli_conve'),#Eliminar un convenio
 
-    #URL's para convocatorias
+    #------------------------------- URL's para convocatorias -------------------
     path('inicio',vst_convo().vst_inicio, name = 'ini_convo'), #inicio de la app de convocatorias
+    path('inicio',vst_convo().vst_inicio, name = 'ini_convo'), #inicio de la app de convocatoria
+    path('crearconvo/',vts_reg_convo.as_view(), name = 'crea_convo'), #Crea la convocatoria 
+    path('cnconvo/', vst_ls_convo.as_view(), name='cn_convo'), #Lista de convocatorias
+    path('cndetconvo/', vst_ls_detconvo.as_view(), name = 'cn_det_convo'), # Información de una convocatoria
+    path('editconvo/<int:pk>/',vts_edit_convo.as_view(), name = 'edit_convo'), #Actualizar convocatoria
+    path('archiconvo/<id>',fn_archi_convo, name = 'archi_convo'), #Archivar una convocatoria
+    path('eliconvo/<id>',fn_eli_convo, name = 'eli_convo'),#Eliminar una convocatoria
 
     #URL para las funciones de un cronograma
     path('inicio',vst_crono().vst_inicio, name = 'ini_crono'), #inicio de la app de cronograma
@@ -40,7 +72,7 @@ urlpatterns = [
     #URL para etapas
     path('creaeta/',vst_crea_etapa.as_view(), name = 'creaeta'), #Crear etapa de un cronograma
     path('cndetcrono/',vst_ls_etapa.as_view(), name = 'veretapa'),#Lista de etapas
-    path('editeta/<int:pk>/',vst_edit_etapa.as_view(), name = 'edit_eta'),#Editar etapa
+    path('editeta/<int:pk>/',vst_edit_etapa.as_view(), name = 'edit_etapa'),#Editar etapa
     path('archieta/<id>/',fn_archi_etapa, name = 'archi_etapa'), #Archivar etapa
     path('elieta/<id>/',fn_eli_etapa, name = 'eli_etapa'), #Eliminar etapa
     #URL para fases
@@ -69,7 +101,7 @@ urlpatterns = [
     path('eliacti/<id>/',fn_eli_acti, name = 'eli_acti'), #Eliminar actividad
 
     #URL's para la aplicación de diseño de proyecto de investigación
-    path('inicio',vst_disinv().vst_inicio, name = 'ini_disinv'), #inicio de la app de diseño de proyecto de investigación
+    #path('inicio',vst_disinv().vst_inicio, name = 'ini_disinv'), #inicio de la app de diseño de proyecto de investigación
 
     #URL para las funciones de la evaluación de un proyecto
     path('inicio',vst_evapry().vst_inicio, name = 'inicio_pry'), #inicio de la app de proyectos
@@ -117,23 +149,24 @@ urlpatterns = [
     path('elidefi/<id>',fn_eli_defi, name = 'eli_defi'),#Eliminar definciónes, comentarios, ect, de la evaluación de un proyecto
 
     #URL's para la aplicación de gestión de proyecto de investigación
-    path('inicio',vst_gespry().vst_inicio, name = 'ini_gespry'), #inicio de la app de gestión de proyectos
+    #path('inicio',vst_gespry().vst_inicio, name = 'ini_gespry'), #inicio de la app de gestión de proyectos
 
     #URL's para la aplicación de marco lógico
-    path('inicio',vst_mlog().vst_inicio, name = 'ini_mlog'), #inicio de la app de marco lógico
+    #path('inicio',vst_mlog().vst_inicio, name = 'ini_mlog'), #inicio de la app de marco lógico
 
-    #URL's para la aplicación de recursos
+    #------------------------- URL's para la aplicación de recursos -------------------
     path('inicio',vst_recur().vst_inicio, name = 'ini_recur'), #inicio de la app de recursos
-    path('crearecu/',vts_reg_recu.as_view(), name = 'crea_pry'), #Crea el recurso 
-    path('cnrecu/', vst_ls_recu.as_view(), name='cn_pry'), #Lista de proyectos
+    path('crearecu/',vts_reg_recu.as_view(), name = 'crea_recu'), #Crea el recurso 
+    path('cnrecu/', vst_ls_recu.as_view(), name='cn_recu'), #Lista de recursos
+    path('cndetrecu/',vst_ls_detrecu.as_view(), name = 'cn_det_recu'),
     path('editrecu/<int:pk>/',vts_edit_recu.as_view(), name = 'edit_recu'), #Actualizar recurso
     path('archirecu/<id>',fn_archi_recu, name = 'archi_recu'), #Archivar un recurso
     path('elirecu/<id>',fn_eli_recu, name = 'eli_recu'),#Eliminar un recurso
 
-    #URL's para la aplicación de registro de programa de investigación
-    path('inicio',vst_regprgi().vst_inicio, name = 'ini_regprgi'), #inicio de la app de registro de programa de investigación
+    # ------------- URL's para la aplicación de registro de programa de investigación------
+    #path('inicio',vst_regprgi().vst_inicio, name = 'ini_regprgi'), #inicio de la app de registro de programa de investigación
 
-    #URL para registro de un proyecto
+    # ------------------------- URL para registro de un proyecto -----------------------
     path('inireg',vst_regpry().vst_inicio, name = 'ini_regpry'), #inicio de la app de proyectos
     path('creapry/',vts_reg_pry.as_view(), name = 'crea_pry'), #Crea el proyecto 
     path('cnpry/', vst_ls_pry.as_view(), name='cn_pry'), #Lista de proyectos

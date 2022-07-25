@@ -86,22 +86,6 @@ class requerimiento(models.Model):
         verbose_name = 'requerimiento'
         verbose_name_plural = 'requerimientos'
 
-class cpto_pry(models.Model):
-    #Clase que almacena los datos de la conceptualización del proyecto
-    id_cpto_proy = models.AutoField(primary_key = True)#Identificador de la conceptualización del proyecto
-    nombre_plan = models.CharField('Nombre del plan del proyecto', max_length=40, null=False, blank= False)
-    desc_plan = models.CharField('Descripción del plan del proyecto', max_length=40, null=False, blank= False)
-    obj_gen = models.CharField('Objetivo general del proyecto:', max_length=40, null=False, blank= False)
-    obj_esp = models.ForeignKey(obj_esp, on_delete=models.SET_NULL, null=True, blank =False) #Objetivos específicos
-    fch_ini = models.DateField(null=True, blank=True, auto_now=True)#Fecha de inicio del proyecto
-    fch_fin =  models.DateField(null=True, blank=True)#Fecha de finalización del proyecto
-    mar_teo = models.ForeignKey(mar_teo, on_delete=models.SET_NULL, null=True, blank =False)
-    mar_con =  models.ForeignKey(mar_con, on_delete=models.SET_NULL, null=True, blank =False)
-    class Meta:
-        verbose_name = 'cpto_pry'
-        verbose_name_plural = 'cpto_prys'
-
-
 class obj_esp(models.Model):
     #Clase que define los objetivos especificos 
     id_obj_esp_pry = models.AutoField(primary_key = True) # Id de la metodología de los objetivos especificos 
@@ -138,4 +122,21 @@ class mar_con(models.Model):
     class Meta:
         verbose_name = 'mar_con'
         verbose_name_plural = 'mars_cons'
+        
+class cpto_pry(models.Model):
+    #Clase que almacena los datos de la conceptualización del proyecto
+    id_cpto_proy = models.AutoField(primary_key = True)#Identificador de la conceptualización del proyecto
+    nombre_plan = models.CharField('Nombre del plan del proyecto', max_length=40, null=False, blank= False)
+    desc_plan = models.CharField('Descripción del plan del proyecto', max_length=40, null=False, blank= False)
+    obj_gen = models.CharField('Objetivo general del proyecto:', max_length=40, null=False, blank= False)
+    obj_esp = models.ForeignKey(obj_esp, on_delete=models.SET_NULL, null=True, blank =False) #Objetivos específicos
+    fch_ini = models.DateField(null=True, blank=True, auto_now=True)#Fecha de inicio del proyecto
+    fch_fin =  models.DateField(null=True, blank=True)#Fecha de finalización del proyecto
+    mar_teo = models.ForeignKey(mar_teo, on_delete=models.SET_NULL, null=True, blank =False)
+    mar_con =  models.ForeignKey(mar_con, on_delete=models.SET_NULL, null=True, blank =False)
+    class Meta:
+        verbose_name = 'cpto_pry'
+        verbose_name_plural = 'cpto_prys'
+
+
 

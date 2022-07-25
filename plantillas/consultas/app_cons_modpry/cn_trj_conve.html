@@ -1,36 +1,37 @@
 {% extends 'app_pry_iu.html' %}
 {% load static %}
 
-<!--Tarjeta para consultar la información basica de un recurso-->
+<!--Tarjeta para consultar la información basica de un convenio-->
 {% block articulo %}
 <div class="cnt_norm" style="flex-direction: row; flex-wrap: wrap;">
-<h2>Recursos</h2>
+<h2>Cronogramas</h2>
 <br>
-{% for recu_pry in object_list %}
+{% for conve_pry in  object_list %}
 <div id="trj_pry" class="trj_pry">
     <div id="trj_pry_simple" class="trj_pry_simple">
         <span>simple</span>
         <div id="cnt_sup" class="cnt_sup">
             <div id="cnt_sup_img"  class="cnt_sup_img">
-                <i class="material-icons" style="width: 65px; height: 65px; color: var(--color-blanco);">task</i>
-                <span id="cnt_sup_img_base" class="cnt_sup_img_base">{{recu_pry.tip_rec}}</span>
-            </div>           
+                <i class="material-icons" style="width: 65px; height: 65px; color: var(--color-blanco);">calendar_month</i>
+                <span id="cnt_sup_img_base" class="cnt_sup_img_base"> {{ conve_pry.fch_ini_conv}}</span>
+                <span id="cnt_sup_img_base" class="cnt_sup_img_base"> {{ conve_pry.fch_fin_conv}}</span>
+            </div>
             <div id="cnt_sup_titulo" class="cnt_sup_titulo">
-                {{ recu_pry.nombre_rec}}
+                {{ conve_pry.nombre_conv}} 
             </div>
         </div>
         <div id="cuerpo_pry" class="cuerpo_pry">
             <div>
-                {{ recu_pry.desc_rec}}
+                {{ conve_pry.desc_conv}}
             </div>
         </div>
     </div>
     <div id="" class="trj_pry_br">
-        <a  href="{% url 'cn_det_recu' %}">
+        <a  href="{% url 'cn_det_conve' %}">
             <i class="material-icons">description</i>
             <span>Ver</span>
         </a>
-        <a  href="{% url 'edit_recu' recu_pry.id_rec_pry %}">
+        <a  href="{% url 'edit_conve' conve_pry.id_conv %}">
             <i class="material-icons">edit</i>
             <span>Editar</span>
         </a>
@@ -38,7 +39,7 @@
             <i class="material-icons">add</i>
             <span>Agregar</span>
         </a>
-        <a  href="{% url 'archi_recu' recu_pry.id_rec_pry %}">
+        <a  href="{% url 'archi_conve' conve_pry.id_conv %}">
             <i class="material-icons">delete</i>
             <span>Eliminar</span>
         </a>
@@ -46,4 +47,5 @@
 </div>
 {% endfor %}
 </div>
+
 {% endblock articulo %}

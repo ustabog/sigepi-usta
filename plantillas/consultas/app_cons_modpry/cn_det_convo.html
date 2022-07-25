@@ -1,0 +1,24 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta de la información de las convocatorias</p>
+</div>
+
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+
+<!--CONSULTAR LA INFORMACIÓN DE UNA CONVOCATORIA-->
+<form method="GET">
+    <h3>convocatoria</h3>
+    {{form.as_ul}}
+    <div>
+        {% for convo_pry in  object_list %}
+        <p><b>Nombre de la convocatoria: </b><label> {{ convo_pry.nombre_convo}} </label></p>
+        <p><b>Descripción de la convocatoria: </b><label> {{ convo_pry.desc_convo}} </label></p>
+        <p><b>Fecha de inicio de la convocatoria: </b><label> {{ convo_pry.fch_ini_convo}} </label></p>
+        <p><b>Fecha de finalización de la convocatoria: </b><label> {{ convo_pry.fch_fin_convo}} </label></p><br>
+        <p>----------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
