@@ -31,6 +31,13 @@
                     <li><a href="{% url 'inicio' %}"><i class="material-icons">paid</i><span>Patrocinadores</span></a></li>
                     <li><a href="{% url 'inicio' %}"><i class="material-icons">school</i><span>Formación</span></a></li>
                     <li>
+                        <a href=""><i class="material-icons">group_add</i><span>Convenios</span></a>
+                        <ul class="categ_br_herr">
+                            <li><a href="{% url 'crea_conve' %}"><i class="material-icons">extension</i><span>Nuevo Convenio</span></a></li> 
+                            <li><a href="{% url 'cn_conve' %}"><i class="material-icons">data_thresholding</i><span>Convenios</span></a></li>
+                        </ul>
+                    </li> 
+                    <li>
                         <a href=""><i class="material-icons">event_note</i><span>Cronograma</span></a>
                         <ul class="categ_br_herr">
                             <li><a href="{% url 'creacrono' %}"><i class="material-icons">edit_calendar</i><span>Nuevo Cronograma</span></a></li> 
