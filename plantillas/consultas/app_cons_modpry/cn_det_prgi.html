@@ -1,0 +1,38 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta de la información de un proyecto</p>
+</div>
+
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+
+<!--CONSULTAR UN PROGRAMA DE INVESTIGACIÓN-->
+<form method="GET">
+    <h2>Programas</h2>
+    {{form.as_ul}}
+    <div>
+        {% for prgi_base in  object_list %}
+        <p><b>Propietario del programa:</b><label> {{ prgi_base.id_usu}} </label></p>
+        <p><b>Título del programa de investigación:</b><label> {{ prgi_base.titulo_prg}} </label></p>
+        <p><b>Descripción del programa de investigación:</b><label> {{ prgi_base.desc_prg}}</label></p>
+        <p><b>Nombre del archivo del programa: </b><label> {{ prgi_base.nomb_archi}} </label></p>
+        <p><b>URL del archivo del programa: </b><label> {{ prgi_base.url_archi}} </label></p>
+        <p><b>Número de investigadores: </b><label> {{ prgi_base.num_inv}} </label></p>
+        <p><b>Nivel de formación: </b><label> {{ prgi_base.prom_frm}} </label></p>
+        <p><b>Convenio propuesto: </b><label> {{ prgi_base.conv}} </label></p>
+        <p><b>Fecha de inicio del programa de investigación: </b><label> {{ prgi_base.fch_ini_prg}} </label></p>
+        <p><b>Fecha de finalización del programa de investigación: </b><label> {{ prgi_base.fch_fin_prg}}</label></p>
+        <p><b>Ubicación geográfica: </b><label> {{ prgi_base.geo}} </label></p>
+        <p><b>Resumen: </b><label> {{ prgi_base.resu}} </label></p>
+        <p><b>URL del árbol de problemas: </b><label> {{ prgi_base.url_ap}} </label></p>
+        <p><b>URL del árbol de objetivos: </b><label> {{ prgi_base.url_ao}} </label></p>
+        <p><b>Tamaño de la población beneficiaria directa: </b><label> {{ prgi_base.pobl_bnd}} </label></p>
+        <p><b>Tamaño de la población beneficiaria indirecta: </b><label> {{ prgi_base.pobl_bni}} </label></p>
+        <p><b>Objetivo general: </b><label> {{ prgi_base.obj_gen}} </label></p>
+        <p><b>Objetivo específico: </b><label> {{ prgi_base.obj_esp}} </label></p><br>
+        <p>-------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
