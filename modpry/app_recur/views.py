@@ -8,7 +8,7 @@ from django.views.generic import UpdateView, CreateView, ListView
 from modpry.app_recur.form import *
 from django.urls import reverse_lazy
 from .models import *
-from modpry.app_recur.models import recu_pry
+from modpry.app_recur.models import *
 
 
 class vst_recur():
