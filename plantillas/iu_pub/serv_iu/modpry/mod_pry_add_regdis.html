@@ -1,0 +1,40 @@
+{% extends 'app_pry_iu.html' %}
+{% load static %}
+
+{% block menu_app %}
+<nav id="menu_dispry" class="menu_dispry">
+    <a href="{% url 'crea_tema' %}"><i class="material-icons">topic</i><span>Añadir tema</span></a>  
+    <a href="{% url 'crea_defin_dis' %}"><i class="material-icons">checklist</i><span>Añadir definición</span></a>
+    <a href="{% url 'crea_arb_pro' %}"><i class="material-icons">account_tree</i><span>Añadir árbol de problemas</span></a>
+    <a href="{% url 'crea_arb_obj' %}"><i class="material-icons">streetview</i><span>Añadir árbol de objetivos</span></a>  
+    <a href="{% url 'crea_causa' %}"><i class="material-icons">view_in_ar</i><span>Añadir causa</span></a>
+    <a href="{% url 'crea_efecto' %}"><i class="material-icons">settings_applications</i><span>Añadir efecto</span></a>
+    <a href="{% url 'crea_medio' %}"><i class="material-icons">trending_up</i><span>Añadir medio</span></a>
+    <a href="{% url 'crea_fin' %}"><i class="material-icons">send_time_extension</i><span>Añadir fin</span></a>
+</nav>
+{%endblock menu_app%}
+
+{% block articulo %}
+  {% if form.errors %}
+      <p>No se ha añadido correctamente. Por favor, inténtalo de nuevo.</p>
+  {% endif %}
+
+<!--AÑADIR INFROMACIÓN DE UN DISEÑO DE INVESTIGACIÓN-->
+<form method="GET">
+    <h2>Diseño de investigación</h2>
+    {{form.as_ul}}
+    <div>
+        {% for dis_pry in  object_list %}
+            <p><b>Encargado del diseño: </b><label> {{ dis_pry.id_usu}} </label></p>
+            <p><b>Nombre del diseño: </b><label> {{ dis_pry.nomb_dis}} </label></p>
+            <p><b>Tipo de proyecto de investigación: </b><label> {{ dis_pry.tipo_inv}} </label></p>
+            <p><b>Delimitación temática: </b><label> {{ dis_pry.delim_tem}} </label></p>
+            <p><b>Fecha de inicio del diseño: </b><label> {{ dis_pry.fch_ini_dis}} </label></p>
+            <p><b>Fecha de finalización del diseño: </b><label> {{ dis_pry.fch_fin_dis}} </label></p>
+            <p><b>Árbol de problemas: </b><label> {{ dis_pry.arb_pro}} </label></p>
+            <p><b>Árbol de objetivos: </b><label> {{ dis_pry.arb_obj}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+{% endblock articulo %}

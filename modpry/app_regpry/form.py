@@ -1,3 +1,8 @@
+# App de registro de un proyecto de investigación - Formulario para SIGEPI
+#Autor: Laura Sofía Rodríguez Castillo - ORCID: 0000-0001-7873-8716
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 07 -07-2022
+
 from django import forms
 from django.forms import ModelForm
 from django import forms
@@ -22,6 +27,7 @@ class frm_con_pry(forms.ModelForm):
         }
 
 class frm_reg_pry(ModelForm):
+    #Clase para el formulario de registro de un proyecto
     class Meta:
         model = pry_base
         fields = (

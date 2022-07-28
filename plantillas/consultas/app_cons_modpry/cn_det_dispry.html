@@ -1,0 +1,152 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta de listado</p>
+</div>
+
+{% if form.errors %}
+    <p>La lista no se ha logrado consultar.</p>
+{% endif %}
+
+<!--CONSULTAR LA INFORMACIÓN DE UN DISEÑO DE UN PROYECTO-->
+<form method="GET">
+    <h2>Diseño de un proyecto</h2>
+    {{form.as_ul}}
+    <div>
+        {% for dis_pry in  object_list %}
+            <p><b>Encargado del diseño de investigación: </b><label> {{ dis_pry.id_usu}} </label></p>
+            <p><b>Nombre del diseño del proyecto de investigación: </b><label> {{ dis_pry.nomb_dis}} </label></p>
+            <p><b>Tipo de investigación del proyecto: </b><label> {{ dis_pry.tipo_inv}} </label></p>
+            <p><b>Delimitación temática: </b><label> {{ dis_pry.delim_tem}} </label></p>
+            <p><b>Fecha de inicio del diseño: </b><label> {{ dis_pry.fch_ini_dis}} </label></p>
+            <p><b>Fecha de finalización del diseño: </b><label> {{ dis_pry.fch_fin_dis}} </label></p>
+            <p><b>Árbol de problemas: </b><label> {{ dis_pry.arb_pro}} </label></p>
+            <p><b>Árbol de objetivos: </b><label> {{ dis_pry.arb_obj}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA INFORMACIÓN DE UN TEMA DE UN PROYECTO-->
+<form method="GET">
+    <h2>Tema</h2>
+    {{form.as_ul}}
+    <div>
+        {% for tema in  object_list %}
+            <p><b>Tema: </b><label> {{ tema.tema}} </label></p>
+            <p><b>Descripción del tema: </b><label> {{ tema.desc_categ}} </label></p>
+            <p><b>Palabras claves: </b><label> {{ tema.categ}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA INFORMACIÓN DE DEFINCIONES DE UN PROYECTO-->
+<form method="GET">
+    <h2>Definiciones</h2>
+    {{form.as_ul}}
+    <div>
+        {% for defi in  object_list %}
+            <p><b>Versión: </b><label> {{ defi.ver} </label></p>
+            <p><b>Tipo: </b><label> {{ defi.tipo}} </label></p>
+            <p><b>Fecha de registro </b><label> {{ defi.fch_reg}} </label></p>
+            <p><b>Versión 1: </b><label> {{ defi.vers1}} </label></p>
+            <p><b>Versión 2: </b><label> {{ defi.vers2}} </label></p>
+            <p><b>Versión 3: </b><label> {{ defi.vers3}} </label></p>
+            <p><b>Versión 4: </b><label> {{ defi.vers4}} </label></p>
+            <p><b>Versión 5: </b><label> {{ defi.vers5}} </label></p><br>
+            <p><b>Fecha de modificación: </b><label> {{ defi.fch_mod}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA INFORMACIÓN DE ÁRBOL DE PROBLEMAS DE UN PROYECTO-->
+<form method="GET">
+    <h2>Árbol de problemas</h2>
+    {{form.as_ul}}
+    <div>
+        {% for arb_pro in  object_list %}
+            <p><b>Título del árbol de problemas: </b><label> {{ arb_pro.tit_ap} </label></p>
+            <p><b>Nombre del archivo del árbol de problemas: </b><label> {{ arb_pro.nomb_arc}} </label></p>
+            <p><b>URL del archivo: </b><label> {{ arb_pro.fch_reg}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA INFORMACIÓN DE ÁRBOL DE OBJETIVOS DE UN PROYECTO-->
+<form method="GET">
+    <h2>Árbol de objetivos</h2>
+    {{form.as_ul}}
+    <div>
+        {% for arb_obj in  object_list %}
+            <p><b>Título del árbol de objetivos: </b><label> {{ arb_obj.tit_ao} </label></p>
+            <p><b>Nombre del archivo del árbol de objetivos: </b><label> {{ arb_obj.nomb_arc}} </label></p>
+            <p><b>URL del archivo: </b><label> {{ arb_obj.fch_reg}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA INFORMACIÓN DE UNA CAUSA DE UN PROYECTO-->
+<form method="GET">
+    <h2>Causa</h2>
+    {{form.as_ul}}
+    <div>
+        {% for causa in  object_list %}
+            <p><b>Nombre de la causa: </b><label> {{ causa.nomb_cau} </label></p>
+            <p><b>Descripción de la causa </b><label> {{ causa.desc_cau}} </label></p>
+            <p><b>Nivel de la causa: </b><label> {{ causa.nivel_cau}} </label></p>
+            <p><b>Definiciones: </b><label> {{ causa.defs}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA INFORMACIÓN DE UN EFECTO DE UN PROYECTO-->
+<form method="GET">
+    <h2>Efecto</h2>
+    {{form.as_ul}}
+    <div>
+        {% for efecto in  object_list %}
+            <p><b>Nombre del efecto: </b><label> {{ efecto.nomb_efe} </label></p>
+            <p><b>Descripción del efecto: </b><label> {{ efecto.desc_efe}} </label></p>
+            <p><b>Nivel del efecto: </b><label> {{ efecto.nivel_efe}} </label></p>
+            <p><b>Definiciones: </b><label> {{ efecto.defs}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA INFORMACIÓN DE UN MEDIO DE UN PROYECTO-->
+<form method="GET">
+    <h2>Medio</h2>
+    {{form.as_ul}}
+    <div>
+        {% for medio in  object_list %}
+            <p><b>Nombre del medio: </b><label> {{ medio.nomb_med} </label></p>
+            <p><b>Descripción del medio: </b><label> {{ medio.desc_med }} </label></p>
+            <p><b>Nivel del medio: </b><label> {{ medio.nivel_med}} </label></p>
+            <p><b>Definiciones: </b><label> {{ medio.defs}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+<!--CONSULTAR LA INFORMACIÓN DE UN FIN DE UN PROYECTO-->
+<form method="GET">
+    <h2>Fin</h2>
+    {{form.as_ul}}
+    <div>
+        {% for fin in  object_list %}
+            <p><b>Nombre del fin: </b><label> {{ fin.nomb_fin} </label></p>
+            <p><b>Descripción del fin: </b><label> {{ fin.desc_fin }} </label></p>
+            <p><b>Nivel del fin: </b><label> {{ fin.nivel_fin}} </label></p>
+            <p><b>Definiciones: </b><label> {{ fin.defs}} </label></p><br>
+            <p>---------------------------------------------------------</p>
+        {% endfor %}
+    </div>
+</form>
+
+{% endblock consulta %}

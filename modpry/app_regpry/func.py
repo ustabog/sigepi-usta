@@ -68,7 +68,6 @@
 #Vincular un usuario a un proyecto de investigación
 #Clonar un proyecto de investigación
 
-
 from django import template
 from django.http import HttpResponse
 from .models import *
@@ -183,7 +182,8 @@ def fn_var_plan_pry(request):
 
 #--------------- Función para el diccionario ---------------
 def fn_val_dic(request, dicc, item):
+    #REVISAR
     dicc = TIPO_PRY
-    item = pry_base.objects.get(tipo_pry = dicc)
+    item = pry_base.objects.get(tipo_pry = dicc)#Traer el valor del diccionario para mostrar en la tarjeta
     print(item)
     return request ('cn_trj_pry.html', item,{'item' : item})

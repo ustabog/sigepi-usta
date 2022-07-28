@@ -64,4 +64,4 @@ class vst_ls_detprgi(ListView):
     context_object_name = 'lista_info_prgi'
 
     def get_queryset(self):
-        return prgi_base.objects.filter(id_usu = self.request.user).filter(prgi_archi=0)
+        return prgi_base.objects.filter(id_usu = self.request.user).filter(prg_archi=0)

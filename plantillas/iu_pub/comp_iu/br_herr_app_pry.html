@@ -25,7 +25,13 @@
             <li>
                 <a href=""><i class="material-icons">price_check</i><span>Gestión de Proy.</span></a>
                 <ul class="categ_br_herr">
-                    <li><a href="{% url 'inicio' %}"><i class="material-icons">linear_scale</i><span>Estado de mis Pry.</span></a></li> 
+                    <li>
+                        <a href=""><i class="material-icons">linear_scale</i><span>Estado de mis Pry.</span></a>
+                        <ul class="categ_br_herr">
+                            <li><a href="{% url 'crea_dis' %}"><i class="material-icons">app_registration</i><span>Nuevo diseño de proyecto</span></a></li> 
+                            <li><a href="{% url 'cn_dispry' %}"><i class="material-icons">image_search</i><span>Diseño de proyectos</span></a></li>
+                        </ul>
+                    </li>
                     <li><a href="{% url 'inicio' %}"><i class="material-icons">group</i><span>Colaborar</span></a></li> 
                     <li><a href="{% url 'inicio' %}"><i class="material-icons">group_add</i><span>Buscar Colaboradores(as)</span></a></li> 
                     <li><a href="{% url 'inicio' %}"><i class="material-icons">paid</i><span>Patrocinadores</span></a></li>

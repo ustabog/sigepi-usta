@@ -1,0 +1,50 @@
+{% extends 'app_pry_iu.html' %}
+{% load static %}
+
+<!--Tarjeta para consultar la información basica de un diseño de un proyecto de investigación-->
+{% block articulo %}
+<div class="cnt_norm" style="flex-direction: row; flex-wrap: wrap;">
+<h2>Diseño de un proyecto de investigación</h2>
+<br>
+{% for dis_pry in  object_list %}
+<div id="trj_pry" class="trj_pry">
+    <div id="trj_pry_simple" class="trj_pry_simple">
+        <span>simple</span>
+        <div id="cnt_sup" class="cnt_sup">
+            <div id="cnt_sup_img"  class="cnt_sup_img">
+                <i class="material-icons" style="width: 65px; height: 65px; color: var(--color-blanco);">quiz</i>
+                <span id="cnt_sup_img_base" class="cnt_sup_img_base"> {{ dis_pry.fch_ini_dis}}</span>
+                <span id="cnt_sup_img_base" class="cnt_sup_img_base"> {{ dis_pry.fch_fin_dis}}</span>
+            </div>
+            <div id="cnt_sup_titulo" class="cnt_sup_titulo">
+                {{ dis_pry.nomb_dis}}
+            </div>
+        </div>
+        <div id="cuerpo_pry" class="cuerpo_pry">
+            <div>
+                {{ dis_pry.delim_tem}}
+            </div>
+        </div>
+    </div>
+    <div id="" class="trj_pry_br">
+        <a  href="{% url 'cn_det_dis' %}">
+            <i class="material-icons">description</i>
+            <span>Ver</span>
+        </a>
+        <a  href="{% url 'edit_dis' dis_pry.id_dis_pry %}">
+            <i class="material-icons">edit</i>
+            <span>Editar</span>
+        </a>
+        <a   href="{% url 'cn_det_dis' %}">
+            <i class="material-icons">add</i>
+            <span>Agregar</span>
+        </a>
+        <a  href="{% url 'archi_dis' dis_pry.id_dis_pry %}">
+            <i class="material-icons">delete</i>
+            <span>Eliminar</span>
+        </a>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock articulo %}
