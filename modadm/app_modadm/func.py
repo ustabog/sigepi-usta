@@ -6,13 +6,9 @@
 #Fecha: 26/04/22
 #Autor: Juan Sebastian Cely Caro
 
-from cmath import nan
 import logging
-from logging.config import valid_ident
-from typing_extensions import Self
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
-from django.contrib.contenttypes.apps import
 from django.db import migrations
 from django.db import connection
 
