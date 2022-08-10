@@ -6,6 +6,7 @@
 #Fecha: 26/04/22
 #Autor: Juan Sebastian Cely Caro
 
+import sys
 import logging
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
@@ -56,8 +57,11 @@ class sys_rol():
         else:
             Group.objects.filter(name=nom).delete()
     
-    def bus_rol():
-        pass
+    def act_rol():
+        import bus_roles
+        roles=bus_roles.ext_roles()
+        for rol in roles:
+            sys_rol.crear_rol(rol)
         
 
 class sys_perm():
@@ -69,6 +73,7 @@ class sys_perm():
         pass
 
 
+sys_rol.act_rol()
 
 #clase de instalación de módulos, aplicaciones y extensiones
 #Instalar Aplicación externa
