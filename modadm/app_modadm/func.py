@@ -3,10 +3,10 @@
 #fecha 10-05-2022
 
 #Creacion de permisos y grupos por defecto
-#Fecha: 26/04/22
-#Autor: Juan Sebastian Cely Caro
+#Fecha: 11/08/22
+#CoAutor: Brallan Andres Laverde Perez
 
-import sys
+import sys,ast,os
 import logging
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
@@ -33,8 +33,10 @@ class sys_app():
         pass
         
 
+#Clase para realizar acciones de creacion consulta y actualizacion de grupos en el administrador de DJANGO
 class sys_rol():
-    #crear roles
+
+    #crea roles en el administrador de DJANGO a partir de un nombre tipo String
     def crear_rol(nom):
         grupo, creado =Group.objects.get_or_create(name=nom)
         if creado:
@@ -42,7 +44,7 @@ class sys_rol():
         else:
             return False
         
-    #verificar roles
+    #verificar la existencia de un rol en el administrador de DJANGO por su nombre
     def val_rol(nom):
         x =Group.objects.filter(name=nom).count()
         if x == 1:
@@ -57,13 +59,63 @@ class sys_rol():
         else:
             Group.objects.filter(name=nom).delete()
     
+    #Actualiza los roles en el administrador de DJANGO sean nuevos, editados o removidos por una accion con la aplicación 
     def act_rol():
-        import bus_roles
-        roles=bus_roles.ext_roles()
-        for rol in roles:
-            sys_rol.crear_rol(rol)
+
+        roles_registrados=[] #roles que ya estan en el administrador de DJANGO
+        roles_encontrados=sys_rol.ext_roles() #roles encontrados en archivos de modelos
+        
+        #asignacion de valores a la variable roles_registrados
+        for nom_rol in Group.objects.all():
+            roles_registrados.append(nom_rol.name)
+
+        for rol in range(len(roles_encontrados)):
+            if sys_rol.val_rol(roles_encontrados[rol]):
+                print("Encontrado en el administrador ["+roles_encontrados[rol]+ "] no se guardara de nuevo.. \n")
+            else:
+                sys_rol.crear_rol(roles_encontrados[rol])
+
+        
         
 
+        
+
+    # extraer variables de python sin ejecutar el script, requiere la ubicacion del archivo y nombre de variable
+    def ext_var(mod_path, variable, default=None, *, raise_exception=False):
+        ModuleType = type(ast)
+        with open(mod_path, "r", encoding='UTF-8') as file_mod:
+            data = file_mod.read()
+
+        ast_data = ast.parse(data, filename=mod_path)
+        
+        if ast_data:
+            for body in ast_data.body:
+                if body.__class__ == ast.Assign:
+                    if len(body.targets) == 1:
+                        if getattr(body.targets[0], "id", "") == variable:
+                            return ast.literal_eval(body.value)
+        return default
+            
+    #extrae listados de nombres de roles contenidos en los archivos models.py de las apps incluidas en SIGEPI
+    def ext_roles():
+        roles=[]
+        for dirname, dirnames, filenames in os.walk('.'):
+            for filename in filenames:
+                ubicacion = os.path.join(dirname,filename)
+                if ubicacion[-9:]=='models.py':
+                    lista_roles=sys_rol.ext_var(ubicacion[2:],"ROL_APP")
+                    if lista_roles==None:
+                        lista_roles=sys_rol.ext_var(ubicacion[2:],"ROL_BASE")        
+                    
+                    if type(lista_roles)==list:
+                        for rol in lista_roles:
+                            roles.append(rol[1])
+        return roles
+
+
+        
+
+#Clase para gestionar permisos en el administrador de DJANGO
 class sys_perm():
     #Asignar permisos de roles
     def dar_perm(nom_rol,modelo,permiso):
