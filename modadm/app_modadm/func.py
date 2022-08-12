@@ -9,19 +9,49 @@
 import sys,ast,os
 import logging
 from django.contrib.auth.models import Group
-from django.contrib.auth.models import Permission
-from django.db import migrations
-from django.db import connection
+from modadm.app_modadm.models import adm_mod
+
+
+#Clase con algoritmos utiles para el funcionamiento de func.py
+class sys_utils():
+
+    # extraer variables de python sin ejecutar el script, requiere la ubicacion del archivo y nombre de variable
+    def ext_var(mod_path, variable, default=None, *, raise_exception=False):
+        ModuleType = type(ast)
+        with open(mod_path, "r", encoding='UTF-8') as file_mod:
+            data = file_mod.read()
+
+        ast_data = ast.parse(data, filename=mod_path)
+        
+        if ast_data:
+            for body in ast_data.body:
+                if body.__class__ == ast.Assign:
+                    if len(body.targets) == 1:
+                        if getattr(body.targets[0], "id", "") == variable:
+                            return ast.literal_eval(body.value)
+        return default
+            
 
 
 #Clase para modificar como administrador los modulos
 class sys_mod():
     #Instalar Módulo
-    def reg_mod(self):
-        pass
+    def reg_mod():
+        for dirname, dirnames, filenames in os.walk('.'):
+            for filename in filenames:
+                ubicacion = os.path.join(dirname,filename)
+                if ubicacion[-9:]=='models.py': 
+                    inf_mod=sys_utils.ext_var(ubicacion[2:],"INF_MOD")
+                    if inf_mod!= None:
+                        p=adm_mod(titulo=(inf_mod[0])[1],desc=(inf_mod[1])[1],url_doc=(inf_mod[2])[1],version=(inf_mod[3])[1],activo=(inf_mod[4])[1],instalado=(inf_mod[5])[1],externo=(inf_mod[6])[1],visible=(inf_mod[7])[1],ls_param_cnf=(inf_mod[8])[1]) 
+                        p.save()         
+             
+            
+            
     #Desinstalar Módulo
     def val_mod(self):
         pass
+
 
 #Clase para modificar como administrador las aplicaciones
 class sys_app():
@@ -38,7 +68,7 @@ class sys_rol():
 
     #crea roles en el administrador de DJANGO a partir de un nombre tipo String
     def crear_rol(nom):
-        grupo, creado =Group.objects.get_or_create(name=nom)
+        creado =Group.objects.get_or_create(name=nom)
         if creado:
             return True
         else:
@@ -74,28 +104,8 @@ class sys_rol():
                 print("Encontrado en el administrador ["+roles_encontrados[rol]+ "] no se guardara de nuevo.. \n")
             else:
                 sys_rol.crear_rol(roles_encontrados[rol])
+                
 
-        
-        
-
-        
-
-    # extraer variables de python sin ejecutar el script, requiere la ubicacion del archivo y nombre de variable
-    def ext_var(mod_path, variable, default=None, *, raise_exception=False):
-        ModuleType = type(ast)
-        with open(mod_path, "r", encoding='UTF-8') as file_mod:
-            data = file_mod.read()
-
-        ast_data = ast.parse(data, filename=mod_path)
-        
-        if ast_data:
-            for body in ast_data.body:
-                if body.__class__ == ast.Assign:
-                    if len(body.targets) == 1:
-                        if getattr(body.targets[0], "id", "") == variable:
-                            return ast.literal_eval(body.value)
-        return default
-            
     #extrae listados de nombres de roles contenidos en los archivos models.py de las apps incluidas en SIGEPI
     def ext_roles():
         roles=[]
@@ -103,9 +113,9 @@ class sys_rol():
             for filename in filenames:
                 ubicacion = os.path.join(dirname,filename)
                 if ubicacion[-9:]=='models.py':
-                    lista_roles=sys_rol.ext_var(ubicacion[2:],"ROL_APP")
+                    lista_roles=sys_utils.ext_var(ubicacion[2:],"ROL_APP")
                     if lista_roles==None:
-                        lista_roles=sys_rol.ext_var(ubicacion[2:],"ROL_BASE")        
+                        lista_roles=sys_utils.ext_var(ubicacion[2:],"ROL_BASE")        
                     
                     if type(lista_roles)==list:
                         for rol in lista_roles:
@@ -124,8 +134,7 @@ class sys_perm():
     def quitar_perm(nombre):
         pass
 
-
-sys_rol.act_rol()
+sys_mod.reg_mod()
 
 #clase de instalación de módulos, aplicaciones y extensiones
 #Instalar Aplicación externa

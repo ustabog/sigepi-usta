@@ -138,7 +138,7 @@ class adm_app(models.Model):
     externa = models.BooleanField('¿La aplicación es externa?', default=False) # ¿La aplicación es externa, o hace parte de la base del sistema? sí =True; no= False.
     tipo_app = models.IntegerField(null = False, blank = False, choices = TIPO_APP, default = 0) # Ver diccionario TIPO_APP)
     ico = models.CharField('nombre del la imagen del ícono a utilizar', max_length=40) #nombre del ícono a utilizar según las fuentes disponibles ej. 'person' (material icons por defecto)
-    id_usu_reg = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank=True) #Usuario(a) quien registra la app
+    id_usu_reg = models.OneToOneField(adm_mod, on_delete=models.SET_NULL, null=True, blank=True) #Usuario(a) quien registra la app
     
     class Meta:
         verbose_name = 'app_mod'
