@@ -44,7 +44,9 @@ class sys_mod():
                     inf_mod=sys_utils.ext_var(ubicacion[2:],"INF_MOD")
                     if inf_mod!= None:
                         p=adm_mod(titulo=(inf_mod[0])[1],desc=(inf_mod[1])[1],url_doc=(inf_mod[2])[1],version=(inf_mod[3])[1],activo=(inf_mod[4])[1],instalado=(inf_mod[5])[1],externo=(inf_mod[6])[1],visible=(inf_mod[7])[1],ls_param_cnf=(inf_mod[8])[1]) 
-                        p.save()         
+                        p.save()
+                        respuesta ='Módulos registrados correctamente'
+                        return respuesta
              
             
             

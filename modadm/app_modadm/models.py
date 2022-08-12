@@ -28,7 +28,7 @@ INF_MOD = [
     ['titulo', "Módulo de Administración SIGEPI"],
     ['desc',"Módulo de administración del SIGEPI"],
     ['url_doc','doc'],
-    ['version','0.7.0'],
+    ['version','0.70'],
     ['activo', True],
     ['instalado', True],
     ['externo', True],
