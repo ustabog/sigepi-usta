@@ -2,181 +2,189 @@
 #Autor: creado por Milton O. Castro Ch.
 #fecha 10-05-2022
 
-#Creacion de permisos y grupos por defecto
-#Fecha: 26/04/22
-#Autor: Juan Sebastian Cely Caro
+#Creacion de modelos 
+#Fecha: 11/08/22
+#CoAutor: Brallan Andres Laverde Perez
 
+import sys,ast,os
 import logging
 from django.contrib.auth.models import Group
-from django.contrib.auth.models import Permission
-from django.db import migrations
-from django.db import connection
+from modadm.app_modadm.models import adm_mod
+from django.apps import apps
 
-ROLES = [
-    'Sistema',
-    'Admin Modulo Administracion',
-    'Admin Aplicacion Modulo Administracion',
-    'Admin Aplicacion Usuarios',
-    'Admin Aplicacion Grupos',
-    'Admin Aplicacion Instituciones',
-    'Admin Aplicacion Configuracion',
-    'Admin Aplicacion Modulo Consultas',
-    'Admin Aplicacion Consultas',
-]
 
-MODELOS_ADM = [
-    'mod', 'app_mod', 'listado_aplicativo', 'mod_ext', 'app_ext', 'rol', 'func_app', 'usu', 'mod_adm', 'log_acc_mod', 'log_acc_pltf'
-]
+#Clase con algoritmos utiles para el funcionamiento de func.py
+class sys_utils():
 
-MODELOS_USU = [
-    'usu', 'usu_inf_apps', 'discapacidad', 'usu_inf_pers', 'usu_inf_contac', 'red_soc', 'form_acad', 'usu_inf_acad', 'curs_dict', 'usu_inf_prof', 'empleos', 'habilidades', 'valid_hab', 'app_reg_usu'
-]
+    # extraer variables de python sin ejecutar el script, requiere la ubicacion del archivo y nombre de variable
+    def ext_var(mod_path, variable, default=None, *, raise_exception=False):
+        ModuleType = type(ast)
+        with open(mod_path, "r", encoding='UTF-8') as file_mod:
+            data = file_mod.read()
 
-MODELOS_USUGR = [
-    'etapa_gr', 'usugr', 'usu_nr', 'usugr_inf_apps', 'usugr_inf_gr', 'usugr_inf_contac', 'form_acad_gr', 'curs_ofer', 'app_reg_gr'
-]
-
-MODELOS_USUI = [
-    'usui', 'usui_inf_apps', 'usui_inf_inst', 'usui_inf_contac', 'prog_ofer', 'conv_inv', 'app_reg_ins' 
-]
-
-MODELOS = [
-    'mod', 'app_mod', 'listado_aplicativo', 'mod_ext', 'app_ext', 'rol', 'func_app', 'usu', 'mod_adm', 'log_acc_mod', 'log_acc_pltf',
-    'usu_inf_apps', 'discapacidad', 'usu_inf_pers', 'usu_inf_contac', 'red_soc', 'form_acad', 'usu_inf_acad', 'curs_dict', 'usu_inf_prof', 'empleos', 'habilidades', 'valid_hab', 'app_reg_usu',
-    'etapa_gr', 'usugr', 'usu_nr', 'usugr_inf_apps', 'usugr_inf_gr', 'usugr_inf_contac', 'form_acad_gr', 'curs_ofer', 'app_reg_gr',
-    'usui', 'usui_inf_apps', 'usui_inf_inst', 'usui_inf_contac', 'prog_ofer', 'conv_inv', 'app_reg_ins' 
-
-]
-
-PERMISOS = ['view', 'add', 'change', 'delete']
-
-PERMISOS_VA = ['view', 'add']
-
-class roles ():
-#Clase que permite registrar roles por defeco y sus respectivos permisos
-    def __init__(self) -> None:
-        pass
-
-    def crear_roles(self):
-
-        def db_table_exists(table):
-            return table in connection.introspection.table_names()
-
-        var = db_table_exists(table='auth_group')
-        # print(var)
-
-        if var == True:
-            for group in GRUPOS:
-                new_group, created = Group.objects.get_or_create(name=group)
-                for model in MODELOS:
-                    for permission in PERMISOS_VA:
-                        name = 'Can {} {}'.format(permission, model)    
-                        #print("Creating {}".format(name))
-                        try:
-                            model_add_perm = Permission.objects.get(name=name)
-                        except Permission.DoesNotExist:
-                            logging.warning("No se crearon los permisos '{}'.".format(name))
-                            continue
-                        new_group.permissions.add(model_add_perm)
-
-            g_sis = Group.objects.get(name='Sistema')
-            g_modadm = Group.objects.get(name='Admin Modulo Administracion')
-            g_appmodadm = Group.objects.get(name='Admin Aplicacion Modulo Administracion')
-            g_usu = Group.objects.get(name='Admin Aplicacion Usuarios')
-            g_usugr = Group.objects.get(name='Admin Aplicacion Grupos')
-            g_usui = Group.objects.get(name='Admin Aplicacion Instituciones')
-            g_inv, create = Group.objects.get_or_create(name='Invitado')
-
-            for model in MODELOS:
-                for permission in PERMISOS:
-                    name = 'Can {} {}'.format(permission, model)
-                    try:
-                        model_add_perm = Permission.objects.get(name=name)
-                    except Permission.DoesNotExist:
-                        logging.warning("No se crearon los permisos '{}'.".format(name))
-                        continue
-                    g_sis.permissions.add(model_add_perm)
-                    g_modadm.permissions.add(model_add_perm)
-                    g_appmodadm.permissions.add(model_add_perm)
-
-            for model in MODELOS_USU:
-                for permission in PERMISOS:
-                    name = 'Can {} {}'.format(permission, model)
-                    try:
-                        model_add_perm = Permission.objects.get(name=name)
-                    except Permission.DoesNotExist:
-                        logging.warning("No se crearon los permisos '{}'.".format(name))
-                        continue
-
-                    g_usu.permissions.add(model_add_perm)
-
-            for model in MODELOS_USUGR:
-                for permission in PERMISOS:
-                    name = 'Can {} {}'.format(permission, model)
-                    try:
-                        model_add_perm = Permission.objects.get(name=name)
-                    except Permission.DoesNotExist:
-                        logging.warning("No se crearon los permisos '{}'.".format(name))
-                        continue
-
-                    g_usugr.permissions.add(model_add_perm)
-
-            for model in MODELOS_USUI:
-                for permission in PERMISOS:
-                    name = 'Can {} {}'.format(permission, model)
-                    try:
-                        model_add_perm = Permission.objects.get(name=name)
-                    except Permission.DoesNotExist:
-                        logging.warning("No se crearon los permisos '{}'.".format(name))
-                        continue
-
-                    g_usui.permissions.add(model_add_perm)
-            
-            resultado = "Se crearon los grupos y permisos por defecto"
-            return resultado
+        ast_data = ast.parse(data, filename=mod_path)
         
-        else:
-            print('Debes realizar las migraciones')
-            pass
-
-
-#clase de instalación de módulos, aplicaciones y extensiones
-class instal():
-    #Instalar Módulo
-    def instal_mod():
-        pass
+        if ast_data:
+            for body in ast_data.body:
+                if body.__class__ == ast.Assign:
+                    if len(body.targets) == 1:
+                        if getattr(body.targets[0], "id", "") == variable:
+                            return ast.literal_eval(body.value)
+        return default
     
-    #desistalar Módulo
-    def desinstal_mod():
-        pass
+    #funcion que compara dos versiones devuelve TRUE si v1 > v2 si no FALSE 
+    def comp_ver(ver1,ver2):
+        ver1 = ver1.split(".")
+        ver2 = ver2.split(".")
+        for i in range(len(ver1)):
+            if int(ver1[i]) >= int(ver2[i]):
+                return True
+        return False
+        
 
+
+#Clase para modificar como administrador los modulos
+class sys_mod():
+    #Funcion que registra los diccionarios descritos en los modelos de las aplicaciones base de los modulos
+    def reg_mod():
+        respuesta=""
+        # Ciclo que recorre cada uno de los archivos de SIGEPI
+        for dirname, dirnames, filenames in os.walk('.'): 
+            for filename in filenames:
+                ubicacion = os.path.join(dirname,filename)
+
+                #Solo se trabajan con aquellos archivos cuyo fichero terminen en models.py
+                if ubicacion[-9:]=='models.py': 
+                    inf_mod=sys_utils.ext_var(ubicacion[2:],"INF_MOD")#Busca la lista INF_MOD utilizado el extractor de variables
+
+                    #El fichero contiene una diccionario INF_MOD?
+                    if inf_mod!= None:
+
+                        #El aplicativo en el que esta el modulo esta instalada?
+                        if sys_app.val_inst_app((inf_mod[1])[1]+"."+"app_"+(inf_mod[1])[1]):
+
+                            #Existe un modulo con mismo titulo y nombre?
+                            if sys_mod.val_mod((inf_mod[0])[1],nom=(inf_mod[1])[1]) > 0:
+
+                                #Código que obtiene los datos del modulo con mismos datos en titulo y nombre
+                                mod_data=(adm_mod.objects.filter(titulo=((inf_mod[0])[1]), nom=((inf_mod[1])[1])).values())[0]
+                                version=mod_data.get('version')
+                                # la version del modulo a registrar es igual o menor que el regstrado?
+                                if sys_utils.comp_ver(version,(inf_mod[4])[1]):
+                                    respuesta+=("<p>El "+(inf_mod[0])[1]+" a registrar debe ser de una version superior </p>")
+                                    break
+                            else:
+                                #clase adm_mod con los datos correspondientes a cada campo
+                                p=adm_mod(titulo=(inf_mod[0])[1],nom=(inf_mod[1])[1],desc=(inf_mod[2])[1],url_doc=(inf_mod[3])[1],version=(inf_mod[4])[1],activo=(inf_mod[5])[1],instalado=(inf_mod[6])[1],externo=(inf_mod[7])[1],visible=(inf_mod[8])[1],ls_param_cnf=(inf_mod[9])[1]) 
+                                
+                                #registro en el modelo
+                                p.save()
+                
+                                respuesta+=("<p> se ha registrado el "+(inf_mod[0])[1]+" Satisfactoriamente </p>" )
+                        else:
+                            respuesta+=("<p> El "+(inf_mod[0])[1]+"pertenece a una aplicacion no instalada</p>")
+        
+        return respuesta
+                        
+                            
+    #Desinstalar Módulo
+    def val_mod(titulo,nom):
+        num_regs=adm_mod.objects.filter(titulo=titulo, nom=nom).count()
+        return num_regs
+
+
+
+#Clase para modificar como administrador las aplicaciones
+class sys_app():
     #Instalar Aplicación
-    def instal_app():
+    def reg_app(self):
         pass
-
     #desistalar Aplicación
-    def desinstal_app():
-        pass
+    def val_inst_app(nom):
+        return apps.is_installed(nom)
+        
 
-    #Instalar Aplicación externa
-    def instal_app_ext():
-        pass
+#Clase para realizar acciones de creacion consulta y actualizacion de grupos en el administrador de DJANGO
+class sys_rol():
 
-    #desistalar Aplicación externa
-    def desinstal_app_ext():
-        pass
+    #crea roles en el administrador de DJANGO a partir de un nombre tipo String
+    def crear_rol(nom):
+        creado =Group.objects.get_or_create(name=nom)
+        if creado:
+            return True
+        else:
+            return False
+        
+    #verificar la existencia de un rol en el administrador de DJANGO por su nombre
+    def val_rol(nom):
+        x =Group.objects.filter(name=nom).count()
+        if x == 1:
+            return True
+        else:
+            return False
 
-    #Instalar Módulo externo
-    def instal_mod_ext():
-        pass
+    #Eliminar roles de aplicación
+    def quitar_rol(nom):
+        if Self.val_rol(nom):
+            print("Ya existe el rol "+nom+" registrado en el administrador")
+        else:
+            Group.objects.filter(name=nom).delete()
     
-    #desistalar Módulo externo
-    def desinstal_mod_ext():
+    #Actualiza los roles en el administrador de DJANGO sean nuevos, editados o removidos por una accion con la aplicación 
+    def act_rol():
+
+        roles_registrados=[] #roles que ya estan en el administrador de DJANGO
+        roles_encontrados=sys_rol.ext_roles() #roles encontrados en archivos de modelos
+        
+        #asignacion de valores a la variable roles_registrados
+        for nom_rol in Group.objects.all():
+            roles_registrados.append(nom_rol.name)
+
+        for rol in range(len(roles_encontrados)):
+            if sys_rol.val_rol(roles_encontrados[rol]):
+                print("Encontrado en el administrador ["+roles_encontrados[rol]+ "] no se guardara de nuevo.. \n")
+            else:
+                sys_rol.crear_rol(roles_encontrados[rol])
+                
+
+    #extrae listados de nombres de roles contenidos en los archivos models.py de las apps incluidas en SIGEPI
+    def ext_roles():
+        roles=[]
+        for dirname, dirnames, filenames in os.walk('.'):
+            for filename in filenames:
+                ubicacion = os.path.join(dirname,filename)
+                if ubicacion[-9:]=='models.py':
+                    lista_roles=sys_utils.ext_var(ubicacion[2:],"ROL_APP")
+                    if lista_roles==None:
+                        lista_roles=sys_utils.ext_var(ubicacion[2:],"ROL_BASE")        
+                    
+                    if type(lista_roles)==list:
+                        for rol in lista_roles:
+                            roles.append(rol[1])
+        return roles
+
+
+        
+
+#Clase para gestionar permisos en el administrador de DJANGO
+class sys_perm():
+    #Asignar permisos de roles
+    def dar_perm(nom_rol,modelo,permiso):
         pass
+    #"Modificar" permisos de roles
+    def quitar_perm(nombre):
+        pass
+
+#sys_mod.val_mod("Módulo de Administración SIGEPI","modadm")
+#sys_mod.reg_mod()
+print(sys_mod.reg_mod())
+#clase de instalación de módulos, aplicaciones y extensiones
+#Instalar Aplicación externa
+#desistalar Aplicación externa
+#Instalar Módulo externo
+#desistalar Módulo externo
 
 # clase para facilitar la migración automática según las dependencias del modelo base
-
-
 # Funciones pendientes
 #registrar funciones de aplicación
 #modificar funciones de aplicación
@@ -197,11 +205,8 @@ class instal():
 #Consultar usuarios individuales
 #Consultar usuarios grupales
 #Consultar usuarios institucionales
-#crear roles
 #Modificar permisos de roles
-#Asignar permisos de roles
 #Asignar roles a usuarios
-#Eliminar roles de aplicación
 #Respaldar datos de usuarios
 #Respaldar datos de proyectos
 #Respaldar datos de productos
@@ -215,6 +220,3 @@ class instal():
 #archivar usuarios individuales
 #archivar usuarios grupales
 #archivar usuarios institucionales
-
-#ejecución
-roles().crear_roles()
