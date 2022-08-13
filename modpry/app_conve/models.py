@@ -5,7 +5,6 @@
 
 from pickle import TRUE
 from django.db import models
-from numpy import True_
 from modpry.app_modpry.models import *
 from modpry.app_regpry.models import *
 
