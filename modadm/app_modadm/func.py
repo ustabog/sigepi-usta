@@ -2,7 +2,7 @@
 #Autor: creado por Milton O. Castro Ch.
 #fecha 10-05-2022
 
-#Creacion de permisos y grupos por defecto
+#Creacion de modelos 
 #Fecha: 11/08/22
 #CoAutor: Brallan Andres Laverde Perez
 
@@ -10,6 +10,7 @@ import sys,ast,os
 import logging
 from django.contrib.auth.models import Group
 from modadm.app_modadm.models import adm_mod
+from django.apps import apps
 
 
 #Clase con algoritmos utiles para el funcionamiento de func.py
@@ -30,29 +31,67 @@ class sys_utils():
                         if getattr(body.targets[0], "id", "") == variable:
                             return ast.literal_eval(body.value)
         return default
-            
+    
+    #funcion que compara dos versiones devuelve TRUE si v1 > v2 si no FALSE 
+    def comp_ver(ver1,ver2):
+        ver1 = ver1.split(".")
+        ver2 = ver2.split(".")
+        for i in range(len(ver1)):
+            if int(ver1[i]) >= int(ver2[i]):
+                return True
+        return False
+        
 
 
 #Clase para modificar como administrador los modulos
 class sys_mod():
-    #Instalar Módulo
+    #Funcion que registra los diccionarios descritos en los modelos de las aplicaciones base de los modulos
     def reg_mod():
-        for dirname, dirnames, filenames in os.walk('.'):
+        respuesta=""
+        # Ciclo que recorre cada uno de los archivos de SIGEPI
+        for dirname, dirnames, filenames in os.walk('.'): 
             for filename in filenames:
                 ubicacion = os.path.join(dirname,filename)
+
+                #Solo se trabajan con aquellos archivos cuyo fichero terminen en models.py
                 if ubicacion[-9:]=='models.py': 
-                    inf_mod=sys_utils.ext_var(ubicacion[2:],"INF_MOD")
+                    inf_mod=sys_utils.ext_var(ubicacion[2:],"INF_MOD")#Busca la lista INF_MOD utilizado el extractor de variables
+
+                    #El fichero contiene una diccionario INF_MOD?
                     if inf_mod!= None:
-                        p=adm_mod(titulo=(inf_mod[0])[1],desc=(inf_mod[1])[1],url_doc=(inf_mod[2])[1],version=(inf_mod[3])[1],activo=(inf_mod[4])[1],instalado=(inf_mod[5])[1],externo=(inf_mod[6])[1],visible=(inf_mod[7])[1],ls_param_cnf=(inf_mod[8])[1]) 
-                        p.save()
-                        respuesta ='Módulos registrados correctamente'
-                        return respuesta
-             
-            
-            
+
+                        #El aplicativo en el que esta el modulo esta instalada?
+                        if sys_app.val_inst_app((inf_mod[1])[1]+"."+"app_"+(inf_mod[1])[1]):
+
+                            #Existe un modulo con mismo titulo y nombre?
+                            if sys_mod.val_mod((inf_mod[0])[1],nom=(inf_mod[1])[1]) > 0:
+
+                                #Código que obtiene los datos del modulo con mismos datos en titulo y nombre
+                                mod_data=(adm_mod.objects.filter(titulo=((inf_mod[0])[1]), nom=((inf_mod[1])[1])).values())[0]
+                                version=mod_data.get('version')
+                                # la version del modulo a registrar es igual o menor que el regstrado?
+                                if sys_utils.comp_ver(version,(inf_mod[4])[1]):
+                                    respuesta+=("<p>El "+(inf_mod[0])[1]+" a registrar debe ser de una version superior </p>")
+                                    break
+                            else:
+                                #clase adm_mod con los datos correspondientes a cada campo
+                                p=adm_mod(titulo=(inf_mod[0])[1],nom=(inf_mod[1])[1],desc=(inf_mod[2])[1],url_doc=(inf_mod[3])[1],version=(inf_mod[4])[1],activo=(inf_mod[5])[1],instalado=(inf_mod[6])[1],externo=(inf_mod[7])[1],visible=(inf_mod[8])[1],ls_param_cnf=(inf_mod[9])[1]) 
+                                
+                                #registro en el modelo
+                                p.save()
+                
+                                respuesta+=("<p> se ha registrado el "+(inf_mod[0])[1]+" Satisfactoriamente </p>" )
+                        else:
+                            respuesta+=("<p> El "+(inf_mod[0])[1]+"pertenece a una aplicacion no instalada</p>")
+        
+        return respuesta
+                        
+                            
     #Desinstalar Módulo
-    def val_mod(self):
-        pass
+    def val_mod(titulo,nom):
+        num_regs=adm_mod.objects.filter(titulo=titulo, nom=nom).count()
+        return num_regs
+
 
 
 #Clase para modificar como administrador las aplicaciones
@@ -61,8 +100,8 @@ class sys_app():
     def reg_app(self):
         pass
     #desistalar Aplicación
-    def val_app(self):
-        pass
+    def val_inst_app(nom):
+        return apps.is_installed(nom)
         
 
 #Clase para realizar acciones de creacion consulta y actualizacion de grupos en el administrador de DJANGO
@@ -136,8 +175,9 @@ class sys_perm():
     def quitar_perm(nombre):
         pass
 
-sys_mod.reg_mod()
-
+#sys_mod.val_mod("Módulo de Administración SIGEPI","modadm")
+#sys_mod.reg_mod()
+print(sys_mod.reg_mod())
 #clase de instalación de módulos, aplicaciones y extensiones
 #Instalar Aplicación externa
 #desistalar Aplicación externa
