@@ -7,21 +7,6 @@ from django.db import models
 #from django.contrib.auth.models import User
 from modpry.app_regpry.models import *
 
-
-
-INF_MOD = [
-    ['titulo', "Módulo de proyectos SIGEPI"],
-    ['nom','modpry'],# debe ser el mismo de la carpeta
-    ['desc',"Módulo de proyectos del SIGEPI"],
-    ['url_doc','doc'],
-    ['version','1.8'],
-    ['activo', True],
-    ['instalado', True],
-    ['externo', True],
-    ['visible', True],
-    ['ls_param_cnf', []],
-    ]
-
 INF_APP = [
     #Diccionario para la aplicación de modulo de proyecto
     ['Titulo', "App modulo de proyecto"],

@@ -14,7 +14,6 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from .models import *
 from .form import *
 from modcons.app_cons.form import *
-from .func import sys_mod
 #from .roles import roles
 
 #Clase que presenta la portada del administrador de SIGEPI.
@@ -33,11 +32,6 @@ class portada_adm():
         plt=loader.get_template('inicio_adm.html')
         respuesta=plt.render()
         return HttpResponse(respuesta)
-    
-    def vst_instal_mods(self, solicitud):
-        respuesta= sys_mod.reg_mod()
-        return HttpResponse(respuesta)
-        
     
 
 ##CRUD de módulo ##

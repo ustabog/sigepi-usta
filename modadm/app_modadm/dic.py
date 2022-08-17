@@ -5,48 +5,6 @@
 
 #---------------- Diccionarios para MODADM ---------------
 
-# Roles básicos del SIGEPI
-ROL_BASE = [
-    (0, 'adm_sis'),#'Administrador(a) de Sistema'
-    (1, 'adm_ins'),#'Administrador(a) de Institución'
-    (2, 'adm_gr'),#'Administrador(a) de grupo'
-    (3, 'usu'),#'Usuario(a) Individual'
-    (4, 'usugr'),#'Usuario Grupal'
-    (5, 'usui'), #'Usuario Institucional'
-    (6, 'invitado'), #'Invitado(a)'
-    (7,'anonimo'), #Usuario(a) Anónimo
-    ]
-
-'''
-MODELOS_ADM = [
-    'mod', 'app_mod', 'listado_aplicativo', 'mod_ext', 'app_ext', 'rol', 'func_app', 'usu', 'mod_adm', 'log_acc_mod', 'log_acc_pltf'
-]
-
-MODELOS_USU = [
-    'usu', 'usu_inf_apps', 'discapacidad', 'usu_inf_pers', 'usu_inf_contac', 'red_soc', 'form_acad', 'usu_inf_acad', 'curs_dict', 'usu_inf_prof', 'empleos', 'habilidades', 'valid_hab', 'app_reg_usu'
-]
-
-MODELOS_USUGR = [
-    'etapa_gr', 'usugr', 'usu_nr', 'usugr_inf_apps', 'usugr_inf_gr', 'usugr_inf_contac', 'form_acad_gr', 'curs_ofer', 'app_reg_gr'
-]
-
-MODELOS_USUI = [
-    'usui', 'usui_inf_apps', 'usui_inf_inst', 'usui_inf_contac', 'prog_ofer', 'conv_inv', 'app_reg_ins' 
-]
-
-MODELOS = [
-    'mod', 'app_mod', 'listado_aplicativo', 'mod_ext', 'app_ext', 'rol', 'func_app', 'usu', 'mod_adm', 'log_acc_mod', 'log_acc_pltf',
-    'usu_inf_apps', 'discapacidad', 'usu_inf_pers', 'usu_inf_contac', 'red_soc', 'form_acad', 'usu_inf_acad', 'curs_dict', 'usu_inf_prof', 'empleos', 'habilidades', 'valid_hab', 'app_reg_usu',
-    'etapa_gr', 'usugr', 'usu_nr', 'usugr_inf_apps', 'usugr_inf_gr', 'usugr_inf_contac', 'form_acad_gr', 'curs_ofer', 'app_reg_gr',
-    'usui', 'usui_inf_apps', 'usui_inf_inst', 'usui_inf_contac', 'prog_ofer', 'conv_inv', 'app_reg_ins' 
-
-]
-
-PERMISOS = ['view', 'add', 'change', 'delete']
-
-PERMISOS_VA = ['view', 'add']
-'''
-
 #Tipos de números de identificación personal
 TIPO_NUIP_CO = [
     (0,'Cédula de Ciudadanía'),
@@ -333,7 +291,6 @@ ACT_PRY=[
     (5,'Representante Comunidad de Proy.'),
     (6, 'interventor(a)'),
     ]
-
 ESTADO_PRY=[
     (0, 'Borrador'),
     (1, 'Diseño'),
@@ -344,7 +301,6 @@ ESTADO_PRY=[
     (6, 'Ejecutado'),
     (7, 'Archivado'),
     ]
-
 TIPO_PRY=[
     #tipos de Investigación
     (0, 'Ensayo'),
@@ -405,7 +361,6 @@ NIVEL_PRY =[
     (3,'Interinstitucional'),
     (4,'Intergrupal'),
     ]
-
 TIPO_INV_FIN=[
     #por fuente de financiación:
     (0,'Estatal'), #Recursos Estatales (Públicos)
@@ -417,7 +372,6 @@ TIPO_INV_FIN=[
     (6,'Mixta PUBCOM'), #Recursos Públicos y Personales
     (7,'Otra') #Otra categoría de clasificación de financiación
     ]
-
 TIPO_INV_INF=[
     #Por fuente de información:
     (0,'Sin Información'), #Sin información sobre las fuentes
@@ -429,7 +383,6 @@ TIPO_INV_INF=[
     (6,'Simulación'), #Se generan datos no experimentales para realizar pruebas simuladas de modelos.
     (7,'Otra') #Otra categoría de clasificación de fuente de información
     ]
-
 TIPO_INV_MET=[
     #Por énfasis metodológico:
     (0,'Sin Información'), #Sin información sobre el énfasis metodológico
@@ -444,7 +397,6 @@ TIPO_INV_MET=[
     (9,'Teórica'), #Su proceso de validación no requiere de evidencias empíricas, sino que ssus resultados se validan por sus premisas lógicas, que permiten explroar nuevas formas de comprensión de los fenómenos.
     (10,'Otra') #Otra categoría de clasificación metodológica.
     ]
-
 TIPO_INV_TMP=[
     #Por énfasis temporal:
     (0,'Sin Información'),  #Sin información sobre el periodo de estudio.
@@ -461,7 +413,6 @@ TIPO_INV_TMP=[
     (11,'Seccional'), #Se puede comprender como una variación de un estudio transversal que se reliza por una sola vez.
     (12,'Otra') #Otra categoría de clasificación temporal
     ]
-
 TIPO_INV_VAR=[
     #Por los tipos de variables:
     (0,'Sin Información'),  #Sin información sobre las variables del estudio.
@@ -474,7 +425,6 @@ TIPO_INV_VAR=[
     (7,'Muestral'), #Es un tipo de investigación que se realiza con un intervalo de tiempo determinado y que tiene unos objtivos definidos por quienes la realizan o financian.
     (8,'Otra') #Otra categoría de clasificación por variables.
     ]
-
 TIPO_INV_CNT=[
     #Por contextos de investigación:
     (0,'Sin Información'),  #Sin información sobre las variables del estudio.
@@ -487,7 +437,6 @@ TIPO_INV_CNT=[
     (7,'Forense'), #Es una investigación de corte histórico, busca establecer las situaciones más probables y demostrables, basados en evidencias para establecer responsabiliddes e imputaciones, a los posibles resposables de situaciones punibles o sancionables.
     (8,'Otra') #Otra categoría de clasificación de contextos
     ]
-
 TIPO_INV_MAXLOG=[
     #Por énfasis de marco axiológico
     (0,'Sin Información'),  #Sin información sobre el marco axiológico del estudio.
@@ -512,7 +461,6 @@ TIPO_INV_MAXLOG=[
     (19,'Crítica'), #La investigación crítica tiene por objetivo encontrar las fisuras e incosistencias de un planteamiento teórico o un modelo existente o propuesto. Cumple una función depuradora de los principios lógicos sobre los que operan las soluciones y los modelos científicos.
     (20,'Otra')  #Otra categoría de clasificación por marco axiológico.
     ]
-
 TIPO_INV_CPR=[
     #Por énfasis de campo (actualizar a los de la OCDE)
     (0,'Sin Información'), #Sin información sobre el campo profesional de la investigacion.
@@ -530,7 +478,6 @@ TIPO_INV_CPR=[
     (12,'Genética'), #Investigación propia de las ciencias de la salud, con énfasis en informática.
     (13,'Otra') #Otra categoría de clasificación por campo profesional.
     ]
-
 ROL_GR_INV=[
     #Roles en el proceso de investigación.
     (0,'Sin Información'), #Sin información sobre el rol desempeñado
@@ -543,14 +490,12 @@ ROL_GR_INV=[
     (7,'Auxiliar de Investigación'), #Se participó ena ctividade relacionadas con la investigación.
     (8,'Investigador(a) independiente') #No se ha estado vinculado institucionalmente, pero se cuenta con productos de investigación.
     ]
-
 USO_RED=[
     (0,'frecuente'),
     (1,'moderado'),
     (2,'poco frecuente'),
     (3,'inactivo')
     ]
-
 TIPO_FORM_GR = [
     #tipo de formación Académica para grupos
     (0,'Seminario'),
@@ -568,7 +513,6 @@ TIPO_FORM_GR = [
     (12,'Coloquio'),
     (13,'Otro')
     ]
-
 TIPO_GR_INV = [
     #Tipos de gupos de Investigación
     (0,'Independiente'), #Grupo registrado en la plataforma como independiente, asociación de usuarios de la plataforma.
@@ -578,7 +522,6 @@ TIPO_GR_INV = [
     (4,'Comunidad'), #Grupo de comunidad de conocimiento abierto o libre. Con o sin cuotas de participación.
     (5,'Estado del Arte') #Grupo orientado a la construcción de estados del arte temáticos. Son grupos de comunidades abiertas con vinculación temporal y cuotas de participación.
     ]
-
 ROL_GR_INV_COLC = [
     #Integrantes según modelo de Colciencias
     (0,'Investigador Emérito'), # Cumple con las características de Investigador Emérito - Se le asigna vinculación.
@@ -594,7 +537,6 @@ ROL_GR_INV_COLC = [
     (10,'Estudiante de pregrado'), # Cumple con las características de Estudiante de pregrado - Se le asigna vinculación.
     (11,'ninguna de las anteriores') # No cumple ninguna de las anteriores características - Se vincula como Integrante vinculado.
     ]
-
 TIPO_FORM_CO = [
     #tipo de formación Académica
     (0,'Universitaria'),
@@ -641,7 +583,6 @@ TIPO_RIESGO = [
     (6, 'Falta de claridad'),
     (7, 'Otro'),
     ]
-
 LINEA_TEMA = [
     #Línea temática del proyecto
     (0,'Ciencias naturales'),

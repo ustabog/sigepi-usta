@@ -10,7 +10,6 @@ urlpatterns = [
 # direcciones del modulo admin
     path('',portada_adm().vst_raiz),
     path('inicio',portada_adm().vst_inicio, name = 'inicio_adm'),
-    path('r_mod', portada_adm().vst_instal_mods, name='reg01_mod'),
     
 # crud módulos
     path('reg_mod/', vts_reg_mod.as_view(), name ='reg_mod'),
