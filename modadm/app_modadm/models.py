@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import AbstractUser, User
 from .dic import *
+
 #Diccionario de información de instalación de aplicación
 INF_APP = [
     ['titulo', "App Módulo de Administración"],
@@ -26,9 +27,10 @@ INF_APP = [
 #Diccionario de información de instalación del Móludo
 INF_MOD = [
     ['titulo', "Módulo de Administración SIGEPI"],
+    ['nom','modadm'],# debe ser el mismo de la carpeta
     ['desc',"Módulo de administración del SIGEPI"],
     ['url_doc','doc'],
-    ['version','0.7.0'],
+    ['version','0.80'],
     ['activo', True],
     ['instalado', True],
     ['externo', True],
@@ -36,17 +38,6 @@ INF_MOD = [
     ['ls_param_cnf', []],
     ]
 
-#Tipo de rol dentro de la plataforma
-ROL_BASE = [
-    (0,'Adm. Sistema'),
-    (1,'Adm. Institución'),
-    (2,'Adm. grupo'),
-    (3,'Usuario'),
-    (4,'Usuario grupo'),
-    (5,'Usuario Institucional'),
-    (6,'Invitado'),
-    (7,'anonimo')
-    ]
 
 ## Usuarios básicos del sistema ##
 #Usuario individual
@@ -103,10 +94,11 @@ class usui(models.Model):
 # clase que almacena todos los modulos del sistema
 class adm_mod(models.Model):
     id_mod = models.AutoField(primary_key = True) # Identificador único del módulo
+    nom = models.CharField('Nombre', max_length=40, null=False, blank = False) # Título del módulo ej. "Administración Plataforma"
     titulo = models.CharField('Título del módulo', max_length=40, null=False, blank = False) # Título del módulo ej. "Administración Plataforma"
     desc  = models.CharField('Descripcion del Módulo', max_length=50, null=False, blank = False) # descripcion del Módulo
     url_doc = models.URLField('URL Documentación', null=False, blank=False) # sitio url # direción local a la documentación o manual del módulo.
-    version = models.DecimalField('Versión de desarrollo ', max_digits=4, decimal_places=2, null=False, blank = False) # Versión de desarrollo del Módulo ej. "0.01.04"
+    version = models.CharField('Versión de desarrollo ', max_length=5, null=False, blank = False) # Versión de desarrollo del Módulo ej. "0.01.04"
     activo = models.BooleanField('Activo', default=False) # estatus de la aplicacion para indicar  el modulo de Administración
     instalado = models.BooleanField('¿El módulo se encuentra instalado?', default=False) # ¿el módulo se encuentra instalado? sí =True; no= False.
     externo = models.BooleanField('¿El módulo es externo?', default=False) # ¿el módulo es externo, o hace parte de la base del sistema? sí =True; no= False.
@@ -123,6 +115,7 @@ class adm_mod(models.Model):
 #Clase que almacena los datos del objeto aplicación, las aplicaciones son unidades de los módulos
 class adm_app(models.Model):
     id_app = models.AutoField(primary_key = True)  # Identificador único de la aplicación.
+    nom = models.CharField('Nombre de la aplicación: ', max_length=40, null=False, blank = False) # "Nombre de la carpeta y de registro de la aplicación"
     titulo = models.CharField('Título de la aplicación: ', max_length=40, null=False, blank = False) # Título de la aplicacion ej. "Editor de Texto SABER"
     desc  = models.CharField('descripcion de la aplicación: ', max_length=80, null=False, blank = False) # descripcion de la Aplicación.
     url_doc = models.URLField('URL de la documentación o manual de la aplicación', null=False, blank=False)  # direción local a la documentación o manual de la aplicación.
@@ -130,7 +123,7 @@ class adm_app(models.Model):
     url_pl = models.URLField('Url plantilla de aplicación', null=True, blank=True)  #Nombre de la plantilla  de la aplicación ej. 'app_mod_ej.html' sólo para apps django.
     nom_url = models.URLField('Nombre de la Url de plantilla de aplicación', null=True, blank=True)  #Nombre de la dirección de la aplicación ej. 'app_ej' apps django.
     version = models.CharField('Versión de desarrollo de la aplicación: ', max_length=20, default='0.0.1', null=False, blank = False)  # Versión de desarrollo de la aplicación. "0.01.04"
-    id_mod = models.ForeignKey(adm_mod, on_delete=models.CASCADE, null=False, blank =False)# Id del módulo principal con el cual se integra.
+    id_mod = models.ForeignKey(adm_mod, on_delete=models.CASCADE, null=True, blank =True)# Id del módulo principal con el cual se integra.
     ver_mod = models.DecimalField('Versión de desarrollo de la aplicación: ', max_digits=4, decimal_places=2, null=False, blank = False)  # Versión mínima del módulo principal con la que la actual versión de la aplicación es compatible.
     activo = models.BooleanField('la aplicacion está activa o no', default=False)# estatus de la aplicacion para indicar  el modulo de Administración
     instalada = models.BooleanField('¿La aplicación se encuentra instalada? ', default=False) # ¿La aplicación se encuentra instalada? sí =True; no= False.
@@ -138,7 +131,7 @@ class adm_app(models.Model):
     externa = models.BooleanField('¿La aplicación es externa?', default=False) # ¿La aplicación es externa, o hace parte de la base del sistema? sí =True; no= False.
     tipo_app = models.IntegerField(null = False, blank = False, choices = TIPO_APP, default = 0) # Ver diccionario TIPO_APP)
     ico = models.CharField('nombre del la imagen del ícono a utilizar', max_length=40) #nombre del ícono a utilizar según las fuentes disponibles ej. 'person' (material icons por defecto)
-    id_usu_reg = models.OneToOneField(usu, on_delete=models.SET_NULL, null=True, blank=True) #Usuario(a) quien registra la app
+    id_usu_reg = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True) #Usuario(a) quien registra la app
     
     class Meta:
         verbose_name = 'app_mod'
@@ -174,6 +167,7 @@ class adm_func(models.Model):
     activa = models.BooleanField('¿Activa o desactivada?', default=False)  # La función está activa o desactiva.
     indice = models.IntegerField('Número de índice en la aplicación',null=True, blank = True) #Índice de selección, para navegar con el tabulador.
     id_app = models.OneToOneField(adm_app, on_delete=models.CASCADE, null=False, blank = False) #identificador de aplicación
+    ico = models.CharField('nombre del la imagen del ícono a utilizar', max_length=40) #nombre del ícono a utilizar según las fuentes disponibles ej. 'person' (material icons por defecto)
     visible = models.BooleanField('¿Activa o desactiva la visibilidad de la función?', default=False)  # Activa o desactiva la visibilidad de la funcion.
     class Meta:
         verbose_name = 'func_app'
@@ -197,7 +191,7 @@ class rl_func_rol(models.Model):
 #Registros de acceso a plataforma
 class log_acc_pltf(models.Model):
     id_acc_pltf = models.AutoField(primary_key = True)  # Identificador único
-    id_usu = models.ForeignKey(usu, on_delete=models.CASCADE, null=False, blank =False) # Identificador único de usuario
+    id_usu = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank =False) # Identificador único de usuario
     fch_ini = models.DateField('fecha de inicio', auto_now = False) # fecha de inicio formato AAAA-MM-DD-HH:MM
     fch_fin = models.DateField('fecha de fin', auto_now = False) # fecha de finalización formato AAAA-MM-DD-HH:MM
 
@@ -208,7 +202,7 @@ class log_acc_pltf(models.Model):
 #Registros de acceso a cada rol
 class log_acc_rol(models.Model):
     id_acc_rol = models.AutoField(primary_key = True)  # Identificador único de registro de acceso
-    id_usu = models.OneToOneField(usu, on_delete=models.SET_NULL , null=True, blank =True)  # Identificador único de usuario
+    id_usu = models.OneToOneField(User, on_delete=models.SET_NULL , null=True, blank =True)  # Identificador único de usuario
     id_rol = models.ForeignKey(adm_rol, on_delete=models.SET_NULL , null=True, blank =True)  # Identificador de rol
     fch_ini = models.DateField('fecha de inicio', auto_now = False)  # fecha de inicio formato AAAA-MM-DD-HH:MM
     fch_fin = models.DateField('fecha de fin', auto_now = False)  # fecha de finalización formato AAAA-MM-DD-HH:MM
@@ -220,7 +214,7 @@ class log_acc_rol(models.Model):
 #Registros de acceso a cada función
 class log_acc_func(models.Model):
     id_acc_func = models.AutoField(primary_key = True)  # Identificador único de registro de acceso
-    id_usu = models.OneToOneField(usu, on_delete=models.SET_NULL , null=True, blank =True)  # Identificador único de usuario
+    id_usu = models.OneToOneField(User, on_delete=models.SET_NULL , null=True, blank =True)  # Identificador único de usuario
     id_func = models.ForeignKey(adm_func, on_delete=models.SET_NULL , null=True, blank =True)  # Identificador de rol
     bk_uso = models.IntegerField('Respaldo Uso', default=0, null=True, blank =True) # Respaldo del Número de veces que la función fue utilizada por el usuario
     uso = models.IntegerField('Uso', default=0, null=True, blank =True) # Número de veces que la función due utilizada por el usuario
