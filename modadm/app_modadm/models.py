@@ -10,6 +10,7 @@ from .dic import *
 
 #Diccionario de información de instalación de aplicación
 INF_APP = [
+    ['nom','app_modadm'],
     ['titulo', "App Módulo de Administración"],
     ['desc',"aplicación para la administración del Sistema"],
     ['url_doc','doc'],
@@ -17,11 +18,14 @@ INF_APP = [
     ['url_pl','inicio_adm.html'],
     ['nom_url','inicio_adm'],
     ['version','0.5.0'],
-    ['id_mod', 0],
+    #['id_mod', 0],
     ['ver_mod', 'prueba'],
     ['activo', False],
     ['instalada', True],
     ['visible', True],
+    ['externa', False],
+    ['tipo_app' 'SIGEPI_BASE'],
+    ['ico','#']
     ]
 
 #Diccionario de información de instalación del Móludo

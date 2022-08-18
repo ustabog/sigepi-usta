@@ -8,8 +8,9 @@
 
 import sys,ast,os
 import logging
+from django.db import models
 from django.contrib.auth.models import Group
-from modadm.app_modadm.models import adm_mod
+from modadm.app_modadm.models import adm_app, adm_mod
 from django.apps import apps
 
 
@@ -50,6 +51,7 @@ class sys_utils():
 
 #Clase para modificar como administrador los modulos
 class sys_mod():
+
     #Funcion que registra los diccionarios descritos en los modelos de las aplicaciones base de los modulos
     def reg_mod():
         respuesta=""
@@ -95,10 +97,13 @@ class sys_mod():
         return respuesta
                         
                             
-    #Desinstalar Módulo
+    #Validar existencia de Módulo
     def val_mod(titulo,nom):
-        num_regs=adm_mod.objects.filter(titulo=titulo, nom=nom).count()
-        return num_regs
+        id=None
+        num_regs=adm_mod.objects.filter(titulo=titulo, nom=nom),
+        if num_regs!=0:
+            id=adm_mod.objects.filter(titulo=titulo, nom=nom).values().get('id')
+        return num_regs,id
 
 
 
@@ -107,19 +112,36 @@ class sys_app():
     #Instalar Aplicación
     def reg_app():
 
-        lista_modulos=()
-        modulos=adm_mod.objects.values()
-        for i in range(len(modulos)):
-            nom=modulos[i].get('nom')
-            lista_modulos.append(nom)
+        for dirname, dirnames, filenames in os.walk('.'):
+            for filename in filenames:
+                ubicacion = os.path.join(dirname,filename)
+                if ubicacion[-9:]=='models.py':
+                    nom_mod=ubicacion.split("/")[-3]
 
-        print    
-            
+                    if(adm_mod.objects.filter(nom=nom_mod).exists()):
+
+                        inf_mod=adm_mod.objects.filter(nom=nom_mod).order_by('-id_mod').values()[0]
+
+                        inf_app = sys_utils.ext_var(ubicacion[2:],"INF_APP")
+
+                        if inf_app != None:
+
+                            id_mod=inf_mod.get('id_mod')
+                            
+                            for i in range(len(inf_app)):
+
+                               nom_var=str(inf_app[i][0])
+                               globals()[nom_var]=inf_app[i][1]
+                               
+                    else:
+                        print("modulo que contiene a la aplicacion no esta instalado")
+                    
                    
                             
     #desistalar Aplicación
     def val_inst_app(nom):
         return apps.is_installed(nom)
+
         
 
 #Clase para realizar acciones de creacion consulta y actualizacion de grupos en el administrador de DJANGO
@@ -193,9 +215,14 @@ class sys_perm():
     def quitar_perm(nombre):
         pass
 
+
+
 #sys_mod.val_mod("Módulo de Administración SIGEPI","modadm")
 #sys_mod.reg_mod()
 sys_app.reg_app()
+
+
+
 #clase de instalación de módulos, aplicaciones y extensiones
 #Instalar Aplicación externa
 #desistalar Aplicación externa
