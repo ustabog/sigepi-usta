@@ -8,21 +8,25 @@ from modadm.app_regusu.models import *
 from modpry.app_regpry.models import *
 from modpry.app_recur.models import *
 
+
 INF_APP = [
-    #Diccionario para la aplicación de cronograma
-    ['Titulo', "App Cronograma"],
-    ['Descripción',"aplicación para la definición de un gronograma de un proyecto"],
-    ['url_documento','doc'],
+    ['nom','app_crono'],
+    ['titulo', "App Cronograma"],
+    ['desc',"aplicación para la definición de un cronograma de un proyecto"],
+    ['url_doc','doc'],
     ['url_instal','modpry/app_crono'],
-    ['url_plantilla','app_crono_iu.html'],
-    ['Nombre_url','ini_crono'],
-    ['Versión aplicación','0.4.0'],
-    ['id_mod', 4],
-    ['Versión_módulo', 'prueba'],
-    ['estado', 'en Desarrollo'],
+    ['url_pl','app_crono_iu.html'],
+    ['nom_url','ini_crono'],
+    ['version','0.1.0'],
+    ['ver_mod', 'prueba'],
+    ['activo', False],
     ['instalada', True],
     ['visible', True],
+    ['externa', False],
+    ['tipo_app', 'SIGEPI-BASE'],
+    ['ico','#']
     ]
+
 
 class acti(models.Model):
     # clase que guarda la información de las actividades del proyecto.

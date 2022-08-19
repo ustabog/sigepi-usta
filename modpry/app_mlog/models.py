@@ -9,21 +9,26 @@ from modpry.app_regpry.models import *
 from modpry.app_disinv.models import *
 from modadm.app_modadm.dic import *
 
+
 INF_APP = [
-    #Diccionario para la aplicación de evaluación de proyecto de investigación
-    ['Titulo', "App Marco Lógico"],
-    ['Descripción',"aplicación para la definición del marco lógico de Proyectos de investigación"],
-    ['url_documento','doc'],
+    ['nom','app_mlog'],
+    ['titulo', "App Marco Lógico"],
+    ['desc',"aplicación para la definición del marco lógico de Proyectos de investigación"],
+    ['url_doc','doc'],
     ['url_instal','modpry/app_mlog'],
-    ['url_plantilla','app_mlog_iu.html'],
-    ['Nombre_url','ini_mlog'],
-    ['Versión aplicación','0.1.0'],
-    ['id_mod', 4],
-    ['Versión_módulo', 'prueba'],
-    ['estado', 'en Desarrollo'],
-    ['instalada', False],
-    ['visible', False],
+    ['url_pl','app_mlog_iu.html'],
+    ['nom_url','ini_mlog'],
+    ['version','0.1.0'],
+    ['ver_mod', 'prueba'],
+    ['activo', False],
+    ['instalada', True],
+    ['visible', True],
+    ['externa', False],
+    ['tipo_app', 'SIGEPI-BASE'],
+    ['ico','#']
     ]
+
+
 
 class marco_log(models.Model):
     #clase que almacena la información de elaboración de un análisis desde la metodología de marco lógico

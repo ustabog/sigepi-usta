@@ -3,20 +3,27 @@ from modadm.app_modadm.models import *
 from modadm.app_regusu.models import *
 
 #Diccionario de información de instalación de aplicación
+
 INF_APP = [
-    ['Titulo', "App Registro de Usuario grupo"],
-    ['Descripción',"aplicación para el registro de la información de usuario grupo"],
-    ['url_documento','doc'],
+    ['nom','app_regusugr'],
+    ['titulo', "App Registro de Usuario grupo"],
+    ['desc',"aplicación para el registro de la información de usuario grupo"],
+    ['url_doc','doc'],
     ['url_instal','modadm/app_regusugr'],
-    ['url_plantilla','ini_regusugr_adm.html'],
-    ['Nombre_url','ini_regusugr'],
-    ['Versión aplicación','0.7.0'],
-    ['id_mod', 0],
-    ['Versión_módulo', 'prueba'],
-    ['estado', 'en Desarrollo'],
+    ['url_pl','ini_regusugr_adm.html'],
+    ['nom_url','ini_regusugr'],
+    ['version','0.7.0'],
+    ['ver_mod', 'prueba'],
+    ['activo', False],
     ['instalada', True],
     ['visible', True],
+    ['externa', False],
+    ['tipo_app', 'SIGEPI-BASE'],
+    ['ico','#']
     ]
+
+    
+
 
 #clase de información de usuario grupo.
 class usugr_base(models.Model):
