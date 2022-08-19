@@ -34,3 +34,9 @@ class prd_indic (models.Model):
     url_fuen_indic=models.URLField('Url de las fuentes de datos del indicador: ', null=False, blank=False)#Url de las fuentes de datos del indicador
     fch_med_indic=models.DateTimeField('Fecha de medicion del indicador: ', null=False, blank=False)#Fecha de medicion del indicador
     resp_indic=models.CharField('responsable de la medicion del indicador: ', null=False, blank=False, max_length=255)#Responsable de la medicion del indicador
+
+class rang_indic (models.Model):
+    id_rang_indic = models.AutoField(primary_key=True, null=False, blank=False)#Identificador de rango del indicador LLAVE PRIMARIA
+    id_indic=models.ForeignKey(prd_indic, null=False, blank=False) #Idebtificador del indicador al que se le va a sacar el rango LLAVE FORANEA
+    rango_indic = models.CharField(max_length=255, null=False, blank=False) #Rango del indicador
+     

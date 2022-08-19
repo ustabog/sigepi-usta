@@ -3,13 +3,14 @@
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 12-08-2022
 
-from operator import truediv
-from pickle import TRUE
-from unittest.util import _MAX_LENGTH
 from django.db import models
+from unittest.util import _MAX_LENGTH
 from modadm.app_modadm.models import *
 from modadm.app_modadm.dic import *
 from django.core.validators import MaxValueValidator, MinValueValidator
+from modprd.app_certprd.models import *
+from modpry.app_regpry.models import *
+
 
 
 DIC_APP = [
@@ -37,31 +38,6 @@ ROL_APP = [
     ]
 
 # Clases de la aplicacion de registro de productos
-
-class prd_base(models.Model):
-    id_prd=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del producto LLAVE PRIMARIA
-    nom_prd=models.CharField('Nombre del proyecto :',max_length=255, blank=False, null=False ) # Nombre del producto
-    ids_usu=models.ForeignKey(User,'Identificador del propietario: ', null=False,blank=False, ondelete=models.SET_NULL, db_constraint=True)# Identificador del propietario
-    fech_reg=models.DateTimeField('Fecha de registro: ', blank=False, null=False) #fecha de registro
-    fech_entrega=models.DateTimeField('Fecha de entrega: ') #fecha de entrega
-    id_etp_prd=models.ForeignKey ('Identificador de la etapa de producto: ',null=False,blank=False, ondelete=models.SET_NULL, db_constraint=True) #Identificador de la etapa de producto
-    id_tipo_prd_minc=models.ForeignKey ('Identificador del tipo de producto',null=True, blank=False, ondelete=models.SET_NULL, db_constraint=True) #Identificador del tipo de producto
-    mediciones_dic=[
-        ('sin', 'sin medicion') 
-        ('en medicion', 'en medicion')
-        ('medido', 'medido')
-        ('obsoleto', 'obsoleto')
-    ]
-    est_med=models.Choices('seleccione estado de medicion',_MAX_LENGTH=11,choices=mediciones_dic,default=mediciones_dic[0]) #Estado de medicion
-    ids_med=models.ForeignKey('Identificadores de las mediciones del producto',null=True,blank=False, ondelete=models.SET_NULL, db_constraint=True)#Identificadores de las mediciones del producto
-    id_cert=models.ForeignKey ('Identificador de la certificacion del producto',null=True,blank=False, ondelete=models.SET_NULL, db_constraint=True)#Identificadores de las mediciones del producto
-    id_desprd=models.ForeignKey ('Identificador del desarrollo del producto',null=True,blank=False, ondelete=models.SET_NULL, db_constraint=True)#Identificador del desarrollo del producto
-    id_rl_prd_campos=models.ForeignKey (null=True,blank=False, ondelete=models.SET_NULL, db_constraint=True)#Identificador del campo de descripcion del producto
-
-class prd_etp(models.Model):
-    id_etp= models.AutoField(primary_key=True, null=True, blank=False, unique=True) #Identificador del
-    nom_etp=models.CharField('Nombre de la etapa de produccion: ', max_length=255, null=False, blank=False) #Nombre de la etapa
-    desc_etp=models.TextField('Descripción de la etapa de produccion: ', null=True, blank=False) #Descripcion de la etapa
 
 class prd_tipo(models.Model):
     id_tipo=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del tipo del producto LLAVE PRIMARIA
@@ -108,6 +84,17 @@ class rl_prd (models.Model):
     id_rl =models.AutoField(primary_key=True, null=False, unique=True, blank=False, null=False ,on_delete=models.SET_NULL, db_constraint=True)# Identificador de la relacion de producto y campo LLAVE PRIMARIA
     id_Campo= models.ForeignKey("identificador del campo: ")
     valor_campo= models.IntegerField("Valor de campo: ", null=False, blank=False, default=0)#Valor de campo
+
+class prd_base(models.Model):
+    id_prd=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del producto LLAVE PRIMARIA
+    ids_pry=models.ForeignKey(pry_base,'Identificador del propietario: ', null=False,blank=False, ondelete=models.SET_NULL, db_constraint=True)# Identificador del propietario
+    nom_prd=models.CharField('Nombre del proyecto :',max_length=255, blank=False, null=False ) # Nombre del producto
+    ids_usu=models.ForeignKey(User,'Identificador del propietario: ', null=False,blank=False, ondelete=models.SET_NULL, db_constraint=True)# Identificador del propietario
+    fech_reg=models.DateTimeField('Fecha de registro: ', blank=False, null=False) #fecha de registro
+    fech_entrega=models.DateTimeField('Fecha de entrega: ') #fecha de entrega
+    id_tipo_prd_minc=models.ForeignKey (prd_tipo,'Identificador del tipo de producto',null=True, blank=False, ondelete=models.SET_NULL, db_constraint=True) #Identificador del tipo de producto
+    id_rl_prd_campos=models.ForeignKey (null=True,blank=False, ondelete=models.SET_NULL, db_constraint=True)#Identificador del campo de descripcion del producto
+
 
 
 
