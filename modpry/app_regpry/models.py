@@ -10,19 +10,21 @@ from modadm.app_regusugr.models import *
 from modadm.app_modadm.dic import *
 
 INF_APP = [
-    #Diccionario para la aplicación de registro de proyecto
-    ['Titulo', "App Registro de Proyecto de Investigación"],
-    ['Descripción',"Aplicación para la definición del registro del Proyecto de Investigación"],
-    ['url_documento','doc'],
+    ['nom','app_recur'],
+    ['titulo', "App Registro de Proyecto de Investigación"],
+    ['desc',"App Registro de Proyecto de Investigación"],
+    ['url_doc','doc'],
     ['url_instal','modpry/app_regpry'],
-    ['url_plantilla','app_regpry_iu.html'],
-    ['Nombre_url','ini_regpry'],
-    ['Versión aplicación','0.7.0'],
-    ['id_mod', 4],
-    ['Versión_módulo', 'prueba'],
-    ['estado', 'en Desarrollo'],
+    ['url_pl','app_recur_iu.html'],
+    ['nom_url','ini_regpry'],
+    ['version','0.7.0'],
+    ['ver_mod', 'prueba'],
+    ['activo', False],
     ['instalada', True],
     ['visible', True],
+    ['externa', False],
+    ['tipo_app', 'SIGEPI-BASE'],
+    ['ico','#']
     ]
 
 ROL_APP = [

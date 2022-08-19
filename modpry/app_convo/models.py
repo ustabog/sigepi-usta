@@ -9,20 +9,23 @@ from modpry.app_regpry.models import *
 from modcons.app_cons.models import *
 
 INF_APP = [
-    #Diccionario para la aplicación de convocatoria
-    ['Titulo', "App Convocatoria"],
-    ['Descripción',"aplicación para la definición de una convocatoria de un proyecto"],
-    ['url_documento','doc'],
+    ['nom','app_convo'],
+    ['titulo', "App Convocatoria"],
+    ['desc',"aplicación para la definición de una convocatoria de un proyecto"],
+    ['url_doc','doc'],
     ['url_instal','modpry/app_convo'],
-    ['url_plantilla','app_convo_iu.html'],
-    ['Nombre_url','ini_convo'],
-    ['Versión aplicación','0.1.0'],
-    ['id_mod', 4],
-    ['Versión_módulo', 'prueba'],
-    ['estado', 'en Desarrollo'],
-    ['instalada', False],
-    ['visible', False],
+    ['url_pl','app_convo_iu.html'],
+    ['nom_url','ini_convo'],
+    ['version','0.1.0'],
+    ['ver_mod', 'prueba'],
+    ['activo', False],
+    ['instalada', True],
+    ['visible', True],
+    ['externa', False],
+    ['tipo_app', 'SIGEPI-BASE'],
+    ['ico','#']
     ]
+
 
 class convo_pry(models.Model):
     #Clase que contiene la información de las convocatorias del proyecto

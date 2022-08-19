@@ -4,19 +4,23 @@ from modcons.app_cons.func import *
 from .models import *
 
 #Diccionario de información de instalación de aplicación
+
 INF_APP = [
-    ['Titulo', "App Registro de Usuario(a) Individual"],
-    ['Descripción',"aplicación para el registro de la información de usuario(a) individual"],
-    ['url_documento','doc'],
+    ['nom','app_regusu'],
+    ['titulo', "App Registro de Usuario(a) Individual"],
+    ['desc',"aplicación para el registro de la información de usuario(a) individual"],
+    ['url_doc','doc'],
     ['url_instal','modadm/app_regusu'],
-    ['url_plantilla','ini_regusu_adm.html'],
-    ['Nombre_url','ini_regusu'],
-    ['Versión aplicación','0.7.0'],
-    ['id_mod', 0],
-    ['Versión_módulo', 'prueba'],
-    ['estado', 'en Desarrollo'],
+    ['url_pl','ini_regusu'],
+    ['nom_url','inicio_adm'],
+    ['version','0.7.0'],
+    ['ver_mod', 'prueba'],
+    ['activo', False],
     ['instalada', True],
-    ['visible', True]
+    ['visible', True],
+    ['externa', False],
+    ['tipo_app', 'SIGEPI-BASE'],
+    ['ico','#']
     ]
 
 ROL_APP = {
