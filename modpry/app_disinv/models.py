@@ -10,24 +10,20 @@ from modadm.app_modadm.dic import *
 from modadm.app_modadm.models import *
 
 INF_APP = [
-    ['nom','app_disinv'],
-    ['titulo', "App Diseño de un Proyecto Investigación"],
-    ['desc',"aplicación para la definición del diseño de un proyecto de investigación"],
-    ['url_doc','doc'],
+    #Diccionario para la aplicación de diseño de investigación
+    ['Titulo', "App Diseño de de un Proyecto Investigación"],
+    ['Descripción',"aplicación para la definición del diseño de un proyecto de investigación"],
+    ['url_documento','doc'],
     ['url_instal','modpry/app_disinv'],
-    ['url_pl','app_disinv_iu.html'],
-    ['nom_url','ini_disinv'],
-    ['version','0.1.0'],
-    ['ver_mod', 'prueba'],
-    ['activo', False],
-    ['instalada', True],
-    ['visible', True],
-    ['externa', False],
-    ['tipo_app', 'SIGEPI-BASE'],
-    ['ico','#']
+    ['url_plantilla','app_disinv_iu.html'],
+    ['Nombre_url','ini_disinv'],
+    ['Versión aplicación','0.1.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', False],
+    ['visible', False],
     ]
-    
-
 
 #Crear funciones de delimitación, delimitación temporal, delimitación temática
 class tema(models.Model):

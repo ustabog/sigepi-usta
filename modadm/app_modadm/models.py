@@ -24,7 +24,7 @@ INF_APP = [
     ['instalada', True],
     ['visible', True],
     ['externa', False],
-    ['tipo_app', 'SIGEPI-BASE'],
+    ['tipo_app' 'SIGEPI_BASE'],
     ['ico','#']
     ]
 
@@ -128,7 +128,7 @@ class adm_app(models.Model):
     nom_url = models.URLField('Nombre de la Url de plantilla de aplicación', null=True, blank=True)  #Nombre de la dirección de la aplicación ej. 'app_ej' apps django.
     version = models.CharField('Versión de desarrollo de la aplicación: ', max_length=20, default='0.0.1', null=False, blank = False)  # Versión de desarrollo de la aplicación. "0.01.04"
     id_mod = models.ForeignKey(adm_mod, on_delete=models.CASCADE, null=True, blank =True)# Id del módulo principal con el cual se integra.
-    ver_mod = models.CharField('Versión de desarrollo de la aplicación: ', max_length=8, null=False, blank = False)  # Versión mínima del módulo principal con la que la actual versión de la aplicación es compatible.
+    ver_mod = models.DecimalField('Versión de desarrollo de la aplicación: ', max_digits=4, decimal_places=2, null=False, blank = False)  # Versión mínima del módulo principal con la que la actual versión de la aplicación es compatible.
     activo = models.BooleanField('la aplicacion está activa o no', default=False)# estatus de la aplicacion para indicar  el modulo de Administración
     instalada = models.BooleanField('¿La aplicación se encuentra instalada? ', default=False) # ¿La aplicación se encuentra instalada? sí =True; no= False.
     visible = models.BooleanField('¿Activa o desactiva la visibilidad de la aplicacion.?', default=False)  # Activa o desactiva la visibilidad de la aplicacion.

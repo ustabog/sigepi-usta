@@ -11,21 +11,19 @@ from modpry.app_regpry.models import *
 from modadm.app_modadm.dic import *
 
 INF_APP = [
-    ['nom','app_gespry'],
-    ['titulo', "App Gestión de Proyectos de Investigación"],
-    ['desc',"aplicación para la definición de la Gestión de Proyectos de investigación"],
-    ['url_doc','doc'],
+    #Diccionario para la aplicación de evaluación de proyecto de investigación
+    ['Titulo', "App Gestión de Proyectos de Investigación"],
+    ['Descripción',"aplicación para la definición de la Gestión de Proyectos de investigación"],
+    ['url_documento','doc'],
     ['url_instal','modpry/app_gespry'],
-    ['url_pl','app_gespry_iu.html'],
-    ['nom_url','ini_gespry'],
-    ['version','0.4.0'],
-    ['ver_mod', 'prueba'],
-    ['activo', False],
-    ['instalada', True],
-    ['visible', True],
-    ['externa', False],
-    ['tipo_app', 'SIGEPI-BASE'],
-    ['ico','#']
+    ['url_plantilla','app_gespry_iu.html'],
+    ['Nombre_url','ini_gespry'],
+    ['Versión aplicación','0.1.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', False],
+    ['visible', False],
     ]
 
 """

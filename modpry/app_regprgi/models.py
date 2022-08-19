@@ -8,26 +8,21 @@ from modpry.app_modpry.models import *
 from modadm.app_regusugr.models import *
 from modadm.app_modadm.dic import *
 
-
 INF_APP = [
-    ['nom','app_recur'],
-    ['titulo', "App Registro de Programa de Investigación"],
-    ['desc',"Aplicación para la definición del registro del Programa de Investigación"],
-    ['url_doc','doc'],
+    #Diccionario para la aplicación de registro de programa de investigación
+    ['Titulo', "App Registro de Programa de Investigación"],
+    ['Descripción',"Aplicación para la definición del registro del Programa de Investigación"],
+    ['url_documento','doc'],
     ['url_instal','modpry/app_regprgi'],
-    ['url_pl','app_recur_iu.html'],
-    ['nom_url','ini_regprgi'],
-    ['version','0.1.0'],
-    ['ver_mod', 'prueba'],
-    ['activo', False],
-    ['instalada', True],
-    ['visible', True],
-    ['externa', False],
-    ['tipo_app', 'SIGEPI-BASE'],
-    ['ico','#']
+    ['url_plantilla','app_regprgi_iu.html'],
+    ['Nombre_url','ini_regprgi'],
+    ['Versión aplicación','0.1.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', False],
+    ['visible', False],
     ]
-
-
 
 # Clases de la Aplicación Registro de Programas de Investigación
 

@@ -6,23 +6,20 @@
 from django.db import models
 from modadm.app_modadm.dic import *
 
-
 INF_APP = [
-    ['nom','app_recur'],
-    ['titulo', "App Recurso"],
-    ['desc',"aplicación para la definición de los recursos de proyecto"],
-    ['url_doc','doc'],
+    #Diccionario para la aplicación de recursos
+    ['Titulo', "App Recurso"],
+    ['Descripción',"aplicación para la definición de los recursos de proyecto"],
+    ['url_documento','doc'],
     ['url_instal','modpry/app_recur'],
-    ['url_pl','app_recur_iu.html'],
-    ['nom_url','ini_recur'],
-    ['version','0.1.0'],
-    ['ver_mod', 'prueba'],
-    ['activo', False],
+    ['url_plantilla','app_recur_iu.html'],
+    ['Nombre_url','ini_recur'],
+    ['Versión aplicación','0.1.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
     ['instalada', True],
     ['visible', True],
-    ['externa', False],
-    ['tipo_app', 'SIGEPI-BASE'],
-    ['ico','#']
     ]
 
 class recu_pry(models.Model):

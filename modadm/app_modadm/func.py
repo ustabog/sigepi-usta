@@ -2,20 +2,16 @@
 #Autor: creado por Milton O. Castro Ch.
 #fecha 10-05-2022
 
-#Creacion de funciones de registro - MODULOS OK, APPS OK, ROLES en_proceso
-#Fecha: 19/08/22
-#CoAutor: Brallan Andres Laverde Perez ORCID:0000-0002-6173-0301
+#Creacion de modelos 
+#Fecha: 11/08/22
+#CoAutor: Brallan Andres Laverde Perez
 
 import sys,ast,os
 import logging
-from urllib import request
-from django.db import models, utils
-from django.contrib.auth.models import Group, User
-from modadm.app_modadm.dic import TIPO_APP
+from django.db import models
+from django.contrib.auth.models import Group
 from modadm.app_modadm.models import adm_app, adm_mod
 from django.apps import apps
-
-
 
 
 #Clase con algoritmos utiles para el funcionamiento de func.py
@@ -46,6 +42,7 @@ class sys_utils():
         if len(ver2)<2:
             ver2.append(0)
         for i in range(2):
+            print("s")
             if ver1[i] < ver2[i]:
                 return True
         return False
@@ -57,7 +54,7 @@ class sys_mod():
 
     #Funcion que registra los diccionarios descritos en los modelos de las aplicaciones base de los modulos
     def reg_mod():
-        respuesta="<h5> Resumen de Modulos</h5>"
+        respuesta=""
         # Ciclo que recorre cada uno de los archivos de SIGEPI
         for dirname, dirnames, filenames in os.walk('.'): 
             for filename in filenames:
@@ -102,8 +99,11 @@ class sys_mod():
                             
     #Validar existencia de Módulo
     def val_mod(titulo,nom):
-        num_regs=adm_mod.objects.filter(titulo=titulo, nom=nom).count()
-        return num_regs
+        id=None
+        num_regs=adm_mod.objects.filter(titulo=titulo, nom=nom),
+        if num_regs!=0:
+            id=adm_mod.objects.filter(titulo=titulo, nom=nom).values().get('id')
+        return num_regs,id
 
 
 
@@ -112,14 +112,11 @@ class sys_app():
     #Instalar Aplicación
     def reg_app():
 
-        respuesta="<h5> Resumen de Aplicaciones</h5>"
-
         for dirname, dirnames, filenames in os.walk('.'):
             for filename in filenames:
                 ubicacion = os.path.join(dirname,filename)
                 if ubicacion[-9:]=='models.py':
                     nom_mod=ubicacion.split("/")[-3]
-                    nom_app=ubicacion.split("/")[-2]
 
                     if(adm_mod.objects.filter(nom=nom_mod).exists()):
 
@@ -128,59 +125,22 @@ class sys_app():
                         inf_app = sys_utils.ext_var(ubicacion[2:],"INF_APP")
 
                         if inf_app != None:
+
+                            id_mod=inf_mod.get('id_mod')
                             
-                            campos=[f.name for f in adm_app._meta.get_fields()]
-                            dic=sys_utils.ext_var("./modadm/app_modadm/dic.py","TIPO_APP")
+                            for i in range(len(inf_app)):
 
-                            for i in range(len(campos)):
-                                for j in range(len(inf_app)):
-                                    if(campos[i]==inf_app[j][0]):
-                                        globals()[campos[i]]=inf_app[j][1]
-                                        break
-                                    else:
-                                        globals()[campos[i]]=None
-                                        
-                                        
-                            for i in range(len(dic)):
-                                if tipo_app == (dic[i])[1]:
-                                    globals()["tipo_app"] = (dic[i])[0]
-
-
-                            id_mod=inf_mod.get('id_mod')   
+                               nom_var=str(inf_app[i][0])
+                               globals()[nom_var]=inf_app[i][1]
                                
-                            p=adm_app(nom=nom,titulo=titulo,desc=desc,url_doc=url_doc,url_instal=url_instal,url_pl=url_pl,nom_url=nom_url,version=version,ver_mod=ver_mod,activo=activo,instalada=instalada,visible=visible,externa=externa,tipo_app=tipo_app,ico=ico,id_mod_id=id_mod)
-                            
-                            if(sys_app.val_app(nom)):
-                                act_ver = (adm_app.objects.filter(nom=nom).values().order_by("-id_app"))[0].get('version')
-                                if sys_utils.comp_ver(act_ver,version):
-                                    try:
-                                        p.save()
-                                        respuesta+="<p>El aplicativo ["+nom+"] ha sido registrado con version "+version+" version anterior "+act_ver+"</p>"
-                                    except utils.IntegrityError:
-                                        respuesta+="<p>Faltan datos o son erroneos para el registro del modulo, ERROR DE INTEGRIDAD, el aplicativo ["+nom+"] NO se registro</p>"
-
-                                else:
-                                    respuesta+="<p>Ya se encuentra registrada["+nom+"] con una version igual o superior,el aplicativo ["+nom+"] NO se registro</p>"
-                            else:
-                                try:
-                                    p.save()
-                                    respuesta+="<p>El aplicativo ["+nom+"] ha sido registrado</p>"
-                                except utils.IntegrityError:
-                                    respuesta+="<p>Faltan datos o son erroneos para el registro del modulo, ERROR DE INTEGRIDAD, el aplicativo ["+nom+"] NO se registro</p>"
-
-                             
                     else:
-                        respuesta+="<p>se encontraron datos en los modelos de aplicacion ["+nom_app+"] pero el el modulo no ha sido instalado</p>"
+                        print("modulo que contiene a la aplicacion no esta instalado")
                     
-        return respuesta           
+                   
                             
-    #validar migracion
+    #desistalar Aplicación
     def val_inst_app(nom):
         return apps.is_installed(nom)
-
-    #validar existencia de Aplicación
-    def val_app(nom):
-        return adm_app.objects.filter(nom=nom).exists()
 
         
 
@@ -259,12 +219,7 @@ class sys_perm():
 
 #sys_mod.val_mod("Módulo de Administración SIGEPI","modadm")
 #sys_mod.reg_mod()
-def rutina_prueba():
-    respuesta = ''
-    respuesta+=sys_mod.reg_mod()
-    respuesta+=sys_app.reg_app()
-    return respuesta
-
+sys_app.reg_app()
 
 
 

@@ -23,21 +23,19 @@ INF_MOD = [
     ]
 
 INF_APP = [
-    ['nom','app_modpry'],
-    ['titulo', "App modulo de proyecto"],
-    ['desc',"aplicación para la definición del modulo de proyectos"],
-    ['url_doc','doc'],
+    #Diccionario para la aplicación de modulo de proyecto
+    ['Titulo', "App modulo de proyecto"],
+    ['Descripción',"aplicación para la definición del modulo de proyectos"],
+    ['url_documento','doc'],
     ['url_instal','modpry/app_modpry'],
-    ['url_pl','app_modpry_iu.html'],
-    ['nom_url','ini_modpry'],
-    ['version','0.4.0'],
-    ['ver_mod', 'prueba'],
-    ['activo', False],
+    ['url_plantilla','app_modpry_iu.html'],
+    ['Nombre_url','ini_modpry'],
+    ['Versión aplicación','0.4.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
     ['instalada', True],
     ['visible', True],
-    ['externa', False],
-    ['tipo_app', 'SIGEPI-BASE'],
-    ['ico','#']
     ]
 
 ROL_MOD = [

@@ -5,24 +5,19 @@ from modadm.app_regusu.models import *
 from modadm.app_regusugr.models import *
 
 #Diccionario de información de instalación de aplicación
-
-
 INF_APP = [
-    ['nom','app_regusu'],
-    ['titulo', "App Registro de Usuario institucional"],
-    ['desc',"aplicación para el registro de la información de usuario institucional"],
-    ['url_doc','doc'],
+    ['Titulo', "App Registro de Usuario institucional"],
+    ['Descripción',"aplicación para el registro de la información de usuario institucional"],
+    ['url_documento','doc'],
     ['url_instal','modadm/app_regusui'],
-    ['url_pl','ini_regusui_adm.html'],
-    ['nom_url','ini_regusui'],
-    ['version','0.7.0'],
-    ['ver_mod', 'prueba'],
-    ['activo', False],
+    ['url_plantilla','ini_regusui_adm.html'],
+    ['Nombre_url','ini_regusui'],
+    ['Versión aplicación','0.7.0'],
+    ['id_mod', 0],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
     ['instalada', True],
     ['visible', True],
-    ['externa', False],
-    ['tipo_app', 'SIGEPI-BASE'],
-    ['ico','#']
     ]
 
 ROL_APP = [

@@ -8,24 +8,20 @@ from django.db import models
 from modpry.app_modpry.models import *
 from modpry.app_regpry.models import *
 
-
 INF_APP = [
     #Diccionario para la aplicación de convenio
-    ['nom','app_modadm'],
     ['Titulo', "App Convenio"],
-    ['desc',"aplicación para la definición de un convenio de un proyecto o producto"],
-    ['url_doc','doc'],
+    ['Descripción',"aplicación para la definición de un convenio de un proyecto o producto"],
+    ['url_documento','doc'],
     ['url_instal','modpry/app_conve'],
-    ['url_pl','app_conve_iu.html'],
-    ['nom_url','ini_conve'],
-    ['version','0.1.0'],
-    ['ver_mod', 'prueba'],
-    ['activo', False],
-    ['instalada', True],
-    ['visible', True],
-    ['externa', False],
-    ['tipo_app', 'SIGEPI-BASE'],
-    ['ico','#']
+    ['url_plantilla','app_conve_iu.html'],
+    ['Nombre_url','ini_conve'],
+    ['Versión aplicación','0.1.0'],
+    ['id_mod', 4],
+    ['Versión_módulo', 'prueba'],
+    ['estado', 'en Desarrollo'],
+    ['instalada', False],
+    ['visible', False],
     ]
 
 class conve_pry(models.Model):
