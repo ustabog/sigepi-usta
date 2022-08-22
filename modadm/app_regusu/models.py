@@ -23,13 +23,9 @@ INF_APP = [
     ['ico','#']
     ]
 
-ROL_APP = {
-    (0, ''),
-    (1, ''),
-    (1, ''),
-    (1, ''),
-    (1, '')
-    }
+ROL_APP = [
+    
+    ]
 
 #Tipos de números de identificación personal
 TIPO_NUIP_CO = [

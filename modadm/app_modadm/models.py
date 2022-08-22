@@ -42,6 +42,17 @@ INF_MOD = [
     ['ls_param_cnf', []],
     ]
 
+ROL_BASE =[
+    #[etq_rol,desc,req_reg,tipo],
+    [0,'Adm.Sistema','',''],
+    [1,'Adm.Institución','',''],
+    [2,'Adm.Grupo','',''],
+    [3,'Usuario','',''],
+    [4,'Usuario Grupo','',''],
+    [5,'Usuario institucional','',''],
+    [6,'Invitado','',''],
+    [7,'Anonimo','','']
+]
 
 ## Usuarios básicos del sistema ##
 #Usuario individual

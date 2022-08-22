@@ -12,7 +12,7 @@ from urllib import request
 from django.db import models, utils
 from django.contrib.auth.models import Group, User
 from modadm.app_modadm.dic import TIPO_APP
-from modadm.app_modadm.models import adm_app, adm_mod
+from modadm.app_modadm.models import adm_app, adm_mod, adm_rol
 from django.apps import apps
 
 
@@ -188,12 +188,7 @@ class sys_app():
 class sys_rol():
 
     #crea roles en el administrador de DJANGO a partir de un nombre tipo String
-    def crear_rol(nom):
-        creado =Group.objects.get_or_create(name=nom)
-        if creado:
-            return True
-        else:
-            return False
+   
         
     #verificar la existencia de un rol en el administrador de DJANGO por su nombre
     def val_rol(nom):
@@ -211,37 +206,31 @@ class sys_rol():
             Group.objects.filter(name=nom).delete()
     
     #Actualiza los roles en el administrador de DJANGO sean nuevos, editados o removidos por una accion con la aplicación 
-    def act_rol():
-
-        roles_registrados=[] #roles que ya estan en el administrador de DJANGO
-        roles_encontrados=sys_rol.ext_roles() #roles encontrados en archivos de modelos
-        
-        #asignacion de valores a la variable roles_registrados
-        for nom_rol in Group.objects.all():
-            roles_registrados.append(nom_rol.name)
-
-        for rol in range(len(roles_encontrados)):
-            if sys_rol.val_rol(roles_encontrados[rol]):
-                print("Encontrado en el administrador ["+roles_encontrados[rol]+ "] no se guardara de nuevo.. \n")
-            else:
-                sys_rol.crear_rol(roles_encontrados[rol])
+   
                 
 
     #extrae listados de nombres de roles contenidos en los archivos models.py de las apps incluidas en SIGEPI
-    def ext_roles():
-        roles=[]
+    def reg_roles():
         for dirname, dirnames, filenames in os.walk('.'):
             for filename in filenames:
                 ubicacion = os.path.join(dirname,filename)
                 if ubicacion[-9:]=='models.py':
                     lista_roles=sys_utils.ext_var(ubicacion[2:],"ROL_APP")
                     if lista_roles==None:
-                        lista_roles=sys_utils.ext_var(ubicacion[2:],"ROL_BASE")        
-                    
-                    if type(lista_roles)==list:
-                        for rol in lista_roles:
-                            roles.append(rol[1])
-        return roles
+                        lista_roles=sys_utils.ext_var(ubicacion[2:],"ROL_BASE")
+                        nom_mod=ubicacion.split("/")[-3]
+                        nom_app=ubicacion.split("/")[-2]
+
+                        id_mod=(adm_mod.objects.filter(nom=nom_mod).order_by("-id_mod").values()[0]).get('id_mod')
+                        id_app=(adm_app.objects.filter(nom=nom_app).order_by("-id_app").values()[0]).get('id_app')
+
+                        for i in range(len(lista_roles)):
+
+                            p=adm_rol(etq_rol=(lista_roles[i])[0],desc=(lista_roles[i])[1],req_reg=(lista_roles[i])[2],id_app_id=id_app,id_mod_id=id_mod,tipo=(lista_roles[i])[3])
+
+                            p.save()
+    
+        return 
 
 
         
@@ -258,7 +247,7 @@ class sys_perm():
 
 
 #sys_mod.val_mod("Módulo de Administración SIGEPI","modadm")
-#sys_mod.reg_mod()
+#sys_rol.reg_roles()
 def rutina_prueba():
     respuesta = ''
     respuesta+=sys_mod.reg_mod()

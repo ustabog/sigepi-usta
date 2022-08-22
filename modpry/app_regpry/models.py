@@ -27,12 +27,13 @@ INF_APP = [
     ['ico','#']
     ]
 
-ROL_APP = [
-    (0,'Investigador(a) Principal'),
-    (1,'Propietario(a) Proy.'),
-    (2,'Investigador(a) Secundario'),
-    (3,'Colaborador(a)')
-    ]
+ROL_APP=[
+    #[etq_rol,desc,req_reg,tipo]
+    [0,'Investigador(a) Principal','',''],
+    [1,'Propietario(a) Proy.','',''],
+    [2,'Investigador(a) Secundario','',''],
+    [3,'Colaborador(a)','','']
+]
 
 #clase base de registro de proyecto
 class pry_base(models.Model):

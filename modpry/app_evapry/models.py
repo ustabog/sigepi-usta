@@ -28,12 +28,13 @@ INF_APP = [
     ['ico','#']
     ]
 
-ROL = [
-    (0,'Evaluador'), 
-    (1,'Evaluado'),
-    (2,'Gestor de investigación'),
-    (3,'Coevaluador'),
-]    
+ROL_APP=[
+    #[etq_rol,desc,req_reg,tipo],
+    [0,'Evaluador','',''],
+    [1,'Evaluado','',''],
+    [2,'Gestor de Investigación','',''],
+    [3,'Coevaluador','','']
+]
 
 class rango_eva(models.Model):
     #Clase que contiene los rango de la evaluación del proyecto
