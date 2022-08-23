@@ -6,16 +6,6 @@
 #---------------- Diccionarios para MODADM ---------------
 
 # Roles básicos del SIGEPI
-ROL_BASE = [
-    (0, 'adm_sis'),#'Administrador(a) de Sistema'
-    (1, 'adm_ins'),#'Administrador(a) de Institución'
-    (2, 'adm_gr'),#'Administrador(a) de grupo'
-    (3, 'usu'),#'Usuario(a) Individual'
-    (4, 'usugr'),#'Usuario Grupal'
-    (5, 'usui'), #'Usuario Institucional'
-    (6, 'invitado'), #'Invitado(a)'
-    (7,'anonimo'), #Usuario(a) Anónimo
-    ]
 
 '''
 MODELOS_ADM = [
@@ -62,6 +52,14 @@ TIPO_NUII_CO = [
     (1,'RUT') #Registro Único Tributario.
     ]
 
+TIPO_ROL = [
+    (0, 'Sistema'),#'Administrador(a) de Sistema'
+    (1, 'Aplicación'),#'Administrador(a) de Institución'
+    (2, 'Aplicación externa'),#'Administrador(a) de grupo'
+    (3, 'Modulo'),#'Usuario(a) Individual'
+    ]
+
+
 #Tipo de aplicativo
 TIPO_APP = [
     (0, 'SIGEPI-BASE'),
@@ -72,7 +70,7 @@ TIPO_APP = [
     (5, 'Escritorio Windows'),
     (6, 'Escritorio Linux'),
     (7, 'Escritorio MAC'),
-    (8, 'otro'),
+    (8, 'otro')
     ]
 #Tipos de Identidad de Género
 GENERO = [
@@ -187,7 +185,7 @@ TIPO_INS = [
     (0,'Privada'),
     (1,'Publica'),
     (2,'xxx'),
-    (3,'zzzz'),
+    (3,'zzzz')
     ]
 
 #Sector Económico
@@ -195,7 +193,7 @@ SECTOR_ECO = [
     (0,'Privado'),
     (1,'Publico'),
     (2,'xxx'),
-    (3,'zzzz'),
+    (3,'zzzz')
     ]
 
 # Tipo de fuente de inst. Externa, local, remota.
@@ -216,7 +214,7 @@ TIPO_EXT = [
     (3,'.deb'),
     (3,'.rpm'),
     (3,'.tar'),
-    (4,'otro'),
+    (4,'otro')
     ]
 
 #LIstado de  Horarios
@@ -235,12 +233,12 @@ HORARIO = [
 ESTADO_EVA = [
     (0,'Evaluación finalizada'),
     (1,'Evaluación proceso'),
-    (2,'Evaluación preliminar'),
+    (2,'Evaluación preliminar')
 ]
 
 EVA_PRY = [
     (0,'Cuantitativa'),
-    (1,'Cualitativa'),
+    (1,'Cualitativa')
 ]
 
 CATG = [
@@ -249,12 +247,12 @@ CATG = [
     (1,'Concepto'),
     (2,'Recomendación'),
     (3,'Retroalimentación'),
-    (4, 'Definiciones'),
+    (4, 'Definiciones')
 ]
 
 RES_EVA = [
     (0, 'Aprobado'),
-    (1, 'Reprobado'),
+    (1, 'Reprobado')
 ]
 
 VAR_PLANT_EVA = [
@@ -269,7 +267,7 @@ VAR_PLANT_EVA = [
     (2,'elicrti/<id>'), #URL para eliminar el proyecto de la base de datos
     (6,'Resultado'),
     (1,'archires/<id>'), #URL para archivar el proyecto en la base de datos
-    (2,'elires/<id>'), #URL para eliminar el proyecto de la base de datos
+    (2,'elires/<id>') #URL para eliminar el proyecto de la base de datos
 ]
 #---------------- Diciionarios para app_gespry ------------
 TIPO_DEP = [
@@ -291,7 +289,7 @@ TIPO_PRBL=[
     (5,'Administrativo'),
     (6,'Metodológico'),
     (7,'Cultural'),
-    (8,'otro'),
+    (8,'otro')
     ]
 
 ESTADO_MLOG=[
@@ -304,14 +302,14 @@ ESTADO_MLOG=[
     (5,'Depurado'),
     (6,'Validado'),
     (7,'Avanzado'),
-    (8,'En reformulación'),
+    (8,'En reformulación')
     ]
 #---------------- Diciionarios para app_modpry-----------
 REG_PRY = [
     (0,'Id registro de proyecto'),
     (1,'Nombre del proyecto'),
     (2,'Descripción del proyecto'),
-    (3,'Estado del proyecto'),
+    (3,'Estado del proyecto')
     ]
 #---------------- Diciionarios para app_recur ------------
 TIPO_REC = [
@@ -320,7 +318,7 @@ TIPO_REC = [
     (2, 'Recurso financiero'),
     (3, 'Recurso organizacional'),
     (4, 'Recurso espacial'), 
-    (5, 'Recurso documental'),
+    (5, 'Recurso documental')
     ]
 #---------------- Diciionarios para app_regprgi ------------
 #---------------- Diciionarios para app_regpry ------------
@@ -331,7 +329,7 @@ ACT_PRY=[
     (3,'Par Inv.'),
     (4,'Control y Vigilancia de Proy.'),
     (5,'Representante Comunidad de Proy.'),
-    (6, 'interventor(a)'),
+    (6, 'interventor(a)')
     ]
 
 ESTADO_PRY=[
@@ -342,7 +340,7 @@ ESTADO_PRY=[
     (4, 'Aprobación'),
     (5, 'Ejecución'),
     (6, 'Ejecutado'),
-    (7, 'Archivado'),
+    (7, 'Archivado')
     ]
 
 TIPO_PRY=[
@@ -358,7 +356,7 @@ TIPO_PRY=[
     (8,'Prototipo'),
     (9,'Patente'),
     (10,'Propiedad industrial'),
-    (11,'Revisión crítica'),
+    (11,'Revisión crítica')
     ]
 
 DEPARTAMENTOS = [
@@ -394,7 +392,7 @@ DEPARTAMENTOS = [
     (29,'Guainía'),
     (30,'Guaviare'),
     (31,'Vaupés'),
-    (32,'Vichada'),
+    (32,'Vichada')
     ]
 
 NIVEL_PRY =[
@@ -403,7 +401,7 @@ NIVEL_PRY =[
     (1,'Grupal'),
     (2,'Institucional'),
     (3,'Interinstitucional'),
-    (4,'Intergrupal'),
+    (4,'Intergrupal')
     ]
 
 TIPO_INV_FIN=[
@@ -617,7 +615,7 @@ TIPO_CONVE = [
     (0,'Asociación'),
     (1,'Coopetación'),
     (4,'Divulgación'),
-    (5,'Formación'),
+    (5,'Formación')
     ]
 
 TIPO_IMPACTO = [
@@ -627,7 +625,7 @@ TIPO_IMPACTO = [
     (2,'Económicos'),
     (3,'Políticos'),
     (4, 'Socio-culturales'),
-    (5,'Ambientales'),
+    (5,'Ambientales')
     ]
 
 TIPO_RIESGO = [
@@ -639,7 +637,7 @@ TIPO_RIESGO = [
     (4, 'Escasez de recursos'),
     (5,'Cambios operativos'),
     (6, 'Falta de claridad'),
-    (7, 'Otro'),
+    (7, 'Otro')
     ]
 
 LINEA_TEMA = [
@@ -650,27 +648,27 @@ LINEA_TEMA = [
     (3,'Ciencias agrícolas'),
     (4, 'Ciencias sociales'),
     (5,'Humanidades'),
-    (7, 'Otro'),
+    (7, 'Otro')
     ]
 
 MOD_EVE = [
     #Modalidad del evento 
     (0,'Presencial'),
     (1,'Virtual'),
-    (2,'Presencial mediado por TIC (PMT)'),
+    (2,'Presencial mediado por TIC (PMT)')
 ]
 
 EST_LN_INV=[
     (0, 'Activa'),
     (1, 'Archivada'),
-    (2, 'No activa'),
+    (2, 'No activa')
     ]
 
 VAR_PLAN_REGPRY = [
     #Variables para utilizar dentro de la plantila de eliminar y archivar
     (0,'Proyecto'), #Variable proyecto
     (1,'archipry/<id>'), #URL para archivar el proyecto en la base de datos
-    (2,'elipry/<id>'), #URL para eliminar el proyecto de la base de datos
+    (2,'elipry/<id>') #URL para eliminar el proyecto de la base de datos
 ]
 
 LN_INV_OCDE = [
@@ -715,7 +713,7 @@ LN_INV_OCDE = [
     (38, 'Idiomas y literatura'),
     (39,'Arte'),
     (40, 'Otras historias'),
-    (41,'Otras humanidades'),
+    (41,'Otras humanidades')
     ]
 
 LN_INV_MINCI = [
@@ -760,7 +758,7 @@ LN_INV_MINCI = [
     (38, 'Idiomas y literatura'),
     (39, 'Otras historias'),
     (40,'Arte'),
-    (41,'Otras humanidades'),
+    (41,'Otras humanidades')
     ]
 
 # mediciones_dic=[

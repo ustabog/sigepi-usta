@@ -42,15 +42,15 @@ INF_APP = [
 
 ROL_MOD =[
     #[etq_rol,desc,req_reg,tipo]
-    [0,'Investigador(a) Proy.','',''],
-    [1,'Evaluador(a) Proy.','',''],
-    [2,'Tutor(a) Proy.','',''],
-    [3,'Director(a) Proy.','',''],
-    [4,'Codirector(a) Proy.','',''],
-    [5,'Asesor(a) Proy.','',''],
-    [6,'Gestor(a) de Inv.','',''],
-    [7,'Curador(a)','',''],
-    [8,'Actor Externo','','']
+    [0,'Investigador(a) Proy.',True,1],
+    [1,'Evaluador(a) Proy.',True,1],
+    [2,'Tutor(a) Proy.',True,1],
+    [3,'Director(a) Proy.',True,1],
+    [4,'Codirector(a) Proy.',True,1],
+    [5,'Asesor(a) Proy.',True,1],
+    [6,'Gestor(a) de Inv.',True,1],
+    [7,'Curador(a)',True,1],
+    [8,'Actor Externo',True,1]
 ]
 
 

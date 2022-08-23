@@ -27,10 +27,10 @@ INF_APP = [
 
 ROL_APP = [
     #[etq_rol,desc,req_reg,tipo],
-    [0,'Administrador de aplicación','',''],
-    [1,'Invitado Instución','',''],
-    [2,'Administrador de grupo','',''],
-    [3,'Otro','','']
+    [0,'Administrador de aplicación',True,0],
+    [1,'Invitado Instución',True,3],
+    [2,'Administrador de grupo',True,2],
+    [3,'Otro',True,2]
     ]
 
 #Clases de la Aplicación Registro de Instituciones

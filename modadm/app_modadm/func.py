@@ -6,6 +6,7 @@
 #Fecha: 19/08/22
 #CoAutor: Brallan Andres Laverde Perez ORCID:0000-0002-6173-0301
 
+from sqlite3 import IntegrityError
 import sys,ast,os
 import logging
 from urllib import request
@@ -211,25 +212,36 @@ class sys_rol():
 
     #extrae listados de nombres de roles contenidos en los archivos models.py de las apps incluidas en SIGEPI
     def reg_roles():
+
+        respuesta = '<h5>Registro de roles</h5>'
+
         for dirname, dirnames, filenames in os.walk('.'):
             for filename in filenames:
                 ubicacion = os.path.join(dirname,filename)
                 if ubicacion[-9:]=='models.py':
-                    lista_roles=sys_utils.ext_var(ubicacion[2:],"ROL_APP")
-                    if lista_roles==None:
-                        lista_roles=sys_utils.ext_var(ubicacion[2:],"ROL_BASE")
+                  
+                    lista_roles = sys_utils.ext_var(ubicacion[2:],'ROL_APP')
+                                
+                    if lista_roles != None:
                         nom_mod=ubicacion.split("/")[-3]
                         nom_app=ubicacion.split("/")[-2]
 
                         id_mod=(adm_mod.objects.filter(nom=nom_mod).order_by("-id_mod").values()[0]).get('id_mod')
                         id_app=(adm_app.objects.filter(nom=nom_app).order_by("-id_app").values()[0]).get('id_app')
+                        print(nom_app)
 
                         for i in range(len(lista_roles)):
 
                             p=adm_rol(etq_rol=(lista_roles[i])[0],desc=(lista_roles[i])[1],req_reg=(lista_roles[i])[2],id_app_id=id_app,id_mod_id=id_mod,tipo=(lista_roles[i])[3])
 
-                            p.save()
-    
+                            try:
+                                p.save()
+                                respuesta +="<p> El Rol ["+(lista_roles[i])[1]+"] de la aplicación ["+nom_app+"] ha sido registrado</p>"
+                            except utils.IntegrityError:
+                                respuesta +="<p>ERROR: El Rol ["+(lista_roles[i])[1]+"] de la aplicación ["+nom_app+"] presento errores de integridad" 
+                        
+
+        
         return 
 
 
@@ -247,7 +259,8 @@ class sys_perm():
 
 
 #sys_mod.val_mod("Módulo de Administración SIGEPI","modadm")
-#sys_rol.reg_roles()
+sys_rol.reg_roles()
+
 def rutina_prueba():
     respuesta = ''
     respuesta+=sys_mod.reg_mod()

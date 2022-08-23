@@ -42,16 +42,16 @@ INF_MOD = [
     ['ls_param_cnf', []],
     ]
 
-ROL_BASE =[
+ROL_APP =[
     #[etq_rol,desc,req_reg,tipo],
-    [0,'Adm.Sistema','',''],
-    [1,'Adm.Institución','',''],
-    [2,'Adm.Grupo','',''],
-    [3,'Usuario','',''],
-    [4,'Usuario Grupo','',''],
-    [5,'Usuario institucional','',''],
-    [6,'Invitado','',''],
-    [7,'Anonimo','','']
+    [0,'Adm.Sistema',True,0],
+    [1,'Adm.Institución',True,0],
+    [2,'Adm.Grupo',True,0],
+    [3,'Usuario',True,1],
+    [4,'Usuario Grupo',True,3],
+    [5,'Usuario institucional',True,3],
+    [6,'Invitado',True,2],
+    [7,'Anonimo',True,2]
 ]
 
 ## Usuarios básicos del sistema ##
@@ -160,7 +160,7 @@ class adm_app(models.Model):
 class adm_rol(Group):
     etq_rol = models.CharField('Etiqueta: ', max_length=30, null=False, blank = False) # Etiqueta del Rol
     desc = models.CharField('Descripcion del Rol: ', max_length=30, null=False, blank = False) # Descripcion del Rol
-    tipo = models.IntegerField(null = False, blank = False, choices = ROL_BASE, default = 0) # Ver diccionario TIPO_ROL
+    tipo = models.IntegerField(null = False, blank = False, choices = TIPO_ROL, default = 0) # Ver diccionario TIPO_ROL
     id_mod = models.ForeignKey(adm_mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Módulo
     id_app = models.ForeignKey(adm_app, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Aplicación
     req_reg = models.BooleanField('¿Usuario(a) registrado(a)?', default=False) # Variable que indica si el rol require estar registrado y con sesión activa en plataforma o no.

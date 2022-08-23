@@ -10,12 +10,12 @@ from modadm.app_regusugr.models import *
 from modadm.app_modadm.dic import *
 
 INF_APP = [
-    ['nom','app_recur'],
+    ['nom','app_regpry'],
     ['titulo', "App Registro de Proyecto de Investigación"],
     ['desc',"App Registro de Proyecto de Investigación"],
     ['url_doc','doc'],
     ['url_instal','modpry/app_regpry'],
-    ['url_pl','app_recur_iu.html'],
+    ['url_pl','app_regpry_iu.html'],
     ['nom_url','ini_regpry'],
     ['version','0.7.0'],
     ['ver_mod', 'prueba'],
@@ -29,10 +29,10 @@ INF_APP = [
 
 ROL_APP=[
     #[etq_rol,desc,req_reg,tipo]
-    [0,'Investigador(a) Principal','',''],
-    [1,'Propietario(a) Proy.','',''],
-    [2,'Investigador(a) Secundario','',''],
-    [3,'Colaborador(a)','','']
+    [0,'Investigador(a) Principal',True,1],
+    [1,'Propietario(a) Proy.',True,1],
+    [2,'Investigador(a) Secundario',True,1],
+    [3,'Colaborador(a)',True,1]
 ]
 
 #clase base de registro de proyecto

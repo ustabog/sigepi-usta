@@ -30,10 +30,10 @@ INF_APP = [
 
 ROL_APP=[
     #[etq_rol,desc,req_reg,tipo],
-    [0,'Evaluador','',''],
-    [1,'Evaluado','',''],
-    [2,'Gestor de Investigación','',''],
-    [3,'Coevaluador','','']
+    [0,'Evaluador',True,1],
+    [1,'Evaluado',True,1],
+    [2,'Gestor de Investigación',True,1],
+    [3,'Coevaluador',True,1]
 ]
 
 class rango_eva(models.Model):
