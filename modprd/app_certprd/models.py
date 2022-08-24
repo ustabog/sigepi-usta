@@ -7,7 +7,8 @@ from email.policy import default
 from django.db import models
 from modadm.app_modadm.dic import *
 from modadm.app_modadm.models import *
-from ..app_regprd.models import prd_base
+from modprd.app_regprd.models import *
+
 
 DIC_APP = [
     #Diccionario de la aplicacion
@@ -29,7 +30,7 @@ DIC_APP = [
 #Clases de la aplicacion de validacion y certificacion de productos
 class prd_med (models.Model):
     id_med= models.AutoField(primary_key=True, unique=True, null=False) #Identificador de la convocatoria de medicion LLAVE PRIMARIA
-    id_prd = models.ForeignKey(prd_base, 'Identificador del producto a certificar : ', null=False, blank=False)# Identificador del produco que sera medido
+    #id_prd = models.ForeignKey(prd_base, 'Identificador del producto a certificar : ', null=False, blank=False)# Identificador del produco que sera medido
     nom_med= models.CharField('Nombre de la convocatoria: ', max_length=255, null=False, blank=False) #Nombre de la convocatoria
     num_conv= models.IntegerField('Numero de la convocatoria: ', null=False, blank=False, default=0) #Numero de la convocatoria
     fch_ini=models.DateTimeField('Fecha de inicio de la convocatoria: ', null=False, blank=False) #fecha de inicio de la convocatoria

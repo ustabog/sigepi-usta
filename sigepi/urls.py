@@ -30,6 +30,8 @@ from modadm.app_modadm.urls import *
 from modcons.app_cons.views import *
 from modadm.app_regusu.urls import *
 from modadm.app_regusugr.urls import *
+from modprd.app_regprd.urls import *
+from modprd.app_modprd.urls import *
 
 from .views import *
 
@@ -73,6 +75,10 @@ urlpatterns = [
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name = 'password_reset_done.html'), name="password_reset_done"),
     path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name = 'password_reset_confirm.html'), name='password_reset_confirm'),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name = 'password_reset_complete.html'), name="password_reset_complete"),
+
+    # consultas módulo de productos
+    path('prd/', include('modprd.app_modprd.urls')),
+    path('prd/', include('modprd.app_regprd.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

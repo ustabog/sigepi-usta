@@ -1,0 +1,11 @@
+<!--- Plantilla para la vista del registro de producto - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 19 -08 -2022 --->
+
+
+{% block articulo %}
+<div class="cnt_norm" style="flex-direction: row; flex-wrap: wrap;">
+<h2>Productos</h2>
+<br>
+{% for prd_base in  object_list %}

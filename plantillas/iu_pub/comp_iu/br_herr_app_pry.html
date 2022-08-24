@@ -85,7 +85,15 @@
                 </ul>
             </li>
             
-            <li> <a href="{% url 'inicio' %}"><i class="material-icons">category</i><span>Productos de Investigación</span></a></li>
+            <li>
+                <a href=""><i class="material-icons">category</i><span>Productos de Inv.</span></a>           
+                <ul class="categ_br_herr">
+                    <li><a href="{% url 'crear_prd' %}"><i class="material-icons">menu</i><span>Registrar Prod.</span></a></li> 
+                    <li><a href="{% url 'cn_pry' %}"><i class="material-icons">menu</i><span>Validar y Certificar</span></a></li> 
+                    <li><a href="{% url 'cn_pry' %}"><i class="material-icons">menu</i><span>Desarrollo</span></a></li> 
+                    <li><a href="{% url 'cn_pry' %}"><i class="material-icons">menu</i><span>Posición Pers.</span></a></li>
+                </ul>
+            </li>
         </ul>
-    </nav>
+    </nav> 
 {% endblock br_herr %}
