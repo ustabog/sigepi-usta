@@ -79,7 +79,8 @@ urlpatterns = [
     # consultas módulo de productos
     path('prd/', include('modprd.app_modprd.urls')),
     path('prd/', include('modprd.app_regprd.urls')),
-    path('creareqexs/', vst_regreqexist.as_view(), name='reqexs')
+    path('creareqexs/', vst_regreqexist.as_view(), name='reqexs'),
+    path('creareqcal/', vst_regreqcal.as_view(), name='reqcal'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

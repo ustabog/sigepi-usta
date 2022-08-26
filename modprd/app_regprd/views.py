@@ -33,8 +33,21 @@ class vst_regprd(CreateView):
 
 class vst_regreqexist(CreateView):
     model= prd_req_Exist
-    template_name ='mod_prd_frm_reqexist.html'
+    form_class = form_req_exist
+    template_name ='mod_prd_frm_requexist.html'
     success_url = reverse_lazy('cn_prd')
 
     def get_queryset(self):
-        return prd_req_Exist.objects.filter(id_reqexs =self.request.user)
+        return prd_req_Exist.objects.filter(nom_reqexs =self.request.user)
+
+class vst_regreqcal(CreateView):
+    model= prd_req_cal
+    form_class = form_req_cal
+    template_name ='mod_prd_frm_reqcal.html'
+    success_url = reverse_lazy('cn_prd')
+
+    def get_queryset(self):
+        return prd_req_cal.objects.filter(id_categ =self.request.user)
+
+
+

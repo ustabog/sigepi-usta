@@ -1,7 +1,7 @@
-<!--- Plantilla para la vista del registro de producto - plantillas para SIGEPI
+<!--- Plantilla para la vista del registro de un requerimiento de existencia - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 19 -08 -2022 --->
+#fecha 26 -08 -2022 --->
 
 {% extends 'inicio.html' %} 
 {% load static %}
@@ -15,8 +15,17 @@
 <div id="menu_app" class="menu_app">
     {% block menu_app %} 
     <button type="button" name="crear">
-        Crear
-    </button>
+        crear
+    </button> <br>
+    <button type="button" name="editar">
+        editar
+    </button> <br>
+    <button type="button" name="eliminar">
+        eliminar
+    </button> <br>
+    <button type="button" name="archivar">
+        archivar
+    </button> <br>
     {% endblock menu_app %}
 </div>
 <div id="articulo" class="articulo">

@@ -1,0 +1,28 @@
+<!--- Plantilla para la vista del registro de un requerimiento de calidad - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 26 -08 -2022 --->
+
+
+{% block articulo %}
+<div class="cn_reqexs_norm" style="flex-direction: row; flex-wrap: wrap;">
+<h2>Productos</h2>
+<br>
+{% for prd_req_Exist in  object_list %}
+<div id="trj_reqexs" class="trj_reqexs">
+    <div id="trj_reqexs" class="trj_reqexs">
+        <div id="reqexs_sup" class="reqexs_sup">       
+            <div id="cnt_reqexs_titulo" class="cnt_reqexs_titulo">
+                {{ prd_req_Exist.nom_reqexs}}
+            </div>
+        </div>
+    </div>
+    <div id="" class="trj_pry_br">
+        <a  href="{% url 'cn_det_reqexist' %}">
+            <i class="material-icons">description</i>
+            <span>Ver</span>
+        </a>
+    </div>
+</div> 
+{% endfor %}
+{% endblock articulo %}
