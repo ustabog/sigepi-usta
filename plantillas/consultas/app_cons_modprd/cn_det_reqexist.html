@@ -1,0 +1,20 @@
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta del requisito de existencia de un producto de investigacion</p>
+</div>
+
+{% if form.errors %}
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+{% endif %}
+
+<!--CONSULTAR UN REQUISITO DE EXISTENCIA-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for prd_req_Exist in  object_list %}
+        <p><b>Nombre del requisito de existencia:</b><label> {{ prd_req_Exist.nom_reqexs}} </label></p>
+        <p><b>Descripcion del requisito de existencia:</b></b><label> {{ prd_req_Exist.desc_reqexs}} </label></p>
+        {% endfor %}
+    </div>
+</form>

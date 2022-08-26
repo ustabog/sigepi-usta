@@ -22,5 +22,19 @@ class vst_regprd(CreateView):
     template_name ='mod_prd_frm_registrar.html'
     success_url = reverse_lazy('cn_prd')
 
-    def get_obj_regprd(self):
+    def get_queryset(self):
         return prd_base.objects.filter(id_usu =self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'registrar un producto'
+        context['action'] = 'add'
+        return context
+
+class vst_regreqexist(CreateView):
+    model= prd_req_Exist
+    template_name ='mod_prd_frm_reqexist.html'
+    success_url = reverse_lazy('cn_prd')
+
+    def get_queryset(self):
+        return prd_req_Exist.objects.filter(id_reqexs =self.request.user)

@@ -5,7 +5,24 @@
 
 
 {% block articulo %}
-<div class="cnt_norm" style="flex-direction: row; flex-wrap: wrap;">
+<div class="cn_prd_norm" style="flex-direction: row; flex-wrap: wrap;">
 <h2>Productos</h2>
 <br>
 {% for prd_base in  object_list %}
+<div id="trj_prd" class="trj_prd">
+    <div id="trj_prd" class="trj_prd">
+        <div id="prd_sup" class="prd_sup">       
+            <div id="cnt_prd_titulo" class="cnt_prd_titulo">
+                {{ prd_base.nom_prd}}
+            </div>
+        </div>
+    </div>
+    <div id="" class="trj_pry_br">
+        <a  href="{% url 'cn_det_prd' %}">
+            <i class="material-icons">description</i>
+            <span>Ver</span>
+        </a>
+    </div>
+</div> 
+{% endfor %}
+{% endblock articulo %}

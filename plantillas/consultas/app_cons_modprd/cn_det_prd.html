@@ -1,0 +1,30 @@
+<!--- Plantilla para la vista de los detalles del producto - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 25 -08 -2022 --->
+
+
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta del producto de investigacion</p>
+</div>
+
+{% if form.errors %}
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+{% endif %}
+
+<!--CONSULTAR UN PRODUCTO-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for prd_base in  object_list %}
+        <p><b>Nombre del producto:</b><label> {{ prd_base.nom_prd}} </label></p>
+        <p><b>Proyectos de los cuales se basa:</b></b><label> {{ prd_base.ids_pry}} </label></p>
+        <p><b>Propietarios del producto:</b><label> {{ prd_base.ids_usu}}</label></p>
+        <p><b>Fecha de entrega estimado:</b><label> {{ prd_base.fech_entrega}}</label></p>
+        <p><b>Tipo de producto: </b><label> {{ prd_base.id_tipo_prd_minc}} </label></p>
+        <p><b>Plantilla que rige el producto: </b><label> {{ prd_base.id_rl_prd_campos}} </label></p>
+        {% endfor %}
+    </div>
+</form>

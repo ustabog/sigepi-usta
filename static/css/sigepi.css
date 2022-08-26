@@ -290,6 +290,7 @@
 .br_app .categ_br_herr {
   position: absolute;
   background-color: var(--color-primario);
+  color: var(--color-primario-tr);
   z-index: 9;
   left: 3.7em;
   top: 0;
