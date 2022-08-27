@@ -38,7 +38,6 @@ from modpry.app_recur.urls import *
 from modpry.app_regprgi.views import *
 from modpry.app_regprgi.func import *
 from modpry.app_regprgi.urls import *
-from modprd.app_regprd.views import *
 from .models import *
 
 urlpatterns = [
@@ -274,9 +273,6 @@ urlpatterns = [
     path('archilninv/<id>',fn_archi_lninv, name = 'archi_lninv'), #Archivar línea de investigación
     path('elilninv/<id>',fn_eli_lninv, name = 'eli_lninv'),#Eliminar línea de investigación
 
-    #URL para el registro de un producto
-    path('iniprd', ini_regprd().view_prd, name='ini_prd'), 
-    path('crearprd/', vst_regprd.as_view(), name='crear_prd') 
 ]
 
 

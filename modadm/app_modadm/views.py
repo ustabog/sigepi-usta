@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from .models import *
 from .form import *
 from modcons.app_cons.form import *
-from .func import rutina_prueba, sys_app, sys_mod
+from .func import rutina_prueba, sys_app, sys_mod, sys_rol
 #from .roles import roles
 
 #Clase que presenta la portada del administrador de SIGEPI.

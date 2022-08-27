@@ -12,7 +12,7 @@ from modpry.app_regpry.models import *
 INF_APP = [
     #Diccionario para la aplicación de convenio
     ['nom','app_conve'],
-    ['Titulo', "App Convenio"],
+    ['titulo', "App Convenio"],
     ['desc',"aplicación para la definición de un convenio de un proyecto o producto"],
     ['url_doc','doc'],
     ['url_instal','modpry/app_conve'],
@@ -24,7 +24,7 @@ INF_APP = [
     ['instalada', True],
     ['visible', True],
     ['externa', False],
-    ['tipo_app', 'SIGEPI-BASE'],
+    ['tipo_app','SIGEPI-BASE'],
     ['ico','#']
     ]
 

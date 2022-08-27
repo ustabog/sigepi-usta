@@ -1,11 +1,13 @@
 import email
 from nntplib import GroupInfo
+from random import choices
 from django.db import models
 from django.contrib.auth.models import Group
 import datetime
 from django.utils import timezone
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import AbstractUser, User
+from django.contrib.contenttypes.models import ContentType
 from .dic import *
 
 #Diccionario de información de instalación de aplicación
@@ -157,13 +159,14 @@ class adm_app(models.Model):
 
 #Clase que almacena los datos del objeto rol, los roles son definidos por cada aplicación y los permisos de acceso a los modelos de cada app
 #hereda de grupos, creando un grupo cada vez que se registra un nuevo rol. Se define en el diccionario ROL_APP de cada app.
-class adm_rol(Group):
+class adm_rol(models.Model):
     etq_rol = models.CharField('Etiqueta: ', max_length=30, null=False, blank = False) # Etiqueta del Rol
     desc = models.CharField('Descripcion del Rol: ', max_length=30, null=False, blank = False) # Descripcion del Rol
     tipo = models.IntegerField(null = False, blank = False, choices = TIPO_ROL, default = 0) # Ver diccionario TIPO_ROL
     id_mod = models.ForeignKey(adm_mod, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Módulo
     id_app = models.ForeignKey(adm_app, on_delete=models.CASCADE, null=True, blank =True)  #Identificador de Aplicación
     req_reg = models.BooleanField('¿Usuario(a) registrado(a)?', default=False) # Variable que indica si el rol require estar registrado y con sesión activa en plataforma o no.
+    id_gru = models.OneToOneField(Group, on_delete=models.CASCADE, unique=True) # Relacion con auth_rol
     class Meta:
         verbose_name = 'rol de usuario'
         verbose_name_plural = 'roles de usuario'
@@ -173,8 +176,9 @@ class adm_rol(Group):
 
 class adm_func(models.Model):
     id_func = models.AutoField(primary_key = True) # identificador único de función
+    desc_func = models.CharField(max_length=80, null=True, blank = True) #Descripción de funcion
     nom_func = models.CharField('Nombre de la función: ', max_length=30, null=False, blank = False) # Nombre de la función
-    lib_func = models.CharField('directorio y Librería que contiene la función: ', max_length=50, null=False, blank = False) # Librería que contiene la función ej. 'modadm/app_regusu/func.py'
+    lib_func = models.CharField('directorio y Librería que contiene la función: ', max_length=200, null=False, blank = False) # Librería que contiene la función ej. 'modadm/app_regusu/func.py'
     url_loc = models.URLField('Direción local a la documentación o manual de la aplicación', null=False, blank=False)  # Direción local donde se encuentra la librería que contiene la función
     com_exc = models.CharField('Comando de Ejecución de la Función: ', max_length=20, null=False, blank = False) # Comando de Ejecución de la Función
     text = models.CharField('Nombre de Función: ', max_length=20, null=False, blank = False) # Nombre de Función para menús o etiquetas.
@@ -199,6 +203,16 @@ class rl_func_rol(models.Model):
     class Meta:
         verbose_name = 'Relación rol y función'
         verbose_name_plural = 'Relaciones entre roles y funciones'
+
+
+#Modelos para el control de permisos 
+class adm_perm(models.Model):
+    id_rol=models.OneToOneField(adm_rol,on_delete=models.CASCADE,null=False)
+    id_mod=models.OneToOneField(ContentType,on_delete=models.CASCADE,null=False)
+    agregar = models.BooleanField(null=False, default=False)
+    editar = models.BooleanField(null=False, default=False)
+    eliminar = models.BooleanField(null=False, default=False)
+    ver = models.BooleanField(null=False, default=False)
 
 
 #Modelos para el registro de acceso a plataforma, roles y funciones
