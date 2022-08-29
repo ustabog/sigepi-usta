@@ -1,14 +1,14 @@
 import email
 from nntplib import GroupInfo
 from random import choices
+from .dic import *
 from django.db import models
 from django.contrib.auth.models import Group
 import datetime
 from django.utils import timezone
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import AbstractUser, User
-from django.contrib.contenttypes.models import ContentType
-from .dic import *
+#from django.contrib.contenttypes.models import ContentType
 
 #Diccionario de información de instalación de aplicación
 INF_APP = [
