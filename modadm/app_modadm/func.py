@@ -18,23 +18,21 @@ from django.apps import apps
 
 
 INF_FUNC=[
-    dict(nom_func='reg_mod',desc_func='Aplicacion que registra en el modelo mod_adm los modulos descritos en Sigepi',url_loc='#',com_exc='sys_mod.reg_mod()',context='Registrar modulos',ico='Source'),
+    {"nom_func":'reg_mod',"desc_func":'Aplicacion que registra en el modelo mod_adm los modulos descritos en Sigepi',"url_loc":'#',"com_exc":'sys_mod.reg_mod()',"context":'Registrar modulos',"ico":'Source'},
 
-    dict(nom_func='ext_var',desc_func='Función que devuelve un variable de un archivo de python sin ejecutarlo',url_loc='#',com_exc='sys_utils.ext_var()',context='Extraer variable',ico='DataArray'),
+    {"nom_func":'ext_var',"desc_func":'Función que devuelve un variable de un archivo de python sin ejecutarlo',"url_loc":'#',"com_exc":'sys_utils.ext_var()',"context":'Extraer variable',"ico":'DataArray'},
 
-    dict(nom_func='comp_ver',desc_func='Función que compara dos versiones devuelve TRUE si v1 > v2 si no FALSE ',url_loc='#',com_exc='sys_utils.comp_ver()',context='Comparar versiones',ico='Balance'),
+    {"nom_func":'comp_ver',"desc_func":'Función que compara dos versiones devuelve TRUE si v1 > v2 si no FALSE ',"url_loc":'#',"com_exc":'sys_utils.comp_ver()',"context":'Comparar versiones',"ico":'Balance'},
 
-    dict(nom_func='validar modulo',desc_func='Función que devuelve el número de modulos registrados en el modelo adm_mod',url_loc='#',com_exc='sys_mod.val_mod()',context='Validar existencia del modulo',ico='Pageview'),
+    {"nom_func":'val_mod',"desc_func":'Función que devuelve el número de modulos registrados en el modelo adm_mod',"url_loc":'#',"com_exc":'sys_mod.val_mod()',"context":'Validar existencia del modulo',"ico":'Pageview'},
 
-    dict(nom_func='validar modulo',desc_func='Función que extrae la informacion de INF_APP y la registra en los modelos ',url_loc='#',com_exc='sys_app.reg_app()',context='Registrar aplicaciones',ico='AppShortcut'),
+    {"nom_func":'reg_app',"desc_func":'Función que extrae la informacion de INF_APP y la registra en los modelos ',"url_loc":'#',"com_exc":'sys_app.reg_app()',"context":'Registrar aplicaciones',"ico":'AppShortcut'},
 
-    dict(nom_func='val_inst_app',desc_func='Funcion que devuelve un True si se han hecho las migraciones de la aplicacion dada como parametro de entrada',url_loc='#',com_exc='sys_app.val_inst_app()',context='Registrar aplicaciones',ico='AppShortcut'),
+    {"nom_func":'val_inst_app',"desc_func":'Funcion que devuelve un True si se han hecho las migraciones de la aplicacion dada como parametro de entrada',"url_loc":'#',"com_exc":'sys_app.val_inst_app()',"context":'Registrar aplicaciones',"ico":'AppShortcut'},
 
-    dict(nom_func='val_app',desc_func='Funcion que devuelve un True si existe una aplicación con el nombre dado como parametro de entrada',url_loc='#',com_exc='sys_app.val_app(nom)',context='Validar aplicación',ico='SystemSecurityUpdateGood'),
-
-    dict(nom_func='reg_roles',desc_func='Funcion que extrae los roles definidos en la listas ROL_APP y los almacena en el modelo modadm_rol',url_loc='#',com_exc='sys_rol.reg_roles()',context='Registrar Roles',ico='PersonSearch'),
-
-
+    {"nom_func":'val_app',"desc_func":'Funcion que devuelve un True si existe una aplicación con el nombre dado como parametro de entrada',"url_loc":'#',"com_exc":'sys_app.val_app(nom)',"context":'Validar aplicación',"ico":'SystemSecurityUpdateGood'},
+    
+    {"nom_func":'reg_roles',"desc_func":'Funcion que extrae los roles definidos en la listas ROL_APP y los almacena en el modelo modadm_rol',"url_loc":'#',"com_exc":'sys_rol.reg_roles()',"context":'Registrar Roles',"ico":'PersonSearch'}
 
 ]
 
@@ -42,6 +40,7 @@ INF_FUNC=[
 #Clase con algoritmos utiles para el funcionamiento de func.py
 class sys_utils():
 
+    
     # extraer variables de python sin ejecutar el script, requiere la ubicacion del archivo y nombre de variable
     def ext_var(mod_path, variable, default=None, *, raise_exception=False):
         ModuleType = type(ast)
@@ -306,24 +305,29 @@ class sys_func():
 
                             func=inf_func[i]
 
+                            #Obtencion de la ruta de la función
+                            lib_func=ubicacion
+                            nom_app=ubicacion.split("/")[-2]
+
                             #Información suministrada por el usuario
                             nom_func=func['nom_func']
                             url_loc=func['url_loc']
                             com_exc=func['com_exc']
                             context=func['context']
                             ico=func['ico']
+                            desc_func=func['desc_func']
+                            id_app=(adm_app.objects.filter(nom=nom_app).order_by("-id_app").values()[0]).get('id_app')
 
-                            #Obtencion de la ruta de la función
-                            lib_func=ubicacion
-                            nom_app=ubicacion.split("/")[-1]
-                            id_app=adm_app.objects.filter(nom=nom_app).get(id_app)[0]
-
-
-                            p=adm_func(nom_func=nom_func,url_loc=url_loc,com_exc=com_exc,context=context,ico=ico,lib_func=lib_func,id_app=id_app)
-                            p.save()
-
-                        
+                            if adm_func.objects.filter(nom_func=nom_func,lib_func=lib_func).exists():
+                                print("LA FUNCION YA ESTA REGISTRADA")
+                            else:
+                                p=adm_func(nom_func=nom_func,url_loc=url_loc,com_exc=com_exc,context=context,ico=ico,lib_func=lib_func,id_app_id=id_app,desc_func=desc_func)
+                                p.save()
+                  
         return 
+
+rutina_prueba()
+sys_func.reg_func()
 
 # Funciones pendientes
 #registrar funciones de aplicación
