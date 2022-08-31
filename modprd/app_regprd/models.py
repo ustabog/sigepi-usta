@@ -36,20 +36,27 @@ ROL_APP = [
     (2,'Investigador(a) Secundario'),
     (3,'Colaborador(a)')
     ]
-
+#Clase para la creacion de los requisitios de existencia de un producto
 class prd_req_Exist(models.Model):
     id_reqexs=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del requerimiento de existencia LLAVE PRIMARIA
     nom_reqexs=models.CharField('Nombre del Requerimiento de existencia: ', max_length=255, blank=False,null=False)#Nombre del requerimiento de existencia
     desc_reqexs=models.TextField('Descripcion del Requerimiento de existencia: ', blank=True,null=False)#descripcion del requerimiento de existencia
 
-class prd_categ(models.Model):
-    id_categ=models.AutoField(primary_key= True, null=False, unique=True)# Identificador de la categoria LLAVE PRIMARIA
-    nom_categ=models.CharField('Nombre de la categoria: ', max_length=255, blank=False,null=False)#Nombre de la categoria
+#Clase para la creacion de los requisitios de calidad de un producto
 
 class prd_req_cal(models.Model):
     id_reqcal=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del requerimiento de calidad LLAVE PRIMARIA
-    id_categ=models.ForeignKey(prd_categ, blank=False, null=True ,on_delete=models.SET_NULL, db_constraint=True)#Identificador de la categoria respectiva del requerimiento de calidad
     desc_reqcal=models.TextField('Descripcion del Requerimiento de calidad: ', blank=True,null=False)#descripcion del requerimiento de calidad
+
+#Clase para la creacion de las categorias de un producto
+
+class prd_categ(models.Model):
+    id_categ=models.AutoField(primary_key= True, null=False, unique=True)# Identificador de la categoria LLAVE PRIMARIA
+    id_reqcal=models.ForeignKey(prd_req_cal, blank=False, null=True ,on_delete=models.SET_NULL, db_constraint=True)#Identificador del requerimiento de calidad para el registro de la categoria
+    nom_categ=models.CharField('Nombre de la categoria: ', max_length=255, blank=False,null=False)#Nombre de la categoria
+    peso_rel=models.PositiveIntegerField(null=False, blank=False, default=0)#Peso relativo de la categoria del producto
+
+#Clase para la creacion de campos para un producto
 
 class campo(models.Model):
     id_campo =  models.AutoField(primary_key= True, null=False, unique=True)# Identificador del campo LLAVE PRIMARIA
@@ -57,21 +64,25 @@ class campo(models.Model):
     nom_campo=models.CharField('Nombre del campo: ', max_length=255, blank=False, null=False)#Nombre del campo
     rango = models.CharField('Rango: ', max_length=255, blank=False, null=False) #Rango del campo
     Formato = models.CharField('Formato: ', max_length=255, blank=False, null=False) #Formato del campo
-    valor_def = models.IntegerField('Valor por defecto del campo:', null=False, blank=False, default=0)# Valor por defecto del campo
+    valor_def = models.PositiveIntegerField('Valor por defecto del campo:', null=False, blank=False, default=0)# Valor por defecto del campo
     desc_campo= models.TextField('descripcion del campo: ', null=False, blank=False)#descripcion del campo
     
+#Clase para la creacion de las plantillas de los productos segun los campos
+
 class prd_plt_desc(models.Model):
     id_plt_desc = models.AutoField(primary_key= True, null=False, unique=True)# Identificador de la plantilla de la descripcion del producto LLAVE PRIMARIA
     id_campo = models.ForeignKey(campo,blank=False,on_delete=models.SET_NULL, null=True , db_constraint=True)# Identificador de campo de plantilla
     nom_plt=models.CharField('Nombre de la plantilla: ', max_length=255, blank=False, null=False)#Nombre de la plantilla para el producto
     desc_plt=models.TextField('Descripcion de la plantilla: ', blank=False, null=False) #Descripcion de la plantilla de producto
 
+#Clase para la relacion de un producto y un campo 
+
 class rl_prd (models.Model):
     id_rl =models.AutoField(primary_key=True, null=False, unique=True, blank=False )# Identificador de la relacion de producto y campo LLAVE PRIMARIA
     id_Campo= models.ForeignKey(campo, null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)#Identificador del campo
     valor_campo= models.IntegerField("Valor de campo: ", null=False, blank=False, default=0)#Valor de campo
 
-# Clases de la aplicacion de registro de productos
+#Clase para la creacion de un tipo de producto
 
 class prd_tipo(models.Model):
     id_tipo=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del tipo del producto LLAVE PRIMARIA
@@ -79,16 +90,17 @@ class prd_tipo(models.Model):
     id_reqexist=models.ForeignKey(prd_req_Exist,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificadores de los requerimientos de existencia
     id_categ=models.ForeignKey(prd_categ,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificador de la categoria
     id_reqcal=models.ForeignKey(prd_req_cal,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificadores de los requerimientos de calidad
-    peso_rel=models.IntegerField(null=False, blank=False, default=0)#Peso relativo de la categoria del producto
     peso_abs=models.IntegerField(null=False, blank=False, default=0)#Peso absoluto del producto segun minciencias
-    vent_obs=models.IntegerField(null=False, blank=False, default=0)#ventana de observacion
+    vent_obs=models.PositiveIntegerField(null=False, blank=False, default=0)#ventana de observacion
     id_plt_desc=models.ForeignKey(prd_plt_desc,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
     tipo_cal=models.CharField('clasificacion segun la calidad: ', max_length=10,blank=True, null=False)
+
+# Clases de la aplicacion de registro de productos
 
 class prd_base(models.Model):
     id_prd=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del producto LLAVE PRIMARIA
     ids_pry=models.ForeignKey(pry_base, null=True,blank=False, on_delete=models.SET_NULL, db_constraint=True)# Identificador del propietario
-    nom_prd=models.CharField('Nombre del proyecto :',max_length=255, blank=False, null=False ) # Nombre del producto
+    nom_prd=models.CharField('Nombre del producto :',max_length=255, blank=False, null=False ) # Nombre del producto
     ids_usu=models.ForeignKey(User, null=True,blank=False, on_delete=models.SET_NULL, db_constraint=True)# Identificador del propietario
     fech_reg=models.DateTimeField('Fecha de registro: ', blank=False, null=False) #fecha de registro
     fech_entrega=models.DateTimeField('Fecha de entrega: ') #fecha de entrega

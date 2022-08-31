@@ -8,7 +8,11 @@ from .models import *
 from modprd.app_regprd.views import *
 
 urlpatterns = [
-    path('iniprd', ini_regprd().view_prd, name='ini_prd'), 
-    path('crearprd/', vst_regprd.as_view(), name='crear_prd'), 
-    path('creareqexs/', vst_regreqexist.as_view(), name='reqexs')
+    path('iniprd', ini_regprd().view_prd, name='ini_prd'), # url al inicio de la interfaz de productos
+    path('crearprd/', vst_regprd.as_view(), name='crear_prd'), # url para la interfaz de creacion de productos
+    path('creareqexs/', vst_regreqexist.as_view(), name='reqexs'),# urls para la interfaz de creacion de requerimientos de existencia
+    path('creareqcal/', vst_regreqcal.as_view(), name='reqcal'),# urls para la interfaz de creacion de requerimientos de calidad
+    path('crearcateg/', vst_regcateg.as_view(), name='regcateg'),# urls para la interfaz de creacion de categoria
+    path('creartipoprd/', vst_regtipo.as_view(), name='regtipo'),# urls para la interfaz de creacion de tipo de producto
+    path('crearcampo/', vst_regcampo.as_view(), name='regcampo'),# urls para la interfaz de creacion de campo 
 ]
