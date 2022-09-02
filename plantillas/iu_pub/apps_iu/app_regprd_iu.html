@@ -14,9 +14,16 @@
 {% block app%}
 <div id="menu_app" class="menu_app">
     {% block menu_app %} 
-    <button type="button" name="crear">
-        Crear
-    </button>
+    <a href="{% url 'crear_prd' %}">
+        <button type="button" name="crear">
+            Crear
+        </button>
+    </a>
+    <a href="{% url 'selec_prd' %}">
+        <button type="button" name="crear" >
+            Editar
+        </button>
+    </a>    
     {% endblock menu_app %}
 </div>
 <div id="articulo" class="articulo">

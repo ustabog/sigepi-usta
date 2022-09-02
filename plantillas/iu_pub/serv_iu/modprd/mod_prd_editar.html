@@ -1,0 +1,19 @@
+<!--- Plantilla para la vista de la edicion de producto - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 01 -09 -2022 --->
+
+{% extends 'app_regprd_iu.html' %}
+{% load static %}
+
+{% block articulo %}
+<!--Plantilla para editar -->
+<div class="cnt_norm">
+  <h1>{{ tit_form }}</h1> 
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p}}
+      <button type="submit" >Editar</button>
+    </form>
+</div>
+{% endblock articulo %}

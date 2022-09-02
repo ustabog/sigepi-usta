@@ -1,3 +1,8 @@
+<!--- Plantilla para la vista del registro de producto - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 30 -08 -2022 --->
+
 {% extends 'app_regprd_iu.html' %}
 {% load static %}
 
@@ -8,11 +13,15 @@
 
   <div class="container">
       <div class="column form-group text-center">
-          <h3>registrar</h3>
+          <h3>registra</h3>
           <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Crear">
+            <a href="">
+                <button type="button" name="Crear" >
+                    Crear
+                </button>
+            </a>   
         </form>
           </form>
       </div>

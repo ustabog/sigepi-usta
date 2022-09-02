@@ -1,3 +1,9 @@
+<!--- Plantilla para la vista del formulario del requerimiento de existencia - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 29 -08 -2022 --->
+
+
 {% extends 'app_regreq_exist_iu.html' %}
 {% load static %}
 
@@ -12,7 +18,11 @@
           <form method="post">
             {% csrf_token %} 
             {{ form.as_p }}
-            <input type="submit" value="Crear"> 
+            <a href="">
+                <button type="button" name="Crear" >
+                    Crear
+                </button>
+            </a>  
         </form>
           </form>
       </div>

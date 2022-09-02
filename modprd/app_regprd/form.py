@@ -27,6 +27,7 @@ class form_prd(forms.ModelForm):
             'ids_usu': 'Propietario del producto',
         }
 
+#---------------------------FORMULARIOS PARA EL REGISTRO DE PRODUCTOS --------------------------------
 #Formulario para el registro de un producto
 
 class form_reg_prd(forms.ModelForm):
@@ -44,6 +45,22 @@ class form_reg_prd(forms.ModelForm):
             'ids_pry': 'Proyecto de referencia',
             'ids_usu': 'Propietario del producto',
         }
+
+#Formulario para la seleccion del producto a editar
+
+class form_selec_prd(forms.ModelForm):
+    class Meta:
+        model = prd_base
+        fields = (
+            'ids_pry',
+            'nom_prd'
+
+        )
+        labels ={
+            'ids_pry': 'Producto que se va a editar',
+            'nom_prd': 'Producto que se va a nombrar ',
+        }
+
 
 #Formulario para el registro  de los requerimientos de existencia 
 

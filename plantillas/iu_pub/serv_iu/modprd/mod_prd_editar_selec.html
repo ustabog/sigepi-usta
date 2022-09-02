@@ -1,27 +1,26 @@
-<!--- Plantilla para la vista del formulario de campo - plantillas para SIGEPI
+<!--- Plantilla para la vista de la seleccion de producto - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 30 -08 -2022 --->
+#fecha 01 -09 -2022 --->
 
-{% extends 'app_regcampo_iu.html' %}
+{% extends 'app_regprd_iu.html' %}
 {% load static %}
 
 {% block articulo %}
   {% if form.errors %}
-      <p>No se ha registrado correctamente. Por favor, inténtalo de nuevo.</p>
+      <p>El producto que usted ha seleccionado genera conflicto</p>
   {% endif %}
 
   <div class="container">
       <div class="column form-group text-center">
-          <h3>registrar</h3>
+          <h3>seleccionar</h3>
           <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <a href="">
-                <button type="button" name="Crear" >
-                    Crear
+            <a href="{% url 'editar_prd' %}">
+                <button type="button" name="Editar" >
+                    Editar
                 </button>
-            </a>    
         </form>
           </form>
       </div>
