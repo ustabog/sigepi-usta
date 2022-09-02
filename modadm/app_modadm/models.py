@@ -1,4 +1,5 @@
 import email
+from email.policy import default
 from nntplib import GroupInfo
 from random import choices
 from .dic import *
@@ -8,7 +9,7 @@ import datetime
 from django.utils import timezone
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import AbstractUser, User
-#from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.models import ContentType
 
 #Diccionario de información de instalación de aplicación
 INF_APP = [
@@ -184,8 +185,9 @@ class adm_func(models.Model):
     text = models.CharField('Nombre de Función: ', max_length=20, null=False, blank = False) # Nombre de Función para menús o etiquetas.
     context = models.CharField('Contexto: ', max_length=20, null=False, blank = False) # Nombre de Función para menús contextuales o emergentes y panel de inf.
     activa = models.BooleanField('¿Activa o desactivada?', default=False)  # La función está activa o desactiva.
+    gru_ind = models.IntegerField(null=True, blank=True, choices = GRUP_IND, default = 999) # Grupo de indice que encapsula a la función.
     indice = models.IntegerField('Número de índice en la aplicación',null=True, blank = True) #Índice de selección, para navegar con el tabulador.
-    id_app = models.OneToOneField(adm_app, on_delete=models.CASCADE, null=False, blank = False) #identificador de aplicación
+    id_app = models.ForeignKey(adm_app, on_delete=models.CASCADE, null=False, blank = False) #identificador de aplicación
     ico = models.CharField('nombre del la imagen del ícono a utilizar', max_length=40) #nombre del ícono a utilizar según las fuentes disponibles ej. 'person' (material icons por defecto)
     visible = models.BooleanField('¿Activa o desactiva la visibilidad de la función?', default=False)  # Activa o desactiva la visibilidad de la funcion.
     class Meta:

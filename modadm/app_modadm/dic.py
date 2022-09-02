@@ -59,6 +59,14 @@ TIPO_ROL = [
     (3, 'Modulo'),#'Usuario(a) Individual'
     ]
 
+GRUP_IND=[
+    (1, 'Inicio'),
+    (2,'Ver'),
+    (3, 'Editar'),
+    (4, 'Ayuda'),
+    (999, 'Otro')
+]
+
 
 #Tipo de aplicativo
 TIPO_APP = [
