@@ -60,6 +60,16 @@ class vst_updprd(UpdateView):
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
 
+#Vista para la eliminacion de un producto
+
+class vst_delprd (DeleteView):
+    model = prd_base
+    template_name ='mod_prd_eliminar.html'
+    success_url = reverse_lazy('cn_prd')
+
+    def get_queryset(self):
+        return prd_base.objects.filter(nom_prd =self.request.user)
+
 #Vista para el registro de un requerimiento de existencia
 
 class vst_regreqexist(CreateView):
