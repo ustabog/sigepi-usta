@@ -2,14 +2,14 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from django.template import Template,Context,loader
 from django.core import serializers
-from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView, DetailView
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 #from rest_framework import viewsets
 from .models import *
 from .form import *
@@ -48,17 +48,32 @@ class vts_reg_mod(CreateView, PermissionRequiredMixin):
     template_name = 'app_ma_frm_nvo_mod.html'
     success_url = reverse_lazy('consulta_modulos')
     success_message = 'El modelo fue creado satisfactoriamente'
-    permission_required = 'mod.add_mod'   
+    permission_required = 'mod.add_mod'
+    
+    
+
+
+#Vista de detalle de un módulo registrado en el sistema 
+class vts_ver_mod(DetailView, PermissionRequiredMixin):
+    model = adm_mod
+    form_class = frm_mod
+    template_name = 'cn_esp_mod.html'
+    success_url = reverse_lazy('cn_esp_mod.html')
+    success_message = 'Detalles cargados correctamente'
+    permission_required = 'view_adm_mod'
+   
+
 
 #Vista de listado de módulos registrados en el sistema
-class vts_ls_mod(ListView, PermissionRequiredMixin): #hereda de listwview
+class vts_ls_mod(LoginRequiredMixin, PermissionRequiredMixin, ListView): #hereda de listwview
     #información de las personas
     model = adm_mod
     form_class = frm_mod
     template_name = 'cn_mod.html'
     success_url = reverse_lazy('cn_mod.html')
     success_message = 'Listado cargado correctamente'
-    permission_required = 'mod.view_mod' 
+    permission_required = 'adm_mod.view_adm_mod'
+    permission_denied_message = "NO!"   
 
 #Vista de edición o modificación de módulos registrados en el sistema
 class vts_edt_mod(UpdateView, PermissionRequiredMixin):
@@ -88,10 +103,10 @@ class vts_reg_app(CreateView, PermissionRequiredMixin):
 
 #Vista del listado de aplicaciones registradas en el sistema
 class vts_ls_app(ListView, PermissionRequiredMixin): #hereda de listwview
-    model = adm_mod
+    model = adm_app
     form_class = frm_cons_app
-    template_name = 'cn_app.html'
-    success_url = reverse_lazy('cn_app.html')
+    template_name = 'cn_app_mod.html'
+    success_url = reverse_lazy('cn_app_mod.html')
     success_message = 'Listado cargado correctamente'
     permission_required = 'adm_mod.view_adm_mod'
 

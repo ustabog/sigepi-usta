@@ -1,5 +1,6 @@
 {% extends 'inicio_adm.html' %}
 {% block titulo %} Listado de Aplicaciones de Modulos {% endblock titulo %}
+{% block app %}
 {% block cuerpo %}
 {% if form.errors %}
     <p>La lista de aplicaciones de módulos no se ha podido consultar.</p>
@@ -12,32 +13,36 @@
                 <tr>
                     <th>#</th>
                     <th>Titulo</th>
-                    <th>Descripción</th>
-                    <th>URL</th>
+                    <!-- <th>Descripción</th> -->
+                    <!-- <th>URL</th> -->
                     <th>Versión</th>
-                    <th>Módulo Principal</th>
-                    <th>Versión</th>
+                    <!-- <th>Módulo Principal</th> -->
+                    <!-- <th>Versión</th> -->
                     <th>Activo</th>
                     <th>Instalada</th>
                     <th>Visible</th>
-                    <th colspan="2">Opciones</th>
+                    <th>Ver</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
-            {% for mod in  object_list %}
+            {% for app_mod in  object_list %}
                 <tbody>
                     <tr>
-                        <td> {{ app_mod.id_app }} </td>
+                        <td> {{ app_mod.id_mod }} </td>
                         <td> {{ app_mod.titulo}} </td>
-                        <td> {{ app_mod.desc}} </td>
-                        <td> {{ app_mod.url_doc}} </td>
+                        <!-- <td> {{ app_mod.desc}} </td> -->
+                        <!-- <td> {{ app_mod.url_doc}} </td> -->
                         <td> {{ app_mod.version }} </td>
-                        <td> {{ app_mod.mod_prin}} </td>
-                        <td> {{ app_mod.ver_mod }} </td>
+                        <!-- <td> {{ app_mod.nom}} </td> -->
+                        <!-- <td> {{ app_mod.ver_mod }} </td> -->
                         <td> {{ app_mod.activo }}  </td>
                         <td> {{ app_mod.instalada }}  </td>
                         <td> {{ app_mod.visible }}  </td>
+                        <td> <a href="../cons_esp_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-info">Ver</a><br></td>
                         <td> <a href="../edt_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-info">Editar</a><br></td>
-                        <td> <a href="../eli_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-danger">Eliminar</a><br><br></td> 
+                        <td> <a href="../eli_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-danger">Eliminar</a><br></td> 
+                        
                     </tr>
                 </tbody>
             {% endfor %}
@@ -45,3 +50,4 @@
     </div>
 </form>
 {% endblock cuerpo %}
+{% endblock app %}

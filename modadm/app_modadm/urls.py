@@ -14,7 +14,8 @@ urlpatterns = [
     
 # crud módulos
     path('reg_mod/', vts_reg_mod.as_view(), name ='reg_mod'),
-    path('cons_mod/', vts_ls_mod.as_view(), name ='consulta_modulos'),
+    path('cons_mod/', vts_ls_mod.as_view(), name ='cons_mod'),
+    path('cons_esp_mod/<int:pk>', vts_ver_mod.as_view(), name ='cons_esp_mod'),
     path('edt_mod/<int:pk>', vts_edt_mod.as_view(), name ='edt_mod'),
     path('eli_mod/<int:pk>', vts_elim_mod.as_view(), name ='eli_mod'),
 # crud Aplicaciones

@@ -3,7 +3,7 @@
 <html lang="es" dir="ltr">
 
 <head id='metadatos'>
-    <link rel="stylesheet" href="{% static 'css/sigepi_adm.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sigepi.css' %}">
     <link rel="stylesheet" href="{% static 'fuentes/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2' %}" >
     {% block meta_head %}{% endblock meta_head %}
     {% block meta_cuerpo %}{% endblock meta_cuerpo%}
@@ -31,19 +31,26 @@
         </div>
         {% endblock cabecera %}
     </header>
+
+
     <div id="panel_ppal" class="panel_ppal">
         <aside id="panel_der"  class="panel_der">
             {% block panel_der %}
             {% endblock panel_der %}
-        </aside>
+            {% block br_herr %}
+            {% endblock br_herr %}
+        </aside>    
         <div id="app" class="app">
             {% block app%}
             {% endblock app%}
         </div>
+
+        
         <aside id="panel_iz" class="panel_iz">
             {% block panel_iz %}
             {% endblock panel_iz %}
         </aside>
+        
     </div>    
   
     {% block script_meta%}{% endblock script_meta%}
