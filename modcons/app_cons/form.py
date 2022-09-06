@@ -54,44 +54,7 @@ class frm_cons_app(forms.ModelForm):
     
     class Meta:
         model = adm_app
-        fields = [
-            'id_app',
-            'titulo',
-            'desc',
-            'url_doc',
-            'url_instal',
-            'url_pl',
-            'nom_url',
-            'version',
-            'id_mod',
-            'ver_mod',
-            'activo',
-            'instalada',
-            'visible',
-            'externa',
-            'tipo_app',
-            'ico',
-            'id_usu_reg',
-            ]
-        labels = {
-            'id_app' :'Identificador de Aplicación',
-            'titulo' :'Título o Nombre',
-            'desc' :'Descripción',
-            'url_doc' :'URL de la documentación',
-            'url_instal' :'URL relativa de instalación',
-            'url_pl' :'URL de Plantilla de aplicación',
-            'nom_url' :'Nombre de la URL',
-            'version' :'Versión de la Aplicación',
-            'id_mod' :'Identificador del Módulo',
-            'ver_mod' :'Versión del Módulo',
-            'activo' :'¿La aplicación se encuentra activa?',
-            'instalada' :'¿La aplicación está instalada?',
-            'visible' :'¿La aplicación está visible?',
-            'externa' :'¿Es una aplicación externa?',
-            'tipo_app' :'Tipo de aplicación',
-            'ico' :'nombre del ícono de la aplicación ',
-            'id_usu_reg' :'Usuario quien registra la app',
-            }
+        fields = '__all__'
 
 class frm_cons_rol(forms.ModelForm):
     #Clase que consulta los roles registrados en el sistema

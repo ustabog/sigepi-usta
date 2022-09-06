@@ -21,6 +21,7 @@ urlpatterns = [
 # crud Aplicaciones
     path('reg_app/', vts_reg_app.as_view(), name ='reg_app'),
     path('cons_app/', vts_ls_app.as_view(), name ='cons_apps'),
+     path('cons_esp_app/<int:pk>', vts_ver_app.as_view(), name ='cons_esp_app'),
     path('edt_app/<int:pk>', vts_edt_app.as_view(), name ='edt_app'),
     path('eli_app/<int:pk>', vts_elim_app.as_view(), name ='eli_app'),
 

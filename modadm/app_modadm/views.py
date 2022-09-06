@@ -63,7 +63,6 @@ class vts_ver_mod(DetailView, PermissionRequiredMixin):
     permission_required = 'view_adm_mod'
    
 
-
 #Vista de listado de módulos registrados en el sistema
 class vts_ls_mod(LoginRequiredMixin, PermissionRequiredMixin, ListView): #hereda de listwview
     #información de las personas
@@ -109,6 +108,16 @@ class vts_ls_app(ListView, PermissionRequiredMixin): #hereda de listwview
     success_url = reverse_lazy('cn_app_mod.html')
     success_message = 'Listado cargado correctamente'
     permission_required = 'adm_mod.view_adm_mod'
+
+
+#Vista de detalle de un módulo registrado en el sistema 
+class vts_ver_app(DetailView, PermissionRequiredMixin):
+    model = adm_app
+    form_class = frm_cons_app
+    template_name = 'cn_esp_app_mod.html'
+    success_url = reverse_lazy('cn_esp_app_mod.html')
+    success_message = 'Detalles cargados correctamente'
+    permission_required = 'view_adm_mod'
 
 #Vista de edición o modificación de aplicaciones registradas en el sistema
 class vts_edt_app(UpdateView, PermissionRequiredMixin):
