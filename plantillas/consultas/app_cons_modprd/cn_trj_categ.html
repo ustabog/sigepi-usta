@@ -1,0 +1,28 @@
+<!--- Plantilla para la vista de la consulta de una categoria de producto - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 06 -09 -2022 --->
+
+
+{% block articulo %}
+<div class="cn_prd_norm" style="flex-direction: row; flex-wrap: wrap;">
+<h2>Categorias</h2>
+<br>
+{% for prd_categ in  object_list %}
+<div id="trj_categ" class="trj_categ">
+    <div id="trj_categ" class="trj_categ">
+        <div id="categ_sup" class="categ_sup">       
+            <div id="cnt_categ_titulo" class="cnt_categ_titulo">
+                {{ prd_categ.nom_categ}}
+            </div>
+        </div>
+    </div>
+    <div id="" class="trj_categ_br">
+        <a  href="{% url 'cn_det_prd' %}">
+            <i class="material-icons">description</i>
+            <span>Ver</span>
+        </a>
+    </div>
+</div> 
+{% endfor %}
+{% endblock articulo %}

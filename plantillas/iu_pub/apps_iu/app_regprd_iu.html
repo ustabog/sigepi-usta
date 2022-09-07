@@ -19,7 +19,7 @@
             Crear
         </button>
     </a>
-    <a href="{% url 'selec_prd' %}">
+    <a href="{% url 'editar_prd' %}">
         <button type="button" name="crear" >
             Editar
         </button>
@@ -29,6 +29,11 @@
             Eliminar
         </button>
     </a>    
+    <a href="{% url 'selec_prd' %}">
+        <button type="button" name="consultar" >
+            Consultar
+        </button>
+    </a>   
     {% endblock menu_app %}
 </div>
 <div id="articulo" class="articulo">

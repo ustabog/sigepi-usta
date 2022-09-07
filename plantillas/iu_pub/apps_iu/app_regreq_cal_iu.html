@@ -13,19 +13,27 @@
 
 {% block app%}
 <div id="menu_app" class="menu_app">
-    {% block menu_app %} 
-    <button type="button" name="crear">
-        crear
-    </button> <br>
-    <button type="button" name="editar">
-        editar
-    </button> <br>
-    <button type="button" name="eliminar">
-        eliminar
-    </button> <br>
-    <button type="button" name="archivar">
-        archivar
-    </button> <br>
+    {% block menu_app %}
+    <a href="{% url 'crear_reqcal' %}">
+        <button type="button" name="crear">
+            Crear
+        </button> <br>
+    </a>
+    <a href="{% url 'consultar_reqcal' %}">
+        <button type="button" name="crear">
+            Consultar
+        </button> <br>
+    </a>
+    <a href="{% url 'editar_reqcal' %}">
+        <button type="button" name="crear">
+            Editar
+        </button> <br>
+    </a>
+    <a href="{% url 'eliminar_reqcal' %}">
+        <button type="button" name="crear">
+            Eliminar
+        </button> <br>
+    </a>
     {% endblock menu_app %}
 </div>
 <div id="articulo" class="articulo">

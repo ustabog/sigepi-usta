@@ -1,0 +1,25 @@
+<!--- Plantilla para la vista de los detalles de una categoria de un producto - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 06 -09 -2022 --->
+
+{% load static %}
+{% block consulta %}
+<div>
+    <p>Consulta las categorias de los productos de investigacion</p>
+</div>
+
+{% if form.errors %}
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+{% endif %}
+
+<!--CONSULTAR UNA CATEGORIA-->
+<form method="GET">
+    {{form.as_ul}}
+    <div>
+        {% for prd_categ in  object_list %}
+        <p><b>Nombre del requerimiento de existencia:</b><label> {{ prd_categ.nom_categ}} </label></p>
+        <p><b>Peso relativo de la categoria:</b></b><label> {{ prd_categ.peso_rel}} </label></p>
+        {% endfor %}
+    </div>
+</form>

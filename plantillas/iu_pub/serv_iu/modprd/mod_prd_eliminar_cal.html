@@ -1,0 +1,17 @@
+<!--- Plantilla para la vista de la eliminacion de un requerimiento de calidad - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 06 -09 -2022 --->
+
+
+{% extends 'app_regreq_cal_iu.html' %}
+
+{% block articulo %}
+<h1>{{ tit_form }}</h1> 
+  <form class="" action="" method="post">
+    {% csrf_token %}
+    <h3>¿Desea eliminar el requerimiento permanentemente?</h3>
+    <button class = "btm btn-danger"type="submit" >Sí, eliminar</button>
+    <a class= "btn btn-default" href="">Cancelar</a>
+  </form>
+{% endblock articulo %}

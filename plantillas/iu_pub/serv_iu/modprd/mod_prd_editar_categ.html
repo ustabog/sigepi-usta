@@ -1,0 +1,22 @@
+<!--- Plantilla para la vista de la edicion de una categoria de producto - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 06 -09 -2022 --->
+
+{% extends 'app_regcateg_iu.html' %}
+{% load static %}
+
+{% block articulo %}
+<!--Plantilla para editar una categoria de producto-->
+<div class="cnt_norm">
+  <h1>{{ tit_form }}</h1> 
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p}}
+      <a href="">
+            <button type="submit" >Editar</button>
+      </a>
+    
+    </form>
+</div>
+{% endblock articulo %}
