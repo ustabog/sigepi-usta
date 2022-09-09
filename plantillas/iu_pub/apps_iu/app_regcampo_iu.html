@@ -1,7 +1,8 @@
 <!--- Plantilla para la vista del registro de un campo para la tipologia de productos - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 30 -08 -2022 --->
+#fecha 30 -08 -2022 
+#Edicion 08/09/2022--->
 
 {% extends 'inicio.html' %} 
 {% load static %}
@@ -13,22 +14,27 @@
 
 {% block app%}
 <div id="menu_app" class="menu_app">
-    {% block menu_app %} 
-    <button type="button" name="crear">
-        crear_campo
-    </button> <br>
-    <button type="button" name="crear">
-        registrar plantilla 
-    </button> <br>
-    <button type="button" name="editar">
-        editar
-    </button> <br>
-    <button type="button" name="eliminar">
-        eliminar
-    </button> <br>
-    <button type="button" name="archivar">
-        archivar
-    </button> <br>
+    {% block menu_app %}
+    <a href="{% url 'regcampo' %}"> 
+        <button type="button" name="crear">
+            crear_campo
+        </button> <br>
+    </a>
+    <a href="{% url 'editar_campo' %}"> 
+        <button type="button" name="Editar">
+            Editar
+        </button> <br>
+    </a>
+    <a href="{% url 'eliminar_campo' %}"> 
+        <button type="button" name="eliminar">
+            Eliminar
+        </button> <br>
+    </a>
+    <a href=""> 
+        <button type="button" name="consultar">
+            crear_campo
+        </button> <br>
+    </a>
     {% endblock menu_app %}
 </div>
 <div id="articulo" class="articulo">

@@ -91,7 +91,7 @@ class prd_tipo(models.Model):
     id_categ=models.ForeignKey(prd_categ,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificador de la categoria
     id_reqcal=models.ForeignKey(prd_req_cal,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificadores de los requerimientos de calidad
     peso_abs=models.IntegerField(null=False, blank=False, default=0)#Peso absoluto del producto segun minciencias
-    vent_obs=models.PositiveIntegerField(null=False, blank=False, default=0)#ventana de observacion
+    vent_obs=models.PositiveIntegerField(null=False, blank=False, default=0)#ventana de observacion / Tiempo en años para la calificacion del tipo
     id_plt_desc=models.ForeignKey(prd_plt_desc,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
     tipo_cal=models.CharField('clasificacion segun la calidad: ', max_length=10,blank=True, null=False)
 

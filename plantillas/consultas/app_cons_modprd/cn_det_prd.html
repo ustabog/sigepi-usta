@@ -3,9 +3,14 @@
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 25 -08 -2022 --->
 
-
+{% extends 'app_regprd_iu.html' %} 
 {% load static %}
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
 {% block consulta %}
+{% block articulo %}
+
 <div>
     <p>Consulta del producto de investigacion</p>
 </div>
@@ -28,3 +33,11 @@
         {% endfor %}
     </div>
 </form>
+
+{% endblock articulo %}
+{% endblock consulta %}
+
+
+{% block script_app%}{% endblock script_app%}
+{% block script_menu_app%}{% endblock script_menu_app%}
+{% block script_pie_app%}{% endblock script_pie_app%}

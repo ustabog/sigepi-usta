@@ -1,0 +1,29 @@
+<!--- Plantilla para la vista de la seleccion de tipo de producto - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 08 -09 -2022 --->
+
+{% extends 'app_regtipo_iu.html' %}
+{% load static %}
+
+{% block articulo %}
+  {% if form.errors %}
+      <p>El tipo de producto que usted ha seleccionado no se puede editar</p>
+  {% endif %}
+
+  <div class="container">
+      <div class="column form-group text-center">
+          <h3>seleccionar</h3>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <a href="{% url 'editar_tipo' %}">
+                <button type="button" name="Editar" >
+                    Editar
+                </button>
+        </form>
+          </form>
+      </div>
+  </div>
+
+  {% endblock articulo %}

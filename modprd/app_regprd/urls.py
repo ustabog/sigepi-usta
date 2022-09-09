@@ -35,7 +35,13 @@ urlpatterns = [
 
     #Url's Para el registro de tipos de producto
     path('creartipoprd/', vst_regtipo.as_view(), name='regtipo'),# urls para la interfaz de creacion de tipo de producto
+    path('constipoprd/', vst_cons_tipo.as_view(), name='consultar_tipo'),# urls para la interfaz de consulta de tipos de producto
+    path('updtipoprd/', vst_upd_tipo.as_view(), name='editar_tipo'),# urls para la interfaz de edicion de tipos de producto
+    path('deltipoprd/', vst_del_tipo.as_view(), name='eliminar_tipo'),# urls para la interfaz de edicion de tipos de producto
 
     #Url's Para el registro de campos de un producto
     path('crearcampo/', vst_regcampo.as_view(), name='regcampo'),# urls para la interfaz de creacion de campo 
+    #path('conscampo/', vst_cons_camp.as_view(), name='consultar_campo'),# urls para la interfaz de consulta de campos 
+    path('updcampo/', vst_upd_camp.as_view(), name='editar_campo'),# urls para la interfaz de edicion de campos 
+    path('delcampo/', vst_del_camp.as_view(), name='eliminar_campo'),# urls para la interfaz de edicion de campos 
 ]

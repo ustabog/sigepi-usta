@@ -94,12 +94,12 @@ class form_categ(forms.ModelForm):
         fields = (
             'nom_categ',
             'peso_rel',
-            #'id_reqcal',
+            'id_reqcal',
         )
         labels ={
             'nom_categ': 'Nombre de la categoria',
             'peso_rel': 'peso relativo de la categoria',
-            #'id_reqcal': 'Requisitos de calidad para la categoria'
+            'id_reqcal': 'Requisitos de calidad para la categoria'
 
         }
 
@@ -108,19 +108,19 @@ class form_tipo(forms.ModelForm):
         model = prd_tipo
         fields = (
             'nom_tipo',
-            #'id_reqexist',
-            #'id_categ',
+            'id_reqexist',
+            'id_categ',
             'vent_obs',
-            #'id_plt_desc',
+            'id_plt_desc',
             'tipo_cal',
             
         )
         labels ={
             'nom_tipo': 'Nombre del tipo de producto',
-            #'id_reqexist' : 'requerimientos de existencia del tipo de producto',
-            #'id_categ': 'Categoria del tipo de producto',
+            'id_reqexist' : 'requerimientos de existencia del tipo de producto',
+            'id_categ': 'Categoria del tipo de producto',
             'vent_obs': 'Ventana de observacion en dias',
-            #'id_plt_desc':'plantilla utilizada',
+            'id_plt_desc':'plantilla utilizada',
             'tipo_cal': 'Tipologia a utilizar',
         }
 

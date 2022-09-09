@@ -14,23 +14,30 @@
 {% block app%}
 <div id="menu_app" class="menu_app">
     {% block menu_app %} 
-    <button type="button" name="crear">
-        crear_tipo
-    </button> <br>
-    <button type="button" name="editar">
-        editar
-    </button> <br>
-    <button type="button" name="eliminar">
-        eliminar
-    </button> <br>
-    <button type="button" name="archivar">
-        archivar
-    </button> <br>
+    <a href="{% url 'regtipo' %}">
+        <button type="button" name="crear">
+            crear
+        </button> <br>
+    </a>
+    <a href="{% url 'editar_tipo' %}">
+        <button type="button" name="editar">
+            editar
+        </button> <br>
+    </a>
+    <a href="{% url 'eliminar_tipo' %}">
+        <button type="button" name="Eliminar">
+            Eliminar
+        </button> <br>
+    </a>
+    <a href="{% url 'consultar_tipo' %}">
+        <button type="button" name="Consultar">
+            Consultar
+        </button> <br>
+    </a>
     {% endblock menu_app %}
 </div>
 <div id="articulo" class="articulo">
     {% block articulo %} 
-        {% include 'cn_trj_pry.html' %} 
     {% endblock articulo %}
 </div>
 <div id="pie_app" class="pie_app">

@@ -27,27 +27,24 @@ class vst_regprd(CreateView):
     template_name ='mod_prd_frm_registrar.html'
     success_url = reverse_lazy('cn_prd')
 
-    def get_queryset(self):
-        return prd_base.objects.filter(id_usu =self.request.user)
-
-
-#Vista para la seleccion de edicion de producto
+#Vista para la consulta de producto
 
 class vst_selecprd(ListView):
     model= prd_base
-    #form_class = form_selec_prd
-    template_name ='con_trj_prd.html'
+    template_name ='cn_det_prd.html'
     success_url = reverse_lazy('cn_prd')
     context_object_name = 'Busqueda_prd'
 
-    def get_queryset(self):
-        return prd_base.objects.filter(ids_usu =self.request.user)
+    def get_object(self):
+        id_= self.kwargs.get("id_prd")
+        return get_object(prd_base, id=id_)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'editar un producto'
-        context['action'] = 'update'
+        context['title'] = 'Listado de productos'
+        context['action'] = 'List'
         return context
+    
 
 #Vista para la edicion de un producto 
 
@@ -58,7 +55,13 @@ class vst_updprd(UpdateView):
     success_url = reverse_lazy('cn_prd')
 
     def get_queryset(self):
-        return prd_base.objects.filter(ids_usu =self.request.user)
+        return prd_base.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Edicion de productos'
+        context['action'] = 'Edit'
+        return context
 
 #Vista para la eliminacion de un producto
 
@@ -72,6 +75,7 @@ class vst_delprd (DeleteView):
 
 
 #----------VISTAS PARA EL REGISTRO DE UN REQUERIMIENTO DE EXISTENCIA SIGEPI------------
+
 #Vista para el registro de un requerimiento de existencia
 
 class vst_regreqexist(CreateView):
@@ -116,6 +120,7 @@ class vst_del_reqexist (DeleteView):
         return prd_base.objects.filter(ids_usu =self.request.user)
 
 #----------VISTAS PARA EL REGISTRO DE UN REQUERIMIENTO DE CALIDAD SIGEPI------------
+
 #Vista para el registro de un requerimiento de calidad
 
 class vst_regreqcal(CreateView):
@@ -166,6 +171,7 @@ class vst_del_reqcal (DeleteView):
         return prd_base.objects.filter(ids_usu =self.request.user)
 
 #----------VISTAS PARA EL REGISTRO DE UNA CATEGORIA DE PRODUCTO SIGEPI------------
+
 # vista para el registro del requerimiento de la categoria
 class vst_regcateg(CreateView):
     model= prd_categ
@@ -214,8 +220,9 @@ class vst_del_categ (DeleteView):
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
 
-#Placeholder
+
 #----------VISTAS PARA EL REGISTRO DE UN TIPO DE PRODUCTO SIGEPI------------
+
 #vista para el registro de tipo de producto
 class vst_regtipo(CreateView):
     model= prd_tipo
@@ -223,50 +230,45 @@ class vst_regtipo(CreateView):
     template_name ='mod_prd_frm_tipo.html'
     success_url = reverse_lazy('cn_prd')
 
-    def get_queryset(self):
-        return prd_req_cal.objects.filter(id_categ =self.request.user)
 
 #Vista para el listado de tipos de producto
 
-class vst_selecprd(ListView):
-    model= prd_base
-    #form_class = form_selec_prd
-    template_name ='con_trj_prd.html'
+class vst_cons_tipo(ListView):
+    model= prd_tipo
+    template_name ='cn_det_tipo.html'
     success_url = reverse_lazy('cn_prd')
-    context_object_name = 'Busqueda_prd'
-
+    context_object_name = 'Busqueda_tipoprd'
     def get_queryset(self):
-        return prd_base.objects.filter(ids_usu =self.request.user)
+        return prd_tipo.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'editar un producto'
+        context['title'] = 'Listado de productos'
         context['action'] = 'update'
         return context
 
+
 #Vista para la edicion de tipos de producto
 
-class vst_updprd(UpdateView):
-    model= prd_base
-    form_class = form_reg_prd
-    template_name ='mod_prd_editar.html'
+class vst_upd_tipo(UpdateView):
+    model= prd_tipo
+    form_class = form_tipo
+    template_name ='mod_prd_editar_tipo.html'
     success_url = reverse_lazy('cn_prd')
 
-    def get_queryset(self):
-        return prd_base.objects.filter(ids_usu =self.request.user)
 
 #Vista para la eliminacion de tipos de productos
 
-class vst_delprd (DeleteView):
-    model = prd_base
-    template_name ='mod_prd_eliminar.html'
+class vst_del_tipo (DeleteView):
+    model = prd_tipo
+    template_name ='mod_prd_eliminar_tipo.html'
     success_url = reverse_lazy('cn_prd')
 
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
 
-#Placeholder
 #----------VISTAS PARA EL REGISTRO DE UN CAMPO PARA PRODUCTO SIGEPI------------
+
 #Vista para el registro de campos de productos
 
 class vst_regcampo(CreateView):
@@ -280,9 +282,8 @@ class vst_regcampo(CreateView):
 
 #Vista para el listado de campos de prudctos
 
-class vst_selecprd(ListView):
+class vst_cons_camp(ListView):
     model= prd_base
-    #form_class = form_selec_prd
     template_name ='con_trj_prd.html'
     success_url = reverse_lazy('cn_prd')
     context_object_name = 'Busqueda_prd'
@@ -298,10 +299,10 @@ class vst_selecprd(ListView):
 
 #Vista para la edicion de campos de productos
 
-class vst_updprd(UpdateView):
-    model= prd_base
-    form_class = form_reg_prd
-    template_name ='mod_prd_editar.html'
+class vst_upd_camp(UpdateView):
+    model= campo
+    form_class = form_campo
+    template_name ='mod_prd_editar_campo.html'
     success_url = reverse_lazy('cn_prd')
 
     def get_queryset(self):
@@ -309,9 +310,9 @@ class vst_updprd(UpdateView):
 
 #Vista para la eliminacion de campos de productos
 
-class vst_delprd (DeleteView):
-    model = prd_base
-    template_name ='mod_prd_eliminar.html'
+class vst_del_camp (DeleteView):
+    model = campo
+    template_name ='mod_prd_eliminar_campo.html'
     success_url = reverse_lazy('cn_prd')
 
     def get_queryset(self):

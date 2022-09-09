@@ -1,0 +1,28 @@
+<!--- Plantilla para la vista de la consulta de tipo de producto - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 08 -09 -2022 --->
+
+
+{% block articulo %}
+<div class="cn_det_norm" style="flex-direction: row; flex-wrap: wrap;">
+<h2>Tipos de Productos</h2>
+<br>
+{% for prd_tipo in  object_list %}
+<div id="trj_tipo" class="trj_tipo">
+    <div id="trj_tipo_div" class="trj_tipo_div">
+        <div id="tipo_sup" class="tipo_sup">       
+            <div id="cnt_tipo_titulo" class="cnt_tipo_titulo">
+                {{ prd_tipo.nom_tipo}}
+            </div>
+        </div>
+    </div>
+    <div id="" class="trj_pry_br">
+        <a  href="{% url 'cn_det_tipo' %}">
+            <i class="material-icons">description</i>
+            <span>Ver</span>
+        </a>
+    </div>
+</div> 
+{% endfor %}
+{% endblock articulo %}
