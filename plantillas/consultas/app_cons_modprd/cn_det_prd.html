@@ -21,7 +21,7 @@
 
 <!--CONSULTAR UN PRODUCTO-->
 <form method="GET">
-    {{form.as_ul}}
+    {{form.as_table}}
     <div>
         {% for prd_base in  object_list %}
         <p><b>Nombre del producto:</b><label> {{ prd_base.nom_prd}} </label></p>
