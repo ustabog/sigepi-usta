@@ -2,6 +2,12 @@
 {% block titulo %} Listado de Aplicaciones de Modulos {% endblock titulo %}
 {% block app %}
 {% block cuerpo %}
+
+{% block menu_app_iu %}
+    {% include "menu_app_iu.html" %}
+{% endblock menu_app_iu %}
+
+
 {% if form.errors %}
     <p>La lista de aplicaciones de módulos no se ha podido consultar.</p>
 {% endif %}

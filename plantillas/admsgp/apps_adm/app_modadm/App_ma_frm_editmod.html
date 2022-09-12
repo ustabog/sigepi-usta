@@ -2,45 +2,16 @@
 {% block titulo %} Vista de detalle de Modulo{% endblock titulo %} 
 {% block app %}
 {% block cuerpo %}
-{% if form.errors %}
-    <p>No se ha podido consultar el modulo</p>
-{% endif %}
+
 
 <form method="POST">
-    
+
     <div class="vista detalle">
+        {% csrf_token %}
+
+        {{ form.as_ul}}
         
-        <label for="nom">Nombre carpeta contenedora:</label>
-        <input type="text" id="nom"  value="{{ object.nom}}"><br>
-
-        <label for="titulo">Nombre del Aplicativo:</label>
-        <input type="text" id="desc"  value="{{ object.desc}}"><br>
-
-        <label for="desc">Descripción:</label>
-        <input type="text" id="desc"  value="{{ object.desc}}"><br>
-
-        <label for="url_doc">Url de Documentación</label>
-        <input type="text" id="url_doc"  value="{{ object.url_doc}}"><br>
-
-        <label for="url_instal">Path:</label>
-        <input type="text" id="url_instal"  value="{{ object.version}}"><br>
-
-        <label for="url_pl">Url de plantilla:</label>
-        <input type="text" id="url_pl"  value="{{ object.activo}}"><br>
-
-        <label for="instalado">Esta Instalado:</label>
-        <input type="text" id="instalado"  value="{{ object.instalado}}"><br>
-
-        <label for="externo">Es un Modulo Externo:</label>
-        <input type="text" id="externo"  value="{{ object.externo}}"><br>
-
-        <label for="visible">Esta Visible:</label>
-        <input type="text" id="visible"  value="{{ object.visible}}"><br>
-
-        <label for="ls_param_cnf">Parametros de Configuración:</label>
-        <input type="text" id="ls_param_cnf"  value="{{ object.ls_param_cnf}}"><br>
-
-       <button>Editar</button>
+       <input type="submit">Editar</input>
         
 
     </div>

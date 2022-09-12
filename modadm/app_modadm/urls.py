@@ -3,8 +3,9 @@ from django.contrib.auth.views import *
 from django.contrib.auth import views as auth_views
 # from django.conf.urls import url
 #from rest_framework.routers import DefaultRouter
-from modadm.app_modadm.views import *
+from modadm.app_modadm.views import * 
 from .models import *
+
 
 urlpatterns = [
 # direcciones del modulo admin

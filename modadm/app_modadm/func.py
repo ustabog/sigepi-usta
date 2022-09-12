@@ -153,11 +153,11 @@ class sys_app():
             for filename in filenames:
                 ubicacion = os.path.join(dirname,filename)
                 if ubicacion[-9:]=='models.py':
-
+                    print(ubicacion)
                     #obtención del nombre del modulo al cual pertenece el aplicativo
-                    nom_mod=ubicacion.split("/")[-3]
+                    nom_mod=ubicacion.split("\\")[-3]
                     #obtención del nombre del modulo al cual pertenece el aplicativo
-                    nom_app=ubicacion.split("/")[-2]
+                    nom_app=ubicacion.split("\\")[-2]
 
                     if(adm_mod.objects.filter(nom=nom_mod).exists()):
                         
@@ -271,8 +271,8 @@ class sys_rol():
                                 
                     if lista_roles != None:
                         #Obtencion del nombre del modulo y de la aplicación que contiene al rol
-                        nom_mod=ubicacion.split("/")[-3]
-                        nom_app=ubicacion.split("/")[-2]
+                        nom_mod=ubicacion.split("\\")[-3]
+                        nom_app=ubicacion.split("\\")[-2]
                         #Obtencion de las llaves identificadoras modulo y de la aplicación que contiene al rol
                         id_mod=(adm_mod.objects.filter(nom=nom_mod).order_by("-id_mod").values()[0]).get('id_mod')
                         id_app=(adm_app.objects.filter(nom=nom_app).order_by("-id_app").values()[0]).get('id_app')
@@ -298,14 +298,7 @@ class sys_rol():
         return respuesta
 
 
-
-def rutina_prueba():
-    a=''
-    a+=sys_mod.reg_mod()
-    a+=sys_app.reg_app()
-    a+=sys_rol.reg_roles()
-    return a
-    
+   
 
 #Clase para gestionar permisos en el administrador de DJANGO
 class sys_perm():
@@ -330,6 +323,7 @@ class sys_perm():
 
 # clase para facilitar la migración automática según las dependencias del modelo base
 class sys_func():
+
     def reg_func():
         for dirname, dirnames, filenames in os.walk('.'): 
             for filename in filenames:
@@ -349,7 +343,7 @@ class sys_func():
 
                             #Obtencion de la ruta de la función
                             lib_func=ubicacion
-                            nom_app=ubicacion.split("/")[-2]
+                            nom_app=ubicacion.split("\\")[-2]
 
                             #Información suministrada por el usuario
                             nom_func=func['nom_func']
@@ -380,7 +374,15 @@ class sys_func():
                   
         return 
 
-rutina_prueba()
+
+def rutina_prueba():
+    a=''
+    a+=sys_mod.reg_mod()
+    a+=sys_app.reg_app()
+    a+=sys_rol.reg_roles()
+    return a
+
+#rutina_prueba()
 sys_func.reg_func()
 
 # Funciones pendientes

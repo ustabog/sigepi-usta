@@ -1,0 +1,66 @@
+{% extends 'inicio_adm.html' %}
+{% block titulo %} Vista de detalle de Modulo{% endblock titulo %} 
+{% block app %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>No se ha podido consultar el modulo</p>
+{% endif %}
+
+<form method="POST">
+
+
+    <div class="vista detalle">
+        
+        <label for="id_app">Identificador del Modulos:</label>
+        <input type="text" id="id_app"  value="{{ object.id_app}}"><br>
+
+        <label for="nom">Nombre carpeta contenedora:</label>
+        <input type="text" id="nom"  value="{{ object.nom}}"><br>
+
+        <label for="titulo">Nombre del Aplicativo:</label>
+        <input type="text" id="titulo"  value="{{ object.titulo}}"><br> 
+
+        <label for="desc">Descripción:</label>
+        <input type="text" id="desc"  value="{{ object.desc}}"><br>
+
+        <label for="url_doc">Url de Documentación</label>
+        <input type="text" id="url_doc"  value="{{ object.url_doc}}"><br>
+
+        <label for="nom_url">Nombre de la dirección de la aplicación:</label>
+        <input type="text" id="nom_url"  value="{{ object.nom_url}}"><br>
+
+        <label for="version">Version:</label>
+        <input type="text" id="version"  value="{{ object.version}}"><br>
+
+        <label for="ver_mod">Minima version de modulo soportada :</label>
+        <input type="text" id="ver_mod"  value="{{ object.ver_mod}}"><br>
+
+        <label for="activo">Esta Activa?:</label>
+        <input type="text" id="activo"  value="{{ object.activo}}"><br>
+
+        <label for="instalada">Esta Instalada?:</label>
+        <input type="text" id="instalada"  value="{{ object.instalada}}"><br>
+
+        <label for="visible">Parametros de Configuración:</label>
+        <input type="text" id="visible"  value="{{ object.visible}}"><br>
+
+        <label for="externa">Parametros de Configuración:</label>
+        <input type="text" id="externa" value="{{ object.externa}}"><br>
+       
+        <label for="tipo_app">Parametros de Configuración:</label>
+        <input type="text" id="tipo_app"  value="{{ object.tipo_app}}"><br>
+       
+        <label for="ico">Icono:</label>
+        <a href=""><i class="material-icons">{{object.ico}}</i><br>
+        
+        <label for="id_mod_id">Modulo:</label>
+        <input type="text" id="id_mod_id"  value="{{ object.id_mod}}"><br>
+
+        <label for="id_usu_reg">Usuario Que Registra:</label>
+        <input type="text" id="id_usu_reg" disabled value="{{ object.id_usu_reg}}"><br>
+        
+    </div>
+</form>
+
+{% endblock cuerpo %}
+{% endblock app%}
