@@ -1,8 +1,7 @@
-<!--- Plantilla para la vista del registro de un campo para la tipologia de productos - plantillas para SIGEPI
+<!--- Plantilla para la vista del registro de una plantilla  - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 30 -08 -2022 
-#Edicion 08/09/2022--->
+#fecha 13 -09 -2022 --->
 
 {% extends 'inicio.html' %} 
 {% load static %}
@@ -15,12 +14,12 @@
 {% block app%}
 <div id="menu_app" class="menu_app">
     {% block menu_app %}
-    <a href="{% url 'regcampo' %}"> 
+    <a href="{% url 'registrar_plantilla' %}"> 
         <button type="button" name="crear">
             Registrar
         </button> <br>
     </a>
-    <a href="{% url 'editar_campo' %}"> 
+    <a href="{% url 'editar_plantilla' %}"> 
         <button type="button" name="Editar">
             Editar
         </button> <br>
@@ -30,7 +29,7 @@
             Eliminar
         </button> <br>
     </a>
-    <a href="{% url 'consultar_campo' %}"> 
+    <a href="{% url 'consultar_plantilla' %}"> 
         <button type="button" name="consultar">
             Consultar
         </button> <br>
@@ -44,9 +43,9 @@
 </div>
 <div id="pie_app" class="pie_app">
     {% block pie_app %}
-    <a href="{% url 'registrar_plantilla' %}">
+    <a href="{% url 'regcampo' %}">
         <i class="material-icons">abc</i>
-        <span>Registrar plantilla</span>
+        <span>Crear campos</span>
     </a>
     {% endblock pie_app %}
 </div>

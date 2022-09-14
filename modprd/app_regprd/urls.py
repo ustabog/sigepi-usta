@@ -11,7 +11,7 @@ urlpatterns = [
     #Url's Para el registro de producto
     path('iniprd', ini_regprd().view_prd, name='ini_prd'), # url al inicio de la interfaz de productos
     path('crearprd/', vst_regprd.as_view(), name='crear_prd'), # url para la interfaz de creacion de productos
-    path('selecprd/', vst_selecprd.as_view(), name='selec_prd'), # url para la interfaz de seleccion de productos
+    path('listprd/', vst_selecprd.as_view(), name='listar_prd'), # url para la interfaz de seleccion de productos
     path('updprd/', vst_updprd.as_view(), name='editar_prd'), # url para la interfaz de seleccion de productos
     path('eliprd/', vst_delprd.as_view(), name='eliminar_prd'), # url para la interfaz de eliminacion de productos
 
@@ -41,7 +41,14 @@ urlpatterns = [
 
     #Url's Para el registro de campos de un producto
     path('crearcampo/', vst_regcampo.as_view(), name='regcampo'),# urls para la interfaz de creacion de campo 
-    #path('conscampo/', vst_cons_camp.as_view(), name='consultar_campo'),# urls para la interfaz de consulta de campos 
+    path('conscampo/', vst_cons_camp.as_view(), name='consultar_campo'),# urls para la interfaz de consulta de campos 
     path('updcampo/', vst_upd_camp.as_view(), name='editar_campo'),# urls para la interfaz de edicion de campos 
     path('delcampo/', vst_del_camp.as_view(), name='eliminar_campo'),# urls para la interfaz de edicion de campos 
+
+    #Url's Para el registro de plantillas de un producto
+    path('crearplt/', vst_regplt.as_view(), name='registrar_plantilla'),# urls para la interfaz de creacion de plantillas de un producto
+    path('listplt/', vst_cons_plt.as_view(), name='consultar_plantilla'),# urls para la interfaz de consulta de plantillas de un producto
+    path('updplt/', vst_upd_plt.as_view(), name='editar_plantilla'),# urls para la interfaz de edicion de plantillas de un producto
+    path('delplt/<int:pk>', vst_del_plt.as_view(), name='eliminar_plantilla'),# urls para la interfaz de eliminacion de plantillas de un producto
+
 ]

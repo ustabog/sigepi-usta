@@ -1,9 +1,9 @@
-<!--- Plantilla para la vista de la consulta de un requerimiento de existencia - plantillas para SIGEPI
+<!--- Plantilla para la vista de los detalles de un campo de plantilla - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 26 -08 -2022 --->
+#fecha 13 -09 -2022 --->
 
-{% extends 'app_regreq_exist_iu.html' %} 
+{% extends 'app_regcampo_iu.html' %} 
 {% load static %}
 {% block meta_app %}{% endblock meta_app%}
 {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
@@ -11,22 +11,24 @@
 {% block consulta %}
 {% block articulo %} 
 
-
 <div>
-    <p>Consulta del requerimiento de existencia de un producto de investigacion</p>
+    <p>Consulta los campos de las plantillas</p>
 </div>
 
 {% if form.errors %}
     <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
 {% endif %}
 
-<!--CONSULTAR UN REQUISITO DE EXISTENCIA-->
+<!--CONSULTAR UN CAMPO DE PLANTILLA-->
 <form method="GET">
-    {{form.as_table}}
+    {{form.as_ul}}
     <div>
-        {% for prd_req_Exist in  object_list %}
-        <p><b>Nombre del requerimiento de existencia:</b><label> {{ prd_req_Exist.nom_reqexs}} </label></p>
-        <p><b>Descripcion del requerimiento de existencia:</b></b><label> {{ prd_req_Exist.desc_reqexs}} </label></p>
+        {% for campo in  object_list %}
+        <p><b>Nombre del campo:</b><label> {{ campo.nom_campo}} </label></p>
+        <p><b>Descripcion del campo:</b><label> {{ campo.desc_campo}} </label></p>
+        <p><b>Formato:</b><label> {{ campo.Formato}} </label></p>
+        <p><b>Valor por defecto:</b><label> {{ campo.valor_def}} </label></p>
+        <p><b>Rango de evaluacion:</b><label> {{ campo.rango}} </label></p>
         {% endfor %}
     </div>
 </form>

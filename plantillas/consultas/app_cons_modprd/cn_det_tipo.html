@@ -22,18 +22,34 @@
 
 <!--CONSULTAR UN TIPO DE PRODUCTO-->
 <form method="GET">
-    {{form.as_ul}}
-    <div>
-        {% for prd_tipo in object_list %}
-        <p><b>Nombre del tipo de producto:</b><label> {{ prd_tipo.nom_tipo}} </label></p>
-        <p><b>Requerimientos de existencia :</b></b><label> {{ prd_tipo.id_reqexist}} </label></p>
-        <p><b>Requerimientos de calidad :</b></b><label> {{ prd_tipo.id_reqcal}} </label></p>
-        <p><b>categoria:</b></b><label> {{ prd_tipo.id_categ}} </label></p>
-        <p><b>Peso absoluto:</b></b><label> {{ prd_tipo.peso_abs}} </label></p>
-        <p><b>Ventana de observacion:</b></b><label> {{ prd_tipo.vent_obs}} </label></p>
-        <p><b>Calidad:</b></b><label> {{ prd_tipo.tipo_cal}} </label></p>
-        {% endfor %}
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>  
+                <th>Nombre del tipo de producto:</th>  
+                <th>Requerimientos de existencia :</th> 
+                <th>Requerimientos de calidad :</th> 
+                <th>Categoria:</th>
+                <th>Peso absoluto:</th>
+                <th>Ventana de observacion:</th> 
+                <th>Calidad:</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for prd_tipo in object_list %}
+                <tr>
+                    <td> {{ prd_tipo.id_tipo}} </td> 
+                    <td> {{ prd_tipo.nom_tipo}} </td> 
+                    <td>  {{ prd_tipo.id_reqexist}} </td> 
+                    <td>  {{ prd_tipo.id_reqcal}} </td> 
+                    <td>  {{ prd_tipo.id_categ}} </td> 
+                    <td>  {{ prd_tipo.peso_abs}} </td> 
+                    <td>  {{ prd_tipo.vent_obs}} </td> 
+                    <td>  {{ prd_tipo.tipo_cal}} </td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </form>
 
 {% endblock articulo %}

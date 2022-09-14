@@ -98,7 +98,7 @@ class form_categ(forms.ModelForm):
         )
         labels ={
             'nom_categ': 'Nombre de la categoria',
-            'peso_rel': 'peso relativo de la categoria',
+            'peso_rel': 'Peso relativo de la categoria',
             'id_reqcal': 'Requisitos de calidad para la categoria'
 
         }
@@ -117,10 +117,10 @@ class form_tipo(forms.ModelForm):
         )
         labels ={
             'nom_tipo': 'Nombre del tipo de producto',
-            'id_reqexist' : 'requerimientos de existencia del tipo de producto',
+            'id_reqexist' : 'Requerimientos de existencia del tipo de producto',
             'id_categ': 'Categoria del tipo de producto',
             'vent_obs': 'Ventana de observacion en dias',
-            'id_plt_desc':'plantilla utilizada',
+            'id_plt_desc':'Plantilla utilizada',
             'tipo_cal': 'Tipologia a utilizar',
         }
 
@@ -135,10 +135,23 @@ class form_campo(forms.ModelForm):
             'desc_campo',
         )
         labels ={
-            'nom_campo': 'nombre del campo',
-            'rango': 'rango del campo',
+            'nom_campo': 'Nombre del campo',
+            'rango': 'Rango del campo',
             'Formato': 'Formato a utilizar',
-            'valor_def': "valor por defecto",
+            'valor_def': "Valor por defecto",
             'desc_campo': "Descripcion",
         }
         
+class form_template(forms.ModelForm):
+    class Meta:
+        model = prd_plt_desc
+        fields = (
+            'nom_plt',
+            'desc_plt',
+            'id_campo',
+        )
+        labels ={
+            'nom_plt' : 'Nombre de la plantilla:',
+            'desc_plt' : 'Descripcion de la plantilla',
+            'id_campo' : 'Campos a usar en la plantilla',
+        }

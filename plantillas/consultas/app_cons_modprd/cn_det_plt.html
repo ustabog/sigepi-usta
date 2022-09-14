@@ -1,32 +1,32 @@
-<!--- Plantilla para la vista de la consulta de un requerimiento de existencia - plantillas para SIGEPI
+<!--- Plantilla para la vista de los detalles de plantillas de productos - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 26 -08 -2022 --->
+#fecha 25 -08 -2022 --->
 
-{% extends 'app_regreq_exist_iu.html' %} 
+{% extends 'app_regplt_iu.html' %} 
 {% load static %}
 {% block meta_app %}{% endblock meta_app%}
 {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
 {% block meta_pie_app%}{% endblock meta_pie_app%}
 {% block consulta %}
-{% block articulo %} 
-
+{% block articulo %}
 
 <div>
-    <p>Consulta del requerimiento de existencia de un producto de investigacion</p>
+    <p>Consulta de plantillas </p>
 </div>
 
 {% if form.errors %}
     <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
 {% endif %}
 
-<!--CONSULTAR UN REQUISITO DE EXISTENCIA-->
+<!--CONSULTAR PLANTILLAS-->
 <form method="GET">
     {{form.as_table}}
     <div>
-        {% for prd_req_Exist in  object_list %}
-        <p><b>Nombre del requerimiento de existencia:</b><label> {{ prd_req_Exist.nom_reqexs}} </label></p>
-        <p><b>Descripcion del requerimiento de existencia:</b></b><label> {{ prd_req_Exist.desc_reqexs}} </label></p>
+        {% for prd_plt_desc in  object_list %}
+        <p><b>Nombre de la plantilla:</b><label> {{ prd_plt_desc.nom_plt}} </label></p>
+        <p><b>Descripcion de la plantilla:</b></b><label> {{ prd_plt_desc.desc_plt}} </label></p>
+        <p><b>Campos que utiliza:</b><label> {{ prd_plt_desc.id_campo}}</label></p>
         {% endfor %}
     </div>
 </form>
