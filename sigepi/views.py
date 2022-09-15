@@ -24,6 +24,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
+
+from modadm.app_modadm.models import usu
 from .form import *
 from django.contrib.auth.models import Group
 from modadm.app_conf.stlapp import estilo
@@ -74,6 +76,7 @@ class front():
         }
         if request.method == "POST":
             formulario = frm_reg_usu(data=request.POST)
+
             if formulario.is_valid():
                 formulario.save()
                 usuario = formulario.cleaned_data.get('username')
@@ -81,6 +84,10 @@ class front():
                 grp_iv = Group.objects.get(name="Invitado")
                 usuario = authenticate(username=usuario, password=password)
                 usuario.groups.add(grp_iv)
+                id_reg=User.objects.latest('id')
+                print(id_reg)
+                p=usu(id_user=id_reg)
+                p.save()
                 login(request, usuario)
                 return redirect(to='inicio')
             data["form"] = formulario

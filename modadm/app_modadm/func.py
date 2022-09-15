@@ -383,7 +383,7 @@ def rutina_prueba():
     return a
 
 #rutina_prueba()
-#sys_func.reg_func()
+sys_func.reg_func()
 
 # Funciones pendientes
 #registrar funciones de aplicación

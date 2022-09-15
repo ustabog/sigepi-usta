@@ -63,7 +63,8 @@ class usu(models.Model):
     id_user = models.OneToOneField(User, primary_key = True, on_delete=models.CASCADE, null=False, blank=False)
     fch_reg = models.DateField('fecha de registro', default=timezone.now) # fecha de registro de usuario
     activo = models.BooleanField('¿Activo o desactivado.?', default=True) # estatus del usuario activo (True) inactivo (False)
-    archi = models.BooleanField(null = False, blank = False, default = 0)#Si el registro está archivado (antes de proceder a borrarlo de la base de datos)
+    archi = models.BooleanField(null = False, blank = False, default = False)#Si el registro está archivado (antes de proceder a borrarlo de la base de datos)
+    
     
     class Meta:
         verbose_name = 'usurio individual'
