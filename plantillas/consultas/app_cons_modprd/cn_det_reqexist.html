@@ -21,14 +21,30 @@
 {% endif %}
 
 <!--CONSULTAR UN REQUISITO DE EXISTENCIA-->
+
 <form method="GET">
-    {{form.as_table}}
-    <div>
-        {% for prd_req_Exist in  object_list %}
-        <p><b>Nombre del requerimiento de existencia:</b><label> {{ prd_req_Exist.nom_reqexs}} </label></p>
-        <p><b>Descripcion del requerimiento de existencia:</b></b><label> {{ prd_req_Exist.desc_reqexs}} </label></p>
-        {% endfor %}
-    </div>
+    <table>
+        <thead>
+            <tr>
+
+                <th>#</th>  
+                <th>Nombre </th>  
+                <th>Descripcion</th> 
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for prd_req_Exist in object_list %}
+                <tr>
+
+                    <td> {{ prd_req_Exist.id_reqexs}} </td> 
+                    <td> {{ prd_req_Exist.nom_reqexs}} </td> 
+                    <td> {{ prd_req_Exist.desc_reqexs}} </td> 
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </form>
 
 {% endblock articulo %}

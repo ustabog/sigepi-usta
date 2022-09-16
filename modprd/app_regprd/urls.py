@@ -31,12 +31,12 @@ urlpatterns = [
     path('crearcateg/', vst_regcateg.as_view(), name='crear_categ'),# urls para la interfaz de creacion de categoria
     path('conscateg/', vst_cons_categ.as_view(), name='consultar_categ'),# urls para la interfaz de consultar una categoria
     path('updcateg/', vst_upd_categ.as_view(), name='editar_categ'),# urls para la interfaz de consultar una categoria
-    path('delcateg/', vst_del_categ.as_view(), name='eliminar_categ'),# urls para la interfaz de consultar una categoria
+    path('delcateg/<int:pk>', vst_del_categ.as_view(), name='eliminar_categ'),# urls para la interfaz de consultar una categoria
 
     #Url's Para el registro de tipos de producto
     path('creartipoprd/', vst_regtipo.as_view(), name='regtipo'),# urls para la interfaz de creacion de tipo de producto
     path('constipoprd/', vst_cons_tipo.as_view(), name='consultar_tipo'),# urls para la interfaz de consulta de tipos de producto
-    path('updtipoprd/', vst_upd_tipo.as_view(), name='editar_tipo'),# urls para la interfaz de edicion de tipos de producto
+    path('updtipoprd/<int:pk>', vst_upd_tipo.as_view(), name='editar_tipo'),# urls para la interfaz de edicion de tipos de producto
     path('deltipoprd/', vst_del_tipo.as_view(), name='eliminar_tipo'),# urls para la interfaz de edicion de tipos de producto
 
     #Url's Para el registro de campos de un producto

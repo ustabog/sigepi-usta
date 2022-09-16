@@ -21,21 +21,38 @@
 
 <!--CONSULTAR UN CAMPO DE PLANTILLA-->
 <form method="GET">
-    {{form.as_ul}}
-    <div>
-        {% for campo in  object_list %}
-        <p><b>Nombre del campo:</b><label> {{ campo.nom_campo}} </label></p>
-        <p><b>Descripcion del campo:</b><label> {{ campo.desc_campo}} </label></p>
-        <p><b>Formato:</b><label> {{ campo.Formato}} </label></p>
-        <p><b>Valor por defecto:</b><label> {{ campo.valor_def}} </label></p>
-        <p><b>Rango de evaluacion:</b><label> {{ campo.rango}} </label></p>
-        {% endfor %}
-    </div>
+    <table>
+        <thead>
+            <tr>
+
+                <th>#</th>  
+                <th>Nombre del campo</th>  
+                <th>Descripcion del campo</th> 
+                <th>Formato</th> 
+                <th>Valor por defecto</th>
+                <th>Rango de evaluacion</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for campo in object_list %}
+                <tr>
+
+                    <td> {{ campo.id_campo }} </td> 
+                    <td> {{ campo.nom_campo }} </td> 
+                    <td> {{ campo.desc_campo}} </td> 
+                    <td>  {{ campoo.Formato}} </td> 
+                    <td>  {{ campo.valor_def}} </td> 
+                    <td>  {{ campo.rango}} </td> 
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </form>
 
 {% endblock articulo %}
 {% endblock consulta %}
-
 
 {% block script_app%}{% endblock script_app%}
 {% block script_menu_app%}{% endblock script_menu_app%}

@@ -1,28 +1,56 @@
-<!--- Plantilla para la vista de la consulta de tipo de producto - plantillas para SIGEPI
+<!--- Plantilla para la vista de la consulta de los tipos de productos - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 08 -09 -2022 --->
 
-
+{% extends 'app_regtipo_iu.html' %} 
+{% load static %}
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
+{% block consulta %}
 {% block articulo %}
-<div class="cn_det_norm" style="flex-direction: row; flex-wrap: wrap;">
-<h2>Tipos de Productos</h2>
-<br>
-{% for prd_tipo in  object_list %}
-<div id="trj_tipo" class="trj_tipo">
-    <div id="trj_tipo_div" class="trj_tipo_div">
-        <div id="tipo_sup" class="tipo_sup">       
-            <div id="cnt_tipo_titulo" class="cnt_tipo_titulo">
-                {{ prd_tipo.nom_tipo}}
-            </div>
-        </div>
-    </div>
-    <div id="" class="trj_pry_br">
-        <a  href="{% url 'cn_det_tipo' %}">
-            <i class="material-icons">description</i>
-            <span>Ver</span>
-        </a>
-    </div>
-</div> 
-{% endfor %}
+
+
+<div>
+    <p>Consulta del tipo de producto</p>
+</div>
+
+{% if form.errors %}
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+{% endif %}
+
+<!--CONSULTAR UN TIPO DE PRODUCTO-->
+<form method="GET">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>  
+                <th> Nombre del tipo de producto:</th>  
+            </tr>
+        </thead>
+        <tbody>
+            {% for prd_tipo in object_list %}
+                <tr>
+                    <td> {{ prd_tipo.id_tipo}} </td> 
+                    <td>
+                        <a href=""> {{ prd_tipo.nom_tipo}} </a> 
+                        <a href="{% url 'editar_tipo' prd_tipo.id_tipo %}">
+                            <button type="button" name="Editar" >
+                                Editar
+                            </button>
+                        </a>
+                    </td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+
 {% endblock articulo %}
+{% endblock consulta %}
+
+
+{% block script_app%}{% endblock script_app%}
+{% block script_menu_app%}{% endblock script_menu_app%}
+{% block script_pie_app%}{% endblock script_pie_app%}

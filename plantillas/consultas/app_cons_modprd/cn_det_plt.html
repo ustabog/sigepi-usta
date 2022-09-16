@@ -20,16 +20,32 @@
 {% endif %}
 
 <!--CONSULTAR PLANTILLAS-->
+
 <form method="GET">
-    {{form.as_table}}
-    <div>
-        {% for prd_plt_desc in  object_list %}
-        <p><b>Nombre de la plantilla:</b><label> {{ prd_plt_desc.nom_plt}} </label></p>
-        <p><b>Descripcion de la plantilla:</b></b><label> {{ prd_plt_desc.desc_plt}} </label></p>
-        <p><b>Campos que utiliza:</b><label> {{ prd_plt_desc.id_campo}}</label></p>
-        {% endfor %}
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>  
+                <th>Nombre de la plantilla</th>  
+                <th>Descripcion</th> 
+                <th>Campos que utiliza</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for prd_plt_desc in object_list %}
+                <tr>
+
+                    <td> {{ prd_plt_desc.id_plt_desc}} </td> 
+                    <td> {{ prd_plt_desc.nom_plt}} </td> 
+                    <td>  {{ prd_plt_desc.desc_plt}} </td> 
+                    <td>  {{ prd_plt_desc.id_campo}} </td> 
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </form>
+
 
 {% endblock articulo %}
 {% endblock consulta %}

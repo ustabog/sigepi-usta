@@ -26,14 +26,14 @@ class vst_regprd(CreateView):
     model= prd_base
     form_class = form_reg_prd
     template_name ='mod_prd_frm_registrar.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('listar_prd')
 
 #Vista para la consulta de producto
 
 class vst_selecprd(ListView):
     model= prd_base
     template_name ='cn_det_prd.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('listar_prd')
     context_object_name = 'Busqueda_prd'
 
     def get_queryset(self):
@@ -53,7 +53,7 @@ class vst_updprd(UpdateView):
     model= prd_base
     form_class = form_reg_prd
     template_name ='mod_prd_editar.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('listar_prd')
 
     def get_queryset(self):
         return prd_base.objects.all()
@@ -69,7 +69,7 @@ class vst_updprd(UpdateView):
 class vst_delprd (DeleteView):
     model = prd_base
     template_name ='mod_prd_eliminar.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('listar_prd')
 
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
@@ -88,7 +88,7 @@ class vst_regreqexist(CreateView):
     model= prd_req_Exist
     form_class = form_req_exist
     template_name ='mod_prd_frm_requexist.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('listar_reqexs')
 
     def get_queryset(self):
         return prd_req_Exist.objects.filter(nom_reqexs =self.request.user)
@@ -104,7 +104,7 @@ class vst_regreqexist(CreateView):
 class vst_list_reqexist(ListView):
     model= prd_req_Exist
     template_name ='cn_det_reqexist.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('listar_reqexs')
     context_object_name = 'Busqueda de requerimiento de existencia'
 
     def get_queryset(self):
@@ -121,7 +121,7 @@ class vst_upd_reqexist(UpdateView):
     model= prd_req_Exist
     form_class = form_req_exist
     template_name ='mod_prd_editar_exist.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('listar_reqexs')
 
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
@@ -136,7 +136,7 @@ class vst_upd_reqexist(UpdateView):
 class vst_del_reqexist (DeleteView):
     model = prd_req_Exist
     template_name ='mod_prd_eliminar_exist.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('listar_reqexs')
 
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
@@ -155,7 +155,7 @@ class vst_regreqcal(CreateView):
     model= prd_req_cal
     form_class = form_req_cal
     template_name ='mod_prd_frm_reqcal.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_reqcal')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -169,7 +169,7 @@ class vst_regreqcal(CreateView):
 class vst_cons_reqcal(ListView):
     model= prd_req_cal
     template_name ='cn_det_reqcal.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_reqcal')
     context_object_name = 'Busqueda_reqcal'
 
     def get_queryset(self):
@@ -186,11 +186,8 @@ class vst_cons_reqcal(ListView):
 class vst_upd_reqcal(UpdateView):
     model= prd_req_cal
     form_class = form_req_cal
-    template_name ='mod_prd_editar_cal.html'
-    success_url = reverse_lazy('cn_prd')
-
-    def get_queryset(self):
-        return prd_base.objects.filter(ids_usu =self.request.user)
+    template_name ='mod_prd_frm_reqcal.html'
+    success_url = reverse_lazy('consultar_reqcal')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -203,7 +200,7 @@ class vst_upd_reqcal(UpdateView):
 class vst_del_reqcal (DeleteView):
     model = prd_req_cal
     template_name ='mod_prd_eliminar_cal.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_reqcal')
 
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
@@ -221,7 +218,7 @@ class vst_regcateg(CreateView):
     model= prd_categ
     form_class = form_categ
     template_name ='mod_prd_frm_categ.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_categ')
 
     def get_queryset(self):
         return prd_req_cal.objects.filter(id_categ =self.request.user)
@@ -237,7 +234,7 @@ class vst_regcateg(CreateView):
 class vst_cons_categ(ListView):
     model= prd_categ
     template_name ='cn_det_categ.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_categ')
     context_object_name = 'Busqueda_prd'
 
     def get_queryset(self):
@@ -255,7 +252,7 @@ class vst_upd_categ(UpdateView):
     model= prd_base
     form_class = form_categ
     template_name ='mod_prd_editar_categ.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_categ')
 
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
@@ -271,11 +268,15 @@ class vst_upd_categ(UpdateView):
 class vst_del_categ (DeleteView):
     model = prd_categ
     template_name ='mod_prd_eliminar_categ.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_categ')
 
-    def get_queryset(self):
-        return prd_base.objects.filter(ids_usu =self.request.user)
-    
+    def post(self, request, pk, *args, **kwargs):
+        prd = prd_categ.objects.get (id=pk)
+        prd.estado = False
+        prd.save()
+        return self.success_url
+
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Eliminar categoria'
@@ -291,15 +292,15 @@ class vst_regtipo(CreateView):
     model= prd_tipo
     form_class = form_tipo
     template_name ='mod_prd_frm_tipo.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_tipo')
 
 
 #Vista para el listado de tipos de producto
 
 class vst_cons_tipo(ListView):
     model= prd_tipo
-    template_name ='cn_det_tipo.html'
-    success_url = reverse_lazy('cn_prd')
+    template_name ='cn_trj_tipo.html'
+    success_url = reverse_lazy('consultar_tipo')
     context_object_name = 'Busqueda_tipoprd'
 
     def get_queryset(self):
@@ -317,7 +318,7 @@ class vst_upd_tipo(UpdateView):
     model= prd_tipo
     form_class = form_tipo
     template_name ='mod_prd_editar_tipo.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_tipo')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -330,7 +331,7 @@ class vst_upd_tipo(UpdateView):
 class vst_del_tipo (DeleteView):
     model = prd_tipo
     template_name ='mod_prd_eliminar_tipo.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_tipo')
 
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
@@ -349,7 +350,7 @@ class vst_regcampo(CreateView):
     model= campo
     form_class = form_campo
     template_name ='mod_prd_frm_campo.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_campo')
 
     def get_queryset(self):
         return prd_req_cal.objects.filter(id_categ =self.request.user)
@@ -365,7 +366,7 @@ class vst_regcampo(CreateView):
 class vst_cons_camp(ListView):
     model= prd_base
     template_name ='cn_det_campo.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_campo')
     context_object_name = 'Busqueda_prd'
 
     def get_queryset(self):
@@ -383,7 +384,7 @@ class vst_upd_camp(UpdateView):
     model= campo
     form_class = form_campo
     template_name ='mod_prd_editar_campo.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_campo')
 
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
@@ -399,7 +400,7 @@ class vst_upd_camp(UpdateView):
 class vst_del_camp (DeleteView):
     model = campo
     template_name ='mod_prd_eliminar_campo.html'
-    success_url = reverse_lazy('cn_prd')
+    success_url = reverse_lazy('consultar_campo')
 
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
@@ -418,7 +419,7 @@ class vst_regplt(CreateView):
     model = prd_plt_desc
     form_class = form_template
     template_name ='mod_prd_frm_plt.html'
-    success_url = reverse_lazy('cn_plt')
+    success_url = reverse_lazy('consultar_plantilla')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -431,7 +432,7 @@ class vst_regplt(CreateView):
 class vst_cons_plt(ListView):
     model = prd_plt_desc
     template_name ='cn_det_plt.html'
-    success_url = reverse_lazy('cn_plt')
+    success_url = reverse_lazy('consultar_plantilla')
 
     def get_queryset(self):
         return prd_plt_desc.objects.all()
@@ -448,7 +449,7 @@ class vst_upd_plt(UpdateView):
     model = prd_plt_desc
     form_class = form_template
     template_name ='mod_prd_editar_plt.html'
-    success_url = reverse_lazy('cn_plt')
+    success_url = reverse_lazy('consultar_plantilla')
 
     def get_queryset(self):
         return prd_base.objects.filter(ids_usu =self.request.user)
@@ -464,7 +465,7 @@ class vst_upd_plt(UpdateView):
 class vst_del_plt(DeleteView):
     model = prd_plt_desc
     template_name ='mod_prd_eliminar_plt.html'
-    success_url = reverse_lazy('cn_plt')
+    success_url = reverse_lazy('consultar_plantilla')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

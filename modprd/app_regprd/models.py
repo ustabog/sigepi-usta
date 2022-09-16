@@ -47,7 +47,6 @@ class prd_req_Exist(models.Model):
 class prd_req_cal(models.Model):
     id_reqcal=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del requerimiento de calidad LLAVE PRIMARIA
     desc_reqcal=models.TextField('Descripcion del Requerimiento de calidad: ', blank=True,null=False)#descripcion del requerimiento de calidad
-
 #Clase para la creacion de las categorias de un producto
 
 class prd_categ(models.Model):
@@ -99,13 +98,14 @@ class prd_tipo(models.Model):
 
 class prd_base(models.Model):
     id_prd=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del producto LLAVE PRIMARIA
-    ids_pry=models.ForeignKey(pry_base, null=True,blank=False, on_delete=models.SET_NULL, db_constraint=True)# Identificador del propietario
+    ids_pry=models.ManyToManyField(pry_base, null=True,blank=False, db_constraint=True)# Identificador del propietario
     nom_prd=models.CharField('Nombre del producto :',max_length=255, blank=False, null=False ) # Nombre del producto
     ids_usu=models.ForeignKey(User, null=True,blank=False, on_delete=models.SET_NULL, db_constraint=True)# Identificador del propietario
-    fech_reg=models.DateTimeField('Fecha de registro: ', blank=False, null=False) #fecha de registro
+    fech_reg=models.DateTimeField('Fecha de registro: ', blank=False, null=False, auto_now_add=True) #fecha de registro
     fech_entrega=models.DateTimeField('Fecha de entrega: ') #fecha de entrega
     id_tipo_prd_minc=models.ForeignKey (prd_tipo,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificador del tipo de producto
     id_rl_prd_campos=models.ForeignKey (rl_prd,null=True,blank=False, on_delete=models.SET_NULL, db_constraint=True)#Identificador del campo de descripcion del producto
+
 
 
 
