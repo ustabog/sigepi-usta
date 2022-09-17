@@ -1,28 +1,63 @@
 <!--- Plantilla para la vista del registro de producto - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 19 -08 -2022 --->
+#fecha 19 -08 -2022 
+# Edicion 16/09/2022--->
 
 
+{% extends 'app_regprd_iu.html' %} 
+{% load static %}
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
+{% block consulta %}
 {% block articulo %}
-<div class="cn_prd_norm" style="flex-direction: row; flex-wrap: wrap;">
-<h2>Productos</h2>
-<br>
-{% for prd_base in  object_list %}
-<div id="trj_prd" class="trj_prd">
-    <div id="trj_prd" class="trj_prd">
-        <div id="prd_sup" class="prd_sup">       
-            <div id="cnt_prd_titulo" class="cnt_prd_titulo">
-                {{ prd_base.nom_prd}}
-            </div>
-        </div>
-    </div>
-    <div id="" class="trj_pry_br">
-        <a  href="{% url 'cn_det_prd' %}">
-            <i class="material-icons">description</i>
-            <span>Ver</span>
-        </a>
-    </div>
-</div> 
-{% endfor %}
+
+
+<div>
+    <p>Listado de Productos</p>
+</div>
+
+{% if form.errors %}
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+{% endif %}
+
+<!--CONSULTAR PRODUCTOS-->
+<form method="GET">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>  
+                <th> Nombre </th>  
+            </tr>
+        </thead>
+        <tbody>
+            {% for prd_base in object_list %}
+                <tr>
+                    <td> {{ prd_base.id_prd}} </td> 
+                    <td>
+                        <a href="{% url 'listar_prd' %}"> {{ prd_base.nom_prd}} </a> 
+                        <a href="{% url 'editar_prd'%}">
+                            <button type="submit" name="Editar" >
+                                Editar
+                            </button>
+                        </a>
+                        <a href="{% url 'eliminar_prd'%}">
+                            <button type="submit" class = "btm btn-danger" name="Eliminar" >
+                                Eliminar
+                            </button>
+                        </a>
+                    </td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+
 {% endblock articulo %}
+{% endblock consulta %}
+
+
+{% block script_app%}{% endblock script_app%}
+{% block script_menu_app%}{% endblock script_menu_app%}
+{% block script_pie_app%}{% endblock script_pie_app%}

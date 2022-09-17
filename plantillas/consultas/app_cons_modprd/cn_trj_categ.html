@@ -1,28 +1,63 @@
 <!--- Plantilla para la vista de la consulta de una categoria de producto - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 19 -08 -2022 --->
+#fecha 19 -08 -2022 
+# Edicion 16/09/2022--->
 
 
+{% extends 'app_regcateg_iu.html' %} 
+{% load static %}
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
+{% block consulta %}
 {% block articulo %}
-<div class="cn_prd_norm" style="flex-direction: row; flex-wrap: wrap;">
-<h2>Categorias</h2>
-<br>
-{% for prd_categ in  object_list %}
-<div id="trj_categ" class="trj_categ">
-    <div id="trj_categ" class="trj_categ">
-        <div id="categ_sup" class="categ_sup">       
-            <div id="cnt_categ_titulo" class="cnt_categ_titulo">
-                {{ prd_categ.nom_categ}}
-            </div>
-        </div>
-    </div>
-    <div id="" class="trj_categ_br">
-        <a  href="{% url 'cn_det_prd' %}">
-            <i class="material-icons">description</i>
-            <span>Ver</span>
-        </a>
-    </div>
-</div> 
-{% endfor %}
+
+
+<div>
+    <p>Listado de requerimientos de categorias</p>
+</div>
+
+{% if form.errors %}
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+{% endif %}
+
+<!--CONSULTAR CATEGORIAS-->
+<form method="GET">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>  
+                <th> Nombre </th>  
+            </tr>
+        </thead>
+        <tbody>
+            {% for prd_categ in object_list %}
+                <tr>
+                    <td> {{ prd_categ.id_categ}} </td> 
+                    <td>
+                        <a href="{% url 'consultar_categ' %}"> {{ prd_categ.nom_categ}} </a> 
+                        <a href="{% url 'editar_categ'%}">
+                            <button type="submit" name="Editar" >
+                                Editar
+                            </button>
+                        </a>
+                        <a href="{% url 'eliminar_categ'%}">
+                            <button type="submit" class = "btm btn-danger" name="Eliminar" >
+                                Eliminar
+                            </button>
+                        </a>
+                    </td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+
 {% endblock articulo %}
+{% endblock consulta %}
+
+
+{% block script_app%}{% endblock script_app%}
+{% block script_menu_app%}{% endblock script_menu_app%}
+{% block script_pie_app%}{% endblock script_pie_app%}

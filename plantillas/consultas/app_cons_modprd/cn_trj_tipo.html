@@ -34,10 +34,15 @@
                 <tr>
                     <td> {{ prd_tipo.id_tipo}} </td> 
                     <td>
-                        <a href=""> {{ prd_tipo.nom_tipo}} </a> 
-                        <a href="{% url 'editar_tipo' prd_tipo.id_tipo %}">
-                            <button type="button" name="Editar" >
+                        <a href="{% url 'consultar_tipo' %}"> {{ prd_tipo.nom_tipo}} </a> 
+                        <a href="{% url 'editar_tipo'%}">
+                            <button type="submit" name="Editar" >
                                 Editar
+                            </button>
+                        </a>
+                        <a href="{% url 'eliminar_tipo'%}">
+                            <button type="submit" class = "btm btn-danger" name="Eliminar" >
+                                Eliminar
                             </button>
                         </a>
                     </td> 

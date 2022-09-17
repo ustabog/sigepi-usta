@@ -36,7 +36,9 @@ ROL_APP = [
     (2,'Investigador(a) Secundario'),
     (3,'Colaborador(a)')
     ]
+
 #Clase para la creacion de los requisitios de existencia de un producto
+
 class prd_req_Exist(models.Model):
     id_reqexs=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del requerimiento de existencia LLAVE PRIMARIA
     nom_reqexs=models.CharField('Nombre del Requerimiento de existencia: ', max_length=255, blank=False,null=False)#Nombre del requerimiento de existencia
@@ -47,6 +49,7 @@ class prd_req_Exist(models.Model):
 class prd_req_cal(models.Model):
     id_reqcal=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del requerimiento de calidad LLAVE PRIMARIA
     desc_reqcal=models.TextField('Descripcion del Requerimiento de calidad: ', blank=True,null=False)#descripcion del requerimiento de calidad
+
 #Clase para la creacion de las categorias de un producto
 
 class prd_categ(models.Model):

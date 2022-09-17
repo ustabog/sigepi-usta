@@ -28,11 +28,11 @@ class vst_regprd(CreateView):
     template_name ='mod_prd_frm_registrar.html'
     success_url = reverse_lazy('listar_prd')
 
-#Vista para la consulta de producto
+#Vista para el listado de productos
 
-class vst_selecprd(ListView):
+class vst_listprd(ListView):
     model= prd_base
-    template_name ='cn_det_prd.html'
+    template_name ='cn_trj_prd.html'
     success_url = reverse_lazy('listar_prd')
     context_object_name = 'Busqueda_prd'
 
@@ -45,7 +45,10 @@ class vst_selecprd(ListView):
         context['action'] = 'List'
         return context
 
-    
+ #Vista para la consulta de productos
+
+class vst_cons_prd(TemplateView):
+    template_name = 'cn_det_prd.html'   
 
 #Vista para la edicion de un producto 
 
@@ -103,7 +106,7 @@ class vst_regreqexist(CreateView):
 
 class vst_list_reqexist(ListView):
     model= prd_req_Exist
-    template_name ='cn_det_reqexist.html'
+    template_name ='cn_trj_reqexist.html'
     success_url = reverse_lazy('listar_reqexs')
     context_object_name = 'Busqueda de requerimiento de existencia'
 
@@ -115,6 +118,12 @@ class vst_list_reqexist(ListView):
         context['title'] = 'Lista de requerimientos'
         context['action'] = 'Consulte'
         return context
+
+#Vista para la consulta de requerimientos de existencia
+
+class vst_cons_reqexist(TemplateView):
+    template_name = 'cn_det_reqexs.html' 
+
 #Vista para la edicion de un requerimiento de existencia
 
 class vst_upd_reqexist(UpdateView):
@@ -166,9 +175,9 @@ class vst_regreqcal(CreateView):
 
 #Vista para el listado de requerimientos de calidad
 
-class vst_cons_reqcal(ListView):
+class vst_list_reqcal(ListView):
     model= prd_req_cal
-    template_name ='cn_det_reqcal.html'
+    template_name ='cn_trj_reqcal.html'
     success_url = reverse_lazy('consultar_reqcal')
     context_object_name = 'Busqueda_reqcal'
 
@@ -180,6 +189,11 @@ class vst_cons_reqcal(ListView):
         context['title'] = 'Listar un requerimiento'
         context['action'] = 'List'
         return context
+
+#Vista para la consulta de requerimientos de calidad
+
+class vst_cons_reqcal(TemplateView):
+    template_name = 'cn_det_reqcal.html' 
 
 #Vista para la edicion de un requerimiento de calidad
 
@@ -231,9 +245,9 @@ class vst_regcateg(CreateView):
 
 #Vista para el listado de categorias
 
-class vst_cons_categ(ListView):
+class vst_list_categ(ListView):
     model= prd_categ
-    template_name ='cn_det_categ.html'
+    template_name ='cn_trj_categ.html'
     success_url = reverse_lazy('consultar_categ')
     context_object_name = 'Busqueda_prd'
 
@@ -245,6 +259,11 @@ class vst_cons_categ(ListView):
         context['title'] = 'Listar una categoria'
         context['action'] = 'list'
         return context
+
+#Vista para la consulta de categorias
+
+class vst_cons_categ(TemplateView):
+    template_name = 'cn_det_categ.html' 
 
 #Vista para la edicion de categorias
 
@@ -297,7 +316,7 @@ class vst_regtipo(CreateView):
 
 #Vista para el listado de tipos de producto
 
-class vst_cons_tipo(ListView):
+class vst_list_tipo(ListView):
     model= prd_tipo
     template_name ='cn_trj_tipo.html'
     success_url = reverse_lazy('consultar_tipo')
@@ -363,9 +382,9 @@ class vst_regcampo(CreateView):
 
 #Vista para el listado de campos de productos
 
-class vst_cons_camp(ListView):
+class vst_list_camp(ListView):
     model= prd_base
-    template_name ='cn_det_campo.html'
+    template_name ='cn_trj_campo.html'
     success_url = reverse_lazy('consultar_campo')
     context_object_name = 'Busqueda_prd'
 
@@ -377,6 +396,12 @@ class vst_cons_camp(ListView):
         context['title'] = 'Listar campos'
         context['action'] = 'List'
         return context
+
+#Vista para la consulta de campos de productos
+
+class vst_cons_camp(TemplateView):
+    template_name = 'cn_det_campo.html'
+
 
 #Vista para la edicion de campos de productos
 
@@ -429,9 +454,9 @@ class vst_regplt(CreateView):
 
 #Vista para el listado de campos de productos
 
-class vst_cons_plt(ListView):
+class vst_list_plt(ListView):
     model = prd_plt_desc
-    template_name ='cn_det_plt.html'
+    template_name ='cn_trj_plt.html'
     success_url = reverse_lazy('consultar_plantilla')
 
     def get_queryset(self):
