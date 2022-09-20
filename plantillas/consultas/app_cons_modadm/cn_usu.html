@@ -1,7 +1,9 @@
 {% extends 'inicio_adm.html' %}
 {% block titulo %} Listado de usuario {% endblock titulo %}
+
+{% block app %} 
 {% block cuerpo %}
-{% block js %}
+<!-- {% block js %}
     {% if messages %}
     {% for m in messages %}
         <script type="text/javascript">
@@ -11,12 +13,12 @@
         </script>
     {% endfor %}
     {% endif %} 
-{% endblock %}
+{% endblock %} -->
+
 {% if form.errors %}
     <p>La lista de usuario no se ha logrado consultar.</p>
 {% endif %}
 <form method="POST">
-    {{form.as_ul}}
     <div class="container">
         <div class="row">
             <div class="col-md-3"></div>
@@ -30,7 +32,7 @@
                                 <th>Usuario</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th colspan="2">Opciones</th>
+                                <th colspan="4">Opciones</th>
                             </tr>
                         </thead>
                         {% for usu in object_list %}
@@ -40,7 +42,10 @@
                                 <td> {{ usu.username }} </td>
                                 <td> {{ usu.first_name}} </td>
                                 <td> {{ usu.last_name}} </td>
+                                <td> {{ usu.name }} </td>
+                                <td> <a href="../lsconusui/{{usu.id}}" class="btn btn-block btn-sm btn-info">Ver</a> <br></td>
                                 <td> <a href="../edi_usu/{{usu.id}}" class="btn btn-block btn-sm btn-info">Editar</a> <br></td>
+                                <td> <a href="../edi_usu/{{usu.id}}" class="btn btn-block btn-sm btn-danger">Archivar</a> <br></td>
                                 <td> <a href="../eli_usu/{{usu.id}}" class="btn btn-block btn-sm btn-danger">Eliminar</a> <br></td> 
                                 <!-- <td> <a href="../eli_usu/{{usu.id}}" onclick="eliminarUsu({{ usu.id }})" class="btn btn-block btn-sm btn-danger">Eliminar</a> <br></td>  -->
                             </tr>
@@ -55,3 +60,4 @@
     </div>
 </form>
 {% endblock cuerpo %}
+{% endblock app %}

@@ -12,7 +12,7 @@ import sys,ast,os
 import logging
 from urllib import request
 from django.db import models, utils
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group, User, Permission
 from modadm.app_modadm.dic import GRUP_IND
 from modadm.app_modadm.models import adm_app, adm_func, adm_mod, adm_rol
 from django.apps import apps
@@ -382,8 +382,7 @@ def rutina_prueba():
     a+=sys_rol.reg_roles()
     return a
 
-#rutina_prueba()
-sys_func.reg_func()
+
 
 # Funciones pendientes
 #registrar funciones de aplicación

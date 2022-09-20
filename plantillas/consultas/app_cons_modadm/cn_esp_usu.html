@@ -1,0 +1,36 @@
+{% extends 'inicio_adm.html' %}
+{% block titulo %} Vista de detalle del Usuario{% endblock titulo %} 
+{% block app %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>No se ha podido consultar el modulo</p>
+{% endif %}
+
+<h2>Vista detalle de usuario {{data.username}}</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <h3>Roles del Usuario</h3>
+    <select id="id_group_permissions_to" multiple="" size="0" name="user_group" class="filtered">
+
+        {% for rol in roles %}
+            <option value="2" title="{{ rol.name }}">{{ rol.name }}</option>
+        {% endfor %}
+    </select>
+    <h3>Permisos del Usuario</h3>
+    <select id="id_user_permissions_to" multiple="" size="0" name="user_permissions" class="filtered">
+
+    {% for permiso in permisos %}
+        <option value="2" title="{{ permiso.name }}">{{ permiso.name }}</option>
+    {% endfor %}
+
+    </select>
+    
+    
+
+</form>
+
+{% endblock cuerpo %}
+{% endblock app%}

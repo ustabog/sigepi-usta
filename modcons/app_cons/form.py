@@ -1,14 +1,19 @@
 from django import forms
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from modadm.app_regusu.models import *
 from modadm.app_modadm.models import *
 
 #Clase que automatiza la creación de formularios de consulta de Usuario en Django.
 class frm_cons_usu(forms.ModelForm):
-    
     class Meta:
         model = usu
         fields = '__all__'
+
+# class frm_cons_grp(forms.ModelForm):
+#     class Meta:
+#         model = Group
+#         fields = '__all__'
+
 #Clase que automatiza la creación de formularios de consulta de Usuarios de grupo en Django.
 class frm_cons_usugr(forms.ModelForm):
 
@@ -19,8 +24,12 @@ class frm_cons_usugr(forms.ModelForm):
 class frm_cons_usui(forms.ModelForm):
     #Calse que automatiza la creación de formularios de consulta de Usuarios institucionales en Django.
     class Meta:
-        model = usui
-        fields = '__all__'
+        model = User
+        fields ='__all__'
+        
+        
+
+        
 
 class frm_cons_mod(forms.ModelForm):
     #Calse que automatiza la creación de formularios de consulta de modulos en Django.
@@ -36,6 +45,7 @@ class frm_cons_mod(forms.ModelForm):
                 'instalado',
                 'visible',
                 'ls_param_cnf'
+
                 ]
         labels = {
                 'id_mod' : 'id',
@@ -61,6 +71,7 @@ class frm_cons_rol(forms.ModelForm):
     class Meta:
         model = adm_rol
         fields = '__all__'
+        exclude = ('id_gru',)
 
 class frm_cons_rl_rol_usu(forms.ModelForm):
     #Clase que consulta las relaciones entre roles y usuarios

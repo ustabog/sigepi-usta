@@ -23,13 +23,13 @@ class vts_ls_usu(ListView):
     success_url = reverse_lazy('cn_usu.html')
     success_message = 'listado cargado correctamente'
 
-class vts_ls_usui(ListView):
-    # clase para listar usuarios del sistema
-    model = usui
-    form_class = frm_cons_usui
-    template_name = 'cn_usui.html'
-    success_url = reverse_lazy('cn_usui.html')
-    success_message = 'listado cargado correctamente'
+# class vts_ls_usui(ListView):
+#     # clase para listar usuarios del sistema
+#     model = usui
+#     form_class = frm_cons_usui
+#     template_name = 'cn_usu.html'
+#     success_url = reverse_lazy('cn_usu.html')
+#     success_message = 'listado cargado correctamente'
 
 class vts_ls_usugr(ListView):
     # clase que me lsta todos los grupos
