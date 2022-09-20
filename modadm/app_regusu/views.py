@@ -18,6 +18,7 @@ from .models import *
 from .form import *
 from modadm.app_regusu.models import *
 from modadm.app_modadm.form import *
+
 #from modcons.app_cons.views import vts_ls_usu
 
 ##### CRUD USUARIO ##
@@ -32,18 +33,20 @@ class vts_reg_usu(CreateView):
             formulario = frm_reg_usu(data=request.POST)
             if formulario.is_valid():
                 formulario.save()
+                usu.save()
                 usuario = formulario.cleaned_data.get('username')
                 password = formulario.cleaned_data.get('password1')
                 usuario = authenticate(username=usuario, password=password)
                 login(request, usuario)
+                
                 return redirect(to='consulta_usuarios')
             data["form"] = formulario
         return render(request,'app_regusu_frm_nvo_usu.html', data )
 
 class vts_ls_usu(ListView, PermissionRequiredMixin):
     # clase para listar usuarios del sistema
-    model = usu
-    form_class = frm_usu
+    model = User
+    form_class = frm_cons_usui
     template_name = 'cn_usu.html'
     success_url = reverse_lazy('cn_usu.html')
     success_message = 'listado cargado correctamente'

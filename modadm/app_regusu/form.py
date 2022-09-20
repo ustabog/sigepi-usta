@@ -19,6 +19,14 @@ from modadm.app_modadm.models import *
 from .models import *
 
 #clase para la creación de un formulario de registro de información personal de usuario SIGEPI.
+
+class frm_cons_usui(forms.ModelForm):
+    #Calse que automatiza la creación de formularios de consulta de Usuarios institucionales en Django.
+    class Meta:
+        model = User
+        fields ='__all__'
+        exclude = ('user_permissions','groups','password',)
+
 class frm_usu_inf_pers(forms.ModelForm):
     
     class Meta:

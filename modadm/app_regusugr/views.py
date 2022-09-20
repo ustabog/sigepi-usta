@@ -11,8 +11,8 @@ from django.http import HttpResponse
 
 #Clase que devuelve un formulario para registro de usuario grupo
 class vts_reg_usugr(CreateView):
-    form_class = frm_cons_usugr
-    template_name = 'app_regusugr_frm_creargrupo.html' 
+    form_class = frm_reg_usugr
+    template_name = 'App_regusugr_nvo_usugr.html' 
     success_url = reverse_lazy('ls_mod_usugr')
     success_message = "El usuario fue creado correctamente"
 

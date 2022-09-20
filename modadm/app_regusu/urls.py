@@ -10,7 +10,7 @@ urlpatterns = [
     #crear usuario del modulo adm
     path('creausu/',vts_reg_usu().vst_registro, name = 'crea_nvo_usu'),
     #Consulta de usuarios
-    path('cons_usus/', vts_ls_usu.as_view(), name='consulta_usuarios'),
+    path('cons_usus/', vts_ls_usu.as_view(), name='cons_usu'),
     #Seleccionar usuario de consulta
     path('sel_usu_cons/', vst_selc_usu_cons.as_view(), name='seleccion_usuario_consulta'),
 #   #editar usuario de consulta

@@ -1,5 +1,6 @@
 {% extends 'inicio_adm.html' %}
 {% block titulo %} Formulario de crear nuevo usuario grupo {% endblock titulo %}
+{% block app %}
 {% block cuerpo %}
 {% if form.errors %}
     <p>El usuario no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
@@ -8,6 +9,7 @@
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="registrar">
+    <input type="submit" value="registrar">    
 </form>
 {% endblock cuerpo %}
+{% endblock app %}

@@ -15,6 +15,7 @@ class frm_cons_usu(forms.ModelForm):
 #         fields = '__all__'
 
 #Clase que automatiza la creación de formularios de consulta de Usuarios de grupo en Django.
+
 class frm_cons_usugr(forms.ModelForm):
 
     class Meta:

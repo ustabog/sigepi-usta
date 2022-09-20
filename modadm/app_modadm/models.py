@@ -72,15 +72,15 @@ class usu(models.Model):
 
 #Usuario de grupo
 class usugr(models.Model):
-    id_user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key = True, null=False, blank=False)
+    id_user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='id_user')
     sigla = models.CharField('usuario (Sigla del Grupo)', max_length=50, unique=True)
     nom_grup = models.CharField('Nombre del Grupo', max_length=254, null=False, blank=False)
     emailgr = models.EmailField('Correo-e del Grupo', max_length = 254, null=True, blank=True) #Correo elect´ronico del grupo de investigación
-    id_usu_adm = models.IntegerField('Id de usuario Director(a) Adm. Grupo', null=True, blank=True) # Usuario(a) principal que administra el grupo
-    id_usu_asig = models.IntegerField('Id de usuario asignado para Adm. Grupo', null=True, blank=True) # Usuario(a) asistente para administración del grupo
+    id_usu_adm = models.ForeignKey(User,on_delete=models.CASCADE,related_name='id_usu_adm') # Usuario(a) principal que administra el grupo
+    id_usu_asig = models.ForeignKey(User,on_delete=models.CASCADE,related_name='id_usu_asig') # Usuario(a) asistente para administración del grupo
     fch_reg = models.DateField('fecha de registro', default=timezone.now) # fecha de registro de usuario
     activo = models.BooleanField('¿Activo o inactivo?', default=True, null=False, blank=False) # estatus del usuario(a) activo (True) inactivo (False)
-    archi = models.BooleanField('¿Usuario archivado?', default = 0, null=False, blank=False)#Si el registro está archivado (antes de proceder a borrarlo de la base de datos)
+    archi = models.BooleanField('¿Usuario archivado?', default =False, null=False, blank=False)#Si el registro está archivado (antes de proceder a borrarlo de la base de datos)
     
     class Meta:
         verbose_name = 'usurio de grupo'

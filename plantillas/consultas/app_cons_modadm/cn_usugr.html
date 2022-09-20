@@ -1,25 +1,50 @@
 {% extends 'inicio_adm.html' %}
-{% block titulo %} Listado de grupos {% endblock titulo %}
+{% block titulo %} Listado de Usuarios de los grupos a los que pertenece{% endblock titulo %}
+{% block app %}
 {% block cuerpo %}
+{% block menu_app_iu %}
+    {% include "menu_app_iu.html" %}
+{% endblock menu_app_iu %}
 {% if form.errors %}
-    <p>La lista de grupos no se ha logrado consultar.</p>
+    <p>La lista de aplicaciones de módulos no se ha podido consultar.</p>
 {% endif %}
-<h3>Lista de Grupos</h3>
 
 <form method="POST">
-    {{form.as_ul}}
-
-    <div>
-        {% for usugr in  object_list %}
-        <label> {{ usugr.id_gr }} </label>
-        <label> {{ usugr.passgr}} </label>
-        <label> {{ usugr.id_usu_admin}} </label>
-        <label> {{ usugr.id_rol_app}} </label>
-        <label> {{ usugr.activo}} </label><br>
-            {% block modf_consl %}
-
-            {% endblock modf_consl  %}
-        {% endfor %}
-
+    <div class="table-responsive">
+        <table class="table">
+            <h2>Listado de modulos</h2>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre del grupo</th>
+                    <th>Sigla</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Ver</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            {% for usugr in  object_list %}
+                <tbody>
+                    <tr>
+                        <td> {{ usugr.id_user_id}} </td>
+                        <td> {{ usugr.nom_grup}} </td>
+                        <td> {{ usugr.sigla }} </td>
+                        <td> {{ usugr.nombre }} </td>
+                        <td> {{ usugr.apellido }} </td>
+                        <!-- <td> {{ app_mod.nom}} </td> -->
+                        <!-- <td> {{ app_mod.ver_mod }} </td> -->
+                        <td> <a href="../cons_esp_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-info">Ver</a><br></td>
+                        <td> <a href="../edt_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-info">Editar</a><br></td>
+                        <td> <a href="../eli_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-danger">Eliminar</a><br></td> 
+                        
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table> 
+    </div>
 </form>
+
 {% endblock cuerpo %}
+{% endblock app %}
