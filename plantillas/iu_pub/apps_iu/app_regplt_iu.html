@@ -14,41 +14,38 @@
 {% block app%}
 <div id="menu_app" class="menu_app">
     {% block menu_app %}
+
     <a href="{% url 'registrar_plantilla' %}"> 
         <button type="button" name="crear">
             Registrar
         </button> <br>
     </a>
-    <a href="{% url 'editar_plantilla' %}"> 
-        <button type="button" name="Editar">
-            Editar
-        </button> <br>
-    </a>
-    <a href="{% url 'eliminar_campo' %}"> 
-        <button type="button" name="eliminar">
-            Eliminar
-        </button> <br>
-    </a>
-    <a href="{% url 'consultar_plantilla' %}"> 
+
+    <a href="{% url 'listar_plantilla' %}"> 
         <button type="button" name="consultar">
             Consultar
         </button> <br>
     </a>
+
     {% endblock menu_app %}
 </div>
+
 <div id="articulo" class="articulo">
     {% block articulo %} 
-        {% include 'cn_trj_pry.html' %} 
     {% endblock articulo %}
 </div>
+
 <div id="pie_app" class="pie_app">
     {% block pie_app %}
+
     <a href="{% url 'regcampo' %}">
         <i class="material-icons">abc</i>
         <span>Crear campos</span>
     </a>
+
     {% endblock pie_app %}
 </div>
+
 {% endblock app%}
 
 {% block script_app%}{% endblock script_app%}

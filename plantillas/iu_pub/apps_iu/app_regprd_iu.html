@@ -12,40 +12,42 @@
 {% block meta_pie_app%}{% endblock meta_pie_app%}
 
 {% block app%}
+
 <div id="menu_app" class="menu_app">
+
     {% block menu_app %} 
+
     <a href="{% url 'crear_prd' %}">
         <button type="button" name="crear">
             Crear
         </button>
     </a>
-    <a href="{% url 'editar_prd' %}">
-        <button type="button" name="crear" >
-            Editar
-        </button>
-    </a>    
-    <a href="{% url 'eliminar_prd' %}">
-        <button type="button" name="crear" >
-            Eliminar
-        </button>
-    </a>    
+
     <a href="{% url 'listar_prd' %}">
         <button type="button" name="consultar" >
             Consultar
         </button>
     </a>   
+
     {% endblock menu_app %}
+
 </div>
+
 <div id="articulo" class="articulo">
+
     {% block articulo %} 
-        {% include 'cn_trj_pry.html' %} 
     {% endblock articulo %}
+
 </div>
+
 <div id="pie_app" class="pie_app">
+
     {% block pie_app %}
     <p>pie app_regprd</p>
     {% endblock pie_app %}
+
 </div>
+
 {% endblock app%}
 
 {% block script_app%}{% endblock script_app%}

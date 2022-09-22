@@ -22,7 +22,7 @@
 {% endif %}
 
 <!--CONSULTAR CAMPOS-->
-<form method="GET">
+
     <table>
         <thead>
             <tr>
@@ -35,13 +35,13 @@
                 <tr>
                     <td> {{ campo.id_campo}} </td> 
                     <td>
-                        <a href="{% url 'consultar_campo' %}"> {{ campo.nom_campo}} </a> 
-                        <a href="{% url 'editar_campo'%}">
+                        <a href="{% url 'consultar_campo' campo.id_campo %}"> {{ campo.nom_campo}} </a> 
+                        <a href="{% url 'editar_campo' campo.id_campo%}">
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
                         </a>
-                        <a href="{% url 'eliminar_campo'%}">
+                        <a href="{% url 'eliminar_campo' campo.id_campo%}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
@@ -51,7 +51,7 @@
             {% endfor %}
         </tbody>
     </table>
-</form>
+
 
 {% endblock articulo %}
 {% endblock consulta %}

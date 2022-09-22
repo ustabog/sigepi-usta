@@ -14,38 +14,34 @@
 {% block app%}
 <div id="menu_app" class="menu_app">
     {% block menu_app %}
+
     <a href="{% url 'crear_reqcal' %}">
         <button type="button" name="crear">
             Crear
         </button> <br>
     </a>
+
     <a href="{% url 'listar_reqcal' %}">
         <button type="button" name="crear">
             Consultar
         </button> <br>
     </a>
-    <a href="{% url 'editar_reqcal' %}">
-        <button type="button" name="crear">
-            Editar
-        </button> <br>
-    </a>
-    <a href="{% url 'eliminar_reqcal' %}">
-        <button type="button" name="crear">
-            Eliminar
-        </button> <br>
-    </a>
+
     {% endblock menu_app %}
 </div>
+
 <div id="articulo" class="articulo">
     {% block articulo %} 
         {% include 'cn_trj_pry.html' %} 
     {% endblock articulo %}
 </div>
+
 <div id="pie_app" class="pie_app">
     {% block pie_app %}
     <p>pie app_regprd</p>
     {% endblock pie_app %}
 </div>
+
 {% endblock app%}
 
 {% block script_app%}{% endblock script_app%}

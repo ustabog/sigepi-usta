@@ -20,7 +20,7 @@
 {% endif %}
 
 <!--CONSULTAR UN REQUERIMIENTO DE CALIDAD-->
-<form method="GET">
+
     <table>
         <thead>
             <tr>
@@ -41,7 +41,12 @@
             {% endfor %}
         </tbody>
     </table>
-</form>
+
+    <a href="{% url 'listar_reqcal' %}">
+        <button type="submit" name="Editar" >
+            Volver
+        </button>
+    </a>
 
 {% endblock articulo %}
 {% endblock consulta %}

@@ -21,7 +21,7 @@
 {% endif %}
 
 <!--CONSULTAR UN TIPO DE PRODUCTO-->
-<form method="GET">
+
     <table>
         <thead>
             <tr>
@@ -34,23 +34,28 @@
                 <tr>
                     <td> {{ prd_tipo.id_tipo}} </td> 
                     <td>
-                        <a href="{% url 'consultar_tipo' %}"> {{ prd_tipo.nom_tipo}} </a> 
-                        <a href="{% url 'editar_tipo'%}">
+                        <a href="{% url 'consultar_tipo' prd_tipo.id_tipo %}"> 
+                            {{ prd_tipo.nom_tipo}}
+                         </a> 
+
+                        <a href="{% url 'editar_tipo' prd_tipo.id_tipo %}">
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
                         </a>
-                        <a href="{% url 'eliminar_tipo'%}">
+
+                        <a href="{% url 'eliminar_tipo' prd_tipo.id_tipo %}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
                         </a>
+
                     </td> 
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-</form>
+
 
 {% endblock articulo %}
 {% endblock consulta %}

@@ -12,6 +12,6 @@
     {% csrf_token %}
     <h3>¿Desea elminar el requerimiento permanentemente?</h3>
     <button class = "btm btn-danger"type="submit" >Sí, eliminar</button>
-    <a class= "btn btn-default" href="">Cancelar</a>
+    <a class= "btn btn-default" href="{% url 'listar_reqexs' %}">Cancelar</a>
   </form>
 {% endblock articulo %}

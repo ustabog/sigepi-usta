@@ -2,7 +2,7 @@
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 19 -08 -2022 
-# Edicion 16/09/2022--->
+# Edicion 20/09/2022--->
 
 
 {% extends 'app_regcateg_iu.html' %} 
@@ -23,7 +23,7 @@
 {% endif %}
 
 <!--CONSULTAR CATEGORIAS-->
-<form method="GET">
+
     <table>
         <thead>
             <tr>
@@ -36,23 +36,29 @@
                 <tr>
                     <td> {{ prd_categ.id_categ}} </td> 
                     <td>
-                        <a href="{% url 'consultar_categ' %}"> {{ prd_categ.nom_categ}} </a> 
-                        <a href="{% url 'editar_categ'%}">
+                        <a href="{% url 'consultar_categ' prd_categ.id_categ %}"> {{ prd_categ.nom_categ}} </a> 
+
+                        <a href="{% url 'editar_categ' prd_categ.id_categ%}">
+
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
+
                         </a>
-                        <a href="{% url 'eliminar_categ'%}">
+
+                        <a href="{% url 'eliminar_categ' prd_categ.id_categ%}">
+
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
+
                         </a>
                     </td> 
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-</form>
+
 
 {% endblock articulo %}
 {% endblock consulta %}

@@ -1,7 +1,8 @@
 <!--- Plantilla para la vista del registro de un tipo de producto - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 30 -08 -2022 --->
+#fecha 30 -08 -2022 
+#Edicion 20/09/2022--->
 
 {% extends 'inicio.html' %} 
 {% load static %}
@@ -14,37 +15,32 @@
 {% block app%}
 <div id="menu_app" class="menu_app">
     {% block menu_app %} 
+
     <a href="{% url 'regtipo' %}">
         <button type="button" name="crear">
             crear
         </button> <br>
     </a>
-    <a href="{% url 'editar_tipo' %}">
-        <button type="button" name="editar">
-            editar
-        </button> <br>
-    </a>
-    <a href="{% url 'eliminar_tipo' %}">
-        <button type="button" name="Eliminar">
-            Eliminar
-        </button> <br>
-    </a>
+
     <a href="{% url 'listar_tipo' %}">
         <button type="button" name="Consultar">
             Consultar
         </button> <br>
     </a>
+
     {% endblock menu_app %}
 </div>
+
 <div id="articulo" class="articulo">
     {% block articulo %} 
     {% endblock articulo %}
 </div>
+
 <div id="pie_app" class="pie_app">
     {% block pie_app %}
-    <p>pie app_regprd</p>
     {% endblock pie_app %}
 </div>
+
 {% endblock app%}
 
 {% block script_app%}{% endblock script_app%}

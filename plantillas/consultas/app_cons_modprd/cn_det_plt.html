@@ -21,7 +21,7 @@
 
 <!--CONSULTAR PLANTILLAS-->
 
-<form method="GET">
+
     <table>
         <thead>
             <tr>
@@ -44,7 +44,12 @@
             {% endfor %}
         </tbody>
     </table>
-</form>
+
+    <a href="{% url 'listar_plt' %}">
+        <button type="submit" name="Back" >
+            Volver
+        </button>
+    </a>  
 
 
 {% endblock articulo %}

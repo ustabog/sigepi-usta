@@ -1,7 +1,8 @@
 <!--- Plantilla para la vista de la consulta de un requerimiento de existencia - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 26 -08 -2022 --->
+#fecha 26 -08 -2022 
+#Edicion 20/09/2022 --->
 
 {% extends 'app_regreq_exist_iu.html' %} 
 {% load static %}
@@ -22,7 +23,6 @@
 
 <!--CONSULTAR UN REQUISITO DE EXISTENCIA-->
 
-<form method="GET">
     <table>
         <thead>
             <tr>
@@ -44,8 +44,13 @@
                 </tr>
             {% endfor %}
         </tbody>
-    </table>
-</form>
+    </table>  
+
+    <a href="{% url 'listar_reqexs' %}">
+        <button type="submit" name="Back" >
+            Volver
+        </button>
+    </a>  
 
 {% endblock articulo %}
 {% endblock consulta %}

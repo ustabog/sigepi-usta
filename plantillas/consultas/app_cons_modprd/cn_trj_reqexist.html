@@ -2,7 +2,7 @@
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 19 -08 -2022 
-#Edicion:16/09/2022 --->
+#Edicion:20/09/2022 --->
 
 {% extends 'app_regreq_exist_iu.html' %} 
 {% load static %}
@@ -22,7 +22,6 @@
 {% endif %}
 
 <!--CONSULTAR UN TIPO DE PRODUCTO-->
-<form method="GET">
     <table>
         <thead>
             <tr>
@@ -35,23 +34,28 @@
                 <tr>
                     <td> {{ prd_req_Exist.id_reqexs}} </td> 
                     <td>
-                        <a href="{% url 'listar_reqexs' %}"> {{ prd_req_Exist.nom_reqexs}} </a> 
-                        <a href="{% url 'editar_reqexs'%}">
+                        <a href="{% url 'consultar_reqexs' prd_req_Exist.id_reqexs %}"> 
+                            {{ prd_req_Exist.nom_reqexs}}
+                        
+                        </a> 
+                        <a href="{% url 'editar_reqexs' prd_req_Exist.id_reqexs %}">
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
                         </a>
-                        <a href="{% url 'eliminar_reqexs'%}">
+
+                        <a href="{% url 'eliminar_reqexs' prd_req_Exist.id_reqexs %}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
                         </a>
+                        
                     </td> 
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-</form>
+
 
 {% endblock articulo %}
 {% endblock consulta %}

@@ -1,7 +1,8 @@
 <!--- Plantilla para la vista del registro de una categoria - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 30 -08 -2022 --->
+#fecha 30 -08 -2022 
+#Edicion 20/09/22--->
 
 {% extends 'inicio.html' %} 
 {% load static %}
@@ -14,32 +15,27 @@
 {% block app%}
 <div id="menu_app" class="menu_app">
     {% block menu_app %} 
+
     <a href="{% url 'crear_categ' %}">
         <button type="button" name="crear">
          Crear
         </button> <br>
     </a>
-    <a href="{% url 'editar_categ' %}">
-        <button type="button" name="crear">
-         Editar
-        </button> <br>
-    </a>
-    <a href="{% url 'eliminar_categ' %}">
-        <button type="button" name="crear">
-            Eliminar
-        </button> <br>
-    </a>
+
     <a href="{% url 'listar_categ' %}">
         <button type="button" name="crear">
             Consultar
         </button> <br>
     </a>
+
     {% endblock menu_app %}
 </div>
+
 <div id="articulo" class="articulo">
     {% block articulo %} 
     {% endblock articulo %}
 </div>
+
 <div id="pie_app" class="pie_app">
     {% block pie_app %}
     <p>pie app_categ</p>

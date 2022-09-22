@@ -2,7 +2,7 @@
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 19 -08 -2022 
-# Edicion 16/09/2022--->
+# Edicion 20/09/2022--->
 
 
 {% extends 'app_regprd_iu.html' %} 
@@ -23,7 +23,6 @@
 {% endif %}
 
 <!--CONSULTAR PRODUCTOS-->
-<form method="GET">
     <table>
         <thead>
             <tr>
@@ -36,23 +35,28 @@
                 <tr>
                     <td> {{ prd_base.id_prd}} </td> 
                     <td>
-                        <a href="{% url 'listar_prd' %}"> {{ prd_base.nom_prd}} </a> 
-                        <a href="{% url 'editar_prd'%}">
+                        <a href="{% url 'consultar_prd' prd_base.id_prd %}"> 
+                            {{ prd_base.nom_prd}} 
+                        </a> 
+
+                        <a href="{% url 'editar_prd' prd_base.id_prd %}">
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
                         </a>
-                        <a href="{% url 'eliminar_prd'%}">
+
+                        <a href="{% url 'eliminar_prd' prd_base.id_prd%}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
                         </a>
+
                     </td> 
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-</form>
+
 
 {% endblock articulo %}
 {% endblock consulta %}

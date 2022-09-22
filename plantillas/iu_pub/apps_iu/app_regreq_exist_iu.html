@@ -13,38 +13,40 @@
 
 {% block app%}
 <div id="menu_app" class="menu_app">
+
     {% block menu_app %} 
+
     <a href="{% url 'crear_reqexs' %}">
         <button type="button" name="crear">
          crear
         </button> <br>
     </a>
+
     <a href="{% url 'listar_reqexs' %}">
         <button type="button" name="Consultar">
          Consultar
         </button> <br>
     </a>
-    <a href="{% url 'editar_reqexs' %}">
-        <button type="button" name="Editar">
-            Editar
-        </button> <br>
-    </a>
-    <a href="{% url 'eliminar_reqexs' %}">
-        <button type="button" name="Eliminar">
-            Eliminar
-        </button> <br>
-    </a>
+
     {% endblock menu_app %}
+
 </div>
+
 <div id="articulo" class="articulo">
+
     {% block articulo %} 
     {% endblock articulo %}
+
 </div>
+
 <div id="pie_app" class="pie_app">
+
     {% block pie_app %}
     <p>pie app_regprd</p>
     {% endblock pie_app %}
+
 </div>
+
 {% endblock app%}
 
 {% block script_app%}{% endblock script_app%}

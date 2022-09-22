@@ -1,7 +1,8 @@
 <!--- Plantilla para la vista de la consulta de una plantilla - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 16 -09 -2022 --->
+#fecha 16 -09 -2022 
+#Edicion:20/09/2022 --->
 
 
 {% extends 'app_regplt_iu.html' %} 
@@ -22,7 +23,7 @@
 {% endif %}
 
 <!--CONSULTAR PLANTILLAS-->
-<form method="GET">
+
     <table>
         <thead>
             <tr>
@@ -35,23 +36,28 @@
                 <tr>
                     <td> {{ prd_plt_desc.id_plt_desc}} </td> 
                     <td>
-                        <a href="{% url 'consultar_plantilla' %}"> {{ prd_plt_desc.nom_plt}} </a> 
-                        <a href="{% url 'editar_plantilla'%}">
+                        
+                        <a href="{% url 'consultar_plantilla' prd_plt_desc.id_plt_desc %}"> 
+                            {{ prd_plt_desc.nom_plt}} 
+                        </a> 
+
+                        <a href="{% url 'editar_plantilla' prd_plt_desc.id_plt_desc%}">
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
                         </a>
-                        <a href="{% url 'eliminar_plantilla'%}">
+
+                        <a href="{% url 'eliminar_plantilla' prd_plt_desc.id_plt_desc%}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
                         </a>
+                        
                     </td> 
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-</form>
 
 {% endblock articulo %}
 {% endblock consulta %}
