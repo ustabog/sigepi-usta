@@ -23,8 +23,10 @@
 <!--CONSULTAR UN PRODUCTO-->
 
     <table>
+        <!-- Tabla que contiene el formulario de un producto-->
         <thead>
             <tr>
+
                 <th>#</th>  
                 <th>Nombre del producto:</th>  
                 <th>Proyectos de los cuales se basa </th> 
@@ -33,11 +35,13 @@
                 <th>Fecha de entrega estimado</th>
                 <th>Tipo de producto:</th>
                 <th>Plantilla que rige el producto</th> 
+
             </tr>
         </thead>
         <tbody>
             {% for prd_base in object_list %}
                 <tr>
+
                     <td> {{ prd_base.id_prd}} </td> 
                     <td> {{ prd_base.nom_prd}} </td> 
                     <td>  {{ prd_base.ids_pry}} </td> 
@@ -46,6 +50,7 @@
                     <td>  {{ prd_base.fech_entrega}} </td> 
                     <td>  {{ prd_base.id_tipo_prd_minc}} </td> 
                     <td>  {{ prd_base.id_rl_prd_campos}} </td> 
+
                 </tr>
             {% endfor %}
         </tbody>

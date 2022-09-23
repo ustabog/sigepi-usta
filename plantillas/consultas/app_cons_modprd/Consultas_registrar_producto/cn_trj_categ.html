@@ -1,10 +1,11 @@
 <!--- Plantilla para la vista de la consulta de una categoria de producto - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 16 -09 -2022 --->
+#fecha 19 -08 -2022 
+# Edicion 20/09/2022--->
 
 
-{% extends 'app_regcampo_iu.html' %} 
+{% extends 'app_regcateg_iu.html' %} 
 {% load static %}
 {% block meta_app %}{% endblock meta_app%}
 {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
@@ -14,14 +15,14 @@
 
 
 <div>
-    <p>Listado de campos</p>
+    <p>Listado de requerimientos de categorias</p>
 </div>
 
 {% if form.errors %}
     <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
 {% endif %}
 
-<!--CONSULTAR CAMPOS-->
+<!--CONSULTAR CATEGORIAS-->
 
     <table>
         <thead>
@@ -31,21 +32,30 @@
             </tr>
         </thead>
         <tbody>
-            {% for campo in object_list %}
+            {% for prd_categ in object_list %}
                 <tr>
-                    <td> {{ campo.id_campo}} </td> 
+                    <td> {{ prd_categ.id_categ}} </td> 
                     <td>
-                        <a href="{% url 'consultar_campo' campo.id_campo %}"> {{ campo.nom_campo}} </a> 
-                        <a href="{% url 'editar_campo' campo.id_campo%}">
+                        <a href="{% url 'consultar_categ' prd_categ.id_categ %}"> 
+                            {{ prd_categ.nom_categ}}
+                        </a> 
+
+                        <a href="{% url 'editar_categ' prd_categ.id_categ%}">
+
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
+
                         </a>
-                        <a href="{% url 'eliminar_campo' campo.id_campo%}">
+
+                        <a href="{% url 'eliminar_categ' prd_categ.id_categ%}">
+
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
+
                         </a>
+                        
                     </td> 
                 </tr>
             {% endfor %}

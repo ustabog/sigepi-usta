@@ -26,16 +26,20 @@
     <table>
         <thead>
             <tr>
+
                 <th>#</th>  
                 <th>Nombre del requerimiento de existencia</th>  
                 <th>Peso relativo de la categoria</th> 
+
             </tr>
         </thead>
         <tbody>
             {% for prd_categ in object_list %}
                 <tr>
+
                     <td> {{ prd_categ.nom_categ}} </td> 
                     <td> {{ prd_categ.peso_rel}} </td> 
+                    
                 </tr>
             {% endfor %}
         </tbody>
