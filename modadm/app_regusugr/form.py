@@ -8,4 +8,4 @@ class frm_reg_usugr(forms.ModelForm):
     class Meta:
         model = usugr
         fields = '__all__'
-        exclude = ('id_usu_adm',)
+        #exclude = ()

@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from django.http import HttpResponse, request
 from django.template import Template,Context,loader
 from django.core import serializers
@@ -81,10 +81,21 @@ class func_usu():
         respuesta = plt.render()
         return HttpResponse(respuesta)
 
-class vst_selc_usu_cons(vts_ls_usu, PermissionRequiredMixin):
+class vst_selc_usu_cons(PermissionRequiredMixin):
     #funcion que me pinta la lista para modificar el usuario
-    template_name = 'sl_usu.html'
-    success_url = reverse_lazy('sl_usu.html')
+    def vis_esp(request,pk):
+        data=User.objects.get(id=pk)
+        form = frm_cons_usui(instance=data)
+        permisos = Permission.objects.filter(user=pk)
+        roles=Group.objects.filter(user=pk).values()
+        context = {
+            'data': data,
+            'form': form,
+            'permisos': permisos,
+            'roles': roles
+        }
+        return render(request, 'cn_esp_usu.html', context )
+    
 
 ##CREAR USUARIO DESDE ADMIN ##
 class infopersCreate(CreateView, PermissionRequiredMixin):

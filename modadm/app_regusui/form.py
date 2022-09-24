@@ -7,6 +7,6 @@ from modadm.app_modadm.models import *
 class frm_cons_usui(forms.ModelForm):
     #Calse que automatiza la creación de formularios de consulta de Usuarios institucionales en Django.
     class Meta:
-        model = User
+        model = usui
         fields ='__all__'
-        exclude = ('user_permissions','groups','password',)
+        

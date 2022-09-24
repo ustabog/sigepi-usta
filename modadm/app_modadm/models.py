@@ -72,6 +72,7 @@ class usu(models.Model):
 
 #Usuario de grupo
 class usugr(models.Model):
+    id_usugr = models.AutoField(primary_key=True)
     id_user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='id_user')
     sigla = models.CharField('usuario (Sigla del Grupo)', max_length=50, unique=True)
     nom_grup = models.CharField('Nombre del Grupo', max_length=254, null=False, blank=False)

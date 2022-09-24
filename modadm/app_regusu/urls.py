@@ -12,7 +12,7 @@ urlpatterns = [
     #Consulta de usuarios
     path('cons_usus/', vts_ls_usu.as_view(), name='cons_usu'),
     #Seleccionar usuario de consulta
-    path('sel_usu_cons/', vst_selc_usu_cons.as_view(), name='seleccion_usuario_consulta'),
+    path('sel_usu_cons/<int:pk>', vst_selc_usu_cons.vis_esp, name='sel_cons_usu'),
 #   #editar usuario de consulta
     path('edi_usu/<int:pk>/',vst_edit_usu.as_view(), name = 'editar_usu'),
     #from urls modAdm

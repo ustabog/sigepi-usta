@@ -13,16 +13,24 @@ from django.http import HttpResponse
 class vts_reg_usugr(CreateView):
     form_class = frm_reg_usugr
     template_name = 'App_regusugr_nvo_usugr.html' 
-    success_url = reverse_lazy('ls_mod_usugr')
+    success_url = reverse_lazy('cons_usugr')
     success_message = "El usuario fue creado correctamente"
 
 # clase que devuelve una lista de todos los usuarios grupo
-class vts_ls_usugr(ListView):
-    model = usugr
-    form_class = frm_cons_usugr
-    template_name = 'cn_usugr.html'
+class vts_ls_usugr():
     success_url = reverse_lazy('cn_usugr.html')
     success_message = 'listado cargado correctamente'
+
+    def cons_gen(request):
+        pk_usu=User.objects.filter(username=request.user.get_username()).values().first().get('id')
+        print(pk_usu)
+        form = usugr.objects.filter(id_usu_adm=pk_usu).select_related().all()
+        template_name = 'cn_usugr.html'
+        context = {
+            'form':form,
+        }
+        return render(request, template_name, context)
+
 
 #clase que permite etitar o modificar el registro de un usuario grupo
 class vts_modf_usugr(UpdateView):

@@ -52,8 +52,6 @@ class vts_reg_mod(CreateView, PermissionRequiredMixin):
     success_message = 'El modelo fue creado satisfactoriamente'
     permission_required = 'mod.add_mod'
 
-    def get_object(self):
-        print("sssssss")
     
     
 
@@ -69,14 +67,13 @@ class vts_ver_mod(DetailView, PermissionRequiredMixin):
    
 
 #Vista de listado de módulos registrados en el sistema
-class vts_ls_mod(LoginRequiredMixin, PermissionRequiredMixin, ListView): #hereda de listwview
+class vts_ls_mod(ListView): #hereda de listwview
     #información de las personas
     model = adm_mod
     form_class = frm_mod
     template_name = 'cn_mod.html'
     success_url = reverse_lazy('cn_mod.html')
     success_message = 'Listado cargado correctamente'
-    permission_required = 'app_modadm.view_adm_mod'
     login_url = 'localhost:8000/ingreso' 
 
 #Vista de edición o modificación de módulos registrados en el sistema
