@@ -12,7 +12,7 @@ from modprd.app_certprd.models import *
 
 class form_med(forms.ModelForm):
     class Meta:
-        model = prd_base
+        model = prd_med
         fields = (
             'nom_med',
             'num_conv',
@@ -21,7 +21,7 @@ class form_med(forms.ModelForm):
             'url_doc',
             'url_resul',
             'est_med',
-            'desc_med',
+            #'desc_med'
         )
         labels ={
             'nom_med': 'Nombre de la medicion',
@@ -31,5 +31,5 @@ class form_med(forms.ModelForm):
             'url_doc': 'Enlaces de documentacion',
             'url_resul': 'Resultados de la convocatoria',
             'est_med' : 'Estado de la Medicion',
-            'desc_med' : 'Descripcion de la medicion',
+            #'desc_med' : 'Descripcion de la medicion'
         }

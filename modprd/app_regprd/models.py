@@ -4,10 +4,10 @@
 #fecha 12-08-2022
 
 from django.db import models
-from unittest.util import _MAX_LENGTH
+
 from modadm.app_modadm.models import *
 from modadm.app_modadm.dic import *
-from django.core.validators import MaxValueValidator
+
 from modpry.app_regpry.models import *
 
 
@@ -101,7 +101,7 @@ class prd_tipo(models.Model):
 
 class prd_base(models.Model):
     id_prd=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del producto LLAVE PRIMARIA
-    ids_pry=models.ManyToManyField(pry_base, null=True,blank=False, db_constraint=True)# Identificador del propietario
+    ids_pry=models.ManyToManyField(pry_base,blank=False, db_constraint=True)# Identificador del propietario
     nom_prd=models.CharField('Nombre del producto :',max_length=255, blank=False, null=False ) # Nombre del producto
     ids_usu=models.ForeignKey(User, null=True,blank=False, on_delete=models.SET_NULL, db_constraint=True)# Identificador del propietario
     fech_reg=models.DateTimeField('Fecha de registro: ', blank=False, null=False, auto_now_add=True) #fecha de registro

@@ -1,0 +1,68 @@
+<!--- Plantilla para la vista de el listado de mediciones de productos - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 23 -09 -2022 --->
+
+
+{% extends 'app_regmed_iu.html' %} 
+{% load static %}
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
+{% block consulta %}
+{% block articulo %}
+
+
+<div>
+    <p>Listado de mediciones</p>
+</div>
+
+{% if form.errors %}
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+{% endif %}
+
+<!--CONSULTAR MEDICIONES-->
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>  
+                <th> Nombre </th>  
+            </tr>
+        </thead>
+        <tbody>
+            {% for prd_med in object_list %}
+                <tr>
+                    <td> {{ prd_med.id_med}} </td> 
+                    <td>
+                        
+                        <a href="{% url 'consultar_med' prd_med.id_med %}"> 
+                            {{ prd_med.nom_med}}
+                         </a> 
+
+                        <a href="{% url 'editar_med' prd_med.id_med %}">
+                            <button type="submit" name="Editar" >
+                                Editar
+                            </button>
+                            
+                        </a>
+                        <a href="{% url 'eliminar_med' prd_med.id_med %}">
+                            <button type="submit" class = "btm btn-danger" name="Eliminar" >
+                                Eliminar
+                            </button>
+                        </a>
+                        
+                    </td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock articulo %}
+{% endblock consulta %}
+
+
+{% block script_app%}{% endblock script_app%}
+{% block script_menu_app%}{% endblock script_menu_app%}
+{% block script_pie_app%}{% endblock script_pie_app%}

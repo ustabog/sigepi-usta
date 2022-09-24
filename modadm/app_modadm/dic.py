@@ -769,28 +769,28 @@ LN_INV_MINCI = [
     (41,'Otras humanidades')
     ]
 
-# mediciones_dic=[
-#     (0, 'sin medicion') 
-#     (1, 'en medicion')
-#     (2, 'medido')
-#     (3, 'obsoleto')
-#     ]
+mediciones_dic=[
+    (0, 'sin medicion'), 
+    (1, 'en medicion'),
+    (2, 'medido'),
+    (3, 'obsoleto')
+    ]
 
-# cert_dic=[
-#     (0, 'Certificado') 
-#     (1, 'En certificacion')
-#     (2, 'No certificado')
-#     ]
+cert_dic=[
+    (0, 'Certificado'), 
+    (1, 'En certificacion'),
+    (2, 'No certificado')
+]
 
-# TRL_dic=[
-#     (0, "No revisado")
-#     (1, 'Principios basicos observados')
-#     (2, 'Concepto de tecnologia y/o aplicacion formulada')
-#     (3, 'Pruebas de concepto')
-#     (4, 'Validacion de pruebas')
-#     (5, 'Validacion en un entorno relevante')
-#     (6, 'Validacion en un entorno en condiciones cercanas a las reales')
-#     (7, 'Demostracion en un entorno operativo real  ')
-#     (8, 'Sistema completo y calificado en un ambiente operacional')
-#     (9, 'Sistema aprobado y operando con exito en un entorno real')
-#     ]
+TRL_dic=[
+    (0, "No revisado"),
+    (1, 'Principios basicos observados'),
+    (2, 'Concepto de tecnologia y/o aplicacion formulada'),
+    (3, 'Pruebas de concepto'),
+    (4, 'Validacion de pruebas'),
+    (5, 'Validacion en un entorno relevante'),
+    (6, 'Validacion en un entorno en condiciones cercanas a las reales'),
+    (7, 'Demostracion en un entorno operativo real  '),
+    (8, 'Sistema completo y calificado en un ambiente operacional'),
+    (9, 'Sistema aprobado y operando con exito en un entorno real')
+]

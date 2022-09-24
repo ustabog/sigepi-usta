@@ -1,0 +1,68 @@
+<!--- Plantilla para la vista de el listado de mediciones ( con datos ) de productos - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 23 -09 -2022 --->
+
+
+{% extends 'app_regmed_iu.html' %} 
+{% load static %}
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
+{% block consulta %}
+{% block articulo %} 
+
+<div>
+    <p>Consulta las mediciones</p>
+</div>
+
+{% if form.errors %}
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+{% endif %}
+
+<!--CONSULTAR UN ESTADO DE MEDICION-->
+
+    <table>
+        <thead>
+            <tr>
+
+                <th>#</th>  
+                <th>Nombre</th>  
+                <th># Convocatoria </th> 
+                <th>Fecha de inicio</th> 
+                <th>Fecha de finalizacion</th>
+                <th>Documentacion</th>
+                <th>Resultados Convocatoria</th>
+                <th>Estado de la medicion</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for prd_med in object_list %}
+                <tr>
+
+                    <td> {{ prd_med.id_med }} </td> 
+                    <td> {{ prd_med.nom_med }} </td> 
+                    <td> {{ prd_med.num_conv }} </td> 
+                    <td> {{ prd_med.fch_ini}} </td> 
+                    <td>  {{ prd_med.fch_fin}} </td> 
+                    <td>  {{ prd_med.url_doc}} </td> 
+                    <td>  {{ prd_med.url_resul}} </td> 
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'listar_med' %}">
+        <button type="submit" name="Back" >
+            Volver
+        </button>
+    </a>  
+
+{% endblock articulo %}
+{% endblock consulta %}
+
+{% block script_app%}{% endblock script_app%}
+{% block script_menu_app%}{% endblock script_menu_app%}
+{% block script_pie_app%}{% endblock script_pie_app%}
