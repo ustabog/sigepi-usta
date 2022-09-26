@@ -62,10 +62,10 @@ DIC_APP = [
 ]
 # Diccionario de los roles de la aplicacion
 ROL_APP = [
-    [0,'Investigador(a) Principal'],
-    [1,'Propietario(a) Proy.'],
-    [2,'Investigador(a) Secundario'],
-    [3,'Colaborador(a)']
+    [0,'Investigador(a) Principal',True,0],
+    [1,'Propietario(a) Proy.',True,0],
+    [2,'Investigador(a) Secundario',True,0],
+    [3,'Colaborador(a)',True,0]
     ]
 
 #Clase para la creacion de los requisitios de existencia de un producto
