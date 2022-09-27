@@ -11,6 +11,37 @@ from modadm.app_modadm.dic import *
 from modpry.app_regpry.models import *
 
 
+INF_MOD = [
+    ['titulo', "Módulo de Registro de PRODUCTOS"],
+    ['nom','modprd'],# debe ser el mismo de la carpeta
+    ['desc',"Módulo de Registro de PRODUCTOS"],
+    ['url_doc','doc'],
+    ['version','0.80'],
+    ['activo', True],
+    ['instalado', True],
+    ['externo', True],
+    ['visible', True],
+    ['ls_param_cnf', []],
+    ]
+
+INF_APP = [
+    ['nom','app_regprd'],
+    ['titulo', "App Registro de Producto"],
+    ['desc',"aplicación para el registro de Productos"],
+    ['url_doc','doc'],
+    ['url_instal','modprd/app_regprd'],
+    ['url_pl','inicio_adm.html'],
+    ['nom_url','inicio_adm'],
+    ['version','0.5.0'],
+    #['id_mod', 0],
+    ['ver_mod', 'prueba'],
+    ['activo', False],
+    ['instalada', True],
+    ['visible', True],
+    ['externa', False],
+    ['tipo_app', 'SIGEPI-BASE'],
+    ['ico','#']
+    ]
 
 
 DIC_APP = [
@@ -31,10 +62,10 @@ DIC_APP = [
 ]
 # Diccionario de los roles de la aplicacion
 ROL_APP = [
-    (0,'Investigador(a) Principal'),
-    (1,'Propietario(a) Proy.'),
-    (2,'Investigador(a) Secundario'),
-    (3,'Colaborador(a)')
+    [0,'Investigador(a) Principal',True,0],
+    [1,'Propietario(a) Proy.',True,0],
+    [2,'Investigador(a) Secundario',True,0],
+    [3,'Colaborador(a)',True,0]
     ]
 
 #Clase para la creacion de los requisitios de existencia de un producto

@@ -19,7 +19,7 @@ urlpatterns = [
     path('eli_usu/<id>',vst_eli_usu, name = 'eliminar_usu'),
     
     #Crear información adicional de usuarios
-    path('crearinf/',infopersCreate.as_view(), name = 'crearinf'),
+    path('crearinf/',portada_adm().vst_raiz, name = 'crearinf'),
     #Lista de información de usuarios
     path('infopers/',infoperslList.as_view(), name = 'infopers'),
     #Modificar la información de usuarios

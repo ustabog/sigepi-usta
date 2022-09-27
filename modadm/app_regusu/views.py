@@ -12,7 +12,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib import messages
 from django.views.generic.base import View
 from django.contrib.auth import authenticate
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 #from rest_framework import viewsets
 from .models import *
 from .form import *
@@ -22,6 +22,14 @@ from modadm.app_modadm.form import *
 #from modcons.app_cons.views import vts_ls_usu
 
 ##### CRUD USUARIO ##
+
+class portada_adm(LoginRequiredMixin, PermissionRequiredMixin):
+
+    def vst_raiz(self, solicitud):
+        plt=loader.get_template('inicio_usu.html')
+        respuesta=plt.render()
+        return HttpResponse(respuesta)
+
 
 class vts_reg_usu(CreateView):
     #Clase que devuelve un formulario para registro de usuario

@@ -153,7 +153,6 @@ class sys_app():
             for filename in filenames:
                 ubicacion = os.path.join(dirname,filename)
                 if ubicacion[-9:]=='models.py':
-                    print(ubicacion)
                     #obtención del nombre del modulo al cual pertenece el aplicativo
                     nom_mod=ubicacion.split("\\")[-3]
                     #obtención del nombre del modulo al cual pertenece el aplicativo
@@ -268,14 +267,18 @@ class sys_rol():
                     
                     #obtención de los roles contenidos en el ROL_APP del archivo de modelos de cada app
                     lista_roles = sys_utils.ext_var(ubicacion[2:],'ROL_APP')
+                    
                                 
                     if lista_roles != None:
                         #Obtencion del nombre del modulo y de la aplicación que contiene al rol
+                        print(ubicacion)
                         nom_mod=ubicacion.split("\\")[-3]
                         nom_app=ubicacion.split("\\")[-2]
+                        
                         #Obtencion de las llaves identificadoras modulo y de la aplicación que contiene al rol
                         id_mod=(adm_mod.objects.filter(nom=nom_mod).order_by("-id_mod").values()[0]).get('id_mod')
                         id_app=(adm_app.objects.filter(nom=nom_app).order_by("-id_app").values()[0]).get('id_app')
+                        print(id_mod, id_app)
                         
                         for i in range(len(lista_roles)):
                             
@@ -419,4 +422,3 @@ def rutina_prueba():
 #archivar usuarios individuales
 #archivar usuarios grupales
 #archivar usuarios institucionales
-
