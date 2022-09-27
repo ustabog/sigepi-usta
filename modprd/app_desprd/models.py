@@ -5,6 +5,7 @@
 
 from django.db import models
 from modprd.app_regprd.models import *
+from modprd.app_certprd.models import *
 
 
 
