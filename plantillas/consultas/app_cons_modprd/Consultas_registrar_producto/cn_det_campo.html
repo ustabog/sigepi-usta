@@ -35,18 +35,18 @@
             </tr>
         </thead>
         <tbody>
-            {% for campo in object_list %}
+
                 <tr>
 
-                    <td> {{ campo.id_campo }} </td> 
-                    <td> {{ campo.nom_campo }} </td> 
-                    <td> {{ campo.desc_campo}} </td> 
-                    <td>  {{ campoo.Formato}} </td> 
-                    <td>  {{ campo.valor_def}} </td> 
-                    <td>  {{ campo.rango}} </td> 
+                    <td> {{ object.id_campo }} </td> 
+                    <td> {{ object.nom_campo }} </td> 
+                    <td> {{ object.desc_campo}} </td> 
+                    <td>  {{ object.Formato}} </td> 
+                    <td>  {{ object.valor_def}} </td> 
+                    <td>  {{ object.rango}} </td> 
 
                 </tr>
-            {% endfor %}
+
         </tbody>
     </table>
 

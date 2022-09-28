@@ -11,21 +11,23 @@ from modprd.app_regprd.models import *
 
 #Formulario para el registro de un producto
 
-class form_prd(forms.ModelForm):
-    class Meta:
-        model = prd_base
-        fields = (
-            'nom_prd',
-            'fech_entrega',
-            'ids_pry',
-            'ids_usu',
-        )
-        labels ={
-            'nom_prd': 'Nombre del producto',
-            'fech_entrega': 'Fecha de entrega estimada',
-            'ids_pry': 'Proyecto de referencia',
-            'ids_usu': 'Propietario del producto',
-        }
+# class form_prd(forms.ModelForm):
+#     class Meta:
+#         model = prd_base
+#         fields = (
+#             'nom_prd',
+#             'fech_entrega',
+#             'ids_pry',
+#             'ids_usu',
+#             'id_tipo_prd_minc'
+#         )
+#         labels ={
+#             'nom_prd': 'Nombre del producto',
+#             'fech_entrega': 'Fecha de entrega estimada',
+#             'ids_pry': 'Proyecto de referencia',
+#             'ids_usu': 'Propietario del producto',
+#             'id_tipo_prd_minc': 'Tipo de producto'
+#         }
 
 #---------------------------FORMULARIOS PARA EL REGISTRO DE PRODUCTOS --------------------------------
 #Formulario para el registro de un producto
@@ -38,12 +40,14 @@ class form_reg_prd(forms.ModelForm):
             'fech_entrega',
             'ids_pry',
             'ids_usu',
+            'id_tipo_prd_minc',
         )
         labels ={
             'nom_prd': 'Nombre del producto',
             'fech_entrega': 'Fecha de entrega estimada',
             'ids_pry': 'Proyecto de referencia',
             'ids_usu': 'Propietario del producto',
+            'id_tipo_prd_minc': 'Tipo de producto'
         }
 
 #Formulario para la seleccion del producto a editar

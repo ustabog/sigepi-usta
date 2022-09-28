@@ -38,7 +38,7 @@ class prd_med (models.Model):
     url_doc=models.URLField('Url de la informacion de la convocatoria: ', null=False, blank=False) #Url de la documentacion necesaria para la informacion de la convocatoria
     url_resul=models.URLField('Url del resultado de la convocatoria: ', null=False, blank=False) #Url de los resultados de la convocatoria
     est_med=models.IntegerField(null = False, blank = False, choices = mediciones_dic, default=0) #Estado de medicion
-    desc_med: models.TextField ('Descripcion de la convocatoria: ', null=False, blank=False) # Descripcion de la convocatoria
+    desc_med= models.TextField ('Descripcion de la convocatoria: ', null=False, blank=False) # Descripcion de la convocatoria
 
 class prd_etp(models.Model):
     id_etp= models.AutoField(primary_key=True, null=False, blank=False, unique=True) #Identificador de la etapa LLAVE PRIMARIA

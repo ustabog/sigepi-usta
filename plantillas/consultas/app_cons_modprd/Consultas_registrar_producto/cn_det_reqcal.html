@@ -31,14 +31,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for prd_req_cal in object_list %}
+
                 <tr>
 
-                    <td> {{ prd_req_cal.id_reqcal}} </td> 
-                    <td> {{ prd_req_cal.desc_reqcal}} </td> 
+                    <td> {{ object.id_reqcal}} </td> 
+                    <td> {{ object.desc_reqcal}} </td> 
 
                 </tr>
-            {% endfor %}
+
         </tbody>
     </table>
 

@@ -1,0 +1,33 @@
+<!--- Plantilla para la vista del registro de certificado de productos - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 27 -09 -2022 --->
+
+{% extends 'inicio.html' %} 
+{% load static %}
+
+<!--llamado de los bloques del archivo base.html-->
+
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
+
+{% block app%}
+
+<div id="menu_app" class="menu_app">
+
+    {% block menu_app %} 
+
+    <a href="{% url 'crear_cert' %}">
+        <button type="button" name="crear">
+            Crear
+        </button>
+    </a>
+
+    <a href="{% url 'listar_cert' %}">
+        <button type="button" name="consultar" >
+            Consultar
+        </button>
+    </a>   
+
+    {% endblock menu_app %}

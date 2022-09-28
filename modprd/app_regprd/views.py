@@ -50,10 +50,15 @@ class vst_cons_prd(DetailView):
     template_name ='cn_det_prd.html'   
     success_url = reverse_lazy('listar_prd')
 
+    def get_object(self) :
+        instance= self.model.objects.get(id_prd=self.kwargs['pk'])
+        return instance
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Consulta de productos'
         context['action'] = 'Consulte'
+        context['object'] = self.get_object()
         return context
   
 
@@ -129,12 +134,16 @@ class vst_cons_reqexist(DetailView):
     template_name ='cn_det_reqexist.html'   
     success_url = reverse_lazy('listar_reqexs')
 
+    def get_object(self) :
+        instance= self.model.objects.get(id_reqexs=self.kwargs['pk'])
+        return instance
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Lista de requerimientos'
+        context['title'] = 'Consulta de requerimientos'
         context['action'] = 'Consulte'
+        context['object'] = self.get_object()
         return context
-
 
 #Vista para la edicion de un requerimiento de existencia
 
@@ -207,10 +216,15 @@ class vst_cons_reqcal(DetailView):
     template_name ='cn_det_reqcal.html'   
     success_url = reverse_lazy('listar_reqcal')
 
+    def get_object(self) :
+        instance= self.model.objects.get(id_reqcal=self.kwargs['pk'])
+        return instance
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Consulta de requerimientos'
+        context['title'] = 'Consulta de productos'
         context['action'] = 'Consulte'
+        context['object'] = self.get_object()
         return context
 
 #Vista para la edicion de un requerimiento de calidad
@@ -282,10 +296,15 @@ class vst_cons_categ(DetailView):
     template_name ='cn_det_categ.html'   
     success_url = reverse_lazy('listar_categ')
 
+    def get_object(self) :
+        instance= self.model.objects.get(id_categ=self.kwargs['pk'])
+        return instance
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Consulta de categorias'
         context['action'] = 'Consulte'
+        context['object'] = self.get_object()
         return context
 
 #Vista para la edicion de categorias
@@ -361,12 +380,16 @@ class vst_cons_tipo(DetailView):
     template_name ='cn_det_tipo.html'   
     success_url = reverse_lazy('listar_tipo')
 
+    def get_object(self) :
+        instance= self.model.objects.get(id_tipo=self.kwargs['pk'])
+        return instance
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Consulta de categorias'
+        context['title'] = 'Consulta de tipos'
         context['action'] = 'Consulte'
+        context['object'] = self.get_object()
         return context
-
 #Vista para la edicion de tipos de producto
 
 class vst_upd_tipo(UpdateView):
@@ -440,10 +463,15 @@ class vst_cons_campo(DetailView):
     template_name ='cn_det_campo.html'   
     success_url = reverse_lazy('listar_campo')
 
+    def get_object(self) :
+        instance= self.model.objects.get(id_campo=self.kwargs['pk'])
+        return instance
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Consulta de campos'
         context['action'] = 'Consulte'
+        context['object'] = self.get_object()
         return context
 
 
@@ -519,10 +547,15 @@ class vst_cons_plt(DetailView):
     template_name ='cn_det_plt.html'   
     success_url = reverse_lazy('listar_plantilla')
 
+    def get_object(self) :
+        instance= self.model.objects.get(id_plt_desc=self.kwargs['pk'])
+        return instance
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Consulta de plantillas'
         context['action'] = 'Consulte'
+        context['object'] = self.get_object()
         return context
 
 #Vista para la edicion de campos de productos

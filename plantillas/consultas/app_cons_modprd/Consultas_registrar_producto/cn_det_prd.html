@@ -39,20 +39,18 @@
             </tr>
         </thead>
         <tbody>
-            {% for prd_base in object_list %}
                 <tr>
 
-                    <td> {{ prd_base.id_prd}} </td> 
-                    <td> {{ prd_base.nom_prd}} </td> 
-                    <td>  {{ prd_base.ids_pry}} </td> 
-                    <td>  {{ prd_base.ids_usu}} </td> 
-                    <td>  {{ prd_base.fech_reg}} </td> 
-                    <td>  {{ prd_base.fech_entrega}} </td> 
-                    <td>  {{ prd_base.id_tipo_prd_minc}} </td> 
-                    <td>  {{ prd_base.id_rl_prd_campos}} </td> 
+                    <td> {{ object.id_prd}} </td> 
+                    <td> {{ object.nom_prd}} </td> 
+                    <td>  {{ object.ids_pry}} </td> 
+                    <td>  {{ object.ids_usu}} </td> 
+                    <td>  {{ object.fech_reg}} </td> 
+                    <td>  {{ object.fech_entrega}} </td> 
+                    <td>  {{ object.id_tipo_prd_minc}} </td> 
+                    <td>  {{ object.id_rl_prd_campos}} </td> 
 
                 </tr>
-            {% endfor %}
         </tbody>
     </table>
 
@@ -61,7 +59,18 @@
             Volver
         </button>
     </a>
+    
+    <a href="{% url 'consultar_med' prd_base.id_prd %}">
+        <button type="submit" name="Editar" >
+            Estado medicion
+        </button>
+    </a>
 
+    <a href="{% url 'consultar_cert' prd_base.id_prd %}">
+        <button type="submit" name="Editar" >
+            Estado certificacion
+        </button>
+    </a>
 
 
 {% endblock articulo %}

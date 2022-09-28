@@ -1,36 +1,34 @@
-<!--- Plantilla para la vista de los detalles de plantillas de productos - plantillas para SIGEPI
+<!--- Plantilla para la vista de el listado de certificacion de productos - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 25 -08 -2022 --->
+#fecha 27 -09 -2022 --->
 
-{% extends 'app_regplt_iu.html' %} 
+
+{% extends 'app_regprd_iu.html' %} 
 {% load static %}
 {% block meta_app %}{% endblock meta_app%}
 {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
 {% block meta_pie_app%}{% endblock meta_pie_app%}
 {% block consulta %}
-{% block articulo %}
+{% block articulo %} 
 
 <div>
-    <p>Consulta de plantillas </p>
+    <p>Consulta las mediciones</p>
 </div>
 
 {% if form.errors %}
     <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
 {% endif %}
 
-<!--CONSULTAR PLANTILLAS-->
-
+<!--CONSULTAR UN ESTADO DE MEDICION-->
 
     <table>
-        <!-- Tabla que contiene el formulario de una plantilla de producto-->
         <thead>
             <tr>
 
-                <th>#</th>  
-                <th>Nombre de la plantilla</th>  
-                <th>Descripcion</th> 
-                <th>Campos que utiliza</th> 
+                <th>Estado</th>  
+                <th>Validacion</th>  
+
 
             </tr>
         </thead>
@@ -38,26 +36,23 @@
 
                 <tr>
 
-                    <td> {{ object.id_plt_desc}} </td> 
-                    <td> {{ object.nom_plt}} </td> 
-                    <td>  {{ object.desc_plt}} </td> 
-                    <td>  {{ object.id_campo}} </td> 
+                    <td> {{ object.est_cert }} </td> 
+                    <td> {{ object.id_soporte }} </td> 
+
 
                 </tr>
 
         </tbody>
     </table>
 
-    <a href="{% url 'listar_plt' %}">
+    <a href="{% url 'listar_prd' %}">
         <button type="submit" name="Back" >
             Volver
         </button>
     </a>  
 
-
 {% endblock articulo %}
 {% endblock consulta %}
-
 
 {% block script_app%}{% endblock script_app%}
 {% block script_menu_app%}{% endblock script_menu_app%}

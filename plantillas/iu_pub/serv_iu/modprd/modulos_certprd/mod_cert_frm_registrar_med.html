@@ -1,0 +1,30 @@
+<!--- Plantilla para la vista del registro de medicion - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 22 -09 -2022 --->
+
+{% extends 'app_regmed_iu.html' %}
+{% load static %}
+
+{% block articulo %}
+  {% if form.errors %}
+      <p>No se ha registrado correctamente. Por favor, inténtalo de nuevo.</p>
+  {% endif %}
+
+  <div class="container">
+      <div class="column form-group text-center">
+          <h3>registra</h3>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <a href="">
+                <button type="submit" name="Crear" >
+                    Crear
+                </button>
+            </a>   
+        </form>
+
+      </div>
+  </div>
+
+  {% endblock articulo %}

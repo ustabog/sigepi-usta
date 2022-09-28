@@ -38,20 +38,20 @@
             </tr>
         </thead>
         <tbody>
-            {% for prd_tipo in object_list %}
+
                 <tr>
 
-                    <td> {{ prd_tipo.id_tipo}} </td> 
-                    <td> {{ prd_tipo.nom_tipo}} </td> 
-                    <td>  {{ prd_tipo.id_reqexist}} </td> 
-                    <td>  {{ prd_tipo.id_reqcal}} </td> 
-                    <td>  {{ prd_tipo.id_categ}} </td> 
-                    <td>  {{ prd_tipo.peso_abs}} </td> 
-                    <td>  {{ prd_tipo.vent_obs}} </td> 
-                    <td>  {{ prd_tipo.tipo_cal}} </td> 
+                    <td> {{ object.id_tipo}} </td> 
+                    <td> {{ object.nom_tipo}} </td> 
+                    <td>  {{ object.id_reqexist}} </td> 
+                    <td>  {{ object.id_reqcal}} </td> 
+                    <td>  {{ object.id_categ}} </td> 
+                    <td>  {{ object.peso_abs}} </td> 
+                    <td>  {{ object.vent_obs}} </td> 
+                    <td>  {{ object.tipo_cal}} </td> 
 
                 </tr>
-            {% endfor %}
+
         </tbody>
     </table>
 
