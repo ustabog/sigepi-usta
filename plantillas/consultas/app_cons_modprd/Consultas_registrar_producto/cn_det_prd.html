@@ -34,7 +34,7 @@
                 <th>Fecha de registro</th>
                 <th>Fecha de entrega estimado</th>
                 <th>Tipo de producto:</th>
-                <th>Plantilla que rige el producto</th> 
+
 
             </tr>
         </thead>
@@ -47,8 +47,8 @@
                     <td>  {{ object.ids_usu}} </td> 
                     <td>  {{ object.fech_reg}} </td> 
                     <td>  {{ object.fech_entrega}} </td> 
-                    <td>  {{ object.id_tipo_prd_minc}} </td> 
-                    <td>  {{ object.id_rl_prd_campos}} </td> 
+                    <td>  {{ object.id_tipo_prd_minc.nom_tipo}} </td> 
+
 
                 </tr>
         </tbody>

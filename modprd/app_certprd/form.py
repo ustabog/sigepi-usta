@@ -14,7 +14,6 @@ class form_med(forms.ModelForm):
     class Meta:
         model = prd_med
         fields = (
-            'id_prd',
             'nom_med',
             'num_conv',
             'fch_ini',
@@ -25,7 +24,6 @@ class form_med(forms.ModelForm):
             'desc_med'
         )
         labels ={
-            'id_prd': 'Producto a medir',
             'nom_med': 'Nombre de la medicion',
             'num_conv': 'Numero de la convocatoria',
             'fch_ini': 'Fecha de inicio',

@@ -4,7 +4,8 @@
 #fecha 19 -08 -2022
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from modprd.app_certprd.models import prd_med
 from modprd.app_regprd.form import *
 from django.urls import reverse_lazy
 from modprd.app_regprd.models import *
@@ -25,6 +26,24 @@ class vst_regprd(CreateView):
     form_class = form_reg_prd
     template_name ='mod_prd_frm_registrar.html'
     success_url = reverse_lazy('listar_prd')
+
+    def post(self,request) :
+        
+        super(vst_regprd, self).post(request)   
+        form= self.form_class(request.POST)
+
+        if request.method == 'POST':  
+            instance = prd_med(est_med=0, id_prd= prd_base.objects.latest('id_prd'))  
+            instance.save()
+
+        return HttpResponseRedirect(self.success_url)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'crear productos'
+        context['action'] = 'Create'
+        return context
+
 
 #Vista para el listado de productos
 
@@ -84,6 +103,14 @@ class vst_delprd (DeleteView):
     model = prd_base
     template_name ='mod_prd_eliminar.html'
     success_url = reverse_lazy('listar_prd')
+
+    # def post(self,request) :
+    #     super(vst_regprd, self).post(request)   
+
+    #     if request.method == 'POST':  
+    #         instance = prd_med(est_med=0, id_prd= prd_base.objects.latest('id_prd'))  
+    #         instance.save()
+    #     return HttpResponseRedirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

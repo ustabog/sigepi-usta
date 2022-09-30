@@ -1,7 +1,7 @@
 <!--- Plantilla para la vista de el listado de mediciones ( con datos ) de productos - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 23 -09 -2022 --->
+#fecha 29 -09 -2022 --->
 
 
 {% extends 'app_regmed_iu.html' %} 
@@ -13,29 +13,32 @@
 {% block articulo %} 
 
 <div>
-    <p>Consulta de la medicion </p>
+
+    <p>Consulta de la etapa de un producto </p>
+
 </div>
 
+
 {% if form.errors %}
+
     <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+
 {% endif %}
 
-{% if not prd_med %}
+{% if not prd_etp %}
 
-    <!--CONSULTAR UN ESTADO DE MEDICION-->
+    <!--CONSULTAR UN ESTADO DE ETAPA-->
 
     <table>
         <thead>
             <tr>
 
                 <th>#</th>  
-                <th>Nombre</th>  
-                <th># Convocatoria </th> 
-                <th>Fecha de inicio</th> 
-                <th>Fecha de finalizacion</th>
-                <th>Documentacion</th>
-                <th>Resultados Convocatoria</th>
-                <th>Estado de la medicion</th>
+                <th>Producto</th>  
+                <th>Nombre</th> 
+                <th>Descripcion</th> 
+                <th>Escala</th>
+
 
             </tr>
         </thead>
@@ -43,14 +46,12 @@
 
                 <tr>
 
-                    <td> {{ prd_med.id_med }} </td> 
-                    <td> {{ prd_med.nom_med }} </td> 
-                    <td> {{ prd_med.num_conv }} </td> 
-                    <td> {{ prd_med.fch_ini}} </td> 
-                    <td>  {{ prd_med.fch_fin}} </td> 
-                    <td>  {{ prd_med.url_doc}} </td> 
-                    <td>  {{ prd_med.url_resul}} </td> 
-                    <td>  {{ prd_med.est_med}} </td> 
+                    <td> {{ prd_etp.id_etp }} </td> 
+                    <td> {{ prd_etp.id_prd }} </td> 
+                    <td> {{ prd_etp.nom_etp }} </td> 
+                    <td> {{ prd_etp.desc_etp}} </td> 
+                    <td> {{ prd_etp.esc_trl}} </td> 
+
 
                 </tr>
     
@@ -58,7 +59,7 @@
     
     </table>
 
-        <a href="{% url 'listar_prd' %}">
+        <a href="{% url 'listar_med' %}">
 
             <button type="submit" name="Back" >
                 Volver
@@ -69,13 +70,15 @@
         <a href="{% url 'editar_med' prd_med.id_med %}">
 
             <button type="submit" name="Back" >
-                Actualizar Medicion
+                Actualizar Etapa
             </button>
 
         </a>  
 
 {% else %}
-    <span> xd </span>
+
+    <span> etapa </span>
+
 {% endif %}
 
 

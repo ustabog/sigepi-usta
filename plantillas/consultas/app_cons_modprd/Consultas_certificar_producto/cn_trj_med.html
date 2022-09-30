@@ -36,15 +36,15 @@
                     <td>
                         {{ prd_base.nom_prd}} 
 
-                        <a href="{% url 'crear_med' prd_base.id_prd %}">
+                        <a href="{% url 'consultar_med' prd_base.id_prd %}">
                             <button type="submit" name="Editar" >
-                                Medir
+                                Estado de medicion
                             </button>
                         </a>
 
-                        <a href="{% url 'crear_cert' prd_base.id_prd%}">
+                        <a href="{% url 'consultar_cert' prd_base.id_prd %}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
-                                Certificar
+                                Estado de certificacion
                             </button>
                         </a>
 

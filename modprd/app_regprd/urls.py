@@ -11,6 +11,7 @@ urlpatterns = [
     #Url's Para el registro de producto
     path('iniprd', ini_regprd().view_prd, name='ini_prd'), # url al inicio de la interfaz de productos
     path('crearprd/', vst_regprd.as_view(), name='crear_prd'), # url para la interfaz de creacion de productos
+    path('regprd/', vst_regprd, name='reg_prd'), # url para la creacion de productos
     path('listprd/', vst_listprd.as_view(), name='listar_prd'), # url para la interfaz de listado de productos
     path('consprd/<int:pk>', vst_cons_prd.as_view(), name='consultar_prd'), # url para la interfaz de consulta de productos
     path('updprd/<int:pk>', vst_updprd.as_view(), name='editar_prd'), # url para la interfaz de actualizacion de productos
