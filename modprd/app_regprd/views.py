@@ -527,6 +527,24 @@ class vst_del_tipo (DeleteView):
         context['action'] = 'delete'
         return context
 
+class vst_archi_reqexist(TemplateView):
+    model = prd_req_Exist
+    template_name = 'mod_prd_eliminar_exist.html'
+    success_url = reverse_lazy('listar_reqexs')
+
+    def post(self,request,id):
+        req= prd_req_Exist.objects.get(id_prd=id)
+        if request.method == 'POST':
+            req.archivo= True
+            req.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'archivar requerimientos'
+        context['action'] = 'Archivar'
+        return context
+        
 #----------VISTAS PARA EL REGISTRO DE UN CAMPO PARA PRODUCTO SIGEPI------------
 
 #Vista para el registro de campos de productos
@@ -615,6 +633,24 @@ class vst_del_camp (DeleteView):
         context['action'] = 'Delete'
         return context
 
+class vst_archi_reqexist(TemplateView):
+    model = prd_req_Exist
+    template_name = 'mod_prd_eliminar_exist.html'
+    success_url = reverse_lazy('listar_reqexs')
+
+    def post(self,request,id):
+        req= prd_req_Exist.objects.get(id_prd=id)
+        if request.method == 'POST':
+            req.archivo= True
+            req.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'archivar requerimientos'
+        context['action'] = 'Archivar'
+        return context
+
 #----------VISTAS PARA EL REGISTRO DE UNA PLANTILLA PARA PRODUCTOS SIGEPI------------
 
 #Vista para el registro de plantillas de productos
@@ -693,4 +729,22 @@ class vst_del_plt(DeleteView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Eliminar plantilla'
         context['action'] = 'Delete'
+        return context
+
+class vst_archi_plt(TemplateView):
+    model = prd_plt_desc
+    template_name = 'mod_prd_eliminar_exist.html'
+    success_url = reverse_lazy('listar_reqexs')
+
+    def post(self,request,id):
+        req= prd_req_Exist.objects.get(id_prd=id)
+        if request.method == 'POST':
+            req.archivo= True
+            req.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'archivar requerimientos'
+        context['action'] = 'Archivar'
         return context
