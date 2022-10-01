@@ -32,6 +32,10 @@
         </thead>
         <tbody>
             {% for prd_base in object_list %}
+                {% if prd_base.archivo %}
+                <tr>
+                </tr>
+                {% else %}
                 <tr>
                     <td> {{ prd_base.id_prd}} </td> 
                     <td>
@@ -45,7 +49,7 @@
                             </button>
                         </a>
 
-                        <a href="{% url 'eliminar_prd' prd_base.id_prd%}">
+                        <a href="{% url 'archivar_prd' prd_base.id_prd%}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
@@ -53,6 +57,7 @@
 
                     </td> 
                 </tr>
+                {% endif %}
             {% endfor %}
         </tbody>
     </table>

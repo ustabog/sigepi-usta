@@ -16,6 +16,7 @@ urlpatterns = [
     path('consprd/<int:pk>', vst_cons_prd.as_view(), name='consultar_prd'), # url para la interfaz de consulta de productos
     path('updprd/<int:pk>', vst_updprd.as_view(), name='editar_prd'), # url para la interfaz de actualizacion de productos
     path('eliprd/<int:pk>', vst_delprd.as_view(), name='eliminar_prd'), # url para la interfaz de eliminacion de productos
+    path('archiprd/<id>', vst_archiprd.as_view(), name='archivar_prd'), # url para la interfaz de archivacion de productos
 
     #Url's Para el registro de requerimientos de existencia
     path('creareqexs/', vst_regreqexist.as_view(), name='crear_reqexs'),# urls para la interfaz de creacion de requerimientos de existencia

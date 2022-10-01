@@ -43,13 +43,15 @@ class prd_req_Exist(models.Model):
     id_reqexs=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del requerimiento de existencia LLAVE PRIMARIA
     nom_reqexs=models.CharField('Nombre del Requerimiento de existencia: ', max_length=255, blank=False,null=False)#Nombre del requerimiento de existencia
     desc_reqexs=models.TextField('Descripcion del Requerimiento de existencia: ', blank=True,null=False)#descripcion del requerimiento de existencia
-
+    archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro
+    
 #Clase para la creacion de los requisitios de calidad de un producto
 
 class prd_req_cal(models.Model):
     id_reqcal=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del requerimiento de calidad LLAVE PRIMARIA
     desc_reqcal=models.TextField('Descripcion del Requerimiento de calidad: ', blank=True,null=False)#descripcion del requerimiento de calidad
-
+    archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro
+    
 #Clase para la creacion de las categorias de un producto
 
 class prd_categ(models.Model):
@@ -57,6 +59,7 @@ class prd_categ(models.Model):
     id_reqcal=models.ForeignKey(prd_req_cal, blank=False, null=True ,on_delete=models.SET_NULL, db_constraint=True)#Identificador del requerimiento de calidad para el registro de la categoria
     nom_categ=models.CharField('Nombre de la categoria: ', max_length=255, blank=False,null=False)#Nombre de la categoria
     peso_rel=models.PositiveIntegerField(null=False, blank=False, default=0)#Peso relativo de la categoria del producto
+    archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro
 
 #Clase para la creacion de campos para un producto
 
@@ -68,7 +71,8 @@ class campo(models.Model):
     Formato = models.CharField('Formato: ', max_length=255, blank=False, null=False) #Formato del campo
     valor_def = models.PositiveIntegerField('Valor por defecto del campo:', null=False, blank=False, default=0)# Valor por defecto del campo
     desc_campo= models.TextField('descripcion del campo: ', null=False, blank=False)#descripcion del campo
-    
+    archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro   
+
 #Clase para la creacion de las plantillas de los productos segun los campos
 
 class prd_plt_desc(models.Model):
@@ -76,6 +80,7 @@ class prd_plt_desc(models.Model):
     id_campo = models.ForeignKey(campo,blank=False,on_delete=models.SET_NULL, null=True , db_constraint=True)# Identificador de campo de plantilla
     nom_plt=models.CharField('Nombre de la plantilla: ', max_length=255, blank=False, null=False)#Nombre de la plantilla para el producto
     desc_plt=models.TextField('Descripcion de la plantilla: ', blank=False, null=False) #Descripcion de la plantilla de producto
+    archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro
 
 #Clase para la relacion de un producto y un campo 
 
@@ -96,7 +101,8 @@ class prd_tipo(models.Model):
     vent_obs=models.PositiveIntegerField(null=False, blank=False, default=0)#ventana de observacion / Tiempo en años para la calificacion del tipo
     id_plt_desc=models.ForeignKey(prd_plt_desc,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
     tipo_cal=models.CharField('clasificacion segun la calidad: ', max_length=10,blank=True, null=False)
-
+    archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro
+    
 # Clases de la aplicacion de registro de productos
 
 class prd_base(models.Model):
@@ -108,8 +114,7 @@ class prd_base(models.Model):
     fech_entrega=models.DateTimeField('Fecha de entrega: ') #fecha de entrega
     id_tipo_prd_minc=models.ForeignKey (prd_tipo,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificador del tipo de producto
     id_rl_prd_campos=models.ForeignKey (rl_prd,null=True,blank=False, on_delete=models.SET_NULL, db_constraint=True)#Identificador del campo de descripcion del producto
-
-
+    archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro
 
 
 

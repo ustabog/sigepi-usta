@@ -12,7 +12,8 @@ from modprd.app_regprd.models import *
 from .models import *
 from django.views.generic import *
 
-#Vista principal del registro de productos 
+#Vista principal del registro de productos
+
 class ini_regprd():
     def view_prd(request):
         return render(request, 'app_regprd_iu.html')
@@ -42,8 +43,8 @@ class vst_regprd(CreateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'crear productos'
         context['action'] = 'Create'
+        print(context)
         return context
-
 
 #Vista para el listado de productos
 
@@ -62,7 +63,7 @@ class vst_listprd(ListView):
         context['action'] = 'List'
         return context
 
- #Vista para la consulta de productos
+#Vista para la consulta de productos
 
 class vst_cons_prd(DetailView):
     model= prd_base
@@ -80,7 +81,6 @@ class vst_cons_prd(DetailView):
         context['object'] = self.get_object()
         return context
   
-
 #Vista para la edicion de un producto 
 
 class vst_updprd(UpdateView):
@@ -116,6 +116,26 @@ class vst_delprd (DeleteView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Eliminacion de productos'
         context['action'] = 'Delete'
+        return context
+
+#Vista para la archivacion de productos
+
+class vst_archiprd(TemplateView):
+    model = prd_base
+    template_name = 'mod_prd_eliminar.html'
+    success_url = reverse_lazy('listar_prd')
+
+    def post(self,request,id):
+        prd= prd_base.objects.get(id_prd=id)
+        if request.method == 'POST':
+            prd.archivo= True
+            prd.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'archivar productos'
+        context['action'] = 'Archivar'
         return context
 
 #----------VISTAS PARA EL REGISTRO DE UN REQUERIMIENTO DE EXISTENCIA SIGEPI------------
@@ -202,6 +222,26 @@ class vst_del_reqexist (DeleteView):
         context['action'] = 'Delete'
         return context
 
+#Vista para la archivacion de requerimientos de existencia
+
+class vst_archi_reqexist(TemplateView):
+    model = prd_req_Exist
+    template_name = 'mod_prd_eliminar_exist.html'
+    success_url = reverse_lazy('listar_reqexs')
+
+    def post(self,request,id):
+        req= prd_req_Exist.objects.get(id_prd=id)
+        if request.method == 'POST':
+            req.archivo= True
+            req.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'archivar requerimientos'
+        context['action'] = 'Archivar'
+        return context
+
 #----------VISTAS PARA EL REGISTRO DE UN REQUERIMIENTO DE CALIDAD SIGEPI------------
 
 #Vista para el registro de un requerimiento de calidad
@@ -283,6 +323,27 @@ class vst_del_reqcal (DeleteView):
         context['title'] = 'Eliminar requerimiento'
         context['action'] = 'Delete'
         return context
+
+#Vista para la archivacion de requerimientos de calidad
+
+class vst_archi_reqcal(TemplateView):
+    model = prd_req_cal 
+    template_name = 'mod_prd_eliminar_cal.html'
+    success_url = reverse_lazy('listar_reqcal')
+
+    def post(self,request,id):
+        req= prd_req_cal.objects.get(id_reqcal=id)
+        if request.method == 'POST':
+            req.archivo= True
+            req.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'archivar requerimientos'
+        context['action'] = 'Archivar'
+        return context
+
 
 #----------VISTAS PARA EL REGISTRO DE UNA CATEGORIA DE PRODUCTO SIGEPI------------
 
@@ -371,6 +432,25 @@ class vst_del_categ (DeleteView):
         context['action'] = 'Delete'
         return context
 
+
+
+class vst_archiprd(TemplateView):
+    model = prd_base
+    template_name = 'mod_prd_eliminar.html'
+    success_url = reverse_lazy('listar_prd')
+
+    def post(self,request,id):
+        prd= prd_base.objects.get(id_prd=id)
+        if request.method == 'POST':
+            prd.archivo= True
+            prd.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'archivar productos'
+        context['action'] = 'Archivar'
+        return context
 
 #----------VISTAS PARA EL REGISTRO DE UN TIPO DE PRODUCTO SIGEPI------------
 
