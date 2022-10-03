@@ -8,7 +8,15 @@
 
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        <label for="discap">Selecione Discapacidad</label>
+        <select name="discap" id="discap">
+            {% for discapacidad in disc %}
+                <option value selected>{{discapacidad.nom_disc}}</option>
+            {% endfor %}
+        </select>
+
+        <br>
         <input class="btn btn-primary" type="submit" value="Registrar">
     </form>
 {% endblock app %}

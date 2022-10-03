@@ -1,4 +1,4 @@
-{% block br_herr %}
+{% block br_herr_usu %}
 
 <div id="enc_br_herr" class="enc_br_herr">
     <span>Información de Usuario</span>    
@@ -6,13 +6,13 @@
 
 <nav id="br_app" class="br_app">
     <ul>
-        <li><a href="{% url 'reg_disc' %}"><i class="material-icons">accessibility</i><span>Discapacidad</span></a></li>
-        <li><a href=""><i class="material-icons">add_task</i><span>Habilidades</span></a></li>
-        <li><a href=""><i class="material-icons">school</i><span>Cursos Dictados</span></a></li>
-        <li><a href=""><i class="material-icons">work</i><span>Empleo</span></a></li>
-        <li><a href=""><i class="material-icons">workspace_premium</i><span>Formación Academica</span></a></li>
-        <li><a href=""><i class="material-icons">apartment</i><span>Inf Contacto</span></a></li>
-        <li><a href=""><i class="material-icons">person</i><span>Inf Personal</span></a></li>
+        <li><a href="{% url 'cons_discapacidad' %}"><i class="material-icons">accessibility</i><span>Discapacidades</span></a></li>
+        <li><a href="{% url 'reg_habpers' %}"><i class="material-icons">add_task</i><span>Habilidades</span></a></li>
+        <li><a href="{% url 'reg_empleo' %}"><i class="material-icons">work</i><span>Empleo</span></a></li>
+        <li><a href="{% url 'reg_usu_cur' %}"><i class="material-icons">school</i><span>Cursos Dictados</span></a></li>
+        <li><a href="{% url 'reg_acad_inf' %}"><i class="material-icons">workspace_premium</i><span>Formación Academica</span></a></li>
+        <li><a href="{% url 'mi_contacto' %}"><i class="material-icons">apartment</i><span>Inf Contacto</span></a></li>
+        <li><a href="{% url 'reg_infopers' %}"><i class="material-icons">person</i><span>Inf Personal</span></a></li>
         <li><a href=""><i class="material-icons">share</i><span>Redes Sociales</span></a></li>
         <li><a href=""><i class="material-icons">assignment_turned</i><span>Validación de Habilidades</span></a></li>
         
@@ -22,4 +22,4 @@
 
 
 
-{% endblock br_herr %}
+{% endblock br_herr_usu %}

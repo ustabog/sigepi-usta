@@ -1,4 +1,4 @@
-{% extends 'inicio_adm.html' %}
+{% extends 'inicio_usu.html' %}
 {% block titulo %} Creación Informacion Personal {% endblock titulo %}
 {% block app %}
     {% if form.errors %}
@@ -9,6 +9,8 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
+        <h4>Disponibilidad</h4>
+        {{calendario.as_p}}
         <input class="btn btn-primary" type="submit" value="Registrar">
     </form>
 {% endblock app %} 

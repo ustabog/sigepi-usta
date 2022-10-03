@@ -86,7 +86,7 @@
             </li>
             
             <li>
-                <a href="{% url 'crear_prd' %}"><i class="material-icons">category</i><span>Registrar productos de inv.</span></a>           
+                <a href=""><i class="material-icons">category</i><span>Registrar productos de inv.</span></a>           
                 <ul class="categ_br_herr">
                     <h1> ¿Que desea hacer? </h1>
                     <li><a href="{% url 'crear_prd' %}"><i class="material-icons">addchart</i><span>Registrar Productos</span></a></li>
@@ -99,9 +99,13 @@
             </li>
 
             <li>
-                <a href="{% url 'listar_med' %}"><i class="material-icons">approval</i><span>Certificados y mediciones</span></a>           
+                <a href=""><i class="material-icons">approval</i><span>Certificados y mediciones</span></a>           
+                <ul class="categ_br_herr">
+                    <h1> ¿Que desea hacer? </h1>
+                    <li><a href="{% url 'crear_med' %}"><i class="material-icons">addchart</i><span>Registrar medicion</span></a></li>
+                </ul>
             </li>
 
         </ul>
     </nav> 
-{% endblock br_herr %}
+    {% endblock br_herr %}

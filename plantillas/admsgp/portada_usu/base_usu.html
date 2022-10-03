@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="es" dir="rtl">
+<html lang="es" dir="ltr">
 
 <head id="metadatos">
     <link rel="stylesheet" href="{% static 'css/sigepi.css' %}">
@@ -14,7 +14,7 @@
     {% block meta_panel_der %}{% endblock meta_panel_der%}
     {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
     {% block meta_panel_iz %}{% endblock meta_panel_iz%}
-    {% block meta_pie_app%}{% endblock meta_pie_app%}
+    {% block meta_pie_app %}{% endblock meta_pie_app %}
     {% block meta_pie_extra%}{% endblock meta_pie_extra%}
     {% block meta_pie%}{% endblock meta_pie%}
     <title id='titulo'>
@@ -35,17 +35,22 @@
 
     <div id="panel_ppal" class="panel_ppal">
         <aside id="panel_der"  class="panel_der">
-            {% block panel_der %}
-            {% endblock panel_der %}
+            
             {% block br_herr %}
             {% endblock br_herr %}
+
+
+            {% block panel_der %}
+         
+            {% endblock panel_der %}
+        
         </aside>    
+
         <div id="app" class="app">
             {% block app%}
             {% endblock app%}
         </div>
 
-        
         <aside id="panel_iz" class="panel_iz">
             {% block panel_iz %}
             {% endblock panel_iz %}
