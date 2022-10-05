@@ -110,8 +110,8 @@ class prd_base(models.Model):
     ids_pry=models.ManyToManyField(pry_base,blank=False, db_constraint=True)# Identificador del propietario
     nom_prd=models.CharField('Nombre del producto :',max_length=255, blank=False, null=False ) # Nombre del producto
     ids_usu=models.ForeignKey(User, null=True,blank=False, on_delete=models.SET_NULL, db_constraint=True)# Identificador del propietario
-    fech_reg=models.DateTimeField('Fecha de registro: ', blank=False, null=False, auto_now_add=True) #fecha de registro
-    fech_entrega=models.DateTimeField('Fecha de entrega: ') #fecha de entrega
+    fech_reg=models.DateField('Fecha de registro: ', blank=False, null=False, auto_now_add=True) #fecha de registro
+    fech_entrega=models.DateField('Fecha de entrega: ') #fecha de entrega
     id_tipo_prd_minc=models.ForeignKey (prd_tipo,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificador del tipo de producto
     id_rl_prd_campos=models.ForeignKey (rl_prd,null=True,blank=False, on_delete=models.SET_NULL, db_constraint=True)#Identificador del campo de descripcion del producto
     archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro

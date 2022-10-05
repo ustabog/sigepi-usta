@@ -1,11 +1,10 @@
-<!--- Plantilla para la vista de la consulta de una plantilla - plantillas para SIGEPI
+<!--- Plantilla para la vista de la categoria buscada - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 16 -09 -2022 
-#Edicion:20/09/2022 --->
+#fecha 4 -10 -2022 --->
 
 
-{% extends 'app_regplt_iu.html' %} 
+{% extends 'app_regcateg_iu.html' %} 
 {% load static %}
 {% block meta_app %}{% endblock meta_app%}
 {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
@@ -16,16 +15,14 @@
 
 <div>
     <p>
-
-        Listado de plantillas
-        <form method="POST" action="{%url 'buscar_plantilla' %}">
+        Categoria buscada
+        <form method="POST" action="{%url 'buscar_categ' %}">
             {% csrf_token %}
-            <input type="search" placeholder="Buscar Plantilla" name="buscar">
+            <input type="search" placeholder="Buscar Categoria" name="buscar">
             <button type="submit">
                 Buscar
             </button>
         </form>
-
     </p>
 </div>
 
@@ -33,7 +30,8 @@
     <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
 {% endif %}
 
-<!--CONSULTAR PLANTILLAS-->
+<!--CONSULTAR CATEGORIAS-->
+{% if not Buscar %}
 
     <table>
         <thead>
@@ -43,31 +41,33 @@
             </tr>
         </thead>
         <tbody>
-            {% for prd_plt_desc in object_list %}
 
-            {% if prd_plt_desc.archivo %}
-            <tr>
-            </tr>
-            {% else %}
-
+            {% for prd_categ in categoria %}
+            {% if prd_categ.archivo %}
                 <tr>
-                    <td> {{ prd_plt_desc.id_plt_desc}} </td> 
+                </tr>
+            {% else %}
+                <tr>
+                    <td> {{ prd_categ.id_categ}} </td> 
                     <td>
-                        
-                        <a href="{% url 'consultar_plantilla' prd_plt_desc.id_plt_desc %}"> 
-                            {{ prd_plt_desc.nom_plt}} 
+                        <a href="{% url 'consultar_categ' prd_categ.id_categ %}"> 
+                            {{ prd_categ.nom_categ}}
                         </a> 
 
-                        <a href="{% url 'editar_plantilla' prd_plt_desc.id_plt_desc%}">
+                        <a href="{% url 'editar_categ' prd_categ.id_categ%}">
+
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
+
                         </a>
 
-                        <a href="{% url 'archivar_plantilla' prd_plt_desc.id_plt_desc%}">
+                        <a href="{% url 'eliminar_categ' prd_categ.id_categ%}">
+
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
+
                         </a>
                         
                     </td> 
@@ -76,6 +76,14 @@
             {% endfor %}
         </tbody>
     </table>
+
+{% else %} 
+
+    <span>
+        la categoria buscada no existe
+    </span>
+                
+{%endif %}
 
 {% endblock articulo %}
 {% endblock consulta %}

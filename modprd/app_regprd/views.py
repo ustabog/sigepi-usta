@@ -2,7 +2,9 @@
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 19 -08 -2022
+#Edicion 4/10/2022
 
+from pipes import Template
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from modprd.app_certprd.models import prd_med
@@ -19,6 +21,18 @@ class ini_regprd():
         return render(request, 'app_regprd_iu.html')
 
 #----------VISTAS PARA EL REGISTRO DE PRODUCTOS SIGEPI------------
+
+# def vst_searchprd( request):
+#     if request.method == 'POST':
+#         buscar= request.POST['buscar']
+#         productos= prd_base.objects.filter(nom_prd__contains = buscar)
+#         context = {
+#         'buscar':buscar,
+#         'productos':productos
+#         }
+#         return render(request, 'cn_search_prd.html', context)
+#     else:
+#         return render(request, 'cn_search_prd.html', {})
 
 #Vista para el registro de producto
 
@@ -138,6 +152,25 @@ class vst_archiprd(TemplateView):
         context['action'] = 'Archivar'
         return context
 
+#Vista para la busqueda de productos 
+# class vst_searchprd(TemplateView):
+#     model = prd_base
+#     template_name = 'cn_search_prd.html'
+#     success_url = reverse_lazy('buscar_prd')
+
+def vst_searchprd( request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        productos= prd_base.objects.filter(nom_prd__contains = buscar)
+        context = {
+        'buscar':buscar,
+        'productos':productos
+        }
+        return render(request, 'cn_search_prd.html', context)
+    else:
+        return render(request, 'cn_search_prd.html', {})
+
+
 #----------VISTAS PARA EL REGISTRO DE UN REQUERIMIENTO DE EXISTENCIA SIGEPI------------
 
 #Vista para el registro de un requerimiento de existencia
@@ -230,7 +263,7 @@ class vst_archi_reqexist(TemplateView):
     success_url = reverse_lazy('listar_reqexs')
 
     def post(self,request,id):
-        req= prd_req_Exist.objects.get(id_prd=id)
+        req= prd_req_Exist.objects.get(id_reqexs=id)
         if request.method == 'POST':
             req.archivo= True
             req.save()
@@ -242,6 +275,20 @@ class vst_archi_reqexist(TemplateView):
         context['action'] = 'Archivar'
         return context
 
+#Vista para la busqueda de requerimientos de existencia
+
+def vst_search_reqexist( request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        requerimiento= prd_req_Exist.objects.filter(nom_reqexs__contains = buscar)
+        context = {
+        'buscar':buscar,
+        'requerimiento':requerimiento
+        }
+        return render(request, 'cn_search_reqexist.html', context)
+    else:
+        return render(request, 'cn_search_reqexist.html', {})
+
 #----------VISTAS PARA EL REGISTRO DE UN REQUERIMIENTO DE CALIDAD SIGEPI------------
 
 #Vista para el registro de un requerimiento de calidad
@@ -251,6 +298,7 @@ class vst_regreqcal(CreateView):
     form_class = form_req_cal
     template_name ='mod_prd_frm_reqcal.html'
     success_url = reverse_lazy('listar_reqcal')
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -344,6 +392,20 @@ class vst_archi_reqcal(TemplateView):
         context['action'] = 'Archivar'
         return context
 
+#Vista para la busqueda de requerimientos de calidad
+
+def vst_search_reqcal( request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        requerimiento= prd_req_cal.objects.filter(desc_reqcal__contains = buscar)
+        context = {
+        'buscar':buscar,
+        'requerimiento':requerimiento
+        }
+        return render(request, 'cn_search_reqcal.html', context)
+    else:
+        return render(request, 'cn_search_reqcal.html', {})
+
 
 #----------VISTAS PARA EL REGISTRO DE UNA CATEGORIA DE PRODUCTO SIGEPI------------
 
@@ -432,25 +494,39 @@ class vst_del_categ (DeleteView):
         context['action'] = 'Delete'
         return context
 
+#Vista para la archivacion de categorias
 
-
-class vst_archiprd(TemplateView):
-    model = prd_base
-    template_name = 'mod_prd_eliminar.html'
-    success_url = reverse_lazy('listar_prd')
+class vst_archi_categ(TemplateView):
+    model = prd_categ
+    template_name ='mod_prd_eliminar_categ.html'
+    success_url = reverse_lazy('listar_categ')
 
     def post(self,request,id):
-        prd= prd_base.objects.get(id_prd=id)
+        categ= prd_categ.objects.get(id_categ=id)
         if request.method == 'POST':
-            prd.archivo= True
-            prd.save()
+            categ.archivo= True
+            categ.save()
         return HttpResponseRedirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'archivar productos'
+        context['title'] = 'archivar Categorias'
         context['action'] = 'Archivar'
         return context
+
+#Vista para la busqueda de categorias
+
+def vst_search_categ( request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        categoria= prd_categ.objects.filter(nom_categ__contains = buscar)
+        context = {
+        'buscar':buscar,
+        'categoria':categoria
+        }
+        return render(request, 'cn_search_categ.html', context)
+    else:
+        return render(request, 'cn_search_categ.html', {})
 
 #----------VISTAS PARA EL REGISTRO DE UN TIPO DE PRODUCTO SIGEPI------------
 
@@ -527,23 +603,39 @@ class vst_del_tipo (DeleteView):
         context['action'] = 'delete'
         return context
 
-class vst_archi_reqexist(TemplateView):
-    model = prd_req_Exist
-    template_name = 'mod_prd_eliminar_exist.html'
-    success_url = reverse_lazy('listar_reqexs')
+#Vista para la archivacion de tipos de producto
+
+class vst_archi_tipo(TemplateView):
+    model = prd_tipo
+    template_name = 'mod_prd_eliminar_tipo.html'
+    success_url = reverse_lazy('listar_tipo')
 
     def post(self,request,id):
-        req= prd_req_Exist.objects.get(id_prd=id)
+        tipo= prd_tipo.objects.get(id_tipo=id)
         if request.method == 'POST':
-            req.archivo= True
-            req.save()
+            tipo.archivo= True
+            tipo.save()
         return HttpResponseRedirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'archivar requerimientos'
+        context['title'] = 'archivar tipos'
         context['action'] = 'Archivar'
         return context
+
+#Vista para la busqueda de tipos de producto
+
+def vst_search_tipo( request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        tipo= prd_tipo.objects.filter(nom_tipo__contains = buscar)
+        context = {
+        'buscar':buscar,
+        'tipo':tipo
+        }
+        return render(request, 'cn_search_tipo.html', context)
+    else:
+        return render(request, 'cn_search_tipo.html', {})
         
 #----------VISTAS PARA EL REGISTRO DE UN CAMPO PARA PRODUCTO SIGEPI------------
 
@@ -633,23 +725,39 @@ class vst_del_camp (DeleteView):
         context['action'] = 'Delete'
         return context
 
-class vst_archi_reqexist(TemplateView):
-    model = prd_req_Exist
-    template_name = 'mod_prd_eliminar_exist.html'
-    success_url = reverse_lazy('listar_reqexs')
+#Vista para la archivacion de campos de un producto
+
+class vst_archi_campo(TemplateView):
+    model = campo
+    template_name = 'mod_prd_eliminar_campo.html'
+    success_url = reverse_lazy('listar_campo')
 
     def post(self,request,id):
-        req= prd_req_Exist.objects.get(id_prd=id)
+        req= campo.objects.get(id_campo=id)
         if request.method == 'POST':
-            req.archivo= True
-            req.save()
+            campo.archivo= True
+            campo.save()
         return HttpResponseRedirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'archivar requerimientos'
+        context['title'] = 'archivar campos'
         context['action'] = 'Archivar'
         return context
+
+#Vista para la busqueda de campos de plantillas
+
+def vst_search_campo( request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        campos= campo.objects.filter(nom_campo__contains = buscar)
+        context = {
+        'buscar':buscar,
+        'campo':campos
+        }
+        return render(request, 'cn_search_campo.html', context)
+    else:
+        return render(request, 'cn_search_campo.html', {})
 
 #----------VISTAS PARA EL REGISTRO DE UNA PLANTILLA PARA PRODUCTOS SIGEPI------------
 
@@ -731,20 +839,36 @@ class vst_del_plt(DeleteView):
         context['action'] = 'Delete'
         return context
 
+#Vista para la archivacion de plantillas
+
 class vst_archi_plt(TemplateView):
     model = prd_plt_desc
-    template_name = 'mod_prd_eliminar_exist.html'
-    success_url = reverse_lazy('listar_reqexs')
+    template_name = 'mod_prd_eliminar_plt.html'
+    success_url = reverse_lazy('listar_plantilla')
 
     def post(self,request,id):
-        req= prd_req_Exist.objects.get(id_prd=id)
+        plt= prd_plt_desc.objects.get(id_plt_desc=id)
         if request.method == 'POST':
-            req.archivo= True
-            req.save()
+            plt.archivo= True
+            plt.save()
         return HttpResponseRedirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'archivar requerimientos'
+        context['title'] = 'archivar Plantillas'
         context['action'] = 'Archivar'
         return context
+
+#Vista para la busqueda de plantillas
+
+def vst_search_plt(request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        plantilla= prd_plt_desc.objects.filter(nom_plt__contains = buscar)
+        context = {
+        'buscar':buscar,
+        'plantilla':plantilla
+        }
+        return render(request, 'cn_search_plt.html', context)
+    else:
+        return render(request, 'cn_search_plt.html', {})

@@ -14,8 +14,20 @@
 
 
 <div>
-    <p>Listado de campos</p>
+    <p>
+
+        Listado de campos
+        <form method="POST" action="{%url 'buscar_campo' %}">
+            {% csrf_token %}
+            <input type="search" placeholder="Buscar campo" name="buscar">
+            <button type="submit">
+                Buscar
+            </button>
+        </form>
+
+    </p>
 </div>
+
 
 {% if form.errors %}
     <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
@@ -32,6 +44,10 @@
         </thead>
         <tbody>
             {% for campo in object_list %}
+            {% if campo.archivo %}
+            <tr>
+            </tr>
+            {% else %}
                 <tr>
                     <td> {{ campo.id_campo}} </td> 
                     <td>
@@ -46,7 +62,7 @@
                             </button>
                             
                         </a>
-                        <a href="{% url 'eliminar_campo' campo.id_campo%}">
+                        <a href="{% url 'archivar_campo' campo.id_campo%}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
@@ -54,6 +70,7 @@
                         
                     </td> 
                 </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>

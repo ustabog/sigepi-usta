@@ -13,7 +13,18 @@
 
 
 <div>
-    <p>Consulta del tipo de producto</p>
+    <p>
+
+        Tipo de producto buscado
+        <form method="POST" action="{%url 'buscar_tipo' %}">
+            {% csrf_token %}
+            <input type="search" placeholder="Buscar" name="buscar">
+            <button type="submit">
+                Buscar
+            </button>
+        </form>
+
+    </p>
 </div>
 
 {% if form.errors %}
@@ -30,7 +41,13 @@
             </tr>
         </thead>
         <tbody>
+
             {% for prd_tipo in object_list %}
+            {% if prd_tipo.archivo %}
+            <tr>
+            </tr>
+            {% else %}
+
                 <tr>
                     <td> {{ prd_tipo.id_tipo}} </td> 
                     <td>
@@ -45,7 +62,7 @@
                             </button>
                         </a>
 
-                        <a href="{% url 'eliminar_tipo' prd_tipo.id_tipo %}">
+                        <a href="{% url 'archivar_tipo' prd_tipo.id_tipo %}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
@@ -53,6 +70,7 @@
 
                     </td> 
                 </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>

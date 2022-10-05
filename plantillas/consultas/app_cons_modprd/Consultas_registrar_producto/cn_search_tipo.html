@@ -1,11 +1,9 @@
-<!--- Plantilla para la vista de la consulta de una plantilla - plantillas para SIGEPI
+<!--- Plantilla para la vista del tipo de producto buscado - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 16 -09 -2022 
-#Edicion:20/09/2022 --->
+#fecha 4 -10 -2022 --->
 
-
-{% extends 'app_regplt_iu.html' %} 
+{% extends 'app_regtipo_iu.html' %} 
 {% load static %}
 {% block meta_app %}{% endblock meta_app%}
 {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
@@ -16,16 +14,14 @@
 
 <div>
     <p>
-
-        Listado de plantillas
-        <form method="POST" action="{%url 'buscar_plantilla' %}">
+        Listado de tipos
+        <form method="POST" action="{%url 'buscar_tipo' %}">
             {% csrf_token %}
-            <input type="search" placeholder="Buscar Plantilla" name="buscar">
+            <input type="search" placeholder="Buscar" name="buscar">
             <button type="submit">
                 Buscar
             </button>
         </form>
-
     </p>
 </div>
 
@@ -33,49 +29,60 @@
     <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
 {% endif %}
 
-<!--CONSULTAR PLANTILLAS-->
-
+<!--CONSULTAR UN TIPO DE PRODUCTO-->
+{% if not Buscar %}
     <table>
         <thead>
             <tr>
                 <th>#</th>  
-                <th> Nombre </th>  
+                <th> Nombre del tipo de producto:</th>  
             </tr>
         </thead>
         <tbody>
-            {% for prd_plt_desc in object_list %}
+            {% for prd_tipo in tipo %}
 
-            {% if prd_plt_desc.archivo %}
-            <tr>
-            </tr>
+            {% if prd_tipo.archivo %}
+
+                <tr>
+                </tr>
+
             {% else %}
 
                 <tr>
-                    <td> {{ prd_plt_desc.id_plt_desc}} </td> 
+                    <td> {{ prd_tipo.id_tipo}} </td> 
                     <td>
                         
-                        <a href="{% url 'consultar_plantilla' prd_plt_desc.id_plt_desc %}"> 
-                            {{ prd_plt_desc.nom_plt}} 
-                        </a> 
+                        <a href="{% url 'consultar_tipo' prd_tipo.id_tipo %}"> 
+                            {{ prd_tipo.nom_tipo}}
+                         </a> 
 
-                        <a href="{% url 'editar_plantilla' prd_plt_desc.id_plt_desc%}">
+                        <a href="{% url 'editar_tipo' prd_tipo.id_tipo %}">
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
                         </a>
 
-                        <a href="{% url 'archivar_plantilla' prd_plt_desc.id_plt_desc%}">
+                        <a href="{% url 'eliminar_tipo' prd_tipo.id_tipo %}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
                         </a>
-                        
+
                     </td> 
                 </tr>
             {% endif %}
             {% endfor %}
         </tbody>
     </table>
+
+{% else %} 
+
+    <span>
+        el tipo de producto no existe
+    </span>
+                
+{%endif %}
+
 
 {% endblock articulo %}
 {% endblock consulta %}
@@ -84,3 +91,4 @@
 {% block script_app%}{% endblock script_app%}
 {% block script_menu_app%}{% endblock script_menu_app%}
 {% block script_pie_app%}{% endblock script_pie_app%}
+

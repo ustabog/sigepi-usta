@@ -14,7 +14,18 @@
 
 
 <div>
-    <p>Listado de requerimientos de existencia</p>
+    <p>
+
+        Listado de requerimientos
+        <form method="POST" action="{%url 'buscar_reqexist' %}">
+            {% csrf_token %}
+            <input type="search" placeholder="Buscar Requerimiento" name="buscar">
+            <button type="submit">
+                Buscar
+            </button>
+        </form>
+
+    </p>
 </div>
 
 {% if form.errors %}
@@ -30,7 +41,13 @@
             </tr>
         </thead>
         <tbody>
+
             {% for prd_req_Exist in object_list %}
+            {% if prd_req_Exist.archivo %}
+            <tr>
+            </tr>
+            {% else %}
+
                 <tr>
                     <td> {{ prd_req_Exist.id_reqexs}} </td> 
                     <td>
@@ -44,7 +61,7 @@
                             </button>
                         </a>
 
-                        <a href="{% url 'eliminar_reqexs' prd_req_Exist.id_reqexs %}">
+                        <a href="{% url 'archivar_reqexs' prd_req_Exist.id_reqexs %}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
@@ -52,6 +69,7 @@
                         
                     </td> 
                 </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>

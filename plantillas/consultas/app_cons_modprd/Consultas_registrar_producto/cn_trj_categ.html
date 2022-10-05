@@ -15,7 +15,18 @@
 
 
 <div>
-    <p>Listado de requerimientos de categorias</p>
+    <p>
+
+        Listado de categorias
+        <form method="POST" action="{%url 'buscar_categ' %}">
+            {% csrf_token %}
+            <input type="search" placeholder="Buscar Categoria" name="buscar">
+            <button type="submit">
+                Buscar
+            </button>
+        </form>
+
+    </p>
 </div>
 
 {% if form.errors %}
@@ -32,7 +43,13 @@
             </tr>
         </thead>
         <tbody>
+
             {% for prd_categ in object_list %}
+            {% if prd_categ.archivo %}
+            <tr>
+            </tr>
+            {% else %}
+
                 <tr>
                     <td> {{ prd_categ.id_categ}} </td> 
                     <td>
@@ -48,7 +65,7 @@
 
                         </a>
 
-                        <a href="{% url 'eliminar_categ' prd_categ.id_categ%}">
+                        <a href="{% url 'archivar_categ' prd_categ.id_categ%}">
 
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
@@ -58,6 +75,7 @@
                         
                     </td> 
                 </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>

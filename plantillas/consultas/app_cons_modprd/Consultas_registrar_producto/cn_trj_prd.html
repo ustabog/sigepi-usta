@@ -15,7 +15,16 @@
 
 
 <div>
-    <p>Listado de Productos</p>
+    <p>
+        Listado de Productos
+        <form method="POST" action="{% url 'buscar_prd' %}">
+            {% csrf_token %}
+            <input type="search" placeholder="Buscar Producto" name="buscar">
+            <button type="submit">
+                Buscar
+            </button>
+        </form>
+    </p>
 </div>
 
 {% if form.errors %}

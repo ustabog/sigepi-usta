@@ -3,6 +3,7 @@
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 23 -08-2022
 
+from cProfile import label
 from django import forms
 from django.forms import ModelForm
 from django import forms
@@ -32,14 +33,18 @@ from modprd.app_regprd.models import *
 #---------------------------FORMULARIOS PARA EL REGISTRO DE PRODUCTOS --------------------------------
 #Formulario para el registro de un producto
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class label_pry(forms.ModelMultipleChoiceField):
+    def label_from_instance(self, obj):
+        return "%s" % obj.nombre_pry
+
+class label_tipo_prd (forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return  "%s" % obj.nom_tipo
+
 class form_reg_prd(forms.ModelForm):
-
-    proyectos= forms.ModelChoiceField(
-    widget= forms.CheckboxSelectMultiple,
-    queryset=pry_base.objects.values('nombre_pry'),
-    required= False
-
-    )
 
     class Meta:
         model=prd_base
@@ -48,13 +53,25 @@ class form_reg_prd(forms.ModelForm):
             'fech_entrega',
             'ids_usu',
             'id_tipo_prd_minc',
+            'ids_pry'
         )
         labels ={
             'nom_prd': 'Nombre del producto',
             'fech_entrega': 'Fecha de entrega estimada',
             'ids_usu': 'Propietario del producto',
-            'id_tipo_prd_minc': 'Tipo de producto'
         }
+        widgets = {
+            'fech_entrega': DateInput(),
+        }
+    ids_pry = label_pry(
+        queryset=pry_base.objects.all(),
+        label='Proyectos de los cuales se basa',
+        widget= forms.CheckboxSelectMultiple
+    )
+    id_tipo_prd_minc = label_tipo_prd(
+        queryset=prd_tipo.objects.all(),
+        label='Tipo de producto'
+    )
 
 
 #Formulario para la seleccion del producto a editar

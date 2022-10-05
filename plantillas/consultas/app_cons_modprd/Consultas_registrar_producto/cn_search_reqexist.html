@@ -1,11 +1,9 @@
-<!--- Plantilla para la vista de la consulta de una plantilla - plantillas para SIGEPI
+<!--- Plantilla para la vista del requerimiento de existencia buscado - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 16 -09 -2022 
-#Edicion:20/09/2022 --->
+#fecha 4 -10 -2022 --->
 
-
-{% extends 'app_regplt_iu.html' %} 
+{% extends 'app_regreq_exist_iu.html' %} 
 {% load static %}
 {% block meta_app %}{% endblock meta_app%}
 {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
@@ -16,16 +14,14 @@
 
 <div>
     <p>
-
-        Listado de plantillas
-        <form method="POST" action="{%url 'buscar_plantilla' %}">
+        Requerimiento buscado
+        <form method="POST" action="{%url 'buscar_reqexist' %}">
             {% csrf_token %}
-            <input type="search" placeholder="Buscar Plantilla" name="buscar">
+            <input type="search" placeholder="Buscar Requerimiento" name="buscar">
             <button type="submit">
                 Buscar
             </button>
         </form>
-
     </p>
 </div>
 
@@ -33,8 +29,8 @@
     <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
 {% endif %}
 
-<!--CONSULTAR PLANTILLAS-->
-
+<!--CONSULTAR UN TIPO DE PRODUCTO-->
+{% if not Buscar %}
     <table>
         <thead>
             <tr>
@@ -43,28 +39,29 @@
             </tr>
         </thead>
         <tbody>
-            {% for prd_plt_desc in object_list %}
+            {% for prd_req_Exist in requerimiento %}
+            
+            {% if prd_req_Exist.archivo %}
 
-            {% if prd_plt_desc.archivo %}
-            <tr>
-            </tr>
+                <tr>
+                </tr>
+
             {% else %}
 
                 <tr>
-                    <td> {{ prd_plt_desc.id_plt_desc}} </td> 
+                    <td> {{ prd_req_Exist.id_reqexs}} </td> 
                     <td>
+                        <a href="{% url 'consultar_reqexs' prd_req_Exist.id_reqexs %}"> 
+                            {{ prd_req_Exist.nom_reqexs}}
                         
-                        <a href="{% url 'consultar_plantilla' prd_plt_desc.id_plt_desc %}"> 
-                            {{ prd_plt_desc.nom_plt}} 
                         </a> 
-
-                        <a href="{% url 'editar_plantilla' prd_plt_desc.id_plt_desc%}">
+                        <a href="{% url 'editar_reqexs' prd_req_Exist.id_reqexs %}">
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
                         </a>
 
-                        <a href="{% url 'archivar_plantilla' prd_plt_desc.id_plt_desc%}">
+                        <a href="{% url 'eliminar_reqexs' prd_req_Exist.id_reqexs %}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
@@ -76,6 +73,15 @@
             {% endfor %}
         </tbody>
     </table>
+
+{% else %} 
+
+    <span>
+        el requerimiento no existe
+    </span>
+                
+{%endif %}
+
 
 {% endblock articulo %}
 {% endblock consulta %}

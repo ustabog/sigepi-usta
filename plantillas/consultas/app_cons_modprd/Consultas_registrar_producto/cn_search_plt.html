@@ -1,8 +1,7 @@
-<!--- Plantilla para la vista de la consulta de una plantilla - plantillas para SIGEPI
+<!--- Plantilla para la vista de la plantilla buscada - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 16 -09 -2022 
-#Edicion:20/09/2022 --->
+#fecha 4 -10 -2022 --->
 
 
 {% extends 'app_regplt_iu.html' %} 
@@ -16,8 +15,7 @@
 
 <div>
     <p>
-
-        Listado de plantillas
+        Plantilla buscada
         <form method="POST" action="{%url 'buscar_plantilla' %}">
             {% csrf_token %}
             <input type="search" placeholder="Buscar Plantilla" name="buscar">
@@ -25,7 +23,6 @@
                 Buscar
             </button>
         </form>
-
     </p>
 </div>
 
@@ -34,6 +31,7 @@
 {% endif %}
 
 <!--CONSULTAR PLANTILLAS-->
+{% if not Buscar %}
 
     <table>
         <thead>
@@ -43,13 +41,11 @@
             </tr>
         </thead>
         <tbody>
-            {% for prd_plt_desc in object_list %}
-
+            {% for prd_plt_desc in plantilla %}
             {% if prd_plt_desc.archivo %}
-            <tr>
-            </tr>
+                <tr>
+                </tr>
             {% else %}
-
                 <tr>
                     <td> {{ prd_plt_desc.id_plt_desc}} </td> 
                     <td>
@@ -64,7 +60,7 @@
                             </button>
                         </a>
 
-                        <a href="{% url 'archivar_plantilla' prd_plt_desc.id_plt_desc%}">
+                        <a href="{% url 'eliminar_plantilla' prd_plt_desc.id_plt_desc%}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
@@ -76,6 +72,14 @@
             {% endfor %}
         </tbody>
     </table>
+
+{% else %} 
+
+    <span>
+        la plantilla buscada no existe
+    </span>
+                
+{%endif %}
 
 {% endblock articulo %}
 {% endblock consulta %}

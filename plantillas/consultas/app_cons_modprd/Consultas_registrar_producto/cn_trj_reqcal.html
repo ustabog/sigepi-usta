@@ -15,7 +15,18 @@
 
 
 <div>
-    <p>Listado de requerimientos de calidad</p>
+    <p>
+
+        Listado de requerimientos
+        <form method="POST" action="{%url 'buscar_reqcal' %}">
+            {% csrf_token %}
+            <input type="search" placeholder="Buscar Requerimiento" name="buscar">
+            <button type="submit">
+                Buscar
+            </button>
+        </form>
+
+    </p>
 </div>
 
 {% if form.errors %}
@@ -28,17 +39,23 @@
         <thead>
             <tr>
                 <th>#</th>  
-                <th> Categorias </th>  
+                <th> Descripcion </th>  
             </tr>
         </thead>
         <tbody>
+
             {% for prd_req_cal in object_list %}
+            {% if prd_req_cal.archivo %}
+            <tr>
+            </tr>
+            {% else %}
+
                 <tr>
                     <td> {{ prd_req_cal.id_reqcal}} </td> 
                     <td>
                         
                         <a href="{% url 'consultar_reqcal' prd_req_cal.id_reqcal %}" >
-                            {{ prd_categ.nom_categ}} 
+                            {{ prd_req_cal.desc_reqcal}} 
                         </a> 
 
                         <a href="{% url 'editar_reqcal' prd_req_cal.id_reqcal %} " >
@@ -47,7 +64,7 @@
                             </button>
                         </a>
 
-                        <a href="{% url 'eliminar_reqcal' prd_req_cal.id_reqcal %}">
+                        <a href="{% url 'archivar_reqcal' prd_req_cal.id_reqcal %}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
@@ -55,6 +72,7 @@
 
                     </td> 
                 </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>
