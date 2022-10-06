@@ -262,7 +262,7 @@ class usu_inf_pers(models.Model):
     ocup = models.CharField('Ocupacion', max_length=50, null = False, blank = False) # ocupación del usuario(a)
     dir_res = models.CharField('Direccion de Residencia', max_length=255, null=False, blank = False, default='Colombia, Bogotá, Carrera 9 n.° 51-11') # direccion de residencia
     disc = models.BooleanField('¿Es una persona en condición de discapacidad?', default=False) # Es una persona en condición de discapacidad
-    tipo_discap = models.ForeignKey(discap, on_delete=models.SET_NULL, null=True, blank =True)  # Tipo de  discapacidad tabla de discapacidad
+    tipo_discap = models.ManyToManyField(discap, blank =True, through="usu_discap")  # Tipo de  discapacidad tabla de discapacidad
     url_imag = models.URLField('url de la imagen personal.', null=True, blank=True)  # url de la imagen personal.
     zona_hor = models.CharField('Zona Horaria ', max_length=100, null=True, blank = True, default='GMT-5') #Zona Horario internacional
     archi = models.BooleanField(null = False, blank = False, default = False)#Si el registro está archivada (antes de proceder a borrarlo de la base de datos)
@@ -270,6 +270,23 @@ class usu_inf_pers(models.Model):
     class Meta:
         verbose_name = 'usu_inf_pers'
         verbose_name_plural = 'usu_inf_perss'
+
+class usu_discap(models.Model):
+    id_usu = models.ForeignKey(usu_inf_pers, on_delete=models.CASCADE, null=True, blank =True)
+    id_discap = models.ForeignKey(discap, on_delete=models.CASCADE, null=True, blank =True)
+
+class usu_inf_calen(models.Model):
+    id_usu = models.OneToOneField(usu, on_delete=models.CASCADE, null=True, blank=True)
+    lun = models.BooleanField(default=False)
+    mar = models.BooleanField(default=False)
+    mie = models.BooleanField(default=False)
+    jue = models.BooleanField(default=False)
+    vie = models.BooleanField(default=False)
+    sab = models.BooleanField(default=False)
+    dom = models.BooleanField(default=False)
+    de =  models.TimeField(auto_now=False, blank=False)
+    a =   models.TimeField(auto_now=False, blank=False)
+
 
 # Modelo para el registro d ela información de contacto pública del usuario(a)
 class usu_inf_contac(models.Model):

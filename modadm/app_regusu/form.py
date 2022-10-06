@@ -62,9 +62,30 @@ class frm_usu_form_acad(forms.ModelForm):
         model = usu_form_acad
         fields = '__all__'
 
-#Formulario para el modelo de Información de Contacto usuario individual
+#Formulario para el modelo de Información de los cursos dictados por el usuario individual
 class frm_curs_dict(forms.ModelForm):
     #Formación académica
     class Meta:
-        model = usu_form_acad
+        model = usu_curs_dict
+        fields = '__all__'
+
+#Formulario para el modelo de Información de Habilidades del usuario individual
+class frm_usu_habil(forms.ModelForm):
+    #Formación académica
+    class Meta:
+        model = habil
+        fields = '__all__'
+
+#Formulario para el modelo de Información de Habilidades del usuario individual
+class frm_usu_form_empl(forms.ModelForm):
+    #Formación académica
+    class Meta:
+        model = usu_empleo
+        fields = '__all__'
+
+#Formulario para el modelo de Disponibilidad del usuario individual
+class frm_usu_calendario(forms.ModelForm):
+    #Formación académica
+    class Meta:
+        model = usu_inf_calen
         fields = '__all__'
