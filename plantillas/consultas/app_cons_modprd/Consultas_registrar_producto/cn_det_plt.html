@@ -41,14 +41,23 @@
                     <td> {{ object.id_plt_desc}} </td> 
                     <td> {{ object.nom_plt}} </td> 
                     <td>  {{ object.desc_plt}} </td> 
-                    <td>  {{ object.id_campo}} </td> 
+                    <td>  
+
+                    {% for m2m_campo in object_list %}
+
+                    {{ m2m_campo.campo_id.nom_campo}}
+                    <br>
+                    
+                    </td> 
+
+                    {% endfor %}
 
                 </tr>
 
         </tbody>
     </table>
 
-    <a href="{% url 'listar_plt' %}">
+    <a href="{% url 'listar_plantilla' %}">
         <button type="submit" name="Back" >
             Volver
         </button>

@@ -28,8 +28,9 @@
             <tr>
 
                 <th>#</th>  
-                <th>Nombre del requerimiento de existencia</th>  
-                <th>Peso relativo de la categoria</th> 
+                <th>Nombre</th>  
+                <th>Requerimientos de calidad</th>  
+                <th>Peso relativo</th> 
 
             </tr>
         </thead>
@@ -37,7 +38,18 @@
 
                 <tr>
 
+                    <td> {{ object.id_categ}} </td> 
                     <td> {{ object.nom_categ}} </td> 
+                    <td> 
+
+                    {% for m2m_reqcal in  object_list %}
+
+                        {{ m2m_reqcal.requerimiento_cal_id.desc_reqcal}}
+                        <br>
+                        
+                    {% endfor %}
+
+                    </td> 
                     <td> {{ object.peso_rel}} </td> 
                     
                 </tr>

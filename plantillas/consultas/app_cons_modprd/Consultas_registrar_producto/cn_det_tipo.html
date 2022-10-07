@@ -27,13 +27,12 @@
             <tr>
 
                 <th>#</th>  
-                <th>Nombre del tipo de producto:</th>  
-                <th>Requerimientos de existencia :</th> 
-                <th>Requerimientos de calidad :</th> 
-                <th>Categoria:</th>
-                <th>Peso absoluto:</th>
-                <th>Ventana de observacion:</th> 
-                <th>Calidad:</th> 
+                <th>Nombre del tipo de producto</th>  
+                <th>Requerimientos de existencia </th> 
+                <th>Categoria</th>
+                <th>Peso absoluto</th>
+                <th>Ventana de observacion</th> 
+                <th>Calidad</th> 
                 
             </tr>
         </thead>
@@ -43,9 +42,17 @@
 
                     <td> {{ object.id_tipo}} </td> 
                     <td> {{ object.nom_tipo}} </td> 
-                    <td>  {{ object.id_reqexist}} </td> 
-                    <td>  {{ object.id_reqcal}} </td> 
-                    <td>  {{ object.id_categ}} </td> 
+                    <td>  
+
+                    {%for m2m_reqexist in  object_list %}
+
+                        {{ m2m_reqexist.requerimiento_exist_id.nom_reqexs }}
+                        <br>
+                    
+                    {%endfor %}
+
+                    </td> 
+                    <td>  {{ object.id_categ.nom_categ}} </td> 
                     <td>  {{ object.peso_abs}} </td> 
                     <td>  {{ object.vent_obs}} </td> 
                     <td>  {{ object.tipo_cal}} </td> 

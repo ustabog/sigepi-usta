@@ -3,6 +3,7 @@
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 22 -09 -2022
 
+from re import X
 from django.shortcuts import render
 from django.http import HttpResponse
 from modprd.app_certprd.form import *
@@ -65,13 +66,18 @@ class vst_upd_med(UpdateView):
     model= prd_med
     form_class = form_med
     template_name ='mod_cert_editar_med.html'
-    success_url = reverse_lazy('listar_med')
+    success_url = reverse_lazy('listar_prd' )
+
+    def get_object(self) :
+        instance= self.model.objects.get(id_med=self.kwargs['pk'])
+        return instance
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Editar mediciones'
         context['action'] = 'update'
         context ['entity'] = 'cert'
+        context['object'] = self.get_object()
         return context
 
 #Vista para la eliminacion de una medicion

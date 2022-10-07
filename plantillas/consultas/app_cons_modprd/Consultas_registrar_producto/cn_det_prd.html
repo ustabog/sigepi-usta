@@ -43,8 +43,29 @@
 
                     <td> {{ object.id_prd}} </td> 
                     <td> {{ object.nom_prd}} </td> 
-                    <td>  {{ object.ids_pry}} </td> 
-                    <td>  {{ object.ids_usu}} </td> 
+                    <td>
+
+                    {% for m2m_pry in object_list %}
+
+                        {{ m2m_pry.proyecto_id.nombre_pry}}
+                        <br>
+                        
+                          
+                    {% endfor %}
+                    </td>   
+
+                    <td> 
+                    
+                    {% for m2m_user in object_list %}
+
+                        {{ m2m_user.usuario_id.last_name}}
+                        <br>
+
+
+                    {% endfor %}
+
+                    </td> 
+
                     <td>  {{ object.fech_reg}} </td> 
                     <td>  {{ object.fech_entrega}} </td> 
                     <td>  {{ object.id_tipo_prd_minc.nom_tipo}} </td> 

@@ -7,6 +7,7 @@ from django.forms import ModelForm
 from django import forms
 from .models import *
 from modprd.app_certprd.models import *
+from modprd.app_regprd.form import DateInput
 
 #Formulario para la medicion de productos
 
@@ -32,6 +33,10 @@ class form_med(forms.ModelForm):
             'url_resul': 'Resultados de la convocatoria',
             'est_med' : 'Estado de la Medicion',
             'desc_med' : 'Descripcion de la medicion'
+        }
+        widgets = {
+            'fch_ini' : DateInput(),
+            'fch_fin' : DateInput(),
         }
 
 #Formulario para la certificacion de productos

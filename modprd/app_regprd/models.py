@@ -39,6 +39,9 @@ ROL_APP = [
 
 #Clase para la creacion de los requisitios de existencia de un producto
 
+
+
+
 class prd_req_Exist(models.Model):
     id_reqexs=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del requerimiento de existencia LLAVE PRIMARIA
     nom_reqexs=models.CharField('Nombre del Requerimiento de existencia: ', max_length=255, blank=False,null=False)#Nombre del requerimiento de existencia
@@ -56,7 +59,7 @@ class prd_req_cal(models.Model):
 
 class prd_categ(models.Model):
     id_categ=models.AutoField(primary_key= True, null=False, unique=True)# Identificador de la categoria LLAVE PRIMARIA
-    id_reqcal=models.ForeignKey(prd_req_cal, blank=False, null=True ,on_delete=models.SET_NULL, db_constraint=True)#Identificador del requerimiento de calidad para el registro de la categoria
+    id_reqcal=models.ManyToManyField(prd_req_cal, blank=False, db_constraint=True, through="m2m_reqcal")#Identificador del requerimiento de calidad para el registro de la categoria
     nom_categ=models.CharField('Nombre de la categoria: ', max_length=255, blank=False,null=False)#Nombre de la categoria
     peso_rel=models.PositiveIntegerField(null=False, blank=False, default=0)#Peso relativo de la categoria del producto
     archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro
@@ -77,7 +80,7 @@ class campo(models.Model):
 
 class prd_plt_desc(models.Model):
     id_plt_desc = models.AutoField(primary_key= True, null=False, unique=True)# Identificador de la plantilla de la descripcion del producto LLAVE PRIMARIA
-    id_campo = models.ForeignKey(campo,blank=False,on_delete=models.SET_NULL, null=True , db_constraint=True)# Identificador de campo de plantilla
+    id_campo = models.ManyToManyField(campo,blank=False , db_constraint=True, through="m2m_campo")# Identificador de campo de plantilla
     nom_plt=models.CharField('Nombre de la plantilla: ', max_length=255, blank=False, null=False)#Nombre de la plantilla para el producto
     desc_plt=models.TextField('Descripcion de la plantilla: ', blank=False, null=False) #Descripcion de la plantilla de producto
     archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro
@@ -94,9 +97,9 @@ class rl_prd (models.Model):
 class prd_tipo(models.Model):
     id_tipo=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del tipo del producto LLAVE PRIMARIA
     nom_tipo=models.CharField('Nombre del tipo de producto: ', max_length=255, blank=False, null=False)# Nombre del tipo de producto
-    id_reqexist=models.ForeignKey(prd_req_Exist,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificadores de los requerimientos de existencia
+    id_reqexist=models.ManyToManyField(prd_req_Exist,blank=False, db_constraint=True, through="m2m_reqexist") #Identificadores de los requerimientos de existencia
     id_categ=models.ForeignKey(prd_categ,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificador de la categoria
-    id_reqcal=models.ForeignKey(prd_req_cal,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificadores de los requerimientos de calidad
+    #id_reqcal=models.ForeignKey(prd_req_cal,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificadores de los requerimientos de calidad
     peso_abs=models.IntegerField(null=False, blank=False, default=0)#Peso absoluto del producto segun minciencias
     vent_obs=models.PositiveIntegerField(null=False, blank=False, default=0)#ventana de observacion / Tiempo en años para la calificacion del tipo
     id_plt_desc=models.ForeignKey(prd_plt_desc,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
@@ -107,9 +110,9 @@ class prd_tipo(models.Model):
 
 class prd_base(models.Model):
     id_prd=models.AutoField(primary_key= True, null=False, unique=True)# Identificador del producto LLAVE PRIMARIA
-    ids_pry=models.ManyToManyField(pry_base,blank=False, db_constraint=True)# Identificador del propietario
+    ids_pry=models.ManyToManyField(pry_base,blank=False, db_constraint=True, through="m2m_pry")# Identificador del propietario
     nom_prd=models.CharField('Nombre del producto :',max_length=255, blank=False, null=False ) # Nombre del producto
-    ids_usu=models.ForeignKey(User, null=True,blank=False, on_delete=models.SET_NULL, db_constraint=True)# Identificador del propietario
+    ids_usu=models.ManyToManyField(User,blank=False, db_constraint=True,through="m2m_user")# Identificador del propietario
     fech_reg=models.DateField('Fecha de registro: ', blank=False, null=False, auto_now_add=True) #fecha de registro
     fech_entrega=models.DateField('Fecha de entrega: ') #fecha de entrega
     id_tipo_prd_minc=models.ForeignKey (prd_tipo,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True) #Identificador del tipo de producto
@@ -118,8 +121,31 @@ class prd_base(models.Model):
 
 
 
+class m2m_pry(models.Model):
+    producto_id=models.ForeignKey(prd_base,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
+    proyecto_id=models.ForeignKey(pry_base,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
 
+
+
+class m2m_user(models.Model):
+    producto_id=models.ForeignKey(prd_base,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
+    usuario_id=models.ForeignKey(User,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
+
+
+
+class m2m_reqcal(models.Model):
+    requerimiento_cal_id=models.ForeignKey(prd_req_cal,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
+    categoria_id=models.ForeignKey(prd_categ,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
 
     
 
-    
+class m2m_campo(models.Model):
+    campo_id=models.ForeignKey(campo,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
+    plantilla_id=models.ForeignKey(prd_plt_desc,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
+
+
+
+class m2m_reqexist(models.Model):
+    requerimiento_exist_id=models.ForeignKey(prd_req_Exist,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
+    tipo_id=models.ForeignKey(prd_tipo,null=True, blank=False, on_delete=models.SET_NULL, db_constraint=True)
+

@@ -40,17 +40,55 @@
             </tr>
         </thead>
          <tbody>
-
                 <tr>
 
+                    {% if prd_med.id_med%}
                     <td> {{ prd_med.id_med }} </td> 
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+
+                    {% if prd_med.nom_med%}
                     <td> {{ prd_med.nom_med }} </td> 
-                    <td> {{ prd_med.num_conv }} </td> 
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+
+                    {% if prd_med.num_conv %}
+                    <td> {{ prd_med.num_conv }} </td>
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+
+                    {% if prd_med.fch_ini %}
                     <td> {{ prd_med.fch_ini}} </td> 
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+
+                    {% if prd_med.fch_fin %}
                     <td>  {{ prd_med.fch_fin}} </td> 
-                    <td>  {{ prd_med.url_doc}} </td> 
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+
+                    {% if prd_med.url_doc %}
+                    <td>  {{ prd_med.url_doc}} </td>
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+
+                    {% if prd_med.url_resul %}
                     <td>  {{ prd_med.url_resul}} </td> 
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+
+                    {% if prd_med.est_med %}
                     <td>  {{ prd_med.est_med}} </td> 
+                    {% else %}
+                    <td></td>
+                    {% endif %}
 
                 </tr>
     

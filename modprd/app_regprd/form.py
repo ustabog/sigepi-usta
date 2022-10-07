@@ -43,6 +43,26 @@ class label_pry(forms.ModelMultipleChoiceField):
 class label_tipo_prd (forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return  "%s" % obj.nom_tipo
+        
+class label_req_cal (forms.ModelMultipleChoiceField):
+    def label_from_instance(self, obj):
+        return  "%s" % obj.desc_reqcal
+
+class label_req_exist (forms.ModelMultipleChoiceField):
+    def label_from_instance(self, obj):
+        return  "%s" % obj.nom_reqexs
+
+class label_categ (forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return  "%s" % obj.nom_categ
+
+class label_campo (forms.ModelMultipleChoiceField):
+    def label_from_instance(self, obj):
+        return  "%s" % obj.nom_campo
+
+class label_plt (forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return  "%s" % obj.nom_plt
 
 class form_reg_prd(forms.ModelForm):
 
@@ -72,23 +92,6 @@ class form_reg_prd(forms.ModelForm):
         queryset=prd_tipo.objects.all(),
         label='Tipo de producto'
     )
-
-
-#Formulario para la seleccion del producto a editar
-
-class form_selec_prd(forms.ModelForm):
-    class Meta:
-        model = prd_base
-        fields = (
-            'ids_pry',
-            'nom_prd'
-
-        )
-        labels ={
-            'ids_pry': 'Producto que se va a editar',
-            'nom_prd': 'Producto que se va a nombrar ',
-        }
-
 
 #Formulario para el registro  de los requerimientos de existencia 
 
@@ -127,9 +130,12 @@ class form_categ(forms.ModelForm):
         labels ={
             'nom_categ': 'Nombre de la categoria',
             'peso_rel': 'Peso relativo de la categoria',
-            'id_reqcal': 'Requisitos de calidad para la categoria'
-
         }
+    
+    id_reqcal = label_req_cal(
+        queryset= prd_req_cal.objects.all(),
+        label= 'Requsitos de calidad de la categoria '
+    )
 
 class form_tipo(forms.ModelForm):
     class Meta:
@@ -145,12 +151,24 @@ class form_tipo(forms.ModelForm):
         )
         labels ={
             'nom_tipo': 'Nombre del tipo de producto',
-            'id_reqexist' : 'Requerimientos de existencia del tipo de producto',
-            'id_categ': 'Categoria del tipo de producto',
             'vent_obs': 'Ventana de observacion en dias',
-            'id_plt_desc':'Plantilla utilizada',
             'tipo_cal': 'Tipologia a utilizar',
         }
+
+    id_reqexist = label_req_exist(
+        queryset=prd_req_Exist.objects.all(),
+        label='Requerimientos de existencia'
+    )
+
+    id_categ= label_categ(
+        queryset=prd_categ.objects.all(),
+        label='Categoria'
+    )
+
+    id_plt_desc= label_plt(
+        queryset=prd_plt_desc.objects.all(),
+        label='Plantilla a utilizar'
+    )
 
 class form_campo(forms.ModelForm):
     class Meta:
@@ -183,3 +201,8 @@ class form_template(forms.ModelForm):
             'desc_plt' : 'Descripcion de la plantilla',
             'id_campo' : 'Campos a usar en la plantilla',
         }
+    
+    id_campo = label_campo(
+        queryset= campo.objects.all(),
+        label='Campos de la plantilla'
+    )

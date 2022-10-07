@@ -13,6 +13,7 @@ from django.urls import reverse_lazy
 from modprd.app_regprd.models import *
 from .models import *
 from django.views.generic import *
+from itertools import chain
 
 #Vista principal del registro de productos
 
@@ -69,7 +70,8 @@ class vst_listprd(ListView):
     context_object_name = 'Busqueda_prd'
 
     def get_queryset(self):
-        return prd_base.objects.all()
+        queryset1= prd_base.objects.all()
+        return queryset1
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -84,6 +86,11 @@ class vst_cons_prd(DetailView):
     template_name ='cn_det_prd.html'   
     success_url = reverse_lazy('listar_prd')
 
+    def get_queryset(self):
+        queryset1=m2m_pry.objects.filter(producto_id = self.kwargs['pk'])
+        queryset2=m2m_user.objects.filter(producto_id = self.kwargs['pk'])
+        return list(chain(queryset1, queryset2))
+
     def get_object(self) :
         instance= self.model.objects.get(id_prd=self.kwargs['pk'])
         return instance
@@ -93,8 +100,9 @@ class vst_cons_prd(DetailView):
         context['title'] = 'Consulta de productos'
         context['action'] = 'Consulte'
         context['object'] = self.get_object()
+        context['object_list'] = self.get_queryset()
         return context
-  
+    
 #Vista para la edicion de un producto 
 
 class vst_updprd(UpdateView):
@@ -450,11 +458,15 @@ class vst_cons_categ(DetailView):
         instance= self.model.objects.get(id_categ=self.kwargs['pk'])
         return instance
 
+    def get_queryset(self) :
+        return m2m_reqcal.objects.filter(categoria_id = self.kwargs['pk'])
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Consulta de categorias'
         context['action'] = 'Consulte'
         context['object'] = self.get_object()
+        context['object_list'] = self.get_queryset()
         return context
 
 #Vista para la edicion de categorias
@@ -563,6 +575,9 @@ class vst_cons_tipo(DetailView):
     template_name ='cn_det_tipo.html'   
     success_url = reverse_lazy('listar_tipo')
 
+    def get_queryset(self):
+        return m2m_reqexist.objects.filter(tipo_id = self.kwargs['pk']) 
+
     def get_object(self) :
         instance= self.model.objects.get(id_tipo=self.kwargs['pk'])
         return instance
@@ -572,7 +587,9 @@ class vst_cons_tipo(DetailView):
         context['title'] = 'Consulta de tipos'
         context['action'] = 'Consulte'
         context['object'] = self.get_object()
+        context['object_list'] = self.get_queryset()
         return context
+
 #Vista para la edicion de tipos de producto
 
 class vst_upd_tipo(UpdateView):
@@ -798,6 +815,9 @@ class vst_cons_plt(DetailView):
     template_name ='cn_det_plt.html'   
     success_url = reverse_lazy('listar_plantilla')
 
+    def get_queryset(self):
+        return m2m_campo.objects.filter(campo_id=self.kwargs['pk'])
+
     def get_object(self) :
         instance= self.model.objects.get(id_plt_desc=self.kwargs['pk'])
         return instance
@@ -807,6 +827,7 @@ class vst_cons_plt(DetailView):
         context['title'] = 'Consulta de plantillas'
         context['action'] = 'Consulte'
         context['object'] = self.get_object()
+        context['object_list'] = self.get_queryset()
         return context
 
 #Vista para la edicion de campos de productos
