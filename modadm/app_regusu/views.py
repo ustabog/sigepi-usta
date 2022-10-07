@@ -152,7 +152,7 @@ class vts_ls_discap(ListView, PermissionRequiredMixin): #hereda de listwview
     #información de las personas
     model = discap
     form_class = frm_discap
-    template_name = 'cn_discapacidad.html'
+    template_name = 'cn_usu_discap.html'
     success_url = reverse_lazy('cn_discapacidad.html')
     success_message = 'Listado cargado correctamente'
     permission_required = 'discap.view_discap'
@@ -173,14 +173,16 @@ class vts_del_discap(DeleteView, PermissionRequiredMixin):
 
 ##### CRUD INFORMACION PERSONAL #######################################
 
-class vts_reg_usu_inf_pers(CreateView, PermissionRequiredMixin):
+class vts_reg_usu_inf_pers():
     #crear información de las personas
-    model = usu_inf_pers
-    form_class = frm_usu_inf_pers
-    template_name = 'app_regusu_frm_infopers.html'
-    success_url = reverse_lazy('cons_infopers')
-    success_message = 'La discapacidad fue creada satisfactoriamente'
-    permission_required = 'usu_inf_pers.add_usu_inf_pers'
+    def crear(request):
+        inf_personal = frm_usu_inf_pers
+        inf_disp = frm_usu_calendario
+        template_name = 'app_regusu_frm_infopers.html'
+        context={'form': inf_personal, 'calendario': inf_disp}
+        
+        return render(request, template_name, context)
+       
 
 class vts_ls_usu_inf_pers(ListView, PermissionRequiredMixin): #hereda de listwview
     #información de las personas
@@ -201,6 +203,55 @@ class vts_edt_usu_inf_pers(UpdateView, PermissionRequiredMixin):
 
 class vts_del_usu_inf_pers(DeleteView, PermissionRequiredMixin):
     model = usu_inf_pers
+    form_class=frm_usu_inf_pers
     template_name = 'app_regusu_del_infopers.html'
+    success_url = reverse_lazy('cons_infopers')
+    permission_required = 'usu_inf_pers.delete_usu_inf_pers'
+
+##### CRUD Habilidades PERSONALES #######################################
+class vts_reg_usu_hab(CreateView, PermissionRequiredMixin):
+    model = habil
+    form_class=frm_usu_habil
+    template_name = 'App_regusu_frm_habilidades.html'
+    success_url = reverse_lazy('cons_infopers')
+    permission_required = 'usu_inf_pers.delete_usu_inf_pers'
+
+##### CRUD Empleos PERSONALES #######################################
+class vts_reg_usu_emp(CreateView, PermissionRequiredMixin):
+    model = usu_empleo
+    form_class=frm_usu_form_empl
+    template_name = 'App_regusu_frm_empleo.html'
+    success_url = reverse_lazy('cons_infopers')
+    permission_required = 'usu_inf_pers.delete_usu_inf_pers'
+
+class vst_ls_usu_emp():
+    def consultar_todos(request):
+        empleos=usu_empleo.objects.filter(id_usu = request.user.id)
+        template_name="cn_usu_empl.html"
+        context={'empleos':empleos}
+        return render(request, template_name, context)
+        
+
+##### CRUD Cursos PERSONALES #######################################
+class App_regusu_frm_cursos(CreateView, PermissionRequiredMixin):
+    model = usu_curs_dict
+    form_class=frm_curs_dict
+    template_name = 'App_regusu_frm_cursos.html'
+    success_url = reverse_lazy('cons_infopers')
+    permission_required = 'usu_inf_pers.delete_usu_inf_pers'
+
+#### CRUD Formación Académica  #################################
+class App_regusu_frm_form_acad(CreateView, PermissionRequiredMixin):
+    model = usu_form_acad
+    form_class = frm_usu_form_acad
+    template_name = 'App_regusu_frm_formacad.html'
+    success_url = reverse_lazy('cons_infopers')
+    permission_required = 'usu_inf_pers.delete_usu_inf_pers'
+
+#### CRUD Inf.Contacto  #################################
+class App_regusu_frm_contac(CreateView, PermissionRequiredMixin):
+    model = usu_inf_contac
+    form_class = frm_usu_inf_contact
+    template_name = 'App_regusu_frm_contac.html'
     success_url = reverse_lazy('cons_infopers')
     permission_required = 'usu_inf_pers.delete_usu_inf_pers'

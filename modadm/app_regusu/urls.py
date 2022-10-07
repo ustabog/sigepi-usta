@@ -28,17 +28,35 @@ urlpatterns = [
     path('eliminarinf/<int:pk>/',infopersDelete.as_view(), name='eliminarinf'),
 
     # CRUD DISCAPACIDAD
-    path('reg_disc/', vts_reg_discap.as_view(), name = 'reg_disc'),
+    path('reg_disc/', vts_reg_discap.as_view(), name = 'reg_usu_disc'),
     path('cons_disc/', vts_ls_discap.as_view(), name = 'cons_discapacidad'),
     path('edt_disc/<int:pk>/', vts_edt_discap.as_view(), name='edt_disc'),
     path('eli_disc/<int:pk>/', vts_del_discap.as_view(), name='eli_disc'),
 
     # CRUD INFORMACION PERSONAL
-    path('reg_infopers/', vts_reg_usu_inf_pers.as_view(), name = 'reg_infopers'),
+    path('reg_infopers/', vts_reg_usu_inf_pers.crear, name = 'reg_infopers'),
     path('cons_infopers/', vts_ls_usu_inf_pers.as_view(), name = 'cons_infopers'),
     path('edt_infopers/<int:pk>/', vts_edt_usu_inf_pers.as_view(), name='edt_infopers'),
     path('eli_infopers/<int:pk>/', vts_del_usu_inf_pers.as_view(), name='eli_infopers'),
 
+    # CRUD HABILIDAD
+    path('reg_habpers/', vts_reg_usu_hab.as_view(), name='reg_habpers'),
+
+    # CRUD EMPLEO
+    path('reg_empleo/', vts_reg_usu_emp.as_view(), name='reg_empleo'),
+    path('cons_empleo/', vst_ls_usu_emp.consultar_todos, name='cons_empleo'),
+
+    # CRUD CURSO
+    path('reg_usu_cur/', App_regusu_frm_cursos.as_view(), name='reg_usu_cur'),
+   
+    # CRUD FORMACION
+    path('reg_acad_inf/', App_regusu_frm_form_acad.as_view(), name='reg_acad_inf'),
+
+    # CRUD INF.CONTACTO
+    path('mi_contacto/', App_regusu_frm_contac.as_view(), name='mi_contacto'),
+
+
+    
 ]
     
 
