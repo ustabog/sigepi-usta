@@ -1,9 +1,9 @@
-<!--- Plantilla para la vista del med de producto buscado - plantillas para SIGEPI
+<!--- Plantilla para la vista del cert de producto buscado - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 4 -10 -2022 --->
+#fecha 7 -10 -2022 --->
 
-{% extends 'app_regmed_iu.html' %} 
+{% extends 'app_regcert_iu.html' %} 
 {% load static %}
 {% block meta_app %}{% endblock meta_app%}
 {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
@@ -14,8 +14,8 @@
 
 <div>
     <p>
-        Listado de mediciones
-        <form method="POST" action="{%url 'buscar_medicion' %}">
+        Listado de certificaciones
+        <form method="POST" action="{%url 'buscar_certificacion' %}">
             {% csrf_token %}
             <input type="search" placeholder="Buscar" name="buscar">
             <button type="submit">
@@ -29,19 +29,19 @@
     <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
 {% endif %}
 
-<!--CONSULTAR UN med DE PRODUCTO-->
+<!--CONSULTAR UN cert DE PRODUCTO-->
 {% if not Buscar %}
     <table>
         <thead>
             <tr>
                 <th>#</th>  
-                <th> Medicion</th>  
+                <th> certificado:</th>  
             </tr>
         </thead>
         <tbody>
-            {% for prd_med in medicion %}
+            {% for prd_cert in cert %}
 
-            {% if prd_med.archivo %}
+            {% if prd_cert.archivo %}
 
                 <tr>
                 </tr>
@@ -49,20 +49,20 @@
             {% else %}
 
                 <tr>
-                    <td> {{ prd_med.id_med}} </td> 
+                    <td> {{ prd_cert.id_cert}} </td> 
                     <td>
                         
-                        <a href="{% url 'consultar_med' prd_med.id_med %}"> 
-                            {{ prd_med.nom_med}}
+                        <a href="{% url 'consultar_cert' prd_cert.id_cert %}"> 
+                            {{ prd_cert.nom_cert}}
                          </a> 
 
-                        <a href="{% url 'editar_med' prd_med.id_med %}">
+                        <a href="{% url 'editar_cert' prd_cert.id_cert %}">
                             <button type="submit" name="Editar" >
                                 Editar
                             </button>
                         </a>
 
-                        <a href="{% url 'eliminar_med' prd_med.id_med %}">
+                        <a href="{% url 'eliminar_cert' prd_cert.id_cert %}">
                             <button type="submit" class = "btm btn-danger" name="Eliminar" >
                                 Eliminar
                             </button>
@@ -78,7 +78,7 @@
 {% else %} 
 
     <span>
-        la medicion no existe
+        la certificacion no existe
     </span>
                 
 {%endif %}

@@ -17,6 +17,9 @@ urlpatterns = [
     path('consmed/<int:pk>', vst_cons_med.as_view(), name='consultar_med'),# url para la interfaz de consulta de mediciones
     path('updmed/<int:pk>', vst_upd_med.as_view(), name='editar_med'),# url para la interfaz de actualizacion de mediciones
     path('delmed/<int:pk>', vst_del_med.as_view(), name='eliminar_med'),# url para la interfaz de eliminacion de mediciones
+    path('archimed/<int:pk>', vst_archi_med.as_view(), name='archivar_med'),# url para la interfaz de eliminacion de mediciones
+    path('searchmed/<int:pk>', vst_search_med, name='buscar_med'),# url para la interfaz de eliminacion de mediciones
+
 
     #Urls del CRUD de cerficacion de productos
     path('crearcert/<int:pk>', vst_reg_cert.as_view(), name='crear_cert'),# url para la interfaz de creacion de certificaciones

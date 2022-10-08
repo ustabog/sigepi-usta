@@ -5,7 +5,7 @@
 
 from re import X
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from modprd.app_certprd.form import *
 from django.urls import reverse_lazy
 from modprd.app_certprd.models import *
@@ -93,6 +93,40 @@ class vst_del_med (DeleteView):
         context['action'] = 'Delete'
         return context
 
+#Vista para la archivacion de certificacions
+
+class vst_archi_med(TemplateView):
+    model = prd_categ
+    template_name ='mod_cert_eliminar_med.html'
+    success_url = reverse_lazy('listar_med')
+
+    def post(self,request,id):
+        med= prd_med.objects.get(id_med=id)
+        if request.method == 'POST':
+            med.archivo= True
+            med.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'archivar certificacions'
+        context['action'] = 'Archivar'
+        return context
+
+#Vista para la busqueda de certificacions
+
+def vst_search_med( request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        medicion= prd_med.objects.filter(nom_med__contains = buscar)
+        context = {
+        'buscar':buscar,
+        'medicion':medicion
+        }
+        return render(request, 'cn_search_med.html', context)
+    else:
+        return render(request, 'cn_search_med.html', {})
+
     #----------VISTAS PARA EL REGISTRO DE CERTIFICACIONES SIGEPI------------
 
 #Vista para el registro de medicion
@@ -150,3 +184,37 @@ class vst_del_cert(DeleteView):
         context['title'] = 'Eliminacion de certificacion'
         context['action'] = 'Delete'
         return context
+
+#Vista para la archivacion de certificacions
+
+class vst_archi_cert(TemplateView):
+    model = prd_cert
+    template_name ='mod_cer_eliminar_cert.html'
+    success_url = reverse_lazy('listar_cert')
+
+    def post(self,request,id):
+        cert= prd_categ.objects.get(id_cert=id)
+        if request.method == 'POST':
+            cert.archivo= True
+            cert.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'archivar certificacions'
+        context['action'] = 'Archivar'
+        return context
+
+#Vista para la busqueda de certificacion
+
+def vst_search_cert( request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        certificacion= prd_cert.objects.filter(nom_cert__contains = buscar)
+        context = {
+        'buscar':buscar,
+        'certificacion':certificacion
+        }
+        return render(request, 'cn_search_cert.html', context)
+    else:
+        return render(request, 'cn_search_cert.html', {})
