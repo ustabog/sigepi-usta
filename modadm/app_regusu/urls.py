@@ -48,9 +48,11 @@ urlpatterns = [
 
     # CRUD CURSO
     path('reg_usu_cur/', App_regusu_frm_cursos.as_view(), name='reg_usu_cur'),
+    path('cons_usu_cur/', vst_ls_frm_cursos.consultar_todos, name='cons_cursos'),
    
     # CRUD FORMACION
     path('reg_acad_inf/', App_regusu_frm_form_acad.as_view(), name='reg_acad_inf'),
+    path('cons_acad_inf/', vst_ls_frm_form_acad.consultar_todos, name='cons_acad_inf'),
 
     # CRUD INF.CONTACTO
     path('mi_contacto/', App_regusu_frm_contac.as_view(), name='mi_contacto'),

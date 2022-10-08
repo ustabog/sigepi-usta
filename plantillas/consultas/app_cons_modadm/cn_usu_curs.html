@@ -1,0 +1,68 @@
+{% extends 'inicio_usu.html' %}
+{% block titulo %} Listado de usuario {% endblock titulo %}
+
+{% block app %} 
+{% block cuerpo %}
+<!-- {% block js %}
+    {% if messages %}
+    {% for m in messages %}
+        <script type="text/javascript">
+            function eliminarUsu (id) {
+                console.log(id);
+            } 
+        </script>
+    {% endfor %}
+    {% endif %} 
+{% endblock %} -->
+
+{% if form.errors %}
+    <p>La lista de usuario no se ha logrado consultar.</p>
+{% endif %}
+<form method="POST">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <div class="table-responsive">
+                    <table class="table">
+                        <h2>Listado de Cursos Dictados</h2>
+                        <thead>
+                            <tr>
+                                <th>Institucion</th>
+                                <th>Inicio</th>
+                                <th>Fin</th>
+                                <th>Pais</th>
+                                <th>Ciudad</th>
+                                <th>Duración</th>
+                                <th colspan="4">Opciones</th>
+                            </tr>
+                        </thead>
+                        {% for curso in cursos %}
+                        <tbody>
+                            <tr>
+                                <td> {{ curso.instit }} </td>
+                                <td> {{ curso.fch_ini}} </td>
+                                <td> {{ curso.fch_fin}} </td>
+                                <td> {{ curso.nal}} </td>
+                                <td> {{ curso.ciudad}} </td>
+                                <td> {{ curso.dur}} </td>
+                                <td> <a href="../sel_usu_cons/{{usu.id}}" class="btn btn-block btn-sm btn-info">Ver</a> <br></td>
+                                <td> <a href="../edi_usu/{{usu.id}}" class="btn btn-block btn-sm btn-info">Editar</a> <br></td>
+                                <td> <a href="../edi_usu/{{usu.id}}" class="btn btn-block btn-sm btn-danger">Archivar</a> <br></td>
+                                <td> <a href="../eli_usu/{{usu.id}}" class="btn btn-block btn-sm btn-danger">Eliminar</a> <br></td> 
+                                <!-- <td> <a href="../eli_usu/{{usu.id}}" onclick="eliminarUsu({{ usu.id }})" class="btn btn-block btn-sm btn-danger">Eliminar</a> <br></td>  -->
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+            {% block modf_consl %}
+            {% endblock modf_consl%}
+    </div>
+    <a href="{% url 'reg_usu_cur' %}">Nueva</a>
+</form>
+
+{% endblock cuerpo %}
+{% endblock app %}

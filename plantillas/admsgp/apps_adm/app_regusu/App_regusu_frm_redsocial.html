@@ -1,0 +1,16 @@
+% extends 'inicio_adm.html' %}
+{% load static %}
+{% block titulo %} Formulario de registro nuevo usuario {% endblock titulo %}
+{% block app %}
+    {% if form.errors %}
+        <p>El usuario no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+    {% endif %}
+    <div>
+        <h3>Registrar Nuevo Usuario</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+{% endblock app %}

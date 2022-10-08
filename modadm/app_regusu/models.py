@@ -257,13 +257,13 @@ class usu_inf_pers(models.Model):
     #nombres = models.CharField(usu.first_name, max_length=30, null=True, blank = False)
     #apelllidos = models.CharField(usu.last_name, max_length=30, null=True, blank = False)
     nal = models.CharField('Nacionalidad ', max_length=50, null=False, blank = False) # nacionalidad
-    fch_naci = models.DateField('Fecha de nacimiento', auto_now = False)   # fecha de nacimiento de usuario(a)
+    fch_naci = models.DateField('Fecha de nacimiento', null=True)   # fecha de nacimiento de usuario(a)
     gene = models.IntegerField('Género', choices = GENERO, default = 0, null=True, blank = True)  #genero del usuario(a)
     ocup = models.CharField('Ocupacion', max_length=50, null = False, blank = False) # ocupación del usuario(a)
     dir_res = models.CharField('Direccion de Residencia', max_length=255, null=False, blank = False, default='Colombia, Bogotá, Carrera 9 n.° 51-11') # direccion de residencia
     disc = models.BooleanField('¿Es una persona en condición de discapacidad?', default=False) # Es una persona en condición de discapacidad
     tipo_discap = models.ManyToManyField(discap, blank =True, through="usu_discap")  # Tipo de  discapacidad tabla de discapacidad
-    url_imag = models.URLField('url de la imagen personal.', null=True, blank=True)  # url de la imagen personal.
+    url_imag = models.ImageField('url de la imagen personal.', null=True, blank=True, upload_to='imagenes/')  # url de la imagen personal.
     zona_hor = models.CharField('Zona Horaria ', max_length=100, null=True, blank = True, default='GMT-5') #Zona Horario internacional
     archi = models.BooleanField(null = False, blank = False, default = False)#Si el registro está archivada (antes de proceder a borrarlo de la base de datos)
     
