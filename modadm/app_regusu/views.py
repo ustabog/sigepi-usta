@@ -178,11 +178,11 @@ class vts_reg_usu_inf_pers():
     def crear(request):
         template_name = 'app_regusu_frm_infopers.html'
 
+
+
         if request.method == 'POST':
             inf_personal = frm_usu_inf_pers(request.POST, request.FILES)
             inf_disp = frm_usu_calendario(request.POST)
-
-            
 
             if inf_personal.is_valid():
                 inf_personal.save()
@@ -283,3 +283,18 @@ class App_regusu_frm_contac(CreateView, PermissionRequiredMixin):
     template_name = 'App_regusu_frm_contac.html'
     success_url = reverse_lazy('cons_infopers')
     permission_required = 'usu_inf_pers.delete_usu_inf_pers'
+
+### CRUD red_social #########################################
+
+class App_regusu_frm_red(CreateView, PermissionRequiredMixin):
+    model = usu_red_soc
+    fields= '__all__'
+    template_name = 'App_regusu_frm_redsocial.html'
+    success_url = reverse_lazy('mi_red')
+
+class vst_ls_frm_red():
+    def consultar_todos(request):
+        template = 'cn_usu_redsocial.html'
+        redes= usu_red_soc.objects.filter(id_usu=request.user.id).values()
+        print(redes)
+        return render(request, template, {'redes':redes})
