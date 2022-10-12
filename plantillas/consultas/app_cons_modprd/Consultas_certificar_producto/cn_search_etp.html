@@ -1,0 +1,94 @@
+<!--- Plantilla para la vista del cert de producto buscado - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 11 -10 -2022 --->
+
+{% extends 'app_regcert_iu.html' %} 
+{% load static %}
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
+{% block consulta %}
+{% block articulo %}
+
+
+<div>
+    <p>
+        Listado de certificaciones
+        <form method="POST" action="{%url 'buscar_certificacion' %}">
+            {% csrf_token %}
+            <input type="search" placeholder="Buscar" name="buscar">
+            <button type="submit">
+                Buscar
+            </button>
+        </form>
+    </p>
+</div>
+
+{% if form.errors %}
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+{% endif %}
+
+<!--CONSULTAR UN cert DE PRODUCTO-->
+{% if not Buscar %}
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>  
+                <th> certificado:</th>  
+            </tr>
+        </thead>
+        <tbody>
+            {% for prd_cert in cert %}
+
+            {% if prd_cert.archivo %}
+
+                <tr>
+                </tr>
+
+            {% else %}
+
+                <tr>
+                    <td> {{ prd_cert.id_cert}} </td> 
+                    <td>
+                        
+                        <a href="{% url 'consultar_cert' prd_cert.id_cert %}"> 
+                            {{ prd_cert.nom_cert}}
+                         </a> 
+
+                        <a href="{% url 'editar_cert' prd_cert.id_cert %}">
+                            <button type="submit" name="Editar" >
+                                Editar
+                            </button>
+                        </a>
+
+                        <a href="{% url 'eliminar_cert' prd_cert.id_cert %}">
+                            <button type="submit" class = "btm btn-danger" name="Eliminar" >
+                                Eliminar
+                            </button>
+                        </a>
+
+                    </td> 
+                </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% else %} 
+
+    <span>
+        la certificacion no existe
+    </span>
+                
+{%endif %}
+
+
+{% endblock articulo %}
+{% endblock consulta %}
+
+
+{% block script_app%}{% endblock script_app%}
+{% block script_menu_app%}{% endblock script_menu_app%}
+{% block script_pie_app%}{% endblock script_pie_app%}
+
