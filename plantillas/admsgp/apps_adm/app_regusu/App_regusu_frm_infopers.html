@@ -8,9 +8,12 @@
 
     <form method="POST">
         {% csrf_token %}
+
         {{ form.as_p }}
+
         <h4>Disponibilidad</h4>
-        {{calendario.as_p}}
+        
+        {{calendario.as_table }}
         <input class="btn btn-primary" type="submit" value="Registrar">
     </form>
 {% endblock app %} 

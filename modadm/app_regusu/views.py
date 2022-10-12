@@ -176,11 +176,25 @@ class vts_del_discap(DeleteView, PermissionRequiredMixin):
 class vts_reg_usu_inf_pers():
     #crear información de las personas
     def crear(request):
-        inf_personal = frm_usu_inf_pers
-        inf_disp = frm_usu_calendario
         template_name = 'app_regusu_frm_infopers.html'
-        context={'form': inf_personal, 'calendario': inf_disp}
-        
+
+
+
+        if request.method == 'POST':
+            inf_personal = frm_usu_inf_pers(request.POST, request.FILES)
+            inf_disp = frm_usu_calendario(request.POST)
+
+            if inf_personal.is_valid():
+                inf_personal.save()
+            else:
+                print('ERROR')
+
+            if inf_disp.is_valid():
+                inf_disp.save()
+            else:
+                print('Error')
+
+        context={'form': frm_usu_inf_pers(initial={'id_usu':request.user.id}), 'calendario': frm_usu_calendario(initial={'id_usu':request.user.id})}
         return render(request, template_name, context)
        
 
@@ -221,7 +235,7 @@ class vts_reg_usu_emp(CreateView, PermissionRequiredMixin):
     model = usu_empleo
     form_class=frm_usu_form_empl
     template_name = 'App_regusu_frm_empleo.html'
-    success_url = reverse_lazy('cons_infopers')
+    success_url = reverse_lazy('cons_empleo')
     permission_required = 'usu_inf_pers.delete_usu_inf_pers'
 
 class vst_ls_usu_emp():
@@ -237,8 +251,15 @@ class App_regusu_frm_cursos(CreateView, PermissionRequiredMixin):
     model = usu_curs_dict
     form_class=frm_curs_dict
     template_name = 'App_regusu_frm_cursos.html'
-    success_url = reverse_lazy('cons_infopers')
+    success_url = reverse_lazy('cons_cursos')
     permission_required = 'usu_inf_pers.delete_usu_inf_pers'
+
+class vst_ls_frm_cursos():
+    def consultar_todos(request):
+        cursos=usu_curs_dict.objects.filter(id_usu = request.user.id)
+        template_name="cn_usu_curs.html"
+        context={'cursos':cursos}
+        return render(request, template_name, context)
 
 #### CRUD Formación Académica  #################################
 class App_regusu_frm_form_acad(CreateView, PermissionRequiredMixin):
@@ -248,6 +269,13 @@ class App_regusu_frm_form_acad(CreateView, PermissionRequiredMixin):
     success_url = reverse_lazy('cons_infopers')
     permission_required = 'usu_inf_pers.delete_usu_inf_pers'
 
+class vst_ls_frm_form_acad():
+    def consultar_todos(request):
+        formaciones=usu_form_acad.objects.filter(id_usu = request.user.id)
+        template_name="cn_usu_form_acad.html"
+        context={'formaciones':formaciones}
+        return render(request, template_name, context)
+
 #### CRUD Inf.Contacto  #################################
 class App_regusu_frm_contac(CreateView, PermissionRequiredMixin):
     model = usu_inf_contac
@@ -255,3 +283,18 @@ class App_regusu_frm_contac(CreateView, PermissionRequiredMixin):
     template_name = 'App_regusu_frm_contac.html'
     success_url = reverse_lazy('cons_infopers')
     permission_required = 'usu_inf_pers.delete_usu_inf_pers'
+
+### CRUD red_social #########################################
+
+class App_regusu_frm_red(CreateView, PermissionRequiredMixin):
+    model = usu_red_soc
+    fields= '__all__'
+    template_name = 'App_regusu_frm_redsocial.html'
+    success_url = reverse_lazy('mi_red')
+
+class vst_ls_frm_red():
+    def consultar_todos(request):
+        template = 'cn_usu_redsocial.html'
+        redes= usu_red_soc.objects.filter(id_usu=request.user.id).values()
+        print(redes)
+        return render(request, template, {'redes':redes})

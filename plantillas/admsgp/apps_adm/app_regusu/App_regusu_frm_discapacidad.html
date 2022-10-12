@@ -1,4 +1,4 @@
-{% extends 'inicio_usu.html' %}
+{% extends 'inicio_adm.html' %}
 {% block titulo %} Discapacidad {% endblock titulo %}
 {% block app %}
     {% if form.errors %}
@@ -9,7 +9,7 @@
     <form method="POST">
         {% csrf_token %}
 
-        <label for="discap">Selecione Discapacidad</label>
+        <label for="discap">Seleccione Discapacidad</label>
         <select name="discap" id="discap">
             {% for discapacidad in disc %}
                 <option value selected>{{discapacidad.nom_disc}}</option>

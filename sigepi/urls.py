@@ -40,7 +40,7 @@ if settings.DEBUG:
         re_path(r'^static/(?P<path>.*)$', views.serve),
     ]
     urlpatterns += staticfiles_urlpatterns()
-
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = [
     path('admdjg/', admin.site.urls),

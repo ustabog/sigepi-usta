@@ -13,12 +13,19 @@ Módulo administrativo SIGEPI
 
 """
 
+from sqlite3 import Date
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from modadm.app_modadm.models import *
 from .models import *
 
 #clase para la creación de un formulario de registro de información personal de usuario SIGEPI.
+
+class DateInput(forms.DateInput):
+    input_type= 'date'
+
+class TimeInput(forms.TimeInput):
+    input_type= 'time'
 
 class frm_cons_usui(forms.ModelForm):
     #Calse que automatiza la creación de formularios de consulta de Usuarios institucionales en Django.
@@ -33,7 +40,11 @@ class frm_usu_inf_pers(forms.ModelForm):
         #Metadatos de la clase
         model =  usu_inf_pers
         fields = '__all__'
-
+        widgets = {
+            'fch_naci':DateInput(),
+            'id_usu':forms.HiddenInput()
+        }
+       
 #Formulario para el modelo de Discapacidad
 class frm_discap(forms.ModelForm):
     #Información de contacto
@@ -89,3 +100,8 @@ class frm_usu_calendario(forms.ModelForm):
     class Meta:
         model = usu_inf_calen
         fields = '__all__'
+        widgets = {
+            'de':TimeInput(),
+            'a':TimeInput(),
+            'id_usu':forms.HiddenInput()
+        }
