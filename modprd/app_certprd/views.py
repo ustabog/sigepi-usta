@@ -218,3 +218,96 @@ def vst_search_cert( request):
         return render(request, 'cn_search_cert.html', context)
     else:
         return render(request, 'cn_search_cert.html', {})
+
+
+    #----------VISTAS PARA EL REGISTRO DE ETAPAS SIGEPI------------
+
+#Vista para el registro de etapa
+
+class vst_reg_etp(CreateView):
+    model= prd_etp
+    form_class = form_etp
+    template_name ='mod_cert_frm_registrar_etp.html'
+    success_url = reverse_lazy('listar_etp')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Registrar etapa'
+        context['action'] = 'Create'
+        return context
+
+#Vista para la consulta de las etapas
+
+class vst_cons_etp(DetailView):
+    model= prd_etp
+    template_name ='cn_det_etp.html'   
+    success_url = reverse_lazy('listar_etp')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Consulta de etapa'
+        context['action'] = 'Consulte'
+        return context
+
+
+#Vista para la edicion de una etapa
+
+class vst_upd_etp(UpdateView):
+    model= prd_etp
+    form_class = form_etp
+    template_name ='mod_cert_editar_etp.html'
+    success_url = reverse_lazy('consultar_etp')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Editar etp'
+        context['action'] = 'update'
+        context ['entity'] = 'cert'
+        return context
+
+#Vista para la eliminacion de una etapa
+
+class vst_del_etp(DeleteView):
+    model = prd_cert
+    template_name ='mod_cert_eliminar_etp.html'
+    success_url = reverse_lazy('listar_med')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Eliminacion de etapa'
+        context['action'] = 'Delete'
+        return context
+
+#Vista para la archivacion de certificacions
+
+class vst_archi_cert(TemplateView):
+    model = prd_cert
+    template_name ='mod_cer_eliminar_cert.html'
+    success_url = reverse_lazy('listar_cert')
+
+    def post(self,request,id):
+        etp= prd_etp.objects.get(id_etp=id)
+        if request.method == 'POST':
+            etp.archivo= True
+            etp.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'archivar etapa'
+        context['action'] = 'Archivar'
+        return context
+
+#Vista para la busqueda de etapa
+
+def vst_search_etp( request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        Etapa= prd_cert.objects.filter(nom_etp__contains = buscar)
+        context = {
+        'buscar':buscar,
+        'Etapa':Etapa
+        }
+        return render(request, 'cn_search_etp.html', context)
+    else:
+        return render(request, 'cn_search_etp.html', {})
