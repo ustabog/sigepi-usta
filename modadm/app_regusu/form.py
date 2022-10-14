@@ -42,7 +42,7 @@ class frm_usu_inf_pers(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'fch_naci':DateInput(),
-            'id_usu':forms.HiddenInput()
+            #'id_usu':forms.HiddenInput()
         }
        
 #Formulario para el modelo de Discapacidad

@@ -178,12 +178,10 @@ class vts_reg_usu_inf_pers():
     def crear(request):
         template_name = 'app_regusu_frm_infopers.html'
 
-
-
         if request.method == 'POST':
             inf_personal = frm_usu_inf_pers(request.POST, request.FILES)
             inf_disp = frm_usu_calendario(request.POST)
-
+            print(request.FILES)
             if inf_personal.is_valid():
                 inf_personal.save()
             else:
@@ -194,7 +192,7 @@ class vts_reg_usu_inf_pers():
             else:
                 print('Error')
 
-        context={'form': frm_usu_inf_pers(initial={'id_usu':request.user.id}), 'calendario': frm_usu_calendario(initial={'id_usu':request.user.id})}
+        context={'form': frm_usu_inf_pers, 'calendario': frm_usu_calendario}
         return render(request, template_name, context)
        
 
