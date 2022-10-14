@@ -36,18 +36,34 @@
 
                 <tr>
 
-                    <td> {{ object.est_cert }} </td> 
-                    <td> {{ object.id_soporte }} </td> 
+                    <td> {{ object.get_est_cert_display }} </td> 
 
+                    {%if object.id_soporte%}
+                    <td> {{ object.id_soporte }} </td> 
+                    {%else %}
+                    <td></td>
+                    {%endif%}
 
                 </tr>
 
         </tbody>
     </table>
 
-    <a href="{% url 'listar_prd' %}">
+    <a href="{% url 'listar_med' %}">
         <button type="submit" name="Back" >
             Volver
+        </button>
+    </a>
+    
+    <a href="{% url 'editar_cert' prd_cert.id_cert %}">
+        <button type="submit" name="Back" >
+            Actualizar Certificacion
+        </button>
+    </a>  
+
+    <a href="{% url 'crear_soporte' %}">
+        <button type="submit" name="Back" >
+            Añadir soporte
         </button>
     </a>  
 

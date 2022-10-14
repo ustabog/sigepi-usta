@@ -1,9 +1,9 @@
-<!--- Plantilla para la vista del registro de certificado de un producto - plantillas para SIGEPI
+<!--- Plantilla para la vista del registro de Soporte de certificacion- plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 27 -09 -2022 --->
+#fecha 13 -10 -2022 --->
 
-{% extends 'app_regcert_iu.html' %}
+{% extends 'app_regmed_iu.html' %}
 {% load static %}
 
 {% block articulo %}
@@ -13,14 +13,13 @@
 
   <div class="container">
       <div class="column form-group text-center">
-          <h3>registra</h3>
+          <h3>Soporte de certificacion</h3>
           <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <output></output>
             <a href="">
                 <button type="submit" name="Crear" >
-                    Crear
+                    Añadir
                 </button>
             </a>   
         </form>

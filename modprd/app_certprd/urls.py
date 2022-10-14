@@ -26,4 +26,5 @@ urlpatterns = [
     path('conscert/<int:pk>', vst_cons_cert.as_view(), name='consultar_cert'),# url para la interfaz de consulta de certificaciones
     path('updcert/<int:pk>', vst_upd_cert.as_view(), name='editar_cert'),# url para la interfaz de actualizacion de certificaciones
     path('delcert/<int:pk>', vst_del_cert.as_view(), name='eliminar_cert'),# url para la interfaz de eliminacion de certificaciones
+    path('crearsupp/', vst_reg_supp.as_view(), name='crear_soporte'),# url para la interfaz de adicion de soportes
 ]

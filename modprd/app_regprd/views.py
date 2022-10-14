@@ -7,7 +7,7 @@
 from pipes import Template
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from modprd.app_certprd.models import prd_med
+from modprd.app_certprd.models import *
 from modprd.app_regprd.form import *
 from django.urls import reverse_lazy
 from modprd.app_regprd.models import *
@@ -49,8 +49,10 @@ class vst_regprd(CreateView):
         form= self.form_class(request.POST)
 
         if request.method == 'POST':  
-            instance = prd_med(est_med=0, id_prd= prd_base.objects.latest('id_prd'))  
-            instance.save()
+            medicion = prd_med(est_med=0, id_prd= prd_base.objects.latest('id_prd'))  
+            certificacion = prd_cert(est_cert=0, id_prd= prd_base.objects.latest('id_prd'))  
+            medicion.save()
+            certificacion.save()
 
         return HttpResponseRedirect(self.success_url)
     
