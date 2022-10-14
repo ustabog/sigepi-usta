@@ -56,7 +56,7 @@ class prd_etp(models.Model):
 
 class supp_cert (models.Model):
     id_soporte= models.AutoField(primary_key=True, null=False, blank=False)# Identificador del soporte del certificado
-    Url_supp= models.URLField('Url de la documentacion que valida la certificacion ', null=True, blank=False)#Url de la documentacion necesaria para la certificacion
+    url_supp= models.URLField('Url de la documentacion que valida la certificacion ', null=True, blank=False)#Url de la documentacion necesaria para la certificacion
     archivo=models.BooleanField('Archivo del registro'  , blank=True,null=False, default=0) #Estado de archivo del registro
 
 

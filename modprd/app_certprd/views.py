@@ -3,6 +3,7 @@
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 22 -09 -2022
 
+from msilib.schema import Class
 from re import X
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -163,7 +164,7 @@ class vst_upd_cert(UpdateView):
     model= prd_cert
     form_class = form_cert
     template_name ='mod_cert_editar_cert.html'
-    success_url = reverse_lazy('consultar_prd')
+    success_url = reverse_lazy('listar_med')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -311,3 +312,17 @@ def vst_search_etp( request):
         return render(request, 'cn_search_etp.html', context)
     else:
         return render(request, 'cn_search_etp.html', {})
+
+#Vista para el registro de soportes para el cerificado de un producto
+
+class vst_reg_supp(CreateView):
+    model= supp_cert
+    form_class= form_supp
+    template_name = 'mod_cert_frm_registrar_supp.html'
+    success_url = reverse_lazy('listar_med')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Añadir Soporte'
+        context['action'] = 'Create'
+        return context

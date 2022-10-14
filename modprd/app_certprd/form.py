@@ -11,6 +11,13 @@ from modprd.app_regprd.form import DateInput
 
 #Formulario para la medicion de productos
 
+class label_prd(forms.ModelMultipleChoiceField):
+    def label_from_instance(self, obj):
+        return "%s" % obj.nom_prd
+
+class RangeInput(forms.IntegerField):
+    input_type = 'range'
+
 class form_med(forms.ModelForm):
     class Meta:
         model = prd_med
@@ -45,17 +52,26 @@ class form_cert(forms.ModelForm):
     class Meta:
         model = prd_cert
         fields = (
-            'id_prd',
             'est_cert',
-            'id_soporte',
+
         )
         labels ={
-            'id_prd': 'Producto a certificar',
             'est_cert': 'Estado de la certificacion',
-            'id_soporte': 'Archivos de certificacion',
-
+        }
+        widgets={
+            'est_cert': RangeInput( attrs={'oninput' : 'this.nextElementSibling.value = this.value'})
         }
 
+
+class form_supp(forms.ModelForm):
+    class Meta:
+        model= supp_cert
+        fields= (
+            'url_supp',
+        )
+        labels ={
+            'url_supp': 'Documentacion del soporte',
+        }
     
 class form_etp(forms.ModelForm):
     class Meta:
