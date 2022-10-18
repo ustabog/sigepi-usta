@@ -32,6 +32,11 @@ class vts_usui_cons(ListView):
     success_message = 'listado cargado correctamente'
     context = {'object_list':form_class}
 
+def vts_ls_inst(request):
+    user_inst = usui.objects.get(id_usu_adm=request.user.id)
+    template = 'cn_usui.html'
+    context = {'instituciones': user_inst}
+    return render(request, template, context)
 
 
 class vts_selec_usui_cons(ListView):
