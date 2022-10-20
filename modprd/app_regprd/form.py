@@ -70,10 +70,10 @@ class form_reg_prd(forms.ModelForm):
         model=prd_base
         fields = (
             'nom_prd',
-            'fech_entrega',
             'ids_usu',
+            'ids_pry',
             'id_tipo_prd_minc',
-            'ids_pry'
+            'fech_entrega',
         )
         labels ={
             'nom_prd': 'Nombre del producto',
@@ -86,7 +86,6 @@ class form_reg_prd(forms.ModelForm):
     ids_pry = label_pry(
         queryset=pry_base.objects.all(),
         label='Proyectos de los cuales se basa',
-        widget= forms.CheckboxSelectMultiple
     )
     id_tipo_prd_minc = label_tipo_prd(
         queryset=prd_tipo.objects.all(),

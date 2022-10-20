@@ -20,6 +20,7 @@ urlpatterns = [
     path('eliprd/<int:pk>', vst_delprd.as_view(), name='eliminar_prd'), # url para la interfaz de eliminacion de productos
     path('archiprd/<id>', vst_archiprd.as_view(), name='archivar_prd'), # url para la interfaz de archivacion de productos
     path('buscarprd', vst_searchprd, name='buscar_prd'), # url para la interfaz de busqueda de productos
+    path('buscarpry', vst_searchpry, name='buscar_pry'), # url para la interfaz de busqueda de proyectos pare productos
 
     #Url's Para el registro de requerimientos de existencia
     

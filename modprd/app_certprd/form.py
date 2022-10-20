@@ -58,9 +58,9 @@ class form_cert(forms.ModelForm):
         labels ={
             'est_cert': 'Estado de la certificacion',
         }
-        widgets={
-            'est_cert': RangeInput( attrs={'oninput' : 'this.nextElementSibling.value = this.value'})
-        }
+        # widgets={
+        #     'est_cert': RangeInput( attrs={'oninput' : 'this.nextElementSibling.value = this.value'})
+        # }
 
 
 class form_supp(forms.ModelForm):

@@ -321,6 +321,17 @@ class vst_reg_supp(CreateView):
     template_name = 'mod_cert_frm_registrar_supp.html'
     success_url = reverse_lazy('listar_med')
 
+    def post(self,request) :
+        
+        super(vst_reg_supp, self).post(request)   
+        form= self.form_class(request.POST)
+
+        if request.method == 'POST':   
+            supp = prd_cert.objects.latest('id_cert').update(id_soporte_value= supp_cert.objects.latest('id_soporte'))
+            supp.save()
+
+        return HttpResponseRedirect(self.success_url)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Añadir Soporte'

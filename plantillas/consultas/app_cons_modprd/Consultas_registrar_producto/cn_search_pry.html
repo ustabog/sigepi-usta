@@ -1,0 +1,24 @@
+<!--- Plantilla para la vista del producto buscado - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 18 -10 -2022 --->
+
+{% extends 'mod_prd_frm_registrar.html' %} 
+
+<div>
+    <p>
+        Producto buscado
+        <form method="POST" action="{%url 'buscar_prd' %}">
+            {% csrf_token %}
+            <input type="search" placeholder="Buscar Producto" name="buscar">
+            <button type="submit">
+                Buscar
+            </button>
+        </form>
+    </p>
+</div>
+
+{% if form.errors %}
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+{% endif %}
+

@@ -180,6 +180,18 @@ def vst_searchprd( request):
     else:
         return render(request, 'cn_search_prd.html', {})
 
+def vst_searchpry (request):
+    if request.method == 'POST':
+        buscar= request.POST['buscar']
+        proyectos = pry_base.objects.filter(nombre_pry__contains=buscar)
+        context = {
+            'buscar':buscar,
+            'productos':proyectos
+        }
+        return render(request, 'cn_search_pry.html', context)
+    else:
+        return render(request, 'cn_search_pry.html', {})
+
 
 #----------VISTAS PARA EL REGISTRO DE UN REQUERIMIENTO DE EXISTENCIA SIGEPI------------
 
