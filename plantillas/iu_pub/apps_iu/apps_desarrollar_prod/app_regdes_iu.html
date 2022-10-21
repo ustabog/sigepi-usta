@@ -1,0 +1,42 @@
+<!--- Plantilla para la vista del registro de desarrollo - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 20 -10 -2022 --->
+
+{% extends 'inicio.html' %} 
+{% load static %}
+
+<!--llamado de los bloques del archivo base.html-->
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
+
+{% block app%}
+
+<div id="menu_app" class="menu_app">
+
+    {% block menu_app %} 
+    {% endblock menu_app %}
+
+</div>
+
+<div id="articulo" class="articulo">
+
+    {% block articulo %} 
+    {% endblock articulo %}
+
+</div>
+
+<div id="pie_app" class="pie_app">
+
+    {% block pie_app %}
+    <p>pie app_regprd</p>
+    {% endblock pie_app %}
+
+</div>
+
+{% endblock app%}
+
+{% block script_app%}{% endblock script_app%}
+{% block script_menu_app%}{% endblock script_menu_app%}
+{% block script_pie_app%}{% endblock script_pie_app%}
