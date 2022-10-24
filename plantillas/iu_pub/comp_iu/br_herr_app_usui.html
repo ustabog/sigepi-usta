@@ -25,16 +25,6 @@
                 
             </li>
             
-                
-            <li>
-                <a href=""><i class="material-icons">supervised_user_circle</i><span>Usuarios</span>
-                <ul class="categ_br_herr">
-                    <li><a href=""><i class="material-icons">table_rows</i><span>Consultar Roles</span></a></li>
-                    <li><a href=""><i class="material-icons">add_box</i><span>Agregar Rol</span></a></li>
-                    <li><a href=""><i></i><span></span></a></li>
-                    <li><a href=""><i></i><span></span></a></li>
-                </ul>
-            </li>
 
             <li>
                 <a href=""><i class="material-icons">settings_applications</i><span>Grupos de Investigación</span>
@@ -50,29 +40,20 @@
                 <a href=""><i class="material-icons">manage_accounts</i><span>Usuarios</span>
                 <ul class="categ_br_herr">
                     <li><a href=""><i class="material-icons">table_rows</i><span>Consultar Usuarios</span></a></li>
-                    <li><a href=""><i class="material-icons">person_add_alt</i><span>Registar Usuario</span></a></li>
-                    <li><a href=""><i class="material-icons">accessibility</i><span>Discapacidades</span></a></li>
-                    <li><a href=""><i class="material-icons">add_task</i><span>Habilidades</span></a></li>
-                    <li><a href=""><i></i><span></span></a></li>
-                    <li><a href=""><i></i><span></span></a></li>
+                    <li><a href="{% url 'new_usui_usuario' %}"><i class="material-icons">person_add_alt</i><span>Registar Usuarios</span></a></li>
                 </ul>
             </li>
             <li>
-                <a href=""><i class="material-icons">business</i><span>Instituciones</span>
+                <a href=""><i class="material-icons">business</i><span>
+                    
+                </span>
                 <ul class="categ_br_herr">
                     <li><a href=""><i class="material-icons">corporate_fare</i><span>Consultar Intituciones</span></a></li>
                     <li><a href=""><i class="material-icons">domain_add</i><span>Agregar Institución</span></a></li>
                     <li><a href=""><i></i><span></span></a></li>
                 </ul>
             </li>
-            <li>
-                <a href=""><i class="material-icons">groups</i><span></span>
-                <ul class="categ_br_herr">
-                    <li><a href=""><i class="material-icons">groups</i><span>Consultar grupos</span></a></li>
-                    <li><a href=""><i class="material-icons">group_add</i><span>Agregar grupos</span></a></li>
-                    <li><a href=""><i></i><span></span></a></li>
-                </ul>
-            </li>
+            
         </ul>
     </nav>
 {% endblock br_herr %}

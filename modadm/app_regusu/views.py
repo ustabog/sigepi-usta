@@ -181,7 +181,6 @@ class vts_reg_usu_inf_pers():
         if request.method == 'POST':
             inf_personal = frm_usu_inf_pers(request.POST, request.FILES)
             inf_disp = frm_usu_calendario(request.POST)
-            print(request.FILES)
             if inf_personal.is_valid():
                 inf_personal.save()
             else:

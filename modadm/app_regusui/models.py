@@ -42,8 +42,8 @@ class usui(models.Model):
     id_rol_app = models.ForeignKey(adm_rol, on_delete = models.CASCADE, null= False, blank = False)
     #id_rol_app = models.ForeignKey(rol, on_delete = models.CASCADE, null= False, blank = False)
     #  # Identificador del Rol de Usuario Institucional dentro de la app_reg_ins
-    fch_regi = models.DateField('fecha de registro de usurio: ', auto_now = False) # fecha de registro de usurio
-    activo = models.BooleanField(' estatus del usuario activo', default = True) # estatus del usuario activo (True) inactivo (False)
+    fch_regi = models.DateField('fecha de registro de usurio: ', auto_now = True) # fecha de registro de usurio
+    activo = models.BooleanField(' estatus del usuario activo', default = False) # estatus del usuario activo (True) inactivo (False)
 
     class Meta:
         verbose_name = 'usui'
