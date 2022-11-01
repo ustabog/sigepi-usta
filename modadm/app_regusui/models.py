@@ -1,8 +1,9 @@
 from django.db import models
 #from django.contrib.auth.models import User
-from modadm.app_modadm.models import *
+from modadm.app_modadm.models import usui as modadm_usui
 from modadm.app_regusu.models import *
 from modadm.app_regusugr.models import *
+
 
 #Diccionario de información de instalación de aplicación
 
@@ -44,6 +45,7 @@ class usui(models.Model):
     #  # Identificador del Rol de Usuario Institucional dentro de la app_reg_ins
     fch_regi = models.DateField('fecha de registro de usurio: ', auto_now = True) # fecha de registro de usurio
     activo = models.BooleanField(' estatus del usuario activo', default = False) # estatus del usuario activo (True) inactivo (False)
+    
 
     class Meta:
         verbose_name = 'usui'

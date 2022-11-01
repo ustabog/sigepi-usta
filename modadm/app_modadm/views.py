@@ -53,9 +53,6 @@ class vts_reg_mod(CreateView, PermissionRequiredMixin):
     permission_required = 'mod.add_mod'
 
     
-    
-
-
 #Vista de detalle de un módulo registrado en el sistema 
 class vts_ver_mod(DetailView, PermissionRequiredMixin):
     model = adm_mod

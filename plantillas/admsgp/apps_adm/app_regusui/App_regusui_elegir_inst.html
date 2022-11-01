@@ -1,0 +1,22 @@
+{% extends 'inicio_usui.html' %}
+{% load static %}
+{% block titulo %} Formulario de registro nuevo usuario a la Institución {% endblock titulo %}
+{% block app %}
+    {% if form.errors %}
+        <p>Ha ocurrido un error. Por favor, inténtalo de nuevo.</p>
+    {% endif %}
+    <div>
+        <h3>Seleccione la Institución</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <select name="inst" id="inst">
+                {% for institucion in inst %}
+                    <option value="{{institucion.id_user}}">{{institucion.nom_inst}}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" name="new_reg_btn">Registrar y añadir otro </button>
+            <button type="submit" name="reg_btn">Registrar </button>
+        </form>
+    </div>
+{% endblock app %}

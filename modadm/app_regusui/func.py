@@ -5,6 +5,40 @@
 
 # Funciones de la aplicación
 
+import random
+from modadm.app_regusui.models import usui
+from django.contrib.auth.models import User
+# Funciones de la aplicación
+def reg_usu(datos):
+    pass
+
+def gen_nom_usui(nombre,apellido,institucion):
+    nombre = nombre.split(" ")
+    apellido = apellido.split(" ")
+    numero = random.randint(0,99)
+
+    #Caso 1 Nombre + Apellido
+    usuario = nombre[0]+apellido[0]+"."+institucion
+
+    if esta_usui_reg(usuario) is not True:
+        return usuario
+
+    #Caso 2 Nombre + Apellido + Inicial Segundo Apellido
+    if len(apellido) > 1:
+        apellido_ini = apellido[1][0]
+        usuario = nombre[0]+apellido[0]+apellido_ini+"."+institucion
+        
+        if esta_usui_reg(usuario) is not True:
+            return usuario
+    
+    #Caso 3 Nombre + Apellido + Num Aleatorio
+    usuario = nombre[0]+apellido[0]+str(numero)+"."+institucion
+    return usuario
+       
+    
+def esta_usui_reg(usuario):
+   return User.objects.filter(username=usuario).exists()
+
 #Agregar inf. de acceso al sistema de Usuario institucional
 #Modificar inf. de acceso al sistema de Usuario institucional
 #Archivar inf. de acceso al sistema de Usuario institucional

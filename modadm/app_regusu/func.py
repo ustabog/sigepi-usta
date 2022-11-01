@@ -3,9 +3,7 @@
 # Coautor(a): Laura Sofía Rodríguez
 #fecha 06-07-2022
 
-# Funciones de la aplicación
-def reg_usu(datos):
-    pass
+
 
 #Agregar inf. personal de Usuario
 #Modificar inf. personal de Usuario
