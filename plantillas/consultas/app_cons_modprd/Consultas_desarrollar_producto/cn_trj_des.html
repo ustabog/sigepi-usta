@@ -1,11 +1,10 @@
-<!--- Plantilla para la vista del registro de producto - plantillas para SIGEPI
+<!--- Plantilla para la vista del desarrollo de producto - plantillas para SIGEPI
 #Autor: Daniel Alejandro Ballesteros Algarra
 # Coautor(a):  Milton O. Castro Ch.
-#fecha 19 -08 -2022 
-# Edicion 20/09/2022--->
+#fecha 28 -10 -2022 --->
 
 
-{% extends 'app_regprd_iu.html' %} 
+{% extends 'app_regdes_iu.html' %} 
 {% load static %}
 {% block meta_app %}{% endblock meta_app%}
 {% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
@@ -16,7 +15,7 @@
 
 <div>
     <p>
-        Listado de Productos
+        Tus productos
         <form method="POST" action="{% url 'buscar_prd' %}">
             {% csrf_token %}
             <input type="search" placeholder="Buscar Producto" name="buscar">
@@ -61,18 +60,28 @@
                     </td>
 
                     <td>
-                        <a href="{%url 'editar_prd'  m2m_user.producto_id.id_prd %}">
+                        {% if not id_prd%}
+
+                        <a href="{%url 'registrar_etp' %}">
+
                             <button type="submit" name="Editar" >
-                                Editar
+                                crear etapa de produccion
+
                             </button>
                         </a>
 
-                        <a href="{%url 'archivar_prd'  m2m_user.producto_id.id_prd %}">
-                            <button type="submit" class = "btm btn-danger" name="Eliminar" >
-                                Eliminar
+                        {%else %}
+
+                        <a href="{%url 'editar_prd'  m2m_user.producto_id.id_prd %}">
+
+                            <button type="submit" name="Editar" >
+                                editar etapa de produccion
+                                
                             </button>
+
                         </a>
 
+                        {%endif%}
                     </td> 
 
                 </tr>

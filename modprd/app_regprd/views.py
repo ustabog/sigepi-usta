@@ -15,6 +15,7 @@ from .models import *
 from django.views.generic import *
 from itertools import chain
 
+
 #Vista principal del registro de productos
 
 class ini_regprd():
@@ -42,6 +43,11 @@ class vst_regprd(CreateView):
     form_class = form_reg_prd
     template_name ='mod_prd_frm_registrar.html'
     success_url = reverse_lazy('listar_prd')
+
+
+    def get_queryset(self):
+        queryset1= prd_base.objects.all()
+        return queryset1
 
     def post(self,request) :
         
@@ -72,8 +78,9 @@ class vst_listprd(ListView):
     context_object_name = 'Busqueda_prd'
 
     def get_queryset(self):
-        queryset1= prd_base.objects.all()
-        return queryset1
+        usurio = self.request.user
+        related_user= User.objects.get(id=usurio.id)
+        return m2m_user.objects.filter(usuario_id=related_user)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

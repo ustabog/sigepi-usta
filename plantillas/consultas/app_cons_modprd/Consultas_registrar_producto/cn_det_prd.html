@@ -49,7 +49,6 @@
 
                         {{ m2m_pry.proyecto_id.nombre_pry}}
                         <br>
-                        
                           
                     {% endfor %}
                     </td>   
@@ -58,8 +57,9 @@
                     
                     {% for m2m_user in object_list %}
 
-                        {{ m2m_user.usuario_id.last_name}}
-                        <br>
+                    {{ m2m_user.usuario_id.last_name}} 
+                    <br>
+
 
 
                     {% endfor %}

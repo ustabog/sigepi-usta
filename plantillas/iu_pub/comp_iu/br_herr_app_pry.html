@@ -77,6 +77,7 @@
                     <li><a href="{% url 'cn_convo' %}"><i class="material-icons">manage_search</i><span>Convocatorias</span></a></li> 
                 </ul>
             </li>
+
             <li> 
                 <a href="{% url 'inicio' %}"><i class="material-icons">precision_manufacturing</i><span>Recursos</span></a>
                 <ul class="categ_br_herr">
@@ -86,26 +87,43 @@
             </li>
             
             <li>
-                <a href="{% url 'crear_prd' %}"><i class="material-icons">category</i><span>Registrar productos de inv.</span></a>           
+                <a href=""><i class="material-icons">category</i><span>Productos de investigacion</span></a>           
                 <ul class="categ_br_herr">
                     <h1> ¿Que desea hacer? </h1>
-                    <li><a href="{% url 'crear_prd' %}"><i class="material-icons">addchart</i><span>Registrar Productos</span></a></li>
-                    <li><a href="{% url 'crear_reqexs' %}"><i class="material-icons">analytics</i><span>Requerimientos de Existencia</span></a></li> 
-                    <li><a href="{% url 'reqcal' %}"><i class="material-icons">analytics</i><span>Requerimientos de Calidad</span></a></li> 
-                    <li><a href="{% url 'crear_categ' %}"><i class="material-icons">class</i><span>Categoria</span></a></li>
-                    <li><a href="{% url 'regtipo' %}"><i class="material-icons">menu</i><span>Tipo de Producto</span></a></li>
-                    <li><a href="{% url 'registrar_plantilla' %}"><i class="material-icons">abc</i><span>Plantillas</span></a></li>
-                </ul>
+                    <li><a href="{% url 'crear_prd' %}"><i class="material-icons">addchart</i><span>Registrar Productos</span></a>
+
+                        <ul class="categ_br_herr">
+                            <li><a href="{% url 'crear_prd' %}"><i class="material-icons">add</i><span>Registrar Producto</span></a>
+                            <li><a href="{% url 'crear_reqexs' %}"><i class="material-icons">analytics</i><span>Requerimientos de Existencia</span></a></li> 
+                            <li><a href="{% url 'crear_reqcal' %}"><i class="material-icons">analytics</i><span>Requerimientos de Calidad</span></a></li> 
+                            <li><a href="{% url 'crear_categ' %}"><i class="material-icons">class</i><span>Categoria</span></a></li>
+                            <li><a href="{% url 'regtipo' %}"><i class="material-icons">menu</i><span>Tipo de Producto</span></a></li>
+                            <li><a href="{% url 'registrar_plantilla' %}"><i class="material-icons">abc</i><span>Plantillas</span></a></li>
+
+                        </ul>
+                    </li>
+                     
+                    <li>
+
+                        <a href="{% url 'listar_prd' %}"><i class="material-icons">fact_check</i><span>Mis productos</span></a>  
+
+                    </li>
+
+                    <li>
+
+                        <a href="{% url 'listar_med' %}"><i class="material-icons">approval</i><span>Certificados y mediciones</span></a>  
+
+                    </li>
+
+                    <li>
+
+                        <a href="{% url 'listar_etp' %}"><i class="material-icons">design_services</i><span>Desarrollo de productos</span></a>  
+
+                    </li>
+
             </li>
 
-            <li>
-                <a href="{% url 'listar_med' %}"><i class="material-icons">approval</i><span>Certificados y mediciones</span></a>           
-            </li>
 
-            <li>
-                <a href=""><i class="material-icons">build circle</i><span>Desarrollo de productos</span></a>           
-            </li>
 
-        </ul>
     </nav> 
 {% endblock br_herr %}

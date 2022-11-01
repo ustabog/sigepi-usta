@@ -6,12 +6,13 @@
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from modprd.app_certprd.form import *
 from django.urls import reverse_lazy
 from modprd.app_certprd.models import *
 from modprd.app_regprd.models import *
 from .models import *
 from django.views.generic import *
+from modprd.app_desprd.form import *
+from modprd.app_desprd.models import *
 
     #----------VISTAS PARA EL REGISTRO DE ETAPAS SIGEPI------------
 
@@ -20,13 +21,31 @@ from django.views.generic import *
 class vst_reg_etp(CreateView):
     model= prd_etp
     form_class = form_etp
-    template_name ='mod_cert_frm_registrar_etp.html'
+    template_name ='mod_des_frm_registrar_etp.html'
     success_url = reverse_lazy('listar_etp')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Registrar etapa'
         context['action'] = 'Create'
+        return context
+
+#Vista para el listado de productos para modificacion de la etapa
+
+class vst_list_des(ListView):
+    model= prd_base
+    template_name ='cn_trj_des.html'
+    success_url = reverse_lazy('listar_etp')
+
+    def get_queryset(self):
+        usurio = self.request.user
+        related_user= User.objects.get(id=usurio.id)
+        return m2m_user.objects.filter(usuario_id=related_user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Listar etapas'
+        context['action'] = 'List'
         return context
 
 #Vista para la consulta de las etapas

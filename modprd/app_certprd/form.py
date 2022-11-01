@@ -15,7 +15,7 @@ class label_prd(forms.ModelMultipleChoiceField):
     def label_from_instance(self, obj):
         return "%s" % obj.nom_prd
 
-class RangeInput(forms.IntegerField):
+class RangeInput(forms.NumberInput):
     input_type = 'range'
 
 class form_med(forms.ModelForm):
@@ -58,9 +58,9 @@ class form_cert(forms.ModelForm):
         labels ={
             'est_cert': 'Estado de la certificacion',
         }
-        # widgets={
-        #     'est_cert': RangeInput( attrs={'oninput' : 'this.nextElementSibling.value = this.value'})
-        # }
+        widgets={
+            'est_cert': RangeInput( attrs={'oninput' : 'this.nextElementSibling.value = this.value'})
+        }
 
 
 class form_supp(forms.ModelForm):
