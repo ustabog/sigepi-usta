@@ -19,6 +19,10 @@ urlpatterns = [
     
     #CRUD Convocatorias de investigación.
     #Regisrar una convocatoria de investgacion
-    path('nuevo_conv/', NuevaConvocatoria.as_view(), name='nueva_conv')
+    path('nuevo_conv/', NuevaConvocatoria.as_view(), name='nueva_conv'),
+
+    #CRUD Programas ofertados por la institución.
+    #Registrar una programa 
+    path('nuevo_prog/',NuevoPrograma.as_view(),name='nuevo_prog'),
 
 ]

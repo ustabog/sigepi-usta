@@ -4,7 +4,7 @@ from django.views.generic import CreateView, DeleteView,ListView,UpdateView,Deta
 from django.urls import reverse_lazy
 from modadm.app_regusui.form import FrmNuevoUsuario, frm_cons_usui
 from modadm.app_modadm.models import usui as modadm_usui, usu, adm_rol
-from modadm.app_regusui.models import usui as regusui, conv_inv
+from modadm.app_regusui.models import usui as regusui, conv_inv, prog_ofer
 from django.contrib.auth.models import User, Permission, Group
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
@@ -40,7 +40,6 @@ def vst_reg_usui(request):
             regusui.objects.create(passinst=password,id_usu_admin=usu_reg,id_rol_app=rol)
             usu_reg.id_user
             modadm_usui.objects.filter(id_usu_adm=data['id_usu_adm']).update(id_usu_adm=usu_reg.id_user)
-
 
         else:
             print(form_class.errors.as_data())
@@ -120,8 +119,16 @@ def vst_cre_usu(request):
 def vst_ins_usu(request):
     pass
 
+# ----------- CRUD CONVOCATORIA DE INVERSTIGACIÓN ------------------------
 class NuevaConvocatoria(CreateView):
     model = conv_inv
     fields = '__all__'
     template_name = 'App_regusui_nvo_conv.html'
+    success_url = reverse_lazy('mis_inst')
+
+#----------- CRUD PROGRAMAS OFERTADOS POR LA INSTITUCIÓN ---------------
+class NuevoPrograma(CreateView):
+    model = prog_ofer
+    fields = '__all__'
+    template_name = 'App_regusui_nvo_prog.html'
     success_url = reverse_lazy('mis_inst')

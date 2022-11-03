@@ -173,8 +173,16 @@ class vts_del_discap(DeleteView, PermissionRequiredMixin):
 
 ##### CRUD INFORMACION PERSONAL #######################################
 
+
+
+
 class vts_reg_usu_inf_pers():
     #crear información de las personas
+
+    def inf_personal(request):
+        print(':)')
+        return redirect(reverse_lazy('reg_infopers'))
+
     def crear(request):
         template_name = 'app_regusu_frm_infopers.html'
 

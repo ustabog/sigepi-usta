@@ -1,0 +1,15 @@
+{% extends 'inicio_usui.html' %}
+{% block titulo %} Formulario para registrar un programa ofertado por la isntitución {% endblock titulo %}
+{% block app %}
+{% block cuerpo %}
+{% if form.errors %}
+    <p>El formulario no se ha creado correctamente. Por favor, inténtalo de nuevo.</p>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="registrar">    
+</form>
+{% endblock cuerpo %}
+{% endblock app %}
