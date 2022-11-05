@@ -1,0 +1,68 @@
+{% extends 'inicio_usui.html' %}
+{% block titulo %} Convocatorias de investigación la institución{% endblock titulo %}
+{% block app %}
+{% block cuerpo %}
+{% block menu_app_iu %}
+    {% include "menu_app_iu.html" %}
+{% endblock menu_app_iu %}
+{% if form.errors %}
+    <p>La lista de convocatorias no se ha podido consultar.</p>
+{% endif %}
+
+
+<form method="POST">
+    
+    <div class="table-responsive">
+        <table class="table">
+            <h2>Listado de Convocatorias de investigación</h2>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+
+                    <th>Fecha Inicio</th>
+                    
+                    <th>Fecha Final</th>
+
+                    <th>Valor Minimo</th>
+
+                    <th>Valor Maximo</th>
+
+                    <th>Pais</th>
+
+                    <th>Modalidad</th>
+
+                    <th>Ver</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            {% for conv in object_list %}
+                <tbody>
+                    <tr>
+                        <td>{{conv.nom_conv}}</td> 
+
+                        <td>{{conv.fch_ini}}</td>
+
+                        <td>{{conv.fch_fin}}</td>
+
+                        <td>{{conv.val_min}}</td>
+
+                        <td>{{conv.val_max}}</td>
+
+                        <td>{{conv.nal}}</td>
+
+                        <td>{{conv.mod}}</td>
+
+                        <td> <a href="../cons_esp_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-info">Ver</a><br></td>
+                        <td> <a href="../edt_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-info">Editar</a><br></td>
+                        <td> <a href="../eli_mod/{{app_mod.id_mod}}" class="btn btn-block btn-sm btn-danger">Eliminar</a><br></td> 
+                        
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table> 
+    </div>
+</form>
+
+{% endblock cuerpo %}
+{% endblock app %}

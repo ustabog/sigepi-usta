@@ -32,6 +32,7 @@ class portada_adm(LoginRequiredMixin, PermissionRequiredMixin):
 
 
 class vts_reg_usu(CreateView):
+   
     #Clase que devuelve un formulario para registro de usuario
     def vst_registro(self, request):
         data = {
@@ -52,6 +53,7 @@ class vts_reg_usu(CreateView):
         return render(request,'app_regusu_frm_nvo_usu.html', data )
 
 class vts_ls_usu(ListView, PermissionRequiredMixin):
+   
     # clase para listar usuarios del sistema
     model = User
     form_class = frm_cons_usui
@@ -60,6 +62,7 @@ class vts_ls_usu(ListView, PermissionRequiredMixin):
     success_message = 'listado cargado correctamente'
 
 class vst_edit_usu(UpdateView, PermissionRequiredMixin):
+   
     #clase que me modifca los usuarios para registro de usuario
     model = usu
     form_class = frm_edit_usu
@@ -68,6 +71,7 @@ class vst_edit_usu(UpdateView, PermissionRequiredMixin):
     success_url = reverse_lazy('consulta_usuarios')
 
 def vst_eli_usu(request, id):
+    
     usuario = get_object_or_404(usu, id=id)
     usuario.delete()
     messages.success(request, "Eliminado correctamente")
@@ -81,7 +85,9 @@ def vst_eli_usu(request, id):
 ############FIN - Registro como invitado################
 
 class func_usu():
+    
     #clase que me almacena las vistas de la aplicacion registro de usuario
+    
     #vista para listar usuarios
     def vst_ls_mod_usu(self, solicitud):
         #vista para istar los usuarios
@@ -90,6 +96,7 @@ class func_usu():
         return HttpResponse(respuesta)
 
 class vst_selc_usu_cons(PermissionRequiredMixin):
+    
     #funcion que me pinta la lista para modificar el usuario
     def vis_esp(request,pk):
         data=User.objects.get(id=pk)
@@ -107,6 +114,7 @@ class vst_selc_usu_cons(PermissionRequiredMixin):
 
 ##CREAR USUARIO DESDE ADMIN ##
 class infopersCreate(CreateView, PermissionRequiredMixin):
+   
     #crear información de las personas
     model = usu_inf_pers
     form_class = frm_usu_inf_pers
@@ -120,11 +128,13 @@ class infopersCreate(CreateView, PermissionRequiredMixin):
         return super(infopersCreate, self).form_valid(form)
 
 class infoperslList(ListView, PermissionRequiredMixin): #hereda de listwview
+    
     #información de las personas
     model = usu_inf_pers
     template_name = 'app_regusu_ls_infopers.html'
     
 class infopersUpdate(UpdateView, PermissionRequiredMixin):
+    
     #modificar la información de los usuarios
     model = usu_inf_pers
     form_class = frm_usu_inf_pers
@@ -132,6 +142,7 @@ class infopersUpdate(UpdateView, PermissionRequiredMixin):
     success_url = reverse_lazy('infopers')
 
 class infopersDelete(DeleteView, PermissionRequiredMixin):
+    
     #eliminar usuarios
     model = usu_inf_pers
     template_name = 'app_regusu_verificacion.html'
@@ -140,6 +151,7 @@ class infopersDelete(DeleteView, PermissionRequiredMixin):
 ########## CRUD DISCAPACIDAD ###############################
 
 class vts_reg_discap(CreateView, PermissionRequiredMixin):
+    
     #crear información de las personas
     model = discap
     form_class = frm_discap
@@ -149,6 +161,7 @@ class vts_reg_discap(CreateView, PermissionRequiredMixin):
     permission_required = 'discap.add_discap'
 
 class vts_ls_discap(ListView, PermissionRequiredMixin): #hereda de listwview
+    
     #información de las personas
     model = discap
     form_class = frm_discap
@@ -158,6 +171,7 @@ class vts_ls_discap(ListView, PermissionRequiredMixin): #hereda de listwview
     permission_required = 'discap.view_discap'
 
 class vts_edt_discap(UpdateView, PermissionRequiredMixin):
+    
     #clase que almacena los modulos generales del sistema
     model = discap
     form_class = frm_discap
@@ -166,6 +180,7 @@ class vts_edt_discap(UpdateView, PermissionRequiredMixin):
     permission_required = 'discap.change_discap'
 
 class vts_del_discap(DeleteView, PermissionRequiredMixin):
+    
     model = discap
     template_name = 'app_regusu_del_discapacidad.html'
     success_url = reverse_lazy('cons_discapacidad')
@@ -179,16 +194,16 @@ class vts_del_discap(DeleteView, PermissionRequiredMixin):
 class vts_reg_usu_inf_pers():
     #crear información de las personas
 
-    def inf_personal(request):
-        print(':)')
-        return redirect(reverse_lazy('reg_infopers'))
+
+
 
     def crear(request):
         template_name = 'app_regusu_frm_infopers.html'
 
         if request.method == 'POST':
-            inf_personal = frm_usu_inf_pers(request.POST, request.FILES)
+            inf_personal = frm_usu_inf_pers(request.FILES,request.POST)
             inf_disp = frm_usu_calendario(request.POST)
+           
             if inf_personal.is_valid():
                 inf_personal.save()
             else:
@@ -204,7 +219,9 @@ class vts_reg_usu_inf_pers():
        
 
 class vts_ls_usu_inf_pers(ListView, PermissionRequiredMixin): #hereda de listwview
+   
     #información de las personas
+   
     model = usu_inf_pers
     form_class = frm_usu_inf_pers
     template_name = 'cn_infopers.html'
@@ -213,7 +230,9 @@ class vts_ls_usu_inf_pers(ListView, PermissionRequiredMixin): #hereda de listwvi
     permission_required = 'usu_inf_pers.view_usu_inf_pers'
 
 class vts_edt_usu_inf_pers(UpdateView, PermissionRequiredMixin):
+    
     #clase que almacena los modulos generales del sistema
+    
     model = usu_inf_pers
     form_class = frm_usu_inf_pers
     template_name = 'app_regusu_frm_infopers.html'
@@ -221,6 +240,7 @@ class vts_edt_usu_inf_pers(UpdateView, PermissionRequiredMixin):
     permission_required = 'usu_inf_pers.change_usu_inf_pers'
 
 class vts_del_usu_inf_pers(DeleteView, PermissionRequiredMixin):
+   
     model = usu_inf_pers
     form_class=frm_usu_inf_pers
     template_name = 'app_regusu_del_infopers.html'
@@ -229,6 +249,7 @@ class vts_del_usu_inf_pers(DeleteView, PermissionRequiredMixin):
 
 ##### CRUD Habilidades PERSONALES #######################################
 class vts_reg_usu_hab(CreateView, PermissionRequiredMixin):
+    
     model = habil
     form_class=frm_usu_habil
     template_name = 'App_regusu_frm_habilidades.html'
@@ -237,6 +258,7 @@ class vts_reg_usu_hab(CreateView, PermissionRequiredMixin):
 
 ##### CRUD Empleos PERSONALES #######################################
 class vts_reg_usu_emp(CreateView, PermissionRequiredMixin):
+   
     model = usu_empleo
     form_class=frm_usu_form_empl
     template_name = 'App_regusu_frm_empleo.html'
@@ -244,6 +266,7 @@ class vts_reg_usu_emp(CreateView, PermissionRequiredMixin):
     permission_required = 'usu_inf_pers.delete_usu_inf_pers'
 
 class vst_ls_usu_emp():
+    
     def consultar_todos(request):
         empleos=usu_empleo.objects.filter(id_usu = request.user.id)
         template_name="cn_usu_empl.html"
@@ -253,6 +276,7 @@ class vst_ls_usu_emp():
 
 ##### CRUD Cursos PERSONALES #######################################
 class App_regusu_frm_cursos(CreateView, PermissionRequiredMixin):
+   
     model = usu_curs_dict
     form_class=frm_curs_dict
     template_name = 'App_regusu_frm_cursos.html'
@@ -260,6 +284,7 @@ class App_regusu_frm_cursos(CreateView, PermissionRequiredMixin):
     permission_required = 'usu_inf_pers.delete_usu_inf_pers'
 
 class vst_ls_frm_cursos():
+    
     def consultar_todos(request):
         cursos=usu_curs_dict.objects.filter(id_usu = request.user.id)
         template_name="cn_usu_curs.html"
@@ -268,6 +293,7 @@ class vst_ls_frm_cursos():
 
 #### CRUD Formación Académica  #################################
 class App_regusu_frm_form_acad(CreateView, PermissionRequiredMixin):
+   
     model = usu_form_acad
     form_class = frm_usu_form_acad
     template_name = 'App_regusu_frm_formacad.html'
@@ -275,6 +301,7 @@ class App_regusu_frm_form_acad(CreateView, PermissionRequiredMixin):
     permission_required = 'usu_inf_pers.delete_usu_inf_pers'
 
 class vst_ls_frm_form_acad():
+   
     def consultar_todos(request):
         formaciones=usu_form_acad.objects.filter(id_usu = request.user.id)
         template_name="cn_usu_form_acad.html"
@@ -283,6 +310,7 @@ class vst_ls_frm_form_acad():
 
 #### CRUD Inf.Contacto  #################################
 class App_regusu_frm_contac(CreateView, PermissionRequiredMixin):
+   
     model = usu_inf_contac
     form_class = frm_usu_inf_contact
     template_name = 'App_regusu_frm_contac.html'
@@ -292,12 +320,14 @@ class App_regusu_frm_contac(CreateView, PermissionRequiredMixin):
 ### CRUD red_social #########################################
 
 class App_regusu_frm_red(CreateView, PermissionRequiredMixin):
+    
     model = usu_red_soc
     fields= '__all__'
     template_name = 'App_regusu_frm_redsocial.html'
     success_url = reverse_lazy('mi_red')
 
 class vst_ls_frm_red():
+    
     def consultar_todos(request):
         template = 'cn_usu_redsocial.html'
         redes= usu_red_soc.objects.filter(id_usu=request.user.id).values()

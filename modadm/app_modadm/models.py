@@ -95,8 +95,8 @@ class usui(models.Model):
     id_user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key = True, null=False, blank=False)
     sigla = models.CharField('usuario (Sigla de la Institución)', max_length=100, unique=True)
     nom_inst = models.CharField('Nombre de la Institución', max_length=254)
-    id_usu_adm = models.IntegerField('Id de usuario Principal Adm. Institución', null=True, blank=True) # Usuario(a) principal que administra la Institución
-    id_usu_asig = models.IntegerField('Id de usuario asignado Adm. Institución', null=True, blank=True) # Usuario(a) asignado para administración de la cuenta Institución
+    id_usu_adm = models.ForeignKey(usu,on_delete=models.CASCADE, null=True, blank=True, related_name='id_admin') # Usuario(a) principal que administra la Institución
+    id_usu_asig = models.ForeignKey(usu,on_delete=models.CASCADE, null=True, blank=True, related_name='id_asig') # Usuario(a) asignado para administración de la cuenta Institución
     email_inst = models.EmailField('Correo-e de soporte técnico de la Institución',max_length = 254)
     fch_reg = models.DateField('fecha de registro', default=timezone.now) # fecha de registro de usuario
     activo = models.BooleanField('¿Activo o desactivado.?', default=True) # estatus del usuario(a) activo (True) inactivo (False)

@@ -20,9 +20,12 @@ urlpatterns = [
     #CRUD Convocatorias de investigación.
     #Regisrar una convocatoria de investgacion
     path('nuevo_conv/', NuevaConvocatoria.as_view(), name='nueva_conv'),
+    #Consular las convocatorias de investigación de la institución
+    path('cons_convinv/', ConsultarConvocatorias.as_view(), name='cons_convinv'),
 
     #CRUD Programas ofertados por la institución.
     #Registrar una programa 
     path('nuevo_prog/',NuevoPrograma.as_view(),name='nuevo_prog'),
-
+    #Consultar los programas ofertados por la institución
+    path('cons_prog/', ConsultarProgramas.as_view(),name='cons_prog'),
 ]

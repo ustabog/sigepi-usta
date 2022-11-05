@@ -19,17 +19,16 @@ def vst_reg_usui(request):
     if request.method == 'POST':
         form_class = frm_cons_usui(request.POST)
         data = request.POST
-        admin = User.objects.get(id=data['id_usu_adm'])
         user_name = "admin."+data['sigla']
         password = User.objects.make_random_password()
         enc_pass=make_password(password)
-        User.objects.create(username=user_name,password=enc_pass,email=admin.email)
+        User.objects.create(username=user_name,password=enc_pass,email=data['email_inst'])
         
-        subject = 'Buen Dia '+admin.first_name+' La institución '+data['sigla']+' le ha asignado como administrador'
+        subject = 'Buen Dia La institución '+data['sigla']+' le ha asignado como administrador'
         message = 'Los datos de ingreso son: Usuario: '+user_name+' Contraseña: '+password
         email_from = settings.EMAIL_HOST_USER
-        recipent_list = [admin.email,]
-        #send_mail(subject,message,email_from,recipent_list)
+        recipent_list = [data['email_inst'],]
+        send_mail(subject,message,email_from,recipent_list)
         
         if form_class.is_valid():
             form_class.save()
@@ -38,9 +37,10 @@ def vst_reg_usui(request):
             usu.objects.create(id_user=usu_reg)
             usu_reg= usu.objects.latest('id_user')
             regusui.objects.create(passinst=password,id_usu_admin=usu_reg,id_rol_app=rol)
-            usu_reg.id_user
-            modadm_usui.objects.filter(id_usu_adm=data['id_usu_adm']).update(id_usu_adm=usu_reg.id_user)
-
+            p= modadm_usui.objects.latest('id_user')
+            p.id_usu_adm = usu_reg
+            p.save()
+            
         else:
             print(form_class.errors.as_data())
         return redirect(reverse_lazy('cons_usui'))
@@ -126,9 +126,20 @@ class NuevaConvocatoria(CreateView):
     template_name = 'App_regusui_nvo_conv.html'
     success_url = reverse_lazy('mis_inst')
 
+class ConsultarConvocatorias(ListView):
+    model = conv_inv
+    fields = '__all__'
+    template_name = 'cn_usui_convinv.html'
+
 #----------- CRUD PROGRAMAS OFERTADOS POR LA INSTITUCIÓN ---------------
 class NuevoPrograma(CreateView):
     model = prog_ofer
     fields = '__all__'
     template_name = 'App_regusui_nvo_prog.html'
     success_url = reverse_lazy('mis_inst')
+
+class ConsultarProgramas(ListView):
+    model: prog_ofer
+    fields = '__all__'
+    template_name = 'cn_usui_prog.html'
+    

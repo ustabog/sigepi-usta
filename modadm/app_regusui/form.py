@@ -10,6 +10,7 @@ class frm_cons_usui(forms.ModelForm):
     class Meta:
         model = usui
         fields ='__all__'
+        exclude = ('id_usu_adm','id_usu_asig',)
 
 
 class FrmNuevoUsuario(forms.ModelForm):

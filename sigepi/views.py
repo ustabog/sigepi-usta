@@ -20,7 +20,7 @@ from django.views.generic import CreateView, DeleteView,ListView,UpdateView
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
@@ -60,9 +60,17 @@ class front():
                 password = form.cleaned_data.get("password")
                 usuario = authenticate(solicitud, username = nombreusu, password = password)
                 if usuario is not None:
-                    login(solicitud, usuario)
-                    messages.success(solicitud,F"Bienvenido {nombreusu}")
-                    return render(solicitud,'inicio.html')
+
+                    if User.objects.get(username=nombreusu).last_login is None:
+                        print("Primera vez")
+                        login(solicitud, usuario)
+                        messages.success(solicitud,F"Bienvenido {nombreusu}")
+                        return redirect(reverse_lazy('change_password'))
+                    else:
+                        print("Ya se ha logeado")
+                        login(solicitud, usuario)
+                        messages.success(solicitud,F"Bienvenido {nombreusu}")
+                        return render(solicitud,'inicio.html')
                 else:
                     messages.success(solicitud,F"Los datos son incorrectos")
             else:
@@ -70,22 +78,50 @@ class front():
         form = AuthenticationForm()
         return render(solicitud,'frm_ingreso_iu.html', {"form": form} )
 
+
+    def change_password(self,request):
+        #función que reasigna la contraseña a un usuario que recibio sus credenciales via mail
+        form = PasswordChangeForm(request.user)
+        template = 'frm_ingreso_iu.html'
+
+        if request.method == 'POST':
+            #Formulario default de Django para el cambio de contraseña
+            form = PasswordChangeForm(request.user, data=request.POST)
+            if form.is_valid():
+                #Se almacena la nueva contraseña
+                form.save()
+                return render(request, 'inicio.html')
+            else:
+                print(form.errors)
+                print('No se ha cambiado la contraseña')
+
+
+
+        return render(request,template,{'form':form})
+
+
     def vst_registro(self, request):
         data = {
             'form': frm_reg_usu()
         }
         if request.method == "POST":
             formulario = frm_reg_usu(data=request.POST)
-
+            
+            #Si el formulario se diligencio correctamente
             if formulario.is_valid():
+                #Almacenar el continido del formulario
                 formulario.save()
                 usuario = formulario.cleaned_data.get('username')
                 password = formulario.cleaned_data.get('password1')
+                #Se le asigna el rol por defecto ÏNVITADO
                 grp_iv = Group.objects.get(name="Invitado")
                 usuario = authenticate(username=usuario, password=password)
                 usuario.groups.add(grp_iv)
                 id_reg=User.objects.latest('id')
                 print(id_reg)
+
+                #Se registra el usurio registrado en el modelo usu
+
                 p=usu(id_user=id_reg)
                 p.save()
                 login(request, usuario)
@@ -98,7 +134,7 @@ class front():
             'form': frm_reg_usu()
         }
         if request.method == "POST":
-            formulario = frm_reg_usu(data=request.POST)
+            formulario = frm_reg_usu(request, data=request.POST)
             if formulario.is_valid():
                 formulario.save()
                 usuario = formulario.cleaned_data.get('username')
@@ -130,7 +166,7 @@ class front():
         return render(request,'frm_registro_iu.html', data )
 
     def vst_cerrar(self, solicitud):
-        logout(solicitud)
+        logout(solicitud.user)
         messages.success(solicitud,"tu sesión ha cerrado ")
         return render(solicitud,'index_front.html')
 
