@@ -36,7 +36,7 @@ urlpatterns = [
     # CRUD INFORMACION PERSONAL
     path('reg_infopers/', vts_reg_usu_inf_pers.crear, name = 'reg_infopers'),
     path('cons_infopers/', vts_ls_usu_inf_pers.as_view(), name = 'cons_infopers'),
-    path('infopers/', vts_reg_usu_inf_pers.inf_personal, name='infopers'),
+    #path('infopers/', vts_reg_usu_inf_pers.inf_personal, name='infopers'),
     path('edt_infopers/<int:pk>/', vts_edt_usu_inf_pers.as_view(), name='edt_infopers'),
     path('eli_infopers/<int:pk>/', vts_del_usu_inf_pers.as_view(), name='eli_infopers'),
 

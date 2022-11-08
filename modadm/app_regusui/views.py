@@ -131,6 +131,18 @@ class ConsultarConvocatorias(ListView):
     fields = '__all__'
     template_name = 'cn_usui_convinv.html'
 
+class ConsultarEspConvocatoria(DetailView):
+    model = conv_inv
+    fields = '__all__'
+    template_name = 'cn_usui_esp_convinv.html'
+    success_url = reverse_lazy('cons_convinv')
+
+class EliminarConvocatoria(DeleteView):
+    model = conv_inv
+    field = '__all__'
+    template_name = 'del_usui_convinv.html'
+    success_url = reverse_lazy('cons_convinv')
+
 #----------- CRUD PROGRAMAS OFERTADOS POR LA INSTITUCIÓN ---------------
 class NuevoPrograma(CreateView):
     model = prog_ofer
@@ -143,3 +155,14 @@ class ConsultarProgramas(ListView):
     fields = '__all__'
     template_name = 'cn_usui_prog.html'
     
+class ConsultarEspConvocatoria(DetailView):
+    model = prog_ofer
+    fields = '__all__'
+    template_name = 'cn_usui_esp_prog.html'
+    success_url = reverse_lazy('cons_convinv')
+
+class EliminarConvocatoria(DeleteView):
+    model = prog_ofer
+    field = '__all__'
+    template_name = 'del_usui_prog.html'
+    success_url = reverse_lazy('cons_convinv')
