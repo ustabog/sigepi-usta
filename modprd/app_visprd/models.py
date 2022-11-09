@@ -12,15 +12,17 @@ DIC_APP = [
     ['Descripción',"Aplicación para la definición del registro del Producto de Investigación"],
     ['url_documento','doc'],
     ['url_install','modprd/app_regprd'],
-    #['url_plantilla','app_regprd_iu.html'],
-    #['Nombre_url','ini_regprd'],
+    ['url_plantilla','app_regprd_iu.html'],
+    ['Nombre_url','ini_regprd'],
     ['Versión aplicación','0.0.0'],
     ['id_mod', 5],
     ['Versión_módulo', 'alfa'],
     ['estado', 'en Desarrollo'],
     ['instalada', False],
     ['visible', False],
+
 ]
+
 #Clases de la aplicacion de visibilidad del producto
 
 class prd_indic (models.Model):

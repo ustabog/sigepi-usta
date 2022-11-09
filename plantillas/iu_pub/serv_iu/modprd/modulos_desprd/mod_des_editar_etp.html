@@ -13,12 +13,53 @@
   <h1>{{ tit_form }}</h1> 
 
     <form class="" action="" method="post">
+      
       {% csrf_token %}
+      <p>
 
-      {{ form.as_p}}
+        <label for="{{ form.nom_etp.1 }}">Nombre de la etapa:</label>
+        <br>
+        <br>
+        {{ form.nom_etp }}
 
-      <a href="">
+    </p>
 
+    <p>
+
+        <label for="{{ form.desc_etp.1 }}">Descripcion de la etapa:</label>
+        <br>
+        <br>
+        {{ form.desc_etp }}
+
+    </p>
+
+    <p>
+
+        <label>Nivel de maduracion tecnologica</label>
+        <br>
+        <br>
+        <img src="{% static 'img/TRL.png' %}" alt="Logo" >
+        {{ form.esc_trl }}
+
+    </p>
+
+    <p>
+
+        <label for="{{ form.fch_ini.1 }}">Fecha de inicio de la etapa:</label>
+        <br>
+        <br>
+        {{ form.fch_ini }}
+
+    </p>
+
+    <p>
+
+        <label for="{{ form.fch_fin.1 }}">Fecha de finalizacion de la etapa:</label>
+        <br>
+        <br>
+        {{ form.fch_fin }}
+
+    </p>
             <button type="submit" >
                 Editar
             </button>

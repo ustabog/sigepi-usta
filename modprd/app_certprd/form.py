@@ -3,6 +3,26 @@
 # Coautor(a):  Milton O. Castro Ch.
 #fecha 22 -09 -2022
 
+# class form_etp(forms.ModelForm):
+#     class Meta:
+#         model = prd_etp
+#         fields = (
+#             'nom_etp',
+#             'desc_etp',
+#             'id_prd',
+#             'esc_trl',
+
+#         )
+#         labels ={
+#             'nom_etp': 'Nombre de la etapa',
+#             'desc_etp': 'Descripción de la etapa',
+#             'id_prd': 'Producto relacionado',
+#             'esc_trl': 'Escala de maduracion tecnologica',
+#         }
+#         widgets = {
+
+#         }
+
 from django.forms import ModelForm
 from django import forms
 from .models import *
@@ -73,22 +93,3 @@ class form_supp(forms.ModelForm):
             'url_supp': 'Documentacion del soporte',
         }
     
-# class form_etp(forms.ModelForm):
-#     class Meta:
-#         model = prd_etp
-#         fields = (
-#             'nom_etp',
-#             'desc_etp',
-#             'id_prd',
-#             'esc_trl',
-
-#         )
-#         labels ={
-#             'nom_etp': 'Nombre de la etapa',
-#             'desc_etp': 'Descripción de la etapa',
-#             'id_prd': 'Producto relacionado',
-#             'esc_trl': 'Escala de maduracion tecnologica',
-#         }
-#         widgets = {
-
-#         }

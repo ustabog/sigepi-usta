@@ -12,14 +12,20 @@
   {% endif %}
 
   <div class="container">
+
       <div class="column form-group text-center">
+
           <h3>registra</h3>
+
           <form method="post">
+
             {% csrf_token %}
             {{ form.as_p }}
             <a href="">
                 <button type="submit" name="Crear" >
+                    
                     Crear
+                    
                 </button>
             </a>   
         </form>
