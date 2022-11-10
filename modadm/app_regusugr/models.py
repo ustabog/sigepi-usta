@@ -23,8 +23,6 @@ INF_APP = [
     ]
 
     
-
-
 #clase de información de usuario grupo.
 class usugr_base(models.Model):
     id_usugr =  models.ForeignKey(usugr, on_delete=models.CASCADE, null=False, blank =False, default = 0) # identificador de usuario grupo

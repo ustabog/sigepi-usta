@@ -4,7 +4,7 @@ from django.views.generic import CreateView, DeleteView,ListView,UpdateView,Deta
 from django.urls import reverse_lazy
 from modadm.app_regusui.form import FrmNuevoUsuario, frm_cons_usui
 from modadm.app_modadm.models import usui as modadm_usui, usu, adm_rol
-from modadm.app_regusui.models import usui as regusui, conv_inv, prog_ofer
+from modadm.app_regusui.models import usui as regusui, conv_inv, prog_ofer, usui_inf_contac
 from django.contrib.auth.models import User, Permission, Group
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
@@ -120,6 +120,7 @@ def vst_ins_usu(request):
     pass
 
 # ----------- CRUD CONVOCATORIA DE INVERSTIGACIÓN ------------------------
+
 class NuevaConvocatoria(CreateView):
     model = conv_inv
     fields = '__all__'
@@ -144,6 +145,7 @@ class EliminarConvocatoria(DeleteView):
     success_url = reverse_lazy('cons_convinv')
 
 #----------- CRUD PROGRAMAS OFERTADOS POR LA INSTITUCIÓN ---------------
+
 class NuevoPrograma(CreateView):
     model = prog_ofer
     fields = '__all__'
@@ -166,3 +168,33 @@ class EliminarConvocatoria(DeleteView):
     field = '__all__'
     template_name = 'del_usui_prog.html'
     success_url = reverse_lazy('cons_convinv')
+
+#------------ CRUD INFORMACION DE CONTACTO DE INSTITUCION --------------------------
+
+class NuevoContacto(CreateView):
+    model = usui_inf_contac
+    fields = '__all__'
+    template_name = 'App_regusui_nvo_contac.html'
+    success_url = reverse_lazy('cons_contact')
+
+class ConsultarContacto(ListView):
+    model = usui_inf_contac
+    fields = '__all__'
+    template_name = 'cn_usui_contacusugr.html'
+
+class ConsultarEspContacto(DetailView):
+    model = usui_inf_contac
+    fields = '__all__'
+    template_name = 'cn_usui_esp_contacusugr.html'
+
+class ModificarContacto(UpdateView):
+    model = usui_inf_contac
+    fields = '__all__'
+    template_name = 'App_regusui_edt_contactusugr.html'
+    success_url = reverse_lazy('cons_contact')
+
+class EliminarContacto(DeleteView):
+    model = usui_inf_contac
+    field = '__all__'
+    template_name = 'del_usui_contacusugr.html'
+    success_url = reverse_lazy('cons_contact')

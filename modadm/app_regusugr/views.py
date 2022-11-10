@@ -11,6 +11,7 @@ from django.http import HttpResponse
 ## CRUD de usugr
 
 #Clase que devuelve un formulario para registro de usuario grupo
+
 class vts_reg_usugr(CreateView):
     form_class = frm_reg_usugr
     template_name = 'App_regusugr_nvo_usugr.html' 
@@ -18,6 +19,7 @@ class vts_reg_usugr(CreateView):
     success_message = "El usuario fue creado correctamente"
 
 # clase que devuelve una lista de todos los usuarios grupo
+
 class vts_ls_usugr():
     success_url = reverse_lazy('cn_usugr.html')
     success_message = 'listado cargado correctamente'
@@ -34,6 +36,7 @@ class vts_ls_usugr():
 
 
 #clase que permite etitar o modificar el registro de un usuario grupo
+
 class vts_modf_usugr(UpdateView):
     model = usugr
     form_class = frm_cons_usugr
@@ -41,16 +44,18 @@ class vts_modf_usugr(UpdateView):
     success_url = reverse_lazy('cons_usugr')
 
 # clase para heredar la consulta de grupo y seleccionar un usuario grupo
+
 class vts_selc_usugr_mod(vts_ls_usugr):
     template_name = 'sl_usugr.html'
     success_url = reverse_lazy('sl_usugr.html')
 
 # ----------- CRUD CONTACTO USUARIO GRUPO DE INVERSTIGACIÓN ------------------------
+
 class NuevoContacto(CreateView):
     model = usugr_contac
     fields = '__all__'
     template_name = 'App_regusugr_nvo_contac.html'
-    success_url = reverse_lazy('usugr_contac')
+    success_url = reverse_lazy('cons_contact')
 
 class ConsultarContacto(ListView):
     model = usugr_contac
@@ -61,15 +66,21 @@ class ConsultarEspContacto(DetailView):
     model = usugr_contac
     fields = '__all__'
     template_name = 'cn_usui_esp_contacusugr.html'
-    success_url = reverse_lazy('usugr_contac')
+
+class ModificarContacto(UpdateView):
+    model = usugr_contac
+    fields = '__all__'
+    template_name = 'App_usugr_edt_contactusugr.html'
+    success_url = reverse_lazy('cons_contact')
 
 class EliminarContacto(DeleteView):
     model = usugr_contac
     field = '__all__'
     template_name = 'del_usugr_contacusugr.html'
-    success_url = reverse_lazy('usugr_contac')
+    success_url = reverse_lazy('cons_contact')
 
 #----------- CRUD ETAPAS DEL GRUPO DE INVESTIGACION ---------------
+
 class NuevaEtapa(CreateView):
     model = usugr_etapa
     fields = '__all__'
@@ -87,6 +98,12 @@ class ConsultaEspEtapa(DetailView):
     template_name = 'cn_usugr_esp_etapa.html'
     success_url = reverse_lazy('cons_convinv')
 
+class ModificarEtapa(UpdateView):
+    model = usugr_etapa
+    fields = '__all__'
+    template_name = 'App_usugr_edt_etapa.html'
+    success_url = reverse_lazy('usugr_contac')
+
 class EliminarEtapa(DeleteView):
     model = usugr_etapa
     field = '__all__'
@@ -94,6 +111,7 @@ class EliminarEtapa(DeleteView):
     success_url = reverse_lazy('cons_convinv')
 
 # ----------- CRUD CURSOS DE FORMACION REALIZADOS POR EL USUARIO ------------------------
+
 class NuevoCurso(CreateView):
     model = usugr_form
     fields = '__all__'
@@ -111,6 +129,12 @@ class ConsultaEspCurso(DetailView):
     template_name = 'cn_usui_esp_curso.html'
     success_url = reverse_lazy('cons_usugr_curso')
 
+class ModificarCurso(UpdateView):
+    model = usugr_form
+    fields = '__all__'
+    template_name = 'App_usugr_edt_curso.html'
+    success_url = reverse_lazy('usugr_contac')
+
 class EliminarCurso(DeleteView):
     model = usugr_form
     field = '__all__'
@@ -118,11 +142,12 @@ class EliminarCurso(DeleteView):
     success_url = reverse_lazy('cons_usugr_curso')
 
 #----------- CRUD REDES PUBLICAS DEL GRUPO ---------------
+
 class NuevaRed(CreateView):
     model = usugr_red_soc
     fields = '__all__'
     template_name = 'App_regusugr_nva_red.html'
-    success_url = reverse_lazy('mis_inst')
+    success_url = reverse_lazy('cons')
 
 class ConsultarRedes(ListView):
     model: usugr_red_soc
@@ -135,8 +160,45 @@ class ConsultarEspRed(DetailView):
     template_name = 'cn_usugr_esp_red.html'
     success_url = reverse_lazy('cons_convinv')
 
+class ModificarRed(UpdateView):
+    model = usugr_red_soc
+    fields = '__all__'
+    template_name = 'App_usugr_edt_curso.html'
+    success_url = reverse_lazy('usugr_contac')
+
 class EliminarRed(DeleteView):
     model = usugr_red_soc
     field = '__all__'
     template_name = 'del_usugr_red.html'
+    success_url = reverse_lazy('cons_convinv')
+
+#----------- CRUD PARA USUARIOS NO REGISTRADOS EN LA PLATAFORMA --------------------------------
+
+class NuevoUsuarionr(CreateView):
+    model = usugr_usu_nr
+    fields = '__all__'
+    template_name = 'App_regusugr_nvo_usunr.html'
+    success_url = reverse_lazy('mis_inst')
+
+class ConsultarUsuarionr(ListView):
+    model: usugr_usu_nr
+    fields = '__all__'
+    template_name = 'cn_usugr_usunr.html'
+    
+class ConsultaEspUsuarionr(DetailView):
+    model = usugr_usu_nr
+    fields = '__all__'
+    template_name = 'cn_usugr_esp_usunr.html'
+    success_url = reverse_lazy('cons_convinv')
+
+class ModificarUsuarionr(UpdateView):
+    model = usugr_usu_nr
+    fields = '__all__'
+    template_name = 'cn_usugr_edt_contactusugr.html'
+    success_url = reverse_lazy('usugr_contac')
+
+class EliminarUsuarionr(DeleteView):
+    model = usugr_usu_nr
+    field = '__all__'
+    template_name = 'del_usugr_usunr.html'
     success_url = reverse_lazy('cons_convinv')
