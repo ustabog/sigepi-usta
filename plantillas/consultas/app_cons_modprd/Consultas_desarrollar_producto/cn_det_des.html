@@ -1,0 +1,150 @@
+<!--- Plantilla de los detalles del desarrollo de un producto - plantillas para SIGEPI
+#Autor: Daniel Alejandro Ballesteros Algarra
+# Coautor(a):  Milton O. Castro Ch.
+#fecha 10 - 11 -2022  --->
+
+{% extends 'app_regdes_iu.html' %} 
+{% load static %}
+{% block meta_app %}{% endblock meta_app%}
+{% block meta_panel_ppal %}{% endblock meta_panel_ppal%}
+{% block meta_pie_app%}{% endblock meta_pie_app%}
+{% block consulta %}
+{% block articulo %}
+
+<!--- DETALLES -->
+<div>
+
+    <p>El desarrolo de su producto es el siguiente: </p>
+
+</div>
+
+<!--- En caso de error --> 
+
+{% if form.errors %}
+
+    <p>No se ha podido realizar la consulta en este momento, porfavor intentelo mas tarde.</p>
+
+{% endif %}
+
+<!--CONSULTAR UN DESARROLLO-->
+
+
+
+<!-- Informacion del desarrollo-->
+
+<p>
+    <b>
+
+        Producto en desarrollo: 
+
+    </b>
+
+    <label>
+
+        {{ prd_etp.id_prd.nom_prd}} 
+
+    </label>
+</p>
+
+<p>
+    <b>
+
+        Etapa de desarrollo:
+
+    </b>
+
+    <label>
+
+        {{prd_etp.nom_etp}}
+
+    </label>
+</p>
+
+
+<p>
+    <b>
+
+        Descripcion de la etapa:
+
+    </b>
+
+    <label>
+
+        {{prd_etp.desc_etp}}
+
+    </label>
+</p>
+
+<p>
+    <b>
+
+        Estado de maduracion tecnologica:
+
+    </b>
+
+    <label>
+
+        {{prd_etp.esc_trl}}
+        {{prd_etp.get_esc_trl_display}}
+
+    </label>
+</p>
+
+<p>
+    <b>
+
+        Fecha de inicio de la etapa:
+
+    </b>
+
+    <label>
+
+        {{prd_etp.fch_ini}}
+
+    </label>
+</p>
+
+<p>
+    <b>
+
+        Fecha de finalizacion de la etapa:
+
+    </b>
+
+    <label>
+
+        {{prd_etp.fch_fin}}
+
+    </label>
+</p>
+
+<a href="{%url 'listar_etp' %}">
+
+    <button type="submit" name="Editar" >
+
+        Volver
+
+    </button>
+
+</a>
+
+<a href="{%url 'editar_etp' prd_etp.id_etp %}">
+
+    <button type="submit" name="Editar" >
+
+        editar etapa de produccion
+
+    </button>
+
+</a>
+
+
+
+
+{% endblock articulo %}
+{% endblock consulta %}
+
+
+{% block script_app%}{% endblock script_app%}
+{% block script_menu_app%}{% endblock script_menu_app%}
+{% block script_pie_app%}{% endblock script_pie_app%}

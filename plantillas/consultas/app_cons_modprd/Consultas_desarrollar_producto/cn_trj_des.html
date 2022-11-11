@@ -77,13 +77,13 @@
                     </td>
 
                     <td>
-                        {% if m2m_user.producto_id.id_prd == prd_etp.id_prd%}
+                        {% if m2m_user.producto_id.id_prd %}
 
-                        <a href="{%url 'registrar_etp' m2m_user.producto_id.id_prd %}">
+                        <a href="{%url 'consultar_etp' m2m_user.producto_id.id_prd %}">
 
                             <button type="submit" name="Editar" >
 
-                                crear etapa de produccion
+                                Consultar desarrollo
 
                             </button>
                         </a>

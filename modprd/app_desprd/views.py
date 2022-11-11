@@ -69,7 +69,6 @@ class vst_list_des(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Listar etapas'
         context['action'] = 'List'
-
         context['queryset'] = self.get_queryset()
         return context
 
@@ -78,8 +77,9 @@ class vst_list_des(ListView):
 class vst_cons_etp(DetailView):
 
     model= prd_etp
-    template_name ='cn_det_etp.html'   
+    template_name ='cn_det_des.html'   
     success_url = reverse_lazy('listar_etp')
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -91,10 +91,10 @@ class vst_cons_etp(DetailView):
 #Vista para la edicion de una etapa
 
 class vst_upd_etp(UpdateView):
-
+    
     model= prd_etp
     form_class = form_etp
-    template_name ='mod_cert_editar_etp.html'
+    template_name ='mod_des_editar_etp.html'
     success_url = reverse_lazy('consultar_etp')
 
     def get_context_data(self, **kwargs):
@@ -173,19 +173,19 @@ class vst_cons_des(DetailView):
 
 #Vista para la edicion de un desarrollo
 
-class vst_upd_etp(UpdateView):
+# class vst_upd_etp(UpdateView):
 
-    model= prd_des
-    form_class = form_etp
-    template_name ='mod_cert_editar_etp.html'
-    success_url = reverse_lazy('consultar_etp')
+#     model= prd_des
+#     form_class = form_etp
+#     template_name ='mod_cert_editar_etp.html'
+#     success_url = reverse_lazy('consultar_etp')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Editar etp'
-        context['action'] = 'update'
-        context ['entity'] = 'cert'
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = 'Editar etp'
+#         context['action'] = 'update'
+#         context ['entity'] = 'cert'
+#         return context
 
 #Vista para la eliminacion de un desarrollo
 
